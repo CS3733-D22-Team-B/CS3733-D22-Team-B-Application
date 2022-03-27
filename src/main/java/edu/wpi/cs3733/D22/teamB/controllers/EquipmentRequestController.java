@@ -15,8 +15,8 @@ public class EquipmentRequestController {
   @FXML private ComboBox roomComboBox;
   @FXML private ComboBox equipmentComboBox;
 
-  private String room;
-  private String equipment;
+  private String room = "";
+  private String equipment = "";
 
   @FXML
   void setRoom(ActionEvent event) {
@@ -30,7 +30,22 @@ public class EquipmentRequestController {
 
   @FXML
   void sendRequest() {
-    resultLabel.setText("Request sent: " + equipment + " to " + room);
+    if (room.equals("") && equipment.equals("")) {
+      resultLabel.setText("Fields are empty, please specify room and equipment");
+    } else if (room.equals("")) {
+      resultLabel.setText("Please specify a room");
+    } else if (equipment.equals("")) {
+      resultLabel.setText("Please select equipment to request");
+    } else resultLabel.setText("Request sent: " + equipment + " to " + room);
+  }
+
+  @FXML
+  void reset() {
+    roomComboBox.setValue("");
+    equipmentComboBox.setValue("");
+    resultLabel.setText("");
+    room = "";
+    equipment = "";
   }
 
   @FXML

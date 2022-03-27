@@ -16,7 +16,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="resultLabel" layoutX="273.0" layoutY="263.0" />
+      <Label fx:id="resultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="262.0" prefHeight="18.0" prefWidth="547.0" />
       <Label layoutX="284.0" layoutY="64.0" text="Room" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
       <ComboBox fx:id="roomComboBox" layoutX="225.0" layoutY="82.0" onAction="#setRoom" prefWidth="150.0">
@@ -39,5 +39,6 @@
             </FXCollections>
          </items>
       </ComboBox>
+      <Button layoutX="510.0" layoutY="360.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
    </children>
 </AnchorPane>
