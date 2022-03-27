@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentRequestController">
+   <children>
+      <Button layoutX="256.0" layoutY="200.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
+      <Label layoutX="152.0" layoutY="14.0" text="Medical Equipment Request">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="resultLabel" layoutX="273.0" layoutY="263.0" />
+      <Label layoutX="284.0" layoutY="64.0" text="Room" />
+      <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
+      <ComboBox fx:id="roomComboBox" layoutX="225.0" layoutY="82.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="ROOM_1" fx:value="Room 1" />
+               <String fx:id="ROOM_2" fx:value="Room 2" />
+               <String fx:id="ROOM_3" fx:value="Room 3" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="274.0" layoutY="123.0" text="Equipment" />
+      <ComboBox fx:id="equipmentComboBox" layoutX="225.0" layoutY="141.0" onAction="#setEquipment" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="BED" fx:value="Bed" />
+               <String fx:id="RECLINER" fx:value="Recliner" />
+               <String fx:id="XRAY_MACHINE" fx:value="X-Ray Machine" />
+               <String fx:id="INFUSION_PUMP" fx:value="Infusion Pump" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+   </children>
+</AnchorPane>
