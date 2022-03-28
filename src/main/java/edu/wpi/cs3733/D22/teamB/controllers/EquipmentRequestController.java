@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -12,20 +11,20 @@ import javafx.stage.Stage;
 
 public class EquipmentRequestController {
   @FXML private Label resultLabel;
-  @FXML private ComboBox roomComboBox;
-  @FXML private ComboBox equipmentComboBox;
+  @FXML private ComboBox<String> roomComboBox;
+  @FXML private ComboBox<String> equipmentComboBox;
 
   private String room = "";
   private String equipment = "";
 
   @FXML
-  void setRoom(ActionEvent event) {
-    room = roomComboBox.getValue().toString();
+  void setRoom() {
+    room = roomComboBox.getValue();
   }
 
   @FXML
-  void setEquipment(ActionEvent event) {
-    equipment = equipmentComboBox.getValue().toString();
+  void setEquipment() {
+    equipment = equipmentComboBox.getValue();
   }
 
   @FXML
@@ -53,8 +52,7 @@ public class EquipmentRequestController {
     Parent homepageRoot =
         FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
     Scene homepageScene = new Scene(homepageRoot);
-
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) resultLabel.getScene().getWindow();
     window.setScene(homepageScene);
     window.show();
   }
