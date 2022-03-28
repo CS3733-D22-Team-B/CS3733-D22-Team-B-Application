@@ -5,19 +5,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
-public class RequestStatusController implements Initializable {
+public class RequestStatusController extends MenuBarController implements Initializable {
   @FXML private TableView<RequestStatusModel> statusTable;
   @FXML public TableColumn<RequestStatusModel, String> columnType;
   @FXML public TableColumn<RequestStatusModel, String> columnStatus;
@@ -35,16 +29,5 @@ public class RequestStatusController implements Initializable {
     columnAssigned.setCellValueFactory(new PropertyValueFactory<>("Assigned"));
     // add your data to the table here.
     statusTable.setItems(requestStatuses);
-  }
-
-  @FXML
-  void goToHomepage(ActionEvent event) throws Exception {
-    Parent homepageRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
-    Scene homepageScene = new Scene(homepageRoot);
-
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(homepageScene);
-    window.show();
   }
 }

@@ -7,11 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
-public class HomepageController {
+public class HomepageController extends MenuBarController {
   @FXML private Button logInButton;
   @FXML private Button profileButton;
   @FXML private Button mapButton;
@@ -28,6 +27,7 @@ public class HomepageController {
 
   @FXML private RadioButton homepageNodeObject;
 
+  /*
   @FXML
   void goToEquipmentDelivery(ActionEvent event) throws Exception {
     Parent equipmentRoot =
@@ -36,11 +36,7 @@ public class HomepageController {
     Scene equipmentScene = new Scene(equipmentRoot);
 
     Stage window;
-    if (event.getSource() instanceof MenuItem) {
-      window = (Stage) homepageNodeObject.getScene().getWindow();
-    } else {
-      window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    }
+    window = (Stage) homeBar.getScene().getWindow();
     window.setScene(equipmentScene);
     window.show();
   }
@@ -124,6 +120,8 @@ public class HomepageController {
     window.show();
   }
 
+  */
+
   @FXML
   void displayRequestButtons(ActionEvent event) {
     // set request buttons visible and hide all other buttons
@@ -184,11 +182,6 @@ public class HomepageController {
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
     backButton.setDisable(true);
-  }
-
-  @FXML
-  void quitApplication() {
-    System.exit(0);
   }
 
   public void goToRequestQueue(ActionEvent event) throws Exception {
