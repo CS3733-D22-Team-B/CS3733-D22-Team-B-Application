@@ -31,18 +31,22 @@
         <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
         <Button fx:id="patientDatabaseButton" disable="true" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
 
-        <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+        <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Profile">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Log In" />
                         <MenuItem mnemonicParsing="false" text="View Profile" />
-                        <MenuItem mnemonicParsing="false" text="Close" onAction="#quitApplication"/>
+                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                        <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                     </items>
                 </Menu>
 
-                <Menu mnemonicParsing="false" text="View Map">
-                </Menu>
+                <Menu mnemonicParsing="false" text="Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="View" />
+                  <MenuItem mnemonicParsing="false" text="Edit" />
+               </items></Menu>
 
                 <Menu mnemonicParsing="false" text="Equipment Tracker">
                 </Menu>
@@ -64,6 +68,7 @@
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
                         <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="ඞ" />
                     </items>
                 </Menu>
             </menus>

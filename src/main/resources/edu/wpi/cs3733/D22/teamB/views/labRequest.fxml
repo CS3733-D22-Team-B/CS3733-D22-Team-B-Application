@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
    <children>
-      <Button layoutX="252.0" layoutY="259.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
-      <Label layoutX="204.0" layoutY="14.0" text="Lab Service Request">
+      <Button layoutX="251.0" layoutY="283.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
+      <Label layoutX="194.0" layoutY="40.0" text="Lab Service Request">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="resultLabel" layoutX="150.0" layoutY="299.0" />
-      <Label layoutX="277.0" layoutY="64.0" text="Patient" />
+      <Label fx:id="resultLabel" layoutX="149.0" layoutY="323.0" />
+      <Label layoutX="276.0" layoutY="88.0" text="Patient" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <ComboBox fx:id="patientNameComboBox" layoutX="225.0" layoutY="82.0" onAction="#setPatient" prefWidth="150.0">
+      <ComboBox fx:id="patientNameComboBox" layoutX="224.0" layoutY="106.0" onAction="#setPatient" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="JOHN_DOE" fx:value="John Doe" />
@@ -29,8 +26,8 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label layoutX="274.0" layoutY="123.0" text="Lab Test" />
-      <ComboBox fx:id="labTestComboBox" layoutX="225.0" layoutY="141.0" onAction="#setLabTest" prefWidth="150.0">
+      <Label layoutX="273.0" layoutY="147.0" text="Lab Test" />
+      <ComboBox fx:id="labTestComboBox" layoutX="224.0" layoutY="165.0" onAction="#setLabTest" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="XRAY" fx:value="X-Ray" />
@@ -39,7 +36,43 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <DatePicker fx:id="testingDatePicker" layoutX="213.0" layoutY="200.0" onAction="#setTestingTime" />
-      <Label layoutX="266.0" layoutY="182.0" text="Testing Time" />
+      <DatePicker fx:id="testingDatePicker" layoutX="212.0" layoutY="224.0" onAction="#setTestingTime" />
+      <Label layoutX="265.0" layoutY="206.0" text="Testing Time" />
+      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Log In" />
+                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="View" />
+                  <MenuItem mnemonicParsing="false" text="Edit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Equipment Tracker" />
+            <Menu mnemonicParsing="false" text="Requests">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDelivery" text="Request Medical Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLabService" text="Request Lab Service" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDelivery" text="Request Medicine Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMealDelivery" text="Request Patient Meal Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterPage" text="Request Language Interpreter" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatient" text="Request Internal Patient Transfer" />
+               </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="ඞ" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
