@@ -72,4 +72,5 @@
         <RadioButton fx:id="homepageNodeObject" disable="true" layoutY="377.0" mnemonicParsing="false" opacity="0.0" visible="false" />
 
     </children>
+
 </AnchorPane>
