@@ -3,34 +3,62 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class EquipmentRequestController {
   @FXML private Label resultLabel;
-  @FXML private ComboBox roomComboBox;
-  @FXML private ComboBox equipmentComboBox;
+  @FXML private ComboBox<String> roomComboBox;
+  @FXML private ComboBox<String> equipmentComboBox;
+  @FXML private TextField nameInput;
 
-  private String room;
-  private String equipment;
+  private String room = "";
+  private String equipment = "";
+  private String name = "";
 
   @FXML
-  void setRoom(ActionEvent event) {
-    room = roomComboBox.getValue().toString();
+  void setRoom() {
+    room = roomComboBox.getValue();
   }
 
   @FXML
-  void setEquipment(ActionEvent event) {
-    equipment = equipmentComboBox.getValue().toString();
+  void setEquipment() {
+    equipment = equipmentComboBox.getValue();
+  }
+
+  @FXML
+  void setName() {
+    name = nameInput.getText();
   }
 
   @FXML
   void sendRequest() {
-    resultLabel.setText("Request sent: " + equipment + " to " + room);
+    setName();
+    if (room.equals("") && equipment.equals("") && name.equals("")) {
+      resultLabel.setText(
+          "Fields are empty, please specify room, equipment, and name of requester");
+    } else if (room.equals("")) {
+      resultLabel.setText("Please specify a room");
+    } else if (name.equals("")) {
+      resultLabel.setText("Please input name of requester");
+    } else if (equipment.equals("")) {
+      resultLabel.setText("Please select equipment to request");
+    } else resultLabel.setText("Request sent: " + equipment + " to " + room + " by " + name);
+  }
+
+  @FXML
+  void reset() {
+    roomComboBox.setValue("");
+    equipmentComboBox.setValue("");
+    resultLabel.setText("");
+    nameInput.setText("");
+    room = "";
+    equipment = "";
+    name = "";
   }
 
   @FXML
@@ -38,8 +66,7 @@ public class EquipmentRequestController {
     Parent homepageRoot =
         FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
     Scene homepageScene = new Scene(homepageRoot);
-
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) resultLabel.getScene().getWindow();
     window.setScene(homepageScene);
     window.show();
   }
