@@ -175,7 +175,7 @@ public class HomepageController {
     mapButton.setDisable(false);
     equipmentTrackerButton.setDisable(false);
     requestButton.setDisable(false);
-    patientDatabaseButton.setDisable(false);
+    patientDatabaseButton.setDisable(true);
 
     equipmentRequestButton.setDisable(true);
     labRequestButton.setDisable(true);
@@ -188,8 +188,9 @@ public class HomepageController {
 
   @FXML
   void quitApplication() {
-    System.exit(0);}
-  
+    System.exit(0);
+  }
+
   public void goToRequestQueue(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
