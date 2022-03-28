@@ -10,8 +10,9 @@
       <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
       <TableView fx:id="statusTable" layoutX="66.0" layoutY="21.0" prefHeight="333.0" prefWidth="467.0">
         <columns>
-          <TableColumn fx:id="columnType" prefWidth="252.79998779296875" text="C1" />
-          <TableColumn fx:id="columnStatus" prefWidth="213.6000244140625" text="C2" />
+          <TableColumn fx:id="columnType" prefWidth="144.79998779296875" text="Type" />
+          <TableColumn fx:id="columnStatus" prefWidth="152.0" text="Status" />
+            <TableColumn fx:id="columnAssigned" prefWidth="168.00006103515625" text="Assigned" />
         </columns>
       </TableView>
    </children>

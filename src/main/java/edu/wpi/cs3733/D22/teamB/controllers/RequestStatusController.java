@@ -21,9 +21,9 @@ public class RequestStatusController implements Initializable {
   @FXML private TableView<RequestStatusModel> statusTable;
   @FXML public TableColumn<RequestStatusModel, String> columnType;
   @FXML public TableColumn<RequestStatusModel, String> columnStatus;
-
+  @FXML public TableColumn<RequestStatusModel, String> columnAssigned;
   private ObservableList<RequestStatusModel> requestStatuses =
-      FXCollections.observableArrayList(new RequestStatusModel("Pending", "Meal Service"));
+      FXCollections.observableArrayList(new RequestStatusModel("Pending", "Meal Service", "Staff"));
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -32,6 +32,7 @@ public class RequestStatusController implements Initializable {
     // model class
     columnType.setCellValueFactory(new PropertyValueFactory<>("Type"));
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+    columnAssigned.setCellValueFactory(new PropertyValueFactory<>("Assigned"));
     // add your data to the table here.
     statusTable.setItems(requestStatuses);
   }
