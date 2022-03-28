@@ -74,4 +74,15 @@ public class HomepageController {
     window.setScene(internalScene);
     window.show();
   }
+
+  public void goToRequestQueue(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatus.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
 }

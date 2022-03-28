@@ -18,5 +18,6 @@
       <Button layoutX="201.0" layoutY="187.0" mnemonicParsing="false" onAction="#goToMealDelivery" text="Request Patient Meal Delivery" />
       <Button layoutX="201.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToInterpreterPage" text="Request Language Interpreter" textAlignment="CENTER" />
       <Button layoutX="194.0" layoutY="289.0" mnemonicParsing="false" onAction="#goToInternalPatient" text="Request Internal Patient Transfer" />
+      <Button layoutX="222.0" layoutY="323.0" mnemonicParsing="false" onAction="#goToRequestQueue" text="Go To Request Queue" />
    </children>
 </AnchorPane>
