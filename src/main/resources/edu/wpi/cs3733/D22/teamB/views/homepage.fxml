@@ -1,22 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
-   <children>
-      <Label layoutX="212.0" layoutY="62.0" text="Homepage">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Button layoutX="183.0" layoutY="115.0" mnemonicParsing="false" onAction="#goToEquipmentDelivery" text="Request Medical Equipment Delivery" />
-      <Button layoutX="227.0" layoutY="149.0" mnemonicParsing="false" onAction="#goToLabService" text="Request Lab Service" />
-      <Button layoutX="210.0" layoutY="221.0" mnemonicParsing="false" onAction="#goToMedicineDelivery" text="Request Medicine Delivery" />
-      <Button layoutX="201.0" layoutY="187.0" mnemonicParsing="false" onAction="#goToMealDelivery" text="Request Patient Meal Delivery" />
-      <Button layoutX="201.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToInterpreterPage" text="Request Language Interpreter" textAlignment="CENTER" />
-      <Button layoutX="194.0" layoutY="289.0" mnemonicParsing="false" onAction="#goToInternalPatient" text="Request Internal Patient Transfer" />
-   </children>
+    <children>
+        <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="25.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/hospitalExterior.jpg" />
+            </image>
+        </ImageView>
+
+        <Button fx:id="logInButton" layoutX="480.0" layoutY="38.0" mnemonicParsing="false" text="Log In" />
+        <Button fx:id="profileButton" layoutX="536.0" layoutY="38.0" mnemonicParsing="false" text="Profile" />
+        <Button fx:id="mapButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Map Editor" />
+        <Button fx:id="equipmentTrackerButton" layoutX="471.0" layoutY="132.0" mnemonicParsing="false" text="Equipment Tracker" />
+        <Button fx:id="requestButton" layoutX="470.0" layoutY="162.0" mnemonicParsing="false" onAction="#displayRequestButtons" prefHeight="25.0" prefWidth="115.0" text="Requests" />
+        <Button fx:id="equipmentRequestButton" layoutX="374.0" layoutY="103.0" mnemonicParsing="false" onAction="#goToEquipmentDelivery" text="Request Medical Equipment Delivery" visible="false" />
+        <Button fx:id="labRequestButton" layoutX="374.0" layoutY="135.0" mnemonicParsing="false" onAction="#goToLabService" prefHeight="25.0" prefWidth="211.0" text="Request Lab Service" visible="false" />
+        <Button fx:id="medicineRequestButton" layoutX="374.0" layoutY="196.0" mnemonicParsing="false" onAction="#goToMedicineDelivery" prefHeight="25.0" prefWidth="211.0" text="Request Medicine Delivery" visible="false" />
+        <Button fx:id="mealRequestButton" layoutX="374.0" layoutY="166.0" mnemonicParsing="false" onAction="#goToMealDelivery" prefHeight="25.0" prefWidth="211.0" text="Request Patient Meal Delivery" visible="false" />
+        <Button fx:id="interpreterRequestButton" layoutX="373.0" layoutY="227.0" mnemonicParsing="false" onAction="#goToInterpreterPage" prefHeight="25.0" prefWidth="211.0" text="Request Language Interpreter" textAlignment="CENTER" visible="false" />
+        <Button fx:id="internalPatientTransferButton" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToInternalPatient" prefWidth="211.0" text="Request Internal Patient Transfer" visible="false" />
+        <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
+        <Button fx:id="patientDatabaseButton" disable="true" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
+
+        <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Profile">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Log In" />
+                        <MenuItem mnemonicParsing="false" text="View Profile" />
+                        <MenuItem mnemonicParsing="false" text="Close" onAction="#quitApplication"/>
+                    </items>
+                </Menu>
+
+                <Menu mnemonicParsing="false" text="View Map">
+                </Menu>
+
+                <Menu mnemonicParsing="false" text="Equipment Tracker">
+                </Menu>
+
+                <Menu mnemonicParsing="false" text="Requests">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDelivery" text="Request Medical Equipment Delivery" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToLabService" text="Request Lab Service" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToMedicineDelivery" text="Request Medicine Delivery" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToMealDelivery" text="Request Patient Meal Delivery" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToInterpreterPage" text="Request Language Interpreter" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToInternalPatient" text="Request Internal Patient Transfer" />
+                    </items>
+                </Menu>
+
+                <Menu disable="true" mnemonicParsing="false" text="Patient Database">
+                </Menu>
+
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <RadioButton fx:id="homepageNodeObject" disable="true" layoutY="377.0" mnemonicParsing="false" opacity="0.0" visible="false" />
+
+    </children>
 </AnchorPane>
