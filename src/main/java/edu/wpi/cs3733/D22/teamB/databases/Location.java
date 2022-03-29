@@ -1,4 +1,4 @@
-package edu.wpi.teamname;
+package edu.wpi.cs3733.D22.teamB.databases;
 
 public class Location {
   private String nodeID;

@@ -1,4 +1,4 @@
-package edu.wpi.teamname;
+package edu.wpi.cs3733.D22.teamB.databases;
 
 import java.io.*;
 import java.sql.*;
@@ -8,7 +8,8 @@ import java.util.LinkedList;
 public class LocationsDAO implements LocationDAOImpl {
 
   private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "Locations.csv";
+  private final String backupFile =
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/Locations.csv";
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();;
 

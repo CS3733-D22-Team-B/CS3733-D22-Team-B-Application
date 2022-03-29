@@ -1,4 +1,4 @@
-package edu.wpi.teamname;
+package edu.wpi.cs3733.D22.teamB.databases;
 
 import java.io.*;
 import java.sql.*;
@@ -7,7 +7,8 @@ import java.util.LinkedList;
 
 public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
   private final String url = "jdbc:derby:Databases;";
-  private final String backupFile = "MedicalEquipment.csv";
+  private final String backupFile =
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipment.csv";
 
   private HashMap<String, MedicalEquipment> MedicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
