@@ -1,15 +1,15 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.*;
 
 public class MapViewerController {
-  @FXML private Button upButton;
-  @FXML private Button downButton;
+  @FXML private JFXButton upButton;
+  @FXML private JFXButton downButton;
   @FXML private ImageView mapImage;
 
   private int floorLevel = 2;

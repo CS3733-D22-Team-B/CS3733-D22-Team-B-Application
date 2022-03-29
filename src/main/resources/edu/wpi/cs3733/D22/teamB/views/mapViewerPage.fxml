@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapViewerController">
    <children>
@@ -13,7 +12,7 @@
             <Image url="@../assets/firstFloor.png" />
          </image>
       </ImageView>
-      <Button fx:id="downButton" layoutX="486.0" layoutY="273.0" mnemonicParsing="false" onAction="#moveDown" text="Down" />
-      <Button fx:id="upButton" layoutX="486.0" layoutY="92.0" mnemonicParsing="false" onAction="#moveUp" text="Up" />
+      <JFXButton fx:id="upButton" buttonType="RAISED" layoutX="435.0" layoutY="24.0" onAction="#moveUp" prefHeight="150.0" prefWidth="150.0" scaleX="0.5" scaleY="0.5" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " textFill="TRANSPARENT" />
+      <JFXButton fx:id="downButton" buttonType="RAISED" layoutX="435.0" layoutY="213.0" onAction="#moveDown" prefHeight="150.0" prefWidth="150.0" rotate="-180.0" scaleX="0.5" scaleY="0.5" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " textFill="TRANSPARENT" />
    </children>
 </AnchorPane>
