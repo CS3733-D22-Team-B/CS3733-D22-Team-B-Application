@@ -29,6 +29,20 @@ public class Main {
     di.listDB("Employees", 5);
     di.listDB("Patients", 4);
 
+
+    // tests for loc
+    // Location loc = new Location("potato", 2, 2, "t", "t", "t", "t", "t");
+    // locationsDB.addLocation(loc);
+    // locationsDB.deleteLocation(loc);
+    // di.listDB("Locations", 8);
+
+    // tests for equipmentDB
+    // MedicalEquipment medEQ = new MedicalEquipment("PUMP6", "FDEPT00101", "false", false, false);
+    // medEquipDB.addMedicalEquipment(medEQ);
+    // medEquipDB.deleteMedicalEquipment(medEQ);
+    // medEquipDB.updateMedicalEquipment(medEQ);
+    // di.listDB("MedicalEquipment", 5);
+
     // tests
     /*
     Location loc = new Location("potato", 2, 2, "t", "t", "t", "t", "t");
@@ -36,6 +50,7 @@ public class Main {
     locationsDB.deleteLocation(loc);
     di.listDB("Locations", 8);
      */
+
 
     // locationsDB.locationsToCSV();
     // medEquipDB.medicalEquipmentToCSV();
