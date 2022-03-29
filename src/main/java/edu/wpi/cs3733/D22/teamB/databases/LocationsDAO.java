@@ -9,7 +9,7 @@ public class LocationsDAO implements LocationDAOImpl {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/Locations.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/LocationsBackup.csv";
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();;
 
@@ -17,7 +17,7 @@ public class LocationsDAO implements LocationDAOImpl {
     locationMap = LocationsInit();
   }
 
-  public HashMap<String, Location> LocationsInit() {
+  private HashMap<String, Location> LocationsInit() {
     HashMap<String, Location> locHM = new HashMap<String, Location>();
     try {
       Connection connection = DriverManager.getConnection(url);

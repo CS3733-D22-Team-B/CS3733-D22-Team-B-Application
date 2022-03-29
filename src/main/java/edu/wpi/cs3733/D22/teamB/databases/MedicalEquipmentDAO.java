@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipment.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipmentBackup.csv";
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
@@ -17,7 +17,7 @@ public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
     medicalEquipmentMap = MedicalEquipmentInit();
   }
 
-  public HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
+  private HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
     HashMap<String, MedicalEquipment> medHM = new HashMap<String, MedicalEquipment>();
     try {
       Connection connection = DriverManager.getConnection(url);

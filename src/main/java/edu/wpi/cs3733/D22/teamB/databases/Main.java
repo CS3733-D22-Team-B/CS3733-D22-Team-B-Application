@@ -23,14 +23,14 @@ public class Main {
     DatabaseInitializer di = new DatabaseInitializer();
     LocationsDAO locationsDB = new LocationsDAO();
     MedicalEquipmentDAO medEquipDB = new MedicalEquipmentDAO();
+    PatientsDAO patientDB = new PatientsDAO();
 
     di.listDB("Locations", 8);
     di.listDB("MedicalEquipment", 5);
     di.listDB("Employees", 5);
     di.listDB("Patients", 4);
 
-
-    // tests for loc
+    // tests for locationDB
     // Location loc = new Location("potato", 2, 2, "t", "t", "t", "t", "t");
     // locationsDB.addLocation(loc);
     // locationsDB.deleteLocation(loc);
@@ -43,6 +43,20 @@ public class Main {
     // medEquipDB.updateMedicalEquipment(medEQ);
     // di.listDB("MedicalEquipment", 5);
 
+    // tests for patientDB
+    /*
+    LinkedList<Patient> patList = patientDB.listPatients();
+    for (int i = 0; i < patList.size(); i++) {
+      System.out.println(patList.get(i).getPatientID());
+    }
+    Patient pat = new Patient("PAO6", "Pat", "Patrick", "bPATI01403");
+    Patient pat2 = new Patient("PAO6", "nejnjegn", "gng", "bPATI01403");
+    patientDB.addPatient(pat);
+    patientDB.updatePatient(pat2);
+    patientDB.deletePatient(pat);
+    di.listDB("Patients", 4);
+     */
+
     // tests
     /*
     Location loc = new Location("potato", 2, 2, "t", "t", "t", "t", "t");
@@ -51,9 +65,9 @@ public class Main {
     di.listDB("Locations", 8);
      */
 
-
-    // locationsDB.locationsToCSV();
-    // medEquipDB.medicalEquipmentToCSV();
+    locationsDB.locationsToCSV();
+    medEquipDB.medicalEquipmentToCSV();
+    patientDB.patientsToCSV();
     //////////////////////////////////////////////////////////// Code
   }
 }
