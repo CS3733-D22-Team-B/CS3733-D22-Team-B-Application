@@ -27,7 +27,7 @@ public class Main {
 
     di.listDB("Locations", 8);
     di.listDB("MedicalEquipment", 5);
-    di.listDB("Employees", 5);
+    // di.listDB("Employees", 5);
     di.listDB("Patients", 4);
 
     // tests for locationDB
@@ -65,9 +65,9 @@ public class Main {
     di.listDB("Locations", 8);
      */
 
-    //locationsDB.locationsToCSV();
-    //medEquipDB.medicalEquipmentToCSV();
-    //patientDB.patientsToCSV();
+    // locationsDB.locationsToCSV();
+    // medEquipDB.medicalEquipmentToCSV();
+    // patientDB.patientsToCSV();
     //////////////////////////////////////////////////////////// Code
   }
 }

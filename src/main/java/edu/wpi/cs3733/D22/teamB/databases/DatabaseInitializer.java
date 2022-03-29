@@ -29,7 +29,7 @@ public class DatabaseInitializer {
       Statement statement = connection.createStatement();
       statement.execute("DROP TABLE Patients");
       statement.execute("DROP TABLE MedicalEquipment");
-      statement.execute("DROP TABLE Employees");
+      // statement.execute("DROP TABLE Employees");
       statement.execute("DROP TABLE Locations");
       statement.execute(
           "CREATE TABLE Locations(nodeID VARCHAR(10), xcoord int, ycoord int, "
@@ -39,14 +39,16 @@ public class DatabaseInitializer {
           "CREATE TABLE MedicalEquipment(equipmentID VARCHAR(10), nodeID VARCHAR(10), type VARCHAR(50), "
               + "isClean BOOLEAN, isRequested BOOLEAN, CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
               + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-      statement.execute(
-          "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
+      // statement.execute(
+      // "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName
+      // VARCHAR(25), department VARCHAR(100), position VARCHAR(50), CONSTRAINT  EMPLOYEES_PK
+      // primary key (employeeID))");
       statement.execute(
           "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
 
       populateDatabase(locationCSVFilePath, "Locations", 8);
       populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
-      populateDatabase(employeesCSVFilePath, "Employees", 5);
+      // populateDatabase(employeesCSVFilePath, "Employees", 5);
       populateDatabase(patientsCSVFilePath, "Patients", 4);
 
     } catch (SQLException e) {
