@@ -2,12 +2,12 @@ package edu.wpi.cs3733.D22.teamB;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class RequestStatusModel {
+public class RequestStatus {
   private SimpleStringProperty status;
   private SimpleStringProperty type;
   private SimpleStringProperty assigned;
 
-  public RequestStatusModel(String stat, String tp, String assign) {
+  public RequestStatus(String stat, String tp, String assign) {
     status = new SimpleStringProperty(stat);
     type = new SimpleStringProperty(tp);
     assigned = new SimpleStringProperty(assign);

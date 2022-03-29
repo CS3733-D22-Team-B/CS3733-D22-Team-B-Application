@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.RequestStatusModel;
+import edu.wpi.cs3733.D22.teamB.RequestStatus;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -12,12 +12,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class RequestStatusController extends MenuBarController implements Initializable {
-  @FXML private TableView<RequestStatusModel> statusTable;
-  @FXML public TableColumn<RequestStatusModel, String> columnType;
-  @FXML public TableColumn<RequestStatusModel, String> columnStatus;
-  @FXML public TableColumn<RequestStatusModel, String> columnAssigned;
-  private ObservableList<RequestStatusModel> requestStatuses =
-      FXCollections.observableArrayList(new RequestStatusModel("Pending", "Meal Service", "Staff"));
+  @FXML private TableView<RequestStatus> statusTable;
+  @FXML public TableColumn<RequestStatus, String> columnType;
+  @FXML public TableColumn<RequestStatus, String> columnStatus;
+  @FXML public TableColumn<RequestStatus, String> columnAssigned;
+  private ObservableList<RequestStatus> requestStatuses =
+      FXCollections.observableArrayList(new RequestStatus("Pending", "Meal Service", "Staff"));
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
