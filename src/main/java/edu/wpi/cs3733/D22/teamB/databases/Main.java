@@ -65,9 +65,9 @@ public class Main {
     di.listDB("Locations", 8);
      */
 
-    locationsDB.locationsToCSV();
-    medEquipDB.medicalEquipmentToCSV();
-    patientDB.patientsToCSV();
+    //locationsDB.locationsToCSV();
+    //medEquipDB.medicalEquipmentToCSV();
+    //patientDB.patientsToCSV();
     //////////////////////////////////////////////////////////// Code
   }
 }
