@@ -10,11 +10,11 @@ public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipment.csv";
 
-  private HashMap<String, MedicalEquipment> MedicalEquipmentMap =
+  private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
 
   public MedicalEquipmentDAO() {
-    MedicalEquipmentMap = MedicalEquipmentInit();
+    medicalEquipmentMap = MedicalEquipmentInit();
   }
 
   public HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
@@ -44,7 +44,24 @@ public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
   }
 
   public LinkedList<MedicalEquipment> listMedicalEquipment() {
-    return null;
+    LinkedList<MedicalEquipment> medEqList = new LinkedList<MedicalEquipment>();
+
+    try {
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      ResultSet rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
+
+      while (rs.next()) {
+        String equipmentID = rs.getString("equipmentID");
+
+        medEqList.add(medicalEquipmentMap.get(equipmentID));
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return medEqList;
   }
 
   public void medicalEquipmentToCSV() {
@@ -84,14 +101,84 @@ public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
   }
 
   public int updateMedicalEquipment(MedicalEquipment meObj) {
+    try {
+      Connection connection = DriverManager.getConnection(url);
+
+      // If the medical equipment does not exist in the database, return -1
+      if (medicalEquipmentMap.containsKey(meObj.getEquipmentID()) == false) {
+        return -1;
+      }
+
+      String sql =
+          "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, isRequested = ? WHERE equipmentID = ?";
+      PreparedStatement pStatement = connection.prepareStatement(sql);
+      pStatement.setString(1, meObj.getNodeID());
+      pStatement.setString(2, meObj.getType());
+      pStatement.setBoolean(3, meObj.getIsClean());
+      pStatement.setBoolean(4, meObj.getIsRequested());
+      pStatement.setString(5, meObj.getEquipmentID());
+
+      pStatement.addBatch();
+      pStatement.executeBatch();
+
+      medicalEquipmentMap.put(meObj.getEquipmentID(), meObj);
+
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return -1;
+    }
     return 0;
   }
 
   public int addMedicalEquipment(MedicalEquipment meObj) {
+    // equipmentID has to be unique
+    if (medicalEquipmentMap.containsKey(meObj.getEquipmentID())) {
+      return -1;
+    }
+
+    try {
+      Connection connection = DriverManager.getConnection(url);
+
+      String sql = "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?)";
+      PreparedStatement pStatement = connection.prepareStatement(sql);
+      pStatement.setString(1, meObj.getEquipmentID());
+      pStatement.setString(2, meObj.getNodeID());
+      pStatement.setString(3, meObj.getType());
+      pStatement.setBoolean(4, meObj.getIsClean());
+      pStatement.setBoolean(5, meObj.getIsRequested());
+
+      pStatement.addBatch();
+      pStatement.executeBatch();
+
+      medicalEquipmentMap.put(meObj.getEquipmentID(), meObj);
+
+    } catch (SQLException e) {
+      System.out.println("Connection failed.");
+      return -1;
+    }
     return 0;
   }
 
   public int deleteMedicalEquipment(MedicalEquipment meObj) {
+    // equipmentID has to exist
+    if (medicalEquipmentMap.containsKey(meObj.getEquipmentID()) == false) {
+      return -1;
+    }
+
+    try {
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      String sql =
+          "DELETE FROM MedicalEquipment WHERE equipmentID = '" + meObj.getEquipmentID() + "'";
+      statement.executeUpdate(sql);
+
+      medicalEquipmentMap.remove(meObj.getEquipmentID());
+
+    } catch (SQLException e) {
+      System.out.println("Connection failed.");
+      return -1;
+    }
     return 0;
   }
 }
