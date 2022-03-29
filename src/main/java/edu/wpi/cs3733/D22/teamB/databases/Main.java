@@ -26,14 +26,18 @@ public class Main {
 
     di.listDB("Locations", 8);
     di.listDB("MedicalEquipment", 5);
+    di.listDB("Employees", 5);
+    di.listDB("Patients", 4);
 
     // tests
+    /*
     Location loc = new Location("potato", 2, 2, "t", "t", "t", "t", "t");
     locationsDB.addLocation(loc);
     locationsDB.deleteLocation(loc);
     di.listDB("Locations", 8);
+     */
 
-    locationsDB.locationsToCSV();
+    // locationsDB.locationsToCSV();
     // medEquipDB.medicalEquipmentToCSV();
     //////////////////////////////////////////////////////////// Code
   }
