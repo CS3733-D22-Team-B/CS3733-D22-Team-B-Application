@@ -4,6 +4,8 @@ import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class LocationsDAO implements LocationDAOImpl {
 
@@ -65,6 +67,14 @@ public class LocationsDAO implements LocationDAOImpl {
       e.printStackTrace();
     }
     return locationList;
+  }
+
+  public String getLocationID(String longName) {
+    Stream<String> keys =
+        locationMap.entrySet().stream()
+            .filter(entry -> longName.equals(entry.getValue().getLongName()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 
   public void locationsToCSV() {
