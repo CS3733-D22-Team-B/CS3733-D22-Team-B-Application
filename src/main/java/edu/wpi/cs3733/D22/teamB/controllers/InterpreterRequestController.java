@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class InterpreterController extends MenuBarController {
+public class InterpreterRequestController extends MenuBarController {
   @FXML private Label outputLabel;
   @FXML private ChoiceBox languageField;
 

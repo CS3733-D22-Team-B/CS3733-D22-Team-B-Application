@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class InternalController extends MenuBarController {
+public class InternalPatientTransferController extends MenuBarController {
 
   @FXML private ChoiceBox startBox;
   @FXML private ChoiceBox endBox;

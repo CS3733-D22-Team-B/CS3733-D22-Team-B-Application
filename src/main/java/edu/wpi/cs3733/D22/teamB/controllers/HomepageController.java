@@ -32,7 +32,7 @@ public class HomepageController extends MenuBarController {
   void goToEquipmentDelivery(ActionEvent event) throws Exception {
     Parent equipmentRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequest.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequestPage.fxml"));
     Scene equipmentScene = new Scene(equipmentRoot);
 
     Stage window;
@@ -43,7 +43,7 @@ public class HomepageController extends MenuBarController {
 
   public void goToLabService(ActionEvent event) throws Exception {
     Parent labRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/labRequest.fxml"));
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/labRequestPage.fxml"));
     Scene labScene = new Scene(labRoot);
 
     Stage window;
@@ -59,7 +59,7 @@ public class HomepageController extends MenuBarController {
   public void goToMedicineDelivery(ActionEvent event) throws Exception {
     Parent medicineRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/medicineRequest.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/medicineRequestPage.fxml"));
     Scene medicineScene = new Scene(medicineRoot);
 
     Stage window;
@@ -74,7 +74,7 @@ public class HomepageController extends MenuBarController {
 
   public void goToMealDelivery(ActionEvent event) throws Exception {
     Parent mealRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mealRequest.fxml"));
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mealRequestPage.fxml"));
     Scene mealScene = new Scene(mealRoot);
 
     Stage window;
@@ -90,7 +90,7 @@ public class HomepageController extends MenuBarController {
   public void goToInterpreterPage(ActionEvent event) throws Exception {
     Parent interpreterRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/interpreterRequest.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/interpreterRequestPage.fxml"));
     Scene interpreterScene = new Scene(interpreterRoot);
 
     Stage window;
@@ -107,7 +107,7 @@ public class HomepageController extends MenuBarController {
   void goToInternalPatient(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/internalPatient.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/internalPatientTransferRequestPage.fxml"));
     Scene internalScene = new Scene(internalRoot);
 
     Stage window;
@@ -187,7 +187,7 @@ public class HomepageController extends MenuBarController {
   public void goToRequestQueue(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatus.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatusPage.fxml"));
     Scene internalScene = new Scene(internalRoot);
 
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
