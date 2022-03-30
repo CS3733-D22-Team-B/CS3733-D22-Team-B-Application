@@ -12,4 +12,6 @@ public interface MedicalEquipmentImpl {
   public int addMedicalEquipment(MedicalEquipment meObj);
 
   public int deleteMedicalEquipment(MedicalEquipment meObj);
+
+  public void quit();
 }

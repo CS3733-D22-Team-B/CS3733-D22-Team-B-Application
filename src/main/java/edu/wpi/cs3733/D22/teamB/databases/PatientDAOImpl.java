@@ -12,4 +12,6 @@ public interface PatientDAOImpl {
   public int addPatient(Patient patObj);
 
   public int deletePatient(Patient patObj);
+
+  public void quit();
 }

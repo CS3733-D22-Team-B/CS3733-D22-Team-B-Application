@@ -202,4 +202,19 @@ public class LocationsDAO implements LocationDAOImpl {
     }
     return 0;
   }
+
+  public void quit() {
+    this.locationsToCSV();
+
+    try {
+      // Create database
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      statement.execute("DROP TABLE Locations");
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return;
+    }
+  }
 }

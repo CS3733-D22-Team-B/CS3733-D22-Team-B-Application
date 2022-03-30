@@ -12,4 +12,6 @@ public interface LocationDAOImpl {
   public int addLocation(Location locObj);
 
   public int deleteLocation(Location locObj);
+
+  public void quit();
 }
