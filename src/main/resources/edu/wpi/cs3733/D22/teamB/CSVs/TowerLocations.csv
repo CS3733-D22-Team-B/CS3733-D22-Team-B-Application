@@ -5,7 +5,7 @@ bDEPT00301,594,261,1,Tower,DEPT,Multifaith Chapel,Chapel
 bDEPT00401,701,511,1,Tower,DEPT,Sharf Admitting Center,Sharf Center
 bDEPT00501,1012,653,1,Tower,DEPT,Emergency Department,Emergency
 bDEPT00601,683,396,1,Tower,DEPT,International Patient Center,IPC
-bDEPT00401,617,347,1,Tower,DEPT,Spiritual Care Office,SCO
+bDEPT00701,617,347,1,Tower,DEPT,Spiritual Care Office,SCO
 bELEV00L01,698,295,1,Tower,ELEV,Elevator L Floor 1,Elevator L1
 bELEV00M01,698,655,1,Tower,ELEV,Elevator M Floor 1,Elevator M1
 bEXIT00101,902,165,1,Tower,EXIT,Shattuck Street Lobby Exit,Shattuck St. Exit
@@ -133,9 +133,9 @@ bELEV00LL1,699,296,L1,Tower,ELEV,Elevator L Floor L1,Elevator LL1
 bELEV00ML1,730,655,L1,Tower,ELEV,Elevator M Floor L1,Elevator ML1
 bHALL001L1,645,296,L1,Tower,HALL,Hallway Connector 1 Floor L1,FL1 Hallway 1
 bHALL002L1,657,655,L1,Tower,HALL,Hallway Connector 2 Floor L1,FL1 Hallway 2
-bHALL001L2,1040,655,L1,Tower,HALL,Hallway Connector 3 Floor L1,FL1 Hallway 3
-bHALL002L2,1040,420,L1,Tower,HALL,Hallway Connector 4 Floor L1,FL1 Hallway 4
-bHALL001L3,756,297,L1,Tower,HALL,Hallway Connector 5 Floor L1,FL1 Hallway 5
+bHALL003L1,1040,655,L1,Tower,HALL,Hallway Connector 3 Floor L1,FL1 Hallway 3
+bHALL004L1,1040,420,L1,Tower,HALL,Hallway Connector 4 Floor L1,FL1 Hallway 4
+bHALL005L1,756,297,L1,Tower,HALL,Hallway Connector 5 Floor L1,FL1 Hallway 5
 bLABS001L1,878,655,L1,Tower,LABS,Outpatient Fluoroscopy Floor L1,Fluoroscopy
 bLABS002L1,649,465,L1,Tower,LABS,Pre-Op PACU Floor L1,Pre-Op PACU
 bREST001L1,645,393,L1,Tower,REST,Restroom L Elevator Floor L1,FL1 Restroom 1
@@ -145,8 +145,8 @@ bELEV00LL2,698,299,L2,Tower,ELEV,Elevator L Floor L2,Elevator LL2
 bELEV00ML2,731,661,L2,Tower,ELEV,Elevator M Floor L2,Elevator ML2
 bHALL001L2,658,657,L2,Tower,HALL,Hallway Connector 1 Floor L2,FL2 Hallway 1
 bHALL002L2,659,401,L2,Tower,HALL,Hallway Connector 2 Floor L2,FL2 Hallway 2
-bHALL001L3,642,401,L2,Tower,HALL,Hallway Connector 3 Floor L2,FL2 Hallway 3
-bHALL002L3,644,298,L2,Tower,HALL,Hallway Connector 4 Floor L2,FL2 Hallway 4
-bHALL001L4,644,227,L2,Tower,HALL,Hallway Connector 5 Floor L2,FL2 Hallway 5
-bHALL002L4,1039,227,L2,Tower,HALL,Hallway Connector 6 Floor L2,FL2 Hallway 6
-bHALL001L5,656,887,L2,Tower,HALL,Hallway Connector 7 Floor L2,FL2 Hallway 7
+bHALL003L2,642,401,L2,Tower,HALL,Hallway Connector 3 Floor L2,FL2 Hallway 3
+bHALL004L2,644,298,L2,Tower,HALL,Hallway Connector 4 Floor L2,FL2 Hallway 4
+bHALL005L2,644,227,L2,Tower,HALL,Hallway Connector 5 Floor L2,FL2 Hallway 5
+bHALL006L2,1039,227,L2,Tower,HALL,Hallway Connector 6 Floor L2,FL2 Hallway 6
+bHALL007L2,656,887,L2,Tower,HALL,Hallway Connector 7 Floor L2,FL2 Hallway 7
