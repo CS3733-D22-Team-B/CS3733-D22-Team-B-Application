@@ -20,7 +20,7 @@
             <Menu mnemonicParsing="false" text="Profile">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
-                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
