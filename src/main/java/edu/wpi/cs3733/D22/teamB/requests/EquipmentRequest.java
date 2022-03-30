@@ -8,7 +8,7 @@ public class EquipmentRequest extends Request {
   private String equipment;
   private String notes;
 
-  public EquipmentRequest(String equipment, String employee, String location, String notes) {
+  public EquipmentRequest(String employee, String location, String equipment, String notes) {
     super(employee, location);
     this.equipment = equipment;
     this.notes = notes;

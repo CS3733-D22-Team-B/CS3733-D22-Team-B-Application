@@ -38,7 +38,7 @@ public class EquipmentRequestController extends RequestController {
       requestLabel.setText("Please select equipment to request");
     } else {
       String locationID = dao.getLocationID(room);
-      EquipmentRequest request = new EquipmentRequest(equipment, employeeName, locationID, notes);
+      EquipmentRequest request = new EquipmentRequest(employeeName, locationID, equipment, notes);
 
       EquipmentRequest.equipmentRequests.add(request);
       requestLabel.setText("Request sent: " + equipment + " to " + room + " by " + employeeName);
