@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -20,6 +21,7 @@ public class App extends Application {
     Parent root = FXMLLoader.load(getClass().getResource("views/homepage.fxml"));
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
+    primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
   }
 

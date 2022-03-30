@@ -19,8 +19,8 @@
 
         <Button fx:id="logInButton" layoutX="480.0" layoutY="38.0" mnemonicParsing="false" text="Log In" />
         <Button fx:id="profileButton" layoutX="536.0" layoutY="38.0" mnemonicParsing="false" text="Profile" />
-        <Button fx:id="mapButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Map Editor" />
-        <Button fx:id="equipmentTrackerButton" layoutX="471.0" layoutY="132.0" mnemonicParsing="false" text="Equipment Tracker" />
+        <Button fx:id="mapButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#displayMapButtons" prefHeight="25.0" prefWidth="115.0" text="Map" />
+        <Button fx:id="equipmentTrackerButton" layoutX="471.0" layoutY="132.0" mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
         <Button fx:id="requestButton" layoutX="470.0" layoutY="162.0" mnemonicParsing="false" onAction="#displayRequestButtons" prefHeight="25.0" prefWidth="115.0" text="Requests" />
         <Button fx:id="equipmentRequestButton" layoutX="374.0" layoutY="103.0" mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" visible="false" />
         <Button fx:id="labRequestButton" layoutX="374.0" layoutY="135.0" mnemonicParsing="false" onAction="#goToLabServiceRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Lab Service" visible="false" />
@@ -49,7 +49,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
                </items></Menu>
 
-                <Menu mnemonicParsing="false" text="Equipment Tracker">
+                <Menu mnemonicParsing="false" text="Equipment Tracker" onAction="#goToEquipmentTrackerPage">
                 </Menu>
 
                 <Menu mnemonicParsing="false" text="Requests">
@@ -77,6 +77,9 @@
         </MenuBar>
 
         <RadioButton fx:id="homepageNodeObject" disable="true" layoutY="377.0" mnemonicParsing="false" opacity="0.0" visible="false" />
+      <Button fx:id="mapViewerButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#goToMapViewPage" prefHeight="25.0" prefWidth="115.0" text="Map Viewer" visible="false" />
+      <Button fx:id="mapEditorButton" layoutX="472.0" layoutY="134.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Map Editor" visible="false" />
+      <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
 
     </children>
 
