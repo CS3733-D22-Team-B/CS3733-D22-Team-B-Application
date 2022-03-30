@@ -46,6 +46,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
                   <MenuItem mnemonicParsing="false" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
                </items></Menu>
 
                 <Menu mnemonicParsing="false" text="Equipment Tracker">

@@ -114,6 +114,30 @@ public class MenuBarController {
     window.show();
   }
 
+  public void goToRequestQueue(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatusPage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToLocationData(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/LocationDataPage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
   @FXML
   void quitApplication() {
     System.exit(0);
