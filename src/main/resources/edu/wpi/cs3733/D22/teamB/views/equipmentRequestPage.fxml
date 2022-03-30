@@ -39,11 +39,11 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label fx:id="resultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="297.0" prefHeight="18.0" prefWidth="547.0" />
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="297.0" prefHeight="18.0" prefWidth="547.0" />
       <Button layoutX="356.0" layoutY="239.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
       <Button layoutX="527.0" layoutY="360.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
-      <TextField fx:id="employeeNameInput" layoutX="325.0" layoutY="196.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="employeeNameInput" layoutX="325.0" layoutY="196.0" onAction="#setEmployeeName" prefHeight="26.0" prefWidth="150.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="171.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
@@ -57,7 +57,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Map">
                <items>
-                  <MenuItem mnemonicParsing="false" text="View" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
                   <MenuItem mnemonicParsing="false" text="Edit" />
                   <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
                </items>
