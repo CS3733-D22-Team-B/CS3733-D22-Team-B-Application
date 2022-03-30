@@ -6,31 +6,34 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class MealRequestController extends MenuBarController {
-  @FXML private Label resultLabel;
-  @FXML private ComboBox roomComboBox;
-  @FXML private TextField mealNameTextField;
-  @FXML private ComboBox<String> floorComboBox;
+import javax.swing.*;
 
-  private String room;
+public class MealRequestController extends RequestController {
+  @FXML private TextField mealInput;
+
   private String mealName;
-  private String floor;
 
-  @FXML
-  void setRoom(ActionEvent event) {
-    room = roomComboBox.getValue().toString();
-
-    // TODO: set the room
+  public void setMealName() {
+    mealName = mealInput.getText();
   }
 
   @FXML
-  void setMealName() {
-    mealName = mealNameTextField.getText();
-  }
-
-  @FXML
-  void sendRequest() {
+  public void sendRequest(ActionEvent actionEvent) {
     setMealName();
-    resultLabel.setText("Meal request sent: " + mealName + " for " + room);
+    requestLabel.setText("Meal request sent: " + mealName + " for " + room);
+  }
+
+  @FXML
+  public void reset(ActionEvent actionEvent) {
+    requestLabel.setText("");
+    employeeNameInput.setText("");
+    floorInput.setValue("");
+    roomInput.setValue("");
+    mealInput.setText("");
+
+    employeeName = "";
+    floor = "";
+    room = "";
+    mealName = "";
   }
 }

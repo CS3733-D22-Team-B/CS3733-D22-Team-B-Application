@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
    <children>
       <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back" />
       <Label layoutX="126.0" layoutY="57.0" prefHeight="54.0" prefWidth="347.0" text="Request Internal Patient Transfer">
@@ -12,15 +18,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="startBox" layoutX="100.0" layoutY="158.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="endBox" layoutX="349.0" layoutY="158.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="startRoomInput" layoutX="99.0" layoutY="187.0" prefWidth="150.0" />
+      <ComboBox fx:id="roomInput" layoutX="351.0" layoutY="187.0" prefWidth="150.0" />
       <Button layoutX="254.0" layoutY="251.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
       <Label layoutX="288.0" layoutY="153.0" text="to">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="reqLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="307.0" prefHeight="35.0" prefWidth="150.0" textAlignment="CENTER">
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="307.0" prefHeight="35.0" prefWidth="150.0" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>

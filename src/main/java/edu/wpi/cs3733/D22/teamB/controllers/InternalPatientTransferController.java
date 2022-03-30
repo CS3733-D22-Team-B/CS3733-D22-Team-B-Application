@@ -1,28 +1,36 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 
-public class InternalPatientTransferController extends MenuBarController {
+public class InternalPatientTransferController extends RequestController {
+    @FXML private ComboBox<String> startFloor;
+  @FXML private ChoiceBox startRoomInput;
 
-  @FXML private ChoiceBox startBox;
-  @FXML private ChoiceBox endBox;
-  @FXML private Label reqLabel;
+  private String startRoom;
 
-  @FXML
-  public void initialize() {
-    startBox.getItems().add("Floor 1");
-    startBox.getItems().add("Floor 2");
-    startBox.getItems().add("Floor 3");
+  public void setStartFloor() {
 
-    endBox.getItems().add("Floor 1");
-    endBox.getItems().add("Floor 2");
-    endBox.getItems().add("Floor 3");
   }
 
-  @FXML
-  void sendRequest() {
-    reqLabel.setText("Request Sent!");
+  public void setStartRoom() {}
+
+    @FXML
+    public void sendRequest(ActionEvent actionEvent) {
+    setStartRoom();
+    requestLabel.setText(
+        "Request sent: Moving patient in "
+            + startRoom
+            + " to "
+            + room
+            + " by "
+            + employeeName);
+  }
+
+    @FXML
+    public void reset(ActionEvent actionEvent) {
+    // TODO: Auto-generated method stub
   }
 }
