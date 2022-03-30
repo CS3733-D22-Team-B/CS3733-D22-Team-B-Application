@@ -5,4 +5,8 @@ public class LabRequest extends Request {
   public LabRequest(String employee, String location) {
     super(employee, location);
   }
+
+  public String getType() {
+    return "Lab";
+  }
 }

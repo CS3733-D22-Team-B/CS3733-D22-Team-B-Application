@@ -25,4 +25,8 @@ public class EquipmentRequest extends Request {
   public void setNotes(String notes) {
     this.notes = notes;
   }
+
+  public String getType() {
+    return "Equipment";
+  }
 }

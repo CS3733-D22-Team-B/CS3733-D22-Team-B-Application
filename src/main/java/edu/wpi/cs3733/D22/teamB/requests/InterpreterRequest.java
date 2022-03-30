@@ -11,4 +11,8 @@ public class InterpreterRequest extends Request {
   public String getLanguage() {
     return language;
   }
+
+  public String getType() {
+    return "Interpreter";
+  }
 }
