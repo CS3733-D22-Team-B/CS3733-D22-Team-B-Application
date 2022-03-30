@@ -16,4 +16,6 @@ public abstract class Request {
   public final String getLocation() {
     return location;
   }
+
+  public abstract String getType();
 }

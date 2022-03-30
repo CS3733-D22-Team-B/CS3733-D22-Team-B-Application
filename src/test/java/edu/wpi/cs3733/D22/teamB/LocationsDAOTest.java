@@ -2,9 +2,7 @@ package edu.wpi.cs3733.D22.teamB;
 
 import static org.junit.Assert.*;
 
-import edu.wpi.cs3733.D22.teamB.databases.DatabaseInitializer;
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,8 +17,13 @@ public class LocationsDAOTest {
 
   @After
   public void tearDown() throws Exception {
-    // Parse the CSVs again to reset the database
-    new DatabaseInitializer();
+    LocationsDAO locDB = new LocationsDAO();
+    MedicalEquipmentDAO medEqDB = new MedicalEquipmentDAO();
+    PatientsDAO patDB = new PatientsDAO();
+
+    patDB.quit();
+    medEqDB.quit();
+    locDB.quit();
   }
 
   @Test

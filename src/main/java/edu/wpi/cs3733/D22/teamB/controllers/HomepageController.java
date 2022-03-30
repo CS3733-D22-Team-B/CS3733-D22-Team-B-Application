@@ -8,6 +8,9 @@ public class HomepageController extends MenuBarController {
   @FXML private Button logInButton;
   @FXML private Button profileButton;
   @FXML private Button mapButton;
+  @FXML private Button mapEditorButton;
+  @FXML private Button mapViewerButton;
+  @FXML private Button mapDatabaseButton;
   @FXML private Button equipmentTrackerButton;
   @FXML private Button requestButton;
   @FXML private Button equipmentRequestButton;
@@ -31,6 +34,9 @@ public class HomepageController extends MenuBarController {
     backButton.setVisible(true);
 
     mapButton.setVisible(false);
+    mapEditorButton.setVisible(false);
+    mapViewerButton.setVisible(false);
+    mapDatabaseButton.setVisible(false);
     equipmentTrackerButton.setVisible(false);
     requestButton.setVisible(false);
     patientDatabaseButton.setVisible(false);
@@ -45,6 +51,46 @@ public class HomepageController extends MenuBarController {
     backButton.setDisable(false);
 
     mapButton.setDisable(true);
+    mapEditorButton.setDisable(true);
+    mapViewerButton.setDisable(true);
+    mapDatabaseButton.setDisable(true);
+    equipmentTrackerButton.setDisable(true);
+    requestButton.setDisable(true);
+    patientDatabaseButton.setDisable(true);
+  }
+
+  @FXML
+  void displayMapButtons(ActionEvent event) {
+    // set map buttons visible and hide all other buttons
+    mapEditorButton.setVisible(true);
+    mapViewerButton.setVisible(true);
+    mapDatabaseButton.setVisible(true);
+    backButton.setVisible(true);
+
+    equipmentRequestButton.setVisible(false);
+    labRequestButton.setVisible(false);
+    mealRequestButton.setVisible(false);
+    medicineRequestButton.setVisible(false);
+    interpreterRequestButton.setVisible(false);
+    internalPatientTransferButton.setVisible(false);
+    mapButton.setVisible(false);
+    equipmentTrackerButton.setVisible(false);
+    requestButton.setVisible(false);
+    patientDatabaseButton.setVisible(false);
+
+    // enable map buttons and disable all other buttons
+    mapEditorButton.setDisable(false);
+    mapViewerButton.setDisable(false);
+    mapDatabaseButton.setDisable(false);
+    backButton.setDisable(false);
+
+    equipmentRequestButton.setDisable(true);
+    labRequestButton.setDisable(true);
+    mealRequestButton.setDisable(true);
+    medicineRequestButton.setDisable(true);
+    interpreterRequestButton.setDisable(true);
+    internalPatientTransferButton.setDisable(true);
+    mapButton.setDisable(true);
     equipmentTrackerButton.setDisable(true);
     requestButton.setDisable(true);
     patientDatabaseButton.setDisable(true);
@@ -58,6 +104,9 @@ public class HomepageController extends MenuBarController {
     requestButton.setVisible(true);
     patientDatabaseButton.setVisible(true);
 
+    mapEditorButton.setVisible(false);
+    mapViewerButton.setVisible(false);
+    mapDatabaseButton.setVisible(false);
     equipmentRequestButton.setVisible(false);
     labRequestButton.setVisible(false);
     medicineRequestButton.setVisible(false);
@@ -72,6 +121,9 @@ public class HomepageController extends MenuBarController {
     requestButton.setDisable(false);
     patientDatabaseButton.setDisable(true);
 
+    mapEditorButton.setDisable(true);
+    mapViewerButton.setDisable(true);
+    mapDatabaseButton.setDisable(true);
     equipmentRequestButton.setDisable(true);
     labRequestButton.setDisable(true);
     medicineRequestButton.setDisable(true);

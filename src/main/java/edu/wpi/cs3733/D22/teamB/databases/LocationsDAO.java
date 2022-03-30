@@ -69,6 +69,10 @@ public class LocationsDAO implements LocationDAOImpl {
     return locationList;
   }
 
+  public Location getLocation(String nodeID) {
+    return locationMap.get(nodeID);
+  }
+
   public String getLocationID(String longName) {
     Stream<String> keys =
         locationMap.entrySet().stream()
@@ -201,5 +205,20 @@ public class LocationsDAO implements LocationDAOImpl {
       return -1;
     }
     return 0;
+  }
+
+  public void quit() {
+    this.locationsToCSV();
+
+    try {
+      // Create database
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      statement.execute("DROP TABLE Locations");
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return;
+    }
   }
 }

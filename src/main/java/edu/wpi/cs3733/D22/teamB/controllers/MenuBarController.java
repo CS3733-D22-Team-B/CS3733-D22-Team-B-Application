@@ -1,5 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
+import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDAO;
+import edu.wpi.cs3733.D22.teamB.databases.PatientsDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -142,7 +145,19 @@ public class MenuBarController {
   public void goToLocationData(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/LocationDataPage.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/locationDataPage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentTrackerPage.fxml"));
     Scene internalScene = new Scene(internalRoot);
 
     Stage window;
@@ -153,6 +168,14 @@ public class MenuBarController {
 
   @FXML
   void quitApplication() {
+    LocationsDAO locDB = new LocationsDAO();
+    MedicalEquipmentDAO medEqDB = new MedicalEquipmentDAO();
+    PatientsDAO patDB = new PatientsDAO();
+
+    patDB.quit();
+    medEqDB.quit();
+    locDB.quit();
+
     System.exit(0);
   }
 }
