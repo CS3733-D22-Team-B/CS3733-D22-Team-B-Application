@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapViewerController">
    <children>
@@ -52,5 +53,10 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Label fx:id="floorDisplay" alignment="CENTER" layoutX="472.0" layoutY="156.0" prefHeight="69.0" prefWidth="75.0" text="1">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
