@@ -18,24 +18,17 @@ public class EquipmentRequestQueueController extends MenuBarController implement
   @FXML TableColumn<EquipmentRequest, String> columnEmployee;
 
   private ObservableList<EquipmentRequest> requests = FXCollections.observableArrayList();
-  /*
-     TODO: replace with equipment request database - not yet implemented
-  private EquipmentRequestDAO dao;
-     */
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     columnEquipment.setCellValueFactory(new PropertyValueFactory<>("equipment"));
     columnDestination.setCellValueFactory(new PropertyValueFactory<>("location"));
     columnEmployee.setCellValueFactory(new PropertyValueFactory<>("employee"));
-    requests.add(new EquipmentRequest("Equipment", "Employee Name", "Location", "notes"));
-    /*
-    TODO: replace with equipment database
-    dao = new EquipmentRequestDAO();
-    LinkedList<EquipmentRequest> equips = dao.listEquipmentRequests();
-    for (EquipmentRequest equipment : equips) {
-      requests.add(equipment);
+
+    for (EquipmentRequest equipmentRequest : EquipmentRequest.equipmentRequests) {
+      requests.add(equipmentRequest);
     }
-     */
+
     requestTable.setItems(requests);
   }
 }

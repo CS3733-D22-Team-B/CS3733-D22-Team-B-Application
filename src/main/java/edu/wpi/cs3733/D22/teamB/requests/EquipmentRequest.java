@@ -1,6 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import java.util.LinkedList;
+
 public class EquipmentRequest extends Request {
+  public static LinkedList<EquipmentRequest> equipmentRequests = new LinkedList<EquipmentRequest>();
+
   private String equipment;
   private String notes;
 
