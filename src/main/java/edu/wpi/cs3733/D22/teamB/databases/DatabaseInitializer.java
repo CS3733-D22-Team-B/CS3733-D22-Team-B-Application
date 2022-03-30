@@ -29,7 +29,7 @@ public class DatabaseInitializer {
       Statement statement = connection.createStatement();
       statement.execute("DROP TABLE Patients");
       statement.execute("DROP TABLE MedicalEquipment");
-      //statement.execute("DROP TABLE Employees");
+      // statement.execute("DROP TABLE Employees");
       statement.execute("DROP TABLE Locations");
       statement.execute(
           "CREATE TABLE Locations(nodeID VARCHAR(10), xcoord int, ycoord int, "
