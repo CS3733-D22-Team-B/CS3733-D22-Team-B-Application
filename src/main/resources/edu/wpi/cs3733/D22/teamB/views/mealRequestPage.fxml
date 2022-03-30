@@ -14,14 +14,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MealRequestController">
    <children>
-      <Button layoutX="256.0" layoutY="243.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
+      <Button layoutX="256.0" layoutY="253.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Label layoutX="182.0" layoutY="69.0" text="Meal Delivery Request">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="287.0" layoutY="178.0" text="Meal" />
-      <Label fx:id="requestLabel" layoutX="90.0" layoutY="312.0" prefHeight="18.0" prefWidth="419.0" />
+      <Label layoutX="204.0" layoutY="182.0" text="Meal" />
+      <Label fx:id="requestLabel" alignment="CENTER" layoutX="90.0" layoutY="311.0" prefHeight="18.0" prefWidth="419.0" />
       <Label layoutX="322.0" layoutY="114.0" text="Room" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
       <ComboBox fx:id="roomInput" layoutX="263.0" layoutY="131.0" onAction="#setRoom" prefWidth="150.0">
@@ -33,7 +33,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <TextField fx:id="mealInput" layoutX="225.0" layoutY="196.0" onAction="#setMealName" promptText="Meal" />
+      <TextField fx:id="mealInput" layoutX="142.0" layoutY="200.0" onAction="#setMealName" promptText="Meal" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -84,5 +84,7 @@
          </items>
       </ComboBox>
       <Label layoutX="203.0" layoutY="114.0" text="Floor" />
+      <TextField fx:id="nameInput" layoutX="307.0" layoutY="199.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="181.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
    </children>
 </AnchorPane>

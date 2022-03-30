@@ -14,13 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class LocationDataController extends MenuBarController implements Initializable {
-  /*@FXML
-  private TableView<RequestStatus> statusTable;
-  @FXML public TableColumn<RequestStatus, String> columnType;
-  @FXML public TableColumn<RequestStatus, String> columnStatus;
-  @FXML public TableColumn<RequestStatus, String> columnAssigned;
-
-  */
   @FXML TableView<edu.wpi.cs3733.D22.teamB.databases.Location> locationTable;
   @FXML TableColumn<edu.wpi.cs3733.D22.teamB.databases.Location, String> columnName;
   @FXML TableColumn<edu.wpi.cs3733.D22.teamB.databases.Location, String> columnX;

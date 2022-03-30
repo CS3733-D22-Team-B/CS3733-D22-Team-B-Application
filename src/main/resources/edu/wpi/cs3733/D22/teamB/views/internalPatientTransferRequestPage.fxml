@@ -14,21 +14,21 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
    <children>
-      <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back" />
+      <Button alignment="TOP_LEFT" layoutX="22.0" layoutY="348.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back" />
       <Label layoutX="126.0" layoutY="57.0" prefHeight="54.0" prefWidth="347.0" text="Request Internal Patient Transfer">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="254.0" layoutY="251.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
+      <Button layoutX="252.0" layoutY="267.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
       <Label layoutX="288.0" layoutY="153.0" text="to">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="307.0" prefHeight="35.0" prefWidth="150.0" textAlignment="CENTER">
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="326.0" prefHeight="35.0" prefWidth="444.0" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="175.0" layoutY="136.0" text="Room" />
