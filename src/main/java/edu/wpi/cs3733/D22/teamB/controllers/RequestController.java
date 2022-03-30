@@ -69,28 +69,28 @@ public abstract class RequestController extends MenuBarController {
     roomInput.getItems().clear();
     switch (floor) {
       case "F3":
-        for (String room : roomsF3) {
-          roomInput.getItems().add(room);
+        for (String roomF3 : roomsF3) {
+          roomInput.getItems().add(roomF3);
         }
         break;
       case "F2":
-        for (String room : roomsF2) {
-          roomInput.getItems().add(room);
+        for (String roomF2 : roomsF2) {
+          roomInput.getItems().add(roomF2);
         }
         break;
       case "F1":
-        for (String room : roomsF1) {
-          roomInput.getItems().add(room);
+        for (String roomF1 : roomsF1) {
+          roomInput.getItems().add(roomF1);
         }
         break;
       case "L1":
-        for (String room : roomsFL1) {
-          roomInput.getItems().add(room);
+        for (String roomFL1 : roomsFL1) {
+          roomInput.getItems().add(roomFL1);
         }
         break;
       case "L2":
-        for (String room : roomsFL2) {
-          roomInput.getItems().add(room);
+        for (String roomFL2 : roomsFL2) {
+          roomInput.getItems().add(roomFL2);
         }
         break;
     }
