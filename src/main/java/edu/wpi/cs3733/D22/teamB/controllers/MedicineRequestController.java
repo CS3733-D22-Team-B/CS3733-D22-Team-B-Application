@@ -5,28 +5,32 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
-public class MedicineRequestController extends MenuBarController {
-  @FXML private Label resultLabel;
-  @FXML private ComboBox roomComboBox;
-  @FXML private ComboBox medicineComboBox;
+public class MedicineRequestController extends RequestController {
+  @FXML private ComboBox<String> medicineInput;
 
-  private String room;
   private String medicine;
 
-  @FXML
-  void setRoom(ActionEvent event) {
-    String room = roomComboBox.getValue().toString();
-
-    // TODO: set the room
+  public void setMedication() {
+    medicine = medicineInput.getValue();
   }
 
   @FXML
-  void setMedication(ActionEvent event) {
-    String videoSource = medicineComboBox.getValue().toString();
+  public void sendRequest(ActionEvent actionEvent) {
+    setMedication();
+
   }
 
   @FXML
-  void sendRequest() {
-    resultLabel.setText("Request sent!");
+  public void reset(ActionEvent actionEvent) {
+    requestLabel.setText("");
+    employeeNameInput.setText("");
+    floorInput.setValue("");
+    roomInput.setValue("");
+    medicineInput.setValue("");
+
+    employeeName = "";
+    floor = "";
+    room = "";
+    medicine = "";
   }
 }

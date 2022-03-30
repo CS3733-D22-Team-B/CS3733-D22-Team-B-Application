@@ -4,6 +4,8 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -12,6 +14,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
    <children>
       <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back" />
@@ -20,13 +26,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="267.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
+      <ChoiceBox fx:id="startRoomInput" layoutX="99.0" layoutY="187.0" prefWidth="150.0" />
+      <ComboBox fx:id="roomInput" layoutX="351.0" layoutY="187.0" prefWidth="150.0" />
+      <Button layoutX="254.0" layoutY="251.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
       <Label layoutX="288.0" layoutY="153.0" text="to">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="reqLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="307.0" prefHeight="35.0" prefWidth="150.0" textAlignment="CENTER">
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="307.0" prefHeight="35.0" prefWidth="150.0" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
