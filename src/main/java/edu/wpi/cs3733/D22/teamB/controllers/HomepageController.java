@@ -2,13 +2,8 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-import javafx.stage.Stage;
 
 public class HomepageController extends MenuBarController {
   @FXML private Button logInButton;
@@ -182,16 +177,5 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
     backButton.setDisable(true);
-  }
-
-  public void goToRequestQueue(ActionEvent event) throws Exception {
-    Parent internalRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatusPage.fxml"));
-    Scene internalScene = new Scene(internalRoot);
-
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(internalScene);
-    window.show();
   }
 }
