@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapViewerController">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
    <children>
-      <ImageView fx:id="mapImage" fitHeight="337.0" fitWidth="400.0" layoutX="29.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/firstFloor.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="upButton" buttonType="RAISED" layoutX="435.0" layoutY="24.0" onAction="#moveUp" prefHeight="150.0" prefWidth="150.0" scaleX="0.5" scaleY="0.5" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " textFill="TRANSPARENT" />
-      <JFXButton fx:id="downButton" buttonType="RAISED" layoutX="435.0" layoutY="213.0" onAction="#moveDown" prefHeight="150.0" prefWidth="150.0" rotate="-180.0" scaleX="0.5" scaleY="0.5" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " textFill="TRANSPARENT" />
-      <Button layoutX="468.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -27,9 +27,8 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Map">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
+                  <MenuItem mnemonicParsing="false" text="View" />
                   <MenuItem mnemonicParsing="false" text="Edit" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Equipment Tracker" />
@@ -41,7 +40,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                </items>
             </Menu>
             <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
@@ -53,5 +51,21 @@
             </Menu>
          </menus>
       </MenuBar>
+      <ImageView fitHeight="110.0" fitWidth="144.0" layoutX="176.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Brigham_and_Womens_Hospital_logo.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="248.0" layoutY="70.0" prefHeight="55.0" prefWidth="175.0" text="Login">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordBox" layoutX="225.0" layoutY="238.0" onAction="#setPassword" />
+      <Label layoutX="225.0" layoutY="221.0" text="Password" />
+      <TextField fx:id="usernameField" layoutX="226.0" layoutY="187.0" onAction="#setUsername" />
+      <Label layoutX="226.0" layoutY="169.0" prefHeight="18.0" prefWidth="70.0" text="Username" />
+      <Button fx:id="loginButton" layoutX="273.0" layoutY="275.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button layoutX="22.0" layoutY="346.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
    </children>
 </AnchorPane>

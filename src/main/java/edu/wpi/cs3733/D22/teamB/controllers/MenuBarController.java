@@ -163,6 +163,17 @@ public class MenuBarController {
     window.show();
   }
 
+  public void goToLoginPage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/loginPage.fxml"));
+    Scene loginScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(loginScene);
+    window.show();
+  }
+
   @FXML
   void quitApplication() {
     System.exit(0);
