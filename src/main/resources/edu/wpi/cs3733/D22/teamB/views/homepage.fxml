@@ -61,6 +61,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                         <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
                         <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Equipment Requests" />
                     </items>
                 </Menu>
 

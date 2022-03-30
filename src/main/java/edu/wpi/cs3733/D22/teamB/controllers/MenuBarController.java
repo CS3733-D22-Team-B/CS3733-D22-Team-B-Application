@@ -126,6 +126,19 @@ public class MenuBarController {
     window.show();
   }
 
+  public void goToEquipmentRequestQueue(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass()
+                .getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequestQueuePage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
   public void goToLocationData(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
