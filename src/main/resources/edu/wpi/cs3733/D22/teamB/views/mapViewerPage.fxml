@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapViewerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapViewerController">
    <children>
       <ImageView fx:id="mapImage" fitHeight="337.0" fitWidth="400.0" layoutX="29.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,8 +20,8 @@
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Log In" />
-                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
@@ -45,7 +42,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                </items>
             </Menu>
             <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
@@ -57,5 +53,10 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Label fx:id="floorDisplay" alignment="CENTER" layoutX="472.0" layoutY="156.0" prefHeight="69.0" prefWidth="75.0" text="1">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

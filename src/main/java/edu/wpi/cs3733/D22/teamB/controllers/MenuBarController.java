@@ -117,18 +117,6 @@ public class MenuBarController {
     window.show();
   }
 
-  public void goToRequestQueue(ActionEvent event) throws Exception {
-    Parent internalRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatusPage.fxml"));
-    Scene internalScene = new Scene(internalRoot);
-
-    Stage window;
-    window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(internalScene);
-    window.show();
-  }
-
   public void goToEquipmentRequestQueue(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
@@ -163,6 +151,28 @@ public class MenuBarController {
     Stage window;
     window = (Stage) homeBar.getScene().getWindow();
     window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToLoginPage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/loginPage.fxml"));
+    Scene loginScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(loginScene);
+    window.show();
+  }
+
+  public void goToProfilePage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/profilePage.fxml"));
+    Scene profileScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(profileScene);
     window.show();
   }
 
