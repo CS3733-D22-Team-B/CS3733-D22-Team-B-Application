@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MedicineRequestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MedicineRequestController">
    <children>
       <Button layoutX="254.0" layoutY="255.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Label layoutX="159.0" layoutY="71.0" text="Medicine Delivery Request">
@@ -15,7 +20,7 @@
          </font>
       </Label>
       <Label layoutX="269.0" layoutY="186.0" text="Medication" />
-      <ComboBox fx:id="medicineComboBox" layoutX="224.0" layoutY="203.0" onAction="#setMedication" prefWidth="150.0">
+      <ComboBox fx:id="medicineInput" layoutX="224.0" layoutY="203.0" onAction="#setMedication" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="MORPHINE" fx:value="Morphine" />
@@ -47,8 +52,9 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Map">
                <items>
-                  <MenuItem mnemonicParsing="false" text="View" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
                   <MenuItem mnemonicParsing="false" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Equipment Tracker" />
@@ -60,6 +66,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                </items>
             </Menu>
             <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
