@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
 import java.util.LinkedList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -63,7 +62,7 @@ public abstract class RequestController extends MenuBarController {
   }
 
   public void setRoom() {
-    roomInput.getValue();
+    room = roomInput.getValue();
   }
 
   private void resetRoomBox() {

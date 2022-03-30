@@ -1,22 +1,16 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
-import edu.wpi.cs3733.D22.teamB.requests.InterpreterRequest;
-import java.util.LinkedList;
-
 import edu.wpi.cs3733.D22.teamB.requests.InterpreterRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 
 public class InterpreterRequestController extends RequestController {
-  @FXML private ChoiceBox languageInput;
-
+  @FXML private ComboBox<String> languageInput;
   private String language;
 
   public void setLanguage() {
-    language = languageInput.getSelectionModel().getSelectedItem().toString();
+    language = languageInput.getValue();
   }
 
   @FXML

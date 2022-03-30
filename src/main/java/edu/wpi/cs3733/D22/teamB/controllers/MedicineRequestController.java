@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 
 public class MedicineRequestController extends RequestController {
   @FXML private ComboBox<String> medicineInput;
@@ -17,7 +16,6 @@ public class MedicineRequestController extends RequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     setMedication();
-
   }
 
   @FXML

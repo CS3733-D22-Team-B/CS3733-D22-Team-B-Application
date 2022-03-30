@@ -2,10 +2,7 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import javax.swing.*;
 
 public class MealRequestController extends RequestController {

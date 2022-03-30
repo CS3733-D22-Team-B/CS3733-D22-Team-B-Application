@@ -23,8 +23,8 @@ public class EquipmentRequestController extends RequestController {
     notes = (additionalNotesInput.getText() == null) ? "" : additionalNotesInput.getText();
   }
 
-    @FXML
-    public void sendRequest(ActionEvent actionEvent) {
+  @FXML
+  public void sendRequest(ActionEvent actionEvent) {
     setEmployeeName();
     setNotes();
     if (room.equals("") && equipment.equals("") && employeeName.equals("")) {
@@ -44,8 +44,8 @@ public class EquipmentRequestController extends RequestController {
     }
   }
 
-    @FXML
-    public void reset(ActionEvent actionEvent) {
+  @FXML
+  public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
     employeeNameInput.setText("");
     floorInput.setValue("");

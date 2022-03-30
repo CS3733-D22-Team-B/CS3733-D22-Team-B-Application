@@ -3,8 +3,6 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.stage.Stage;
 
 public class HomepageController extends MenuBarController {
   @FXML private Button logInButton;
