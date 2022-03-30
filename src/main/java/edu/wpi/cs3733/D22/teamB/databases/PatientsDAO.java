@@ -175,4 +175,19 @@ public class PatientsDAO implements PatientDAOImpl {
     }
     return 0;
   }
+
+  public void quit() {
+    this.patientsToCSV();
+
+    try {
+      // Create database
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      statement.execute("DROP TABLE Patients");
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return;
+    }
+  }
 }
