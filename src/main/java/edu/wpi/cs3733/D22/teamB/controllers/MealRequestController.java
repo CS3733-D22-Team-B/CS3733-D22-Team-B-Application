@@ -10,9 +10,11 @@ public class MealRequestController extends MenuBarController {
   @FXML private Label resultLabel;
   @FXML private ComboBox roomComboBox;
   @FXML private TextField mealNameTextField;
+  @FXML private ComboBox<String> floorComboBox;
 
   private String room;
   private String mealName;
+  private String floor;
 
   @FXML
   void setRoom(ActionEvent event) {
