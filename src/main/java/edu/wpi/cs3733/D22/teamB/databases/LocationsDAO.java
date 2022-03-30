@@ -69,6 +69,10 @@ public class LocationsDAO implements LocationDAOImpl {
     return locationList;
   }
 
+  public Location getLocation(String nodeID) {
+    return locationMap.get(nodeID);
+  }
+
   public String getLocationID(String longName) {
     Stream<String> keys =
         locationMap.entrySet().stream()

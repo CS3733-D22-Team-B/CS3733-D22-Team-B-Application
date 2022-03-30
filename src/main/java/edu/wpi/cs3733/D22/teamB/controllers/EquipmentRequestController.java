@@ -40,6 +40,7 @@ public class EquipmentRequestController extends RequestController {
       String locationID = dao.getLocationID(room);
       EquipmentRequest request = new EquipmentRequest(equipment, employeeName, locationID, notes);
 
+      EquipmentRequest.equipmentRequests.add(request);
       requestLabel.setText("Request sent: " + equipment + " to " + room + " by " + employeeName);
     }
   }

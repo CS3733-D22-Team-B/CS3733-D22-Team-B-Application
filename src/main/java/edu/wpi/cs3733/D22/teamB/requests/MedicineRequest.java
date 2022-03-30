@@ -5,4 +5,8 @@ public class MedicineRequest extends Request {
   public MedicineRequest(String employee, String location) {
     super(employee, location);
   }
+
+  public String getType() {
+    return "Medicine";
+  }
 }

@@ -7,4 +7,8 @@ public class MealRequest extends Request {
     super(employee, location);
     this.meal = meal;
   }
+
+  public String getType() {
+    return "Meal";
+  }
 }

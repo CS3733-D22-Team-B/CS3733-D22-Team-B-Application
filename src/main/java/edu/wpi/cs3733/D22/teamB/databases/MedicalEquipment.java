@@ -4,6 +4,7 @@ public class MedicalEquipment {
 
   private String equipmentID;
   private String nodeID;
+  private String location;
   private String type;
   private boolean isClean;
   private boolean isRequested;
@@ -57,5 +58,13 @@ public class MedicalEquipment {
 
   public boolean getIsRequested() {
     return isRequested;
+  }
+
+  public void setLocation(String newLocation) {
+    location = newLocation;
+  }
+
+  public String getLocation() {
+    return location;
   }
 }

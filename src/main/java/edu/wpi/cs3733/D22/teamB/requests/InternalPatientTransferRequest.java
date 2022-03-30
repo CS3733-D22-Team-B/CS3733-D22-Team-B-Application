@@ -8,4 +8,8 @@ public class InternalPatientTransferRequest extends Request {
 
     this.destination = destination;
   }
+
+  public String getType() {
+    return "Internal Patient Transfer";
+  }
 }
