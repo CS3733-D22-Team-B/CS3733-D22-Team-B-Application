@@ -17,7 +17,7 @@ public class MedicalEquipmentDBTest {
   public void tearDown() throws Exception {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
-    PatientsDB patDB = new PatientsDB();
+    PatientsDB patDB = PatientsDB.getInstance();
 
     patDB.quit();
     medEqDB.quit();
@@ -43,13 +43,13 @@ public class MedicalEquipmentDBTest {
   @Test
   public void addMedicalEquipment() {
     MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
-    MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
+    MedicalEquipment medObj = medDB.listMedicalEquipment().get(1);
 
     // Add MedicalEquipment in the table (should return -1)
     int failure = medDB.addMedicalEquipment(medObj);
     Assert.assertEquals(-1, failure);
 
-    medObj.setEquipmentID("sfn");
+    medObj.setEquipmentID("rer");
 
     // Add MedicalEquipment not in the table (should return 0)
     int success = medDB.addMedicalEquipment(medObj);
@@ -59,13 +59,13 @@ public class MedicalEquipmentDBTest {
   @Test
   public void deleteMedicalEquipment() {
     MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
-    MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
+    MedicalEquipment medObj = medDB.listMedicalEquipment().get(2);
 
     // Delete MedicalEquipment in the table (should return 0)
     int success = medDB.deleteMedicalEquipment(medObj);
     Assert.assertEquals(0, success);
 
-    medObj.setEquipmentID("sfn");
+    medObj.setEquipmentID("fdf");
 
     // Delete MedicalEquipment not in the table (should return -1)
     int failure = medDB.deleteMedicalEquipment(medObj);

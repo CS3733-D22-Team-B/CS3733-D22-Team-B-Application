@@ -180,7 +180,7 @@ public class MenuBarController {
   void quitApplication() {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
-    PatientsDB patDB = new PatientsDB();
+    PatientsDB patDB = PatientsDB.getInstance();
 
     patDB.quit();
     medEqDB.quit();

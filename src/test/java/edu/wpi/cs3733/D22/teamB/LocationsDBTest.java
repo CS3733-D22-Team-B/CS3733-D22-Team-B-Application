@@ -17,7 +17,7 @@ public class LocationsDBTest {
   public void tearDown() throws Exception {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
-    PatientsDB patDB = new PatientsDB();
+    PatientsDB patDB = PatientsDB.getInstance();
 
     patDB.quit();
     medEqDB.quit();
@@ -43,13 +43,13 @@ public class LocationsDBTest {
   @Test
   public void addLocation() {
     LocationsDB locDB = LocationsDB.getInstance();
-    Location locObj = locDB.listLocations().get(0);
+    Location locObj = locDB.listLocations().get(1);
 
     // Add location in the table (should return -1)
     int failure = locDB.addLocation(locObj);
     Assert.assertEquals(-1, failure);
 
-    locObj.setNodeID("sfn");
+    locObj.setNodeID("njnjfj");
 
     // Add location not in the table (should return 0)
     int success = locDB.addLocation(locObj);
@@ -59,13 +59,13 @@ public class LocationsDBTest {
   @Test
   public void deleteLocation() {
     LocationsDB locDB = LocationsDB.getInstance();
-    Location locObj = locDB.listLocations().get(0);
+    Location locObj = locDB.listLocations().get(2);
 
     // Delete location in the table (should return 0)
     int success = locDB.deleteLocation(locObj);
     Assert.assertEquals(0, success);
 
-    locObj.setNodeID("sfn");
+    locObj.setNodeID("ejejgj");
 
     // Delete location not in the table (should return -1)
     int failure = locDB.deleteLocation(locObj);
