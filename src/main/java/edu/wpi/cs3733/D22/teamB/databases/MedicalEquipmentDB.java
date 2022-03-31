@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
+public class MedicalEquipmentDB implements IMedicalEquipmentDB {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipmentBackup.csv";
@@ -13,7 +13,7 @@ public class MedicalEquipmentDAO implements MedicalEquipmentImpl {
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
 
-  public MedicalEquipmentDAO() {
+  public MedicalEquipmentDB() {
     medicalEquipmentMap = MedicalEquipmentInit();
   }
 

@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class LocationsDAO implements LocationDAOImpl {
+public class LocationsDB implements ILocationsDB {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
@@ -15,7 +15,7 @@ public class LocationsDAO implements LocationDAOImpl {
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();;
 
-  public LocationsDAO() {
+  public LocationsDB() {
     locationMap = LocationsInit();
   }
 

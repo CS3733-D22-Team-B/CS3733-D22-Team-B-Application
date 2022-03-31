@@ -7,14 +7,14 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PatientsDAO implements PatientDAOImpl {
+public class PatientsDB implements IPatientsDB {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/PatientsBackup.csv";
 
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();;
 
-  public PatientsDAO() {
+  public PatientsDB() {
     patientMap = PatientsInit();
   }
 

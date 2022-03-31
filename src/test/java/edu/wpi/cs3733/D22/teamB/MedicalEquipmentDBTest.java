@@ -1,14 +1,12 @@
 package edu.wpi.cs3733.D22.teamB;
 
-import static org.junit.Assert.*;
-
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MedicalEquipmentDAOTest {
+public class MedicalEquipmentDBTest {
 
   @Before
   public void setUp() throws Exception {
@@ -17,9 +15,9 @@ public class MedicalEquipmentDAOTest {
 
   @After
   public void tearDown() throws Exception {
-    LocationsDAO locDB = new LocationsDAO();
-    MedicalEquipmentDAO medEqDB = new MedicalEquipmentDAO();
-    PatientsDAO patDB = new PatientsDAO();
+    LocationsDB locDB = new LocationsDB();
+    MedicalEquipmentDB medEqDB = new MedicalEquipmentDB();
+    PatientsDB patDB = new PatientsDB();
 
     patDB.quit();
     medEqDB.quit();
@@ -28,7 +26,7 @@ public class MedicalEquipmentDAOTest {
 
   @Test
   public void updateMedicalEquipment() {
-    MedicalEquipmentDAO medDB = new MedicalEquipmentDAO();
+    MedicalEquipmentDB medDB = new MedicalEquipmentDB();
     MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
 
     // Update MedicalEquipment in the table (should return 0)
@@ -44,7 +42,7 @@ public class MedicalEquipmentDAOTest {
 
   @Test
   public void addMedicalEquipment() {
-    MedicalEquipmentDAO medDB = new MedicalEquipmentDAO();
+    MedicalEquipmentDB medDB = new MedicalEquipmentDB();
     MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
 
     // Add MedicalEquipment in the table (should return -1)
@@ -60,7 +58,7 @@ public class MedicalEquipmentDAOTest {
 
   @Test
   public void deleteMedicalEquipment() {
-    MedicalEquipmentDAO medDB = new MedicalEquipmentDAO();
+    MedicalEquipmentDB medDB = new MedicalEquipmentDB();
     MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
 
     // Delete MedicalEquipment in the table (should return 0)
