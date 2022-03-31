@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.requests.LabRequest;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -28,8 +29,13 @@ public class LabRequestController extends RequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
+    setEmployeeName();
     setLabTest();
     setTestingTime();
+
+    String locationID = dao.getLocationID(room);
+    LabRequest request = new LabRequest(employeeName, locationID, labTest, testingTime);
+
     requestLabel.setText("Request sent: " + labTest + " for " + room + " on " + testingTime);
   }
 
