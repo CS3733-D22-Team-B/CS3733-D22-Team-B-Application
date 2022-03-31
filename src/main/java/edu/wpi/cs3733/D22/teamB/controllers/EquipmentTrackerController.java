@@ -36,7 +36,7 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
     columnBuilding.setCellValueFactory(new PropertyValueFactory<>("isRequested"));
 
-    dao = new LocationsDB();
+    dao = LocationsDB.getInstance();
     medDao = new MedicalEquipmentDB();
     LinkedList<MedicalEquipment> equip = medDao.listMedicalEquipment();
     for (MedicalEquipment med : equip) {

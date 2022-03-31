@@ -178,7 +178,7 @@ public class MenuBarController {
 
   @FXML
   void quitApplication() {
-    LocationsDB locDB = new LocationsDB();
+    LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = new MedicalEquipmentDB();
     PatientsDB patDB = new PatientsDB();
 

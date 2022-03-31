@@ -12,11 +12,16 @@ public class LocationsDB implements ILocationsDB {
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/LocationsBackup.csv";
+  private static LocationsDB locationsDBManager = new LocationsDB();
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();;
 
-  public LocationsDB() {
+  private LocationsDB() {
     locationMap = LocationsInit();
+  }
+
+  public static LocationsDB getInstance() {
+    return locationsDBManager;
   }
 
   private HashMap<String, Location> LocationsInit() {

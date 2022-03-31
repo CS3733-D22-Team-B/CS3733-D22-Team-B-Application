@@ -28,7 +28,7 @@ public abstract class RequestController extends MenuBarController {
   protected LocationsDB dao;
 
   public void initialize() {
-    dao = new LocationsDB();
+    dao = LocationsDB.getInstance();
     LinkedList<Location> locations = dao.listLocations();
 
     for (Location location : locations) {
