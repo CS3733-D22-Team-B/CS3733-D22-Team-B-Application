@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class LocationsDAO implements LocationDAOImpl {
+public class LocationsDAO extends DatabaseSuperclass implements LocationDAOImpl {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
@@ -209,6 +209,7 @@ public class LocationsDAO implements LocationDAOImpl {
 
   public void quit() {
     this.locationsToCSV();
+    listDB("Locations", 8);
 
     try {
       // Create database

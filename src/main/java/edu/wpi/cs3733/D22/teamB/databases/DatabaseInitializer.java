@@ -117,8 +117,10 @@ public class DatabaseInitializer {
       return false;
     }
   }
+}
 
-  public void listDB(String databaseName, int Elements) {
+/*
+public void listDB(String databaseName, int Elements) {
     try {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
@@ -148,33 +150,4 @@ public class DatabaseInitializer {
       return;
     }
   }
-}
-
-/*
-public void listDB(String databaseName, int Elements) {
-  try {
-    Connection connection = DriverManager.getConnection(DBURL);
-    Statement statement = connection.createStatement();
-    ResultSet rs = statement.getResultSet();
-
-    if (databaseName == "Locations") {
-      rs = statement.executeQuery("SELECT * FROM Locations");
-    } else if (databaseName == "MedicalEquipment") {
-      rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-    }
-
-    while (rs.next()) {
-      for (int i = 1; i < Elements + 1; i++) {
-        System.out.print(databaseName + " { ");
-        System.out.print(rs.getMetaData().getColumnName(i) + ": ");
-        System.out.print(rs.getString(i) + ", ");
-      }
-      System.out.println(" }");
-    }
-  } catch (SQLException e) {
-    System.out.println("Connection failed. Check output console.");
-    e.printStackTrace();
-    return;
-  }
-}
 */

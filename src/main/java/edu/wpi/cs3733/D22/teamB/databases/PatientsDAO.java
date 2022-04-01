@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PatientsDAO implements PatientDAOImpl {
+public class PatientsDAO extends DatabaseSuperclass implements PatientDAOImpl {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/PatientsBackup.csv";
@@ -178,6 +178,7 @@ public class PatientsDAO implements PatientDAOImpl {
 
   public void quit() {
     this.patientsToCSV();
+    listDB("Patients", 4);
 
     try {
       // Create database
