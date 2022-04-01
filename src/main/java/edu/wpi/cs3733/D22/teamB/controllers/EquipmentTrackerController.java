@@ -1,9 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDAO;
+import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -25,8 +25,8 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
 
   private ObservableList<Location> locations = FXCollections.observableArrayList();
   private ObservableList<MedicalEquipment> equipment = FXCollections.observableArrayList();
-  private LocationsDAO dao;
-  private MedicalEquipmentDAO medDao;
+  private LocationsDB dao;
+  private MedicalEquipmentDB medDao;
 
   @Override
   public void initialize(URL loc, ResourceBundle resources) {
@@ -36,8 +36,8 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
     columnBuilding.setCellValueFactory(new PropertyValueFactory<>("isRequested"));
 
-    dao = new LocationsDAO();
-    medDao = new MedicalEquipmentDAO();
+    dao = LocationsDB.getInstance();
+    medDao = MedicalEquipmentDB.getInstance();
     LinkedList<MedicalEquipment> equip = medDao.listMedicalEquipment();
     for (MedicalEquipment med : equip) {
       med.setLocation(dao.getLocation(med.getNodeID()).getLongName());

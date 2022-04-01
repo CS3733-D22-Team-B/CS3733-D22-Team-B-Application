@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDAO;
-import edu.wpi.cs3733.D22.teamB.databases.PatientsDAO;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
+import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -178,9 +178,9 @@ public class MenuBarController {
 
   @FXML
   void quitApplication() {
-    LocationsDAO locDB = new LocationsDAO();
-    MedicalEquipmentDAO medEqDB = new MedicalEquipmentDAO();
-    PatientsDAO patDB = new PatientsDAO();
+    LocationsDB locDB = LocationsDB.getInstance();
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
+    PatientsDB patDB = PatientsDB.getInstance();
 
     patDB.quit();
     medEqDB.quit();

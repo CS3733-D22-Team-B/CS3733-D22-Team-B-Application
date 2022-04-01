@@ -5,16 +5,24 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class MedicalEquipmentDAO extends DatabaseSuperclass implements MedicalEquipmentImpl {
+public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEquipmentDB {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipmentBackup.csv";
+  private static MedicalEquipmentDB medicalEquipmentDBManager;
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
 
-  public MedicalEquipmentDAO() {
+  private MedicalEquipmentDB() {
     medicalEquipmentMap = MedicalEquipmentInit();
+  }
+
+  public static MedicalEquipmentDB getInstance() {
+    if (medicalEquipmentDBManager == null) {
+      medicalEquipmentDBManager = new MedicalEquipmentDB();
+    }
+    return medicalEquipmentDBManager;
   }
 
   private HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
