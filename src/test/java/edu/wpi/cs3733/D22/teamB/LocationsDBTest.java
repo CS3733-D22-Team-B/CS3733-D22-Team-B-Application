@@ -15,7 +15,7 @@ public class LocationsDBTest {
 
   @After
   public void tearDown() throws Exception {
-    LocationsDB locDB = new LocationsDB();
+    LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = new MedicalEquipmentDB();
     PatientsDB patDB = new PatientsDB();
 
@@ -26,7 +26,7 @@ public class LocationsDBTest {
 
   @Test
   public void updateLocation() {
-    LocationsDB locDB = new LocationsDB();
+    LocationsDB locDB = LocationsDB.getInstance();
     Location locObj = locDB.listLocations().get(0);
 
     // Update location in the table (should return 0)
@@ -42,7 +42,7 @@ public class LocationsDBTest {
 
   @Test
   public void addLocation() {
-    LocationsDB locDB = new LocationsDB();
+    LocationsDB locDB = LocationsDB.getInstance();
     Location locObj = locDB.listLocations().get(0);
 
     // Add location in the table (should return -1)
@@ -58,7 +58,7 @@ public class LocationsDBTest {
 
   @Test
   public void deleteLocation() {
-    LocationsDB locDB = new LocationsDB();
+    LocationsDB locDB = LocationsDB.getInstance();
     Location locObj = locDB.listLocations().get(0);
 
     // Delete location in the table (should return 0)
