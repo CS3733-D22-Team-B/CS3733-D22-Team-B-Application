@@ -162,7 +162,7 @@ public class LocationsDAO extends DatabaseSuperclass implements LocationDAOImpl 
 
   public void quit() {
     toCSV();
-    listDB("Locations", 8);
+    listDB();
 
     try {
       // Create database

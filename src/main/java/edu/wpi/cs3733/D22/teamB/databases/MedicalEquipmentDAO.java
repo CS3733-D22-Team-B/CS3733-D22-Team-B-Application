@@ -139,7 +139,7 @@ public class MedicalEquipmentDAO extends DatabaseSuperclass implements MedicalEq
 
   public void quit() {
     toCSV();
-    listDB("MedicalEquipment", 5);
+    listDB();
 
     try {
       // Create database

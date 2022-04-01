@@ -21,15 +21,16 @@ public abstract class DatabaseSuperclass {
 
   protected abstract void initDB();
 
-  protected void listDB(String databaseName, int Elements) {
+  protected void listDB() {
     try {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.getResultSet();
-      rs = statement.executeQuery("SELECT * FROM " + databaseName + "");
+      rs = statement.executeQuery("SELECT * FROM " + tableType + "");
+      int Elements = rs.getMetaData().getColumnCount();
 
       while (rs.next()) {
-        System.out.print(databaseName + " { ");
+        System.out.print(tableType + " { ");
         for (int i = 1; i < Elements + 1; i++) {
           System.out.print(rs.getMetaData().getColumnName(i) + ": ");
           System.out.print(rs.getString(i) + ", ");
@@ -66,7 +67,7 @@ public abstract class DatabaseSuperclass {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(filePath));List
+      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(filePath));
       int Elements = rs.getMetaData().getColumnCount();
       String listOfColumns = "";
 

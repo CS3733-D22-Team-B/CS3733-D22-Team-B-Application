@@ -1,8 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -136,7 +133,7 @@ public class PatientsDAO extends DatabaseSuperclass implements PatientDAOImpl {
 
   public void quit() {
     toCSV();
-    listDB("Patients", 4);
+    listDB();
 
     try {
       // Create database
