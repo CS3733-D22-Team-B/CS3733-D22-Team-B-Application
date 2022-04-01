@@ -18,9 +18,9 @@ public class DatabaseSuperclass implements DatabaseSuperclassInterface {
       } else if (databaseName == "Patients") {
         rs = statement.executeQuery("SELECT * FROM Patients");
       }
-      // else if (databaseName == "Employees") {
-      // rs = statement.executeQuery("SELECT * FROM Employees");
-      // }
+      else if (databaseName == "Employees") {
+      rs = statement.executeQuery("SELECT * FROM Employees");
+      }
 
       while (rs.next()) {
         System.out.print(databaseName + " { ");
