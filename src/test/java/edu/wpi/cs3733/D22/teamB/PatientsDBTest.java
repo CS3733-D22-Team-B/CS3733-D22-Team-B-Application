@@ -16,7 +16,7 @@ public class PatientsDBTest {
   @After
   public void tearDown() throws Exception {
     LocationsDB locDB = LocationsDB.getInstance();
-    MedicalEquipmentDB medEqDB = new MedicalEquipmentDB();
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = new PatientsDB();
 
     patDB.quit();

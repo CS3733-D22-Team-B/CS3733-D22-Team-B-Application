@@ -16,7 +16,7 @@ public class MedicalEquipmentDBTest {
   @After
   public void tearDown() throws Exception {
     LocationsDB locDB = LocationsDB.getInstance();
-    MedicalEquipmentDB medEqDB = new MedicalEquipmentDB();
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = new PatientsDB();
 
     patDB.quit();
@@ -26,7 +26,7 @@ public class MedicalEquipmentDBTest {
 
   @Test
   public void updateMedicalEquipment() {
-    MedicalEquipmentDB medDB = new MedicalEquipmentDB();
+    MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
     MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
 
     // Update MedicalEquipment in the table (should return 0)
@@ -42,7 +42,7 @@ public class MedicalEquipmentDBTest {
 
   @Test
   public void addMedicalEquipment() {
-    MedicalEquipmentDB medDB = new MedicalEquipmentDB();
+    MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
     MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
 
     // Add MedicalEquipment in the table (should return -1)
@@ -58,7 +58,7 @@ public class MedicalEquipmentDBTest {
 
   @Test
   public void deleteMedicalEquipment() {
-    MedicalEquipmentDB medDB = new MedicalEquipmentDB();
+    MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
     MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
 
     // Delete MedicalEquipment in the table (should return 0)

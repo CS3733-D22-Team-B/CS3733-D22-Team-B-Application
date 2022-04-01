@@ -9,12 +9,20 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipmentBackup.csv";
+  private static MedicalEquipmentDB medicalEquipmentDBManager;
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
 
-  public MedicalEquipmentDB() {
+  private MedicalEquipmentDB() {
     medicalEquipmentMap = MedicalEquipmentInit();
+  }
+
+  public static MedicalEquipmentDB getInstance() {
+    if (medicalEquipmentDBManager == null) {
+      medicalEquipmentDBManager = new MedicalEquipmentDB();
+    }
+    return medicalEquipmentDBManager;
   }
 
   private HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
