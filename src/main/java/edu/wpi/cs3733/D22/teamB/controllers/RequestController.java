@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import java.util.LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,10 +25,10 @@ public abstract class RequestController extends MenuBarController {
   protected LinkedList<String> roomsFL1 = new LinkedList<>();
   protected LinkedList<String> roomsFL2 = new LinkedList<>();
 
-  protected LocationsDAO dao;
+  protected LocationsDB dao;
 
   public void initialize() {
-    dao = new LocationsDAO();
+    dao = new LocationsDB();
     LinkedList<Location> locations = dao.listLocations();
 
     for (Location location : locations) {
