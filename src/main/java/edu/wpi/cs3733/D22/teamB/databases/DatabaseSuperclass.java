@@ -2,7 +2,7 @@ package edu.wpi.cs3733.D22.teamB.databases;
 
 import java.sql.*;
 
-public class DatabaseSuperclass implements DatabaseSuperclassInterface {
+public class DatabaseSuperclass implements IDatabaseSuperclass {
   final String DBURL = "jdbc:derby:Databases;create=true";
 
   public void listDB(String databaseName, int Elements) {
