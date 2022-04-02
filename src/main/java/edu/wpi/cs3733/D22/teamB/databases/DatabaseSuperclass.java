@@ -46,6 +46,7 @@ public abstract class DatabaseSuperclass {
     }
   }
 
+  //This can be generalized completely someday
   protected LinkedList<String> selectAll() {
     LinkedList<String> pkList = new LinkedList<String>();
     try {
