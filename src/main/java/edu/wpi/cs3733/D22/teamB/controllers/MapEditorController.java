@@ -23,6 +23,8 @@ public class MapEditorController extends MapViewerController {
   @FXML private Button deleteButton;
   @FXML private Label warningLabel;
 
+  private String currentFunction;
+
   @FXML
   public void hideButtons() {
     addButton.setDisable(true);
@@ -47,5 +49,28 @@ public class MapEditorController extends MapViewerController {
     removeButton.setVisible(true);
   }
 
+  public void editLocations() {}
 
+  public void showView(String function) {
+    switch (function) {
+      case "Edit":
+        locationsDropdown.setDisable(false);
+        locationsDropdown.setVisible(true);
+        editEnableButton.setDisable(false);
+        editEnableButton.setVisible(true);
+        editNameField.setDisable(false);
+        editNameField.setVisible(true);
+        cancelButton.setDisable(false);
+        cancelButton.setVisible(true);
+        confirmButton.setDisable(false);
+        confirmButton.setVisible(true);
+        break;
+      case "Add":
+        break;
+      case "Remove":
+        break;
+      default:
+        break;
+    }
+  }
 }
