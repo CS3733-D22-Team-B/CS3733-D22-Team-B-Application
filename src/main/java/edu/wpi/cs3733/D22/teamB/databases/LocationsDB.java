@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
+public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
@@ -58,8 +58,18 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
     }
   }
 
-  public LinkedList<Location> listLocations() {
+  public LinkedList<Location> list() {
     LinkedList<String> pkList = selectAll();
+    LinkedList<Location> locList = new LinkedList<Location>();
+
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(locationMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
+
+  public LinkedList<Location> searchFor(String input) {
+    LinkedList<String> pkList = filteredSearch(input);
     LinkedList<Location> locList = new LinkedList<Location>();
 
     for (int i = 0; i < pkList.size(); i++) {
@@ -81,7 +91,7 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
     return keys.findFirst().orElse(null);
   }
 
-  public int updateLocation(Location locObj) {
+  public int update(Location locObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
 
@@ -115,7 +125,7 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
     return 0;
   }
 
-  public int addLocation(Location locObj) {
+  public int add(Location locObj) {
     // nodeID has to be unique
     if (locationMap.containsKey(locObj.getNodeID())) {
       return -1;
@@ -147,7 +157,7 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
     return 0;
   }
 
-  public int deleteLocation(Location locObj) {
+  public int delete(Location locObj) {
     // nodeID has to exist
     if (locationMap.containsKey(locObj.getNodeID()) == false) {
       return -1;
@@ -171,6 +181,15 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
   public void quit() {
     toCSV();
     listDB();
+
+    searchFor("bHALL005L1");
+    searchFor("756");
+    searchFor("297");
+    searchFor("L1");
+    searchFor("Tower");
+    searchFor("HALL");
+    searchFor("Hallway Connector 5 Floor L1");
+    searchFor("FL1 Hallway 5");
 
     try {
       // Create database

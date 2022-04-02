@@ -5,6 +5,8 @@ import java.util.LinkedList;
 public interface ILocationsDB {
   public LinkedList<Location> listLocations();
 
+  public LinkedList<Location> searchFor(String input);
+
   public int updateLocation(Location locObj);
 
   public int addLocation(Location locObj);

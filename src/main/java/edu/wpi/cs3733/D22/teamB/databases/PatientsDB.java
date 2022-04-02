@@ -1,13 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
+public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
@@ -52,7 +49,7 @@ public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
     }
   }
 
-  public LinkedList<Patient> listPatients() {
+  public LinkedList<Patient> list() {
     LinkedList<String> pkList = selectAll();
     LinkedList<Patient> patList = new LinkedList<Patient>();
 
@@ -62,8 +59,18 @@ public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
     return patList;
   }
 
+  public LinkedList<Patient> searchFor(String input) {
+    LinkedList<String> pkList = filteredSearch(input);
+    LinkedList<Patient> locList = new LinkedList<Patient>();
+
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(patientMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
+
   ////////////////////////////////////////////////////////////// To Fix
-  public int updatePatient(Patient patObj) {
+  public int update(Patient patObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
 
@@ -93,7 +100,7 @@ public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
     return 0;
   }
 
-  public int addPatient(Patient patObj) {
+  public int add(Patient patObj) {
     // patientID has to be unique
     if (patientMap.containsKey(patObj.getPatientID())) {
       return -1;
@@ -121,7 +128,7 @@ public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
     return 0;
   }
 
-  public int deletePatient(Patient patObj) {
+  public int delete(Patient patObj) {
     // patientID has to exist
     if (patientMap.containsKey(patObj.getPatientID()) == false) {
       return -1;
