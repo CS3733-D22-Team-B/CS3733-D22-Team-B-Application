@@ -2,7 +2,7 @@ package edu.wpi.cs3733.D22.teamB.databases;
 
 import java.util.LinkedList;
 
-public interface LocationDAOImpl {
+public interface ILocationsDB {
   public LinkedList<Location> listLocations();
 
   public int updateLocation(Location locObj);

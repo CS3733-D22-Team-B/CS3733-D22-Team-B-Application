@@ -10,13 +10,13 @@ public class DatabaseInitializer {
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
   private final String locationCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/TowerLocations.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
   private final String medicalEQCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedEquipReq.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
   // private final String employeesCSVFilePath =
-  // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/Employees.csv";
+  // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
   private final String patientsCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/Patients.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
 
   public DatabaseInitializer() {
     initDB();

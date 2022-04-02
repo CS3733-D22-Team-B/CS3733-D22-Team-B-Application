@@ -1,14 +1,12 @@
 package edu.wpi.cs3733.D22.teamB;
 
-import static org.junit.Assert.*;
-
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LocationsDAOTest {
+public class LocationsDBTest {
 
   @Before
   public void setUp() throws Exception {
@@ -17,9 +15,9 @@ public class LocationsDAOTest {
 
   @After
   public void tearDown() throws Exception {
-    LocationsDAO locDB = new LocationsDAO();
-    MedicalEquipmentDAO medEqDB = new MedicalEquipmentDAO();
-    PatientsDAO patDB = new PatientsDAO();
+    LocationsDB locDB = LocationsDB.getInstance();
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
+    PatientsDB patDB = PatientsDB.getInstance();
 
     patDB.quit();
     medEqDB.quit();
@@ -28,7 +26,7 @@ public class LocationsDAOTest {
 
   @Test
   public void updateLocation() {
-    LocationsDAO locDB = new LocationsDAO();
+    LocationsDB locDB = LocationsDB.getInstance();
     Location locObj = locDB.listLocations().get(0);
 
     // Update location in the table (should return 0)
@@ -44,7 +42,7 @@ public class LocationsDAOTest {
 
   @Test
   public void addLocation() {
-    LocationsDAO locDB = new LocationsDAO();
+    LocationsDB locDB = LocationsDB.getInstance();
     Location locObj = locDB.listLocations().get(0);
 
     // Add location in the table (should return -1)
@@ -60,7 +58,7 @@ public class LocationsDAOTest {
 
   @Test
   public void deleteLocation() {
-    LocationsDAO locDB = new LocationsDAO();
+    LocationsDB locDB = LocationsDB.getInstance();
     Location locObj = locDB.listLocations().get(0);
 
     // Delete location in the table (should return 0)

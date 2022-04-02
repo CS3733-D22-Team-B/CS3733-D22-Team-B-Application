@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDAO;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -22,7 +22,7 @@ public class LocationDataController extends MenuBarController implements Initial
   @FXML TableColumn<edu.wpi.cs3733.D22.teamB.databases.Location, String> columnBuilding;
 
   private ObservableList<Location> locations = FXCollections.observableArrayList();
-  private LocationsDAO dao;
+  private LocationsDB dao;
 
   @Override
   public void initialize(URL loc, ResourceBundle resources) {
@@ -32,7 +32,7 @@ public class LocationDataController extends MenuBarController implements Initial
     columnFloor.setCellValueFactory(new PropertyValueFactory<>("floor"));
     columnBuilding.setCellValueFactory(new PropertyValueFactory<>("building"));
 
-    dao = new LocationsDAO();
+    dao = LocationsDB.getInstance();
     LinkedList<edu.wpi.cs3733.D22.teamB.databases.Location> locs = dao.listLocations();
     for (edu.wpi.cs3733.D22.teamB.databases.Location location : locs) {
       locations.add(location);

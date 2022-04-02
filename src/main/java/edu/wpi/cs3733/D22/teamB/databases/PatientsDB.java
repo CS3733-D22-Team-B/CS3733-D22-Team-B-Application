@@ -4,19 +4,27 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PatientsDAO extends DatabaseSuperclass implements PatientDAOImpl {
+public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/PatientsBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
+  private static PatientsDB patientsDBManager;
 
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();;
 
-  public PatientsDAO() {
+  private PatientsDB() {
     super(
         "Patients",
         "patientID",
-        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/PatientsBackup.csv");
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv");
     initDB();
+  }
+
+  public static PatientsDB getInstance() {
+    if (patientsDBManager == null) {
+      patientsDBManager = new PatientsDB();
+    }
+    return patientsDBManager;
   }
 
   public void initDB() {
