@@ -59,9 +59,9 @@
             <Image url="@../assets/firstFloor.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="addButton" layoutX="443.0" layoutY="37.0" prefHeight="26.0" prefWidth="122.0" text="Add Location" visible="false" />
+      <JFXButton fx:id="addButton" layoutX="442.0" layoutY="86.0" prefHeight="26.0" prefWidth="122.0" text="Add Location" />
       <TextField fx:id="addLocationName" layoutX="430.0" layoutY="143.0" promptText="Location Name" visible="false" />
-      <Button fx:id="cancelButton" layoutX="430.0" layoutY="183.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="cancelButton" layoutX="430.0" layoutY="183.0" mnemonicParsing="false" text="Cancel" visible="false" />
       <Button fx:id="confirmButton" layoutX="519.0" layoutY="183.0" mnemonicParsing="false" text="Confirm" visible="false" />
       <Label fx:id="addLabel" alignment="CENTER" layoutX="442.0" layoutY="42.0" prefHeight="42.0" prefWidth="122.0" text="Click on the map to add a location" textAlignment="CENTER" textOverrun="CLIP" visible="false" wrapText="true" />
       <ComboBox fx:id="typeDropdown" layoutX="429.0" layoutY="97.0" prefWidth="150.0" promptText="Room Type" visible="false">
@@ -86,19 +86,19 @@
          </FXCollections>
          </items>
       </ComboBox>
-      <JFXButton fx:id="editButton" layoutX="443.0" layoutY="73.0" prefHeight="26.0" prefWidth="122.0" text="Edit Locations" visible="false" />
-      <JFXButton fx:id="removeButton" layoutX="443.0" layoutY="110.0" prefHeight="26.0" prefWidth="122.0" text="Remove Location" visible="false" />
-      <JFXButton fx:id="downButton" layoutX="480.0" layoutY="336.0" prefHeight="50.0" prefWidth="47.0" rotate="180.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
-      <JFXButton fx:id="upButton" layoutX="480.0" layoutY="239.0" prefHeight="50.0" prefWidth="47.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
+      <JFXButton fx:id="editButton" layoutX="442.0" layoutY="122.0" prefHeight="26.0" prefWidth="122.0" text="Edit Locations" />
+      <JFXButton fx:id="removeButton" layoutX="442.0" layoutY="159.0" prefHeight="26.0" prefWidth="122.0" text="Remove Location" />
+      <JFXButton fx:id="downButton" layoutX="480.0" layoutY="336.0" onAction="#moveDown" prefHeight="50.0" prefWidth="47.0" rotate="180.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
+      <JFXButton fx:id="upButton" layoutX="480.0" layoutY="239.0" onAction="#moveUp" prefHeight="50.0" prefWidth="47.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
       <Label fx:id="floorDisplay" alignment="CENTER" layoutX="489.0" layoutY="292.0" prefHeight="41.0" prefWidth="29.0" text="1">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="locationsDropdown" layoutX="428.0" layoutY="61.0" prefWidth="150.0" promptText="Select Location" />
+      <ComboBox fx:id="locationsDropdown" layoutX="428.0" layoutY="61.0" prefWidth="150.0" promptText="Select Location" visible="false" />
       <Button fx:id="editEnableButton" layoutX="429.0" layoutY="103.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Change Map Location" visible="false" />
       <TextField fx:id="editNameField" layoutX="428.0" layoutY="143.0" promptText="New Location Name" visible="false" />
-      <Button fx:id="deleteButton" layoutX="523.0" layoutY="183.0" mnemonicParsing="false" text="Delete" />
-      <Label fx:id="warningLabel" alignment="CENTER" layoutX="433.0" layoutY="104.0" prefHeight="64.0" prefWidth="142.0" text="Warning: This will delete the selected location" textAlignment="CENTER" textFill="RED" wrapText="true" />
+      <Button fx:id="deleteButton" layoutX="523.0" layoutY="183.0" mnemonicParsing="false" text="Delete" visible="false" />
+      <Label fx:id="warningLabel" alignment="CENTER" layoutX="433.0" layoutY="104.0" prefHeight="64.0" prefWidth="142.0" text="Warning: This will delete the selected location" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
    </children>
 </AnchorPane>
