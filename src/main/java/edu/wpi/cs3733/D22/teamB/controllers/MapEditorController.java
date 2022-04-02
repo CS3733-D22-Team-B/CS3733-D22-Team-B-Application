@@ -62,13 +62,11 @@ public class MapEditorController extends MapViewerController {
       case "Edit":
         locationsDropdown.setDisable(false);
         locationsDropdown.setVisible(true);
-        editEnableButton.setDisable(false);
         editEnableButton.setVisible(true);
-        editNameField.setDisable(false);
-        editNameField.setVisible(true);
+        editEnableButton.setDisable(true);
         cancelButton.setDisable(false);
         cancelButton.setVisible(true);
-        confirmButton.setDisable(false);
+        confirmButton.setDisable(true);
         confirmButton.setVisible(true);
         break;
       case "Add":
@@ -80,10 +78,23 @@ public class MapEditorController extends MapViewerController {
     }
   }
 
+  public void enableEditButton() {
+    if (currentFunction.equals("Edit") && locationsDropdown.getValue() != null) {
+      editEnableButton.setDisable(false);
+      confirmButton.setDisable(false);
+    }
+  }
+
+  public void showEditFields() {
+    editNameField.setDisable(false);
+    editNameField.setVisible(true);
+  }
+
   @FXML
   public void hideView() {
     switch (currentFunction) {
       case "Edit":
+        locationsDropdown.setValue(null);
         locationsDropdown.setDisable(true);
         locationsDropdown.setVisible(false);
         editEnableButton.setDisable(true);

@@ -95,8 +95,14 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="locationsDropdown" layoutX="428.0" layoutY="61.0" prefWidth="150.0" promptText="Select Location" visible="false" />
-      <Button fx:id="editEnableButton" layoutX="429.0" layoutY="103.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Change Map Location" visible="false" />
+      <ComboBox fx:id="locationsDropdown" layoutX="428.0" layoutY="61.0" onAction="#enableEditButton" prefWidth="150.0" promptText="Select Location" visible="false">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="PLACEHOLDER LOCATION" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Button fx:id="editEnableButton" disable="true" layoutX="429.0" layoutY="103.0" mnemonicParsing="false" onAction="#showEditFields" prefHeight="26.0" prefWidth="150.0" text="Change Map Location" visible="false" />
       <TextField fx:id="editNameField" layoutX="428.0" layoutY="143.0" promptText="New Location Name" visible="false" />
       <Button fx:id="deleteButton" layoutX="523.0" layoutY="183.0" mnemonicParsing="false" text="Delete" visible="false" />
       <Label fx:id="warningLabel" alignment="CENTER" layoutX="433.0" layoutY="104.0" prefHeight="64.0" prefWidth="142.0" text="Warning: This will delete the selected location" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
