@@ -59,7 +59,7 @@
             <Image url="@../assets/firstFloor.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="addButton" layoutX="442.0" layoutY="86.0" prefHeight="26.0" prefWidth="122.0" text="Add Location" />
+      <JFXButton fx:id="addButton" layoutX="442.0" layoutY="86.0" onAction="#startAdding" prefHeight="26.0" prefWidth="122.0" text="Add Location" />
       <TextField fx:id="addLocationName" layoutX="430.0" layoutY="143.0" promptText="Location Name" visible="false" />
       <Button fx:id="cancelButton" layoutX="430.0" layoutY="183.0" mnemonicParsing="false" text="Cancel" visible="false" />
       <Button fx:id="confirmButton" layoutX="519.0" layoutY="183.0" mnemonicParsing="false" text="Confirm" visible="false" />

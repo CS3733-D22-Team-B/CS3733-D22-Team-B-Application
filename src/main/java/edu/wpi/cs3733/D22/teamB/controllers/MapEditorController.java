@@ -23,6 +23,8 @@ public class MapEditorController extends MapViewerController {
   @FXML private Button deleteButton;
   @FXML private Label warningLabel;
 
+  private String currentFunction;
+
   @FXML
   public void hideButtons() {
     addButton.setDisable(true);
@@ -47,5 +49,28 @@ public class MapEditorController extends MapViewerController {
     removeButton.setVisible(true);
   }
 
+  @FXML
+  public void showAdd() {
+    addLocationName.setVisible(true);
+    cancelButton.setVisible(true);
+    confirmButton.setVisible(true);
+    addLabel.setVisible(true);
+    typeDropdown.setVisible(true);
+  }
 
+  @FXML
+  public void hideAdd() {
+    addLocationName.setVisible(false);
+    cancelButton.setVisible(false);
+    confirmButton.setVisible(false);
+    addLabel.setVisible(false);
+    typeDropdown.setVisible(false);
+  }
+
+  @FXML
+  public void startAdding() {
+    currentFunction = "Add";
+    hideButtons();
+    showAdd();
+  }
 }
