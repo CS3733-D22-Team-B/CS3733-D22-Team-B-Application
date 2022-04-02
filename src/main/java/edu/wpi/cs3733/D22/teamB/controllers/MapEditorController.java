@@ -50,7 +50,6 @@ public class MapEditorController extends MapViewerController {
   }
 
   @FXML
-
   public void showAdd() {
     addLocationName.setVisible(true);
     cancelButton.setVisible(true);
@@ -73,7 +72,9 @@ public class MapEditorController extends MapViewerController {
     currentFunction = "Add";
     hideButtons();
     showAdd();
+  }
 
+  @FXML
   public void editLocations() {
     hideButtons();
     currentFunction = "Edit";
