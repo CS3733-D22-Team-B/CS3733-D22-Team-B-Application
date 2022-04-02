@@ -4,11 +4,7 @@ public class MedicineRequest extends Request {
   private String medicine;
 
   public MedicineRequest(String employee, String location, String medicine) {
-    super(employee, location);
+    super(employee, location, "Medicine");
     medicine = this.medicine;
-  }
-
-  public String getType() {
-    return "Medicine";
   }
 }

@@ -4,15 +4,11 @@ public class InterpreterRequest extends Request {
   private String language;
 
   public InterpreterRequest(String employee, String language, String location) {
-    super(employee, location);
+    super(employee, location, "Interpreter");
     this.language = language;
   }
 
   public String getLanguage() {
     return language;
-  }
-
-  public String getType() {
-    return "Interpreter";
   }
 }

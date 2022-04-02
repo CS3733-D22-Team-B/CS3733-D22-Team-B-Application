@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.requests.EquipmentRequest;
+import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -40,7 +41,7 @@ public class EquipmentRequestController extends RequestController {
       String locationID = dao.getLocationID(room);
       EquipmentRequest request = new EquipmentRequest(employeeName, locationID, equipment, notes);
 
-      EquipmentRequest.equipmentRequests.add(request);
+      RequestQueue.addRequest(request);
       requestLabel.setText("Request sent: " + equipment + " to " + room + " by " + employeeName);
     }
   }

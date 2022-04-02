@@ -4,12 +4,8 @@ public class InternalPatientTransferRequest extends Request {
   private String destination;
 
   public InternalPatientTransferRequest(String employee, String location, String destination) {
-    super(employee, location);
+    super(employee, location, "Internal Patient Transfer");
 
     this.destination = destination;
-  }
-
-  public String getType() {
-    return "Internal Patient Transfer";
   }
 }

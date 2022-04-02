@@ -7,12 +7,8 @@ public class LabRequest extends Request {
   private Date testingTime;
 
   public LabRequest(String employee, String location, String test, Date testingTime) {
-    super(employee, location);
+    super(employee, location, "Lab");
     this.test = test;
     this.testingTime = testingTime;
-  }
-
-  public String getType() {
-    return "Lab";
   }
 }

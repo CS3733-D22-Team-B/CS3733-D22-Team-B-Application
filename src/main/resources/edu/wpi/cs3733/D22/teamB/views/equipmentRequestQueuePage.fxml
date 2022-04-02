@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentRequestQueueController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentRequestQueueController">
     <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
         <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -41,14 +51,37 @@
             </Menu>
         </menus>
     </MenuBar>
-   <TableView fx:id="requestTable" layoutX="27.0" layoutY="39.0" prefHeight="318.0" prefWidth="540.0">
+   <TableView fx:id="requestTable" layoutX="27.0" layoutY="39.0" prefHeight="318.0" prefWidth="403.0">
      <columns>
-       <TableColumn fx:id="columnEquipment" prefWidth="186.4000244140625" text="Equipment" />
-       <TableColumn fx:id="columnDestination" prefWidth="199.99993896484375" text="Destination" />
-         <TableColumn fx:id="columnEmployee" prefWidth="153.60003662109375" text="Requested By" />
+       <TableColumn fx:id="columnRequestID" prefWidth="105.99996948242188" text="Request ID" />
+       <TableColumn fx:id="columnType" prefWidth="118.66668701171875" text="Type" />
+         <TableColumn fx:id="columnStatus" minWidth="0.0" prefWidth="94.66668701171875" text="Status" />
+         <TableColumn fx:id="columnButtons" minWidth="0.0" prefWidth="81.33331298828125" text="View Request" />
      </columns>
    </TableView>
    <Button layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
+   <ScrollPane layoutX="441.0" layoutY="39.0" prefHeight="318.0" prefWidth="145.0">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+            <children>
+               <Label fx:id="requestIDLabel" layoutX="13.0" layoutY="14.0" prefHeight="17.0" prefWidth="128.0" text="Request ID:" />
+               <Label fx:id="typeLabel" layoutX="14.0" layoutY="31.0" prefHeight="17.0" prefWidth="117.0" text="Type:" />
+               <Label fx:id="locationLabel" layoutX="14.0" layoutY="48.0" prefHeight="17.0" prefWidth="117.0" text="Location:" />
+               <Label fx:id="employeeLabel" layoutX="14.0" layoutY="65.0" prefHeight="17.0" prefWidth="117.0" text="Employee:" />
+               <Label fx:id="statusLabel" layoutX="14.0" layoutY="82.0" prefHeight="17.0" prefWidth="117.0" text="Status:" />
+               <ComboBox fx:id="statusInput" layoutX="18.0" layoutY="100.0" onAction="#setStatus" prefHeight="25.0" prefWidth="109.0">
+                  <items>
+                     <FXCollections fx:factory="observableArrayList">
+                      <String fx:id="pending" fx:value="Pending" />
+                      <String fx:id="proccessing" fx:value="In-Progress" />
+                      <String fx:id="complete" fx:value="Complete" />
+                    </FXCollections>
+                  </items>
+               </ComboBox>
+            </children>
+         </AnchorPane>
+     </content>
+   </ScrollPane>
 
 
 
