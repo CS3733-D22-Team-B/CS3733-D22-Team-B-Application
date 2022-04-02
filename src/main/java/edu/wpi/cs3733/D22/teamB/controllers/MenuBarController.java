@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequestDB;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
 import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
@@ -181,7 +182,9 @@ public class MenuBarController {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = PatientsDB.getInstance();
+    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
 
+    eqReqDB.quit();
     patDB.quit();
     medEqDB.quit();
     locDB.quit();

@@ -7,13 +7,11 @@ import java.sql.*;
 import java.util.LinkedList;
 import javax.lang.model.util.Elements;
 
-
 public abstract class DatabaseSuperclass {
   protected final String DBURL = "jdbc:derby:Databases;";
   protected String tableType;
   protected String pkName;
   protected String filePath;
-
 
   public DatabaseSuperclass(String initTableType, String initPkName, String initFilePath) {
     tableType = initTableType;

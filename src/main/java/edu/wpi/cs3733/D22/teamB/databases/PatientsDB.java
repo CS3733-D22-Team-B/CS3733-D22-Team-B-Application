@@ -1,8 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
