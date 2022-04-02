@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -19,8 +20,8 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="269.0" layoutY="186.0" text="Medication" />
-      <ComboBox fx:id="medicineInput" layoutX="224.0" layoutY="203.0" onAction="#setMedication" prefWidth="150.0">
+      <Label layoutX="158.0" layoutY="188.0" text="Medication" />
+      <ComboBox fx:id="medicineInput" layoutX="113.0" layoutY="205.0" onAction="#setMedication" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="MORPHINE" fx:value="Morphine" />
@@ -28,24 +29,14 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label fx:id="resultLabel" layoutX="275.0" layoutY="298.0" />
-      <Label layoutX="283.0" layoutY="122.0" text="Room" />
+      <Label fx:id="requestLabel" layoutX="275.0" layoutY="298.0" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <ComboBox fx:id="roomComboBox" layoutX="224.0" layoutY="139.0" onAction="#setRoom" prefWidth="150.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="ROOM_1" fx:value="Room 1" />
-               <String fx:id="ROOM_2" fx:value="Room 2" />
-               <String fx:id="ROOM_3" fx:value="Room 3" />
-            </FXCollections>
-         </items>
-      </ComboBox>
       <MenuBar fx:id="homeBar" layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Log In" />
-                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
@@ -66,7 +57,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                </items>
             </Menu>
             <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
@@ -78,5 +68,25 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Label alignment="CENTER" layoutX="340.0" layoutY="127.0" text="Room" />
+      <ComboBox fx:id="roomInput" layoutX="281.0" layoutY="145.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="197.0" layoutY="145.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="214.0" layoutY="127.0" text="Floor" />
+      <TextField fx:id="employeeNameInput" layoutX="314.0" layoutY="205.0" onAction="#setEmployeeName" prefHeight="26.0" prefWidth="150.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="180.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
    </children>
 </AnchorPane>

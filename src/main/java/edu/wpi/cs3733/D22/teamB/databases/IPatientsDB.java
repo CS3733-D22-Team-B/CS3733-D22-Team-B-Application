@@ -2,10 +2,8 @@ package edu.wpi.cs3733.D22.teamB.databases;
 
 import java.util.LinkedList;
 
-public interface PatientDAOImpl {
+public interface IPatientsDB {
   public LinkedList<Patient> listPatients();
-
-  public void patientsToCSV();
 
   public int updatePatient(Patient patObj);
 

@@ -10,7 +10,7 @@ public class Location {
   private String longName;
   private String shortName;
 
-  Location(
+  public Location(
       String nodeID,
       int xCoord,
       int yCoord,

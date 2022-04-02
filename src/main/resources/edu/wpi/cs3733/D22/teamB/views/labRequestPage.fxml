@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -22,8 +23,8 @@
       </Label>
       <Label fx:id="requestLabel" layoutX="149.0" layoutY="323.0" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <Label layoutX="273.0" layoutY="147.0" text="Lab Test" />
-      <ComboBox fx:id="labTestInput" layoutX="224.0" layoutY="165.0" onAction="#setLabTest" prefWidth="150.0">
+      <Label layoutX="172.0" layoutY="151.0" text="Lab Test" />
+      <ComboBox fx:id="labTestInput" layoutX="123.0" layoutY="169.0" onAction="#setLabTest" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="XRAY" fx:value="X-Ray" />
@@ -32,14 +33,14 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <DatePicker fx:id="testingTimeInput" layoutX="212.0" layoutY="224.0" onAction="#setTestingTime" />
-      <Label layoutX="265.0" layoutY="206.0" text="Testing Time" />
+      <DatePicker fx:id="testingTimeInput" layoutX="292.0" layoutY="165.0" onAction="#setTestingTime" />
+      <Label layoutX="345.0" layoutY="147.0" text="Testing Time" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Log In" />
-                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
@@ -60,7 +61,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                </items>
             </Menu>
             <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
@@ -72,5 +72,25 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
+      <ComboBox fx:id="roomInput" layoutX="262.0" layoutY="109.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="178.0" layoutY="109.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
+      <TextField fx:id="employeeNameInput" layoutX="217.0" layoutY="233.0" onAction="#setEmployeeName" prefHeight="26.0" prefWidth="150.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="247.0" layoutY="208.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -7,19 +7,30 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PatientsDAO implements PatientDAOImpl {
+public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/PatientsBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
+  private static PatientsDB patientsDBManager;
 
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();;
 
-  public PatientsDAO() {
-    patientMap = PatientsInit();
+  private PatientsDB() {
+    super(
+        "Patients",
+        "patientID",
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv");
+    initDB();
   }
 
-  private HashMap<String, Patient> PatientsInit() {
-    HashMap<String, Patient> patHM = new HashMap<String, Patient>();
+  public static PatientsDB getInstance() {
+    if (patientsDBManager == null) {
+      patientsDBManager = new PatientsDB();
+    }
+    return patientsDBManager;
+  }
+
+  public void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -32,71 +43,26 @@ public class PatientsDAO implements PatientDAOImpl {
         String nodeID = rs.getString("nodeID");
 
         Patient patOb = new Patient(patientID, lastName, firstName, nodeID);
-        patHM.put(patientID, patOb);
+        patientMap.put(patientID, patOb);
       }
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
     }
-    return patHM;
   }
 
   public LinkedList<Patient> listPatients() {
-    LinkedList<Patient> patientList = new LinkedList<Patient>();
+    LinkedList<String> pkList = selectAll();
+    LinkedList<Patient> patList = new LinkedList<Patient>();
 
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Patients");
-
-      while (rs.next()) {
-        String patientID = rs.getString("patientID");
-
-        patientList.add(patientMap.get(patientID));
-      }
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    for (int i = 0; i < pkList.size(); i++) {
+      patList.add(patientMap.get(pkList.get(i)));
     }
-    return patientList;
+    return patList;
   }
 
-  public void patientsToCSV() {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Patients");
-
-      // Create file writer and create header row
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(backupFile));
-      fileWriter.write("patientID, lastName, firstName, nodeID");
-
-      while (rs.next()) {
-        String patientID = rs.getString("patientID");
-        String lastName = rs.getString("lastName");
-        String firstName = rs.getString("firstName");
-        String nodeID = rs.getString("nodeID");
-
-        String line = String.format("%s,%s,%s,%s", patientID, lastName, firstName, nodeID);
-
-        fileWriter.newLine();
-        fileWriter.write(line);
-      }
-      fileWriter.close();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    } catch (IOException e) {
-      System.out.println("File IO error:");
-      e.printStackTrace();
-      return;
-    }
-  }
-
+  ////////////////////////////////////////////////////////////// To Fix
   public int updatePatient(Patient patObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
@@ -177,7 +143,8 @@ public class PatientsDAO implements PatientDAOImpl {
   }
 
   public void quit() {
-    this.patientsToCSV();
+    toCSV();
+    listDB();
 
     try {
       // Create database

@@ -2,10 +2,8 @@ package edu.wpi.cs3733.D22.teamB.databases;
 
 import java.util.LinkedList;
 
-public interface MedicalEquipmentImpl {
+public interface IMedicalEquipmentDB {
   public LinkedList<MedicalEquipment> listMedicalEquipment();
-
-  public void medicalEquipmentToCSV();
 
   public int updateMedicalEquipment(MedicalEquipment meObj);
 

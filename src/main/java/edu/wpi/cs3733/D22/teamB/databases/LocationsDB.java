@@ -7,20 +7,31 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class LocationsDAO implements LocationDAOImpl {
+public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/LocationsBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLocations.csv";
+  private static LocationsDB locationsDBManager;
 
-  private HashMap<String, Location> locationMap = new HashMap<String, Location>();;
+  private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
-  public LocationsDAO() {
-    locationMap = LocationsInit();
+  private LocationsDB() {
+    super(
+        "Locations",
+        "nodeID",
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv");
+    initDB();
   }
 
-  private HashMap<String, Location> LocationsInit() {
-    HashMap<String, Location> locHM = new HashMap<String, Location>();
+  public static LocationsDB getInstance() {
+    if (locationsDBManager == null) {
+      locationsDBManager = new LocationsDB();
+    }
+    return locationsDBManager;
+  }
+
+  public void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -38,37 +49,26 @@ public class LocationsDAO implements LocationDAOImpl {
 
         Location locOb =
             new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-        locHM.put(nodeID, locOb);
+        locationMap.put(nodeID, locOb);
       }
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
     }
-    return locHM;
   }
 
   public LinkedList<Location> listLocations() {
-    LinkedList<Location> locationList = new LinkedList<Location>();
+    LinkedList<String> pkList = selectAll();
+    LinkedList<Location> locList = new LinkedList<Location>();
 
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Locations");
-
-      while (rs.next()) {
-        String nodeID = rs.getString("nodeID");
-
-        locationList.add(locationMap.get(nodeID));
-      }
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(locationMap.get(pkList.get(i)));
     }
-    return locationList;
+    return locList;
   }
 
+  ////////////////////////////////////////////////////////////// To Fix
   public Location getLocation(String nodeID) {
     return locationMap.get(nodeID);
   }
@@ -79,45 +79,6 @@ public class LocationsDAO implements LocationDAOImpl {
             .filter(entry -> longName.equals(entry.getValue().getLongName()))
             .map(Map.Entry::getKey);
     return keys.findFirst().orElse(null);
-  }
-
-  public void locationsToCSV() {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Locations");
-
-      // Create file writer and create header row
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(backupFile));
-      fileWriter.write("nodeId, xCoord, yCoord, floor, building, nodeType, longName, shortName");
-
-      while (rs.next()) {
-        String nodeID = rs.getString("nodeID");
-        int xCoord = rs.getInt("xcoord");
-        int yCoord = rs.getInt("ycoord");
-        String floor = rs.getString("floor");
-        String building = rs.getString("building");
-        String nodeType = rs.getString("nodeType");
-        String longName = rs.getString("longName");
-        String shortName = rs.getString("shortName");
-
-        String line =
-            String.format(
-                "%s,%d,%d,%s,%s,%s,%s,%s",
-                nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-
-        fileWriter.newLine();
-        fileWriter.write(line);
-      }
-      fileWriter.close();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-    } catch (IOException e) {
-      System.out.println("File IO error:");
-      e.printStackTrace();
-    }
   }
 
   public int updateLocation(Location locObj) {
@@ -208,7 +169,8 @@ public class LocationsDAO implements LocationDAOImpl {
   }
 
   public void quit() {
-    this.locationsToCSV();
+    toCSV();
+    listDB();
 
     try {
       // Create database
