@@ -1,4 +1,4 @@
-equipmentID, nodeID, type, isClean, isRequested
+EQUIPMENTID,NODEID,TYPE,ISCLEAN,ISREQUESTED
 BED1,bPATI01403,BED,true,true
 BED2,bPATI01403,BED,true,true
 BED3,bPATI01403,BED,true,true

@@ -5,8 +5,6 @@ import java.util.LinkedList;
 public interface IMedicalEquipmentDB {
   public LinkedList<MedicalEquipment> listMedicalEquipment();
 
-  public void medicalEquipmentToCSV();
-
   public int updateMedicalEquipment(MedicalEquipment meObj);
 
   public int addMedicalEquipment(MedicalEquipment meObj);

@@ -10,13 +10,13 @@ public class DatabaseInitializer {
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
   private final String locationCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/TowerLocations.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
   private final String medicalEQCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedEquipReq.csv";
-  private final String employeesCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/Employees.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
+  // private final String employeesCSVFilePath =
+  // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
   private final String patientsCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/Patients.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
 
   public DatabaseInitializer() {
     initDB();
@@ -27,10 +27,6 @@ public class DatabaseInitializer {
       // Create database
       connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
-      //      statement.execute("DROP TABLE Patients");
-      //      statement.execute("DROP TABLE MedicalEquipment");
-      //      // statement.execute("DROP TABLE Employees");
-      //      statement.execute("DROP TABLE Locations");
       statement.execute(
           "CREATE TABLE Locations(nodeID VARCHAR(10), xcoord int, ycoord int, "
               + "floor VARCHAR(10), building VARCHAR(10), nodeType VARCHAR(10), "
@@ -118,36 +114,3 @@ public class DatabaseInitializer {
     }
   }
 }
-
-/*
-public void listDB(String databaseName, int Elements) {
-    try {
-      Connection connection = DriverManager.getConnection(DBURL);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.getResultSet();
-
-      if (databaseName == "Locations") {
-        rs = statement.executeQuery("SELECT * FROM Locations");
-      } else if (databaseName == "MedicalEquipment") {
-        rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-      } else if (databaseName == "Employees") {
-        rs = statement.executeQuery("SELECT * FROM Employees");
-      } else if (databaseName == "Patients") {
-        rs = statement.executeQuery("SELECT * FROM Patients");
-      }
-
-      while (rs.next()) {
-        System.out.print(databaseName + " { ");
-        for (int i = 1; i < Elements + 1; i++) {
-          System.out.print(rs.getMetaData().getColumnName(i) + ": ");
-          System.out.print(rs.getString(i) + ", ");
-        }
-        System.out.println(" }");
-      }
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
-  }
-*/

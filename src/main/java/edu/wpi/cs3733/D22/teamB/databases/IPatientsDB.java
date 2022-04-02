@@ -5,8 +5,6 @@ import java.util.LinkedList;
 public interface IPatientsDB {
   public LinkedList<Patient> listPatients();
 
-  public void patientsToCSV();
-
   public int updatePatient(Patient patObj);
 
   public int addPatient(Patient patObj);

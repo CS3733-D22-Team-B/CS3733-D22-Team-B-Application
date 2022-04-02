@@ -1,4 +1,4 @@
-patientID,lastName,firstName,roomID
+PATIENTID,LASTNAME,FIRSTNAME,NODEID
 PA01,Smith,John,bPATI01603
 PA02,Anderson,James,bPATI01703
 PA03,Jones,Michael,bPATI01803

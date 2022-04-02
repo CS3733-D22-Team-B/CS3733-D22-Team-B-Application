@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+
 import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
@@ -8,14 +9,18 @@ import java.util.LinkedList;
 public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEquipmentDB {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipmentBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupMedicalEquipment.csv";
   private static MedicalEquipmentDB medicalEquipmentDBManager;
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
 
   private MedicalEquipmentDB() {
-    medicalEquipmentMap = MedicalEquipmentInit();
+    super(
+        "MedicalEquipment",
+        "equipmentID",
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv");
+    initDB();
   }
 
   public static MedicalEquipmentDB getInstance() {
@@ -25,8 +30,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
     return medicalEquipmentDBManager;
   }
 
-  private HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
-    HashMap<String, MedicalEquipment> medHM = new HashMap<String, MedicalEquipment>();
+  public void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -41,73 +45,25 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
 
         MedicalEquipment medOb =
             new MedicalEquipment(equipmentID, nodeID, type, isClean, isRequested);
-        medHM.put(equipmentID, medOb);
+        medicalEquipmentMap.put(equipmentID, medOb);
       }
-
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
     }
-    return medHM;
   }
 
   public LinkedList<MedicalEquipment> listMedicalEquipment() {
+    LinkedList<String> pkList = selectAll();
     LinkedList<MedicalEquipment> medEqList = new LinkedList<MedicalEquipment>();
 
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-
-      while (rs.next()) {
-        String equipmentID = rs.getString("equipmentID");
-
-        medEqList.add(medicalEquipmentMap.get(equipmentID));
-      }
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    for (int i = 0; i < pkList.size(); i++) {
+      medEqList.add(medicalEquipmentMap.get(pkList.get(i)));
     }
     return medEqList;
   }
 
-  public void medicalEquipmentToCSV() {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-
-      // Create file writer and create header row
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(backupFile));
-      fileWriter.write("equipmentID, nodeID, type, isClean, isRequested");
-
-      while (rs.next()) {
-        String equipmentID = rs.getString("equipmentID");
-        String nodeID = rs.getString("nodeID");
-        String type = rs.getString("type");
-        boolean isClean = rs.getBoolean("isClean");
-        boolean isRequested = rs.getBoolean("isRequested");
-
-        String line =
-            String.format("%s,%s,%s,%b,%b", equipmentID, nodeID, type, isClean, isRequested);
-
-        fileWriter.newLine();
-        fileWriter.write(line);
-      }
-      fileWriter.close();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    } catch (IOException e) {
-      System.out.println("File IO error:");
-      e.printStackTrace();
-      return;
-    }
-  }
-
+  ////////////////////////////////////////////////////////////// To Fix
   public int updateMedicalEquipment(MedicalEquipment meObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
@@ -191,8 +147,8 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
   }
 
   public void quit() {
-    this.medicalEquipmentToCSV();
-    listDB("MedicalEquipment", 5);
+    toCSV();
+    listDB();
 
     try {
       // Create database

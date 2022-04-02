@@ -1,4 +1,4 @@
-nodeId, xCoord, yCoord, floor, building, nodeType, longName, shortName
+NODEID,XCOORD,YCOORD,FLOOR,BUILDING,NODETYPE,LONGNAME,SHORTNAME
 bDEPT00101,486,199,1,Tower,DEPT,Center for International Medicine,CIM
 bDEPT00201,507,495,1,Tower,DEPT,Bretholtz Center for Patients and Families,Bretholtz WR
 bDEPT00301,594,261,1,Tower,DEPT,Multifaith Chapel,Chapel
