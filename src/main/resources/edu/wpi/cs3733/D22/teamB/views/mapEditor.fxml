@@ -14,6 +14,8 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapEditorController">
    <children>
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
@@ -63,7 +65,28 @@
       <Button layoutX="430.0" layoutY="183.0" mnemonicParsing="false" text="Cancel" />
       <Button layoutX="519.0" layoutY="183.0" mnemonicParsing="false" text="Confirm" visible="false" />
       <Label alignment="CENTER" layoutX="442.0" layoutY="42.0" prefHeight="42.0" prefWidth="122.0" text="Click on the map to add a location" textAlignment="CENTER" textOverrun="CLIP" visible="false" wrapText="true" />
-      <ComboBox layoutX="429.0" layoutY="97.0" prefWidth="150.0" promptText="Room Type" visible="false" />
+      <ComboBox layoutX="429.0" layoutY="97.0" prefWidth="150.0" promptText="Room Type" visible="false">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="DEPT" />
+               <String fx:value="ELEV" />
+               <String fx:value="EXIT" />
+               <String fx:value="HALL" />
+               <String fx:value="LABS" />
+               <String fx:value="INFO" />
+               <String fx:value="REST" />
+               <String fx:value="RETL" />
+               <String fx:value="LABS" />
+               <String fx:value="SERV" />
+               <String fx:value="STAI" />
+               <String fx:value="STOR" />
+               <String fx:value="BATH" />
+               <String fx:value="DIRT" />
+               <String fx:value="LABS" />
+               <String fx:value="PATI" />
+            </FXCollections>
+         </items>
+      </ComboBox>
       <JFXButton layoutX="443.0" layoutY="73.0" prefHeight="26.0" prefWidth="122.0" text="Edit Locations" visible="false" />
       <JFXButton layoutX="443.0" layoutY="110.0" prefHeight="26.0" prefWidth="122.0" text="Remove Location" visible="false" />
       <JFXButton layoutX="480.0" layoutY="336.0" prefHeight="50.0" prefWidth="47.0" rotate="180.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
@@ -73,7 +96,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ComboBox layoutX="428.0" layoutY="61.0" prefWidth="150.0" promptText="Select Location" />
+      <ComboBox layoutX="428.0" layoutY="61.0" prefWidth="150.0" promptText="Select Location"/>
       <Button layoutX="429.0" layoutY="103.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Change Map Location" visible="false" />
       <TextField layoutX="428.0" layoutY="143.0" promptText="New Location Name" visible="false" />
       <Button layoutX="523.0" layoutY="183.0" mnemonicParsing="false" text="Delete" />
