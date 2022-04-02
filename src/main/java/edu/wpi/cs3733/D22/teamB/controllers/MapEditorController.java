@@ -69,9 +69,9 @@ public class MapEditorController extends MapViewerController {
 
   @FXML
   public void startAdding() {
-    currentFunction = "Add";
     hideButtons();
-    showAdd();
+    currentFunction = "Add";
+    showView();
   }
 
   @FXML
@@ -95,6 +95,16 @@ public class MapEditorController extends MapViewerController {
         confirmButton.setVisible(true);
         break;
       case "Add":
+        addLocationName.setVisible(true);
+        addLocationName.setDisable(false);
+        cancelButton.setDisable(false);
+        cancelButton.setVisible(true);
+        confirmButton.setVisible(true);
+        confirmButton.setDisable(false);
+        addLabel.setVisible(true);
+        addLabel.setDisable(false);
+        typeDropdown.setVisible(true);
+        typeDropdown.setDisable(false);
         break;
       case "Remove":
         break;
@@ -132,6 +142,18 @@ public class MapEditorController extends MapViewerController {
         confirmButton.setVisible(false);
         break;
       case "Add":
+        addLocationName.setVisible(false);
+        addLocationName.setDisable(true);
+        addLocationName.setText(null);
+        cancelButton.setVisible(false);
+        cancelButton.setDisable(true);
+        confirmButton.setVisible(false);
+        confirmButton.setDisable(true);
+        addLabel.setVisible(false);
+        addLabel.setDisable(true);
+        typeDropdown.setValue(null);
+        typeDropdown.setVisible(false);
+        typeDropdown.setDisable(true);
         break;
       case "Remove":
         break;
