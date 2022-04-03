@@ -95,6 +95,6 @@
       <Label alignment="CENTER" layoutX="108.0" layoutY="96.0" text="Floor" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="152.0" prefHeight="18.0" prefWidth="106.0" text="Additional Notes" textAlignment="CENTER" />
       <TextArea fx:id="additionalNotesInput" layoutX="100.0" layoutY="171.0" prefHeight="102.0" prefWidth="200.0" />
-      <Button layoutX="374.0" layoutY="236.0" mnemonicParsing="false" onAction="#sendRequest" text="Button" />
+      <Button layoutX="356.0" layoutY="236.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
    </children>
 </AnchorPane>

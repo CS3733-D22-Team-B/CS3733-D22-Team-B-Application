@@ -7,8 +7,24 @@ public class LabRequest extends Request {
   private Date testingTime;
 
   public LabRequest(String employee, String location, String test, Date testingTime) {
-    super(employee, location, "Lab");
+    super(employee, location);
     this.test = test;
     this.testingTime = testingTime;
+  }
+
+  public final String createRequestID() {
+    return "LAB" + getHashCode();
+  }
+
+  public final String getType() {
+    return "Lab Test";
+  }
+
+  public final String getTest() {
+    return test;
+  }
+
+  public final Date getTestingTime() {
+    return testingTime;
   }
 }

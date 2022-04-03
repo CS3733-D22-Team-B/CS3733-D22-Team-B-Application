@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
-public class EquipmentRequestQueueController extends MenuBarController implements Initializable {
+public class RequestQueueController extends MenuBarController implements Initializable {
   @FXML TableView<Request> requestTable;
   @FXML TableColumn<Request, String> columnRequestID;
   @FXML TableColumn<Request, String> columnType;
@@ -22,8 +22,6 @@ public class EquipmentRequestQueueController extends MenuBarController implement
   @FXML TableColumn<Request, Void> columnButtons;
 
   @FXML Label requestIDLabel;
-  @FXML Label typeLabel;
-  @FXML Label statusLabel;
   @FXML Label locationLabel;
   @FXML Label employeeLabel;
 
@@ -35,16 +33,17 @@ public class EquipmentRequestQueueController extends MenuBarController implement
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    columnRequestID.setCellValueFactory(new PropertyValueFactory<>("employee"));
+    columnRequestID.setCellValueFactory(new PropertyValueFactory<>("requestID"));
     columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-    for (Request equipmentRequest : RequestQueue.getRequests()) {
-      requests.add(equipmentRequest);
+    statusInput.setDisable(true);
+
+    for (Request request : RequestQueue.getRequests()) {
+      requests.add(request);
     }
 
     requestTable.setItems(requests);
-
     addButtonToTable();
   }
 
@@ -55,14 +54,18 @@ public class EquipmentRequestQueueController extends MenuBarController implement
           public TableCell<Request, Void> call(final TableColumn<Request, Void> param) {
             final TableCell<Request, Void> cell =
                 new TableCell<Request, Void>() {
-                  private final Button btn = new Button("View Request");
+                  private final Button requestViewerButton = new Button("View Request");
 
                   {
-                    btn.setOnAction(
+                    requestViewerButton.setOnAction(
                         (ActionEvent event) -> {
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
+                          requestIDLabel.setText(request.getRequestID());
                           locationLabel.setText(request.getLocation());
+                          employeeLabel.setText(request.getEmployee());
+                          statusInput.setValue(request.getStatus());
+                          statusInput.setDisable(false);
                         });
                   }
 
@@ -72,7 +75,7 @@ public class EquipmentRequestQueueController extends MenuBarController implement
                     if (empty) {
                       setGraphic(null);
                     } else {
-                      setGraphic(btn);
+                      setGraphic(requestViewerButton);
                     }
                   }
                 };
@@ -85,7 +88,7 @@ public class EquipmentRequestQueueController extends MenuBarController implement
   }
 
   @FXML
-  public void setStatus(ActionEvent event) {
+  public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
     requestTable.refresh();
   }

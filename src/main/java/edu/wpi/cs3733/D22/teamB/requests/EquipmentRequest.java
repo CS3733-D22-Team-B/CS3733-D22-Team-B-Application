@@ -5,9 +5,17 @@ public class EquipmentRequest extends Request {
   private String notes;
 
   public EquipmentRequest(String employee, String location, String equipment, String notes) {
-    super(employee, location, "Equipment");
+    super(employee, location);
     this.equipment = equipment;
     this.notes = notes;
+  }
+
+  public final String createRequestID() {
+    return "EQU" + getHashCode();
+  }
+
+  public final String getType() {
+    return "Equipment";
   }
 
   public String getEquipment() {
@@ -16,10 +24,6 @@ public class EquipmentRequest extends Request {
 
   public String getNotes() {
     return notes;
-  }
-
-  public void setEquipment(String equipment) {
-    this.equipment = equipment;
   }
 
   public void setNotes(String notes) {
