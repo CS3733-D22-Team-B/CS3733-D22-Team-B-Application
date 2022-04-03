@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class EquipmentRequestDB extends DatabaseSuperclass implements IEquipmentRequest {
+public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
@@ -56,7 +56,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IEquipment
     }
   }
 
-  public LinkedList<EquipmentRequest> listEquipmentRequests() {
+  public LinkedList<EquipmentRequest> list() {
     LinkedList<String> pkList = selectAll();
     LinkedList<EquipmentRequest> eqreqList = new LinkedList<EquipmentRequest>();
 
@@ -66,7 +66,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IEquipment
     return eqreqList;
   }
 
-  public int updateEquipmentRequest(EquipmentRequest eqreqObj) {
+  public int update(EquipmentRequest eqreqObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
 
@@ -99,7 +99,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IEquipment
     return 0;
   }
 
-  public int addEquipmentRequest(EquipmentRequest eqreqObj) {
+  public int add(EquipmentRequest eqreqObj) {
     // nodeID has to be unique
     if (equipmentRequestMap.containsKey(eqreqObj.getRequestID())) {
       return -1;
@@ -130,7 +130,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IEquipment
     return 0;
   }
 
-  public int deleteEquipmentRequest(EquipmentRequest eqreqObj) {
+  public int delete(EquipmentRequest eqreqObj) {
     // nodeID has to exist
     if (equipmentRequestMap.containsKey(eqreqObj.getRequestID()) == false) {
       return -1;

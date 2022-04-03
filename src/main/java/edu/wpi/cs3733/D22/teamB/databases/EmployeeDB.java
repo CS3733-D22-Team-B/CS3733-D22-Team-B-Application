@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class EmployeeDB extends DatabaseSuperclass implements IEmployeeDB {
+public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employee> {
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEmployees.csv";
@@ -50,7 +50,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IEmployeeDB {
     }
   }
 
-  public LinkedList<Employee> listEmployees() {
+  public LinkedList<Employee> list() {
     LinkedList<String> pkList = selectAll();
     LinkedList<Employee> employeeList = new LinkedList<Employee>();
 
@@ -65,7 +65,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IEmployeeDB {
     return employeeMap.get(employeeId);
   }
 
-  public int updateEmployee(Employee empObj) {
+  public int update(Employee empObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
 
@@ -96,7 +96,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IEmployeeDB {
     return 0;
   }
 
-  public int addEmployee(Employee empObj) {
+  public int add(Employee empObj) {
     // nodeID has to be unique
     if (employeeMap.containsKey(empObj.getEmployeeID())) {
       return -1;
@@ -125,7 +125,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IEmployeeDB {
     return 0;
   }
 
-  public int deleteEmployee(Employee empObj) {
+  public int delete(Employee empObj) {
     // nodeID has to exist
     if (employeeMap.containsKey(empObj.getEmployeeID()) == false) {
       return -1;
