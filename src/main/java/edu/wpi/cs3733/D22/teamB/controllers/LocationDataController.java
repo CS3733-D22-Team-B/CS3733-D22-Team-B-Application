@@ -33,7 +33,7 @@ public class LocationDataController extends MenuBarController implements Initial
     columnBuilding.setCellValueFactory(new PropertyValueFactory<>("building"));
 
     dao = LocationsDB.getInstance();
-    LinkedList<edu.wpi.cs3733.D22.teamB.databases.Location> locs = dao.listLocations();
+    LinkedList<edu.wpi.cs3733.D22.teamB.databases.Location> locs = dao.list();
     for (edu.wpi.cs3733.D22.teamB.databases.Location location : locs) {
       locations.add(location);
     }

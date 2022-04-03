@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEquipmentDB {
+public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupMedicalEquipment.csv";
@@ -52,7 +52,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
     }
   }
 
-  public LinkedList<MedicalEquipment> listMedicalEquipment() {
+  public LinkedList<MedicalEquipment> list() {
     LinkedList<String> pkList = selectAll();
     LinkedList<MedicalEquipment> medEqList = new LinkedList<MedicalEquipment>();
 
@@ -63,7 +63,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
   }
 
   ////////////////////////////////////////////////////////////// To Fix
-  public int updateMedicalEquipment(MedicalEquipment meObj) {
+  public int update(MedicalEquipment meObj) {
     try {
       Connection connection = DriverManager.getConnection(url);
 
@@ -94,7 +94,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
     return 0;
   }
 
-  public int addMedicalEquipment(MedicalEquipment meObj) {
+  public int add(MedicalEquipment meObj) {
     // equipmentID has to be unique
     if (medicalEquipmentMap.containsKey(meObj.getEquipmentID())) {
       return -1;
@@ -123,7 +123,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
     return 0;
   }
 
-  public int deleteMedicalEquipment(MedicalEquipment meObj) {
+  public int delete(MedicalEquipment meObj) {
     // equipmentID has to exist
     if (medicalEquipmentMap.containsKey(meObj.getEquipmentID()) == false) {
       return -1;
