@@ -1,11 +1,16 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import static java.lang.Math.round;
+import static java.lang.String.valueOf;
+
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 
 public class MapEditorController extends MapViewerController {
 
@@ -23,7 +28,14 @@ public class MapEditorController extends MapViewerController {
   @FXML private Button deleteButton;
   @FXML private Label warningLabel;
 
+  @FXML private Label tempX;
+  @FXML private Label tempY;
+
+  @FXML private Circle marker;
+
   private String currentFunction;
+  private double selectedXCoord;
+  private double selectedYCoord;
 
   @FXML
   public void hideButtons() {
@@ -50,25 +62,7 @@ public class MapEditorController extends MapViewerController {
   }
 
   @FXML
-  public void showAdd() {
-    addLocationName.setVisible(true);
-    cancelButton.setVisible(true);
-    confirmButton.setVisible(true);
-    addLabel.setVisible(true);
-    typeDropdown.setVisible(true);
-  }
-
-  @FXML
-  public void hideAdd() {
-    addLocationName.setVisible(false);
-    cancelButton.setVisible(false);
-    confirmButton.setVisible(false);
-    addLabel.setVisible(false);
-    typeDropdown.setVisible(false);
-  }
-
-  @FXML
-  public void startAdding() {
+  public void addLocation() {
     hideButtons();
     currentFunction = "Add";
     showView();
@@ -82,7 +76,30 @@ public class MapEditorController extends MapViewerController {
   }
 
   @FXML
+  public void removeLocation() {
+    hideButtons();
+    currentFunction = "Remove";
+    showView();
+  }
+
+  public void enableEditButton() {
+    if (currentFunction.equals("Edit") && locationsDropdown.getValue() != null) {
+      editEnableButton.setDisable(false);
+      confirmButton.setDisable(false);
+    }
+    if (currentFunction.equals("Remove") && locationsDropdown.getValue() != null) {
+      deleteButton.setDisable(false);
+    }
+  }
+
+  public void showEditFields() {
+    editNameField.setDisable(false);
+    editNameField.setVisible(true);
+  }
+
+  @FXML
   public void showView() {
+    disableFloorChange();
     switch (currentFunction) {
       case "Edit":
         locationsDropdown.setDisable(false);
@@ -107,22 +124,17 @@ public class MapEditorController extends MapViewerController {
         typeDropdown.setDisable(false);
         break;
       case "Remove":
+        locationsDropdown.setDisable(false);
+        locationsDropdown.setVisible(true);
+        warningLabel.setVisible(true);
+        deleteButton.setVisible(true);
+        deleteButton.setDisable(true);
+        cancelButton.setVisible(true);
+        cancelButton.setDisable(false);
         break;
       default:
         break;
     }
-  }
-
-  public void enableEditButton() {
-    if (currentFunction.equals("Edit") && locationsDropdown.getValue() != null) {
-      editEnableButton.setDisable(false);
-      confirmButton.setDisable(false);
-    }
-  }
-
-  public void showEditFields() {
-    editNameField.setDisable(false);
-    editNameField.setVisible(true);
   }
 
   @FXML
@@ -156,10 +168,36 @@ public class MapEditorController extends MapViewerController {
         typeDropdown.setDisable(true);
         break;
       case "Remove":
+        locationsDropdown.setDisable(true);
+        locationsDropdown.setVisible(false);
+        warningLabel.setVisible(false);
+        deleteButton.setVisible(false);
+        deleteButton.setDisable(true);
+        cancelButton.setVisible(false);
+        cancelButton.setDisable(true);
         break;
       default:
         break;
     }
+    enableFloorChange();
     showButtons();
+  }
+
+  @FXML
+  public void getCoords(MouseEvent event) {
+    double sceneXCoord;
+    double sceneYCoord;
+    selectedXCoord = round(event.getX());
+    selectedYCoord = round(event.getY());
+
+    sceneXCoord = round(event.getSceneX());
+    sceneYCoord = round(event.getSceneY());
+
+    tempX.setText(valueOf(selectedXCoord));
+    tempY.setText(valueOf(selectedYCoord));
+
+    marker.setCenterX(sceneXCoord);
+    marker.setCenterY(sceneYCoord);
+    marker.setVisible(true);
   }
 }
