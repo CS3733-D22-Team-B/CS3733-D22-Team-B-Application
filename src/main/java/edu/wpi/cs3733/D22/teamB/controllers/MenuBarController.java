@@ -1,9 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequestDB;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
-import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -183,11 +180,13 @@ public class MenuBarController {
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = PatientsDB.getInstance();
     EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
+    EmployeeDB empDB = EmployeeDB.getInstance();
 
     eqReqDB.quit();
     patDB.quit();
     medEqDB.quit();
     locDB.quit();
+    empDB.quit();
 
     System.exit(0);
   }
