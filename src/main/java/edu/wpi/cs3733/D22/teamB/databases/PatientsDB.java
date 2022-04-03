@@ -148,20 +148,4 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     }
     return 0;
   }
-
-  public void quit() {
-    toCSV();
-    listDB();
-
-    try {
-      // Create database
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      statement.execute("DROP TABLE Patients");
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
-  }
 }

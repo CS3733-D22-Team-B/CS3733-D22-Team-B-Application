@@ -174,6 +174,21 @@ public abstract class DatabaseSuperclass {
     return filteredSearchList;
   }
 
+  public void quit() {
+    toCSV();
+    listDB();
+
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      statement.execute("DROP TABLE " + tableType + "");
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return;
+    }
+  }
+
   private boolean stringToBoolean(String input) {
     if (input.toLowerCase().compareTo("true") == 0 || input.toLowerCase().compareTo("false") == 0) {
       if (input.toLowerCase().compareTo("true") == 0) {
@@ -186,39 +201,3 @@ public abstract class DatabaseSuperclass {
     }
   }
 }
-
-/*
-  LinkedList<String> filteredSearchList = new LinkedList<String>();
-    try {
-            Connection connection = DriverManager.getConnection(DBURL);
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
-            int Elements = rs.getMetaData().getColumnCount();
-            String listOfColumns = "";
-
-            // rs = statement.executeQuery("SELECT * FROM " + tableType + "");
-
-      /*while (rs.next()) {
-        for (int i = 1; i < Elements + 1; i++) {
-          // if (rs.getString(i) == input) {
-          //  columnName = rs.getMetaData().getColumnName(i);
-          // }
-        }
-      }
-
-      System.out.println("ColName: " + columnName + ", Input: " + input);
-            // rs = statement.executeQuery("SELECT * FROM " + tableType + " WHERE " + columnName + " = " +
-            // input + "");
-
-            // while (rs.next()) {
-            // filteredSearchList.add(rs.getString(1));
-            //  System.out.println("RS.GetString(): " + rs.getString(1));
-            // }
-
-            } catch (SQLException e) {
-            System.out.println("Connection failed. Check output console.");
-            e.printStackTrace();
-            }
-
-            return filteredSearchList;
-*/

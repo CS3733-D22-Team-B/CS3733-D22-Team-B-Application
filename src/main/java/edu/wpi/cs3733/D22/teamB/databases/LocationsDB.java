@@ -177,29 +177,4 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     }
     return 0;
   }
-
-  public void quit() {
-    toCSV();
-    listDB();
-
-    searchFor("bHALL005L1");
-    searchFor("756");
-    searchFor("297");
-    searchFor("L1");
-    searchFor("Tower");
-    searchFor("HALL");
-    searchFor("Hallway Connector 5 Floor L1");
-    searchFor("FL1 Hallway 5");
-
-    try {
-      // Create database
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      statement.execute("DROP TABLE Locations");
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
-  }
 }
