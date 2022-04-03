@@ -19,7 +19,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
         "MedicalEquipment",
         "equipmentID",
         "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv");
-    initDB();
+    initMedEqDB();
   }
 
   public static MedicalEquipmentDB getInstance() {
@@ -29,7 +29,11 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     return medicalEquipmentDBManager;
   }
 
-  public void initDB() {
+  public HashMap<String, MedicalEquipment> getMap() {
+    return medicalEquipmentMap;
+  }
+
+  public void initMedEqDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

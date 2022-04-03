@@ -18,8 +18,6 @@ public abstract class DatabaseSuperclass {
     filePath = initFilePath;
   }
 
-  protected abstract void initDB();
-
   protected void listDB() {
     try {
       Connection connection = DriverManager.getConnection(DBURL);
@@ -189,6 +187,7 @@ public abstract class DatabaseSuperclass {
     }
   }
 
+  ////////////////////////////////////////////////////////// Helper Functions
   private boolean stringToBoolean(String input) {
     if (input.toLowerCase().compareTo("true") == 0 || input.toLowerCase().compareTo("false") == 0) {
       if (input.toLowerCase().compareTo("true") == 0) {
@@ -201,3 +200,54 @@ public abstract class DatabaseSuperclass {
     }
   }
 }
+
+/*
+protected void initDB() {
+  try {
+    Connection connection = DriverManager.getConnection(DBURL);
+    Statement statement = connection.createStatement();
+    ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
+    int Elements = rs.getMetaData().getColumnCount();
+
+    // HashMap<String, Location> LocMap = new HashMap<String, Location>();
+
+    while (rs.next()) {
+      String[] data = new String[Elements + 1];
+      for (int i = 1; i < Elements + 1; i++) {
+        data[i] = rs.getString(i);
+      }
+
+      if (tableType == "Locations") {
+        Location locOb =
+                new Location(
+                        data[1],
+                        Integer.parseInt(data[2]),
+                        Integer.parseInt(data[3]),
+                        data[4],
+                        data[5],
+                        data[6],
+                        data[7],
+                        data[8]);
+        // LocMap.put(data[0], locOb);
+        LocationsDB.getInstance().getMap().put(data[1], locOb);
+      } else if (tableType == "Patients") {
+        Patient patOb = new Patient(data[1], data[2], data[3], data[4]);
+        // PatientsDB.getInstance().getMap().put(data[1], patOb);
+      } else if (tableType == "MedicalEquipment") {
+        MedicalEquipment medOb =
+                new MedicalEquipment(
+                        data[1], data[2], data[3], stringToBoolean(data[4]), stringToBoolean(data[5]));
+        // MedicalEquipmentDB.getInstance().getMap().put(data[1], medOb);
+      }
+    }
+    if (tableType == "Locations") {
+      LocationsDB.getInstance().SetMap(LocMap);
+    } else if (tableType == "Patients") {
+    } else if (tableType == "MedicalEquipment") {
+    }
+  } catch (SQLException e) {
+    System.out.println("Connection failed. Check output console.");
+    e.printStackTrace();
+  }
+}
+*/

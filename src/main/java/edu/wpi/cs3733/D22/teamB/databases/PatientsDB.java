@@ -10,14 +10,14 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
   private static PatientsDB patientsDBManager;
 
-  private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();;
+  private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
 
   private PatientsDB() {
     super(
         "Patients",
         "patientID",
         "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv");
-    initDB();
+    initPatDB();
   }
 
   public static PatientsDB getInstance() {
@@ -27,7 +27,11 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     return patientsDBManager;
   }
 
-  public void initDB() {
+  public HashMap<String, Patient> getMap() {
+    return patientMap;
+  }
+
+  public void initPatDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

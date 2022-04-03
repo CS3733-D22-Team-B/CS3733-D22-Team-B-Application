@@ -12,6 +12,4 @@ public interface IDatabases<L> {
   public int add(L locObj);
 
   public int delete(L locObj);
-
-  public void quit();
 }
