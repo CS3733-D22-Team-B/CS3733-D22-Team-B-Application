@@ -29,7 +29,7 @@ public abstract class RequestController extends MenuBarController {
 
   public void initialize() {
     dao = LocationsDB.getInstance();
-    LinkedList<Location> locations = dao.listLocations();
+    LinkedList<Location> locations = dao.list();
 
     for (Location location : locations) {
       switch (location.getFloor()) {
