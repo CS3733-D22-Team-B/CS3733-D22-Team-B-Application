@@ -62,6 +62,13 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     return medEqList;
   }
 
+  public MedicalEquipment getByID(String id) {
+    if (!medicalEquipmentMap.containsKey(id)) {
+      return null;
+    }
+    return medicalEquipmentMap.get(id);
+  }
+
   ////////////////////////////////////////////////////////////// To Fix
   public int update(MedicalEquipment meObj) {
     try {

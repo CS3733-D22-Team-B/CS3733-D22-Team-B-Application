@@ -66,6 +66,13 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     return eqreqList;
   }
 
+  public EquipmentRequest getByID(String id) {
+    if (!equipmentRequestMap.containsKey(id)) {
+      return null;
+    }
+    return equipmentRequestMap.get(id);
+  }
+
   public int update(EquipmentRequest eqreqObj) {
     try {
       Connection connection = DriverManager.getConnection(url);

@@ -59,6 +59,13 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     return patList;
   }
 
+  public Patient getByID(String id) {
+    if (!patientMap.containsKey(id)) {
+      return null;
+    }
+    return patientMap.get(id);
+  }
+
   ////////////////////////////////////////////////////////////// To Fix
   public int update(Patient patObj) {
     try {

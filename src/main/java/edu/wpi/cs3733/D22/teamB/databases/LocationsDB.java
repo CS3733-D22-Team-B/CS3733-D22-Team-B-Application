@@ -68,6 +68,13 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     return locList;
   }
 
+  public Location getByID(String id) {
+    if (!locationMap.containsKey(id)) {
+      return null;
+    }
+    return locationMap.get(id);
+  }
+
   ////////////////////////////////////////////////////////////// To Fix
   public Location getLocation(String nodeID) {
     return locationMap.get(nodeID);

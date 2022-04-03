@@ -5,6 +5,8 @@ import java.util.LinkedList;
 public interface IDatabases<L> {
   public LinkedList<L> list();
 
+  public L getByID(String id);
+
   public int update(L locObj);
 
   public int add(L locObj);
