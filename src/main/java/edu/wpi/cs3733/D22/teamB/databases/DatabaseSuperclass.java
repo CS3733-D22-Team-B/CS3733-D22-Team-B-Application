@@ -174,6 +174,19 @@ public abstract class DatabaseSuperclass {
     return filteredSearchList;
   }
 
+  protected int deleteFrom(String pk) {
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      String sql = "DELETE FROM Locations WHERE " + pkName + " = '" + pk + "'";
+      statement.executeUpdate(sql);
+    } catch (SQLException e) {
+      System.out.println("Connection failed.");
+      return -1;
+    }
+    return 0;
+  }
+
   public void quit() {
     toCSV();
     listDB();
