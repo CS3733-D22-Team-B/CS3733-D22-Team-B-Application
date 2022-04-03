@@ -36,6 +36,10 @@ public class MedicalEquipment {
     return nodeID;
   }
 
+  public void setLocation(Location l) {
+    setNodeID(l.getNodeID());
+  }
+
   public Location getLocation() {
     LocationsDB locDB = LocationsDB.getInstance();
     location = locDB.getByID(nodeID);

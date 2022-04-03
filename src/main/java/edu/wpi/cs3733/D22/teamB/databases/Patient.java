@@ -5,6 +5,7 @@ public class Patient {
   private String lastName;
   private String firstName;
   private String nodeID;
+  private Location location;
 
   public Patient(String newPatientID, String newLastName, String newFirstName, String newNodeID) {
     setPatientID(newPatientID);
@@ -43,5 +44,44 @@ public class Patient {
 
   public String getNodeID() {
     return nodeID;
+  }
+
+  public void setLocation(Location l) {
+    setNodeID(l.getNodeID());
+  }
+
+  public Location getLocation() {
+    LocationsDB locDB = LocationsDB.getInstance();
+    location = locDB.getByID(nodeID);
+    return location;
+  }
+
+  /////////////////// LOCATION GETTERS////////////////////
+  public int getXCoord() {
+    return location.getXCoord();
+  }
+
+  public int getYCoord() {
+    return location.getYCoord();
+  }
+
+  public String getFloor() {
+    return location.getFloor();
+  }
+
+  public String getBuilding() {
+    return location.getBuilding();
+  }
+
+  public String getNodeType() {
+    return location.getNodeType();
+  }
+
+  public String getLongName() {
+    return location.getLongName();
+  }
+
+  public String getShortName() {
+    return location.getShortName();
   }
 }
