@@ -1,12 +1,9 @@
 package edu.wpi.cs3733.D22.teamB;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 public class MedicalEquipmentDBTest {
+  /*
 
   @Before
   public void setUp() throws Exception {
@@ -71,4 +68,6 @@ public class MedicalEquipmentDBTest {
     int failure = medDB.delete(medObj);
     Assert.assertEquals(-1, failure);
   }
+
+   */
 }

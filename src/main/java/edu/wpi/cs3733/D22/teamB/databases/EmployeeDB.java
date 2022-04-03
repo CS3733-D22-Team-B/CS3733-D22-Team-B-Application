@@ -60,6 +60,13 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
     return employeeList;
   }
 
+  public Employee getByID(String id) {
+    if (!employeeMap.containsKey(id)) {
+      return null;
+    }
+    return employeeMap.get(id);
+  }
+
   ////////////////////////////////////////////////////////////// To Fix
   public Employee getEmployee(String employeeId) {
     return employeeMap.get(employeeId);

@@ -20,7 +20,7 @@ public class Employee {
     return employeeID;
   }
 
-  public void setEmployeeID(String employeeID) {
+  private void setEmployeeID(String employeeID) {
     this.employeeID = employeeID;
   }
 
