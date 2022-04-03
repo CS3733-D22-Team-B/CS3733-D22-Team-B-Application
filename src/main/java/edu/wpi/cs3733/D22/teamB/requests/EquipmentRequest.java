@@ -1,10 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import java.util.LinkedList;
-
 public class EquipmentRequest extends Request {
-  public static LinkedList<EquipmentRequest> equipmentRequests = new LinkedList<EquipmentRequest>();
-
   private String equipment;
   private String notes;
 
@@ -12,6 +8,14 @@ public class EquipmentRequest extends Request {
     super(employee, location);
     this.equipment = equipment;
     this.notes = notes;
+  }
+
+  public final String createRequestID() {
+    return "EQU" + getHashCode();
+  }
+
+  public final String getType() {
+    return "Equipment";
   }
 
   public String getEquipment() {
@@ -22,15 +26,7 @@ public class EquipmentRequest extends Request {
     return notes;
   }
 
-  public void setEquipment(String equipment) {
-    this.equipment = equipment;
-  }
-
   public void setNotes(String notes) {
     this.notes = notes;
-  }
-
-  public String getType() {
-    return "Equipment";
   }
 }
