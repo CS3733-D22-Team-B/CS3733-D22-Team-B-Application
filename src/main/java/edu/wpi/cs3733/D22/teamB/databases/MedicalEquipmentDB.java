@@ -29,7 +29,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     return medicalEquipmentDBManager;
   }
 
-  public void initDB() {
+  protected void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

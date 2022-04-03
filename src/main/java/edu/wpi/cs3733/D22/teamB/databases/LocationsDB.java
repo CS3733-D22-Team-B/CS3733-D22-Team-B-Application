@@ -31,7 +31,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     return locationsDBManager;
   }
 
-  public void initDB() {
+  protected void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

@@ -27,7 +27,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     return patientsDBManager;
   }
 
-  public void initDB() {
+  protected void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
