@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
    <children>
-      <Button layoutX="251.0" layoutY="283.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
-      <Label layoutX="194.0" layoutY="40.0" text="Lab Service Request">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      <HBox layoutX="5.0" layoutY="27.0" prefHeight="372.0" prefWidth="231.0" style="-fx-background-color: #3d6183#3d6183;" />
       <Label fx:id="resultLabel" layoutX="149.0" layoutY="323.0" />
-      <Label layoutX="276.0" layoutY="88.0" text="Patient" />
-      <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <ComboBox fx:id="patientNameComboBox" layoutX="224.0" layoutY="106.0" onAction="#setPatient" prefWidth="150.0">
+      <Label layoutX="299.0" layoutY="324.0" text="Patient" />
+      <ComboBox fx:id="patientNameComboBox" layoutX="244.0" layoutY="350.0" onAction="#setPatient" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="JOHN_DOE" fx:value="John Doe" />
@@ -26,8 +30,8 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label layoutX="273.0" layoutY="147.0" text="Lab Test" />
-      <ComboBox fx:id="labTestComboBox" layoutX="224.0" layoutY="165.0" onAction="#setLabTest" prefWidth="150.0">
+      <Label layoutX="474.0" layoutY="324.0" text="Lab Test" />
+      <ComboBox fx:id="labTestComboBox" layoutX="430.0" layoutY="350.0" onAction="#setLabTest" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="XRAY" fx:value="X-Ray" />
@@ -36,8 +40,12 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <DatePicker fx:id="testingDatePicker" layoutX="212.0" layoutY="224.0" onAction="#setTestingTime" />
-      <Label layoutX="265.0" layoutY="206.0" text="Testing Time" />
+      <DatePicker fx:id="testingDatePicker" layoutX="14.0" layoutY="240.0" onAction="#setTestingTime" translateX="5.0" />
+      <Label layoutX="66.0" layoutY="213.0" text="Testing Time" textFill="#eeeeee" translateX="3.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button alignment="BOTTOM_CENTER" layoutX="5.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="26.0" prefWidth="128.0" text="Back to Homepage" textAlignment="CENTER" translateX="-12.0" wrapText="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="417.0" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -74,5 +82,35 @@
             </Menu>
          </menus>
       </MenuBar>
+      <TextField layoutX="425.0" layoutY="187.0" />
+      <Label layoutX="456.0" layoutY="161.0" text="Request Status" />
+      <TextField layoutX="239.0" layoutY="187.0" />
+      <Button layoutX="55.0" layoutY="292.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" AnchorPane.bottomAnchor="82.0" />
+      <Label alignment="CENTER" layoutX="14.0" layoutY="45.0" text="Lab Service Request" textFill="WHITESMOKE" translateY="15.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="80.0" fitWidth="134.0" layoutX="252.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-03-29%20at%203.49.25%20PM.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="255.0" layoutY="161.0" text="Staff Member Assigned" />
+      <ImageView fitHeight="80.0" fitWidth="134.0" layoutX="438.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Downloads/request%20status.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="133.0" layoutX="258.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Downloads/Hosptial%20patient%20.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="134.0" layoutX="438.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Downloads/lab-test.jpeg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
