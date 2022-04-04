@@ -94,14 +94,15 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     }
     return transform(
         locObj,
-        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ? WHERE nodeID = ?");
+        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ? WHERE nodeID = ?",
+        true);
   }
 
   public int add(Location locObj) {
     if (locationMap.containsKey(locObj.getNodeID())) {
       return -1;
     }
-    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?)");
+    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Location locObj) {
@@ -113,20 +114,28 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   }
 
   /////////////////////////////////////////////////////////////////////// Helper
-  private int transform(Location locObj, String sql) {
+  private int transform(Location locObj, String sql, boolean isUpdate) {
     final int Elements = 8;
     try {
       Connection connection = DriverManager.getConnection(url);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
-      pStatement.setString(1, locObj.getNodeID());
-      pStatement.setInt(2, locObj.getXCoord());
-      pStatement.setInt(3, locObj.getYCoord());
-      pStatement.setString(4, locObj.getFloor());
-      pStatement.setString(5, locObj.getBuilding());
-      pStatement.setString(6, locObj.getNodeType());
-      pStatement.setString(7, locObj.getLongName());
-      pStatement.setString(8, locObj.getShortName());
+      int offset = 0;
+
+      if (isUpdate) {
+        pStatement.setString(8, locObj.getNodeID());
+        offset = -1;
+      } else {
+        pStatement.setString(1, locObj.getNodeID());
+      }
+
+      pStatement.setInt(2 + offset, locObj.getXCoord());
+      pStatement.setInt(3 + offset, locObj.getYCoord());
+      pStatement.setString(4 + offset, locObj.getFloor());
+      pStatement.setString(5 + offset, locObj.getBuilding());
+      pStatement.setString(6 + offset, locObj.getNodeType());
+      pStatement.setString(7 + offset, locObj.getLongName());
+      pStatement.setString(8 + offset, locObj.getShortName());
 
       pStatement.addBatch();
       pStatement.executeBatch();
