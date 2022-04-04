@@ -277,6 +277,20 @@ public class MapViewerController extends MenuBarController {
     return new int[] {xView, yView};
   }
 
+  public int[] imageCoordsToCSVCoords(int x, int y) {
+    int mapWidth = 1060;
+    int mapHeight = 930;
+    int fitWidth = (int) mapImage.getFitWidth();
+    int fitHeight = (int) mapImage.getFitHeight();
+    int xOffset = (int) mapImage.getLayoutX() + (mapWidth / fitWidth);
+    int yOffset = (int) mapImage.getLayoutY() + (mapHeight / fitHeight);
+
+    int xCSV = mapWidth * (x - xOffset) / fitWidth + 40;
+    int yCSV = mapHeight * (y - yOffset) / fitHeight + 100;
+
+    return new int[] {xCSV, yCSV};
+  }
+
   @FXML
   public void disableFloorChange() {
     upButton.setDisable(true);

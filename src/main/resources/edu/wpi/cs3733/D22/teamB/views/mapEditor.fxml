@@ -63,7 +63,7 @@
       <JFXButton fx:id="addButton" layoutX="442.0" layoutY="86.0" onAction="#addLocation" prefHeight="26.0" prefWidth="122.0" text="Add Location" />
       <TextField fx:id="addLocationName" layoutX="430.0" layoutY="143.0" promptText="Location Name" visible="false" />
       <Button fx:id="cancelButton" layoutX="430.0" layoutY="183.0" mnemonicParsing="false" onAction="#hideView" text="Cancel" visible="false" />
-      <Button fx:id="confirmButton" layoutX="519.0" layoutY="183.0" mnemonicParsing="false" onAction="#hideView" text="Confirm" visible="false" />
+      <Button fx:id="confirmButton" layoutX="519.0" layoutY="183.0" mnemonicParsing="false" onAction="#confirmChanges" text="Confirm" visible="false" />
       <Label fx:id="addLabel" alignment="CENTER" layoutX="442.0" layoutY="42.0" prefHeight="42.0" prefWidth="122.0" text="Click on the map to add a location" textAlignment="CENTER" textOverrun="CLIP" visible="false" wrapText="true" />
       <ComboBox fx:id="typeDropdown" layoutX="429.0" layoutY="97.0" prefWidth="150.0" promptText="Room Type" visible="false">
          <items>
@@ -103,14 +103,10 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Button fx:id="editEnableButton" disable="true" layoutX="429.0" layoutY="103.0" mnemonicParsing="false" onAction="#showEditFields" prefHeight="26.0" prefWidth="150.0" text="Change Map Location" visible="false" />
+      <Button fx:id="editEnableButton" disable="true" layoutX="429.0" layoutY="103.0" mnemonicParsing="false" onAction="#showEditFields" prefHeight="26.0" prefWidth="150.0" text="Pick New Map Location" visible="false" />
       <TextField fx:id="editNameField" layoutX="428.0" layoutY="143.0" promptText="New Location Name" visible="false" />
-      <Button fx:id="deleteButton" layoutX="523.0" layoutY="183.0" mnemonicParsing="false" text="Delete" visible="false" />
+      <Button fx:id="deleteButton" layoutX="523.0" layoutY="183.0" mnemonicParsing="false" onAction="#deleteLoc" text="Delete" visible="false" />
       <Label fx:id="warningLabel" alignment="CENTER" layoutX="433.0" layoutY="104.0" prefHeight="64.0" prefWidth="142.0" text="Warning: This will delete the selected location" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
-      <Label fx:id="tempX" layoutX="428.0" layoutY="222.0" text="Label" />
-      <Label fx:id="tempY" layoutX="535.0" layoutY="222.0" text="Label" />
       <Circle fx:id="marker" fill="RED" layoutX="82.0" layoutY="218.0" onMouseClicked="#clearMarker" radius="4.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <Label fx:id="tempX1" layoutX="428.0" layoutY="264.0" text="Label" />
-      <Label fx:id="tempY1" layoutX="535.0" layoutY="264.0" text="Label" />
    </children>
 </AnchorPane>
