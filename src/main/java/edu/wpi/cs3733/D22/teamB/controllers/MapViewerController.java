@@ -88,16 +88,16 @@ public class MapViewerController extends MenuBarController {
   }
 
   private void setFloorLocations() {
-    LinkedList<Location> floorLocations = dao.getLocationsByFloor(floorLevel);
-
-    for (Circle circle : circles) {
-      removeCircle(circle);
-    }
-    circles.clear();
-
-    for (Location location : floorLocations) {
-      addCircle(location.getXCoord(), location.getYCoord(), location.getNodeType());
-    }
+    //    LinkedList<Location> floorLocations = dao.getLocationsByFloor(floorLevel);
+    //
+    //    for (Circle circle : circles) {
+    //      removeCircle(circle);
+    //    }
+    //    circles.clear();
+    //
+    //    for (Location location : floorLocations) {
+    //      addCircle(location.getXCoord(), location.getYCoord(), location.getNodeType());
+    //    }
   }
 
   public void addCircle(int x, int y, String nodeType) {

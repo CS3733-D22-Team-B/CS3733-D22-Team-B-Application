@@ -70,5 +70,10 @@ public class TesterMain {
         new LabRequest("sdf", "PTDR01", "bHALL001L2", "LAB", "COMPLETED", "Blood", new Date());
     labReq.update(updateMe);
     labReq.listDB();
+
+    String fileName = "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/newcsvfile.csv";
+
+    //    labReq.toCSV(fileName);
+    //    labReq.downloadCSV("newcsvfile");
   }
 }
