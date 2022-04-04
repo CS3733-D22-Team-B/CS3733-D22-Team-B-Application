@@ -115,7 +115,7 @@ public class EquipmentRequest {
     this.notes = notes;
   }
 
-  ///////////////////EMPLOYEE GETTERS////////////////////
+  /////////////////// EMPLOYEE GETTERS////////////////////
   public String getLastName() {
     return employee.getLastName();
   }
@@ -132,7 +132,7 @@ public class EquipmentRequest {
     return employee.getPosition();
   }
 
-  ///////////////////LOCATION GETTERS////////////////////
+  /////////////////// LOCATION GETTERS////////////////////
   public int getXCoord() {
     return location.getXCoord();
   }
@@ -161,13 +161,8 @@ public class EquipmentRequest {
     return location.getShortName();
   }
 
-  ///////////////////MEDICAL EQUIPMENT GETTERS////////////////////
+  /////////////////// MEDICAL EQUIPMENT GETTERS////////////////////
   public String getNodeID() {
     return medicalEquipment.getNodeID();
   }
-
-
-
-
-
 }

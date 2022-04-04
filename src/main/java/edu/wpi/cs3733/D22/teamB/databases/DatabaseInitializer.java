@@ -19,6 +19,8 @@ public class DatabaseInitializer {
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
   private final String equipmentRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv";
+  private final String labRequestCSVFilePath =
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLabRequest.csv";
 
   public DatabaseInitializer() {
     initDB();
@@ -46,11 +48,16 @@ public class DatabaseInitializer {
           "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
       statement.execute(
           "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), type VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), status VARCHAR(15), equipmentID VARCHAR(10), notes VARCHAR(50), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
+      statement.execute(
+          "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), "
+              + "type VARCHAR(10), status VARCHAR(15), test VARCHAR(15), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
+              + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID))");
       populateDatabase(locationCSVFilePath, "Locations", 8);
       populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
       populateDatabase(employeesCSVFilePath, "Employees", 5);
       populateDatabase(patientsCSVFilePath, "Patients", 4);
       populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 7);
+      populateDatabaseLabRequestDB(labRequestCSVFilePath, "LabRequests", 7);
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
@@ -119,6 +126,62 @@ public class DatabaseInitializer {
       return true;
     } else {
       return false;
+    }
+  }
+
+  private void populateDatabaseLabRequestDB(String filepath, String databaseName, int Elements) {
+    Connection connection = null;
+
+    try {
+
+      connection = DriverManager.getConnection(DBURL);
+
+      String sql =
+          "INSERT INTO LabRequests (requestID, employeeID, nodeID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      PreparedStatement statement = connection.prepareStatement(sql);
+
+      BufferedReader lineReader = new BufferedReader(new FileReader(labRequestCSVFilePath));
+      String lineText = null;
+
+      lineReader.readLine(); // skip header line
+
+      while ((lineText = lineReader.readLine()) != null) {
+        String[] data = lineText.split(",");
+        String requestID = data[0];
+        String employeeID = data[1];
+        String nodeID = data[2];
+        String type = data[3];
+        String status = data[4];
+        String test = data[5];
+        String date = data[6];
+
+        statement.setString(1, requestID);
+        statement.setString(2, employeeID);
+        statement.setString(3, nodeID);
+        statement.setString(4, type);
+        statement.setString(5, status);
+        statement.setString(6, test);
+
+        Timestamp sqlTimestamp = Timestamp.valueOf(date);
+        statement.setTimestamp(7, sqlTimestamp);
+
+        statement.addBatch();
+        statement.executeBatch();
+      }
+
+      lineReader.close();
+      connection.commit();
+      connection.close();
+
+    } catch (IOException ex) {
+      System.err.println(ex);
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+      try {
+        connection.rollback();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
     }
   }
 }

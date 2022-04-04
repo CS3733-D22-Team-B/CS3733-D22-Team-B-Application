@@ -180,7 +180,9 @@ public class MenuBarController {
     PatientsDB patDB = PatientsDB.getInstance();
     EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
     EmployeeDB empDB = EmployeeDB.getInstance();
+    LabRequestDB labReqDB = LabRequestDB.getInstance();
 
+    labReqDB.quit();
     eqReqDB.quit();
     patDB.quit();
     medEqDB.quit();

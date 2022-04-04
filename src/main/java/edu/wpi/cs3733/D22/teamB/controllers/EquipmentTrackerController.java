@@ -40,7 +40,7 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
     medDao = MedicalEquipmentDB.getInstance();
     LinkedList<MedicalEquipment> equip = medDao.list();
     for (MedicalEquipment med : equip) {
-      med.getLocation(); //Initialize the location for each medical equipment object
+      med.getLocation(); // Initialize the location for each medical equipment object
       equipment.add(med);
     }
 

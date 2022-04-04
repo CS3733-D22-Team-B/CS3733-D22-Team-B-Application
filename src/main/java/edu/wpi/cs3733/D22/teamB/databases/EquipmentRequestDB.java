@@ -36,14 +36,14 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
         EquipmentRequest eqreqOb =
-                new EquipmentRequest(
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7));
+            new EquipmentRequest(
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7));
         equipmentRequestMap.put(rs.getString(1), eqreqOb);
       }
     } catch (SQLException e) {
@@ -84,9 +84,9 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       return -1;
     }
     return transform(
-            eqreqObj,
-            "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID= ?, notes = ? WHERE requestID = ?",
-            true);
+        eqreqObj,
+        "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID= ?, notes = ? WHERE requestID = ?",
+        true);
   }
 
   public int add(EquipmentRequest eqreqObj) {
