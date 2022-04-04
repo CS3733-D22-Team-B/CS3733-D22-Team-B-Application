@@ -1,8 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.LinkedList;
 
@@ -202,7 +200,7 @@ public abstract class DatabaseSuperclass {
     }
   }
 
-  private boolean stringToBoolean(String input) {
+  public boolean stringToBoolean(String input) {
     if (input.toLowerCase().compareTo("true") == 0 || input.toLowerCase().compareTo("false") == 0) {
       if (input.toLowerCase().compareTo("true") == 0) {
         return true;
