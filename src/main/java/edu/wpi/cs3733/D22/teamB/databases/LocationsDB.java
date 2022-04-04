@@ -35,7 +35,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Locations");
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
         Location locOb =
             new Location(
@@ -75,19 +75,6 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     return locList;
   }
 
-  ////////////////////////////////////////////////////////////// To Fix
-  public Location getLocation(String nodeID) {
-    return locationMap.get(nodeID);
-  }
-
-  public String getLocationID(String longName) {
-    Stream<String> keys =
-        locationMap.entrySet().stream()
-            .filter(entry -> longName.equals(entry.getValue().getLongName()))
-            .map(Map.Entry::getKey);
-    return keys.findFirst().orElse(null);
-  }
-
   public int update(Location locObj) {
     if (!locationMap.containsKey(locObj.getNodeID())) {
       return -1;
@@ -115,7 +102,6 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
 
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Location locObj, String sql, boolean isUpdate) {
-    final int Elements = 8;
     try {
       Connection connection = DriverManager.getConnection(url);
       PreparedStatement pStatement = connection.prepareStatement(sql);
@@ -145,5 +131,18 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       return -1;
     }
     return 0;
+  }
+
+  ////////////////////////////////////////////////////////////// To Fix
+  public Location getLocation(String nodeID) {
+    return locationMap.get(nodeID);
+  }
+
+  public String getLocationID(String longName) {
+    Stream<String> keys =
+        locationMap.entrySet().stream()
+            .filter(entry -> longName.equals(entry.getValue().getLongName()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 }

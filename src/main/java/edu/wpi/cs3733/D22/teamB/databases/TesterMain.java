@@ -19,15 +19,31 @@ public class TesterMain {
     }
 
     DatabaseInitializer dB = new DatabaseInitializer();
+    /*
     LocationsDB locDB = LocationsDB.getInstance();
     locDB.listDB();
-    Location locObj = new Location("sdf", 4, 5, "dfdsf", "dsf", "ewr", "rrt", "rrg");
-    locDB.add(locObj);
+    Location addMe = new Location("sdf", 4, 5, "dfdsf", "dsf", "ewr", "rrt", "rrg");
+    locDB.add(addMe);
     Location deleteMe = new Location("bHALL007L2", 435, 425, "dfdsf", "dsf", "ewr", "rrt", "rrg");
     locDB.delete(deleteMe);
     Location updateMe =
         new Location("bHALL006L2", 10, 123, "sdfd", "fsdf", "rtret", "wettw", "top");
     locDB.update(updateMe);
     locDB.listDB();
+     */
+
+    /*
+    MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
+    medDB.listDB();
+    MedicalEquipment addMe = new MedicalEquipment("sdf", "bPATI00303", "sdgf", true, true);
+    medDB.add(addMe);
+    MedicalEquipment deleteMe = new MedicalEquipment("BED8", "bPATI00303", "sdgf", true, true);
+    medDB.delete(deleteMe);
+    MedicalEquipment updateMe = new MedicalEquipment("PUMP6", "bELEV00ML2", "sdgf", false, false);
+    medDB.update(updateMe);
+    medDB.listDB();
+     */
+
+
   }
 }

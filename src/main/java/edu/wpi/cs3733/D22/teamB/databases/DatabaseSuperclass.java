@@ -176,7 +176,7 @@ public abstract class DatabaseSuperclass {
     try {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
-      String sql = "DELETE FROM Locations WHERE " + pkName + " = '" + pk + "'";
+      String sql = "DELETE FROM " + tableType + " WHERE " + pkName + " = '" + pk + "'";
       statement.executeUpdate(sql);
     } catch (SQLException e) {
       System.out.println("Connection failed.");

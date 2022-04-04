@@ -27,48 +27,48 @@ public class MedicalEquipmentDBTest {
   @Test
   public void updateMedicalEquipment() {
     MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
-    MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
+    MedicalEquipment medObj = medDB.list().get(0);
 
     // Update MedicalEquipment in the table (should return 0)
-    int success = medDB.updateMedicalEquipment(medObj);
+    int success = medDB.update(medObj);
     Assert.assertEquals(0, success);
 
     medObj.setEquipmentID("sfn");
 
     // Update MedicalEquipment not in the table (should return -1)
-    int failure = medDB.updateMedicalEquipment(medObj);
+    int failure = medDB.update(medObj);
     Assert.assertEquals(-1, failure);
   }
 
   @Test
   public void addMedicalEquipment() {
     MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
-    MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
+    MedicalEquipment medObj = medDB.list().get(0);
 
     // Add MedicalEquipment in the table (should return -1)
-    int failure = medDB.addMedicalEquipment(medObj);
+    int failure = medDB.add(medObj);
     Assert.assertEquals(-1, failure);
 
     medObj.setEquipmentID("sfn");
 
     // Add MedicalEquipment not in the table (should return 0)
-    int success = medDB.addMedicalEquipment(medObj);
+    int success = medDB.add(medObj);
     Assert.assertEquals(0, success);
   }
 
   @Test
   public void deleteMedicalEquipment() {
     MedicalEquipmentDB medDB = MedicalEquipmentDB.getInstance();
-    MedicalEquipment medObj = medDB.listMedicalEquipment().get(0);
+    MedicalEquipment medObj = medDB.list().get(0);
 
     // Delete MedicalEquipment in the table (should return 0)
-    int success = medDB.deleteMedicalEquipment(medObj);
+    int success = medDB.delete(medObj);
     Assert.assertEquals(0, success);
 
     medObj.setEquipmentID("sfn");
 
     // Delete MedicalEquipment not in the table (should return -1)
-    int failure = medDB.deleteMedicalEquipment(medObj);
+    int failure = medDB.delete(medObj);
     Assert.assertEquals(-1, failure);
   }
 }
