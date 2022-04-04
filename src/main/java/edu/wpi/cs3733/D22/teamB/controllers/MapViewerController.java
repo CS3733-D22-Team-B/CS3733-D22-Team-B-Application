@@ -88,7 +88,26 @@ public class MapViewerController extends MenuBarController {
   }
 
   private void setFloorLocations() {
-    LinkedList<Location> floorLocations = dao.getLocationsByFloor(floorLevel);
+    String floorName = "";
+    switch (floorLevel) {
+      case 0:
+        floorName = "L2";
+        break;
+      case 1:
+        floorName = "L1";
+        break;
+      case 2:
+        floorName = "1";
+        break;
+      case 3:
+        floorName = "2";
+        break;
+      case 4:
+        floorName = "3";
+        break;
+    }
+
+    LinkedList<Location> floorLocations = dao.searchFor(floorName);
 
     for (Circle circle : circles) {
       removeCircle(circle);
