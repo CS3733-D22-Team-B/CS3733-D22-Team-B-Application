@@ -33,9 +33,9 @@
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="BED" fx:value="Bed" />
-               <String fx:id="RECLINER" fx:value="Recliner" />
-               <String fx:id="XRAY_MACHINE" fx:value="X-Ray Machine" />
-               <String fx:id="INFUSION_PUMP" fx:value="Infusion Pump" />
+               <String fx:id="RECL" fx:value="Recliner" />
+               <String fx:id="XR" fx:value="X-Ray Machine" />
+               <String fx:id="PUMP" fx:value="Infusion Pump" />
             </FXCollections>
          </items>
       </ComboBox>
