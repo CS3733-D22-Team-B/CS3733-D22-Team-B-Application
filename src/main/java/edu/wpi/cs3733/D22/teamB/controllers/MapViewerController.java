@@ -1,21 +1,37 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import java.awt.*;
+import edu.wpi.cs3733.D22.teamB.databases.Location;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import java.util.LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javax.swing.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class MapViewerController extends MenuBarController {
+  @FXML private AnchorPane anchorPane;
   @FXML private JFXButton upButton;
   @FXML private JFXButton downButton;
   @FXML private ImageView mapImage;
   @FXML private Label floorDisplay;
 
   private int floorLevel = 2;
+
+  private LinkedList<Circle> circles;
+  private LinkedList<Location> floorLocations;
+  protected LocationsDB dao;
+
+  public void initialize() {
+    circles = new LinkedList<Circle>();
+    dao = LocationsDB.getInstance();
+
+    setFloorLocations();
+  }
 
   @FXML
   public void moveUp(ActionEvent event) {
@@ -41,6 +57,7 @@ public class MapViewerController extends MenuBarController {
         break;
     }
     floorLevel++;
+    setFloorLocations();
   }
 
   @FXML
@@ -67,5 +84,97 @@ public class MapViewerController extends MenuBarController {
         break;
     }
     floorLevel--;
+    setFloorLocations();
+  }
+
+  private void setFloorLocations() {
+    LinkedList<Location> floorLocations = dao.getLocationsByFloor(floorLevel);
+
+    for (Circle circle : circles) {
+      removeCircle(circle);
+    }
+    circles.clear();
+
+    for (Location location : floorLocations) {
+      addCircle(location.getXCoord(), location.getYCoord(), location.getNodeType());
+    }
+  }
+
+  public void addCircle(int x, int y, String nodeType) {
+    // set view coordinates
+    int[] viewCoords = mapCoordsToViewCoords(x, y);
+
+    // create a circle
+    Circle circle = new Circle(viewCoords[0], viewCoords[1], 2.5);
+
+    // set the color
+    switch (nodeType) {
+      case "BATH":
+        circle.setFill(Color.rgb(233, 28, 35));
+        break;
+      case "DEPT":
+        circle.setFill(Color.rgb(237, 89, 41));
+        break;
+      case "DIRT":
+        circle.setFill(Color.rgb(247, 148, 29));
+        break;
+      case "ELEV":
+        circle.setFill(Color.rgb(247, 176, 62));
+        break;
+      case "EXIT":
+        circle.setFill(Color.rgb(251, 240, 2));
+        break;
+      case "HALL":
+        circle.setFill(Color.rgb(140, 199, 59));
+        break;
+      case "INFO":
+        circle.setFill(Color.rgb(59, 180, 74));
+        break;
+      case "LABS":
+        circle.setFill(Color.rgb(40, 167, 158));
+        break;
+      case "PATI":
+        circle.setFill(Color.rgb(60, 173, 241));
+        break;
+      case "REST":
+        circle.setFill(Color.rgb(43, 115, 191));
+        break;
+      case "RETL":
+        circle.setFill(Color.rgb(101, 43, 145));
+        break;
+      case "SERV":
+        circle.setFill(Color.rgb(146, 37, 144));
+        break;
+      case "STAI":
+        circle.setFill(Color.rgb(246, 153, 205));
+        break;
+      case "STOR":
+        circle.setFill(Color.rgb(209, 192, 168));
+        break;
+    }
+
+    // add the circle to the pane
+    anchorPane.getChildren().add(circle);
+
+    // add the circle to the list
+    circles.add(circle);
+  }
+
+  public void removeCircle(Circle circle) {
+    anchorPane.getChildren().remove(circle);
+  }
+
+  public int[] mapCoordsToViewCoords(int x, int y) {
+    int mapWidth = 1060;
+    int mapHeight = 930;
+    int fitWidth = (int) mapImage.getFitWidth();
+    int fitHeight = (int) mapImage.getFitHeight();
+    int xOffset = (int) mapImage.getLayoutX() + (mapWidth / fitWidth);
+    int yOffset = (int) mapImage.getLayoutY() + (mapHeight / fitHeight);
+
+    int xView = (fitWidth * x) / mapWidth + xOffset;
+    int yView = (fitHeight * y) / mapHeight + yOffset;
+
+    return new int[] {xView, yView};
   }
 }
