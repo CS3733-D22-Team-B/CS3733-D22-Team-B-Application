@@ -177,4 +177,20 @@ public class MapViewerController extends MenuBarController {
 
     return new int[] {xView, yView};
   }
+
+  @FXML
+  public void disableFloorChange() {
+    upButton.setDisable(true);
+    downButton.setDisable(true);
+  }
+
+  @FXML
+  public void enableFloorChange() {
+    upButton.setDisable(false);
+    downButton.setDisable(false);
+  }
+
+  public String getFloorLevel() {
+    return floorDisplay.getText();
+  }
 }
