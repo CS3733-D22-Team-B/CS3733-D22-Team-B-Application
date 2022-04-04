@@ -89,13 +89,19 @@
                      <Font name="System Bold" size="12.0" />
                   </font>
                </Label>
-               <Label fx:id="employeeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="70.0" prefHeight="17.0" prefWidth="109.0" />
                <Label contentDisplay="CENTER" layoutX="71.0" layoutY="95.0" text="Location:">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </Label>
                <Label fx:id="locationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="112.0" prefHeight="93.0" prefWidth="156.0" wrapText="true" />
+               <ComboBox fx:id="employeeInput" layoutX="41.0" layoutY="71.0" prefHeight="25.0" prefWidth="109.0">
+                  <items>
+                     <FXCollections fx:factory="observableArrayList">
+
+                     </FXCollections>
+                  </items>
+               </ComboBox>
             </children>
          </AnchorPane>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="294.0">
@@ -112,6 +118,7 @@
          </AnchorPane>
      </items>
    </SplitPane>
+   <Label fx:id="employeeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="132.0" layoutY="369.0" prefHeight="17.0" prefWidth="109.0" />
 
 
 

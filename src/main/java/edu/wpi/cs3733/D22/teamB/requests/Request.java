@@ -2,7 +2,7 @@ package edu.wpi.cs3733.D22.teamB.requests;
 
 public abstract class Request {
   protected final String requestID;
-  protected final String employee;
+  protected String employee;
   protected final String location;
   protected String status;
 
@@ -35,6 +35,10 @@ public abstract class Request {
 
   public final void setStatus(String status) {
     this.status = status;
+  }
+
+  public final void setEmployee(String employee) {
+    this.employee = employee;
   }
 
   // Josh Bloch's Hashing method
