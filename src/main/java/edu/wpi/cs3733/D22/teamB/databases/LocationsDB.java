@@ -72,11 +72,6 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     return locationMap.get(id);
   }
 
-  ////////////////////////////////////////////////////////////// To Fix
-  public Location getLocation(String nodeID) {
-    return locationMap.get(nodeID);
-  }
-
   public LinkedList<Location> searchFor(String input) {
     LinkedList<String> pkList = filteredSearch(input);
     LinkedList<Location> locList = new LinkedList<Location>();
