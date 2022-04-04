@@ -1,22 +1,23 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
+public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/PatientsBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
   private static PatientsDB patientsDBManager;
 
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();;
 
   private PatientsDB() {
-    patientMap = PatientsInit();
+    super(
+        "Patients",
+        "patientID",
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv");
+    initDB();
   }
 
   public static PatientsDB getInstance() {
@@ -26,177 +27,99 @@ public class PatientsDB extends DatabaseSuperclass implements IPatientsDB {
     return patientsDBManager;
   }
 
-  private HashMap<String, Patient> PatientsInit() {
-    HashMap<String, Patient> patHM = new HashMap<String, Patient>();
+  protected void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Patients");
-
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
-        String patientID = rs.getString("patientID");
-        String lastName = rs.getString("lastName");
-        String firstName = rs.getString("firstName");
-        String nodeID = rs.getString("nodeID");
-
-        Patient patOb = new Patient(patientID, lastName, firstName, nodeID);
-        patHM.put(patientID, patOb);
+        Patient patOb =
+            new Patient(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+        patientMap.put(rs.getString(1), patOb);
       }
-
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
     }
-    return patHM;
   }
 
-  public LinkedList<Patient> listPatients() {
-    LinkedList<Patient> patientList = new LinkedList<Patient>();
+  public LinkedList<Patient> list() {
+    LinkedList<String> pkList = selectAll();
+    LinkedList<Patient> patList = new LinkedList<Patient>();
 
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Patients");
-
-      while (rs.next()) {
-        String patientID = rs.getString("patientID");
-
-        patientList.add(patientMap.get(patientID));
-      }
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    for (int i = 0; i < pkList.size(); i++) {
+      patList.add(patientMap.get(pkList.get(i)));
     }
-    return patientList;
+    return patList;
   }
 
-  public void patientsToCSV() {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Patients");
-
-      // Create file writer and create header row
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(backupFile));
-      fileWriter.write("patientID, lastName, firstName, nodeID");
-
-      while (rs.next()) {
-        String patientID = rs.getString("patientID");
-        String lastName = rs.getString("lastName");
-        String firstName = rs.getString("firstName");
-        String nodeID = rs.getString("nodeID");
-
-        String line = String.format("%s,%s,%s,%s", patientID, lastName, firstName, nodeID);
-
-        fileWriter.newLine();
-        fileWriter.write(line);
-      }
-      fileWriter.close();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    } catch (IOException e) {
-      System.out.println("File IO error:");
-      e.printStackTrace();
-      return;
+  public Patient getByID(String id) {
+    if (!patientMap.containsKey(id)) {
+      return null;
     }
+    return patientMap.get(id);
   }
 
-  public int updatePatient(Patient patObj) {
-    try {
-      Connection connection = DriverManager.getConnection(url);
+  public LinkedList<Patient> searchFor(String input) {
+    LinkedList<String> pkList = filteredSearch(input);
+    LinkedList<Patient> locList = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(patientMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
 
-      // If the patient does not exist in the database, return -1
-      if (patientMap.containsKey(patObj.getPatientID()) == false) {
-        return -1;
-      }
-
-      String sql =
-          "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ? WHERE patientID = ?";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, patObj.getLastName());
-      pStatement.setString(2, patObj.getFirstName());
-      pStatement.setString(3, patObj.getNodeID());
-      pStatement.setString(4, patObj.getPatientID());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      patientMap.put(patObj.getPatientID(), patObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+  public int update(Patient patObj) {
+    if (!patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
-    return 0;
+    return transform(
+        patObj,
+        "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ? WHERE patientID = ?",
+        true);
   }
 
-  public int addPatient(Patient patObj) {
-    // patientID has to be unique
+  public int add(Patient patObj) {
     if (patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
+    return transform(patObj, "INSERT INTO Patients VALUES(?,?,?,?)", false);
+  }
 
+  public int delete(Patient patObj) {
+    if (!patientMap.containsKey(patObj.getPatientID())) {
+      return -1;
+    }
+    patientMap.remove(patObj.getPatientID());
+    return deleteFrom(patObj.getPatientID());
+  }
+
+  /////////////////////////////////////////////////////////////////////// Helper
+  private int transform(Patient patObj, String sql, boolean isUpdate) {
     try {
       Connection connection = DriverManager.getConnection(url);
-
-      String sql = "INSERT INTO Patients VALUES(?,?,?,?)";
       PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, patObj.getPatientID());
-      pStatement.setString(2, patObj.getLastName());
-      pStatement.setString(3, patObj.getFirstName());
-      pStatement.setString(4, patObj.getNodeID());
+
+      int offset = 0;
+
+      if (isUpdate) {
+        pStatement.setString(4, patObj.getPatientID());
+        offset = -1;
+      } else {
+        pStatement.setString(1, patObj.getPatientID());
+      }
+
+      pStatement.setString(2 + offset, patObj.getLastName());
+      pStatement.setString(3 + offset, patObj.getFirstName());
+      pStatement.setString(4 + offset, patObj.getNodeID());
 
       pStatement.addBatch();
       pStatement.executeBatch();
-
       patientMap.put(patObj.getPatientID(), patObj);
-
     } catch (SQLException e) {
       System.out.println("Connection failed.");
       return -1;
     }
     return 0;
-  }
-
-  public int deletePatient(Patient patObj) {
-    // patientID has to exist
-    if (patientMap.containsKey(patObj.getPatientID()) == false) {
-      return -1;
-    }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      String sql = "DELETE FROM Patients WHERE patientID = '" + patObj.getPatientID() + "'";
-      statement.executeUpdate(sql);
-
-      patientMap.remove(patObj.getPatientID());
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed.");
-      return -1;
-    }
-    return 0;
-  }
-
-  public void quit() {
-    this.patientsToCSV();
-    listDB("Patients", 4);
-
-    try {
-      // Create database
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      statement.execute("DROP TABLE Patients");
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
   }
 }

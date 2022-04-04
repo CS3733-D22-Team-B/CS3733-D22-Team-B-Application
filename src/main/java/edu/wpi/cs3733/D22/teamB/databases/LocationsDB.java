@@ -1,23 +1,26 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
+public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/LocationsBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLocations.csv";
   private static LocationsDB locationsDBManager;
 
-  private HashMap<String, Location> locationMap = new HashMap<String, Location>();;
+  private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
   private LocationsDB() {
-    locationMap = LocationsInit();
+    super(
+        "Locations",
+        "nodeID",
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv");
+    initDB();
   }
 
   public static LocationsDB getInstance() {
@@ -27,56 +30,116 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
     return locationsDBManager;
   }
 
-  private HashMap<String, Location> LocationsInit() {
-    HashMap<String, Location> locHM = new HashMap<String, Location>();
+  protected void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Locations");
-
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
-        String nodeID = rs.getString("nodeID");
-        int xCoord = rs.getInt("xcoord");
-        int yCoord = rs.getInt("ycoord");
-        String floor = rs.getString("floor");
-        String building = rs.getString("building");
-        String nodeType = rs.getString("nodeType");
-        String longName = rs.getString("longName");
-        String shortName = rs.getString("shortName");
-
         Location locOb =
-            new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-        locHM.put(nodeID, locOb);
+            new Location(
+                rs.getString(1),
+                rs.getInt(2),
+                rs.getInt(3),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8));
+        locationMap.put(rs.getString(1), locOb);
       }
-
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
     }
-    return locHM;
   }
 
-  public LinkedList<Location> listLocations() {
-    LinkedList<Location> locationList = new LinkedList<Location>();
+  public LinkedList<Location> list() {
+    LinkedList<String> pkList = selectAll();
+    LinkedList<Location> locList = new LinkedList<Location>();
 
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(locationMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
+
+  public Location getByID(String id) {
+    if (!locationMap.containsKey(id)) {
+      return null;
+    }
+    return locationMap.get(id);
+  }
+
+  public LinkedList<Location> searchFor(String input) {
+    LinkedList<String> pkList = filteredSearch(input);
+    LinkedList<Location> locList = new LinkedList<Location>();
+
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(locationMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
+
+  public int update(Location locObj) {
+    if (!locationMap.containsKey(locObj.getNodeID())) {
+      return -1;
+    }
+    return transform(
+        locObj,
+        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ? WHERE nodeID = ?",
+        true);
+  }
+
+  public int add(Location locObj) {
+    if (locationMap.containsKey(locObj.getNodeID())) {
+      return -1;
+    }
+    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?)", false);
+  }
+
+  public int delete(Location locObj) {
+    if (!locationMap.containsKey(locObj.getNodeID())) {
+      return -1;
+    }
+    locationMap.remove(locObj.getNodeID());
+    return deleteFrom(locObj.getNodeID());
+  }
+
+  /////////////////////////////////////////////////////////////////////// Helper
+  private int transform(Location locObj, String sql, boolean isUpdate) {
     try {
       Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Locations");
+      PreparedStatement pStatement = connection.prepareStatement(sql);
 
-      while (rs.next()) {
-        String nodeID = rs.getString("nodeID");
+      int offset = 0;
 
-        locationList.add(locationMap.get(nodeID));
+      if (isUpdate) {
+        pStatement.setString(8, locObj.getNodeID());
+        offset = -1;
+      } else {
+        pStatement.setString(1, locObj.getNodeID());
       }
 
+      pStatement.setInt(2 + offset, locObj.getXCoord());
+      pStatement.setInt(3 + offset, locObj.getYCoord());
+      pStatement.setString(4 + offset, locObj.getFloor());
+      pStatement.setString(5 + offset, locObj.getBuilding());
+      pStatement.setString(6 + offset, locObj.getNodeType());
+      pStatement.setString(7 + offset, locObj.getLongName());
+      pStatement.setString(8 + offset, locObj.getShortName());
+
+      pStatement.addBatch();
+      pStatement.executeBatch();
+      locationMap.put(locObj.getNodeID(), locObj);
     } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+      System.out.println("Connection failed.");
+      return -1;
     }
-    return locationList;
+    return 0;
   }
 
+  ////////////////////////////////////////////////////////////// To Fix
   public Location getLocation(String nodeID) {
     return locationMap.get(nodeID);
   }
@@ -89,145 +152,32 @@ public class LocationsDB extends DatabaseSuperclass implements ILocationsDB {
     return keys.findFirst().orElse(null);
   }
 
-  public void locationsToCSV() {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Locations");
+  public LinkedList<Location> getLocationsByFloor(int floor) {
+    String floorName = "";
+    switch (floor) {
+      case 0:
+        floorName = "L2";
+        break;
+      case 1:
+        floorName = "L1";
+        break;
+      case 2:
+        floorName = "1";
+        break;
+      case 3:
+        floorName = "2";
+        break;
+      case 4:
+        floorName = "3";
+        break;
+    }
 
-      // Create file writer and create header row
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(backupFile));
-      fileWriter.write("nodeId, xCoord, yCoord, floor, building, nodeType, longName, shortName");
-
-      while (rs.next()) {
-        String nodeID = rs.getString("nodeID");
-        int xCoord = rs.getInt("xcoord");
-        int yCoord = rs.getInt("ycoord");
-        String floor = rs.getString("floor");
-        String building = rs.getString("building");
-        String nodeType = rs.getString("nodeType");
-        String longName = rs.getString("longName");
-        String shortName = rs.getString("shortName");
-
-        String line =
-            String.format(
-                "%s,%d,%d,%s,%s,%s,%s,%s",
-                nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-
-        fileWriter.newLine();
-        fileWriter.write(line);
+    LinkedList<Location> locList = new LinkedList<Location>();
+    for (String key : locationMap.keySet()) {
+      if (locationMap.get(key).getFloor().equals(floorName)) {
+        locList.add(locationMap.get(key));
       }
-      fileWriter.close();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-    } catch (IOException e) {
-      System.out.println("File IO error:");
-      e.printStackTrace();
     }
-  }
-
-  public int updateLocation(Location locObj) {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      // If the location does not exist in the database, return -1
-      if (locationMap.containsKey(locObj.getNodeID()) == false) {
-        return -1;
-      }
-
-      String sql =
-          "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ? WHERE nodeID = ?";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setInt(1, locObj.getXCoord());
-      pStatement.setInt(2, locObj.getYCoord());
-      pStatement.setString(3, locObj.getFloor());
-      pStatement.setString(4, locObj.getBuilding());
-      pStatement.setString(5, locObj.getNodeType());
-      pStatement.setString(6, locObj.getLongName());
-      pStatement.setString(7, locObj.getShortName());
-      pStatement.setString(8, locObj.getNodeID());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      locationMap.put(locObj.getNodeID(), locObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return -1;
-    }
-    return 0;
-  }
-
-  public int addLocation(Location locObj) {
-    // nodeID has to be unique
-    if (locationMap.containsKey(locObj.getNodeID())) {
-      return -1;
-    }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      String sql = "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?)";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, locObj.getNodeID());
-      pStatement.setInt(2, locObj.getXCoord());
-      pStatement.setInt(3, locObj.getYCoord());
-      pStatement.setString(4, locObj.getFloor());
-      pStatement.setString(5, locObj.getBuilding());
-      pStatement.setString(6, locObj.getNodeType());
-      pStatement.setString(7, locObj.getLongName());
-      pStatement.setString(8, locObj.getShortName());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      locationMap.put(locObj.getNodeID(), locObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed.");
-      return -1;
-    }
-    return 0;
-  }
-
-  public int deleteLocation(Location locObj) {
-    // nodeID has to exist
-    if (locationMap.containsKey(locObj.getNodeID()) == false) {
-      return -1;
-    }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      String sql = "DELETE FROM Locations WHERE nodeID = '" + locObj.getNodeID() + "'";
-      statement.executeUpdate(sql);
-
-      locationMap.remove(locObj.getNodeID());
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed.");
-      return -1;
-    }
-    return 0;
-  }
-
-  public void quit() {
-    this.locationsToCSV();
-    listDB("Locations", 8);
-
-    try {
-      // Create database
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      statement.execute("DROP TABLE Locations");
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
+    return locList;
   }
 }

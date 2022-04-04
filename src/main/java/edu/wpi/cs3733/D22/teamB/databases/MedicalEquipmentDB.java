@@ -5,17 +5,21 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEquipmentDB {
+public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/MedicalEquipmentBackup.csv";
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupMedicalEquipment.csv";
   private static MedicalEquipmentDB medicalEquipmentDBManager;
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();;
 
   private MedicalEquipmentDB() {
-    medicalEquipmentMap = MedicalEquipmentInit();
+    super(
+        "MedicalEquipment",
+        "equipmentID",
+        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv");
+    initDB();
   }
 
   public static MedicalEquipmentDB getInstance() {
@@ -25,184 +29,106 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IMedicalEq
     return medicalEquipmentDBManager;
   }
 
-  private HashMap<String, MedicalEquipment> MedicalEquipmentInit() {
-    HashMap<String, MedicalEquipment> medHM = new HashMap<String, MedicalEquipment>();
+  protected void initDB() {
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
-        String equipmentID = rs.getString("equipmentID");
-        String nodeID = rs.getString("nodeID");
-        String type = rs.getString("type");
-        boolean isClean = rs.getBoolean("isClean");
-        boolean isRequested = rs.getBoolean("isRequested");
-
         MedicalEquipment medOb =
-            new MedicalEquipment(equipmentID, nodeID, type, isClean, isRequested);
-        medHM.put(equipmentID, medOb);
+            new MedicalEquipment(
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getBoolean(4),
+                rs.getBoolean(5));
+        medicalEquipmentMap.put(rs.getString(1), medOb);
       }
-
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
     }
-    return medHM;
   }
 
-  public LinkedList<MedicalEquipment> listMedicalEquipment() {
+  public LinkedList<MedicalEquipment> list() {
+    LinkedList<String> pkList = selectAll();
     LinkedList<MedicalEquipment> medEqList = new LinkedList<MedicalEquipment>();
 
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-
-      while (rs.next()) {
-        String equipmentID = rs.getString("equipmentID");
-
-        medEqList.add(medicalEquipmentMap.get(equipmentID));
-      }
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    for (int i = 0; i < pkList.size(); i++) {
+      medEqList.add(medicalEquipmentMap.get(pkList.get(i)));
     }
     return medEqList;
   }
 
-  public void medicalEquipmentToCSV() {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM MedicalEquipment");
-
-      // Create file writer and create header row
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(backupFile));
-      fileWriter.write("equipmentID, nodeID, type, isClean, isRequested");
-
-      while (rs.next()) {
-        String equipmentID = rs.getString("equipmentID");
-        String nodeID = rs.getString("nodeID");
-        String type = rs.getString("type");
-        boolean isClean = rs.getBoolean("isClean");
-        boolean isRequested = rs.getBoolean("isRequested");
-
-        String line =
-            String.format("%s,%s,%s,%b,%b", equipmentID, nodeID, type, isClean, isRequested);
-
-        fileWriter.newLine();
-        fileWriter.write(line);
-      }
-      fileWriter.close();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    } catch (IOException e) {
-      System.out.println("File IO error:");
-      e.printStackTrace();
-      return;
+  public MedicalEquipment getByID(String id) {
+    if (!medicalEquipmentMap.containsKey(id)) {
+      return null;
     }
+    return medicalEquipmentMap.get(id);
   }
 
-  public int updateMedicalEquipment(MedicalEquipment meObj) {
+  public LinkedList<MedicalEquipment> searchFor(String input) {
+    LinkedList<String> pkList = filteredSearch(input);
+    LinkedList<MedicalEquipment> locList = new LinkedList<MedicalEquipment>();
+
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
+
+  public int update(MedicalEquipment medObj) {
+    if (!medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
+      return -1;
+    }
+    return transform(
+        medObj,
+        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, isRequested = ? WHERE equipmentID = ?",
+        true);
+  }
+
+  public int add(MedicalEquipment medObj) {
+    if (medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
+      return -1;
+    }
+    return transform(medObj, "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?)", false);
+  }
+
+  public int delete(MedicalEquipment medObj) {
+    if (!medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
+      return -1;
+    }
+    medicalEquipmentMap.remove(medObj.getEquipmentID());
+    return deleteFrom(medObj.getEquipmentID());
+  }
+
+  /////////////////////////////////////////////////////////////////////// Helper
+  private int transform(MedicalEquipment medObj, String sql, boolean isUpdate) {
     try {
       Connection connection = DriverManager.getConnection(url);
+      PreparedStatement pStatement = connection.prepareStatement(sql);
 
-      // If the medical equipment does not exist in the database, return -1
-      if (medicalEquipmentMap.containsKey(meObj.getEquipmentID()) == false) {
-        return -1;
+      int offset = 0;
+
+      if (isUpdate) {
+        pStatement.setString(5, medObj.getEquipmentID());
+        offset = -1;
+      } else {
+        pStatement.setString(1, medObj.getEquipmentID());
       }
 
-      String sql =
-          "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, isRequested = ? WHERE equipmentID = ?";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, meObj.getNodeID());
-      pStatement.setString(2, meObj.getType());
-      pStatement.setBoolean(3, meObj.getIsClean());
-      pStatement.setBoolean(4, meObj.getIsRequested());
-      pStatement.setString(5, meObj.getEquipmentID());
+      pStatement.setString(2 + offset, medObj.getNodeID());
+      pStatement.setString(3 + offset, medObj.getType());
+      pStatement.setBoolean(4 + offset, medObj.getIsClean());
+      pStatement.setBoolean(5 + offset, medObj.getIsRequested());
 
       pStatement.addBatch();
       pStatement.executeBatch();
-
-      medicalEquipmentMap.put(meObj.getEquipmentID(), meObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return -1;
-    }
-    return 0;
-  }
-
-  public int addMedicalEquipment(MedicalEquipment meObj) {
-    // equipmentID has to be unique
-    if (medicalEquipmentMap.containsKey(meObj.getEquipmentID())) {
-      return -1;
-    }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      String sql = "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?)";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, meObj.getEquipmentID());
-      pStatement.setString(2, meObj.getNodeID());
-      pStatement.setString(3, meObj.getType());
-      pStatement.setBoolean(4, meObj.getIsClean());
-      pStatement.setBoolean(5, meObj.getIsRequested());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      medicalEquipmentMap.put(meObj.getEquipmentID(), meObj);
-
+      medicalEquipmentMap.put(medObj.getEquipmentID(), medObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
       return -1;
     }
     return 0;
-  }
-
-  public int deleteMedicalEquipment(MedicalEquipment meObj) {
-    // equipmentID has to exist
-    if (medicalEquipmentMap.containsKey(meObj.getEquipmentID()) == false) {
-      return -1;
-    }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      String sql =
-          "DELETE FROM MedicalEquipment WHERE equipmentID = '" + meObj.getEquipmentID() + "'";
-      statement.executeUpdate(sql);
-
-      medicalEquipmentMap.remove(meObj.getEquipmentID());
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed.");
-      return -1;
-    }
-    return 0;
-  }
-
-  public void quit() {
-    this.medicalEquipmentToCSV();
-    listDB("MedicalEquipment", 5);
-
-    try {
-      // Create database
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      statement.execute("DROP TABLE MedicalEquipment");
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
   }
 }

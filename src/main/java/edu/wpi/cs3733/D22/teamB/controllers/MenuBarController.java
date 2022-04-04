@@ -1,8 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
-import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -131,8 +129,7 @@ public class MenuBarController {
   public void goToEquipmentRequestQueue(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
-            getClass()
-                .getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequestQueuePage.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestQueuePage.fxml"));
     Scene internalScene = new Scene(internalRoot);
 
     Stage window;
@@ -192,10 +189,16 @@ public class MenuBarController {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = PatientsDB.getInstance();
+    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
+    EmployeeDB empDB = EmployeeDB.getInstance();
+    LabRequestDB labReqDB = LabRequestDB.getInstance();
 
+    labReqDB.quit();
+    eqReqDB.quit();
     patDB.quit();
     medEqDB.quit();
     locDB.quit();
+    empDB.quit();
 
     System.exit(0);
   }

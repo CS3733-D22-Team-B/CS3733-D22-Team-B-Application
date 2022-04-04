@@ -12,7 +12,19 @@ public class LabRequest extends Request {
     this.testingTime = testingTime;
   }
 
-  public String getType() {
-    return "Lab";
+  public final String createRequestID() {
+    return "LAB" + getHashCode();
+  }
+
+  public final String getType() {
+    return "Lab Test";
+  }
+
+  public final String getTest() {
+    return test;
+  }
+
+  public final Date getTestingTime() {
+    return testingTime;
   }
 }

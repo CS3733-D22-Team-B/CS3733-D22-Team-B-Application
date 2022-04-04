@@ -55,7 +55,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                         <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                         <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Equipment Requests" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
                     </items>
                 </Menu>
 
