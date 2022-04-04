@@ -151,4 +151,33 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
             .map(Map.Entry::getKey);
     return keys.findFirst().orElse(null);
   }
+
+  public LinkedList<Location> getLocationsByFloor(int floor) {
+    String floorName = "";
+    switch (floor) {
+      case 0:
+        floorName = "L2";
+        break;
+      case 1:
+        floorName = "L1";
+        break;
+      case 2:
+        floorName = "1";
+        break;
+      case 3:
+        floorName = "2";
+        break;
+      case 4:
+        floorName = "3";
+        break;
+    }
+
+    LinkedList<Location> locList = new LinkedList<Location>();
+    for (String key : locationMap.keySet()) {
+      if (locationMap.get(key).getFloor().equals(floorName)) {
+        locList.add(locationMap.get(key));
+      }
+    }
+    return locList;
+  }
 }

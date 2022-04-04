@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.Employee;
+import edu.wpi.cs3733.D22.teamB.databases.EmployeeDB;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,8 +29,10 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML Label employeeLabel;
 
   @FXML ComboBox<String> statusInput;
+  @FXML ComboBox<String> employeeInput;
 
   Request currentRequest = null;
+  protected EmployeeDB dao;
 
   private ObservableList<Request> requests = FXCollections.observableArrayList();
 
@@ -38,6 +43,13 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
     statusInput.setDisable(true);
+    employeeInput.setDisable(true);
+
+    dao = EmployeeDB.getInstance();
+    LinkedList<Employee> employees = dao.list();
+    for (Employee employeeItem : employees) {
+      employeeInput.getItems().add(employeeItem.getFirstName());
+    }
 
     for (Request request : RequestQueue.getRequests()) {
       requests.add(request);
@@ -63,7 +75,8 @@ public class RequestQueueController extends MenuBarController implements Initial
                           currentRequest = request;
                           requestIDLabel.setText(request.getRequestID());
                           locationLabel.setText(request.getLocation());
-                          employeeLabel.setText(request.getEmployee());
+                          employeeInput.setValue(request.getEmployee());
+                          employeeInput.setDisable(false);
                           statusInput.setValue(request.getStatus());
                           statusInput.setDisable(false);
                         });
@@ -90,6 +103,9 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
+    currentRequest.setEmployee(employeeInput.getValue());
     requestTable.refresh();
+    statusInput.setDisable(true);
+    employeeInput.setDisable(true);
   }
 }

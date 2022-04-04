@@ -1,10 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-public class EquipmentRequest extends Request {
+public class EquipmentTRequest extends Request {
   private String equipment;
   private String notes;
 
-  public EquipmentRequest(String employee, String location, String equipment, String notes) {
+  public EquipmentTRequest(String employee, String location, String equipment, String notes) {
     super(employee, location);
     this.equipment = equipment;
     this.notes = notes;

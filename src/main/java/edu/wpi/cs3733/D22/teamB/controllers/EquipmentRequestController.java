@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.requests.EquipmentRequest;
+import edu.wpi.cs3733.D22.teamB.requests.EquipmentTRequest;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,8 +39,7 @@ public class EquipmentRequestController extends RequestController {
       requestLabel.setText("Please select equipment to request");
     } else {
       String locationID = dao.getLocationID(room);
-      EquipmentRequest request = new EquipmentRequest(employeeName, locationID, equipment, notes);
-
+      EquipmentTRequest request = new EquipmentTRequest(employeeName, locationID, equipment, notes);
       RequestQueue.addRequest(request);
       requestLabel.setText("Request sent: " + equipment + " to " + room + " by " + employeeName);
     }
