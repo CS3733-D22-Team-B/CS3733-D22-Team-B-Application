@@ -90,6 +90,9 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void enableEditButton() {
+    //Consider renaming
+    //When location dropdown has a location selected,
+    //the confirm and delete buttons will be enabled depending on the attempted Map edit
     if (currentFunction.equals("Edit") && locationsDropdown.getValue() != null) {
       editEnableButton.setDisable(false);
       confirmButton.setDisable(false);
@@ -196,6 +199,8 @@ public class MapEditorController extends MapViewerController {
 
   @FXML
   public void getCoords(MouseEvent event) {
+    //If select is enabled, clicking will alternate between getting coords + setting the circle
+    // and clearing coords and hiding circle
     if (selectEnabled) {
       if (firstClick) {
         selectedXCoord = round(event.getX());
@@ -218,6 +223,7 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void clearMarker() {
+    //function that clears the red dot marker
     marker.setCenterX(0);
     marker.setCenterY(0);
     marker.setVisible(false);
@@ -231,6 +237,8 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void updateTempFields() {
+    //This function is used to update the labels next to the arrow buttons,
+    //show the values of the selected and scene coords
     tempX.setText(valueOf(selectedXCoord));
     tempY.setText(valueOf(selectedYCoord));
 
