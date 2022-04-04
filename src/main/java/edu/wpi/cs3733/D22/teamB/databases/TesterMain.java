@@ -44,6 +44,16 @@ public class TesterMain {
     medDB.listDB();
      */
 
-
+    /*
+    PatientsDB patDB = PatientsDB.getInstance();
+    patDB.listDB();
+    Patient addMe = new Patient("sdf", "dsgfd", "sdgf", "bSERV00103");
+    patDB.add(addMe);
+    Patient deleteMe = new Patient("PA02", "dsgfd", "sdgf", "bSERV00103");
+    patDB.delete(deleteMe);
+    Patient updateMe = new Patient("PA05", "sdqwwqe", "er", "bSERV00103");
+    patDB.update(updateMe);
+    patDB.listDB();
+     */
   }
 }

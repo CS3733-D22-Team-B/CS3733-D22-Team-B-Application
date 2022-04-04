@@ -31,18 +31,12 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM Patients");
-
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
-        String patientID = rs.getString("patientID");
-        String lastName = rs.getString("lastName");
-        String firstName = rs.getString("firstName");
-        String nodeID = rs.getString("nodeID");
-
-        Patient patOb = new Patient(patientID, lastName, firstName, nodeID);
-        patientMap.put(patientID, patOb);
+        Patient patOb =
+            new Patient(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+        patientMap.put(rs.getString(1), patOb);
       }
-
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
@@ -69,79 +63,53 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     return locList;
   }
 
-  ////////////////////////////////////////////////////////////// To Fix
   public int update(Patient patObj) {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      // If the patient does not exist in the database, return -1
-      if (patientMap.containsKey(patObj.getPatientID()) == false) {
-        return -1;
-      }
-
-      String sql =
-          "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ? WHERE patientID = ?";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, patObj.getLastName());
-      pStatement.setString(2, patObj.getFirstName());
-      pStatement.setString(3, patObj.getNodeID());
-      pStatement.setString(4, patObj.getPatientID());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      patientMap.put(patObj.getPatientID(), patObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    if (!patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
-    return 0;
+    return transform(
+        patObj,
+        "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ? WHERE patientID = ?",
+        true);
   }
 
   public int add(Patient patObj) {
-    // patientID has to be unique
     if (patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      String sql = "INSERT INTO Patients VALUES(?,?,?,?)";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, patObj.getPatientID());
-      pStatement.setString(2, patObj.getLastName());
-      pStatement.setString(3, patObj.getFirstName());
-      pStatement.setString(4, patObj.getNodeID());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      patientMap.put(patObj.getPatientID(), patObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed.");
-      return -1;
-    }
-    return 0;
+    return transform(patObj, "INSERT INTO Patients VALUES(?,?,?,?)", false);
   }
 
   public int delete(Patient patObj) {
-    // patientID has to exist
-    if (patientMap.containsKey(patObj.getPatientID()) == false) {
+    if (!patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
+    patientMap.remove(patObj.getPatientID());
+    return deleteFrom(patObj.getPatientID());
+  }
 
+  /////////////////////////////////////////////////////////////////////// Helper
+  private int transform(Patient patObj, String sql, boolean isUpdate) {
     try {
       Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      String sql = "DELETE FROM Patients WHERE patientID = '" + patObj.getPatientID() + "'";
-      statement.executeUpdate(sql);
+      PreparedStatement pStatement = connection.prepareStatement(sql);
 
-      patientMap.remove(patObj.getPatientID());
+      int offset = 0;
 
+      if (isUpdate) {
+        pStatement.setString(4, patObj.getPatientID());
+        offset = -1;
+      } else {
+        pStatement.setString(1, patObj.getPatientID());
+      }
+
+      pStatement.setString(2 + offset, patObj.getLastName());
+      pStatement.setString(3 + offset, patObj.getFirstName());
+      pStatement.setString(4 + offset, patObj.getNodeID());
+
+      pStatement.addBatch();
+      pStatement.executeBatch();
+      patientMap.put(patObj.getPatientID(), patObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
       return -1;
