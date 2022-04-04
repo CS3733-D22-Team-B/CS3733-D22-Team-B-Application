@@ -48,7 +48,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     dao = EmployeeDB.getInstance();
     LinkedList<Employee> employees = dao.list();
     for (Employee employeeItem : employees) {
-      employeeInput.getItems().add(employeeItem.getFirstName());
+      employeeInput.getItems().add(employeeItem.getFirstName() + " " + employeeItem.getLastName());
     }
 
     for (Request request : RequestQueue.getRequests()) {
