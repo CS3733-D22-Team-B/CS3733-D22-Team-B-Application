@@ -316,4 +316,37 @@ public class MapEditorController extends MapViewerController {
     tempX1.setText(valueOf(sceneXCoord));
     tempY1.setText(valueOf(sceneYCoord));
   }
+
+  public void confirmEdit(){
+    if(currentFunction.equals("Add")){
+      //TODO: Fix nodeID to be correct
+      String nodeID = "temp";
+      int[] newCoords = imageCoordsToCSVCoords((int)selectedXCoord, (int)selectedYCoord);
+      String floor = getFloorLevel();
+      String building = "Tower";
+      String nodeType = typeDropdown.getValue();
+      String name = addLocationName.getText();
+      Location NewLoc = new Location(nodeID, newCoords[0], newCoords[1], floor, building, nodeType, name, name);
+      //Pass new location into database
+    }
+    if(currentFunction.equals("Edit")){
+      String name = locationsDropdown.getValue();
+      String newName = editNameField.getText();
+      LinkedList<Location> listChange = dao.searchFor(name);
+      Location change = listChange.pop();
+      if(selectedXCoord != 0 && selectedYCoord != 0){
+        int[] newCoords = imageCoordsToCSVCoords((int)selectedXCoord, (int)selectedYCoord);
+        int newX = newCoords[0];
+        int newY = newCoords[1];
+        change.setXCoord(newX);
+        change.setYCoord(newY);
+      }
+      if(!change.getLongName().equals(newName)){
+        change.setLongName(newName);
+        change.setShortName(newName);
+      }
+      dao.update(change);
+    }
+  }
+
 }
