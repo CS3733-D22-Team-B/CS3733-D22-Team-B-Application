@@ -6,6 +6,7 @@ BED4,bPATI01403,BED,true,true
 BED5,bPATI01403,BED,true,true
 BED6,bPATI01403,BED,true,true
 BED7,bPATI01403,BED,true,true
+BED8,bPATI01403,BED,true,true
 BED9,bPATI01403,BED,true,true
 BED10,bPATI01403,BED,true,true
 BED11,bPATI01403,BED,true,true
@@ -30,5 +31,4 @@ PUMP2,bPATI01403,PUMP,true,true
 PUMP3,bPATI01403,PUMP,true,true
 PUMP4,bPATI01403,PUMP,true,true
 PUMP5,bPATI01403,PUMP,true,true
-PUMP6,bELEV00ML2,sdgf,false,false
-sdf,bPATI00303,sdgf,true,true
+PUMP6,bPATI01403,PUMP,true,true

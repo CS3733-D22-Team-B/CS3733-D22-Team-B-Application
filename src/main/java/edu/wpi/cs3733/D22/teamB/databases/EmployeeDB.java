@@ -34,12 +34,12 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
         Employee empOb =
-                new Employee(
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5));
+            new Employee(
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5));
         employeeMap.put(rs.getString(1), empOb);
       }
     } catch (SQLException e) {
@@ -85,9 +85,9 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
       return -1;
     }
     return transform(
-            empObj,
-            "UPDATE Employees SET lastName = ?, firstName = ?, department = ?, position = ? WHERE employeeID = ?",
-            true);
+        empObj,
+        "UPDATE Employees SET lastName = ?, firstName = ?, department = ?, position = ? WHERE employeeID = ?",
+        true);
   }
 
   public int add(Employee empObj) {
@@ -134,5 +134,4 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
     }
     return 0;
   }
-
 }
