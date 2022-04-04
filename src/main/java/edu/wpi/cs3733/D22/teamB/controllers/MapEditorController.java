@@ -31,11 +31,18 @@ public class MapEditorController extends MapViewerController {
   @FXML private Label tempX;
   @FXML private Label tempY;
 
+  @FXML private Label tempX1;
+  @FXML private Label tempY1;
+
   @FXML private Circle marker;
 
   private String currentFunction;
   private double selectedXCoord;
   private double selectedYCoord;
+  private double sceneXCoord;
+  private double sceneYCoord;
+  private Boolean firstClick = true;
+  private Boolean selectEnabled = false;
 
   @FXML
   public void hideButtons() {
@@ -95,6 +102,7 @@ public class MapEditorController extends MapViewerController {
   public void showEditFields() {
     editNameField.setDisable(false);
     editNameField.setVisible(true);
+    selectEnabled = true;
   }
 
   @FXML
@@ -112,6 +120,7 @@ public class MapEditorController extends MapViewerController {
         confirmButton.setVisible(true);
         break;
       case "Add":
+        selectEnabled = true;
         addLocationName.setVisible(true);
         addLocationName.setDisable(false);
         cancelButton.setDisable(false);
@@ -179,25 +188,53 @@ public class MapEditorController extends MapViewerController {
       default:
         break;
     }
+    selectEnabled = false;
+    clearMarker();
     enableFloorChange();
     showButtons();
   }
 
   @FXML
   public void getCoords(MouseEvent event) {
-    double sceneXCoord;
-    double sceneYCoord;
-    selectedXCoord = round(event.getX());
-    selectedYCoord = round(event.getY());
+    if (selectEnabled) {
+      if (firstClick) {
+        selectedXCoord = round(event.getX());
+        selectedYCoord = round(event.getY());
 
-    sceneXCoord = round(event.getSceneX());
-    sceneYCoord = round(event.getSceneY());
+        sceneXCoord = round(event.getSceneX());
+        sceneYCoord = round(event.getSceneY());
 
+        updateTempFields();
+
+        // We will have to figure out how to not have to hard code the adjustment
+        marker.setCenterX(sceneXCoord - 82);
+        marker.setCenterY(sceneYCoord - 217);
+        marker.setVisible(true);
+        firstClick = false;
+      } else {
+        clearMarker();
+      }
+    }
+  }
+
+  public void clearMarker() {
+    marker.setCenterX(0);
+    marker.setCenterY(0);
+    marker.setVisible(false);
+    selectedXCoord = 0;
+    selectedYCoord = 0;
+    sceneXCoord = 0;
+    sceneYCoord = 0;
+    updateTempFields();
+
+    firstClick = true;
+  }
+
+  public void updateTempFields() {
     tempX.setText(valueOf(selectedXCoord));
     tempY.setText(valueOf(selectedYCoord));
 
-    marker.setCenterX(sceneXCoord);
-    marker.setCenterY(sceneYCoord);
-    marker.setVisible(true);
+    tempX1.setText(valueOf(sceneXCoord));
+    tempY1.setText(valueOf(sceneYCoord));
   }
 }
