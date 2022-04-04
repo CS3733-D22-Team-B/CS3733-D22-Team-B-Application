@@ -80,4 +80,8 @@ public class MapViewerController extends MenuBarController {
     upButton.setDisable(false);
     downButton.setDisable(false);
   }
+
+  public String getFloorLevel() {
+    return floorDisplay.getText();
+  }
 }

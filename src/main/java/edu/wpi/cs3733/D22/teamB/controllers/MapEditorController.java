@@ -4,6 +4,9 @@ import static java.lang.Math.round;
 import static java.lang.String.valueOf;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamB.databases.Location;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import java.util.LinkedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -43,6 +46,39 @@ public class MapEditorController extends MapViewerController {
   private double sceneYCoord;
   private Boolean firstClick = true;
   private Boolean selectEnabled = false;
+
+  private LinkedList<String> roomsF3 = new LinkedList<>();
+  private LinkedList<String> roomsF2 = new LinkedList<>();
+  private LinkedList<String> roomsF1 = new LinkedList<>();
+  private LinkedList<String> roomsFL1 = new LinkedList<>();
+  private LinkedList<String> roomsFL2 = new LinkedList<>();
+
+  private LocationsDB dao;
+
+  public void initialize() {
+    dao = LocationsDB.getInstance();
+    LinkedList<Location> locations = dao.listLocations();
+
+    for (Location location : locations) {
+      switch (location.getFloor()) {
+        case "3":
+          roomsF3.add(location.getLongName());
+          break;
+        case "2":
+          roomsF2.add(location.getLongName());
+          break;
+        case "1":
+          roomsF1.add(location.getLongName());
+          break;
+        case "L1":
+          roomsFL1.add(location.getLongName());
+          break;
+        case "L2":
+          roomsFL2.add(location.getLongName());
+          break;
+      }
+    }
+  }
 
   @FXML
   public void hideButtons() {
@@ -90,11 +126,13 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void enableEditButton() {
-    //Consider renaming
-    //When location dropdown has a location selected,
-    //the confirm and delete buttons will be enabled depending on the attempted Map edit
+    // Consider renaming
+    // When location dropdown has a location selected,
+    // the confirm and delete buttons will be enabled depending on the attempted Map edit
     if (currentFunction.equals("Edit") && locationsDropdown.getValue() != null) {
       editEnableButton.setDisable(false);
+      editNameField.setDisable(false);
+      editNameField.setVisible(true);
       confirmButton.setDisable(false);
     }
     if (currentFunction.equals("Remove") && locationsDropdown.getValue() != null) {
@@ -103,14 +141,47 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void showEditFields() {
-    editNameField.setDisable(false);
-    editNameField.setVisible(true);
     selectEnabled = true;
+  }
+
+  public void updateLocationSelect() {
+    String floor = getFloorLevel();
+    locationsDropdown.getItems().clear();
+    switch (floor) {
+      default:
+        break;
+      case "L2":
+        for (String roomFL2 : roomsFL2) {
+          locationsDropdown.getItems().add(roomFL2);
+        }
+        break;
+      case "L1":
+        for (String roomFL1 : roomsFL1) {
+          locationsDropdown.getItems().add(roomFL1);
+        }
+        break;
+      case "1":
+        for (String roomF1 : roomsF1) {
+          locationsDropdown.getItems().add(roomF1);
+        }
+        break;
+      case "2":
+        for (String roomF2 : roomsF2) {
+          locationsDropdown.getItems().add(roomF2);
+        }
+        break;
+      case "3":
+        for (String roomF3 : roomsF3) {
+          locationsDropdown.getItems().add(roomF3);
+        }
+        break;
+    }
   }
 
   @FXML
   public void showView() {
     disableFloorChange();
+    updateLocationSelect();
     switch (currentFunction) {
       case "Edit":
         locationsDropdown.setDisable(false);
@@ -199,7 +270,7 @@ public class MapEditorController extends MapViewerController {
 
   @FXML
   public void getCoords(MouseEvent event) {
-    //If select is enabled, clicking will alternate between getting coords + setting the circle
+    // If select is enabled, clicking will alternate between getting coords + setting the circle
     // and clearing coords and hiding circle
     if (selectEnabled) {
       if (firstClick) {
@@ -223,7 +294,7 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void clearMarker() {
-    //function that clears the red dot marker
+    // function that clears the red dot marker
     marker.setCenterX(0);
     marker.setCenterY(0);
     marker.setVisible(false);
@@ -237,8 +308,8 @@ public class MapEditorController extends MapViewerController {
   }
 
   public void updateTempFields() {
-    //This function is used to update the labels next to the arrow buttons,
-    //show the values of the selected and scene coords
+    // This function is used to update the labels next to the arrow buttons,
+    // show the values of the selected and scene coords
     tempX.setText(valueOf(selectedXCoord));
     tempY.setText(valueOf(selectedYCoord));
 

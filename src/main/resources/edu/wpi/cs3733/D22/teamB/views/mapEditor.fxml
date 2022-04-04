@@ -109,7 +109,7 @@
       <Label fx:id="warningLabel" alignment="CENTER" layoutX="433.0" layoutY="104.0" prefHeight="64.0" prefWidth="142.0" text="Warning: This will delete the selected location" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
       <Label fx:id="tempX" layoutX="428.0" layoutY="222.0" text="Label" />
       <Label fx:id="tempY" layoutX="535.0" layoutY="222.0" text="Label" />
-      <Circle fx:id="marker" fill="RED" layoutX="82.0" layoutY="218.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="marker" fill="RED" layoutX="82.0" layoutY="218.0" onMouseClicked="#clearMarker" radius="4.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="tempX1" layoutX="428.0" layoutY="264.0" text="Label" />
       <Label fx:id="tempY1" layoutX="535.0" layoutY="264.0" text="Label" />
    </children>
