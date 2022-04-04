@@ -33,23 +33,19 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM EquipmentRequests");
-
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
-        String requestID = rs.getString("requestID");
-        String type = rs.getString("type");
-        String employeeID = rs.getString("employeeID");
-        String locationID = rs.getString("locationID");
-        String status = rs.getString("status");
-        String equipmentID = rs.getString("equipmentID");
-        String notes = rs.getString("notes");
-
         EquipmentRequest eqreqOb =
-            new EquipmentRequest(
-                requestID, type, employeeID, locationID, status, equipmentID, notes);
-        equipmentRequestMap.put(requestID, eqreqOb);
+                new EquipmentRequest(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7));
+        equipmentRequestMap.put(rs.getString(1), eqreqOb);
       }
-
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
@@ -66,6 +62,16 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     return eqreqList;
   }
 
+  public LinkedList<EquipmentRequest> searchFor(String input) {
+    LinkedList<String> pkList = filteredSearch(input);
+    LinkedList<EquipmentRequest> locList = new LinkedList<EquipmentRequest>();
+
+    for (int i = 0; i < pkList.size(); i++) {
+      locList.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return locList;
+  }
+
   public EquipmentRequest getByID(String id) {
     if (!equipmentRequestMap.containsKey(id)) {
       return null;
@@ -74,104 +80,61 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   }
 
   public int update(EquipmentRequest eqreqObj) {
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      // If the location does not exist in the database, return -1
-      if (equipmentRequestMap.containsKey(eqreqObj.getRequestID()) == false) {
-        return -1;
-      }
-
-      String sql =
-          "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID= ?, notes = ? WHERE requestID = ?";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, eqreqObj.getType());
-      pStatement.setString(2, eqreqObj.getEmployeeID());
-      pStatement.setString(3, eqreqObj.getLocationID());
-      pStatement.setString(4, eqreqObj.getStatus());
-      pStatement.setString(5, eqreqObj.getEquipmentID());
-      pStatement.setString(6, eqreqObj.getNotes());
-      pStatement.setString(7, eqreqObj.getRequestID());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      equipmentRequestMap.put(eqreqObj.getRequestID(), eqreqObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
+    if (!equipmentRequestMap.containsKey(eqreqObj.getRequestID())) {
       return -1;
     }
-    return 0;
+    return transform(
+            eqreqObj,
+            "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID= ?, notes = ? WHERE requestID = ?",
+            true);
   }
 
   public int add(EquipmentRequest eqreqObj) {
-    // nodeID has to be unique
     if (equipmentRequestMap.containsKey(eqreqObj.getRequestID())) {
       return -1;
     }
-
-    try {
-      Connection connection = DriverManager.getConnection(url);
-
-      String sql = "INSERT INTO EquipmentRequests VALUES(?,?,?,?,?,?,?)";
-      PreparedStatement pStatement = connection.prepareStatement(sql);
-      pStatement.setString(1, eqreqObj.getRequestID());
-      pStatement.setString(2, eqreqObj.getType());
-      pStatement.setString(3, eqreqObj.getEmployeeID());
-      pStatement.setString(4, eqreqObj.getLocationID());
-      pStatement.setString(5, eqreqObj.getStatus());
-      pStatement.setString(6, eqreqObj.getEquipmentID());
-      pStatement.setString(7, eqreqObj.getNotes());
-
-      pStatement.addBatch();
-      pStatement.executeBatch();
-
-      equipmentRequestMap.put(eqreqObj.getRequestID(), eqreqObj);
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed.");
-      return -1;
-    }
-    return 0;
+    return transform(eqreqObj, "INSERT INTO EquipmentRequests VALUES(?,?,?,?,?,?,?)", false);
   }
 
   public int delete(EquipmentRequest eqreqObj) {
-    // nodeID has to exist
-    if (equipmentRequestMap.containsKey(eqreqObj.getRequestID()) == false) {
+    if (!equipmentRequestMap.containsKey(eqreqObj.getNodeID())) {
       return -1;
     }
+    equipmentRequestMap.remove(eqreqObj.getNodeID());
+    return deleteFrom(eqreqObj.getNodeID());
+  }
 
+  /////////////////////////////////////////////////////////////////////// Helper
+  private int transform(EquipmentRequest eqreqObj, String sql, boolean isUpdate) {
     try {
       Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      String sql =
-          "DELETE FROM EquipmentRequests WHERE requestID = '" + eqreqObj.getRequestID() + "'";
-      statement.executeUpdate(sql);
+      PreparedStatement pStatement = connection.prepareStatement(sql);
 
-      equipmentRequestMap.remove(eqreqObj.getRequestID());
+      int offset = 0;
 
+      if (isUpdate) {
+        pStatement.setString(7, eqreqObj.getRequestID());
+        offset = -1;
+      } else {
+        pStatement.setString(1, eqreqObj.getRequestID());
+      }
+
+      pStatement.setString(2 + offset, eqreqObj.getType());
+      pStatement.setString(3 + offset, eqreqObj.getEmployeeID());
+      pStatement.setString(4 + offset, eqreqObj.getLocationID());
+      pStatement.setString(5 + offset, eqreqObj.getStatus());
+      pStatement.setString(6 + offset, eqreqObj.getEquipmentID());
+      pStatement.setString(7 + offset, eqreqObj.getNotes());
+
+      eqreqObj.getBuilding();
+
+      pStatement.addBatch();
+      pStatement.executeBatch();
+      equipmentRequestMap.put(eqreqObj.getRequestID(), eqreqObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
       return -1;
     }
     return 0;
-  }
-
-  public void quit() {
-    toCSV();
-    listDB();
-
-    try {
-      // Create database
-      Connection connection = DriverManager.getConnection(url);
-      Statement statement = connection.createStatement();
-      statement.execute("DROP TABLE EquipmentRequests");
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return;
-    }
   }
 }
