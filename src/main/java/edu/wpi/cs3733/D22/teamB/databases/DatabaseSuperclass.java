@@ -1,11 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.LinkedList;
 import javax.lang.model.util.Elements;
+
 
 public abstract class DatabaseSuperclass {
   protected final String DBURL = "jdbc:derby:Databases;";
@@ -25,8 +24,7 @@ public abstract class DatabaseSuperclass {
     try {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.getResultSet();
-      rs = statement.executeQuery("SELECT * FROM " + tableType + "");
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       int Elements = rs.getMetaData().getColumnCount();
 
       while (rs.next()) {
@@ -44,13 +42,13 @@ public abstract class DatabaseSuperclass {
     }
   }
 
+  // This can be generalized completely someday
   protected LinkedList<String> selectAll() {
     LinkedList<String> pkList = new LinkedList<String>();
     try {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
-      ResultSet rs = statement.getResultSet();
-      rs = statement.executeQuery("SELECT * FROM " + tableType + "");
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
 
       while (rs.next()) {
         pkList.add(rs.getString(1));
@@ -103,5 +101,116 @@ public abstract class DatabaseSuperclass {
       return -1;
     }
     return 0;
+  }
+
+  protected LinkedList<String> filteredSearch(String input) {
+    LinkedList<String> filteredSearchList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
+      int Elements = rs.getMetaData().getColumnCount();
+      String columnName = "";
+
+      while (rs.next()) {
+        for (int i = 1; i < Elements + 1; i++) {
+          if (rs.getString(i).compareTo(input) == 0) {
+            columnName = rs.getMetaData().getColumnName(i);
+            break;
+          }
+        }
+      }
+
+      ResultSet rs2 = statement.getResultSet();
+
+      int type = 0;
+      try {
+        int intInput = Integer.parseInt(input);
+        type = 1;
+      } catch (NumberFormatException e) {
+        try {
+          boolean boolInput = stringToBoolean(input);
+          type = 2;
+        } catch (NumberFormatException b) {
+          type = 0;
+        }
+      }
+
+      if (type == 1) {
+        rs2 =
+            statement.executeQuery(
+                "SELECT * FROM "
+                    + tableType
+                    + " WHERE "
+                    + columnName
+                    + " = "
+                    + Integer.parseInt(input)
+                    + "");
+      } else if (type == 2) {
+        rs2 =
+            statement.executeQuery(
+                "SELECT * FROM "
+                    + tableType
+                    + " WHERE "
+                    + columnName
+                    + " = "
+                    + stringToBoolean(input)
+                    + "");
+      } else if (type == 0) {
+        rs2 =
+            statement.executeQuery(
+                "SELECT * FROM " + tableType + " WHERE " + columnName + " = '" + input + "'");
+      }
+
+      while (rs2.next()) {
+        filteredSearchList.add(rs2.getString(1));
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return filteredSearchList;
+    }
+    return filteredSearchList;
+  }
+
+  protected int deleteFrom(String pk) {
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      String sql = "DELETE FROM " + tableType + " WHERE " + pkName + " = '" + pk + "'";
+      statement.executeUpdate(sql);
+    } catch (SQLException e) {
+      System.out.println("Connection failed.");
+      return -1;
+    }
+    return 0;
+  }
+
+  public void quit() {
+    toCSV();
+    listDB();
+
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      statement.execute("DROP TABLE " + tableType + "");
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return;
+    }
+  }
+
+  public boolean stringToBoolean(String input) {
+    if (input.toLowerCase().compareTo("true") == 0 || input.toLowerCase().compareTo("false") == 0) {
+      if (input.toLowerCase().compareTo("true") == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      throw new NumberFormatException();
+    }
   }
 }

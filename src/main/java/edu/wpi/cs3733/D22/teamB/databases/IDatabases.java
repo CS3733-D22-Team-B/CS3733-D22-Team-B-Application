@@ -7,6 +7,8 @@ public interface IDatabases<L> {
 
   public L getByID(String id);
 
+  public LinkedList<L> searchFor(String input);
+
   public int update(L locObj);
 
   public int add(L locObj);
