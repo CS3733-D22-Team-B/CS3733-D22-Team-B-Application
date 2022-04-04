@@ -4,7 +4,7 @@ public class MedicalEquipment {
 
   private String equipmentID;
   private String nodeID;
-  private String location;
+  private Location location;
   private String type;
   private boolean isClean;
   private boolean isRequested;
@@ -20,7 +20,7 @@ public class MedicalEquipment {
     setIsRequested(isRequested);
   }
 
-  public void setEquipmentID(String newEquipmentID) {
+  private void setEquipmentID(String newEquipmentID) {
     equipmentID = newEquipmentID;
   }
 
@@ -34,6 +34,16 @@ public class MedicalEquipment {
 
   public String getNodeID() {
     return nodeID;
+  }
+
+  public void setLocation(Location l) {
+    setNodeID(l.getNodeID());
+  }
+
+  public Location getLocation() {
+    LocationsDB locDB = LocationsDB.getInstance();
+    location = locDB.getByID(nodeID);
+    return location;
   }
 
   public void setType(String newType) {
@@ -60,11 +70,32 @@ public class MedicalEquipment {
     return isRequested;
   }
 
-  public void setLocation(String newLocation) {
-    location = newLocation;
+  /////////////////// LOCATION GETTERS////////////////////
+  public int getXCoord() {
+    return location.getXCoord();
   }
 
-  public String getLocation() {
-    return location;
+  public int getYCoord() {
+    return location.getYCoord();
+  }
+
+  public String getFloor() {
+    return location.getFloor();
+  }
+
+  public String getBuilding() {
+    return location.getBuilding();
+  }
+
+  public String getNodeType() {
+    return location.getNodeType();
+  }
+
+  public String getLongName() {
+    return location.getLongName();
+  }
+
+  public String getShortName() {
+    return location.getShortName();
   }
 }

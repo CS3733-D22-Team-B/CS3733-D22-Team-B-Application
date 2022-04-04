@@ -8,7 +8,15 @@ public class MealRequest extends Request {
     this.meal = meal;
   }
 
-  public String getType() {
+  public final String createRequestID() {
+    return "MEL" + getHashCode();
+  }
+
+  public final String getType() {
     return "Meal";
+  }
+
+  public final String getMeal() {
+    return meal;
   }
 }

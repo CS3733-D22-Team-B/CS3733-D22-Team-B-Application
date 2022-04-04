@@ -60,6 +60,13 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     return medEqList;
   }
 
+  public MedicalEquipment getByID(String id) {
+    if (!medicalEquipmentMap.containsKey(id)) {
+      return null;
+    }
+    return medicalEquipmentMap.get(id);
+  }
+
   public LinkedList<MedicalEquipment> searchFor(String input) {
     LinkedList<String> pkList = filteredSearch(input);
     LinkedList<MedicalEquipment> locList = new LinkedList<MedicalEquipment>();

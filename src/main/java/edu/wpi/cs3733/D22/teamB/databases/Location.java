@@ -29,7 +29,7 @@ public class Location {
     setShortName(shortName);
   }
 
-  public void setNodeID(String newNodeID) {
+  private void setNodeID(String newNodeID) {
     nodeID = newNodeID;
   }
 

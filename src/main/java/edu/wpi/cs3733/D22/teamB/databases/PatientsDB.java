@@ -53,10 +53,16 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     return patList;
   }
 
+  public Patient getByID(String id) {
+    if (!patientMap.containsKey(id)) {
+      return null;
+    }
+    return patientMap.get(id);
+  }
+
   public LinkedList<Patient> searchFor(String input) {
     LinkedList<String> pkList = filteredSearch(input);
     LinkedList<Patient> locList = new LinkedList<Patient>();
-
     for (int i = 0; i < pkList.size(); i++) {
       locList.add(patientMap.get(pkList.get(i)));
     }

@@ -13,10 +13,12 @@ public class DatabaseInitializer {
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
   private final String medicalEQCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
-  // private final String employeesCSVFilePath =
-  // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
+  private final String employeesCSVFilePath =
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
   private final String patientsCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
+  private final String equipmentRequestCSVFilePath =
+      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv";
 
   public DatabaseInitializer() {
     initDB();
@@ -38,17 +40,17 @@ public class DatabaseInitializer {
           "CREATE TABLE MedicalEquipment(equipmentID VARCHAR(10), nodeID VARCHAR(10), type VARCHAR(50), "
               + "isClean BOOLEAN, isRequested BOOLEAN, CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
               + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-      // statement.execute(
-      // "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName
-      // VARCHAR(25), department VARCHAR(100), position VARCHAR(50), CONSTRAINT  EMPLOYEES_PK
-      // primary key (employeeID))");
+      statement.execute(
+          "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
       statement.execute(
           "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-
+      statement.execute(
+          "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), type VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), status VARCHAR(15), equipmentID VARCHAR(10), notes VARCHAR(50), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
       populateDatabase(locationCSVFilePath, "Locations", 8);
       populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
-      // populateDatabase(employeesCSVFilePath, "Employees", 5);
+      populateDatabase(employeesCSVFilePath, "Employees", 5);
       populateDatabase(patientsCSVFilePath, "Patients", 4);
+      populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 7);
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
@@ -77,6 +79,9 @@ public class DatabaseInitializer {
       } else if (databaseName == "Patients") {
         addToTable =
             "INSERT INTO Patients(patientID, lastName, firstName, nodeID) VALUES(?, ?, ?, ?)";
+      } else if (databaseName == "EquipmentRequests") {
+        addToTable =
+            "INSERT INTO EquipmentRequests(requestID, type, employeeID, locationID, status, equipmentID, notes) VALUES(?, ?, ?, ?, ?, ?, ?)";
       }
 
       PreparedStatement pStatement = connection.prepareStatement(addToTable);

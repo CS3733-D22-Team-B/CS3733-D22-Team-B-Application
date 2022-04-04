@@ -8,7 +8,15 @@ public class MedicineRequest extends Request {
     medicine = this.medicine;
   }
 
-  public String getType() {
+  public final String createRequestID() {
+    return "MED" + getHashCode();
+  }
+
+  public final String getType() {
     return "Medicine";
+  }
+
+  public final String getMedicine() {
+    return medicine;
   }
 }

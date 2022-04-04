@@ -5,11 +5,18 @@ public class InternalPatientTransferRequest extends Request {
 
   public InternalPatientTransferRequest(String employee, String location, String destination) {
     super(employee, location);
-
     this.destination = destination;
   }
 
-  public String getType() {
+  public final String createRequestID() {
+    return "IPT" + getHashCode();
+  }
+
+  public final String getType() {
     return "Internal Patient Transfer";
+  }
+
+  public final String getDestination() {
+    return destination;
   }
 }
