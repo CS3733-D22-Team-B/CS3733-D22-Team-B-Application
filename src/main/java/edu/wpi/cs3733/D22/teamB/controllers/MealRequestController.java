@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.requests.MealRequest;
+import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -20,6 +21,8 @@ public class MealRequestController extends RequestController {
     setMealName();
     String locationID = dao.getLocationID(room);
     MealRequest request = new MealRequest(employeeName, locationID, mealName);
+
+    RequestQueue.addRequest(request);
     requestLabel.setText("Meal request sent: " + mealName + " for " + room);
   }
 

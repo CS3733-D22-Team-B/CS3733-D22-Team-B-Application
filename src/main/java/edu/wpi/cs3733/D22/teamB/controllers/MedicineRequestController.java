@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.requests.MedicineRequest;
+import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -22,6 +23,7 @@ public class MedicineRequestController extends RequestController {
     String locationID = dao.getLocationID(room);
     MedicineRequest request = new MedicineRequest(employeeName, locationID, medicine);
 
+    RequestQueue.addRequest(request);
     requestLabel.setText("Request sent: " + medicine + " to " + room + " by " + employeeName);
   }
 
