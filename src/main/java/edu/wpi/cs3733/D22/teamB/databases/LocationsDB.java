@@ -173,11 +173,65 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     }
 
     LinkedList<Location> locList = new LinkedList<Location>();
-    for (String key : locationMap.keySet()) {
-      if (locationMap.get(key).getFloor().equals(floorName)) {
-        locList.add(locationMap.get(key));
+    for (Location loc : list()) {
+      if (loc.getFloor().equals(floorName)) {
+        locList.add(loc);
       }
     }
     return locList;
+  }
+
+  public String getNextID(String floor, String roomType) {
+    int floorAsInt = 0;
+    String floorKey = floor;
+    switch (floor) {
+      case "L2":
+        floorAsInt = 0;
+        break;
+      case "L1":
+        floorAsInt = 1;
+        break;
+      case "1":
+        floorKey = "01";
+        floorAsInt = 2;
+        break;
+      case "2":
+        floorKey = "02";
+        floorAsInt = 3;
+        break;
+      case "3":
+        floorKey = "03";
+        floorAsInt = 4;
+        break;
+    }
+    String lastID = "bXXXX99901";
+    LinkedList<Location> floorLocations = getLocationsByFloor(floorAsInt);
+    for (Location loc : floorLocations) {
+      if (loc.getNodeType().equals(roomType)) {
+        lastID = loc.getNodeID();
+        System.out.println(lastID);
+      }
+    }
+    char[] nums = new char[3];
+    for (int i = 0; i < 3; i++) {
+      nums[i] = lastID.charAt(5 + i);
+    }
+    if (nums[2] != '9') {
+      int num = nums[2] - '0';
+      num++;
+      nums[2] = (char) (num + '0');
+    } else if (nums[1] != '9') {
+      int num = nums[1] - '0';
+      num++;
+      nums[1] = (char) (num + '0');
+      nums[2] = '0';
+    } else {
+      int num = nums[0] - '0';
+      num++;
+      nums[0] = (char) (num + '0');
+      nums[1] = '0';
+      nums[2] = '0';
+    }
+    return "b" + roomType + nums[0] + nums[1] + nums[2] + floorKey;
   }
 }

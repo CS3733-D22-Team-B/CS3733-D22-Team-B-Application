@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import static java.lang.Math.round;
-import static java.lang.String.valueOf;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
@@ -30,13 +29,6 @@ public class MapEditorController extends MapViewerController {
   @FXML private TextField editNameField;
   @FXML private Button deleteButton;
   @FXML private Label warningLabel;
-
-  @FXML private Label tempX;
-  @FXML private Label tempY;
-
-  @FXML private Label tempX1;
-  @FXML private Label tempY1;
-
   @FXML private Circle marker;
 
   private String currentFunction;
@@ -178,6 +170,10 @@ public class MapEditorController extends MapViewerController {
     }
   }
 
+  public void enableConfirm() {
+    if (currentFunction.equals("Add")) {}
+  }
+
   @FXML
   public void showView() {
     disableFloorChange();
@@ -266,6 +262,7 @@ public class MapEditorController extends MapViewerController {
     clearMarker();
     enableFloorChange();
     showButtons();
+    initialize();
   }
 
   @FXML
@@ -279,8 +276,6 @@ public class MapEditorController extends MapViewerController {
 
         sceneXCoord = round(event.getSceneX());
         sceneYCoord = round(event.getSceneY());
-
-        updateTempFields();
 
         // We will have to figure out how to not have to hard code the adjustment
         marker.setCenterX(sceneXCoord - 82);
@@ -302,51 +297,60 @@ public class MapEditorController extends MapViewerController {
     selectedYCoord = 0;
     sceneXCoord = 0;
     sceneYCoord = 0;
-    updateTempFields();
 
     firstClick = true;
   }
 
-  public void updateTempFields() {
-    // This function is used to update the labels next to the arrow buttons,
-    // show the values of the selected and scene coords
-    tempX.setText(valueOf(selectedXCoord));
-    tempY.setText(valueOf(selectedYCoord));
-
-    tempX1.setText(valueOf(sceneXCoord));
-    tempY1.setText(valueOf(sceneYCoord));
-  }
-
-  public void confirmEdit(){
-    if(currentFunction.equals("Add")){
-      //TODO: Fix nodeID to be correct
-      String nodeID = "temp";
-      int[] newCoords = imageCoordsToCSVCoords((int)selectedXCoord, (int)selectedYCoord);
+  public void confirmChanges() {
+    if (currentFunction.equals("Add")
+        && selectedXCoord != 0
+        && selectedYCoord != 0
+        && !typeDropdown.getValue().equals("")
+        && !addLocationName.getText().equals("")) {
+      // Only works if on Add, there are selected X and Y Coords, typeDropdown and addLocationName
+      // have values
+      int[] newCoords = imageCoordsToCSVCoords((int) selectedXCoord, (int) selectedYCoord);
       String floor = getFloorLevel();
       String building = "Tower";
       String nodeType = typeDropdown.getValue();
+      String nodeID = dao.getNextID(floor, nodeType);
       String name = addLocationName.getText();
-      Location NewLoc = new Location(nodeID, newCoords[0], newCoords[1], floor, building, nodeType, name, name);
-      //Pass new location into database
+      Location newLoc =
+          new Location(nodeID, newCoords[0], newCoords[1], floor, building, nodeType, name, name);
+      // Pass new location into database
+      dao.add(newLoc);
     }
-    if(currentFunction.equals("Edit")){
+    if (currentFunction.equals("Edit")) {
       String name = locationsDropdown.getValue();
       String newName = editNameField.getText();
       LinkedList<Location> listChange = dao.searchFor(name);
       Location change = listChange.pop();
-      if(selectedXCoord != 0 && selectedYCoord != 0){
-        int[] newCoords = imageCoordsToCSVCoords((int)selectedXCoord, (int)selectedYCoord);
-        int newX = newCoords[0];
-        int newY = newCoords[1];
-        change.setXCoord(newX);
-        change.setYCoord(newY);
+      if (selectedXCoord != 0 && selectedYCoord != 0) {
+        // If coordinates are changed, update in location object
+        int[] newCoords = imageCoordsToCSVCoords((int) selectedXCoord, (int) selectedYCoord);
+        change.setXCoord(newCoords[0]);
+        change.setYCoord(newCoords[1]);
       }
-      if(!change.getLongName().equals(newName)){
+      if (!change.getLongName().equals(newName) && !newName.equals("")) {
+        // If the new name is not the same as the original long name, change the names to new name.
         change.setLongName(newName);
         change.setShortName(newName);
       }
       dao.update(change);
     }
+    hideView();
   }
 
+  public void deleteLoc() {
+    String name = locationsDropdown.getValue();
+    LinkedList<Location> listChange = dao.searchFor(name);
+    Location target = listChange.pop();
+    dao.delete(target);
+    hideView();
+  }
 }
+
+// Things to Consider Adding
+// Locking the Confirm button until all necessary fields are updated.
+// Dealing with locations that have the same names (if necessary)
+// User feedback that location was added, updated, deleted.
