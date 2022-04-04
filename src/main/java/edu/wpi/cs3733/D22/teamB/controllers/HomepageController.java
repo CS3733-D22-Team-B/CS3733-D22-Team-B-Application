@@ -2,18 +2,15 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.stage.Stage;
 
 public class HomepageController extends MenuBarController {
   @FXML private Button logInButton;
   @FXML private Button profileButton;
   @FXML private Button mapButton;
+  @FXML private Button mapEditorButton;
+  @FXML private Button mapViewerButton;
+  @FXML private Button mapDatabaseButton;
   @FXML private Button equipmentTrackerButton;
   @FXML private Button requestButton;
   @FXML private Button equipmentRequestButton;
@@ -24,103 +21,6 @@ public class HomepageController extends MenuBarController {
   @FXML private Button internalPatientTransferButton;
   @FXML private Button backButton;
   @FXML private Button patientDatabaseButton;
-
-  @FXML private RadioButton homepageNodeObject;
-
-  /*
-  @FXML
-  void goToEquipmentDelivery(ActionEvent event) throws Exception {
-    Parent equipmentRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequest.fxml"));
-    Scene equipmentScene = new Scene(equipmentRoot);
-
-    Stage window;
-    window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(equipmentScene);
-    window.show();
-  }
-
-  public void goToLabService(ActionEvent event) throws Exception {
-    Parent labRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/labRequest.fxml"));
-    Scene labScene = new Scene(labRoot);
-
-    Stage window;
-    if (event.getSource() instanceof MenuItem) {
-      window = (Stage) homepageNodeObject.getScene().getWindow();
-    } else {
-      window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    }
-    window.setScene(labScene);
-    window.show();
-  }
-
-  public void goToMedicineDelivery(ActionEvent event) throws Exception {
-    Parent medicineRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/medicineRequest.fxml"));
-    Scene medicineScene = new Scene(medicineRoot);
-
-    Stage window;
-    if (event.getSource() instanceof MenuItem) {
-      window = (Stage) homepageNodeObject.getScene().getWindow();
-    } else {
-      window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    }
-    window.setScene(medicineScene);
-    window.show();
-  }
-
-  public void goToMealDelivery(ActionEvent event) throws Exception {
-    Parent mealRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mealRequest.fxml"));
-    Scene mealScene = new Scene(mealRoot);
-
-    Stage window;
-    if (event.getSource() instanceof MenuItem) {
-      window = (Stage) homepageNodeObject.getScene().getWindow();
-    } else {
-      window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    }
-    window.setScene(mealScene);
-    window.show();
-  }
-
-  public void goToInterpreterPage(ActionEvent event) throws Exception {
-    Parent interpreterRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/interpreterRequest.fxml"));
-    Scene interpreterScene = new Scene(interpreterRoot);
-
-    Stage window;
-    if (event.getSource() instanceof MenuItem) {
-      window = (Stage) homepageNodeObject.getScene().getWindow();
-    } else {
-      window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    }
-    window.setScene(interpreterScene);
-    window.show();
-  }
-
-  @FXML
-  void goToInternalPatient(ActionEvent event) throws Exception {
-    Parent internalRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/internalPatient.fxml"));
-    Scene internalScene = new Scene(internalRoot);
-
-    Stage window;
-    if (event.getSource() instanceof MenuItem) {
-      window = (Stage) homepageNodeObject.getScene().getWindow();
-    } else {
-      window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    }
-    window.setScene(internalScene);
-    window.show();
-  }
-
-  */
 
   @FXML
   void displayRequestButtons(ActionEvent event) {
@@ -134,6 +34,9 @@ public class HomepageController extends MenuBarController {
     backButton.setVisible(true);
 
     mapButton.setVisible(false);
+    mapEditorButton.setVisible(false);
+    mapViewerButton.setVisible(false);
+    mapDatabaseButton.setVisible(false);
     equipmentTrackerButton.setVisible(false);
     requestButton.setVisible(false);
     patientDatabaseButton.setVisible(false);
@@ -148,6 +51,46 @@ public class HomepageController extends MenuBarController {
     backButton.setDisable(false);
 
     mapButton.setDisable(true);
+    mapEditorButton.setDisable(true);
+    mapViewerButton.setDisable(true);
+    mapDatabaseButton.setDisable(true);
+    equipmentTrackerButton.setDisable(true);
+    requestButton.setDisable(true);
+    patientDatabaseButton.setDisable(true);
+  }
+
+  @FXML
+  void displayMapButtons(ActionEvent event) {
+    // set map buttons visible and hide all other buttons
+    mapEditorButton.setVisible(true);
+    mapViewerButton.setVisible(true);
+    mapDatabaseButton.setVisible(true);
+    backButton.setVisible(true);
+
+    equipmentRequestButton.setVisible(false);
+    labRequestButton.setVisible(false);
+    mealRequestButton.setVisible(false);
+    medicineRequestButton.setVisible(false);
+    interpreterRequestButton.setVisible(false);
+    internalPatientTransferButton.setVisible(false);
+    mapButton.setVisible(false);
+    equipmentTrackerButton.setVisible(false);
+    requestButton.setVisible(false);
+    patientDatabaseButton.setVisible(false);
+
+    // enable map buttons and disable all other buttons
+    mapEditorButton.setDisable(false);
+    mapViewerButton.setDisable(false);
+    mapDatabaseButton.setDisable(false);
+    backButton.setDisable(false);
+
+    equipmentRequestButton.setDisable(true);
+    labRequestButton.setDisable(true);
+    mealRequestButton.setDisable(true);
+    medicineRequestButton.setDisable(true);
+    interpreterRequestButton.setDisable(true);
+    internalPatientTransferButton.setDisable(true);
+    mapButton.setDisable(true);
     equipmentTrackerButton.setDisable(true);
     requestButton.setDisable(true);
     patientDatabaseButton.setDisable(true);
@@ -161,6 +104,9 @@ public class HomepageController extends MenuBarController {
     requestButton.setVisible(true);
     patientDatabaseButton.setVisible(true);
 
+    mapEditorButton.setVisible(false);
+    mapViewerButton.setVisible(false);
+    mapDatabaseButton.setVisible(false);
     equipmentRequestButton.setVisible(false);
     labRequestButton.setVisible(false);
     medicineRequestButton.setVisible(false);
@@ -175,6 +121,9 @@ public class HomepageController extends MenuBarController {
     requestButton.setDisable(false);
     patientDatabaseButton.setDisable(true);
 
+    mapEditorButton.setDisable(true);
+    mapViewerButton.setDisable(true);
+    mapDatabaseButton.setDisable(true);
     equipmentRequestButton.setDisable(true);
     labRequestButton.setDisable(true);
     medicineRequestButton.setDisable(true);
@@ -182,16 +131,5 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
     backButton.setDisable(true);
-  }
-
-  public void goToRequestQueue(ActionEvent event) throws Exception {
-    Parent internalRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestStatus.fxml"));
-    Scene internalScene = new Scene(internalRoot);
-
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(internalScene);
-    window.show();
   }
 }

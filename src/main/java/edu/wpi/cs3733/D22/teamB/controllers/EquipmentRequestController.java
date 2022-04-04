@@ -1,58 +1,64 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.requests.EquipmentRequest;
+import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
-public class EquipmentRequestController extends MenuBarController {
-  @FXML private Label resultLabel;
-  @FXML private ComboBox<String> roomComboBox;
-  @FXML private ComboBox<String> equipmentComboBox;
-  @FXML private TextField nameInput;
+public class EquipmentRequestController extends RequestController {
+  @FXML private ComboBox<String> equipmentInput;
+  @FXML private TextArea additionalNotesInput;
 
-  private String room = "";
   private String equipment = "";
-  private String name = "";
+  private String notes = "";
 
   @FXML
-  void setRoom() {
-    room = roomComboBox.getValue();
+  public void setEquipment() {
+    equipment = equipmentInput.getValue();
   }
 
   @FXML
-  void setEquipment() {
-    equipment = equipmentComboBox.getValue();
+  public void setNotes() {
+    notes = (additionalNotesInput.getText() == null) ? "" : additionalNotesInput.getText();
   }
 
   @FXML
-  void setName() {
-    name = nameInput.getText();
-  }
-
-  @FXML
-  void sendRequest() {
-    setName();
-    if (room.equals("") && equipment.equals("") && name.equals("")) {
-      resultLabel.setText(
+  public void sendRequest(ActionEvent actionEvent) {
+    setEmployeeName();
+    setNotes();
+    if (room.equals("") && equipment.equals("") && employeeName.equals("")) {
+      requestLabel.setText(
           "Fields are empty, please specify room, equipment, and name of requester");
     } else if (room.equals("")) {
-      resultLabel.setText("Please specify a room");
-    } else if (name.equals("")) {
-      resultLabel.setText("Please input name of requester");
+      requestLabel.setText("Please specify a room");
+    } else if (employeeName.equals("")) {
+      requestLabel.setText("Please input name of requester");
     } else if (equipment.equals("")) {
-      resultLabel.setText("Please select equipment to request");
-    } else resultLabel.setText("Request sent: " + equipment + " to " + room + " by " + name);
+      requestLabel.setText("Please select equipment to request");
+    } else {
+      String locationID = dao.getLocationID(room);
+      EquipmentRequest request = new EquipmentRequest(employeeName, locationID, equipment, notes);
+
+      RequestQueue.addRequest(request);
+      requestLabel.setText("Request sent: " + equipment + " to " + room + " by " + employeeName);
+    }
   }
 
   @FXML
-  void reset() {
-    roomComboBox.setValue("");
-    equipmentComboBox.setValue("");
-    resultLabel.setText("");
-    nameInput.setText("");
+  public void reset(ActionEvent actionEvent) {
+    requestLabel.setText("");
+    employeeNameInput.setText("");
+    floorInput.setValue("");
+    roomInput.setValue("");
+    equipmentInput.setValue("");
+    additionalNotesInput.setText("");
+
+    employeeName = "";
+    floor = "";
     room = "";
     equipment = "";
-    name = "";
+    notes = "";
   }
 }

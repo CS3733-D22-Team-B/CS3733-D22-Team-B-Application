@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentTrackerController">
+    <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                    <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Map">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
+                    <MenuItem mnemonicParsing="false" text="Edit" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Equipment Tracker" />
+            <Menu mnemonicParsing="false" text="Requests">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+                </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
+            <Menu mnemonicParsing="false" text="Help">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" text="ඞ" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+   <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
+   <TableView fx:id="equipmentTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="532.0">
+     <columns>
+       <TableColumn fx:id="columnEquipment" prefWidth="128.800048828125" text="Equipment" />
+         <TableColumn fx:id="columnSterilization" prefWidth="71.3333740234375" text="Sterilized" />
+         <TableColumn fx:id="columnFloor" prefWidth="46.0" text="Floor" />
+         <TableColumn fx:id="columnLocation" prefWidth="189.333251953125" text="Location" />
+         <TableColumn fx:id="columnBuilding" prefWidth="93.3333740234375" text="Building" />
+     </columns>
+   </TableView>
+
+</AnchorPane>

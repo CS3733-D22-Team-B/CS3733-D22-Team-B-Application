@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,10 +23,10 @@ public class MenuBarController {
   }
 
   @FXML
-  public void goToEquipmentDelivery(ActionEvent event) throws Exception {
+  public void goToEquipmentDeliveryRequestPage(ActionEvent event) throws Exception {
     Parent equipmentRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequest.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequestPage.fxml"));
     Scene equipmentScene = new Scene(equipmentRoot);
 
     Stage window;
@@ -35,9 +36,10 @@ public class MenuBarController {
   }
 
   @FXML
-  public void goToLabService(ActionEvent event) throws Exception {
+  public void goToLabServiceRequestPage(ActionEvent event) throws Exception {
     Parent labRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/labRequest.fxml"));
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/labRequestPage.fxml"));
     Scene labScene = new Scene(labRoot);
     Stage window;
     window = (Stage) homeBar.getScene().getWindow();
@@ -46,10 +48,10 @@ public class MenuBarController {
   }
 
   @FXML
-  public void goToMedicineDelivery(ActionEvent event) throws Exception {
+  public void goToMedicineDeliveryRequestPage(ActionEvent event) throws Exception {
     Parent medicineRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/medicineRequest.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/medicineRequestPage.fxml"));
     Scene medicineScene = new Scene(medicineRoot);
 
     Stage window;
@@ -59,9 +61,10 @@ public class MenuBarController {
   }
 
   @FXML
-  public void goToMealDelivery(ActionEvent event) throws Exception {
+  public void goToMealDeliveryRequestPage(ActionEvent event) throws Exception {
     Parent mealRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mealRequest.fxml"));
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mealRequestPage.fxml"));
     Scene mealScene = new Scene(mealRoot);
 
     Stage window;
@@ -72,10 +75,10 @@ public class MenuBarController {
   }
 
   @FXML
-  public void goToInterpreterPage(ActionEvent event) throws Exception {
+  public void goToInterpreterRequestPage(ActionEvent event) throws Exception {
     Parent interpreterRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/interpreterRequest.fxml"));
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/interpreterRequestPage.fxml"));
     Scene interpreterScene = new Scene(interpreterRoot);
 
     Stage window;
@@ -85,10 +88,12 @@ public class MenuBarController {
   }
 
   @FXML
-  void goToInternalPatient(ActionEvent event) throws Exception {
+  void goToInternalPatientTransferRequestPage(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/internalPatient.fxml"));
+            getClass()
+                .getResource(
+                    "/edu/wpi/cs3733/D22/teamB/views/internalPatientTransferRequestPage.fxml"));
     Scene internalScene = new Scene(internalRoot);
 
     Stage window;
@@ -98,7 +103,90 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToMapViewPage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mapViewerPage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToEquipmentRequestQueue(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestQueuePage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToLocationData(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/locationDataPage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentTrackerPage.fxml"));
+    Scene internalScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(internalScene);
+    window.show();
+  }
+
+  public void goToLoginPage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/loginPage.fxml"));
+    Scene loginScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(loginScene);
+    window.show();
+  }
+
+  public void goToProfilePage(ActionEvent event) throws Exception {
+    Parent internalRoot =
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/profilePage.fxml"));
+    Scene profileScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(profileScene);
+    window.show();
+  }
+
+  @FXML
   void quitApplication() {
+    LocationsDB locDB = LocationsDB.getInstance();
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
+    PatientsDB patDB = PatientsDB.getInstance();
+    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
+    EmployeeDB empDB = EmployeeDB.getInstance();
+
+    eqReqDB.quit();
+    patDB.quit();
+    medEqDB.quit();
+    locDB.quit();
+    empDB.quit();
+
     System.exit(0);
   }
 }

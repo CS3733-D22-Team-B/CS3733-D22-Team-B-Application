@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.requests.LabRequest;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -8,38 +9,49 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 
-public class LabRequestController extends MenuBarController {
-  @FXML private Label resultLabel;
-  @FXML private ComboBox patientNameComboBox;
-  @FXML private ComboBox labTestComboBox;
-  @FXML private DatePicker testingDatePicker;
+public class LabRequestController extends RequestController {
+  @FXML private ComboBox<String> labTestInput;
+  @FXML private DatePicker testingTimeInput;
 
-  private String patientName;
-  private String labTestName;
+  private String labTest;
   private Date testingTime;
 
-  @FXML
-  void setPatient(ActionEvent event) {
-    patientName = patientNameComboBox.getValue().toString();
+  public void setLabTest() {
+    labTest = labTestInput.getValue();
   }
 
-  @FXML
-  void setLabTest(ActionEvent event) {
-    labTestName = labTestComboBox.getValue().toString();
-  }
-
-  @FXML
-  void setTestingTime(ActionEvent event) {
-    LocalDate localDate = testingDatePicker.getValue();
+  public void setTestingTime() {
+    LocalDate localDate = testingTimeInput.getValue();
     Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
     testingTime = Date.from(instant);
   }
 
   @FXML
-  void sendRequest() {
-    resultLabel.setText(
-        "Request sent: " + labTestName + " for " + patientName + " on " + testingTime);
+  public void sendRequest(ActionEvent actionEvent) {
+    setEmployeeName();
+    setLabTest();
+    setTestingTime();
+
+    String locationID = dao.getLocationID(room);
+    LabRequest request = new LabRequest(employeeName, locationID, labTest, testingTime);
+
+    requestLabel.setText("Request sent: " + labTest + " for " + room + " on " + testingTime);
+  }
+
+  @FXML
+  public void reset(ActionEvent actionEvent) {
+    requestLabel.setText("");
+    employeeNameInput.setText("");
+    floorInput.setValue("");
+    roomInput.setValue("");
+    labTestInput.setValue("");
+    testingTimeInput.setValue(null);
+
+    employeeName = "";
+    floor = "";
+    room = "";
+    labTest = "";
+    testingTime = null;
   }
 }

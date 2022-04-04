@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MealRequestController">
+   <children>
+      <Button layoutX="256.0" layoutY="253.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
+      <Label layoutX="182.0" layoutY="69.0" text="Meal Delivery Request">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="204.0" layoutY="182.0" text="Meal" />
+      <Label fx:id="requestLabel" alignment="CENTER" layoutX="90.0" layoutY="311.0" prefHeight="18.0" prefWidth="419.0" />
+      <Label layoutX="322.0" layoutY="114.0" text="Room" />
+      <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
+      <ComboBox fx:id="roomInput" layoutX="263.0" layoutY="131.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="ROOM_1" fx:value="Room 1" />
+               <String fx:id="ROOM_2" fx:value="Room 2" />
+               <String fx:id="ROOM_3" fx:value="Room 3" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <TextField fx:id="mealInput" layoutX="142.0" layoutY="200.0" onAction="#setMealName" promptText="Meal" />
+      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
+                  <MenuItem mnemonicParsing="false" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Equipment Tracker" />
+            <Menu mnemonicParsing="false" text="Requests">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+               </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="ඞ" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <ComboBox fx:id="floorInput" layoutX="187.0" layoutY="131.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="203.0" layoutY="114.0" text="Floor" />
+      <TextField fx:id="nameInput" layoutX="307.0" layoutY="199.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="181.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
