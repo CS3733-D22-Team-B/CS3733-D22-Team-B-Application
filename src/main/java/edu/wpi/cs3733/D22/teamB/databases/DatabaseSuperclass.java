@@ -59,12 +59,19 @@ public abstract class DatabaseSuperclass {
     return pkList;
   }
 
-  protected int toCSV() {
+  /**
+   * Outputs data from the table into a CSV file. Saves the file in the entered file path (requires
+   * full file path)
+   *
+   * @param newFilePath Name of the file to save the data as. Include full
+   * @return
+   */
+  protected int toCSV(String newFilePath) {
     try {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(filePath));
+      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(newFilePath));
       int Elements = rs.getMetaData().getColumnCount();
       String listOfColumns = "";
 
@@ -99,6 +106,22 @@ public abstract class DatabaseSuperclass {
       e.printStackTrace();
       return -1;
     }
+    return 0;
+  }
+
+  public void downloadCSV(String fileName) {
+    String newFilePath = System.getProperty("user.home") + "/Downloads/" + fileName + ".csv";
+    toCSV(newFilePath);
+  }
+
+  /**
+   * Saves current table data to the running application CSV folder automatically. Run on
+   * application close.
+   *
+   * @return
+   */
+  protected int toCSV() {
+    toCSV(filePath);
     return 0;
   }
 

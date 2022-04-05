@@ -39,7 +39,9 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
                 rs.getString(2),
                 rs.getString(3),
                 rs.getString(4),
-                rs.getString(5));
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7));
         employeeMap.put(rs.getString(1), empOb);
       }
     } catch (SQLException e) {
@@ -86,7 +88,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
     }
     return transform(
         empObj,
-        "UPDATE Employees SET lastName = ?, firstName = ?, department = ?, position = ? WHERE employeeID = ?",
+        "UPDATE Employees SET lastName = ?, firstName = ?, department = ?, position = ?, username = ?, password = ? WHERE employeeID = ?",
         true);
   }
 
@@ -94,7 +96,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
     if (employeeMap.containsKey(empObj.getEmployeeID())) {
       return -1;
     }
-    return transform(empObj, "INSERT INTO Employees VALUES(?,?,?,?,?)", false);
+    return transform(empObj, "INSERT INTO Employees VALUES(?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Employee empObj) {
@@ -114,7 +116,7 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(5, empObj.getEmployeeID());
+        pStatement.setString(7, empObj.getEmployeeID());
         offset = -1;
       } else {
         pStatement.setString(1, empObj.getEmployeeID());
@@ -124,6 +126,8 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
       pStatement.setString(3 + offset, empObj.getFirstName());
       pStatement.setString(4 + offset, empObj.getDepartment());
       pStatement.setString(5 + offset, empObj.getPosition());
+      pStatement.setString(6 + offset, empObj.getUsername());
+      pStatement.setString(7 + offset, empObj.getPassword());
 
       pStatement.addBatch();
       pStatement.executeBatch();

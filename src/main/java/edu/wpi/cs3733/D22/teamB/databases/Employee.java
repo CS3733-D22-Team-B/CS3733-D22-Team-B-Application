@@ -6,14 +6,40 @@ public class Employee {
   private String firstName;
   private String department;
   private String position;
+  private String username;
+  private String password;
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
   public Employee(
-      String employeeID, String lastname, String firstName, String department, String position) {
+      String employeeID,
+      String lastname,
+      String firstName,
+      String department,
+      String position,
+      String username,
+      String password) {
     setEmployeeID(employeeID);
     setLastName(lastname);
     setFirstName(firstName);
     setDepartment(department);
     setPosition(position);
+    setUsername(username);
+    setPassword(password);
   }
 
   public String getEmployeeID() {
