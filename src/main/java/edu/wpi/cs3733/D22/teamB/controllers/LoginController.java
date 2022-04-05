@@ -18,26 +18,27 @@ public class LoginController extends MenuBarController {
   private String password;
 
   public void setUsername() {
-    username = usernameField.getText();
+    this.username = usernameField.getText();
   }
 
   public void setPassword() {
-    password = passwordBox.getText();
+    this.password = passwordBox.getText();
   }
 
   public void login() {
     // Login functionality
+    this.setPassword();
+    this.setUsername();
     EmployeeDB emp = EmployeeDB.getInstance();
-    Employee employee = emp.getEmployee(username);
+    System.out.println(this.username + " " + this.password);
+    Employee employee = emp.getEmployee(this.username);
+    loginFail.setText(employee.getEmployeeID());
 
-    if (employee.getPassword().equals(password))
-    {
-    //go to homepage
-    }
-    else
-    {
+    if (employee.getPassword().equals(password)) {
+      // go to homepage
+      loginFail.setText("Go home");
+    } else {
       loginFail.setText("Invalid login");
     }
-
   }
 }
