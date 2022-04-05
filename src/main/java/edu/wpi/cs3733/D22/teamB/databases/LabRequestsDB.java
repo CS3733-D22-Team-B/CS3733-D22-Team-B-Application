@@ -5,16 +5,16 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class LabRequestDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
+public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLabRequest.csv";
-  private static LabRequestDB labRequestDBManager;
+  private static LabRequestsDB labRequestsDBManager;
 
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();
 
-  private LabRequestDB() {
+  private LabRequestsDB() {
     super(
         "LabRequests",
         "requestID",
@@ -22,11 +22,11 @@ public class LabRequestDB extends DatabaseSuperclass implements IDatabases<LabRe
     initDB();
   }
 
-  public static LabRequestDB getInstance() {
-    if (labRequestDBManager == null) {
-      labRequestDBManager = new LabRequestDB();
+  public static LabRequestsDB getInstance() {
+    if (labRequestsDBManager == null) {
+      labRequestsDBManager = new LabRequestsDB();
     }
-    return labRequestDBManager;
+    return labRequestsDBManager;
   }
 
   @Override
@@ -130,7 +130,7 @@ public class LabRequestDB extends DatabaseSuperclass implements IDatabases<LabRe
       pStatement.setString(4 + offset, labReq.getType());
       pStatement.setString(5 + offset, labReq.getStatus());
       pStatement.setString(6 + offset, labReq.getTest());
-      pStatement.setTimestamp(7 + offset, new Timestamp(labReq.getTestingTime().getTime()));
+      pStatement.setTimestamp(7 + offset, new Timestamp(labReq.getDate().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();

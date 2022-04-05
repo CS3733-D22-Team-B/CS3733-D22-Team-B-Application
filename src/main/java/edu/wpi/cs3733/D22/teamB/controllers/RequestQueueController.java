@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeeDB;
+import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import java.net.URL;
@@ -32,7 +32,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML ComboBox<String> employeeInput;
 
   Request currentRequest = null;
-  protected EmployeeDB dao;
+  protected EmployeesDB dao;
 
   private ObservableList<Request> requests = FXCollections.observableArrayList();
 
@@ -45,7 +45,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
 
-    dao = EmployeeDB.getInstance();
+    dao = EmployeesDB.getInstance();
     LinkedList<Employee> employees = dao.list();
     for (Employee employeeItem : employees) {
       employeeInput.getItems().add(employeeItem.getFirstName() + " " + employeeItem.getLastName());

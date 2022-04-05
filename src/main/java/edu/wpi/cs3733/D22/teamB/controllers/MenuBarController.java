@@ -202,9 +202,11 @@ public class MenuBarController {
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = PatientsDB.getInstance();
     EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
-    EmployeeDB empDB = EmployeeDB.getInstance();
-    LabRequestDB labReqDB = LabRequestDB.getInstance();
+    EmployeesDB empDB = EmployeesDB.getInstance();
+    LabRequestsDB labReqDB = LabRequestsDB.getInstance();
+    ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
 
+    serReqDB.quit();
     labReqDB.quit();
     eqReqDB.quit();
     patDB.quit();

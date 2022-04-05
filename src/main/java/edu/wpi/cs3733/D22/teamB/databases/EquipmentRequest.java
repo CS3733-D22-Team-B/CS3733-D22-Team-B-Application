@@ -12,15 +12,23 @@ public class EquipmentRequest extends Request {
     this.equipmentID = equipmentID;
     this.notes = notes;
     setMedicalEquipment();
-    setInformation();
+    information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + getNotes();
+  }
+
+  public EquipmentRequest(
+      String requestID,
+      String type,
+      String employeeID,
+      String locationID,
+      String status,
+      String equipmentID,
+      String notes) {
+    super(requestID, type, employeeID, locationID, status, notes);
+    this.equipmentID = equipmentID;
   }
 
   public final String createRequestID() {
     return "EQU" + getHashCode();
-  }
-
-  public final void setInformation() {
-    information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + getNotes();
   }
 
   public String getEquipmentID() {

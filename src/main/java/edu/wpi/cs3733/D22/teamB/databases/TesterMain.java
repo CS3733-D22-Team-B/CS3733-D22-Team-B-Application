@@ -58,7 +58,7 @@ public class TesterMain {
     patDB.listDB();
      */
 
-    LabRequestDB labReq = LabRequestDB.getInstance();
+    LabRequestsDB labReq = LabRequestsDB.getInstance();
     labReq.listDB();
     LabRequest addMe =
         new LabRequest("sdf", "PTDR01", "bHALL001L2", "LAB", "IN PROGRESS", "Blood", new Date());
