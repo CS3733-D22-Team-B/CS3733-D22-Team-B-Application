@@ -9,8 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class LocationDataController extends MenuBarController implements Initializable {
@@ -20,6 +19,9 @@ public class LocationDataController extends MenuBarController implements Initial
   @FXML TableColumn<edu.wpi.cs3733.D22.teamB.databases.Location, String> columnY;
   @FXML TableColumn<edu.wpi.cs3733.D22.teamB.databases.Location, String> columnFloor;
   @FXML TableColumn<edu.wpi.cs3733.D22.teamB.databases.Location, String> columnBuilding;
+  @FXML private Button downloadButton;
+  @FXML private TextField downloadText;
+  @FXML private Label errorLabel;
 
   private ObservableList<Location> locations = FXCollections.observableArrayList();
   private LocationsDB dao;
@@ -39,5 +41,15 @@ public class LocationDataController extends MenuBarController implements Initial
     }
 
     locationTable.setItems(locations);
+  }
+
+  @FXML
+  public void download() {
+    if (downloadText.getText().equals("")) {
+      errorLabel.setText("Please enter filename");
+    } else {
+      dao.downloadCSV(downloadText.getText());
+      errorLabel.setText("File downloaded");
+    }
   }
 }
