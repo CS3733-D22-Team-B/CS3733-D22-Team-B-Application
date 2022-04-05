@@ -9,24 +9,50 @@ public class DatabaseInitializer {
 
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
-  private final String locationCSVFilePath =
+  private String locationCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
-  private final String medicalEQCSVFilePath =
+  private String medicalEQCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
-  private final String employeesCSVFilePath =
+  private String employeesCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
-  private final String patientsCSVFilePath =
+  private String patientsCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
-  private final String equipmentRequestCSVFilePath =
+  private String equipmentRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv";
-  private final String labRequestCSVFilePath =
+  private String labRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLabRequest.csv";
-  private final String serviceRequestCSVFilePath =
+  private String serviceRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationServiceRequest.csv";
 
-  public DatabaseInitializer() {
-    initDB();
+  public void setLocationCSVFilePath(String newPath) {
+    this.locationCSVFilePath = newPath;
   }
+
+  public void setMedicalEQCSVFilePath(String newPath) {
+    this.medicalEQCSVFilePath = newPath;
+  }
+
+  public void setEmployeesCSVFilePath(String newPath) {
+    this.employeesCSVFilePath = newPath;
+  }
+
+  public void setPatientsCSVFilePath(String newPath) {
+    this.patientsCSVFilePath = newPath;
+  }
+
+  public void setEquipmentRequestCSVFilePath(String newPath) {
+    this.equipmentRequestCSVFilePath = newPath;
+  }
+
+  public void setLabRequestCSVFilePath(String newPath) {
+    this.labRequestCSVFilePath = newPath;
+  }
+
+  public void setServiceRequestCSVFilePath(String newPath) {
+    this.serviceRequestCSVFilePath = newPath;
+  }
+
+  public DatabaseInitializer() {}
 
   public void initDB() {
     try {

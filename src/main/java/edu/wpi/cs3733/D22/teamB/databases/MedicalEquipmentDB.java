@@ -12,7 +12,15 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
   private static MedicalEquipmentDB medicalEquipmentDBManager;
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
-      new HashMap<String, MedicalEquipment>();;
+      new HashMap<String, MedicalEquipment>();
+
+  public HashMap<String, MedicalEquipment> getMedicalEquipmentMap() {
+    return medicalEquipmentMap;
+  }
+
+  public void setMedicalEquipmentMap(HashMap<String, MedicalEquipment> medicalEquipmentMap) {
+    this.medicalEquipmentMap = medicalEquipmentMap;
+  }
 
   private MedicalEquipmentDB() {
     super(
