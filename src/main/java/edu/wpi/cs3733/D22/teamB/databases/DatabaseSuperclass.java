@@ -60,7 +60,9 @@ public abstract class DatabaseSuperclass {
   }
 
   /**
-   * Outputs data from the table into a CSV file. Saves the file in the entered file path (requires full file path)
+   * Outputs data from the table into a CSV file. Saves the file in the entered file path (requires
+   * full file path)
+   *
    * @param newFilePath Name of the file to save the data as. Include full
    * @return
    */
