@@ -1,8 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.App;
-import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,5 +52,26 @@ public class LoginController {
         loginFail.setText("Invalid Password");
       }
     }
+  }
+
+  @FXML
+  void quitApplication() {
+    LocationsDB locDB = LocationsDB.getInstance();
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
+    PatientsDB patDB = PatientsDB.getInstance();
+    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
+    EmployeesDB empDB = EmployeesDB.getInstance();
+    LabRequestsDB labReqDB = LabRequestsDB.getInstance();
+    // ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
+
+    // serReqDB.quit();
+    labReqDB.quit();
+    eqReqDB.quit();
+    patDB.quit();
+    medEqDB.quit();
+    locDB.quit();
+    empDB.quit();
+
+    System.exit(0);
   }
 }

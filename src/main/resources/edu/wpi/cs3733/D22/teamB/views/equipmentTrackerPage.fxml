@@ -16,7 +16,7 @@
          <TableColumn fx:id="columnSterilization" prefWidth="71.3333740234375" text="Sterilized" />
          <TableColumn fx:id="columnFloor" prefWidth="46.0" text="Floor" />
          <TableColumn fx:id="columnLocation" prefWidth="189.333251953125" text="Location" />
-         <TableColumn fx:id="columnBuilding" prefWidth="93.3333740234375" text="Building" />
+         <TableColumn fx:id="columnBuilding" prefWidth="93.3333740234375" text="Is Requested" />
      </columns>
    </TableView>
    <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">

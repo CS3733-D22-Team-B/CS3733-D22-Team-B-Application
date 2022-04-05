@@ -21,6 +21,6 @@ public class ProfileController extends MenuBarController {
     employeeID.setText(currentUser.getEmployeeID());
     positionDisplay.setText(currentUser.getPosition());
     usernameDisplay.setText(currentUser.getUsername());
-    passwordDisplay.setText(currentUser.getPassword());
+    //passwordDisplay.setText(currentUser.getPassword());
   }
 }
