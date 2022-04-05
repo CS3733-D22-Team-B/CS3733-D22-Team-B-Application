@@ -30,7 +30,10 @@ public class MapEditorController extends MapViewerController {
   @FXML private Button deleteButton;
   @FXML private Label warningLabel;
   @FXML private Circle marker;
-
+  @FXML private Label resetWarning;
+  @FXML private JFXButton resetButton;
+  @FXML private JFXButton resetConfirm;
+  @FXML private JFXButton resetCancel;
   private String currentFunction;
   private double selectedXCoord;
   private double selectedYCoord;
@@ -347,6 +350,56 @@ public class MapEditorController extends MapViewerController {
     Location target = listChange.pop();
     dao.delete(target);
     hideView();
+  }
+
+  @FXML
+  public void resetLocations() {
+    // TODO: calll database reset function
+
+    // reset view
+    cancelReset();
+  }
+
+  @FXML
+  public void resetWarning() {
+    addButton.setDisable(true);
+    addButton.setVisible(false);
+    editButton.setDisable(true);
+    editButton.setVisible(false);
+    removeButton.setDisable(true);
+    removeButton.setVisible(false);
+    upButton.setVisible(false);
+    upButton.setDisable(true);
+    downButton.setVisible(false);
+    downButton.setDisable(true);
+    floorDisplay.setVisible(false);
+
+    resetConfirm.setDisable(false);
+    resetConfirm.setVisible(true);
+    resetCancel.setVisible(true);
+    resetCancel.setDisable(false);
+    resetWarning.setVisible(true);
+  }
+
+  @FXML
+  public void cancelReset() {
+    addButton.setDisable(false);
+    addButton.setVisible(true);
+    editButton.setDisable(false);
+    editButton.setVisible(true);
+    removeButton.setDisable(false);
+    removeButton.setVisible(true);
+    upButton.setVisible(true);
+    upButton.setDisable(false);
+    downButton.setVisible(true);
+    downButton.setDisable(false);
+    floorDisplay.setVisible(true);
+
+    resetConfirm.setDisable(true);
+    resetConfirm.setVisible(false);
+    resetCancel.setVisible(false);
+    resetCancel.setDisable(true);
+    resetWarning.setVisible(false);
   }
 }
 

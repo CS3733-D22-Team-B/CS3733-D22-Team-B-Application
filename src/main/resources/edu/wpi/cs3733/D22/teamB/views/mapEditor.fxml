@@ -89,9 +89,9 @@
       </ComboBox>
       <JFXButton fx:id="editButton" layoutX="442.0" layoutY="122.0" onAction="#editLocations" prefHeight="26.0" prefWidth="122.0" text="Edit Locations" />
       <JFXButton fx:id="removeButton" layoutX="442.0" layoutY="159.0" onAction="#removeLocation" prefHeight="26.0" prefWidth="122.0" text="Remove Location" />
-      <JFXButton fx:id="downButton" layoutX="480.0" layoutY="336.0" onAction="#moveDown" prefHeight="50.0" prefWidth="47.0" rotate="180.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
-      <JFXButton fx:id="upButton" layoutX="480.0" layoutY="239.0" onAction="#moveUp" prefHeight="50.0" prefWidth="47.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
-      <Label fx:id="floorDisplay" alignment="CENTER" layoutX="489.0" layoutY="292.0" prefHeight="41.0" prefWidth="29.0" text="1">
+      <JFXButton fx:id="downButton" layoutX="480.0" layoutY="315.0" onAction="#moveDown" prefHeight="50.0" prefWidth="47.0" rotate="180.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
+      <JFXButton fx:id="upButton" layoutX="480.0" layoutY="218.0" onAction="#moveUp" prefHeight="50.0" prefWidth="47.0" styleClass="arrow-button" stylesheets="@styles/buttonStyles.css" text=" " />
+      <Label fx:id="floorDisplay" alignment="CENTER" layoutX="489.0" layoutY="271.0" prefHeight="41.0" prefWidth="29.0" text="1">
          <font>
             <Font size="24.0" />
          </font>
@@ -108,5 +108,17 @@
       <Button fx:id="deleteButton" layoutX="523.0" layoutY="183.0" mnemonicParsing="false" onAction="#deleteLoc" text="Delete" visible="false" />
       <Label fx:id="warningLabel" alignment="CENTER" layoutX="433.0" layoutY="104.0" prefHeight="64.0" prefWidth="142.0" text="Warning: This will delete the selected location" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
       <Circle fx:id="marker" fill="RED" layoutX="82.0" layoutY="218.0" onMouseClicked="#clearMarker" radius="4.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <JFXButton fx:id="resetButton" graphicTextGap="2.0" layoutX="412.0" layoutY="365.0" onAction="#resetWarning" prefHeight="26.0" prefWidth="85.0" text="Reset Locations" textAlignment="CENTER" textFill="#a90000">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="resetWarning" layoutX="421.0" layoutY="47.0" prefHeight="130.0" prefWidth="166.0" text="WARNING! This will reset all locations to their defaults. Are you sure?" textAlignment="CENTER" textFill="#c90000" visible="false" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="resetConfirm" disable="true" layoutX="534.0" layoutY="183.0" onAction="#resetLocations" text="Confirm" visible="false" />
+      <JFXButton fx:id="resetCancel" disable="true" layoutX="416.0" layoutY="183.0" onAction="#cancelReset" text="Cancel" visible="false" />
    </children>
 </AnchorPane>

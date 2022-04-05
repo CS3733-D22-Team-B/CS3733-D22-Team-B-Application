@@ -15,10 +15,10 @@ import javafx.scene.shape.SVGPath;
 
 public class MapViewerController extends MenuBarController {
   @FXML private AnchorPane anchorPane;
-  @FXML private JFXButton upButton;
-  @FXML private JFXButton downButton;
+  @FXML protected JFXButton upButton;
+  @FXML protected JFXButton downButton;
   @FXML private ImageView mapImage;
-  @FXML private Label floorDisplay;
+  @FXML protected Label floorDisplay;
 
   private int floorLevel = 2;
 
