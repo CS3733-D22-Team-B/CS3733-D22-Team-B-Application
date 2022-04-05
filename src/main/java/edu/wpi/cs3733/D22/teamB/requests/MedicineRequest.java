@@ -1,19 +1,22 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import edu.wpi.cs3733.D22.teamB.databases.Location;
+
 public class MedicineRequest extends Request {
   private String medicine;
 
-  public MedicineRequest(String employee, String location, String medicine) {
-    super(employee, location);
+  public MedicineRequest(String locationID, String medicine) {
+    super(locationID, "Medicine");
     medicine = this.medicine;
+    setInformation();
   }
 
   public final String createRequestID() {
     return "MED" + getHashCode();
   }
 
-  public final String getType() {
-    return "Medicine";
+  public final void setInformation() {
+    information = "Medicine Request: " + medicine;
   }
 
   public final String getMedicine() {

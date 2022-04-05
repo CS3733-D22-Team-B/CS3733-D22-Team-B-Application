@@ -55,4 +55,8 @@ public class Employee {
   public void setPosition(String position) {
     this.position = position;
   }
+
+  public String getOverview() {
+    return firstName + " " + lastName + " (" + employeeID + ")";
+  }
 }

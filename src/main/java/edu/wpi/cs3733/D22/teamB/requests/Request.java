@@ -1,16 +1,27 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import edu.wpi.cs3733.D22.teamB.databases.Employee;
+import edu.wpi.cs3733.D22.teamB.databases.EmployeeDB;
+import edu.wpi.cs3733.D22.teamB.databases.Location;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+
 public abstract class Request {
   protected final String requestID;
-  protected String employee;
-  protected final String location;
+  protected final String type;
+  protected String employeeID;
+  protected Employee employee;
+  protected final String locationID;
+  protected Location location;
   protected String status;
+  protected String information;
 
-  public Request(String employee, String location) {
-    this.employee = employee;
-    this.location = location;
+  public Request(String locationID, String type) {
+    this.type = type;
+    this.employeeID = null;
+    this.locationID = locationID;
     this.status = "Pending";
     this.requestID = createRequestID();
+    setLocation();
   }
 
   public abstract String createRequestID();
@@ -19,15 +30,40 @@ public abstract class Request {
     return requestID;
   }
 
-  public final String getEmployee() {
+  public final String getType() {
+    return type;
+  }
+
+  public final String getEmployeeID() {
+    return employeeID;
+  }
+
+  public final void setEmployeeID(String employeeID) {
+    this.employeeID = employeeID;
+    setEmployee();
+  }
+
+  public final Employee getEmployee() {
     return employee;
   }
 
-  public final String getLocation() {
+  public final void setEmployee() {
+    EmployeeDB employeeDB = EmployeeDB.getInstance();
+    employee = employeeDB.getByID(employeeID);
+  }
+
+  public final String getLocationID() {
+    return locationID;
+  }
+
+  public final Location getLocation() {
     return location;
   }
 
-  public abstract String getType();
+  public void setLocation() {
+    LocationsDB locationsDB = LocationsDB.getInstance();
+    location = locationsDB.getByID(locationID);
+  }
 
   public final String getStatus() {
     return status;
@@ -37,9 +73,11 @@ public abstract class Request {
     this.status = status;
   }
 
-  public final void setEmployee(String employee) {
-    this.employee = employee;
+  public final String getInformation() {
+    return information;
   }
+
+  public abstract void setInformation();
 
   // Josh Bloch's Hashing method
   protected final String getHashCode() {
@@ -48,8 +86,8 @@ public abstract class Request {
 
     // calculate the field component weights
     long c =
-        ((employee == null) ? 0 : employee.hashCode())
-            + ((location == null) ? 0 : location.hashCode());
+            type.hashCode() +
+            + ((locationID == null) ? 0 : locationID.hashCode());
 
     // calculate the hash
     int hash = (int) (37 * result + c);

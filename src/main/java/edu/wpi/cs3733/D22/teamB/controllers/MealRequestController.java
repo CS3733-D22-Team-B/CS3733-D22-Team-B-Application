@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.requests.MealRequest;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
@@ -20,7 +21,7 @@ public class MealRequestController extends RequestController {
   public void sendRequest(ActionEvent actionEvent) {
     setMealName();
     String locationID = dao.getLocationID(room);
-    MealRequest request = new MealRequest(employeeName, locationID, mealName);
+    MealRequest request = new MealRequest(locationID, mealName);
 
     RequestQueue.addRequest(request);
     requestLabel.setText("Meal request sent: " + mealName + " for " + room);

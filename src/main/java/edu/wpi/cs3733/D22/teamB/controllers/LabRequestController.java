@@ -1,10 +1,13 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.requests.LabRequest;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+
+import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
+import edu.wpi.cs3733.D22.teamB.databases.TestingTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -15,7 +18,7 @@ public class LabRequestController extends RequestController {
   @FXML private DatePicker testingTimeInput;
 
   private String labTest;
-  private Date testingTime;
+  private TestingTime testingTime;
 
   public void setLabTest() {
     labTest = labTestInput.getValue();
@@ -24,7 +27,7 @@ public class LabRequestController extends RequestController {
   public void setTestingTime() {
     LocalDate localDate = testingTimeInput.getValue();
     Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-    testingTime = Date.from(instant);
+    testingTime = new TestingTime(Date.from(instant), LocalTime.NOON);
   }
 
   @FXML
@@ -34,7 +37,7 @@ public class LabRequestController extends RequestController {
     setTestingTime();
 
     String locationID = dao.getLocationID(room);
-    LabRequest request = new LabRequest(employeeName, locationID, labTest, testingTime);
+    LabRequest request = new LabRequest(locationID, labTest, testingTime);
 
     requestLabel.setText("Request sent: " + labTest + " for " + room + " on " + testingTime);
   }

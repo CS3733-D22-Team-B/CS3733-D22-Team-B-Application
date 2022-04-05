@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.requests.InternalPatientTransferRequest;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
@@ -60,7 +61,7 @@ public class InternalPatientTransferController extends RequestController {
     String locationID = dao.getLocationID(room);
     String destinationID = dao.getLocationID(destinationRoom);
     InternalPatientTransferRequest request =
-        new InternalPatientTransferRequest(employeeName, locationID, destinationID);
+        new InternalPatientTransferRequest(locationID, destinationID);
     RequestQueue.addRequest(request);
     requestLabel.setText(
         "Request sent: Moving patient in "

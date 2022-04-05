@@ -1,110 +1,39 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-public class EquipmentRequest {
-  private String requestID;
-  private String type;
-  private String employeeID;
-  private Employee employee;
-  private String locationID;
-  private Location location;
-  private String status;
-  private String equipmentID;
+import edu.wpi.cs3733.D22.teamB.requests.Request;
+
+public class EquipmentRequest extends Request {
+  private final String equipmentID;
   private MedicalEquipment medicalEquipment;
   private String notes;
 
-  EquipmentRequest(
-      String requestID,
-      String type,
-      String employeeID,
-      String locationID,
-      String status,
-      String equipmentID,
-      String notes) {
-    setRequestID(requestID);
-    setType(type);
-    setEmployeeID(employeeID);
-    setLocationID(locationID);
-    setStatus(status);
-    setEquipmentID(equipmentID);
-    setNotes(notes);
+  public EquipmentRequest(String locationID, String equipmentID, String notes) {
+    super(locationID, "Equipment Request");
+    this.equipmentID = equipmentID;
+    this.notes = notes;
+    setMedicalEquipment();
+    setInformation();
   }
 
-  public String getRequestID() {
-    return requestID;
+  public final String createRequestID() {
+    return "EQU" + getHashCode();
   }
 
-  private void setRequestID(String requestID) {
-    this.requestID = requestID;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public String getEmployeeID() {
-    return employeeID;
-  }
-
-  public void setEmployeeID(String employeeID) {
-    this.employeeID = employeeID;
-  }
-
-  public Employee getEmployee() {
-    EmployeeDB employeeDB = EmployeeDB.getInstance();
-    employee = employeeDB.getByID(employeeID);
-    return employee;
-  }
-
-  public void setEmployee(Employee e) {
-    setEmployeeID(e.getEmployeeID());
-  }
-
-  public String getLocationID() {
-    return locationID;
-  }
-
-  public void setLocationID(String locationID) {
-    this.locationID = locationID;
-  }
-
-  public Location getLocation() {
-    LocationsDB locationsDB = LocationsDB.getInstance();
-    location = locationsDB.getByID(locationID);
-    return location;
-  }
-
-  public void setLocation(Location l) {
-    setLocationID(l.getNodeID());
-  }
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
+  public final void setInformation() {
+    information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + getNotes();
   }
 
   public String getEquipmentID() {
     return equipmentID;
   }
 
-  public void setEquipmentID(String equipmentID) {
-    this.equipmentID = equipmentID;
-  }
-
   public MedicalEquipment getMedicalEquipment() {
-    MedicalEquipmentDB medicalEquipmentDB = MedicalEquipmentDB.getInstance();
-    medicalEquipment = medicalEquipmentDB.getByID(equipmentID);
     return medicalEquipment;
   }
 
-  public void setMedicalEquipment(MedicalEquipment me) {
-    setEquipmentID(me.getEquipmentID());
+  public void setMedicalEquipment() {
+    MedicalEquipmentDB medicalEquipmentDB = MedicalEquipmentDB.getInstance();
+    medicalEquipment = medicalEquipmentDB.getByID(equipmentID);
   }
 
   public String getNotes() {

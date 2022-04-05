@@ -17,7 +17,7 @@ public class InterpreterRequestController extends RequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     String locationID = dao.getLocationID(room);
-    InterpreterRequest request = new InterpreterRequest(employeeName, locationID, language);
+    InterpreterRequest request = new InterpreterRequest(locationID, language);
 
     RequestQueue.addRequest(request);
     requestLabel.setText("You have selected " + language);

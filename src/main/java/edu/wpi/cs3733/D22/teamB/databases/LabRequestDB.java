@@ -130,7 +130,7 @@ public class LabRequestDB extends DatabaseSuperclass implements IDatabases<LabRe
       pStatement.setString(4 + offset, labReq.getType());
       pStatement.setString(5 + offset, labReq.getStatus());
       pStatement.setString(6 + offset, labReq.getTest());
-      pStatement.setTimestamp(7 + offset, new Timestamp(labReq.getDate().getTime()));
+      pStatement.setTimestamp(7 + offset, new Timestamp(labReq.getTestingTime().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();

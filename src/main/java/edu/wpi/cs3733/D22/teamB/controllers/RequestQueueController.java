@@ -74,8 +74,8 @@ public class RequestQueueController extends MenuBarController implements Initial
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
                           requestIDLabel.setText(request.getRequestID());
-                          locationLabel.setText(request.getLocation());
-                          employeeInput.setValue(request.getEmployee());
+                          locationLabel.setText(request.getLocationID());
+                          employeeInput.setValue(request.getEmployeeID());
                           employeeInput.setDisable(false);
                           statusInput.setValue(request.getStatus());
                           statusInput.setDisable(false);
@@ -103,7 +103,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
-    currentRequest.setEmployee(employeeInput.getValue());
+    currentRequest.setEmployeeID(employeeInput.getValue());
     requestTable.refresh();
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
