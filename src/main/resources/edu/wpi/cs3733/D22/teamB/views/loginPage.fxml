@@ -87,7 +87,7 @@
             <Image url="@../../../../../../../../../../../Downloads/icons8-Material%20Rounded-Person.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="321.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="321.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
          <image>
             <Image url="@../../../../../../../../../../../Downloads/icons8-iOS%20Filled-Lock.png" />
          </image>
