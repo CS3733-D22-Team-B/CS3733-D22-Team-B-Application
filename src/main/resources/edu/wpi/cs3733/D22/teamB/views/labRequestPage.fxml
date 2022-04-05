@@ -9,7 +9,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -97,5 +96,41 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
+      <ComboBox fx:id="roomInput" layoutX="262.0" layoutY="109.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="178.0" layoutY="109.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
+      <Label alignment="CENTER" layoutX="327.0" layoutY="215.0" text="Lab Room" />
+      <ComboBox fx:id="labRoomInput" layoutX="279.0" layoutY="233.0" onAction="#setLabRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="labFloorInput" layoutX="195.0" layoutY="233.0" onAction="#setLabFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="31" fx:value="F3" />
+               <String fx:id="21" fx:value="F2" />
+               <String fx:id="11" fx:value="F1" />
+               <String fx:id="L11" fx:value="L1" />
+               <String fx:id="L21" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="203.0" layoutY="215.0" text="Lab Floor" />
    </children>
 </AnchorPane>

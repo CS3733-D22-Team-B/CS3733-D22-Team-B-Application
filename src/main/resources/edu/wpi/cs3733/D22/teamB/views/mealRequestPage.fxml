@@ -20,7 +20,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="204.0" layoutY="182.0" text="Meal" />
+      <Label layoutX="287.0" layoutY="178.0" text="Meal" />
       <Label fx:id="requestLabel" alignment="CENTER" layoutX="90.0" layoutY="311.0" prefHeight="18.0" prefWidth="419.0" />
       <Label layoutX="322.0" layoutY="114.0" text="Room" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
@@ -33,21 +33,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <TextField fx:id="mealInput" layoutX="142.0" layoutY="200.0" onAction="#setMealName" promptText="Meal" />
-      <ComboBox fx:id="floorInput" layoutX="187.0" layoutY="131.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3" fx:value="F3" />
-               <String fx:id="2" fx:value="F2" />
-               <String fx:id="1" fx:value="F1" />
-               <String fx:id="L1" fx:value="L1" />
-               <String fx:id="L2" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label layoutX="203.0" layoutY="114.0" text="Floor" />
-      <TextField fx:id="nameInput" layoutX="307.0" layoutY="199.0" prefHeight="26.0" prefWidth="150.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="181.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
+      <TextField fx:id="mealInput" layoutX="225.0" layoutY="196.0" onAction="#setMealName" promptText="Meal" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -90,5 +76,17 @@
             </Menu>
          </menus>
       </MenuBar>
+      <ComboBox fx:id="floorInput" layoutX="187.0" layoutY="131.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="203.0" layoutY="114.0" text="Floor" />
    </children>
 </AnchorPane>

@@ -9,7 +9,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -39,26 +38,9 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="297.0" prefHeight="18.0" prefWidth="547.0" />
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="319.0" prefHeight="18.0" prefWidth="547.0" />
       <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
       <Button layoutX="527.0" layoutY="360.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
-      <TextField fx:id="employeeNameInput" layoutX="325.0" layoutY="196.0" onAction="#setEmployeeName" prefHeight="26.0" prefWidth="150.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="171.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
-      <ComboBox fx:id="floorInput" layoutX="91.0" layoutY="114.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3" fx:value="F3" />
-               <String fx:id="2" fx:value="F2" />
-               <String fx:id="1" fx:value="F1" />
-               <String fx:id="L1" fx:value="L1" />
-               <String fx:id="L2" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label alignment="CENTER" layoutX="108.0" layoutY="96.0" text="Floor" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="152.0" prefHeight="18.0" prefWidth="106.0" text="Additional Notes" textAlignment="CENTER" />
-      <TextArea fx:id="additionalNotesInput" layoutX="100.0" layoutY="171.0" prefHeight="102.0" prefWidth="200.0" />
-      <Button layoutX="356.0" layoutY="236.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -101,5 +83,20 @@
             </Menu>
          </menus>
       </MenuBar>
+      <ComboBox fx:id="floorInput" layoutX="91.0" layoutY="114.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="108.0" layoutY="96.0" text="Floor" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="247.0" layoutY="153.0" prefHeight="18.0" prefWidth="106.0" text="Additional Notes" textAlignment="CENTER" />
+      <TextArea fx:id="additionalNotesInput" layoutX="200.0" layoutY="172.0" prefHeight="102.0" prefWidth="200.0" />
+      <Button layoutX="256.0" layoutY="284.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
    </children>
 </AnchorPane>

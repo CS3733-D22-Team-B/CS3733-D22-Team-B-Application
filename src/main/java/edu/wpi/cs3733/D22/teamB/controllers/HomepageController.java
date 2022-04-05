@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class HomepageController extends MenuBarController {
-  @FXML private Button logInButton;
   @FXML private Button profileButton;
   @FXML private Button mapButton;
   @FXML private Button mapEditorButton;

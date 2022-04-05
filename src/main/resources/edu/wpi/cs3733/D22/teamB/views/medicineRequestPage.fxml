@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,7 +24,7 @@
             <Font name="Palatino" size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="medicineInput" layoutX="114.0" layoutY="197.0" onAction="#setMedication" prefWidth="150.0">
+      <ComboBox fx:id="medicineInput" layoutX="416.0" layoutY="196.0" onAction="#setMedication" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="ACETAMINOPHEN" fx:value="Acetaminophen" />
@@ -34,14 +33,59 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label fx:id="requestLabel" layoutX="275.0" layoutY="298.0" />
+      <Label fx:id="requestLabel" layoutX="135.0" layoutY="298.0" prefHeight="17.0" prefWidth="361.0" />
       <Button layoutX="4.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <ComboBox fx:id="roomInput" layoutX="361.0" layoutY="197.0" onAction="#setRoom" prefWidth="150.0">
+      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+               </items>
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
+               </items></Menu>
+
+            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="Requests">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
+               </items>
+            </Menu>
+
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database">
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="ඞ" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <ComboBox fx:id="roomInput" layoutX="200.0" layoutY="196.0" onAction="#setRoom" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList" />
          </items>
       </ComboBox>
-      <ComboBox fx:id="floorInput" layoutX="157.0" layoutY="324.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+      <ComboBox fx:id="floorInput" layoutX="51.0" layoutY="196.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="3" fx:value="F3" />
@@ -52,17 +96,16 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <TextField fx:id="employeeNameInput" layoutX="361.0" layoutY="324.0" onAction="#setEmployeeName" prefHeight="26.0" prefWidth="150.0" />
-      <Pane layoutX="375.0" layoutY="98.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
+      <Pane layoutX="225.0" layoutY="106.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
          <children>
             <Label alignment="CENTER" layoutX="38.0" layoutY="59.0" text="Room" textFill="#fff9f9" />
-            <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="27.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../../../../Downloads/icons8-iOS%20Filled-Hospital%20Bed.png" />
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="135.0" layoutY="234.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
+      <Pane layoutX="29.0" layoutY="106.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
          <children>
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -72,7 +115,7 @@
             <Label alignment="CENTER" layoutX="41.0" layoutY="59.0" text="Floor" textFill="#fff9f9" />
          </children>
       </Pane>
-      <Pane layoutX="135.0" layoutY="98.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
+      <Pane layoutX="436.0" layoutY="106.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
          <children>
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>

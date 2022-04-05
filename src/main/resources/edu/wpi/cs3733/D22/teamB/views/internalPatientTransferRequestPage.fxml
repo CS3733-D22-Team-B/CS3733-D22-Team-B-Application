@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -20,7 +19,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="252.0" layoutY="267.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
+      <Button layoutX="250.0" layoutY="211.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
       <Label layoutX="288.0" layoutY="153.0" text="to">
          <font>
             <Font size="24.0" />
@@ -111,5 +110,6 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Button layoutX="544.0" layoutY="348.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
    </children>
 </AnchorPane>

@@ -56,23 +56,33 @@ public class InternalPatientTransferController extends RequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     setDestinationRoom();
-
-    String locationID = dao.getLocationID(room);
-    String destinationID = dao.getLocationID(destinationRoom);
-    InternalPatientTransferRequest request =
-        new InternalPatientTransferRequest(locationID, destinationID);
-    RequestQueue.addRequest(request);
-    requestLabel.setText(
-        "Request sent: Moving patient in "
-            + room
-            + " to "
-            + destinationRoom
-            + " by "
-            + employeeName);
+    if (room.equals("") && destinationRoom.equals("")) {
+      requestLabel.setText("Please enter a room and a destination room.");
+    } else if (room.equals("")) {
+      requestLabel.setText("Please enter a room.");
+    } else if (destinationRoom.equals("")) {
+      requestLabel.setText("Please enter a destination room.");
+    } else {
+      String locationID = dao.getLocationID(room);
+      String destinationID = dao.getLocationID(destinationRoom);
+      InternalPatientTransferRequest request =
+          new InternalPatientTransferRequest(locationID, destinationID);
+      RequestQueue.addRequest(request);
+      requestLabel.setText("Request sent: Moving patient in " + room + " to " + destinationRoom);
+    }
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
-    // TODO: Auto-generated method stub
+    requestLabel.setText("");
+    floorInput.setValue("");
+    roomInput.setValue("");
+    destinationFloorInput.setValue("");
+    destinationRoomInput.setValue("");
+
+    floor = "";
+    room = "";
+    destinationFloor = "";
+    destinationRoom = "";
   }
 }

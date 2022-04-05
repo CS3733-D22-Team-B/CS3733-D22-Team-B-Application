@@ -1,7 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +27,7 @@ public class LoginController extends MenuBarController {
     this.password = passwordBox.getText();
   }
 
-  public void login() {
+  public void login() throws Exception {
     // Login functionality
     this.setPassword();
     this.setUsername();
@@ -36,8 +38,8 @@ public class LoginController extends MenuBarController {
       loginFail.setText("Invalid ID");
     } else {
       if (employee.getPassword().equals(password)) {
-        // go to homepage
-        loginFail.setText("Go home");
+        App.currentUser = employee;
+        goToHomepage(new ActionEvent());
       } else {
         loginFail.setText("Invalid Password");
       }

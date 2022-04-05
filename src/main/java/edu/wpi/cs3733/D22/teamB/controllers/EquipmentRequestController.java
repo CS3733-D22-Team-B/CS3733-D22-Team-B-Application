@@ -26,35 +26,29 @@ public class EquipmentRequestController extends RequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    setEmployeeName();
     setNotes();
-    if (room.equals("") && equipment.equals("") && employeeName.equals("")) {
-      requestLabel.setText(
-          "Fields are empty, please specify room, equipment, and name of requester");
+    if (room.equals("") && equipment.equals("")) {
+      requestLabel.setText("Please specify a room and equipment");
     } else if (room.equals("")) {
       requestLabel.setText("Please specify a room");
-    } else if (employeeName.equals("")) {
-      requestLabel.setText("Please input name of requester");
     } else if (equipment.equals("")) {
       requestLabel.setText("Please select equipment to request");
     } else {
       String locationID = dao.getLocationID(room);
       EquipmentRequest request = new EquipmentRequest(locationID, equipment, notes);
       RequestQueue.addRequest(request);
-      requestLabel.setText("Request sent: " + equipment + " to " + room + " by " + employeeName);
+      requestLabel.setText("Request sent: " + equipment + " to " + room);
     }
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    employeeNameInput.setText("");
     floorInput.setValue("");
     roomInput.setValue("");
     equipmentInput.setValue("");
     additionalNotesInput.setText("");
 
-    employeeName = "";
     floor = "";
     room = "";
     equipment = "";
