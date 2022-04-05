@@ -15,6 +15,14 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
+  public HashMap<String, Location> getLocationMap() {
+    return locationMap;
+  }
+
+  public void setLocationMap(HashMap<String, Location> locationMap) {
+    this.locationMap = locationMap;
+  }
+
   private LocationsDB() {
     super(
         "Locations",

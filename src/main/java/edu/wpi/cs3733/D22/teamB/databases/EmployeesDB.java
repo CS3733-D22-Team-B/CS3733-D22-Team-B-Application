@@ -12,6 +12,14 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
 
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
 
+  public HashMap<String, Employee> getEmployeeMap() {
+    return employeeMap;
+  }
+
+  public void setEmployeeMap(HashMap<String, Employee> employeeMap) {
+    this.employeeMap = employeeMap;
+  }
+
   private EmployeesDB() {
     super(
         "Employees",
