@@ -19,7 +19,7 @@
          <TableColumn fx:id="columnBuilding" prefWidth="93.3333740234375" text="Building" />
      </columns>
    </TableView>
-   <MenuBar fx:id="homeBar" layoutX="-2.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+   <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
       <menus>
          <Menu mnemonicParsing="false" text="Profile">
             <items>

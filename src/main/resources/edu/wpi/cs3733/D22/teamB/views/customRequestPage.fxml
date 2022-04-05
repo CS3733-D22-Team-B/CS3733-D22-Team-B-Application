@@ -55,7 +55,7 @@
       </items>
    </ComboBox>
    <Label layoutX="210.0" layoutY="61.0" text="Floor" />
-   <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+   <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
       <menus>
          <Menu mnemonicParsing="false" text="Profile">
             <items>

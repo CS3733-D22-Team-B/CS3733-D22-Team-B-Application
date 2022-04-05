@@ -36,51 +36,6 @@
       </ComboBox>
       <Label fx:id="requestLabel" layoutX="275.0" layoutY="298.0" />
       <Button layoutX="4.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Profile">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-               </items>
-            </Menu>
-
-            <Menu mnemonicParsing="false" text="Map">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items></Menu>
-
-            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-            </Menu>
-
-            <Menu mnemonicParsing="false" text="Requests">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
-               </items>
-            </Menu>
-
-            <Menu disable="true" mnemonicParsing="false" text="Patient Database">
-            </Menu>
-
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="ඞ" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <ComboBox fx:id="roomInput" layoutX="361.0" layoutY="197.0" onAction="#setRoom" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList" />
@@ -137,5 +92,47 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="58.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" textFill="#fff9f9" />
          </children>
       </Pane>
+      <MenuBar fx:id="homeBar" layoutX="3.0" layoutY="3.0" prefHeight="25.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Requests">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
+               </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="ඞ" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
