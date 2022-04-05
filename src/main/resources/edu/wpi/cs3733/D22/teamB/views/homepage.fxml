@@ -11,13 +11,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
     <children>
-        <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="40.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="27.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../assets/hospitalExterior.jpg" />
             </image>
         </ImageView>
-
-        <Button fx:id="logInButton" layoutX="480.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
         <Button fx:id="profileButton" layoutX="536.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToProfilePage" text="Profile" />
         <Button fx:id="mapButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#displayMapButtons" prefHeight="25.0" prefWidth="115.0" text="Map" />
         <Button fx:id="equipmentTrackerButton" layoutX="471.0" layoutY="132.0" mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />

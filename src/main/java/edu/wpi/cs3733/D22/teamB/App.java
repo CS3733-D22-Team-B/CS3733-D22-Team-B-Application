@@ -18,7 +18,7 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("views/homepage.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("views/loginPage.fxml"));
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.initStyle(StageStyle.UNDECORATED);

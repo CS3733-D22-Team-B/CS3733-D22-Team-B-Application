@@ -17,25 +17,28 @@ public class MedicineRequestController extends RequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    setEmployeeName();
     setMedication();
-
-    String locationID = dao.getLocationID(room);
-    MedicineRequest request = new MedicineRequest(locationID, medicine);
-
-    RequestQueue.addRequest(request);
-    requestLabel.setText("Request sent: " + medicine + " to " + room + " by " + employeeName);
+    if (room.equals("") && medicine.equals("")) {
+      requestLabel.setText("Please enter a room and medication");
+    } else if (room.equals("")) {
+      requestLabel.setText("Please enter a room");
+    } else if (medicine.equals("")) {
+      requestLabel.setText("Please enter a medication");
+    } else {
+      String locationID = dao.getLocationID(room);
+      MedicineRequest request = new MedicineRequest(locationID, medicine);
+      RequestQueue.addRequest(request);
+      requestLabel.setText("Request sent: " + medicine + " to " + room);
+    }
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    employeeNameInput.setText("");
     floorInput.setValue("");
     roomInput.setValue("");
     medicineInput.setValue("");
 
-    employeeName = "";
     floor = "";
     room = "";
     medicine = "";

@@ -7,15 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 public abstract class RequestController extends MenuBarController {
   @FXML protected Label requestLabel;
-  @FXML protected TextField employeeNameInput;
   @FXML protected ComboBox<String> floorInput;
   @FXML protected ComboBox<String> roomInput;
 
-  protected String employeeName;
   protected String floor;
   protected String room;
 
@@ -50,10 +47,6 @@ public abstract class RequestController extends MenuBarController {
           break;
       }
     }
-  }
-
-  public void setEmployeeName() {
-    employeeName = employeeNameInput.getText();
   }
 
   public void setFloor() {
@@ -101,8 +94,4 @@ public abstract class RequestController extends MenuBarController {
 
   @FXML
   public abstract void reset(ActionEvent event);
-
-  public Boolean setStatus() {
-    return null;
-  }
 }

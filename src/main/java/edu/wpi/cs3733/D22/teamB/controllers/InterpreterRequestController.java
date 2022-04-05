@@ -16,22 +16,27 @@ public class InterpreterRequestController extends RequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    String locationID = dao.getLocationID(room);
-    InterpreterRequest request = new InterpreterRequest(locationID, language);
-
-    RequestQueue.addRequest(request);
-    requestLabel.setText("You have selected " + language);
+    if (room.equals("") && language.equals("")) {
+      requestLabel.setText("Please enter a room and language");
+    } else if (room.equals("")) {
+      requestLabel.setText("Please enter a room");
+    } else if (language.equals("")) {
+      requestLabel.setText("Please enter a language");
+    } else {
+      String locationID = dao.getLocationID(room);
+      InterpreterRequest request = new InterpreterRequest(locationID, language);
+      RequestQueue.addRequest(request);
+      requestLabel.setText("You have selected " + language);
+    }
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    employeeNameInput.setText("");
     floorInput.setValue("");
     roomInput.setValue("");
     languageInput.setValue("");
 
-    employeeName = "";
     floor = "";
     room = "";
     language = "";

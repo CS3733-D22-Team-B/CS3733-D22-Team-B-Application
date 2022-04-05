@@ -5,7 +5,6 @@ import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javax.swing.*;
 
 public class MealRequestController extends RequestController {
   @FXML private TextField mealInput;
@@ -19,22 +18,27 @@ public class MealRequestController extends RequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     setMealName();
-    String locationID = dao.getLocationID(room);
-    MealRequest request = new MealRequest(locationID, mealName);
-
-    RequestQueue.addRequest(request);
-    requestLabel.setText("Meal request sent: " + mealName + " for " + room);
+    if (room.equals("") && mealName.equals("")) {
+      requestLabel.setText("Please enter a room and meal");
+    } else if (room.equals("")) {
+      requestLabel.setText("Please enter a room");
+    } else if (mealName.equals("")) {
+      requestLabel.setText("Please enter a meal");
+    } else {
+      String locationID = dao.getLocationID(room);
+      MealRequest request = new MealRequest(locationID, mealName);
+      RequestQueue.addRequest(request);
+      requestLabel.setText("Meal request sent: " + mealName + " for " + room);
+    }
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    employeeNameInput.setText("");
     floorInput.setValue("");
     roomInput.setValue("");
     mealInput.setText("");
 
-    employeeName = "";
     floor = "";
     room = "";
     mealName = "";
