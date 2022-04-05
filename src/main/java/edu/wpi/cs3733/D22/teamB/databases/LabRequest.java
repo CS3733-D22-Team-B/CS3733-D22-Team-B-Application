@@ -21,11 +21,11 @@ public class LabRequest extends Request {
       String requestID,
       String employeeID,
       String nodeID,
+      String testRoomID,
       String type,
       String status,
       String test,
-      Date date,
-      String testRoomID) {
+      Date date) {
     super(requestID, type, employeeID, nodeID, status, "");
     this.test = test;
     this.date = date;
