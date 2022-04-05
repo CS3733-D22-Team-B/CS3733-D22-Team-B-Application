@@ -3,14 +3,17 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class LoginController extends MenuBarController {
+public class LoginController {
   @FXML private TextField usernameField;
   @FXML private PasswordField passwordBox;
   @FXML private Label loginFail;
@@ -39,7 +42,14 @@ public class LoginController extends MenuBarController {
     } else {
       if (employee.getPassword().equals(password)) {
         App.currentUser = employee;
-        goToHomepage(new ActionEvent());
+
+        Parent homepageRoot =
+            FXMLLoader.load(
+                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
+        Scene homepageScene = new Scene(homepageRoot);
+        Stage window = (Stage) loginButton.getScene().getWindow();
+        window.setScene(homepageScene);
+        window.show();
       } else {
         loginFail.setText("Invalid Password");
       }

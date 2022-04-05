@@ -127,7 +127,7 @@ public class MenuBarController {
     window.show();
   }
 
-  public void goToEquipmentRequestQueue(ActionEvent event) throws Exception {
+  public void goToRequestQueue(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(
             getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestQueuePage.fxml"));

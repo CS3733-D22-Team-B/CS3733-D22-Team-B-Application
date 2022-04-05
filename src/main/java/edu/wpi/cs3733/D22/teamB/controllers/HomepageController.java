@@ -33,7 +33,6 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setVisible(true);
     internalPatientTransferButton.setVisible(true);
     customRequestButton.setVisible(true);
-    requestQueueButton.setVisible(true);
     backButton.setVisible(true);
 
     mapButton.setVisible(false);
@@ -42,6 +41,7 @@ public class HomepageController extends MenuBarController {
     mapDatabaseButton.setVisible(false);
     equipmentTrackerButton.setVisible(false);
     requestButton.setVisible(false);
+    requestQueueButton.setVisible(false);
     patientDatabaseButton.setVisible(false);
 
     // enable request buttons and disable all other buttons
@@ -52,7 +52,6 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setDisable(false);
     internalPatientTransferButton.setDisable(false);
     customRequestButton.setDisable(false);
-    requestQueueButton.setDisable(false);
     backButton.setDisable(false);
 
     mapButton.setDisable(true);
@@ -61,6 +60,7 @@ public class HomepageController extends MenuBarController {
     mapDatabaseButton.setDisable(true);
     equipmentTrackerButton.setDisable(true);
     requestButton.setDisable(true);
+    requestQueueButton.setDisable(true);
     patientDatabaseButton.setDisable(true);
   }
 
@@ -82,6 +82,7 @@ public class HomepageController extends MenuBarController {
     mapButton.setVisible(false);
     equipmentTrackerButton.setVisible(false);
     requestButton.setVisible(false);
+    requestQueueButton.setVisible(false);
     patientDatabaseButton.setVisible(false);
 
     // enable map buttons and disable all other buttons
@@ -100,6 +101,7 @@ public class HomepageController extends MenuBarController {
     mapButton.setDisable(true);
     equipmentTrackerButton.setDisable(true);
     requestButton.setDisable(true);
+    requestQueueButton.setDisable(true);
     patientDatabaseButton.setDisable(true);
   }
 
@@ -109,6 +111,7 @@ public class HomepageController extends MenuBarController {
     mapButton.setVisible(true);
     equipmentTrackerButton.setVisible(true);
     requestButton.setVisible(true);
+    requestQueueButton.setVisible(true);
     patientDatabaseButton.setVisible(true);
 
     mapEditorButton.setVisible(false);
@@ -121,13 +124,13 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setVisible(false);
     internalPatientTransferButton.setVisible(false);
     customRequestButton.setVisible(false);
-    requestQueueButton.setVisible(false);
     backButton.setVisible(false);
 
     // enable homepage buttons and disable all other buttons
     mapButton.setDisable(false);
     equipmentTrackerButton.setDisable(false);
     requestButton.setDisable(false);
+    requestQueueButton.setDisable(false);
     patientDatabaseButton.setDisable(true);
 
     mapEditorButton.setDisable(true);
@@ -140,7 +143,6 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
     customRequestButton.setDisable(true);
-    requestQueueButton.setDisable(true);
     backButton.setDisable(true);
   }
 }

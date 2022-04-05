@@ -104,7 +104,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                   <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
                   <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                </items>
             </Menu>
             <Menu disable="true" mnemonicParsing="false" text="Patient Database" />

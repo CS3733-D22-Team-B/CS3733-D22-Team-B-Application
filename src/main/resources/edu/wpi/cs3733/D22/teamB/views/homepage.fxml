@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,7 +27,6 @@
         <Button fx:id="internalPatientTransferButton" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" prefWidth="211.0" text="Request Internal Patient Transfer" visible="false" />
       <Button fx:id="customRequestButton" layoutX="376.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToCustomRequestPage" prefHeight="26.0" prefWidth="210.0" text="Custom Request" visible="false" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
-        <Button fx:id="requestQueueButton" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" prefHeight="25.0" prefWidth="115.0" text="Request Queue" />
 
         <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
             <menus>
@@ -61,7 +59,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                         <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
                   <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                     </items>
                 </Menu>
 
@@ -76,12 +74,10 @@
                 </Menu>
             </menus>
         </MenuBar>
-
-        <RadioButton fx:id="homepageNodeObject" disable="true" layoutY="377.0" mnemonicParsing="false" opacity="0.0" visible="false" />
       <Button fx:id="mapViewerButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#goToMapViewPage" prefHeight="25.0" prefWidth="115.0" text="Map Viewer" visible="false" />
       <Button fx:id="mapEditorButton" layoutX="472.0" layoutY="134.0" mnemonicParsing="false" onAction="#goToMapEditPage" prefHeight="25.0" prefWidth="115.0" text="Map Editor" visible="false" />
       <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
-      <Button fx:id="requestQueueButton" layoutX="376.0" layoutY="324.0" mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" prefHeight="26.0" prefWidth="210.0" text="Request Queue" visible="false" />
+      <Button fx:id="requestQueueButton" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToRequestQueue" prefHeight="26.0" prefWidth="115.0" text="Request Queue" />
       <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
 
     </children>
