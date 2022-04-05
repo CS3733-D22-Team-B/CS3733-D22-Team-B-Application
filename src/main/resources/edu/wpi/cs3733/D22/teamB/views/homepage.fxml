@@ -26,15 +26,14 @@
         <Button fx:id="mealRequestButton" layoutX="374.0" layoutY="166.0" mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Patient Meal Delivery" visible="false" />
         <Button fx:id="interpreterRequestButton" layoutX="373.0" layoutY="227.0" mnemonicParsing="false" onAction="#goToInterpreterRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Language Interpreter" textAlignment="CENTER" visible="false" />
         <Button fx:id="internalPatientTransferButton" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" prefWidth="211.0" text="Request Internal Patient Transfer" visible="false" />
-      <Button fx:id="customRequestButton" layoutX="406.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToCustomRequestPage" prefHeight="26.0" prefWidth="180.0" text="Custom Request" visible="false" />
+      <Button fx:id="customRequestButton" layoutX="376.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToCustomRequestPage" prefHeight="26.0" prefWidth="210.0" text="Custom Request" visible="false" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
-        <Button fx:id="patientDatabaseButton" disable="true" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
+        <Button fx:id="requestQueueButton" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" prefHeight="25.0" prefWidth="115.0" text="Request Queue" />
 
         <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Profile">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
                         <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                         <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
@@ -49,7 +48,9 @@
                </items></Menu>
 
                 <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-                </Menu>
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+               </items></Menu>
 
                 <Menu mnemonicParsing="false" text="Requests">
                     <items>
@@ -80,6 +81,8 @@
       <Button fx:id="mapViewerButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#goToMapViewPage" prefHeight="25.0" prefWidth="115.0" text="Map Viewer" visible="false" />
       <Button fx:id="mapEditorButton" layoutX="472.0" layoutY="134.0" mnemonicParsing="false" onAction="#goToMapEditPage" prefHeight="25.0" prefWidth="115.0" text="Map Editor" visible="false" />
       <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
+      <Button fx:id="requestQueueButton" layoutX="376.0" layoutY="324.0" mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" prefHeight="26.0" prefWidth="210.0" text="Request Queue" visible="false" />
+      <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
 
     </children>
 

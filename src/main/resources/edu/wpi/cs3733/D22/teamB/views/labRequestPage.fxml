@@ -34,27 +34,47 @@
       </ComboBox>
       <DatePicker fx:id="testingTimeInput" layoutX="292.0" layoutY="165.0" onAction="#setTestingTime" />
       <Label layoutX="345.0" layoutY="147.0" text="Testing Time" />
+      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
+      <ComboBox fx:id="roomInput" layoutX="262.0" layoutY="109.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="178.0" layoutY="109.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
+      <TextField fx:id="employeeNameInput" layoutX="217.0" layoutY="233.0" onAction="#setEmployeeName" prefHeight="26.0" prefWidth="150.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="247.0" layoutY="208.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
                   <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
             </Menu>
-
             <Menu mnemonicParsing="false" text="Map">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
                   <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
                   <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items></Menu>
-
-            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               </items>
             </Menu>
-
+            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Requests">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
@@ -67,10 +87,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
                </items>
             </Menu>
-
-            <Menu disable="true" mnemonicParsing="false" text="Patient Database">
-            </Menu>
-
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />

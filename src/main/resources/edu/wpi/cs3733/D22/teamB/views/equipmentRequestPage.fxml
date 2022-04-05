@@ -45,23 +45,23 @@
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
                   <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
             </Menu>
-
             <Menu mnemonicParsing="false" text="Map">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
                   <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
                   <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items></Menu>
-
-            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               </items>
             </Menu>
-
+            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Requests">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
@@ -74,10 +74,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
                </items>
             </Menu>
-
-            <Menu disable="true" mnemonicParsing="false" text="Patient Database">
-            </Menu>
-
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />

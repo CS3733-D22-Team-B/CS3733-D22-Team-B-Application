@@ -66,27 +66,29 @@
          </items>
       </ComboBox>
       <Label alignment="CENTER" layoutX="354.0" layoutY="135.0" text="Floor" />
-      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+      <TextField fx:id="nameInput" layoutX="226.0" layoutY="225.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="206.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
+      <MenuBar fx:id="homeBar" layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToLoginPage" text="Log In" />
                   <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
                   <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
                   <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
                </items>
             </Menu>
-
             <Menu mnemonicParsing="false" text="Map">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
                   <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
                   <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items></Menu>
-
-            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               </items>
             </Menu>
-
+            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Requests">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
@@ -99,10 +101,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
                </items>
             </Menu>
-
-            <Menu disable="true" mnemonicParsing="false" text="Patient Database">
-            </Menu>
-
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />
