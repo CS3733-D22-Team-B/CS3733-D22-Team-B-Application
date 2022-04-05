@@ -11,10 +11,22 @@ public class InternalPatientTransferRequest extends Request {
     super(locationID, "Internal Patient Transfer");
     this.destinationID = destinationID;
     information =
-            "Internal Patient Transfer Request from "
-                    + getLocation().getLongName()
-                    + " to "
-                    + getDestination().getLongName();
+        "Internal Patient Transfer Request from "
+            + getLocation().getLongName()
+            + " to "
+            + getDestination().getLongName();
+  }
+
+  public InternalPatientTransferRequest(
+      String requestID,
+      String employeeID,
+      String locationID,
+      String transferID,
+      String type,
+      String status,
+      String information) {
+    super(requestID, type, employeeID, locationID, status, information);
+    this.destinationID = transferID;
   }
 
   public final String createRequestID() {

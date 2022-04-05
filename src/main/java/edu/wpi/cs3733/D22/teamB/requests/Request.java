@@ -17,7 +17,7 @@ public abstract class Request {
 
   public Request(String locationID, String type) {
     this.type = type;
-    this.employeeID = null;
+    this.employeeID = "";
     this.locationID = locationID;
     this.status = "Pending";
     this.requestID = createRequestID();

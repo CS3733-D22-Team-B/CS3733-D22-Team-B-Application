@@ -85,7 +85,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     }
     return transform(
         eqreqObj,
-        "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID= ?, notes = ? WHERE requestID = ?",
+        "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID = ?, notes = ? WHERE requestID = ?",
         true);
   }
 
@@ -97,11 +97,11 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   }
 
   public int delete(EquipmentRequest eqreqObj) {
-    if (!equipmentRequestMap.containsKey(eqreqObj.getNodeID())) {
+    if (!equipmentRequestMap.containsKey(eqreqObj.getRequestID())) {
       return -1;
     }
-    equipmentRequestMap.remove(eqreqObj.getNodeID());
-    return deleteFrom(eqreqObj.getNodeID());
+    equipmentRequestMap.remove(eqreqObj.getRequestID());
+    return deleteFrom(eqreqObj.getRequestID());
   }
 
   /////////////////////////////////////////////////////////////////////// Helper
@@ -125,8 +125,6 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       pStatement.setString(5 + offset, eqreqObj.getStatus());
       pStatement.setString(6 + offset, eqreqObj.getEquipmentID());
       pStatement.setString(7 + offset, eqreqObj.getNotes());
-
-      eqreqObj.getBuilding();
 
       pStatement.addBatch();
       pStatement.executeBatch();

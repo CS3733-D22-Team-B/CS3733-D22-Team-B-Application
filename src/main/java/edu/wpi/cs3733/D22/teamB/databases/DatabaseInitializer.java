@@ -54,13 +54,8 @@ public class DatabaseInitializer {
           "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), "
               + "type VARCHAR(10), status VARCHAR(15), test VARCHAR(15), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
               + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID))");
-      // statement.execute(
-      // "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID
-      // VARCHAR(10), transferID VARCHAR(10), type VARCHAR(10), status VARCHAR(25), information
-      // VARCHAR(250), CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK
-      // foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign
-      // key (locationID) REFERENCES Locations (nodeID), CONSTRAINT TRANSFER_FK foreign key
-      // (transferID) REFERENCES Locations (nodeID))");
+      statement.execute(
+          "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), transferID VARCHAR(10), type VARCHAR(10), status VARCHAR(25), information VARCHAR(250), CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT TRANSFER_FK foreign key (transferID) REFERENCES Locations (nodeID))");
 
       populateDatabase(locationCSVFilePath, "Locations", 8);
       populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
@@ -68,7 +63,7 @@ public class DatabaseInitializer {
       populateDatabase(patientsCSVFilePath, "Patients", 4);
       populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 7);
       populateDatabaseLabRequestDB(labRequestCSVFilePath, "LabRequests", 7);
-      // populateServiceRequestsDatabase();
+      populateServiceRequestsDatabase();
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
