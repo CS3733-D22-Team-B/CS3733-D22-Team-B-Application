@@ -35,7 +35,6 @@ public class LoginController {
     this.setPassword();
     this.setUsername();
     EmployeesDB emp = EmployeesDB.getInstance();
-    System.out.println(this.username + " " + this.password);
     Employee employee = emp.getEmployee(this.username);
     if (employee == null) {
       loginFail.setText("Invalid ID");
