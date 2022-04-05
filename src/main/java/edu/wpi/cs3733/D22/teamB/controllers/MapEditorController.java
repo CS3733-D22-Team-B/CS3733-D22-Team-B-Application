@@ -356,6 +356,7 @@ public class MapEditorController extends MapViewerController {
   public void resetLocations() {
     // TODO: calll database reset function
 
+    
     // reset view
     cancelReset();
   }
@@ -379,6 +380,7 @@ public class MapEditorController extends MapViewerController {
     resetCancel.setVisible(true);
     resetCancel.setDisable(false);
     resetWarning.setVisible(true);
+    resetButton.setVisible(false);
   }
 
   @FXML
@@ -400,6 +402,7 @@ public class MapEditorController extends MapViewerController {
     resetCancel.setVisible(false);
     resetCancel.setDisable(true);
     resetWarning.setVisible(false);
+    resetButton.setVisible(true);
   }
 }
 
