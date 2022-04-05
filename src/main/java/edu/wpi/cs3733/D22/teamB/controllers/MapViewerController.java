@@ -113,7 +113,7 @@ public class MapViewerController extends MenuBarController {
         break;
     }
 
-    LinkedList<Location> floorLocations = dao.searchFor(floorName);
+    LinkedList<Location> floorLocations = dao.getLocationsByFloor(floorLevel);
 
     for (Circle circle : circles) {
       removeCircle(circle);

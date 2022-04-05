@@ -13,9 +13,11 @@ import javafx.scene.control.DatePicker;
 public class LabRequestController extends RequestController {
   @FXML private ComboBox<String> labTestInput;
   @FXML private DatePicker testingTimeInput;
+  @FXML private ComboBox<String> testRoomInput;
 
   private String labTest;
   private Date testingTime;
+  private String testRoom;
 
   public void setLabTest() {
     labTest = labTestInput.getValue();
@@ -34,7 +36,8 @@ public class LabRequestController extends RequestController {
     setTestingTime();
 
     String locationID = dao.getLocationID(room);
-    LabRequest request = new LabRequest(locationID, labTest, testingTime);
+    String testRoomID = dao.getLocationID(testRoom);
+    LabRequest request = new LabRequest(locationID, labTest, testingTime, testRoomID);
 
     requestLabel.setText("Request sent: " + labTest + " for " + room + " on " + testingTime);
   }
