@@ -10,7 +10,15 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
   private static PatientsDB patientsDBManager;
 
-  private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();;
+  private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
+
+  public HashMap<String, Patient> getPatientMap() {
+    return patientMap;
+  }
+
+  public void setPatientMap(HashMap<String, Patient> patientMap) {
+    this.patientMap = patientMap;
+  }
 
   private PatientsDB() {
     super(

@@ -14,6 +14,14 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
 
   private HashMap<String, Request> requestMap = new HashMap<String, Request>();
 
+  public HashMap<String, Request> getRequestMap() {
+    return requestMap;
+  }
+
+  public void setRequestMap(HashMap<String, Request> requestMap) {
+    this.requestMap = requestMap;
+  }
+
   private ServiceRequestsDB() {
     super(
         "ServiceRequests",

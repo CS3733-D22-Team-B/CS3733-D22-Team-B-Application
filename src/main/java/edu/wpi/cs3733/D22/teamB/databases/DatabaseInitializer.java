@@ -9,24 +9,50 @@ public class DatabaseInitializer {
 
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
-  private final String locationCSVFilePath =
+  private String locationCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
-  private final String medicalEQCSVFilePath =
+  private String medicalEQCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
-  private final String employeesCSVFilePath =
+  private String employeesCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
-  private final String patientsCSVFilePath =
+  private String patientsCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
-  private final String equipmentRequestCSVFilePath =
+  private String equipmentRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv";
-  private final String labRequestCSVFilePath =
+  private String labRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLabRequest.csv";
-  private final String serviceRequestCSVFilePath =
+  private String serviceRequestCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationServiceRequest.csv";
 
-  public DatabaseInitializer() {
-    initDB();
+  public void setLocationCSVFilePath(String newPath) {
+    this.locationCSVFilePath = newPath;
   }
+
+  public void setMedicalEQCSVFilePath(String newPath) {
+    this.medicalEQCSVFilePath = newPath;
+  }
+
+  public void setEmployeesCSVFilePath(String newPath) {
+    this.employeesCSVFilePath = newPath;
+  }
+
+  public void setPatientsCSVFilePath(String newPath) {
+    this.patientsCSVFilePath = newPath;
+  }
+
+  public void setEquipmentRequestCSVFilePath(String newPath) {
+    this.equipmentRequestCSVFilePath = newPath;
+  }
+
+  public void setLabRequestCSVFilePath(String newPath) {
+    this.labRequestCSVFilePath = newPath;
+  }
+
+  public void setServiceRequestCSVFilePath(String newPath) {
+    this.serviceRequestCSVFilePath = newPath;
+  }
+
+  public DatabaseInitializer() {}
 
   public void initDB() {
     try {
@@ -51,9 +77,9 @@ public class DatabaseInitializer {
       statement.execute(
           "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), type VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), status VARCHAR(15), equipmentID VARCHAR(10), notes VARCHAR(50), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
       statement.execute(
-          "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), "
+          "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), testRoomID VARCHAR(10),"
               + "type VARCHAR(10), status VARCHAR(15), test VARCHAR(15), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
-              + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID))");
+              + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID), CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID))");
       /*
       statement.execute(
           "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), transferID VARCHAR(10), type VARCHAR(10), status VARCHAR(25), information VARCHAR(250), CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT TRANSFER_FK foreign key (transferID) REFERENCES Locations (nodeID))");
@@ -145,7 +171,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO LabRequests (requestID, employeeID, nodeID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO LabRequests (requestID, employeeID, nodeID, testRoomID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = new BufferedReader(new FileReader(labRequestCSVFilePath));
@@ -158,20 +184,22 @@ public class DatabaseInitializer {
         String requestID = data[0];
         String employeeID = data[1];
         String nodeID = data[2];
-        String type = data[3];
-        String status = data[4];
-        String test = data[5];
-        String date = data[6];
+        String testRoomID = data[3];
+        String type = data[4];
+        String status = data[5];
+        String test = data[6];
+        String date = data[7];
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
         statement.setString(3, nodeID);
-        statement.setString(4, type);
-        statement.setString(5, status);
-        statement.setString(6, test);
+        statement.setString(4, testRoomID);
+        statement.setString(5, type);
+        statement.setString(6, status);
+        statement.setString(7, test);
 
         Timestamp sqlTimestamp = Timestamp.valueOf(date);
-        statement.setTimestamp(7, sqlTimestamp);
+        statement.setTimestamp(8, sqlTimestamp);
 
         statement.addBatch();
         statement.executeBatch();

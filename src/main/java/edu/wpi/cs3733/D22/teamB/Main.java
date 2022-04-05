@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB;
 
-import edu.wpi.cs3733.D22.teamB.databases.DatabaseInitializer;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 
 public class Main {
 
@@ -20,7 +20,7 @@ public class Main {
       return;
     }
 
-    DatabaseInitializer dB = new DatabaseInitializer();
+    DatabaseController DC = DatabaseController.getInstance();
     App.launch(App.class, args);
   }
 }
