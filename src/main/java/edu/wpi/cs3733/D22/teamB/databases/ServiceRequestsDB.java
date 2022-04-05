@@ -39,7 +39,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
         String type = rs.getString(5);
         switch (type) {
           default:
-          case "MEAL":
+          case "MEL":
             req =
                 new MealRequest(
                     rs.getString(1),
@@ -59,7 +59,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(6),
                     rs.getString(7));
             break;
-          case "LANG":
+          case "INT":
             req =
                 new InterpreterRequest(
                     rs.getString(1),
@@ -69,7 +69,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(6),
                     rs.getString(7));
             break;
-          case "TRAN":
+          case "IPT":
             req =
                 new InternalPatientTransferRequest(
                     rs.getString(1),

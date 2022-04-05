@@ -61,13 +61,23 @@ public class TesterMain {
     LabRequestsDB labReq = LabRequestsDB.getInstance();
     labReq.listDB();
     LabRequest addMe =
-        new LabRequest("sdf", "PTDR01", "bHALL001L2", "LAB", "IN PROGRESS", "Blood", new Date());
+        new LabRequest(
+            "sdf", "PTDR01", "bHALL001L2", "LAB", "IN PROGRESS", "Blood", new Date(), "bLABS00103");
     labReq.add(addMe);
     LabRequest deleteMe =
-        new LabRequest("lab003", "PTDR01", "bHALL001L2", "LAB", "IN PROGRESS", "Blood", new Date());
+        new LabRequest(
+            "lab003",
+            "PTDR01",
+            "bHALL001L2",
+            "LAB",
+            "IN PROGRESS",
+            "Blood",
+            new Date(),
+            "bLABS00103");
     labReq.delete(deleteMe);
     LabRequest updateMe =
-        new LabRequest("sdf", "PTDR01", "bHALL001L2", "LAB", "COMPLETED", "Blood", new Date());
+        new LabRequest(
+            "sdf", "PTDR01", "bHALL001L2", "LAB", "COMPLETED", "Blood", new Date(), "bLABS00103");
     labReq.update(updateMe);
     labReq.listDB();
 

@@ -44,7 +44,8 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
                 rs.getString(4),
                 rs.getString(5),
                 rs.getString(6),
-                new java.util.Date(rs.getTimestamp(7).getTime()));
+                new java.util.Date(rs.getTimestamp(7).getTime()),
+                rs.getString(8));
         labRequestMap.put(rs.getString(1), labReqObj);
       }
     } catch (SQLException e) {
