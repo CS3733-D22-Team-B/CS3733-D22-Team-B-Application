@@ -14,6 +14,14 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   private HashMap<String, EquipmentRequest> equipmentRequestMap =
       new HashMap<String, EquipmentRequest>();
 
+  public HashMap<String, EquipmentRequest> getEquipmentRequestMap() {
+    return equipmentRequestMap;
+  }
+
+  public void setEquipmentRequestMap(HashMap<String, EquipmentRequest> equipmentRequestMap) {
+    this.equipmentRequestMap = equipmentRequestMap;
+  }
+
   private EquipmentRequestDB() {
     super(
         "EquipmentRequests",

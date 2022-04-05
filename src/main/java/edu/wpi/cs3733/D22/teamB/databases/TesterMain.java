@@ -1,7 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.util.Date;
-
 public class TesterMain {
 
   public static void main(String[] args) {
@@ -20,7 +18,15 @@ public class TesterMain {
       return;
     }
 
-    DatabaseInitializer dB = new DatabaseInitializer();
+    DatabaseController DC = DatabaseController.getInstance();
+    Location addMe = new Location("sdf", 4, 5, "dfdsf", "dsf", "ewr", "rrt", "rrg");
+    LocationsDB.getInstance().add(addMe);
+    System.out.println("Before");
+    DC.printAllDBs();
+    System.out.println("Reset");
+    DC.resetAllDBs();
+    System.out.println("After");
+    DC.printAllDBs();
     /*
     LocationsDB locDB = LocationsDB.getInstance();
     locDB.listDB();
@@ -58,7 +64,7 @@ public class TesterMain {
     patDB.listDB();
      */
 
-    LabRequestsDB labReq = LabRequestsDB.getInstance();
+    /*LabRequestsDB labReq = LabRequestsDB.getInstance();
     labReq.listDB();
     LabRequest addMe =
         new LabRequest(
@@ -81,7 +87,7 @@ public class TesterMain {
     labReq.update(updateMe);
     labReq.listDB();
 
-    String fileName = "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/newcsvfile.csv";
+    String fileName = "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/newcsvfile.csv";*/
 
     //    labReq.toCSV(fileName);
     //    labReq.downloadCSV("newcsvfile");

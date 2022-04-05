@@ -14,6 +14,14 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
 
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();
 
+  public HashMap<String, LabRequest> getLabRequestMap() {
+    return labRequestMap;
+  }
+
+  public void setLabRequestMap(HashMap<String, LabRequest> labRequestMap) {
+    this.labRequestMap = labRequestMap;
+  }
+
   private LabRequestsDB() {
     super(
         "LabRequests",
