@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeeDB;
+import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,7 +29,7 @@ public class LoginController extends MenuBarController {
     // Login functionality
     this.setPassword();
     this.setUsername();
-    EmployeeDB emp = EmployeeDB.getInstance();
+    EmployeesDB emp = EmployeesDB.getInstance();
     System.out.println(this.username + " " + this.password);
     Employee employee = emp.getEmployee(this.username);
     if (employee == null) {

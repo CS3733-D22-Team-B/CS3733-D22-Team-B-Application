@@ -139,5 +139,4 @@ public class HomepageController extends MenuBarController {
     customRequestButton.setDisable(true);
     backButton.setDisable(true);
   }
-
 }

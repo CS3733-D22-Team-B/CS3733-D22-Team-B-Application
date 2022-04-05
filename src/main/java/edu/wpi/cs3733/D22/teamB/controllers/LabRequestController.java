@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
-import edu.wpi.cs3733.D22.teamB.databases.TestingTime;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;

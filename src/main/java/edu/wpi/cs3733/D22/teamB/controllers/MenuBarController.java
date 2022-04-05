@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class MenuBarController {
   @FXML private MenuBar homeBar;
@@ -185,9 +184,11 @@ public class MenuBarController {
     window.setScene(profileScene);
     window.show();
   }
+
   public void goToCustomRequestPage(ActionEvent actionEvent) throws IOException {
     Parent internalRoot =
-            FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/customRequestPage.fxml"));
+        FXMLLoader.load(
+            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/customRequestPage.fxml"));
     Scene profileScene = new Scene(internalRoot);
 
     Stage window;
@@ -204,9 +205,9 @@ public class MenuBarController {
     EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
     EmployeesDB empDB = EmployeesDB.getInstance();
     LabRequestsDB labReqDB = LabRequestsDB.getInstance();
-    ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
+    // ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
 
-    serReqDB.quit();
+    // serReqDB.quit();
     labReqDB.quit();
     eqReqDB.quit();
     patDB.quit();

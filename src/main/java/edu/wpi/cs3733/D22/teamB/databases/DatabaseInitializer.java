@@ -45,7 +45,7 @@ public class DatabaseInitializer {
               + "isClean BOOLEAN, isRequested BOOLEAN, CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
               + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
       statement.execute(
-          "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
+          "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), username VARCHAR(25), password VARCHAR(25), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
       statement.execute(
           "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
       statement.execute(
@@ -54,16 +54,18 @@ public class DatabaseInitializer {
           "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), "
               + "type VARCHAR(10), status VARCHAR(15), test VARCHAR(15), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
               + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID))");
+      /*
       statement.execute(
           "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), transferID VARCHAR(10), type VARCHAR(10), status VARCHAR(25), information VARCHAR(250), CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT TRANSFER_FK foreign key (transferID) REFERENCES Locations (nodeID))");
+       */
 
       populateDatabase(locationCSVFilePath, "Locations", 8);
       populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
-      populateDatabase(employeesCSVFilePath, "Employees", 5);
+      populateDatabase(employeesCSVFilePath, "Employees", 7);
       populateDatabase(patientsCSVFilePath, "Patients", 4);
       populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 7);
       populateDatabaseLabRequestDB(labRequestCSVFilePath, "LabRequests", 7);
-      populateServiceRequestsDatabase();
+      // populateServiceRequestsDatabase();
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
@@ -88,7 +90,7 @@ public class DatabaseInitializer {
             "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, isRequested) VALUES(?, ?, ?, ?, ?)";
       } else if (databaseName == "Employees") {
         addToTable =
-            "INSERT INTO Employees(employeeID, lastName, firstName, department, position) VALUES(?, ?, ?, ?, ?)";
+            "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Patients") {
         addToTable =
             "INSERT INTO Patients(patientID, lastName, firstName, nodeID) VALUES(?, ?, ?, ?)";
