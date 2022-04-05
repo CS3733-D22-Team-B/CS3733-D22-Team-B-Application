@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import javafx.event.ActionEvent;
@@ -37,6 +38,7 @@ public class LoginController extends MenuBarController {
       loginFail.setText("Invalid ID");
     } else {
       if (employee.getPassword().equals(password)) {
+        App.currentUser = employee;
         goToHomepage(new ActionEvent());
       } else {
         loginFail.setText("Invalid Password");

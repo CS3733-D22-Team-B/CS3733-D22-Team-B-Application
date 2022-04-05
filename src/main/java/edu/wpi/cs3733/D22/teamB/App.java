@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB;
 
+import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class App extends Application {
+  public static Employee currentUser = null;
 
   @Override
   public void init() {
