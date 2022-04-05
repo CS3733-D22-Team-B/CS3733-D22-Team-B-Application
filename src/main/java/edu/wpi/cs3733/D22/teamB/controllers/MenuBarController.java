@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MenuBarController {
   @FXML private MenuBar homeBar;
 
@@ -176,6 +178,16 @@ public class MenuBarController {
   public void goToProfilePage(ActionEvent event) throws Exception {
     Parent internalRoot =
         FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/profilePage.fxml"));
+    Scene profileScene = new Scene(internalRoot);
+
+    Stage window;
+    window = (Stage) homeBar.getScene().getWindow();
+    window.setScene(profileScene);
+    window.show();
+  }
+  public void goToCustomRequestPage(ActionEvent actionEvent) throws IOException {
+    Parent internalRoot =
+            FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/customRequestPage.fxml"));
     Scene profileScene = new Scene(internalRoot);
 
     Stage window;
