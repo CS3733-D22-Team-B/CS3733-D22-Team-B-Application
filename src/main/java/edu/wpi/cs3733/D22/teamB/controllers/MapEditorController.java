@@ -355,7 +355,6 @@ public class MapEditorController extends MapViewerController {
 
   @FXML
   public void resetLocations() {
-    // TODO: calll database reset function
     DatabaseController.getInstance().resetAllDBs();
     // reset view
     cancelReset();
