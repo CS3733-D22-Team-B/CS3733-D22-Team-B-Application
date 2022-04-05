@@ -1,7 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-
 public class MealRequest extends Request {
   String meal;
 

@@ -85,9 +85,7 @@ public abstract class Request {
     double result = (Math.random() + 1) / 2.0;
 
     // calculate the field component weights
-    long c =
-            type.hashCode() +
-            + ((locationID == null) ? 0 : locationID.hashCode());
+    long c = type.hashCode() + +((locationID == null) ? 0 : locationID.hashCode());
 
     // calculate the hash
     int hash = (int) (37 * result + c);

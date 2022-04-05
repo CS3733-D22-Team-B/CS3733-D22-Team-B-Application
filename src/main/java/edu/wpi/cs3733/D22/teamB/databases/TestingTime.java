@@ -4,19 +4,19 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class TestingTime {
-	private Date date;
-	private LocalTime time;
+  private Date date;
+  private LocalTime time;
 
-	public TestingTime(Date date, LocalTime time) {
-		this.date = date;
-		this.time = time;
-	}
+  public TestingTime(Date date, LocalTime time) {
+    this.date = date;
+    this.time = time;
+  }
 
-	public Date getDate() {
-		return date;
-	}
+  public Date getDate() {
+    return date;
+  }
 
-	public LocalTime getTime() {
-		return time;
-	}
+  public LocalTime getTime() {
+    return time;
+  }
 }

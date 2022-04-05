@@ -1,13 +1,12 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
+import edu.wpi.cs3733.D22.teamB.databases.TestingTime;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
-
-import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
-import edu.wpi.cs3733.D22.teamB.databases.TestingTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;

@@ -19,8 +19,9 @@ public class HomepageController extends MenuBarController {
   @FXML private Button medicineRequestButton;
   @FXML private Button interpreterRequestButton;
   @FXML private Button internalPatientTransferButton;
-  @FXML private Button backButton;
   @FXML private Button patientDatabaseButton;
+  @FXML private Button customRequestButton;
+  @FXML private Button backButton;
 
   @FXML
   void displayRequestButtons(ActionEvent event) {
@@ -31,6 +32,7 @@ public class HomepageController extends MenuBarController {
     medicineRequestButton.setVisible(true);
     interpreterRequestButton.setVisible(true);
     internalPatientTransferButton.setVisible(true);
+    customRequestButton.setVisible(true);
     backButton.setVisible(true);
 
     mapButton.setVisible(false);
@@ -48,6 +50,7 @@ public class HomepageController extends MenuBarController {
     medicineRequestButton.setDisable(false);
     interpreterRequestButton.setDisable(false);
     internalPatientTransferButton.setDisable(false);
+    customRequestButton.setDisable(false);
     backButton.setDisable(false);
 
     mapButton.setDisable(true);
@@ -73,6 +76,7 @@ public class HomepageController extends MenuBarController {
     medicineRequestButton.setVisible(false);
     interpreterRequestButton.setVisible(false);
     internalPatientTransferButton.setVisible(false);
+    customRequestButton.setVisible(false);
     mapButton.setVisible(false);
     equipmentTrackerButton.setVisible(false);
     requestButton.setVisible(false);
@@ -90,6 +94,7 @@ public class HomepageController extends MenuBarController {
     medicineRequestButton.setDisable(true);
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
+    customRequestButton.setDisable(true);
     mapButton.setDisable(true);
     equipmentTrackerButton.setDisable(true);
     requestButton.setDisable(true);
@@ -113,6 +118,7 @@ public class HomepageController extends MenuBarController {
     mealRequestButton.setVisible(false);
     interpreterRequestButton.setVisible(false);
     internalPatientTransferButton.setVisible(false);
+    customRequestButton.setVisible(false);
     backButton.setVisible(false);
 
     // enable homepage buttons and disable all other buttons
@@ -130,6 +136,8 @@ public class HomepageController extends MenuBarController {
     mealRequestButton.setDisable(true);
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
+    customRequestButton.setDisable(true);
     backButton.setDisable(true);
   }
+
 }

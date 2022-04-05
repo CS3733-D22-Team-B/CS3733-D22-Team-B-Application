@@ -18,7 +18,11 @@ public class InternalPatientTransferRequest extends Request {
   }
 
   public final void setInformation() {
-    information = "Internal Patient Transfer Request from " + location.getLongName() + " to " + destination.getLongName();
+    information =
+        "Internal Patient Transfer Request from "
+            + location.getLongName()
+            + " to "
+            + destination.getLongName();
   }
 
   public final String getDestinationID() {

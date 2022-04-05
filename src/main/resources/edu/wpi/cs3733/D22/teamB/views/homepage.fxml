@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
     <children>
-        <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="25.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="40.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../assets/hospitalExterior.jpg" />
             </image>
@@ -23,6 +28,7 @@
         <Button fx:id="mealRequestButton" layoutX="374.0" layoutY="166.0" mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Patient Meal Delivery" visible="false" />
         <Button fx:id="interpreterRequestButton" layoutX="373.0" layoutY="227.0" mnemonicParsing="false" onAction="#goToInterpreterRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Language Interpreter" textAlignment="CENTER" visible="false" />
         <Button fx:id="internalPatientTransferButton" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" prefWidth="211.0" text="Request Internal Patient Transfer" visible="false" />
+      <Button fx:id="customRequestButton" layoutX="406.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToCustomRequestPage" prefHeight="26.0" prefWidth="180.0" text="Custom Request" visible="false" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
         <Button fx:id="patientDatabaseButton" disable="true" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
 
@@ -55,6 +61,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
                         <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
                         <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
                   <MenuItem mnemonicParsing="false" onAction="#goToEquipmentRequestQueue" text="Request Queue" />
                     </items>
                 </Menu>
