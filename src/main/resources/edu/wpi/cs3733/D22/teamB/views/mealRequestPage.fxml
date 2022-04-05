@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MealRequestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MealRequestController">
    <children>
       <Button layoutX="483.0" layoutY="360.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Label fx:id="requestLabel" alignment="CENTER" layoutX="128.0" layoutY="332.0" prefHeight="18.0" prefWidth="419.0" />
@@ -86,7 +77,7 @@
             <Font name="Palatino" size="24.0" />
          </font>
       </Label>
-      <Pane layoutX="142.0" layoutY="227.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
+      <Pane layoutX="140.0" layoutY="234.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
          <children>
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
