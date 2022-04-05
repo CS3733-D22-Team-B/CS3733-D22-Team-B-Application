@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MealRequestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MealRequestController">
    <children>
       <Button layoutX="483.0" layoutY="360.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Label fx:id="requestLabel" alignment="CENTER" layoutX="128.0" layoutY="332.0" prefHeight="18.0" prefWidth="419.0" />
@@ -81,7 +90,7 @@
          <children>
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icons8-iOS-floor.png" />
+                  <Image url="@../assets/icons8-iOS-floor.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="41.0" layoutY="59.0" text="Floor" textFill="#fff9f9" />
@@ -91,7 +100,7 @@
          <children>
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icons8-iOS%20Glyph-User.png" />
+                  <Image url="@../assets/icons8-iOS%20Glyph-User.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="58.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" textFill="#fff9f9" />
@@ -102,7 +111,7 @@
             <Label alignment="CENTER" layoutX="38.0" layoutY="59.0" text="Room" textFill="#fff9f9" />
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="27.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icons8-iOS%20Filled-Hospital%20Bed.png" />
+                  <Image url="@../assets/icons8-iOS%20Filled-Hospital%20Bed.png" />
                </image>
             </ImageView>
          </children>
@@ -111,7 +120,7 @@
          <children>
             <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icons8-Fluency%20System%20Regular-Meal.png" />
+                  <Image url="@../assets/icons8-Fluency%20System%20Regular-Meal.png" />
                </image>
             </ImageView>
             <Label layoutX="42.0" layoutY="59.0" text="Meal" textFill="#fff9f9" />
