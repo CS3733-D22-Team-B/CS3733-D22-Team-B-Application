@@ -32,13 +32,15 @@ public class LoginController extends MenuBarController {
     EmployeeDB emp = EmployeeDB.getInstance();
     System.out.println(this.username + " " + this.password);
     Employee employee = emp.getEmployee(this.username);
-    loginFail.setText(employee.getEmployeeID());
-
-    if (employee.getPassword().equals(password)) {
-      // go to homepage
-      loginFail.setText("Go home");
+    if (employee == null) {
+      loginFail.setText("Invalid ID");
     } else {
-      loginFail.setText("Invalid login");
+      if (employee.getPassword().equals(password)) {
+        // go to homepage
+        loginFail.setText("Go home");
+      } else {
+        loginFail.setText("Invalid Password");
+      }
     }
   }
 }
