@@ -1,13 +1,13 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeeDB;
+import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 
 public abstract class Request {
   protected final String requestID;
-  protected final String type;
+  protected String type;
   protected String employeeID;
   protected Employee employee;
   protected final String locationID;
@@ -21,7 +21,21 @@ public abstract class Request {
     this.locationID = locationID;
     this.status = "Pending";
     this.requestID = createRequestID();
-    setLocation();
+  }
+
+  public Request(
+      String requestID,
+      String type,
+      String employeeID,
+      String locationID,
+      String status,
+      String information) {
+    this.requestID = requestID;
+    this.type = type;
+    this.employeeID = employeeID;
+    this.locationID = locationID;
+    this.status = status;
+    this.information = information;
   }
 
   public abstract String createRequestID();
@@ -40,29 +54,26 @@ public abstract class Request {
 
   public final void setEmployeeID(String employeeID) {
     this.employeeID = employeeID;
-    setEmployee();
   }
 
-  public final Employee getEmployee() {
+  public Employee getEmployee() {
+    EmployeesDB employeesDB = EmployeesDB.getInstance();
+    employee = employeesDB.getByID(employeeID);
     return employee;
   }
 
-  public final void setEmployee() {
-    EmployeeDB employeeDB = EmployeeDB.getInstance();
-    employee = employeeDB.getByID(employeeID);
+  public void setEmployee(Employee e) {
+    setEmployeeID(e.getEmployeeID());
   }
 
   public final String getLocationID() {
     return locationID;
   }
 
-  public final Location getLocation() {
-    return location;
-  }
-
-  public void setLocation() {
+  public Location getLocation() {
     LocationsDB locationsDB = LocationsDB.getInstance();
     location = locationsDB.getByID(locationID);
+    return location;
   }
 
   public final String getStatus() {
@@ -77,17 +88,13 @@ public abstract class Request {
     return information;
   }
 
-  public abstract void setInformation();
-
   // Josh Bloch's Hashing method
   protected final String getHashCode() {
     // generate random value between 0 and 1 inclusive
     double result = (Math.random() + 1) / 2.0;
 
     // calculate the field component weights
-    long c =
-            type.hashCode() +
-            + ((locationID == null) ? 0 : locationID.hashCode());
+    long c = type.hashCode() + +((locationID == null) ? 0 : locationID.hashCode());
 
     // calculate the hash
     int hash = (int) (37 * result + c);
@@ -96,10 +103,10 @@ public abstract class Request {
     String hashCode = Integer.toString(Math.abs(hash));
 
     // pad with zeros
-    while (hashCode.length() < 8) {
+    while (hashCode.length() < 6) {
       hashCode = "0" + hashCode;
     }
 
-    return hashCode.substring(0, 8);
+    return hashCode.substring(0, 6);
   }
 }

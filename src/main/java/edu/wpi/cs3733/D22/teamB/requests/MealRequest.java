@@ -1,25 +1,14 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-
 public class MealRequest extends Request {
-  String meal;
 
-  public MealRequest(String locationID, String meal) {
+  public MealRequest(String locationID, String information) {
     super(locationID, "Meal");
-    this.meal = meal;
-    setInformation();
+    this.information = "Meal: " + information;
   }
 
   public final String createRequestID() {
     return "MEL" + getHashCode();
   }
 
-  public final void setInformation() {
-    information = "Meal: " + meal;
-  }
-
-  public final String getMeal() {
-    return meal;
-  }
 }

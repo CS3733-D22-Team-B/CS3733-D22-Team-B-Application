@@ -10,15 +10,19 @@ public class InternalPatientTransferRequest extends Request {
   public InternalPatientTransferRequest(String locationID, String destinationID) {
     super(locationID, "Internal Patient Transfer");
     this.destinationID = destinationID;
-    setDestination();
+    information =
+            "Internal Patient Transfer Request from "
+                    + getLocation().getLongName()
+                    + " to "
+                    + getDestination().getLongName();
   }
 
   public final String createRequestID() {
     return "IPT" + getHashCode();
   }
 
-  public final void setInformation() {
-    information = "Internal Patient Transfer Request from " + location.getLongName() + " to " + destination.getLongName();
+  private void setDestinationID(String destinationID) {
+    this.destinationID = destinationID;
   }
 
   public final String getDestinationID() {
@@ -26,11 +30,12 @@ public class InternalPatientTransferRequest extends Request {
   }
 
   public final Location getDestination() {
+    LocationsDB locDB = LocationsDB.getInstance();
+    destination = locDB.getByID(destinationID);
     return destination;
   }
 
-  public final void setDestination() {
-    LocationsDB locationsDB = LocationsDB.getInstance();
-    destination = locationsDB.getByID(destinationID);
+  public final void setDestination(Location l) {
+    setDestinationID(l.getNodeID());
   }
 }

@@ -4,15 +4,15 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employee> {
+public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employee> {
   private final String url = "jdbc:derby:Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEmployees.csv";
-  private static EmployeeDB employeeDBManager;
+  private static EmployeesDB employeesDBManager;
 
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
 
-  private EmployeeDB() {
+  private EmployeesDB() {
     super(
         "Employees",
         "employeeID",
@@ -20,11 +20,11 @@ public class EmployeeDB extends DatabaseSuperclass implements IDatabases<Employe
     initDB();
   }
 
-  public static EmployeeDB getInstance() {
-    if (employeeDBManager == null) {
-      employeeDBManager = new EmployeeDB();
+  public static EmployeesDB getInstance() {
+    if (employeesDBManager == null) {
+      employeesDBManager = new EmployeesDB();
     }
-    return employeeDBManager;
+    return employeesDBManager;
   }
 
   public void initDB() {

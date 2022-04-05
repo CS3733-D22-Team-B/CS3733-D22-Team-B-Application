@@ -28,8 +28,9 @@
       <ComboBox fx:id="medicineInput" layoutX="114.0" layoutY="197.0" onAction="#setMedication" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:id="MORPHINE" fx:value="Morphine" />
-               <String fx:id="PREDNISONE" fx:value="Prednisone" />
+               <String fx:id="ACETAMINOPHEN" fx:value="Acetaminophen" />
+               <String fx:id="NAPROXEN" fx:value="Naproxen" />
+               <String fx:id="IBUPROFEN" fx:value="Ibuprofen" />
             </FXCollections>
          </items>
       </ComboBox>

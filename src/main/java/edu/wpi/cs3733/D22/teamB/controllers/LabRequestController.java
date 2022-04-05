@@ -1,13 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
-
-import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
-import edu.wpi.cs3733.D22.teamB.databases.TestingTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -18,7 +15,7 @@ public class LabRequestController extends RequestController {
   @FXML private DatePicker testingTimeInput;
 
   private String labTest;
-  private TestingTime testingTime;
+  private Date testingTime;
 
   public void setLabTest() {
     labTest = labTestInput.getValue();
@@ -27,7 +24,7 @@ public class LabRequestController extends RequestController {
   public void setTestingTime() {
     LocalDate localDate = testingTimeInput.getValue();
     Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-    testingTime = new TestingTime(Date.from(instant), LocalTime.NOON);
+    testingTime = Date.from(instant);
   }
 
   @FXML

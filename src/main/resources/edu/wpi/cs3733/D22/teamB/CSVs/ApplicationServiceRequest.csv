@@ -1,13 +1,13 @@
-requestID,type,employeeID,locationID,status,information
-meal001,MEAL,PTDR01,bHALL00901,Pending,Chicken Tenders
-meal002,MEAL,EMNU01,bHALL01001,In Progress,Grilled Cheese
-meal003,MEAL,ICAM01,bHALL01101,Completed,Pizza
-med001,MED,PTDR01,bHALL00901,Pending,Ibuprofen
-med002,MED,EMNU01,bHALL01001,In Progress,Acetaminophen
-med003,MED,ICAM01,bHALL01101,Completed,Naproxen
-lang001,LANG,PTDR01,bHALL00901,Pending,Spanish
-lang002,LANG,EMNU01,bHALL01001,In Progress,French
-lang003,LANG,ICAM01,bHALL01101,Completed,Italian
-tran001,TRAN,PTDR01,bHALL00901,Pending,bHALL01001
-tran002,TRAN,EMNU01,bHALL01001,In Progress,bHALL01101
-tran003,TRAN,ICAM01,bHALL01101,Completed,bHALL00901
+requestID,employeeID,locationID,transferID,type,status,information
+meal001,PTDR01,bHALL00901,,MEAL,Pending,Chicken Tenders
+meal002,EMNU01,bHALL01001,,MEAL,In Progress,Grilled Cheese
+meal003,ICAM01,bHALL01101,,MEAL,Completed,Pizza
+med001,PTDR01,bHALL00901,,MED,Pending,Ibuprofen
+med002,EMNU01,bHALL01001,,MED,In Progress,Acetaminophen
+med003,ICAM01,bHALL01101,,MED,Completed,Naproxen
+lang001,PTDR01,bHALL00901,,LANG,Pending,Spanish
+lang002,EMNU01,bHALL01001,,LANG,In Progress,French
+lang003,ICAM01,bHALL01101,,LANG,Completed,Italian
+tran001,PTDR01,bHALL00901,bHALL01001,TRAN,Pending,ICU
+tran002,EMNU01,bHALL01001,bHALL01101,TRAN,In Progress,ICU
+tran003,ICAM01,bHALL01101,bHALL00901,TRAN,Completed,Somewhere
