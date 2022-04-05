@@ -323,6 +323,7 @@ public class MapEditorController extends MapViewerController {
           new Location(nodeID, newCoords[0], newCoords[1], floor, building, nodeType, name, name);
       // Pass new location into database
       dao.add(newLoc);
+      hideView();
     }
     if (currentFunction.equals("Edit")) {
       String name = locationsDropdown.getValue();
@@ -341,8 +342,8 @@ public class MapEditorController extends MapViewerController {
         change.setShortName(newName);
       }
       dao.update(change);
+      hideView();
     }
-    hideView();
   }
 
   public void deleteLoc() {

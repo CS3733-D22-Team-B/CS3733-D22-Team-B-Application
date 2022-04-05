@@ -22,6 +22,7 @@ public class HomepageController extends MenuBarController {
   @FXML private Button patientDatabaseButton;
   @FXML private Button customRequestButton;
   @FXML private Button backButton;
+  @FXML private Button requestQueueButton;
 
   @FXML
   void displayRequestButtons(ActionEvent event) {
@@ -33,6 +34,7 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setVisible(true);
     internalPatientTransferButton.setVisible(true);
     customRequestButton.setVisible(true);
+    requestQueueButton.setVisible(true);
     backButton.setVisible(true);
 
     mapButton.setVisible(false);
@@ -51,6 +53,7 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setDisable(false);
     internalPatientTransferButton.setDisable(false);
     customRequestButton.setDisable(false);
+    requestQueueButton.setDisable(false);
     backButton.setDisable(false);
 
     mapButton.setDisable(true);
@@ -119,6 +122,7 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setVisible(false);
     internalPatientTransferButton.setVisible(false);
     customRequestButton.setVisible(false);
+    requestQueueButton.setVisible(false);
     backButton.setVisible(false);
 
     // enable homepage buttons and disable all other buttons
@@ -137,6 +141,7 @@ public class HomepageController extends MenuBarController {
     interpreterRequestButton.setDisable(true);
     internalPatientTransferButton.setDisable(true);
     customRequestButton.setDisable(true);
+    requestQueueButton.setDisable(true);
     backButton.setDisable(true);
   }
 }
