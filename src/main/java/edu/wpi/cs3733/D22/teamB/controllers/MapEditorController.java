@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import static java.lang.Math.round;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import java.util.LinkedList;
@@ -355,8 +356,7 @@ public class MapEditorController extends MapViewerController {
   @FXML
   public void resetLocations() {
     // TODO: calll database reset function
-
-    
+    DatabaseController.getInstance().resetAllDBs();
     // reset view
     cancelReset();
   }
