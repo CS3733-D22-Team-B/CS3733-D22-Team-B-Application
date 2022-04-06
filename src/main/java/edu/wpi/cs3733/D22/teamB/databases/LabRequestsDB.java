@@ -8,8 +8,7 @@ import java.util.LinkedList;
 public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
 
   private final String url = "jdbc:derby:Databases";
-  private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLabRequest.csv";
+  private final String backupFile = "CSVs/BackupLabRequest.csv";
   private static LabRequestsDB labRequestsDBManager;
 
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();
@@ -23,10 +22,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
   }
 
   private LabRequestsDB() {
-    super(
-        "LabRequests",
-        "requestID",
-        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLabRequest.csv");
+    super("LabRequests", "requestID", "CSVs/ApplicationLabRequest.csv");
     initDB();
   }
 

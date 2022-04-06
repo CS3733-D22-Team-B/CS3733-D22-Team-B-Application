@@ -1,28 +1,19 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 
 public class DatabaseInitializer {
 
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
-  private String locationCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
-  private String medicalEQCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
-  private String employeesCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
-  private String patientsCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
-  private String equipmentRequestCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv";
-  private String labRequestCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLabRequest.csv";
-  private String serviceRequestCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationServiceRequest.csv";
+  private String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
+  private String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
+  private String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
+  private String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
+  private String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
+  private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
+  private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
 
   public void setLocationCSVFilePath(String newPath) {
     this.locationCSVFilePath = newPath;
@@ -103,7 +94,8 @@ public class DatabaseInitializer {
 
   public void populateDatabase(String filepath, String databaseName, int Elements) {
     try {
-      BufferedReader lineReader = new BufferedReader(new FileReader(filepath));
+      InputStream is = getClass().getResourceAsStream(filepath);
+      BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
       String lineText = null;
       lineReader.readLine(); // Skip line with attribute names
 
@@ -174,7 +166,8 @@ public class DatabaseInitializer {
           "INSERT INTO LabRequests (requestID, employeeID, nodeID, testRoomID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
-      BufferedReader lineReader = new BufferedReader(new FileReader(labRequestCSVFilePath));
+      InputStream is = getClass().getResourceAsStream(labRequestCSVFilePath);
+      BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
       String lineText = null;
 
       lineReader.readLine(); // skip header line
@@ -231,7 +224,8 @@ public class DatabaseInitializer {
           "INSERT INTO ServiceRequests (requestID, employeeID, locationID, transferID, type, status, information) VALUES (?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
-      BufferedReader lineReader = new BufferedReader(new FileReader(serviceRequestCSVFilePath));
+      InputStream is = getClass().getResourceAsStream(serviceRequestCSVFilePath);
+      BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
       String lineText = null;
 
       lineReader.readLine(); // skip header line
