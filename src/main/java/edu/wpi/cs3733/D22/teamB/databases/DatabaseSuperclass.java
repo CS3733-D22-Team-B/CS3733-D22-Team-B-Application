@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import javax.lang.model.util.Elements;
 
 public abstract class DatabaseSuperclass {
-  protected final String DBURL = "jdbc:derby:src/Databases;";
+  protected final String DBURL = "jdbc:derby:Databases;";
   protected String tableType;
   protected String pkName;
   protected String filePath;
@@ -71,7 +71,9 @@ public abstract class DatabaseSuperclass {
       Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
-      BufferedWriter fileWriter = new BufferedWriter(new FileWriter(newFilePath));
+      OutputStream os = new FileOutputStream(newFilePath);
+      Writer writer = new OutputStreamWriter(os, "US-ASCII");
+      BufferedWriter fileWriter = new BufferedWriter(writer);
       int Elements = rs.getMetaData().getColumnCount();
       String listOfColumns = "";
 
@@ -121,7 +123,8 @@ public abstract class DatabaseSuperclass {
    * @return
    */
   protected int toCSV() {
-    toCSV(filePath);
+    String newFilePath = "src/main/resources/edu/wpi/cs3733/D22/teamB/databases/" + filePath;
+    toCSV(newFilePath);
     return 0;
   }
 

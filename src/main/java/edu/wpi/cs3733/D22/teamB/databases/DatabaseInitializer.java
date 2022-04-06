@@ -15,7 +15,6 @@ public class DatabaseInitializer {
   private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
   private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
 
-
   public void setLocationCSVFilePath(String newPath) {
     this.locationCSVFilePath = newPath;
   }
