@@ -19,8 +19,10 @@ public class MapViewerController extends MenuBarController {
   @FXML protected JFXButton downButton;
   @FXML private ImageView mapImage;
   @FXML protected Label floorDisplay;
+  @FXML private ImageView legendImage;
 
   private int floorLevel = 2;
+  private Boolean legend = false;
 
   private LinkedList<Circle> circles;
   private LinkedList<SVGPath> icons;
@@ -310,5 +312,15 @@ public class MapViewerController extends MenuBarController {
 
   public String getFloorLevel() {
     return floorDisplay.getText();
+  }
+
+  public void showHideLegend() {
+    if (legend) {
+      legendImage.setVisible(false);
+      legend = false;
+    } else {
+      legendImage.setVisible(true);
+      legend = true;
+    }
   }
 }
