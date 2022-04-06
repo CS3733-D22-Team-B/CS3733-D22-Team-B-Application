@@ -3,33 +3,21 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import java.util.HashMap;
 
 public class DatabaseController {
-  private final String locationCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
-  private final String medicalEQCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationMedicalEquipment.csv";
-  private final String employeesCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv";
-  private final String patientsCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationPatients.csv";
-  private final String equipmentRequestCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv";
-  private final String labRequestCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLabRequest.csv";
+  private final String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
+  private final String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
+  private final String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
+  private final String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
+  private final String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
+  private final String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
   // private final String serviceRequestCSVFilePath =
   // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationServiceRequest.csv";
 
-  private final String locationBCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLocations.csv";
-  private final String medicalEQBCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupMedicalEquipment.csv";
-  private final String employeesBCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEmployees.csv";
-  private final String patientsBCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupPatients.csv";
-  private final String equipmentRequestBCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEquipmentRequest.csv";
-  private final String labRequestBCSVFilePath =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLabRequest.csv";
+  private final String locationBCSVFilePath = "CSVs/BackupLocations.csv";
+  private final String medicalEQBCSVFilePath = "CSVs/BackupMedicalEquipment.csv";
+  private final String employeesBCSVFilePath = "CSVs/BackupEmployees.csv";
+  private final String patientsBCSVFilePath = "CSVs/BackupPatients.csv";
+  private final String equipmentRequestBCSVFilePath = "CSVs/BackupEquipmentRequest.csv";
+  private final String labRequestBCSVFilePath = "CSVs/BackupLabRequest.csv";
   // private final String serviceRequestBCSVFilePath =
   // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupServiceRequest.csv";
 

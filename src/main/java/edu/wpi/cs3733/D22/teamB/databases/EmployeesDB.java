@@ -21,10 +21,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
   }
 
   private EmployeesDB() {
-    super(
-        "Employees",
-        "employeeID",
-        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEmployees.csv");
+    super("Employees", "employeeID", "CSVs/ApplicationEmployees.csv");
     initDB();
   }
 

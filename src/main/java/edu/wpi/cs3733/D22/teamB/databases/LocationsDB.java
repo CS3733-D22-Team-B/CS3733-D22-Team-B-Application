@@ -8,9 +8,9 @@ import java.util.stream.Stream;
 
 public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
 
-  private final String url = "jdbc:derby:src/Databases";
-  private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLocations.csv";
+  private final String url = "jdbc:derby:Databases";
+  private final String backupFile = "CSVs/BackupLocations.csv";
+
   private static LocationsDB locationsDBManager;
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();
@@ -24,10 +24,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   }
 
   private LocationsDB() {
-    super(
-        "Locations",
-        "nodeID",
-        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv");
+    super("Locations", "nodeID", "CSVs/ApplicationLocations.csv");
     initDB();
   }
 

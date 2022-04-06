@@ -6,9 +6,9 @@ import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
 
-  private final String url = "jdbc:derby:src/Databases";
-  private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEquipmentRequest.csv";
+  private final String url = "jdbc:derby:Databases";
+  private final String backupFile = "CSVs/BackupEquipmentRequest.csv";
+
   private static EquipmentRequestDB equipmentRequestDBManager;
 
   private HashMap<String, EquipmentRequest> equipmentRequestMap =
@@ -23,10 +23,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   }
 
   private EquipmentRequestDB() {
-    super(
-        "EquipmentRequests",
-        "requestID",
-        "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationEquipmentRequest.csv");
+    super("EquipmentRequests", "requestID", "CSVs/ApplicationEquipmentRequest.csv");
     initDB();
   }
 
