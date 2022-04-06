@@ -317,9 +317,11 @@ public class MapViewerController extends MenuBarController {
   public void showHideLegend() {
     if (legend) {
       legendImage.setVisible(false);
+      upButton.setVisible(true);
       legend = false;
     } else {
       legendImage.setVisible(true);
+      upButton.setVisible(false);
       legend = true;
     }
   }

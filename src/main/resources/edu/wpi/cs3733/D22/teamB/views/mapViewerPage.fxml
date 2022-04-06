@@ -68,9 +68,9 @@
             </Menu>
          </menus>
       </MenuBar>
-      <ImageView fx:id="legendImage" fitHeight="180.0" fitWidth="241.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="legendImage" fitHeight="290.0" fitWidth="155.0" layoutX="452.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../assets/Legend2.png" />
+            <Image url="@../assets/legend.png" />
          </image>
       </ImageView>
       <Button layoutX="534.0" layoutY="35.0" mnemonicParsing="false" onAction="#showHideLegend" text="Legend" />
