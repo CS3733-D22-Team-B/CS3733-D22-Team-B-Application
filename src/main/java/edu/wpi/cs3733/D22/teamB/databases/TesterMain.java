@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamB.databases;
 public class TesterMain {
 
   public static void main(String[] args) {
+    /*
     System.out.println("-------Embedded Apache Derby Connection Testing-------");
     try {
       Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
