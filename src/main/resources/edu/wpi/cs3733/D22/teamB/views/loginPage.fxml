@@ -45,5 +45,6 @@
          </image>
       </ImageView>
       <Label fx:id="loginFail" layoutX="70.0" layoutY="315.0" prefHeight="18.0" prefWidth="118.0" />
+      <Button layoutX="14.0" layoutY="345.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
    </children>
 </AnchorPane>

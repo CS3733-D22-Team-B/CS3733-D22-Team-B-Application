@@ -9,6 +9,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile = "CSVs/BackupLabRequest.csv";
+
   private static LabRequestsDB labRequestsDBManager;
 
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();

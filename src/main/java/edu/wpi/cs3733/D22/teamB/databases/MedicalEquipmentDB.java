@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
+
   private final String url = "jdbc:derby:Databases;";
   private final String backupFile = "CSVs/BackupMedicalEquipment.csv";
+
   private static MedicalEquipmentDB medicalEquipmentDBManager;
 
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =

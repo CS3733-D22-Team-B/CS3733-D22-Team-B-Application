@@ -18,7 +18,7 @@
         <Button fx:id="profileButton" layoutX="536.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToProfilePage" text="Profile" />
         <Button fx:id="mapButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#displayMapButtons" prefHeight="25.0" prefWidth="115.0" text="Map" />
         <Button fx:id="equipmentTrackerButton" layoutX="471.0" layoutY="132.0" mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-        <Button fx:id="requestButton" layoutX="470.0" layoutY="162.0" mnemonicParsing="false" onAction="#displayRequestButtons" prefHeight="25.0" prefWidth="115.0" text="Requests" />
+        <Button fx:id="requestButton" layoutX="471.0" layoutY="162.0" mnemonicParsing="false" onAction="#displayRequestButtons" prefHeight="25.0" prefWidth="115.0" text="Requests" />
         <Button fx:id="equipmentRequestButton" layoutX="374.0" layoutY="103.0" mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" visible="false" />
         <Button fx:id="labRequestButton" layoutX="374.0" layoutY="135.0" mnemonicParsing="false" onAction="#goToLabServiceRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Lab Service" visible="false" />
         <Button fx:id="medicineRequestButton" layoutX="374.0" layoutY="196.0" mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Medicine Delivery" visible="false" />
@@ -79,6 +79,7 @@
       <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
       <Button fx:id="requestQueueButton" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToRequestQueue" prefHeight="26.0" prefWidth="115.0" text="Request Queue" />
       <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
+      <Button layoutX="486.0" layoutY="38.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
 
     </children>
 

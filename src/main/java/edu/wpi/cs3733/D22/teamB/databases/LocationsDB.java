@@ -10,6 +10,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile = "CSVs/BackupLocations.csv";
+
   private static LocationsDB locationsDBManager;
 
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();

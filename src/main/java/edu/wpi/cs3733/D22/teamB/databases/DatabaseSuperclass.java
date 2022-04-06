@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import javax.lang.model.util.Elements;
 
 public abstract class DatabaseSuperclass {
-  protected final String DBURL = "jdbc:derby:Databases;";
+  protected final String DBURL = "jdbc:derby:src/Databases;";
   protected String tableType;
   protected String pkName;
   protected String filePath;

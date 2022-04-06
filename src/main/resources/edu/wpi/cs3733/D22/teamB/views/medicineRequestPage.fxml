@@ -125,16 +125,6 @@
             <Label layoutX="25.0" layoutY="59.0" text="Medication" textFill="#fff9f9" />
          </children>
       </Pane>
-      <Pane layoutX="375.0" layoutY="234.0" prefHeight="81.0" prefWidth="109.0" style="-fx-background-color: #3d6183#3d6183 #3d6183#3d6193; -fx-border-color: #f6bd38#f6bd38;">
-         <children>
-            <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="34.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icons8-iOS%20Glyph-User.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="58.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" textFill="#fff9f9" />
-         </children>
-      </Pane>
       <MenuBar fx:id="homeBar" layoutX="3.0" layoutY="3.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">

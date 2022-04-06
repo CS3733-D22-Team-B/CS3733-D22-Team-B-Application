@@ -8,6 +8,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
 
   private final String url = "jdbc:derby:Databases";
   private final String backupFile = "CSVs/BackupEquipmentRequest.csv";
+
   private static EquipmentRequestDB equipmentRequestDBManager;
 
   private HashMap<String, EquipmentRequest> equipmentRequestMap =

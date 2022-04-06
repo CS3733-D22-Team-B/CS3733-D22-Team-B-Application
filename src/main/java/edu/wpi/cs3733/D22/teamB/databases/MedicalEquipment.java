@@ -7,9 +7,10 @@ public class MedicalEquipment {
   private Location location;
   private String type;
   private boolean isClean;
+  private String isSterilized;
   private boolean isRequested;
 
-  // Requested, Processing, Complete
+  // Pending, In-Progress, Complete
 
   public MedicalEquipment(
       String equipmentID, String nodeID, String type, boolean isClean, boolean isRequested) {
@@ -56,10 +57,15 @@ public class MedicalEquipment {
 
   public void setIsClean(boolean newIsClean) {
     isClean = newIsClean;
+    isSterilized = (isClean) ? "\u2713" : "\u2717";
   }
 
   public boolean getIsClean() {
     return isClean;
+  }
+
+  public String getIsSterilized() {
+    return isSterilized;
   }
 
   public void setIsRequested(boolean newIsRequested) {
