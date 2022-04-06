@@ -119,6 +119,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
     currentRequest.setEmployeeID(employeeInput.getValue());
+    employeeInput.setValue("");
     requestTable.refresh();
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
