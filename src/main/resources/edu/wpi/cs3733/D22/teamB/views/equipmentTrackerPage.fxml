@@ -12,11 +12,9 @@
    <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
    <TableView fx:id="equipmentTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="532.0">
      <columns>
-       <TableColumn fx:id="columnEquipment" prefWidth="128.800048828125" text="Equipment" />
-         <TableColumn fx:id="columnSterilization" prefWidth="71.3333740234375" text="Sterilized" />
-         <TableColumn fx:id="columnFloor" prefWidth="46.0" text="Floor" />
-         <TableColumn fx:id="columnLocation" prefWidth="189.333251953125" text="Location" />
-         <TableColumn fx:id="columnBuilding" prefWidth="93.3333740234375" text="Is Requested" />
+       <TableColumn fx:id="columnEquipment" prefWidth="148.6666603088379" text="Equipment" />
+         <TableColumn fx:id="columnLocation" prefWidth="292.6666717529297" text="Location" />
+         <TableColumn fx:id="columnSterilization" minWidth="0.0" prefWidth="90.00003051757812" text="Sterilized" />
      </columns>
    </TableView>
    <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">

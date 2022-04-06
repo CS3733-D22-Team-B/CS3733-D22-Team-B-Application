@@ -8,7 +8,7 @@ import java.sql.*;
 public class DatabaseInitializer {
 
   private Connection connection = null;
-  final String DBURL = "jdbc:derby:Databases;create=true";
+  final String DBURL = "jdbc:derby:src/Databases;create=true";
   private String locationCSVFilePath =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationLocations.csv";
   private String medicalEQCSVFilePath =

@@ -79,7 +79,7 @@
       <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
       <Button fx:id="requestQueueButton" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToRequestQueue" prefHeight="26.0" prefWidth="115.0" text="Request Queue" />
       <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
-      <Button layoutX="470.0" layoutY="38.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+      <Button layoutX="486.0" layoutY="38.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
 
     </children>
 

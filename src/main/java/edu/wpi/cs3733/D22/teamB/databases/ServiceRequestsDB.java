@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<Request> {
 
-  private final String url = "jdbc:derby:Databases";
+  private final String url = "jdbc:derby:src/Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupServiceRequest.csv";
   private static ServiceRequestsDB serviceRequestsDBManager;

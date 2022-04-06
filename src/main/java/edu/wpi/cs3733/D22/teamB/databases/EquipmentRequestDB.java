@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
 
-  private final String url = "jdbc:derby:Databases";
+  private final String url = "jdbc:derby:src/Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEquipmentRequest.csv";
   private static EquipmentRequestDB equipmentRequestDBManager;

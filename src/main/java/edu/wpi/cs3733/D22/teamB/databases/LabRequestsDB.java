@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
 
-  private final String url = "jdbc:derby:Databases";
+  private final String url = "jdbc:derby:src/Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupLabRequest.csv";
   private static LabRequestsDB labRequestsDBManager;

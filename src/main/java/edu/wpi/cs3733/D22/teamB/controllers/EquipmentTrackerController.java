@@ -18,10 +18,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class EquipmentTrackerController extends MenuBarController implements Initializable {
   @FXML TableView<MedicalEquipment> equipmentTable;
   @FXML TableColumn<MedicalEquipment, String> columnEquipment;
-  @FXML TableColumn<MedicalEquipment, String> columnSterilization;
-  @FXML TableColumn<MedicalEquipment, String> columnFloor;
   @FXML TableColumn<MedicalEquipment, String> columnLocation;
-  @FXML TableColumn<MedicalEquipment, String> columnBuilding;
+  @FXML TableColumn<MedicalEquipment, String> columnSterilization;
 
   private ObservableList<Location> locations = FXCollections.observableArrayList();
   private ObservableList<MedicalEquipment> equipment = FXCollections.observableArrayList();
@@ -30,12 +28,6 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
 
   @Override
   public void initialize(URL loc, ResourceBundle resources) {
-    columnEquipment.setCellValueFactory(new PropertyValueFactory<>("equipmentID"));
-    columnSterilization.setCellValueFactory(new PropertyValueFactory<>("isClean"));
-    columnFloor.setCellValueFactory(new PropertyValueFactory<>("type"));
-    columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
-    columnBuilding.setCellValueFactory(new PropertyValueFactory<>("isRequested"));
-
     dao = LocationsDB.getInstance();
     medDao = MedicalEquipmentDB.getInstance();
     LinkedList<MedicalEquipment> equip = medDao.list();
@@ -43,6 +35,10 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
       med.getLocation(); // Initialize the location for each medical equipment object
       equipment.add(med);
     }
+
+    columnEquipment.setCellValueFactory(new PropertyValueFactory<>("equipmentID"));
+    columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
+    columnSterilization.setCellValueFactory(new PropertyValueFactory<>("isSterilized"));
 
     equipmentTable.setItems(equipment);
   }
