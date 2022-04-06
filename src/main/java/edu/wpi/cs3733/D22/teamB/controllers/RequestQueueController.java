@@ -48,7 +48,17 @@ public class RequestQueueController extends MenuBarController implements Initial
     dao = EmployeesDB.getInstance();
     LinkedList<Employee> employees = dao.list();
     for (Employee employeeItem : employees) {
-      employeeInput.getItems().add(employeeItem.getFirstName() + " " + employeeItem.getLastName());
+      if (!employeeItem.getEmployeeID().equals("0")) {
+        employeeInput
+            .getItems()
+            .add(
+                employeeItem.getFirstName()
+                    + " "
+                    + employeeItem.getLastName()
+                    + " ("
+                    + employeeItem.getEmployeeID()
+                    + ")");
+      }
     }
 
     for (Request request : RequestQueue.getRequests()) {
@@ -74,8 +84,13 @@ public class RequestQueueController extends MenuBarController implements Initial
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
                           requestIDLabel.setText(request.getRequestID());
-                          locationLabel.setText(request.getLocationID());
-                          employeeInput.setValue(request.getEmployeeID());
+                          locationLabel.setText(request.getLocation().getLongName());
+
+                          String employeeID = request.getEmployeeID();
+                          if (!employeeID.equals("0")) {
+                            employeeInput.setValue(employeeID);
+                          }
+
                           employeeInput.setDisable(false);
                           statusInput.setValue(request.getStatus());
                           statusInput.setDisable(false);

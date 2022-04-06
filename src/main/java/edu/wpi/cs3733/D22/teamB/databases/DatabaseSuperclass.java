@@ -213,7 +213,7 @@ public abstract class DatabaseSuperclass {
   }
 
   public void quit() {
-    toCSV();
+    // toCSV();
     listDB();
 
     try {
