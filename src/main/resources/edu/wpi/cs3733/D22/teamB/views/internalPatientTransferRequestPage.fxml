@@ -66,8 +66,6 @@
          </items>
       </ComboBox>
       <Label alignment="CENTER" layoutX="354.0" layoutY="135.0" text="Floor" />
-      <TextField fx:id="nameInput" layoutX="226.0" layoutY="225.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="206.0" prefHeight="18.0" prefWidth="89.0" text="Staff Member" textAlignment="CENTER" />
       <MenuBar fx:id="homeBar" layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
