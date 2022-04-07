@@ -89,6 +89,33 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
     return labReqList;
   }
 
+  public LinkedList<LabRequest> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<LabRequest> list = new LinkedList<LabRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(labRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<LabRequest> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<LabRequest> list = new LinkedList<LabRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(labRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<LabRequest> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<LabRequest> list = new LinkedList<LabRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(labRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   @Override
   public int update(LabRequest labReqObj) {
     if (!labRequestMap.containsKey(labReqObj.getRequestID())) {

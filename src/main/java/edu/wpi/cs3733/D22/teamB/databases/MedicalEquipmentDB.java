@@ -83,6 +83,33 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     return locList;
   }
 
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public int update(MedicalEquipment medObj) {
     if (!medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
       return -1;

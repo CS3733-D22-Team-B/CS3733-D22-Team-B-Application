@@ -114,6 +114,33 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     return reqList;
   }
 
+  public LinkedList<Request> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Request> list = new LinkedList<Request>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(requestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Request> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Request> list = new LinkedList<Request>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(requestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Request> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Request> list = new LinkedList<Request>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(requestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public Request getByID(String id) {
     if (!requestMap.containsKey(id)) {
       return null;

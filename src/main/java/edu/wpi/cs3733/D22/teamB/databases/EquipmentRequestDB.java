@@ -77,6 +77,33 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     return locList;
   }
 
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public EquipmentRequest getByID(String id) {
     if (!equipmentRequestMap.containsKey(id)) {
       return null;

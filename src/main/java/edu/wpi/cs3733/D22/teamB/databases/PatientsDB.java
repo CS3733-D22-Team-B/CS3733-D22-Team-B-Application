@@ -75,6 +75,33 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     return locList;
   }
 
+  public LinkedList<Patient> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Patient> list = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(patientMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Patient> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Patient> list = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(patientMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Patient> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Patient> list = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(patientMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public int update(Patient patObj) {
     if (!patientMap.containsKey(patObj.getPatientID())) {
       return -1;

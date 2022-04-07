@@ -199,6 +199,73 @@ public abstract class DatabaseSuperclass {
     return filteredSearchList;
   }
 
+  protected LinkedList<String> searchWhere(String attribute, String value) {
+    LinkedList<String> pkList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      ResultSet rs =
+          statement.executeQuery(
+              "SELECT * FROM " + tableType + " WHERE " + attribute + " = " + "'" + value + "'");
+
+      while (rs.next()) {
+        pkList.add(rs.getString(1));
+      }
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return pkList;
+  }
+
+  protected LinkedList<String> searchWhere(String attribute, int value) {
+    LinkedList<String> pkList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      ResultSet rs =
+          statement.executeQuery(
+              "SELECT * FROM " + tableType + " WHERE " + attribute + " = " + value);
+
+      while (rs.next()) {
+        pkList.add(rs.getString(1));
+      }
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return pkList;
+  }
+
+  protected LinkedList<String> searchWhere(String attribute, boolean value) {
+    LinkedList<String> pkList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(DBURL);
+      Statement statement = connection.createStatement();
+      ResultSet rs =
+          statement.executeQuery(
+              "SELECT * FROM " + tableType + " WHERE " + attribute + " = " + value);
+
+      while (rs.next()) {
+        pkList.add(rs.getString(1));
+      }
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return pkList;
+  }
+
+  /*
+  protected LinkedList<String> searchWhere(String attribute, boolean value) {
+    if (value) {
+      return searchWhere(attribute, 1);
+    } else {
+      return searchWhere(attribute, 0);
+    }
+  }
+   */
+
   protected int deleteFrom(String pk) {
     try {
       Connection connection = DriverManager.getConnection(DBURL);

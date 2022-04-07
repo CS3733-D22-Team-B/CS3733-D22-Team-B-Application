@@ -65,6 +65,33 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
     return employeeList;
   }
 
+  public LinkedList<Employee> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Employee> list = new LinkedList<Employee>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(employeeMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Employee> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Employee> list = new LinkedList<Employee>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(employeeMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Employee> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Employee> list = new LinkedList<Employee>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(employeeMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public LinkedList<Employee> searchFor(String input) {
     LinkedList<String> pkList = filteredSearch(input);
     LinkedList<Employee> empList = new LinkedList<Employee>();
@@ -82,7 +109,6 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
     return employeeMap.get(id);
   }
 
-  ////////////////////////////////////////////////////////////// To Fix
   public Employee getEmployee(String employeeId) {
     return employeeMap.get(employeeId);
   }

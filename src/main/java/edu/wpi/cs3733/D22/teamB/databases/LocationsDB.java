@@ -86,6 +86,33 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     return locList;
   }
 
+  public LinkedList<Location> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public int update(Location locObj) {
     if (!locationMap.containsKey(locObj.getNodeID())) {
       return -1;
