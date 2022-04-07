@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -30,8 +31,16 @@
       </Pane>
       <JFXButton layoutX="522.0" layoutY="25.0" onAction="#goToFloorL2" text="L2" />
       <JFXButton layoutX="522.0" layoutY="51.0" onAction="#goToFloorL1" text="L1" />
-      <JFXButton layoutX="522.0" layoutY="76.0" onAction="#goToFloor1" text="1" />
+      <JFXButton layoutX="522.0" layoutY="76.0" onAction="#goToFloor1" text="1">
+         <tooltip>
+            <Tooltip text="ඞ" />
+         </tooltip>
+      </JFXButton>
       <JFXButton layoutX="522.0" layoutY="102.0" onAction="#goToFloor2" text="2" />
-      <JFXButton layoutX="522.0" layoutY="134.0" onAction="#goToFloor3" text="3" />
+      <JFXButton layoutX="522.0" layoutY="134.0" onAction="#goToFloor3" text="3">
+         <tooltip>
+            <Tooltip text="chase likes feet" />
+         </tooltip>
+      </JFXButton>
    </children>
 </AnchorPane>

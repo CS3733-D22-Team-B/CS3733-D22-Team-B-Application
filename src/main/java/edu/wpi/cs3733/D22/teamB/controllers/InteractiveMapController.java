@@ -13,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
-import javafx.stage.Popup;
 
 public class InteractiveMapController {
   @FXML private AnchorPane anchorPane;
@@ -29,7 +28,7 @@ public class InteractiveMapController {
 
   private LinkedList<SVGPath> roomIcons;
   private LinkedList<SVGPath> equipIcons;
-  private Popup roomPopup;
+  // private Popup roomPopup;
 
   private int floorLevel = 2;
 
@@ -86,20 +85,8 @@ public class InteractiveMapController {
     SVGPath icon = new SVGPath();
 
     switch (location.getNodeType()) {
-        // case "BATH":
-      default:
-        icon.setContent("M 1 1 H 9 V 9 H 1 Z");
-        icon.setFill(Color.rgb(250, 0, 200));
-        icon.hoverProperty()
-            .addListener(
-                (obs, oldVal, newVal) -> {
-                  if (newVal) {
-                    getLocInfo(location);
-                  } else {
-                    locationInfo.setVisible(false);
-                  }
-                });
-        break;
+        //      case "BATH":
+        //        break;
         //      case "DEPT":
         //        break;
         //      case "DIRT":
@@ -126,7 +113,19 @@ public class InteractiveMapController {
         //        break;
         //      case "STOR":
         //        break;
-
+      default:
+        icon.setContent("M 1 1 H 9 V 9 H 1 Z");
+        icon.setFill(Color.rgb(12, 38, 210));
+        icon.hoverProperty()
+            .addListener(
+                (obs, oldVal, newVal) -> {
+                  if (newVal) {
+                    getLocInfo(location);
+                  } else {
+                    locationInfo.setVisible(false);
+                  }
+                });
+        break;
     }
     icon.setLayoutX(viewCoords[0]);
     icon.setLayoutY(viewCoords[1]);

@@ -20,7 +20,7 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    //TODO: Switch back to login as landing page
+    // TODO: Switch back to login as landing page
     Parent root = FXMLLoader.load(getClass().getResource("views/interactiveMap.fxml"));
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
