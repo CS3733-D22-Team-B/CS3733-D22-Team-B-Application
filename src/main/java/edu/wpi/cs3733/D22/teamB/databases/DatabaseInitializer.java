@@ -93,9 +93,9 @@ public class DatabaseInitializer {
   }
 
   public void populateDatabase(String filepath, String databaseName, int Elements) {
+    CSVReader reader = new CSVReader();
     try {
-      InputStream is = getClass().getResourceAsStream(filepath);
-      BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
+      BufferedReader lineReader = reader.read(filepath);
       String lineText = null;
       lineReader.readLine(); // Skip line with attribute names
 
@@ -157,7 +157,7 @@ public class DatabaseInitializer {
 
   private void populateDatabaseLabRequestDB(String filepath, String databaseName, int Elements) {
     Connection connection = null;
-
+    CSVReader reader = new CSVReader();
     try {
 
       connection = DriverManager.getConnection(DBURL);
@@ -166,8 +166,7 @@ public class DatabaseInitializer {
           "INSERT INTO LabRequests (requestID, employeeID, nodeID, testRoomID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
-      InputStream is = getClass().getResourceAsStream(labRequestCSVFilePath);
-      BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
+      BufferedReader lineReader = reader.read(filepath);
       String lineText = null;
 
       lineReader.readLine(); // skip header line
@@ -216,7 +215,7 @@ public class DatabaseInitializer {
 
   private void populateServiceRequestsDatabase() {
     Connection connection = null;
-
+    CSVReader reader = new CSVReader();
     try {
       connection = DriverManager.getConnection(DBURL);
 
@@ -224,8 +223,7 @@ public class DatabaseInitializer {
           "INSERT INTO ServiceRequests (requestID, employeeID, locationID, transferID, type, status, information) VALUES (?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
-      InputStream is = getClass().getResourceAsStream(serviceRequestCSVFilePath);
-      BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
+      BufferedReader lineReader = reader.read(serviceRequestCSVFilePath);
       String lineText = null;
 
       lineReader.readLine(); // skip header line
