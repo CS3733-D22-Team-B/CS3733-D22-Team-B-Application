@@ -1,5 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.requests.CustomRequest;
+import edu.wpi.cs3733.D22.teamB.requests.Request;
+import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,9 +21,9 @@ public class CustomRequestController extends RequestController {
     } else if (typeInput.getText().equals("")) {
       requestLabel.setText("Please fill out the request type.");
     } else {
-      // String locationID = dao.getLocationID(room);
-      // Request request = new Request(locationID, typeInput.getText());
-      // RequestQueue.addRequest(request);
+      String locationID = dao.getLocationID(room);
+      Request request = new CustomRequest(locationID, typeInput.getText(), notesInput.getText());
+      RequestQueue.addRequest(request);
       requestLabel.setText("Custom request sent: " + "for " + room);
     }
   }
