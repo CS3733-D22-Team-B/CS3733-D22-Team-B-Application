@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
+   <children>
+      <Button layoutX="251.0" layoutY="283.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
+      <Label layoutX="194.0" layoutY="40.0" text="Lab Service Request">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="requestLabel" layoutX="149.0" layoutY="323.0" />
+      <Button layoutX="18.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
+      <Label layoutX="172.0" layoutY="151.0" text="Lab Test" />
+      <ComboBox fx:id="labTestInput" layoutX="123.0" layoutY="169.0" onAction="#setLabTest" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="XRAY" fx:value="X-Ray" />
+               <String fx:id="CAT_SCAN" fx:value="CAT Scan" />
+               <String fx:id="MRI" fx:value="MRI" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <DatePicker fx:id="testingTimeInput" layoutX="292.0" layoutY="165.0" onAction="#setTestingTime" />
+      <Label layoutX="345.0" layoutY="147.0" text="Testing Time" />
+      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
+      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
+      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Requests">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
+               </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="ඞ" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
+      <ComboBox fx:id="roomInput" layoutX="262.0" layoutY="109.0" onAction="#setRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="178.0" layoutY="109.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
+      <Label alignment="CENTER" layoutX="327.0" layoutY="215.0" text="Lab Room" />
+      <ComboBox fx:id="labRoomInput" layoutX="279.0" layoutY="233.0" onAction="#setLabRoom" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="labFloorInput" layoutX="195.0" layoutY="233.0" onAction="#setLabFloor" prefHeight="26.0" prefWidth="66.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="31" fx:value="F3" />
+               <String fx:id="21" fx:value="F2" />
+               <String fx:id="11" fx:value="F1" />
+               <String fx:id="L11" fx:value="L1" />
+               <String fx:id="L21" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label alignment="CENTER" layoutX="203.0" layoutY="215.0" text="Lab Floor" />
+   </children>
+</AnchorPane>
