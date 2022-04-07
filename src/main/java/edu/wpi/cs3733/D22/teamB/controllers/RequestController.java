@@ -47,6 +47,8 @@ public abstract class RequestController extends MenuBarController {
           break;
       }
     }
+    room = "";
+    floor = "";
   }
 
   public void setFloor() {
