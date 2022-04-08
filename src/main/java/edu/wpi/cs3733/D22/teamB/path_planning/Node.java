@@ -5,27 +5,32 @@ import edu.wpi.cs3733.D22.teamB.databases.Location;
 import java.util.LinkedList;
 
 public class Node {
-    private double xCoord;
-    private double yCoord;
+    private String nodeId;
+    private double XCoord;
+    private double YCoord;
     private double costSoFar;
     private double priority;
     private Node cameFrom;
     private LinkedList<String> edges;
 
     Node(Location location, LinkedList<String> edges){
-        this.xCoord = location.getXCoord();
-        this.yCoord = location.getYCoord();
+        this.nodeId = location.getNodeID();
+        this.XCoord = location.getXCoord();
+        this.YCoord = location.getYCoord();
         this.edges = edges;
         this.costSoFar = 0;
         this.priority = 0;
     }
 
-    public double getxCoord() {
-        return xCoord;
+    public String getNodeId(){
+        return nodeId;
+    }
+    public double getXCoord() {
+        return XCoord;
     }
 
-    public double getyCoord() {
-        return yCoord;
+    public double getYCoord() {
+        return YCoord;
     }
 
     public double getCostsoFar() {
