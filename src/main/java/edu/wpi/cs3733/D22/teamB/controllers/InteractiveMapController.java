@@ -1,9 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,9 +23,11 @@ public class InteractiveMapController {
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
+  protected ServiceRequestsDB rdao;
 
   private LinkedList<SVGPath> roomIcons;
   private LinkedList<SVGPath> equipIcons;
+  private LinkedList<SVGPath> serviceIcons;
   // private Popup roomPopup;
 
   private int floorLevel = 2;
@@ -35,13 +35,17 @@ public class InteractiveMapController {
   public void initialize() {
     roomIcons = new LinkedList<SVGPath>();
     equipIcons = new LinkedList<SVGPath>();
+    serviceIcons = new LinkedList<SVGPath>();
     dao = LocationsDB.getInstance();
     edao = MedicalEquipmentDB.getInstance();
+    rdao = ServiceRequestsDB.getInstance();
 
     // Set Locations
     setRoomIcons();
     // Set Equipment
     setEquipIcons();
+    // Set Requests
+
   }
 
   public void setRoomIcons() {
@@ -69,6 +73,18 @@ public class InteractiveMapController {
       if (stringtoFloorLevel(floor) == floorLevel) {
         addEquipIcon(eq);
       }
+    }
+  }
+
+  public void setServiceIcons() {
+    LinkedList<Request> allRequests = rdao.list();
+    for (SVGPath icon : serviceIcons) {
+      removeIcon(icon);
+    }
+    serviceIcons.clear();
+    for (Request r : allRequests) {
+      String floor = r.getLocation().getFloor();
+      if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
     }
   }
 
@@ -203,6 +219,19 @@ public class InteractiveMapController {
     icon.setLayoutY(viewCoords[1]);
     anchorPane.getChildren().add(icon);
     equipIcons.add(icon);
+  }
+
+  public void addServiceIcon(Request r) {
+    SVGPath icon = new SVGPath();
+    icon.setContent(
+        "M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z");
+    int x = r.getLocation().getXCoord();
+    int y = r.getLocation().getYCoord();
+    int[] viewCoords = mapCoordsToViewCoords(x, y);
+    icon.setFill(Color.rgb(250, 0, 0));
+    icon.setLayoutX(viewCoords[0]);
+    icon.setLayoutY(viewCoords[1]);
+    anchorPane.getChildren().add(icon);
   }
 
   public void getLocInfo(Location location) {
