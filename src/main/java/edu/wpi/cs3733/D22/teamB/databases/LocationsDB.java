@@ -10,7 +10,6 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   // private final String url = "jdbc:derby:Databases";
 
   private static LocationsDB locationsDBManager;
-
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
   public HashMap<String, Location> getLocationMap() {
@@ -35,7 +34,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
 
   protected void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -139,7 +138,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Location locObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;

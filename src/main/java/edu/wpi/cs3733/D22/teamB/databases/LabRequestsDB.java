@@ -9,7 +9,6 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
   // private final String url = "jdbc:derby:Databases";
 
   private static LabRequestsDB labRequestsDBManager;
-
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();
 
   public HashMap<String, LabRequest> getLabRequestMap() {
@@ -35,7 +34,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
   @Override
   protected void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -144,7 +143,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
 
   private int transform(LabRequest labReq, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;

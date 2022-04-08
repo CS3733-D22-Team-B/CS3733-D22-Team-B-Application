@@ -8,7 +8,6 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   // private final String url = "jdbc:derby:Databases;";
 
   private static PatientsDB patientsDBManager;
-
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
 
   public HashMap<String, Patient> getPatientMap() {
@@ -33,7 +32,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
 
   protected void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -128,7 +127,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Patient patObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;
