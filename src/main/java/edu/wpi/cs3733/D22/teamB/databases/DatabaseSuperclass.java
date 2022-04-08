@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import javax.lang.model.util.Elements;
 
 public abstract class DatabaseSuperclass {
-  protected final String DBURL = "jdbc:derby:Databases;";
+  protected final String url = "jdbc:derby:Databases;";
   protected String tableType;
   protected String pkName;
   protected String filePath;
@@ -21,7 +21,7 @@ public abstract class DatabaseSuperclass {
 
   protected void listDB() {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       int Elements = rs.getMetaData().getColumnCount();
@@ -45,7 +45,7 @@ public abstract class DatabaseSuperclass {
   protected LinkedList<String> selectAll() {
     LinkedList<String> pkList = new LinkedList<String>();
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
 
@@ -68,7 +68,7 @@ public abstract class DatabaseSuperclass {
    */
   protected int toCSV(String newFilePath) {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       OutputStream os = new FileOutputStream(newFilePath);
@@ -131,7 +131,7 @@ public abstract class DatabaseSuperclass {
   protected LinkedList<String> filteredSearch(String input) {
     LinkedList<String> filteredSearchList = new LinkedList<String>();
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       int Elements = rs.getMetaData().getColumnCount();
@@ -199,9 +199,76 @@ public abstract class DatabaseSuperclass {
     return filteredSearchList;
   }
 
+  protected LinkedList<String> searchWhere(String attribute, String value) {
+    LinkedList<String> pkList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      ResultSet rs =
+          statement.executeQuery(
+              "SELECT * FROM " + tableType + " WHERE " + attribute + " = " + "'" + value + "'");
+
+      while (rs.next()) {
+        pkList.add(rs.getString(1));
+      }
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return pkList;
+  }
+
+  protected LinkedList<String> searchWhere(String attribute, int value) {
+    LinkedList<String> pkList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      ResultSet rs =
+          statement.executeQuery(
+              "SELECT * FROM " + tableType + " WHERE " + attribute + " = " + value);
+
+      while (rs.next()) {
+        pkList.add(rs.getString(1));
+      }
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return pkList;
+  }
+
+  protected LinkedList<String> searchWhere(String attribute, boolean value) {
+    LinkedList<String> pkList = new LinkedList<String>();
+    try {
+      Connection connection = DriverManager.getConnection(url);
+      Statement statement = connection.createStatement();
+      ResultSet rs =
+          statement.executeQuery(
+              "SELECT * FROM " + tableType + " WHERE " + attribute + " = " + value);
+
+      while (rs.next()) {
+        pkList.add(rs.getString(1));
+      }
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+    }
+    return pkList;
+  }
+
+  /*
+  protected LinkedList<String> searchWhere(String attribute, boolean value) {
+    if (value) {
+      return searchWhere(attribute, 1);
+    } else {
+      return searchWhere(attribute, 0);
+    }
+  }
+   */
+
   protected int deleteFrom(String pk) {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       String sql = "DELETE FROM " + tableType + " WHERE " + pkName + " = '" + pk + "'";
       statement.executeUpdate(sql);
@@ -217,7 +284,7 @@ public abstract class DatabaseSuperclass {
     listDB();
 
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       statement.execute("DROP TABLE " + tableType + "");
     } catch (SQLException e) {
