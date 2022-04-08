@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
-  
+
   private final String backupFile = "CSVs/BackupPatients.csv";
   private static PatientsDB patientsDBManager;
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
-  
+
   private final String backupFile = "CSVs/BackupLabRequest.csv";
   private static LabRequestsDB labRequestsDBManager;
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();

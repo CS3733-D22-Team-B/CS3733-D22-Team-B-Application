@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<Request> {
-  
+
   private final String backupFile = "CSVs/BackupServiceRequest.csv";
   private static ServiceRequestsDB serviceRequestsDBManager;
   private HashMap<String, Request> requestMap = new HashMap<String, Request>();
