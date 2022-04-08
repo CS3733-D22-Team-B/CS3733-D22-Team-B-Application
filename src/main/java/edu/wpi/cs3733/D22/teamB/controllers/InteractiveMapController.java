@@ -77,7 +77,7 @@ public class InteractiveMapController {
   }
 
   public void removeIcon(SVGPath icon) {
-    anchorPane.getChildren().remove(icon);
+    mapPane.getChildren().remove(icon);
   }
 
   public void addLocIcon(Location location) {
@@ -126,7 +126,9 @@ public class InteractiveMapController {
                   if (newVal) {
                     getLocInfo(location);
                   } else {
-                    locationInfo.setVisible(false);
+                    if (!locInfoVisible) {
+                      locationInfo.setVisible(false);
+                    }
                   }
                 });
         icon.setOnMouseClicked(
@@ -281,6 +283,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel2.png"));
     setRoomIcons();
     setEquipIcons();
+    resetDisplayPanes();
   }
 
   public void goToFloorL1() {
@@ -316,6 +319,8 @@ public class InteractiveMapController {
   }
 
   public void resetDisplayPanes() {
+    mapPane.getChildren().remove(locationInfo);
+    mapPane.getChildren().remove(equipInfo);
     mapPane.getChildren().add(locationInfo);
     mapPane.getChildren().add(equipInfo);
   }
