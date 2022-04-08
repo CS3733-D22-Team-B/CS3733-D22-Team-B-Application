@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupEquipmentRequest.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static EquipmentRequestDB equipmentRequestDBManager;
 
@@ -23,7 +21,8 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   }
 
   private EquipmentRequestDB() {
-    super("EquipmentRequests", "requestID", "CSVs/ApplicationEquipmentRequest.csv");
+    super(
+        "EquipmentRequests", "requestID", Filepath.getInstance().getEquipmentRequestCSVFilePath());
     initDB();
   }
 

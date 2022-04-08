@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employee> {
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEmployees.csv";
+  // private final String url = "jdbc:derby:Databases";
   private static EmployeesDB employeesDBManager;
 
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
@@ -21,7 +19,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
   }
 
   private EmployeesDB() {
-    super("Employees", "employeeID", "CSVs/ApplicationEmployees.csv");
+    super("Employees", "employeeID", Filepath.getInstance().getEmployeesCSVFilePath());
     initDB();
   }
 

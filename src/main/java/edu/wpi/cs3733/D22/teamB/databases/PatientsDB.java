@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
-
-  private final String url = "jdbc:derby:Databases;";
-  private final String backupFile = "CSVs/BackupPatients.csv";
+  // private final String url = "jdbc:derby:Databases;";
 
   private static PatientsDB patientsDBManager;
 
@@ -22,7 +20,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   }
 
   private PatientsDB() {
-    super("Patients", "patientID", "CSVs/ApplicationPatients.csv");
+    super("Patients", "patientID", Filepath.getInstance().getPatientsCSVFilePath());
     initDB();
   }
 

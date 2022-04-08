@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupLocations.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static LocationsDB locationsDBManager;
 
@@ -24,7 +22,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   }
 
   private LocationsDB() {
-    super("Locations", "nodeID", "CSVs/ApplicationLocations.csv");
+    super("Locations", "nodeID", Filepath.getInstance().getLocationCSVFilePath());
     initDB();
   }
 

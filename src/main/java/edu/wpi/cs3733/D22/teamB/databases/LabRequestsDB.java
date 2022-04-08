@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupLabRequest.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static LabRequestsDB labRequestsDBManager;
 
@@ -23,7 +21,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
   }
 
   private LabRequestsDB() {
-    super("LabRequests", "requestID", "CSVs/ApplicationLabRequest.csv");
+    super("LabRequests", "requestID", Filepath.getInstance().getLabRequestCSVFilePath());
     initDB();
   }
 

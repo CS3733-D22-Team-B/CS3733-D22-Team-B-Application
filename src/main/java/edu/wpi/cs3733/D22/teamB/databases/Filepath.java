@@ -11,9 +11,7 @@ public class Filepath {
 
   private static Filepath filepathManager;
 
-  private Filepath() {
-
-  }
+  private Filepath() {}
 
   public static Filepath getInstance() {
     if (filepathManager == null) {

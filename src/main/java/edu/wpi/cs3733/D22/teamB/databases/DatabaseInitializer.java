@@ -7,41 +7,13 @@ public class DatabaseInitializer {
 
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
-  private String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
-  private String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
-  private String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
-  private String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
-  private String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
-  private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
-  private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
-
-  public void setLocationCSVFilePath(String newPath) {
-    this.locationCSVFilePath = newPath;
-  }
-
-  public void setMedicalEQCSVFilePath(String newPath) {
-    this.medicalEQCSVFilePath = newPath;
-  }
-
-  public void setEmployeesCSVFilePath(String newPath) {
-    this.employeesCSVFilePath = newPath;
-  }
-
-  public void setPatientsCSVFilePath(String newPath) {
-    this.patientsCSVFilePath = newPath;
-  }
-
-  public void setEquipmentRequestCSVFilePath(String newPath) {
-    this.equipmentRequestCSVFilePath = newPath;
-  }
-
-  public void setLabRequestCSVFilePath(String newPath) {
-    this.labRequestCSVFilePath = newPath;
-  }
-
-  public void setServiceRequestCSVFilePath(String newPath) {
-    this.serviceRequestCSVFilePath = newPath;
-  }
+  // private String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
+  // private String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
+  // private String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
+  // private String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
+  // private String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
+  // private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
+  // private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
 
   public DatabaseInitializer() {}
 
@@ -58,36 +30,38 @@ public class DatabaseInitializer {
             "CREATE TABLE Locations(nodeID VARCHAR(10), xcoord int, ycoord int, "
                 + "floor VARCHAR(10), building VARCHAR(10), nodeType VARCHAR(10), "
                 + "longName VARCHAR(100), shortName VARCHAR(50), CONSTRAINT LOCATIONS_PK primary key (nodeID))");
-        populateDatabase(locationCSVFilePath, "Locations", 8);
+        populateDatabase(Filepath.getInstance().getLocationCSVFilePath(), "Locations", 8);
       }
       if (!tableExists(connection, "MEDICALEQUIPMENT")) {
         statement.execute(
             "CREATE TABLE MedicalEquipment(equipmentID VARCHAR(10), nodeID VARCHAR(10), type VARCHAR(50), "
                 + "isClean BOOLEAN, isRequested BOOLEAN, CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
                 + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-        populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
+        populateDatabase(Filepath.getInstance().getMedicalEQCSVFilePath(), "MedicalEquipment", 5);
       }
       if (!tableExists(connection, "EMPLOYEES")) {
         statement.execute(
             "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), username VARCHAR(25), password VARCHAR(25), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
-        populateDatabase(employeesCSVFilePath, "Employees", 7);
+        populateDatabase(Filepath.getInstance().getEmployeesCSVFilePath(), "Employees", 7);
       }
       if (!tableExists(connection, "PATIENTS")) {
         statement.execute(
             "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-        populateDatabase(patientsCSVFilePath, "Patients", 4);
+        populateDatabase(Filepath.getInstance().getPatientsCSVFilePath(), "Patients", 4);
       }
       if (!tableExists(connection, "EQUIPMENTREQUESTS")) {
         statement.execute(
             "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), type VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), status VARCHAR(15), equipmentID VARCHAR(10), notes VARCHAR(50), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
-        populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 7);
+        populateDatabase(
+            Filepath.getInstance().getEquipmentRequestCSVFilePath(), "EquipmentRequests", 7);
       }
       if (!tableExists(connection, "LABREQUESTS")) {
         statement.execute(
             "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), testRoomID VARCHAR(10),"
                 + "type VARCHAR(10), status VARCHAR(15), test VARCHAR(15), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
                 + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID), CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID))");
-        populateDatabaseLabRequestDB(labRequestCSVFilePath, "LabRequests", 7);
+        populateDatabaseLabRequestDB(
+            Filepath.getInstance().getLabRequestCSVFilePath(), "LabRequests", 7);
       }
       /*
       if (!tableExists(connection, "SERVICEREQUESTS")) {
@@ -242,7 +216,8 @@ public class DatabaseInitializer {
           "INSERT INTO ServiceRequests (requestID, employeeID, locationID, transferID, type, status, information) VALUES (?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
-      BufferedReader lineReader = reader.read(serviceRequestCSVFilePath);
+      BufferedReader lineReader =
+          reader.read(Filepath.getInstance().getServiceRequestCSVFilePath());
       String lineText = null;
 
       lineReader.readLine(); // skip header line
