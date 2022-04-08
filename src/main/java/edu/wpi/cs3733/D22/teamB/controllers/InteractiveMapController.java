@@ -32,6 +32,8 @@ public class InteractiveMapController {
   // private Popup roomPopup;
 
   private Boolean locInfoVisible = false;
+  private Boolean lockHover = false;
+  private Boolean equipInfoVisible = false;
 
   private int floorLevel = 2;
 
@@ -105,54 +107,55 @@ public class InteractiveMapController {
     SVGPath icon = new SVGPath();
 
     switch (location.getNodeType()) {
-        //      case "BATH":
-        //        break;
-        //      case "DEPT":
-        //        break;
-        //      case "DIRT":
-        //        break;
-        //      case "ELEV":
-        //        break;
-        //      case "EXIT":
-        //        break;
-        //      case "HALL":
-        //        break;
-        //      case "INFO":
-        //        break;
-        //      case "LABS":
-        //        break;
-        //      case "PATI":
-        //        break;
-        //      case "REST":
-        //        break;
-        //      case "RETL":
-        //        break;
-        //      case "SERV":
-        //        break;
-        //      case "STAI":
-        //        break;
-        //      case "STOR":
-        //        break;
+              case "BATH":
+                break;
+              case "DEPT":
+                break;
+              case "DIRT":
+                break;
+              case "ELEV":
+                break;
+              case "EXIT":
+                break;
+              case "HALL":
+                break;
+              case "INFO":
+                break;
+              case "LABS":
+                break;
+              case "PATI":
+                break;
+              case "REST":
+                break;
+              case "RETL":
+                break;
+              case "SERV":
+                break;
+              case "STAI":
+                break;
+              case "STOR":
+                break;
       default:
         icon.setContent("M 1 1 H 9 V 9 H 1 Z");
         icon.setFill(Color.rgb(12, 38, 210));
-        icon.hoverProperty()
-            .addListener(
-                (obs, oldVal, newVal) -> {
-                  if (newVal) {
-                    getLocInfo(location);
-                  } else {
-                    if (!locInfoVisible) {
-                      locationInfo.setVisible(false);
-                    }
-                  }
-                });
-        icon.setOnMouseClicked(
-            event -> {
-              toggleRoomInfo(location);
-            });
+
         break;
     }
+    icon.hoverProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              if (newVal && !lockHover) {
+                getLocInfo(location);
+              } else {
+                if (!locInfoVisible && !lockHover) {
+                  locationInfo.setVisible(false);
+                }
+              }
+            });
+    icon.setOnMouseClicked(
+        event -> {
+          if (!equipInfoVisible) toggleRoomInfo(location);
+        });
     icon.setLayoutX(viewCoords[0] - 5);
     icon.setLayoutY(viewCoords[1] - 5);
     mapPane.getChildren().add(icon);
@@ -170,56 +173,35 @@ public class InteractiveMapController {
       case "BED":
         icon.setContent(
             "M10.5 5.39V4c0 -0.825 -0.675 -1.5 -1.5 -1.5h-2c-0.385 0 -0.735 0.15 -1 0.39C5.735 2.65 5.385 2.5 5 2.5H3C2.175 2.5 1.5 3.175 1.5 4v1.39C1.195 5.665 1 6.06 1 6.5v3h1v-1h8v1h1v-3C11 6.06 10.805 5.665 10.5 5.39zM7 3.5h2c0.275 0 0.5 0.225 0.5 0.5v1h-3V4C6.5 3.725 6.725 3.5 7 3.5zM2.5 4c0 -0.275 0.225 -0.5 0.5 -0.5h2c0.275 0 0.5 0.225 0.5 0.5v1H2.5V4zM2 7.5v-1c0 -0.275 0.225 -0.5 0.5 -0.5h7c0.275 0 0.5 0.225 0.5 0.5v1H2z");
-        icon.hoverProperty()
-            .addListener(
-                (obs, oldVal, newVal) -> {
-                  if (newVal) {
-                    getEquipInfo(eq);
-                  } else {
-                    equipInfo.setVisible(false);
-                  }
-                });
         break;
       case "XR":
         icon.setContent(
             "M9.5 1h-2.09C7.2 0.42 6.65 0 6 0S4.8 0.42 4.59 1H2.5c-0.55 0 -1 0.45 -1 1v8c0 0.55 0.45 1 1 1h7c0.55 0 1 -0.45 1 -1V2c0 -0.55 -0.45 -1 -1 -1zm-3.5 0c0.275 0 0.5 0.226 0.5 0.5s-0.226 0.5 -0.5 0.5 -0.5 -0.226 -0.5 -0.5 0.226 -0.5 0.5 -0.5zm3.5 9H2.5V2h1v1.5h5V2h1v8z");
-        icon.hoverProperty()
-            .addListener(
-                (obs, oldVal, newVal) -> {
-                  if (newVal) {
-                    getEquipInfo(eq);
-                  } else {
-                    equipInfo.setVisible(false);
-                  }
-                });
         break;
       case "RECL":
         icon.setContent(
             "M7.5 2.5v3.5H4.5V2.5h3m0 -1H4.5c-0.55 0 -1 0.45 -1 1v4.5h5V2.5c0 -0.55 -0.45 -1 -1 -1zm3.5 3.5h-1.5v1.5h1.5v-1.5zM2.5 5H1v1.5h1.5v-1.5zm7.5 2.5H2v3h1v-2h6v2h1v-3z");
-        icon.hoverProperty()
-            .addListener(
-                (obs, oldVal, newVal) -> {
-                  if (newVal) {
-                    getEquipInfo(eq);
-                  } else {
-                    equipInfo.setVisible(false);
-                  }
-                });
         break;
       case "PUMP":
         icon.setContent(
             "M6 1c-2.665 2.275 -4 4.24 -4 5.9c0 2.49 1.9 4.1 4 4.1s4 -1.61 4 -4.1C10 5.24 8.665 3.275 6 1zM6 10c-1.675 0 -3 -1.285 -3 -3.1c0 -1.17 0.975 -2.72 3 -4.57c2.025 1.85 3 3.395 3 4.57C9 8.715 7.675 10 6 10z");
-        icon.hoverProperty()
-            .addListener(
-                (obs, oldVal, newVal) -> {
-                  if (newVal) {
-                    getEquipInfo(eq);
-                  } else {
-                    equipInfo.setVisible(false);
-                  }
-                });
         break;
     }
+    icon.hoverProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              if (newVal && !lockHover) {
+                getEquipInfo(eq);
+              } else {
+                if (!equipInfoVisible && !lockHover) {
+                  equipInfo.setVisible(false);
+                }
+              }
+            });
+    icon.setOnMouseClicked(
+        event -> {
+          if (!locInfoVisible) toggleEquipInfo(eq);
+        });
     if (eq.getIsRequested()) {
       icon.setFill(Color.rgb(250, 0, 200));
     } else {
@@ -313,6 +295,7 @@ public class InteractiveMapController {
     setRoomIcons();
     setEquipIcons();
     resetDisplayPanes();
+    floorReset();
   }
 
   public void goToFloorL1() {
@@ -321,6 +304,7 @@ public class InteractiveMapController {
     setRoomIcons();
     setEquipIcons();
     resetDisplayPanes();
+    floorReset();
   }
 
   public void goToFloor1() {
@@ -329,6 +313,7 @@ public class InteractiveMapController {
     setRoomIcons();
     setEquipIcons();
     resetDisplayPanes();
+    floorReset();
   }
 
   public void goToFloor2() {
@@ -337,6 +322,7 @@ public class InteractiveMapController {
     setRoomIcons();
     setEquipIcons();
     resetDisplayPanes();
+    floorReset();
   }
 
   public void goToFloor3() {
@@ -345,6 +331,7 @@ public class InteractiveMapController {
     setRoomIcons();
     setEquipIcons();
     resetDisplayPanes();
+    floorReset();
   }
 
   public void resetDisplayPanes() {
@@ -355,13 +342,34 @@ public class InteractiveMapController {
   }
 
   public void toggleRoomInfo(Location location) {
-
     if (locInfoVisible) {
       locationInfo.setVisible(false);
+      lockHover = false;
       locInfoVisible = false;
     } else {
       getLocInfo(location);
+      lockHover = true;
       locInfoVisible = true;
     }
+  }
+
+  public void toggleEquipInfo(MedicalEquipment eq) {
+    if (equipInfoVisible) {
+      equipInfo.setVisible(false);
+      lockHover = false;
+      equipInfoVisible = false;
+    } else {
+      getEquipInfo(eq);
+      lockHover = true;
+      equipInfoVisible = true;
+    }
+  }
+
+  public void floorReset() {
+    locInfoVisible = false;
+    equipInfoVisible = false;
+    lockHover = false;
+    locationInfo.setVisible(false);
+    equipInfo.setVisible(false);
   }
 }
