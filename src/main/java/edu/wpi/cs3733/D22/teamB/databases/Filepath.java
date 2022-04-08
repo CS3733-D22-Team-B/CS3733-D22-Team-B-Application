@@ -9,6 +9,19 @@ public class Filepath {
   private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
   private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
 
+  private static Filepath filepathManager;
+
+  private Filepath() {
+
+  }
+
+  public static Filepath getInstance() {
+    if (filepathManager == null) {
+      filepathManager = new Filepath();
+    }
+    return filepathManager;
+  }
+
   public String getLocationCSVFilePath() {
     return locationCSVFilePath;
   }
