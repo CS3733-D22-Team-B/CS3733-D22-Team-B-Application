@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
+  // private final String url = "jdbc:derby:Databases;";
 
-  private final String backupFile = "CSVs/BackupPatients.csv";
   private static PatientsDB patientsDBManager;
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
 
@@ -19,7 +19,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   }
 
   private PatientsDB() {
-    super("Patients", "patientID", "CSVs/ApplicationPatients.csv");
+    super("Patients", "patientID", Filepath.getInstance().getPatientsCSVFilePath());
     initDB();
   }
 
@@ -70,6 +70,33 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       locList.add(patientMap.get(pkList.get(i)));
     }
     return locList;
+  }
+
+  public LinkedList<Patient> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Patient> list = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(patientMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Patient> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Patient> list = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(patientMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Patient> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Patient> list = new LinkedList<Patient>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(patientMap.get(pkList.get(i)));
+    }
+    return list;
   }
 
   public int update(Patient patObj) {
