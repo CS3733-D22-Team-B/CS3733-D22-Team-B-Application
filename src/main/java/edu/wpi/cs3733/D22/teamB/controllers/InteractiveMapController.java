@@ -10,7 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
+import javax.swing.*;
 
 public class InteractiveMapController {
   @FXML private AnchorPane anchorPane;
@@ -21,7 +23,8 @@ public class InteractiveMapController {
   @FXML private Label nodeType;
   @FXML private Pane equipInfo;
   @FXML private Label equipType;
-
+  @FXML private Rectangle locationPane;
+  @FXML private Rectangle equipmentPane;
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
   protected ServiceRequestsDB rdao;
@@ -105,46 +108,67 @@ public class InteractiveMapController {
     int[] viewCoords = mapCoordsToViewCoords(x, y);
 
     SVGPath icon = new SVGPath();
+    icon.setContent("M 1 1 H 9 V 9 H 1 Z");
 
     switch (location.getNodeType()) {
-              case "BATH":
-                break;
-              case "DEPT":
-                break;
-              case "DIRT":
-                break;
-              case "ELEV":
-                break;
-              case "EXIT":
-                break;
-              case "HALL":
-                break;
-              case "INFO":
-                break;
-              case "LABS":
-                break;
-              case "PATI":
-                break;
-              case "REST":
-                break;
-              case "RETL":
-                break;
-              case "SERV":
-                break;
-              case "STAI":
-                break;
-              case "STOR":
-                break;
+      case "BATH":
+        icon.setFill(Color.rgb(233, 28, 35));
+        break;
+      case "DEPT":
+        icon.setFill(Color.rgb(237, 89, 41));
+        break;
+      case "DIRT":
+        icon.setFill(Color.rgb(247, 148, 29));
+        break;
+      case "ELEV":
+        icon.setFill(Color.rgb(247, 176, 62));
+        break;
+      case "EXIT":
+        icon.setFill(Color.rgb(251, 240, 2));
+        break;
+      case "HALL":
+        icon.setFill(Color.rgb(140, 199, 59));
+        break;
+      case "INFO":
+        icon.setFill(Color.rgb(59, 180, 74));
+        break;
+      case "LABS":
+        icon.setFill(Color.rgb(40, 167, 158));
+        break;
+      case "PATI":
+        icon.setFill(Color.rgb(60, 173, 241));
+        break;
+      case "REST":
+        icon.setFill(Color.rgb(43, 115, 191));
+        break;
+      case "RETL":
+        icon.setFill(Color.rgb(101, 43, 145));
+        break;
+      case "SERV":
+        icon.setFill(Color.rgb(146, 37, 144));
+        break;
+      case "STAI":
+        icon.setFill(Color.rgb(246, 153, 205));
+        break;
+      case "STOR":
+        icon.setFill(Color.rgb(209, 192, 168));
+        break;
       default:
-        icon.setContent("M 1 1 H 9 V 9 H 1 Z");
         icon.setFill(Color.rgb(12, 38, 210));
-
         break;
     }
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
               if (newVal && !lockHover) {
+                locationPane.setFill(icon.getFill());
+                if (!location.getNodeType().equals("EXIT")) {
+                  roomName.setTextFill(Color.rgb(255, 255, 255));
+                  nodeType.setTextFill(Color.rgb(255, 255, 255));
+                } else {
+                  roomName.setTextFill(Color.rgb(0, 0, 0));
+                  nodeType.setTextFill(Color.rgb(0, 0, 0));
+                }
                 getLocInfo(location);
               } else {
                 if (!locInfoVisible && !lockHover) {
@@ -187,11 +211,17 @@ public class InteractiveMapController {
             "M6 1c-2.665 2.275 -4 4.24 -4 5.9c0 2.49 1.9 4.1 4 4.1s4 -1.61 4 -4.1C10 5.24 8.665 3.275 6 1zM6 10c-1.675 0 -3 -1.285 -3 -3.1c0 -1.17 0.975 -2.72 3 -4.57c2.025 1.85 3 3.395 3 4.57C9 8.715 7.675 10 6 10z");
         break;
     }
+    if (eq.getIsRequested()) {
+      icon.setFill(Color.rgb(250, 0, 200));
+    } else {
+      icon.setFill(Color.rgb(60, 173, 241));
+    }
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
               if (newVal && !lockHover) {
                 getEquipInfo(eq);
+                equipmentPane.setFill(icon.getFill());
               } else {
                 if (!equipInfoVisible && !lockHover) {
                   equipInfo.setVisible(false);
@@ -202,11 +232,7 @@ public class InteractiveMapController {
         event -> {
           if (!locInfoVisible) toggleEquipInfo(eq);
         });
-    if (eq.getIsRequested()) {
-      icon.setFill(Color.rgb(250, 0, 200));
-    } else {
-      icon.setFill(Color.rgb(60, 173, 241));
-    }
+
     icon.setLayoutX(viewCoords[0]);
     icon.setLayoutY(viewCoords[1]);
     mapPane.getChildren().add(icon);
