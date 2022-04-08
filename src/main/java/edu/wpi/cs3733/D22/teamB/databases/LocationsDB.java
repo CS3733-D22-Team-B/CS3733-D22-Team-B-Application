@@ -34,7 +34,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
 
   protected void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -138,7 +138,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Location locObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;

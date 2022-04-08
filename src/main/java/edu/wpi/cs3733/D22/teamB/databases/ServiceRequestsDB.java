@@ -33,7 +33,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
 
   protected void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -173,7 +173,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Request reqObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(DBURL);
+      Connection connection = DriverManager.getConnection(url);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;
