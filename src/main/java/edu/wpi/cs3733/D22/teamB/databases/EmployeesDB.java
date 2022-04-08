@@ -5,11 +5,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employee> {
-  private final String url = "jdbc:derby:Databases";
   private final String backupFile =
       "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEmployees.csv";
   private static EmployeesDB employeesDBManager;
-
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
 
   public HashMap<String, Employee> getEmployeeMap() {
@@ -34,7 +32,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
 
   public void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -115,7 +113,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Employee empObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;

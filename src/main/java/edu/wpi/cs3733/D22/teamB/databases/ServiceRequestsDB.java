@@ -6,12 +6,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<Request> {
-
-  private final String url = "jdbc:derby:Databases";
+  
   private final String backupFile = "CSVs/BackupServiceRequest.csv";
-
   private static ServiceRequestsDB serviceRequestsDBManager;
-
   private HashMap<String, Request> requestMap = new HashMap<String, Request>();
 
   public HashMap<String, Request> getRequestMap() {
@@ -36,7 +33,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
 
   protected void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -149,7 +146,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(Request reqObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;

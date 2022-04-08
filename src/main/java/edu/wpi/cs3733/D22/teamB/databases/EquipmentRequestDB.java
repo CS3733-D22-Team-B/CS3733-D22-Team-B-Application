@@ -5,12 +5,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
-
-  private final String url = "jdbc:derby:Databases";
+  
   private final String backupFile = "CSVs/BackupEquipmentRequest.csv";
-
   private static EquipmentRequestDB equipmentRequestDBManager;
-
   private HashMap<String, EquipmentRequest> equipmentRequestMap =
       new HashMap<String, EquipmentRequest>();
 
@@ -36,7 +33,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
 
   public void initDB() {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
@@ -112,7 +109,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   /////////////////////////////////////////////////////////////////////// Helper
   private int transform(EquipmentRequest eqreqObj, String sql, boolean isUpdate) {
     try {
-      Connection connection = DriverManager.getConnection(url);
+      Connection connection = DriverManager.getConnection(DBURL);
       PreparedStatement pStatement = connection.prepareStatement(sql);
 
       int offset = 0;
