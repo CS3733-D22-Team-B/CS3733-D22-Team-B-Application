@@ -18,6 +18,7 @@ public class InteractiveMapController {
   @FXML private AnchorPane anchorPane;
   @FXML private ImageView mapImage;
   @FXML private Pane locationInfo;
+  @FXML private Pane mapPane;
   @FXML private Label roomName;
   @FXML private Label nodeType;
   @FXML private Pane equipInfo;
@@ -29,6 +30,8 @@ public class InteractiveMapController {
   private LinkedList<SVGPath> roomIcons;
   private LinkedList<SVGPath> equipIcons;
   // private Popup roomPopup;
+
+  private Boolean locInfoVisible = false;
 
   private int floorLevel = 2;
 
@@ -42,6 +45,7 @@ public class InteractiveMapController {
     setRoomIcons();
     // Set Equipment
     setEquipIcons();
+    resetDisplayPanes();
   }
 
   public void setRoomIcons() {
@@ -125,11 +129,15 @@ public class InteractiveMapController {
                     locationInfo.setVisible(false);
                   }
                 });
+        icon.setOnMouseClicked(
+            event -> {
+              toggleRoomInfo(location);
+            });
         break;
     }
-    icon.setLayoutX(viewCoords[0]);
-    icon.setLayoutY(viewCoords[1]);
-    anchorPane.getChildren().add(icon);
+    icon.setLayoutX(viewCoords[0] - 5);
+    icon.setLayoutY(viewCoords[1] - 5);
+    mapPane.getChildren().add(icon);
     roomIcons.add(icon);
   }
 
@@ -201,7 +209,7 @@ public class InteractiveMapController {
     }
     icon.setLayoutX(viewCoords[0]);
     icon.setLayoutY(viewCoords[1]);
-    anchorPane.getChildren().add(icon);
+    mapPane.getChildren().add(icon);
     equipIcons.add(icon);
   }
 
@@ -280,6 +288,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel1.png"));
     setRoomIcons();
     setEquipIcons();
+    resetDisplayPanes();
   }
 
   public void goToFloor1() {
@@ -287,6 +296,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/firstFloor.png"));
     setRoomIcons();
     setEquipIcons();
+    resetDisplayPanes();
   }
 
   public void goToFloor2() {
@@ -294,6 +304,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/secondFloor.png"));
     setRoomIcons();
     setEquipIcons();
+    resetDisplayPanes();
   }
 
   public void goToFloor3() {
@@ -301,5 +312,22 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/thirdFloor.png"));
     setRoomIcons();
     setEquipIcons();
+    resetDisplayPanes();
+  }
+
+  public void resetDisplayPanes() {
+    mapPane.getChildren().add(locationInfo);
+    mapPane.getChildren().add(equipInfo);
+  }
+
+  public void toggleRoomInfo(Location location) {
+
+    if (locInfoVisible) {
+      locationInfo.setVisible(false);
+      locInfoVisible = false;
+    } else {
+      getLocInfo(location);
+      locInfoVisible = true;
+    }
   }
 }
