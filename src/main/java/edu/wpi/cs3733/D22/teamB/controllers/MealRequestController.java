@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class MealRequestController extends RequestController {
+public class MealRequestController extends PatientBasedRequestController {
   @FXML private TextField mealInput;
 
   private String mealName;
@@ -16,31 +16,29 @@ public class MealRequestController extends RequestController {
   }
 
   @FXML
-  public void sendRequest(ActionEvent actionEvent) {
+  public void enableSubmission() {
     setMealName();
-    if (room.equals("") && mealName.equals("")) {
-      requestLabel.setText("Please enter a room and meal");
-    } else if (room.equals("")) {
-      requestLabel.setText("Please enter a room");
-    } else if (mealName.equals("")) {
-      requestLabel.setText("Please enter a meal");
-    } else {
-      String locationID = dao.getLocationID(room);
-      MealRequest request = new MealRequest(locationID, mealName);
-      RequestQueue.addRequest(request);
-      requestLabel.setText("Meal request sent: " + mealName + " for " + room);
+    if (!patientName.equals("") && !mealName.equals("")) {
+      submitButton.setDisable(false);
     }
+  }
+
+  @FXML
+  public void sendRequest(ActionEvent actionEvent) {
+    String patientID = patientsDB.getPatientID(patientName);
+    MealRequest request = new MealRequest(patientID, mealName);
+    RequestQueue.addRequest(request);
+    requestLabel.setText("Meal request sent: " + mealName + " for " + patientName);
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    floorInput.setValue("");
-    roomInput.setValue("");
+    patientInput.setValue("");
     mealInput.setText("");
+    submitButton.setDisable(true);
 
-    floor = "";
-    room = "";
+    patientName = "";
     mealName = "";
   }
 }

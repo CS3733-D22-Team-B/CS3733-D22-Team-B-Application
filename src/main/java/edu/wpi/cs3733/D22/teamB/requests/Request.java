@@ -1,9 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 
 public abstract class Request {
   protected final String requestID;
@@ -12,14 +9,19 @@ public abstract class Request {
   protected Employee employee;
   protected final String locationID;
   protected Location location;
+  protected final String patientID;
+  protected Patient patient;
   protected String status;
+  protected int priority;
   protected String information;
 
-  public Request(String locationID, String type) {
+  public Request(String locationID, String patientID, String type) {
     this.type = type;
     this.employeeID = "0";
     this.locationID = locationID;
+    this.patientID = patientID;
     this.status = "Pending";
+    this.priority = 0;
     this.requestID = createRequestID();
   }
 
@@ -28,13 +30,17 @@ public abstract class Request {
       String type,
       String employeeID,
       String locationID,
+      String patientID,
       String status,
+      int priority,
       String information) {
     this.requestID = requestID;
     this.type = type;
     this.employeeID = employeeID;
     this.locationID = locationID;
+    this.patientID = patientID;
     this.status = status;
+    this.priority = priority;
     this.information = information;
   }
 
@@ -74,6 +80,16 @@ public abstract class Request {
     LocationsDB locationsDB = LocationsDB.getInstance();
     location = locationsDB.getByID(locationID);
     return location;
+  }
+
+  public final String getPatientID() {
+    return patientID;
+  }
+
+  public Patient getPatient() {
+    PatientsDB patientsDB = PatientsDB.getInstance();
+    patient = patientsDB.getByID(patientID);
+    return patient;
   }
 
   public final String getStatus() {

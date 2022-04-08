@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
-public class EquipmentRequestController extends RequestController {
+public class EquipmentRequestController extends LocationBasedRequestController {
   @FXML private ComboBox<String> equipmentInput;
   @FXML private TextArea additionalNotesInput;
 
@@ -17,6 +17,7 @@ public class EquipmentRequestController extends RequestController {
   @FXML
   public void setEquipment() {
     equipment = equipmentInput.getValue();
+    enableSubmission();
   }
 
   @FXML
@@ -25,32 +26,32 @@ public class EquipmentRequestController extends RequestController {
   }
 
   @FXML
+  public void enableSubmission() {
+    if (!locationName.equals("") && !equipment.equals("")) {
+      submitButton.setDisable(false);
+    }
+  }
+
+  @FXML
   public void sendRequest(ActionEvent actionEvent) {
     setNotes();
-    if (room.equals("") && equipment.equals("")) {
-      requestLabel.setText("Please specify a room and equipment");
-    } else if (room.equals("")) {
-      requestLabel.setText("Please specify a room");
-    } else if (equipment.equals("")) {
-      requestLabel.setText("Please select equipment to request");
-    } else {
-      String locationID = dao.getLocationID(room);
-      EquipmentRequest request = new EquipmentRequest(locationID, equipment, notes);
-      RequestQueue.addRequest(request);
-      requestLabel.setText("Request sent: " + equipment + " to " + room);
-    }
+    String locationID = locationsDAO.getLocationID(locationName);
+    EquipmentRequest request = new EquipmentRequest(locationID, equipment, notes);
+    RequestQueue.addRequest(request);
+    requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
     floorInput.setValue("");
-    roomInput.setValue("");
+    locationInput.setValue("");
     equipmentInput.setValue("");
     additionalNotesInput.setText("");
+    submitButton.setDisable(true);
 
     floor = "";
-    room = "";
+    locationName = "";
     equipment = "";
     notes = "";
   }

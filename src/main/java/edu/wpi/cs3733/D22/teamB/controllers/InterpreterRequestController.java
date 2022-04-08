@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
-public class InterpreterRequestController extends RequestController {
+public class InterpreterRequestController extends LocationBasedRequestController {
   @FXML private ComboBox<String> languageInput;
   private String language;
 
@@ -15,30 +15,30 @@ public class InterpreterRequestController extends RequestController {
   }
 
   @FXML
-  public void sendRequest(ActionEvent actionEvent) {
-    if (room.equals("") && language.equals("")) {
-      requestLabel.setText("Please enter a room and language");
-    } else if (room.equals("")) {
-      requestLabel.setText("Please enter a room");
-    } else if (language.equals("")) {
-      requestLabel.setText("Please enter a language");
-    } else {
-      String locationID = dao.getLocationID(room);
-      InterpreterRequest request = new InterpreterRequest(locationID, language);
-      RequestQueue.addRequest(request);
-      requestLabel.setText("You have selected " + language);
+  public void enableSubmission() {
+    if (!locationName.equals("") && !language.equals("")) {
+      submitButton.setDisable(false);
     }
+  }
+
+  @FXML
+  public void sendRequest(ActionEvent actionEvent) {
+    String locationID = locationsDAO.getLocationID(locationName);
+    InterpreterRequest request = new InterpreterRequest(locationID, language);
+    RequestQueue.addRequest(request);
+    requestLabel.setText("Request Sent: " + language + " interpreter to " + locationName);
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
     floorInput.setValue("");
-    roomInput.setValue("");
+    locationInput.setValue("");
     languageInput.setValue("");
+    submitButton.setDisable(true);
 
     floor = "";
-    room = "";
+    locationName = "";
     language = "";
   }
 }

@@ -3,6 +3,8 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
 
@@ -127,5 +129,13 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       return -1;
     }
     return 0;
+  }
+
+  public String getPatientID(String patientName) {
+    Stream<String> keys =
+        patientMap.entrySet().stream()
+            .filter(entry -> patientName.equals(entry.getValue().getOverview()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 }

@@ -8,7 +8,7 @@ public class EquipmentRequest extends Request {
   private String notes;
 
   public EquipmentRequest(String locationID, String equipmentID, String notes) {
-    super(locationID, "Equipment Request");
+    super(locationID, null, "Equipment Request");
     this.equipmentID = equipmentID;
     this.notes = notes;
     setMedicalEquipment();
@@ -22,8 +22,9 @@ public class EquipmentRequest extends Request {
       String locationID,
       String status,
       String equipmentID,
+      int priority,
       String notes) {
-    super(requestID, type, employeeID, locationID, status, notes);
+    super(requestID, type, employeeID, locationID, null, status, priority, notes);
     this.equipmentID = equipmentID;
   }
 

@@ -9,8 +9,8 @@ public class LabRequest extends Request {
   private final String testRoomID;
   private Location testRoom;
 
-  public LabRequest(String locationID, String test, Date date, String testRoomID) {
-    super(locationID, "Lab Test");
+  public LabRequest(String patientID, String test, Date date, String testRoomID) {
+    super(null, patientID, "Lab Test");
     this.test = test;
     this.date = date;
     this.testRoomID = testRoomID;
@@ -24,9 +24,10 @@ public class LabRequest extends Request {
       String testRoomID,
       String type,
       String status,
+      int priority,
       String test,
       Date date) {
-    super(requestID, type, employeeID, nodeID, status, "");
+    super(requestID, type, employeeID, null, nodeID, status, priority, "");
     this.test = test;
     this.date = date;
     this.testRoomID = testRoomID;
