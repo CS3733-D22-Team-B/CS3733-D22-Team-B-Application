@@ -7,12 +7,9 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupLocations.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static LocationsDB locationsDBManager;
-
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
   public HashMap<String, Location> getLocationMap() {
@@ -24,7 +21,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   }
 
   private LocationsDB() {
-    super("Locations", "nodeID", "CSVs/ApplicationLocations.csv");
+    super("Locations", "nodeID", Filepath.getInstance().getLocationCSVFilePath());
     initDB();
   }
 
@@ -84,6 +81,33 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       locList.add(locationMap.get(pkList.get(i)));
     }
     return locList;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
   }
 
   public int update(Location locObj) {
