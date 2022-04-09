@@ -1,13 +1,18 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import static java.lang.Math.round;
+
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -27,6 +32,11 @@ public class InteractiveMapController {
   @FXML private Rectangle locationPane;
   @FXML private Rectangle equipmentPane;
   @FXML private Button deleteButton;
+  @FXML private Label errorLabel;
+  @FXML private TextField addLocationName;
+  @FXML private ComboBox<String> typeDropdown;
+  @FXML private Button confirmAdd;
+
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
   protected ServiceRequestsDB rdao;
@@ -34,13 +44,19 @@ public class InteractiveMapController {
   private LinkedList<SVGPath> roomIcons;
   private LinkedList<SVGPath> equipIcons;
   private LinkedList<SVGPath> serviceIcons;
+  private LinkedList<Location> floorLocations;
   // private Popup roomPopup;
+
+  private SVGPath marker = new SVGPath();
 
   private Boolean locInfoVisible = false;
   private Boolean lockHover = false;
   private Boolean equipInfoVisible = false;
+  private Boolean addEnabled = false;
 
   private int floorLevel = 2;
+  private int[] coordinates;
+  private String floorString = "1";
 
   public void initialize() {
     roomIcons = new LinkedList<SVGPath>();
@@ -60,7 +76,7 @@ public class InteractiveMapController {
   }
 
   public void setRoomIcons() {
-    LinkedList<Location> floorLocations = dao.getLocationsByFloor(floorLevel);
+    floorLocations = dao.getLocationsByFloor(floorLevel);
     for (SVGPath marker : roomIcons) {
       removeIcon(marker);
     }
@@ -319,6 +335,7 @@ public class InteractiveMapController {
 
   public void goToFloorL2() {
     floorLevel = 0;
+    floorString = "L2";
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel2.png"));
     setRoomIcons();
     setEquipIcons();
@@ -328,6 +345,7 @@ public class InteractiveMapController {
 
   public void goToFloorL1() {
     floorLevel = 1;
+    floorString = "L1";
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel1.png"));
     setRoomIcons();
     setEquipIcons();
@@ -337,6 +355,7 @@ public class InteractiveMapController {
 
   public void goToFloor1() {
     floorLevel = 2;
+    floorString = "1";
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/firstFloor.png"));
     setRoomIcons();
     setEquipIcons();
@@ -346,6 +365,7 @@ public class InteractiveMapController {
 
   public void goToFloor2() {
     floorLevel = 3;
+    floorString = "2";
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/secondFloor.png"));
     setRoomIcons();
     setEquipIcons();
@@ -355,6 +375,7 @@ public class InteractiveMapController {
 
   public void goToFloor3() {
     floorLevel = 4;
+    floorString = "3";
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/thirdFloor.png"));
     setRoomIcons();
     setEquipIcons();
@@ -406,14 +427,85 @@ public class InteractiveMapController {
   public void deleteLoc() {
     String name = roomName.getText();
     Location target = null;
-    LinkedList<Location> listChange = dao.searchFor(name);
+    LinkedList<Location> listChange = dao.listByAttribute("longName", name);
     for (Location loc : listChange) {
       if (loc.getLongName().equals(name)) target = loc;
     }
-    dao.delete(target);
-    deleteButton.setVisible(false);
+    if (dao.delete(target) == -1) {
+      errorLabel.setText("Delete Failed! Check that no equipment is tied to the room!");
+    } else {
+      errorLabel.setText("");
+      deleteButton.setVisible(false);
+      floorReset();
+      setRoomIcons();
+      resetDisplayPanes();
+    }
+  }
+
+  public void startAdd() {
+    lockHover = true;
+    addEnabled = true;
+    typeDropdown.setVisible(true);
+    addLocationName.setVisible(true);
+    confirmAdd.setVisible(true);
+  }
+
+  public void endAdd() {
+    lockHover = false;
+    addEnabled = false;
+    typeDropdown.setVisible(false);
+    addLocationName.setVisible(false);
+    confirmAdd.setVisible(false);
+    typeDropdown.setValue("");
+    addLocationName.setText("");
+    removeIcon(marker);
     floorReset();
     setRoomIcons();
     resetDisplayPanes();
+  }
+
+  public void addLocation() {
+    if (!typeDropdown.getValue().equals("")
+        && mapPane.getChildren().contains(marker)
+        && !addLocationName.getText().equals("")) {
+      int markerCoordX = (int) marker.getLayoutX();
+      int markerCoordY = (int) marker.getLayoutY();
+      int[] newCoords = imageCoordsToCSVCoords((int) markerCoordX, (int) markerCoordY);
+      String nodeType = typeDropdown.getValue();
+      String nodeID = dao.getNextID(floorString, nodeType);
+      String name = addLocationName.getText();
+      String building = "Tower";
+      Location newLoc =
+          new Location(
+              nodeID,
+              newCoords[0] - 20,
+              newCoords[1] - 50,
+              floorString,
+              building,
+              nodeType,
+              name,
+              name);
+      // Pass new location into database
+      dao.add(newLoc);
+      System.out.println("Add worked!");
+      endAdd();
+    }
+  }
+
+  public void getCoordinates(MouseEvent event) {
+    if (addEnabled) {
+      if (mapPane.getChildren().contains(marker)) {
+        removeIcon(marker);
+      }
+      coordinates = new int[2];
+      coordinates[0] = (int) round(event.getX());
+      coordinates[1] = (int) round(event.getY());
+      marker.setContent(
+          "M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z");
+      marker.setFill(Color.rgb(0, 0, 0));
+      mapPane.getChildren().add(marker);
+      marker.setLayoutX(coordinates[0] - 10);
+      marker.setLayoutY(coordinates[1] - 10);
+    }
   }
 }
