@@ -5,6 +5,12 @@ import java.util.LinkedList;
 public interface IDatabases<L> {
   public LinkedList<L> list();
 
+  public LinkedList<L> listByAttribute(String attribute, String value);
+
+  public LinkedList<L> listByAttribute(String attribute, int value);
+
+  public LinkedList<L> listByAttribute(String attribute, boolean value);
+
   public L getByID(String id);
 
   public LinkedList<L> searchFor(String input);

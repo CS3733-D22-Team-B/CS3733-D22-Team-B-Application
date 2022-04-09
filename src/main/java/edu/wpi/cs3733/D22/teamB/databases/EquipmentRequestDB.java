@@ -5,12 +5,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupEquipmentRequest.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static EquipmentRequestDB equipmentRequestDBManager;
-
   private HashMap<String, EquipmentRequest> equipmentRequestMap =
       new HashMap<String, EquipmentRequest>();
 
@@ -23,7 +20,8 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   }
 
   private EquipmentRequestDB() {
-    super("EquipmentRequests", "requestID", "CSVs/ApplicationEquipmentRequest.csv");
+    super(
+        "EquipmentRequests", "requestID", Filepath.getInstance().getEquipmentRequestCSVFilePath());
     initDB();
   }
 
@@ -48,7 +46,8 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
                 rs.getString(4),
                 rs.getString(5),
                 rs.getString(6),
-                rs.getString(7));
+                rs.getInt(7),
+                rs.getString(8));
         equipmentRequestMap.put(rs.getString(1), eqreqOb);
       }
     } catch (SQLException e) {
@@ -77,6 +76,33 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     return locList;
   }
 
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public EquipmentRequest getByID(String id) {
     if (!equipmentRequestMap.containsKey(id)) {
       return null;
@@ -90,7 +116,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     }
     return transform(
         eqreqObj,
-        "UPDATE EquipmentRequests SET type = ?, employeeID = ?, locationID = ?, status = ?, equipmentID = ?, notes = ? WHERE requestID = ?",
+        "UPDATE EquipmentRequests SET employeeID = ?, locationID = ?, equipmentID = ?, type = ?, status = ?, priority = ?, information = ? WHERE requestID = ?",
         true);
   }
 
@@ -98,7 +124,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     if (equipmentRequestMap.containsKey(eqreqObj.getRequestID())) {
       return -1;
     }
-    return transform(eqreqObj, "INSERT INTO EquipmentRequests VALUES(?,?,?,?,?,?,?)", false);
+    return transform(eqreqObj, "INSERT INTO EquipmentRequests VALUES(?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(EquipmentRequest eqreqObj) {
@@ -118,18 +144,19 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(7, eqreqObj.getRequestID());
+        pStatement.setString(8, eqreqObj.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, eqreqObj.getRequestID());
       }
 
-      pStatement.setString(2 + offset, eqreqObj.getType());
-      pStatement.setString(3 + offset, eqreqObj.getEmployeeID());
-      pStatement.setString(4 + offset, eqreqObj.getLocationID());
-      pStatement.setString(5 + offset, eqreqObj.getStatus());
-      pStatement.setString(6 + offset, eqreqObj.getEquipmentID());
-      pStatement.setString(7 + offset, eqreqObj.getNotes());
+      pStatement.setString(2 + offset, eqreqObj.getEmployeeID());
+      pStatement.setString(3 + offset, eqreqObj.getLocationID());
+      pStatement.setString(4 + offset, eqreqObj.getEquipmentID());
+      pStatement.setString(5 + offset, eqreqObj.getType());
+      pStatement.setString(6 + offset, eqreqObj.getStatus());
+      pStatement.setInt(7 + offset, eqreqObj.getPriority());
+      pStatement.setString(8 + offset, eqreqObj.getInformation());
 
       pStatement.addBatch();
       pStatement.executeBatch();

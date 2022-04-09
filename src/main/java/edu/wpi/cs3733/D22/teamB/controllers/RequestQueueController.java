@@ -21,6 +21,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML TableColumn<Request, String> columnRequestID;
   @FXML TableColumn<Request, String> columnType;
   @FXML TableColumn<Request, String> columnStatus;
+  @FXML TableColumn<Request, String> columnPriority;
   @FXML TableColumn<Request, Void> columnButtons;
 
   @FXML Label requestIDLabel;
@@ -40,6 +41,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnRequestID.setCellValueFactory(new PropertyValueFactory<>("requestID"));
     columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+    columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
     statusInput.setDisable(true);
     employeeInput.setDisable(true);

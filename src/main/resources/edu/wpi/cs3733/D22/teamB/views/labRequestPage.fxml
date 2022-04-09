@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -9,12 +10,13 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
    <children>
-      <Button layoutX="251.0" layoutY="283.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
+      <Button fx:id="submitButton" disable="true" layoutX="251.0" layoutY="283.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Label layoutX="194.0" layoutY="40.0" text="Lab Service Request">
          <font>
             <Font size="24.0" />
@@ -26,6 +28,8 @@
       <ComboBox fx:id="labTestInput" layoutX="123.0" layoutY="169.0" onAction="#setLabTest" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
+               <String fx:id="BLOOD" fx:value="Blood Test" />
+               <String fx:id="URINE" fx:value="Urine Test" />
                <String fx:id="XRAY" fx:value="X-Ray" />
                <String fx:id="CAT_SCAN" fx:value="CAT Scan" />
                <String fx:id="MRI" fx:value="MRI" />
@@ -34,8 +38,6 @@
       </ComboBox>
       <DatePicker fx:id="testingTimeInput" layoutX="292.0" layoutY="165.0" onAction="#setTestingTime" />
       <Label layoutX="345.0" layoutY="147.0" text="Testing Time" />
-      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
-      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -78,41 +80,20 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Label alignment="CENTER" layoutX="321.0" layoutY="91.0" text="Room" />
-      <ComboBox fx:id="roomInput" layoutX="262.0" layoutY="109.0" onAction="#setRoom" prefWidth="150.0">
+      <Label alignment="CENTER" layoutX="179.0" layoutY="93.0" text="Patient" />
+      <ComboBox fx:id="patientInput" layoutX="123.0" layoutY="110.0" onAction="#setPatient" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList" />
          </items>
       </ComboBox>
-      <ComboBox fx:id="floorInput" layoutX="178.0" layoutY="109.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3" fx:value="F3" />
-               <String fx:id="2" fx:value="F2" />
-               <String fx:id="1" fx:value="F1" />
-               <String fx:id="L1" fx:value="L1" />
-               <String fx:id="L2" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label alignment="CENTER" layoutX="195.0" layoutY="91.0" text="Floor" />
-      <Label alignment="CENTER" layoutX="327.0" layoutY="215.0" text="Lab Room" />
-      <ComboBox fx:id="labRoomInput" layoutX="279.0" layoutY="233.0" onAction="#setLabRoom" prefWidth="150.0">
+      <Label alignment="CENTER" layoutX="347.0" layoutY="93.0" text="Lab Room" />
+      <ComboBox fx:id="labRoomInput" layoutX="299.0" layoutY="110.0" onAction="#setLabRoom" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList" />
          </items>
       </ComboBox>
-      <ComboBox fx:id="labFloorInput" layoutX="195.0" layoutY="233.0" onAction="#setLabFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="31" fx:value="F3" />
-               <String fx:id="21" fx:value="F2" />
-               <String fx:id="11" fx:value="F1" />
-               <String fx:id="L11" fx:value="L1" />
-               <String fx:id="L21" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label alignment="CENTER" layoutX="203.0" layoutY="215.0" text="Lab Floor" />
+      <Slider fx:id="prioritySlider" blockIncrement="1.0" layoutX="186.0" layoutY="234.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="5" prefHeight="33.0" prefWidth="211.0" showTickLabels="true" value="1.0" />
+      <Label layoutX="273.0" layoutY="209.0" text="Priority" />
+      <JFXTimePicker />
    </children>
 </AnchorPane>

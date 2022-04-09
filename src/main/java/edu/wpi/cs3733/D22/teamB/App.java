@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB;
 
-import edu.wpi.cs3733.D22.teamB.databases.Employee;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,11 +20,31 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("views/loginPage.fxml"));
-    Scene scene = new Scene(root);
-    primaryStage.setScene(scene);
+    Parent root =
+        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/loginPage.fxml"));
+    primaryStage.setTitle("Login");
+    primaryStage.setScene(new Scene(root));
     primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
+
+    // import requests from database
+    //    EquipmentRequestDB equipmentRequestDB = EquipmentRequestDB.getInstance();
+    //    LabRequestsDB labRequestsDB = LabRequestsDB.getInstance();
+    //    ServiceRequestsDB serviceDB = ServiceRequestsDB.getInstance();
+    //
+    //    LinkedList<EquipmentRequest> equipmentRequests = equipmentRequestDB.list();
+    //    LinkedList<LabRequest> labRequests = labRequestsDB.list();
+    //    LinkedList<Request> serviceRequests = serviceDB.list();
+    //
+    //    for (EquipmentRequest request : equipmentRequests) {
+    //      RequestQueue.addRequest(request);
+    //    }
+    //    for (LabRequest request : labRequests) {
+    //      RequestQueue.addRequest(request);
+    //    }
+    //    for (Request request : serviceRequests) {
+    //      RequestQueue.addRequest(request);
+    //    }
   }
 
   @Override

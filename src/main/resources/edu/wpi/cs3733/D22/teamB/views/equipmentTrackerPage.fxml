@@ -8,13 +8,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentTrackerController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentTrackerController">
    <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-   <TableView fx:id="equipmentTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="532.0">
+   <TableView fx:id="equipmentTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="621.0">
      <columns>
        <TableColumn fx:id="columnEquipment" prefWidth="148.6666603088379" text="Equipment" />
          <TableColumn fx:id="columnLocation" prefWidth="292.6666717529297" text="Location" />
          <TableColumn fx:id="columnSterilization" minWidth="0.0" prefWidth="90.00003051757812" text="Sterilized" />
+         <TableColumn fx:id="columnAvailability" minWidth="0.0" prefWidth="90.00003051757812" text="Available" />
      </columns>
    </TableView>
    <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
