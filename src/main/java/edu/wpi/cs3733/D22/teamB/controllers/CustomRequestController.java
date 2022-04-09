@@ -22,13 +22,17 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
   @FXML
   public void initialize() {
     super.initialize();
-    notesInput.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (newValue.length() > 256) {
-        notesInput.setText(oldValue);
-      }
+    notesInput
+        .textProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (newValue.length() > 256) {
+                notesInput.setText(oldValue);
+              }
 
-      charactersRemainingLabel.setText(String.valueOf(256 - notesInput.getText().length()) + " characters remaining");
-    });
+              charactersRemainingLabel.setText(
+                  String.valueOf(256 - notesInput.getText().length()) + " characters remaining");
+            });
   }
 
   @FXML
