@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1152.0" prefWidth="2048.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
+<AnchorPane prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LabRequestController">
    <children>
       <Button fx:id="submitButton" disable="true" layoutX="251.0" layoutY="283.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
       <Label layoutX="194.0" layoutY="40.0" text="Lab Service Request">
