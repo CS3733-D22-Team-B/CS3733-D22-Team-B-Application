@@ -20,6 +20,7 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
   @FXML TableColumn<MedicalEquipment, String> columnEquipment;
   @FXML TableColumn<MedicalEquipment, String> columnLocation;
   @FXML TableColumn<MedicalEquipment, String> columnSterilization;
+  @FXML TableColumn<MedicalEquipment, String> columnAvailability;
 
   private ObservableList<Location> locations = FXCollections.observableArrayList();
   private ObservableList<MedicalEquipment> equipment = FXCollections.observableArrayList();
@@ -39,6 +40,7 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
     columnEquipment.setCellValueFactory(new PropertyValueFactory<>("equipmentID"));
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
     columnSterilization.setCellValueFactory(new PropertyValueFactory<>("isSterilized"));
+    columnAvailability.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
 
     equipmentTable.setItems(equipment);
   }

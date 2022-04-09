@@ -8,68 +8,12 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InterpreterRequestController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InterpreterRequestController">
    <children>
-      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <Label layoutX="85.0" layoutY="96.0" text="Select Language:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="241.0" layoutY="207.0" mnemonicParsing="false" onAction="#sendRequest" text="Confirm">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Label fx:id="requestLabel" alignment="CENTER" layoutX="47.0" layoutY="308.0" prefHeight="35.0" prefWidth="506.0" textAlignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="84.0" layoutY="148.0" prefHeight="30.0" prefWidth="54.0" text="Floor:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="roomInput" layoutX="343.0" layoutY="150.0" onAction="#setRoom" prefWidth="150.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label layoutX="263.0" layoutY="150.0" text="Room #:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button layoutX="530.0" layoutY="360.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
-      <ComboBox fx:id="languageInput" layoutX="287.0" layoutY="100.0" onAction="#setLanguage" prefHeight="26.0" prefWidth="207.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="spanishChoice" fx:value="Spanish" />
-               <String fx:id="frenchChoice" fx:value="French" />
-               <String fx:id="mandarinChoice" fx:value="Mandarin" />
-               <String fx:id="italianChoice" fx:value="Italian" />
-               <String fx:id="germanChoice" fx:value="German" />
-               <String fx:id="russianChoice" fx:value="Russian" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <ComboBox fx:id="floorInput" layoutX="153.0" layoutY="150.0" onAction="#setFloor" prefHeight="26.0" prefWidth="102.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3" fx:value="F3" />
-               <String fx:id="2" fx:value="F2" />
-               <String fx:id="1" fx:value="F1" />
-               <String fx:id="L1" fx:value="L1" />
-               <String fx:id="L2" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
       <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -112,5 +56,53 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Button layoutX="139.0" layoutY="1085.0" mnemonicParsing="false" onAction="#goToHomepage" scaleX="3.0" scaleY="3.0" text="Back to Homepage" />
+      <Label fx:id="requestLabel" alignment="CENTER" layoutX="528.0" layoutY="978.0" prefHeight="0.0" prefWidth="674.0" scaleX="3.0" scaleY="3.0" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="locationInput" layoutX="924.0" layoutY="558.0" onAction="#setLocation" prefWidth="150.0" scaleX="3.0" scaleY="3.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Button layoutX="1942.0" layoutY="996.0" mnemonicParsing="false" onAction="#reset" scaleX="3.0" scaleY="3.0" text="Reset" />
+      <ComboBox fx:id="languageInput" layoutX="1516.0" layoutY="558.0" onAction="#setLanguage" prefHeight="26.0" prefWidth="207.0" scaleX="3.0" scaleY="3.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="spanishChoice" fx:value="Spanish" />
+               <String fx:id="frenchChoice" fx:value="French" />
+               <String fx:id="mandarinChoice" fx:value="Mandarin" />
+               <String fx:id="italianChoice" fx:value="Italian" />
+               <String fx:id="germanChoice" fx:value="German" />
+               <String fx:id="russianChoice" fx:value="Russian" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="480.0" layoutY="551.0" onAction="#setFloor" prefHeight="26.0" prefWidth="102.0" scaleX="3.0" scaleY="3.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3" fx:value="F3" />
+               <String fx:id="2" fx:value="F2" />
+               <String fx:id="1" fx:value="F1" />
+               <String fx:id="L1" fx:value="L1" />
+               <String fx:id="L2" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Slider fx:id="prioritySlider" blockIncrement="1.0" layoutX="1003.0" layoutY="803.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="5" prefHeight="33.0" prefWidth="211.0" scaleX="3.0" scaleY="3.0" showTickLabels="true" value="1.0" />
+      <Label layoutX="1105.0" layoutY="723.0" scaleX="3.0" scaleY="3.0" text="Priority" />
+      <Label layoutX="906.0" layoutY="224.0" prefHeight="54.0" prefWidth="218.0" scaleX="3.0" scaleY="3.0" text="Request Interpreter">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button disable="true" layoutX="1851.0" layoutY="1085.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="26.0" prefWidth="91.0" scaleX="3.0" scaleY="3.0" text="Send Request" />
+      <Label alignment="CENTER" layoutX="1006.0" layoutY="488.0" scaleX="3.0" scaleY="3.0" text="Room" />
+      <Label alignment="CENTER" layoutX="529.0" layoutY="493.0" scaleX="3.0" scaleY="3.0" text="Floor" />
+      <Label alignment="CENTER" layoutX="1614.0" layoutY="490.0" scaleX="3.0" scaleY="3.0" text="Language" />
    </children>
 </AnchorPane>

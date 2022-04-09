@@ -40,38 +40,43 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
         Request req;
         String type = rs.getString(5);
         switch (type) {
-          default:
-          case "MEL":
+          case "Meal":
             req =
                 new MealRequest(
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
+                    rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getString(7));
+                    rs.getInt(7),
+                    rs.getString(8));
             break;
-          case "MED":
+          case "Medicine":
             req =
                 new MedicineRequest(
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
+                    rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getString(7));
+                    rs.getInt(7),
+                    rs.getString(8));
             break;
-          case "INT":
+          case "Interpreter":
             req =
                 new InterpreterRequest(
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
+                    rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getString(7));
+                    rs.getInt(7),
+                    rs.getString(8));
             break;
-          case "IPT":
+          case "Transfer":
             req =
                 new InternalPatientTransferRequest(
                     rs.getString(1),
@@ -80,7 +85,20 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getString(7));
+                    rs.getInt(7),
+                    rs.getString(8));
+            break;
+          default:
+            req =
+                new CustomRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getInt(7),
+                    rs.getString(8));
             break;
         }
         requestMap.put(rs.getString(1), req);
@@ -104,7 +122,6 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   public LinkedList<Request> searchFor(String input) {
     LinkedList<String> pkList = filteredSearch(input);
     LinkedList<Request> reqList = new LinkedList<Request>();
-
     for (int i = 0; i < pkList.size(); i++) {
       reqList.add(requestMap.get(pkList.get(i)));
     }
@@ -151,7 +168,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     }
     return transform(
         reqObj,
-        "UPDATE ServiceRequests SET employeeID = ?, locationID = ?, transferID = ?, type = ?, status = ?, information = ? WHERE requestID = ?",
+        "UPDATE ServiceRequests SET employeeID = ?, locationID = ?, patientID = ?, type = ?, status = ?, priority = ?, information = ? WHERE requestID = ?",
         true);
   }
 
@@ -159,7 +176,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     if (requestMap.containsKey(reqObj.getRequestID())) {
       return -1;
     }
-    return transform(reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?)", false);
+    return transform(reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Request reqObj) {
@@ -179,7 +196,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(7, reqObj.getRequestID());
+        pStatement.setString(8, reqObj.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, reqObj.getRequestID());
@@ -187,13 +204,11 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
 
       pStatement.setString(2 + offset, reqObj.getEmployeeID());
       pStatement.setString(3 + offset, reqObj.getLocationID());
-      if (reqObj.getType().equalsIgnoreCase("TRAN")) {
-        InternalPatientTransferRequest iptrObj = (InternalPatientTransferRequest) reqObj;
-        pStatement.setString(4 + offset, iptrObj.getDestinationID());
-      }
+      pStatement.setString(4 + offset, reqObj.getPatientID());
       pStatement.setString(5 + offset, reqObj.getType());
       pStatement.setString(6 + offset, reqObj.getStatus());
-      pStatement.setString(7 + offset, reqObj.getInformation());
+      pStatement.setInt(7 + offset, reqObj.getPriority());
+      pStatement.setString(8 + offset, reqObj.getInformation());
 
       pStatement.addBatch();
       pStatement.executeBatch();

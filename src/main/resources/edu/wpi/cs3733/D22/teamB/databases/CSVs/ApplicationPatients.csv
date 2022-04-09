@@ -1,6 +1,6 @@
-PATIENTID,LASTNAME,FIRSTNAME,NODEID
-PA01,Smith,John,bPATI01603
-PA02,Anderson,James,bPATI01703
-PA03,Jones,Michael,bPATI01803
-PA04,Garcia,Linda,bPATI01903
-PA05,Gonzalez,Elizabeth,bPATI02003
+patientID,lastName,firstName,roomID
+PA000001,Smith,John,bPATI01603
+PA000002,Anderson,James,bPATI01703
+PA000003,Jones,Michael,bPATI01803
+PA000004,Garcia,Linda,bPATI01903
+PA000005,Gonzalez,Elizabeth,bPATI02003

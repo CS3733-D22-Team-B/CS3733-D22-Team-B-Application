@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
     <children>
         <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="27.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -27,6 +27,12 @@
         <Button fx:id="internalPatientTransferButton" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" prefWidth="211.0" text="Request Internal Patient Transfer" visible="false" />
       <Button fx:id="customRequestButton" layoutX="376.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToCustomRequestPage" prefHeight="26.0" prefWidth="210.0" text="Custom Request" visible="false" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
+      <Button fx:id="mapViewerButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#goToMapViewPage" prefHeight="25.0" prefWidth="115.0" text="Map Viewer" visible="false" />
+      <Button fx:id="mapEditorButton" layoutX="472.0" layoutY="134.0" mnemonicParsing="false" onAction="#goToMapEditPage" prefHeight="25.0" prefWidth="115.0" text="Map Editor" visible="false" />
+      <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
+      <Button fx:id="requestQueueButton" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToRequestQueue" prefHeight="26.0" prefWidth="115.0" text="Request Queue" />
+      <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
+      <Button layoutX="486.0" layoutY="38.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
 
         <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
             <menus>
@@ -74,12 +80,6 @@
                 </Menu>
             </menus>
         </MenuBar>
-      <Button fx:id="mapViewerButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#goToMapViewPage" prefHeight="25.0" prefWidth="115.0" text="Map Viewer" visible="false" />
-      <Button fx:id="mapEditorButton" layoutX="472.0" layoutY="134.0" mnemonicParsing="false" onAction="#goToMapEditPage" prefHeight="25.0" prefWidth="115.0" text="Map Editor" visible="false" />
-      <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
-      <Button fx:id="requestQueueButton" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToRequestQueue" prefHeight="26.0" prefWidth="115.0" text="Request Queue" />
-      <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
-      <Button layoutX="486.0" layoutY="38.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
 
     </children>
 

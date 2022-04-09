@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
-public class MedicineRequestController extends RequestController {
+public class MedicineRequestController extends PatientBasedRequestController {
   @FXML private ComboBox<String> medicineInput;
 
   private String medicine;
@@ -16,31 +16,29 @@ public class MedicineRequestController extends RequestController {
   }
 
   @FXML
-  public void sendRequest(ActionEvent actionEvent) {
+  public void enableSubmission() {
     setMedication();
-    if (room.equals("") && medicine.equals("")) {
-      requestLabel.setText("Please enter a room and medication");
-    } else if (room.equals("")) {
-      requestLabel.setText("Please enter a room");
-    } else if (medicine.equals("")) {
-      requestLabel.setText("Please enter a medication");
-    } else {
-      String locationID = dao.getLocationID(room);
-      MedicineRequest request = new MedicineRequest(locationID, medicine);
-      RequestQueue.addRequest(request);
-      requestLabel.setText("Request sent: " + medicine + " to " + room);
+    if (!patientName.equals("") && !medicine.equals("")) {
+      submitButton.setDisable(false);
     }
+  }
+
+  @FXML
+  public void sendRequest(ActionEvent actionEvent) {
+    String patientID = patientsDB.getPatientID(patientName);
+    MedicineRequest request = new MedicineRequest(patientID, medicine);
+    RequestQueue.addRequest(request);
+    requestLabel.setText("Request sent: " + medicine + " to " + patientName);
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    floorInput.setValue("");
-    roomInput.setValue("");
+    patientInput.setValue("");
     medicineInput.setValue("");
+    submitButton.setDisable(true);
 
-    floor = "";
-    room = "";
+    patientName = "";
     medicine = "";
   }
 }

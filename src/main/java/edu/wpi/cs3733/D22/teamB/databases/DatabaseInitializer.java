@@ -25,6 +25,7 @@ public class DatabaseInitializer {
       // statement.execute("DROP TABLE MedicalEquipment");
       // statement.execute("DROP TABLE Patients");
       // statement.execute("DROP TABLE Locations");
+
       if (!tableExists(connection, "LOCATIONS")) {
         statement.execute(
             "CREATE TABLE Locations(nodeID VARCHAR(10), xcoord int, ycoord int, "
@@ -101,7 +102,7 @@ public class DatabaseInitializer {
             "INSERT INTO Patients(patientID, lastName, firstName, nodeID) VALUES(?, ?, ?, ?)";
       } else if (databaseName == "EquipmentRequests") {
         addToTable =
-            "INSERT INTO EquipmentRequests(requestID, type, employeeID, locationID, status, equipmentID, notes) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
       }
 
       PreparedStatement pStatement = connection.prepareStatement(addToTable);
@@ -156,7 +157,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO LabRequests (requestID, employeeID, nodeID, testRoomID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = reader.read(filepath);
@@ -168,23 +169,26 @@ public class DatabaseInitializer {
         String[] data = lineText.split(",");
         String requestID = data[0];
         String employeeID = data[1];
-        String nodeID = data[2];
+        String patientID = data[2];
         String testRoomID = data[3];
         String type = data[4];
         String status = data[5];
-        String test = data[6];
-        String date = data[7];
+        String priority = data[6];
+        String test = data[7];
+        String date = data[8];
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
-        statement.setString(3, nodeID);
+        statement.setString(3, patientID);
         statement.setString(4, testRoomID);
         statement.setString(5, type);
         statement.setString(6, status);
-        statement.setString(7, test);
+        int priorityInt = Integer.parseInt(priority);
+        statement.setInt(7, priorityInt);
+        statement.setString(8, test);
 
         Timestamp sqlTimestamp = Timestamp.valueOf(date);
-        statement.setTimestamp(8, sqlTimestamp);
+        statement.setTimestamp(9, sqlTimestamp);
 
         statement.addBatch();
         statement.executeBatch();
@@ -213,7 +217,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, transferID, type, status, information) VALUES (?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, patientID, type, status, priority, information) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader =
@@ -227,33 +231,37 @@ public class DatabaseInitializer {
         String requestID = data[0];
         String employeeID = data[1];
         String locationID = data[2];
-        String transferID = data[3];
+        String patientID = data[3];
         String type = data[4];
         String status = data[5];
-        String information = data[6];
+        String priority = data[6];
+        String information = data.length == 8 ? data[7] : "";
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
-        statement.setString(3, locationID);
-        if (transferID.compareTo("") != 0) {
-          statement.setString(4, transferID);
+        if (locationID.compareTo("") != 0) {
+          statement.setString(3, locationID);
+        } else {
+          statement.setString(3, null);
+        }
+        if (patientID.compareTo("") != 0) {
+          statement.setString(4, patientID);
         }
         statement.setString(5, type);
         statement.setString(6, status);
-        if (information.compareTo("") != 0) {
-          statement.setString(7, information);
-        }
+        int priorityInt = Integer.parseInt(priority);
+        statement.setInt(7, priorityInt);
+        statement.setString(8, information);
 
-        statement.addBatch();
-        statement.executeBatch();
+        statement.executeUpdate();
       }
-
       lineReader.close();
       connection.commit();
       connection.close();
 
     } catch (IOException ex) {
       System.err.println(ex);
+
     } catch (SQLException ex) {
       ex.printStackTrace();
       try {

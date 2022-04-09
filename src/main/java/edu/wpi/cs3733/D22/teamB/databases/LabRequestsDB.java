@@ -46,8 +46,9 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
                 rs.getString(4),
                 rs.getString(5),
                 rs.getString(6),
-                rs.getString(7),
-                new java.util.Date(rs.getTimestamp(8).getTime()));
+                rs.getInt(7),
+                rs.getString(8),
+                new java.util.Date(rs.getTimestamp(9).getTime()));
         labRequestMap.put(rs.getString(1), labReqObj);
       }
     } catch (SQLException e) {
@@ -120,7 +121,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
     }
     return transform(
         labReqObj,
-        "UPDATE LabRequests SET employeeID = ?, nodeID = ?, testRoomID= ?, type = ?, status = ?, test = ?, date = ? WHERE requestID = ?",
+        "UPDATE LabRequests SET employeeID = ?, patientID = ?, testRoomID= ?, type = ?, status = ?, priority = ?, test = ?, date = ? WHERE requestID = ?",
         true);
   }
 
@@ -129,7 +130,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
     if (labRequestMap.containsKey(labReq.getRequestID())) {
       return -1;
     }
-    return transform(labReq, "INSERT INTO LabRequests VALUES(?,?,?,?,?,?,?,?)", false);
+    return transform(labReq, "INSERT INTO LabRequests VALUES(?,?,?,?,?,?,?,?,?)", false);
   }
 
   @Override
@@ -149,19 +150,20 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(8, labReq.getRequestID());
+        pStatement.setString(9, labReq.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, labReq.getRequestID());
       }
 
       pStatement.setString(2 + offset, labReq.getEmployeeID());
-      pStatement.setString(3 + offset, labReq.getNodeID());
-      pStatement.setString(4 + offset, labReq.getType());
-      pStatement.setString(5 + offset, labReq.getStatus());
-      pStatement.setString(6 + offset, labReq.getTest());
-      pStatement.setString(7 + offset, labReq.getTestRoomID());
-      pStatement.setTimestamp(8 + offset, new Timestamp(labReq.getDate().getTime()));
+      pStatement.setString(3 + offset, labReq.getPatientID());
+      pStatement.setString(4 + offset, labReq.getTestRoomID());
+      pStatement.setString(5 + offset, labReq.getType());
+      pStatement.setString(6 + offset, labReq.getStatus());
+      pStatement.setInt(7 + offset, labReq.getPriority());
+      pStatement.setString(8 + offset, labReq.getTest());
+      pStatement.setTimestamp(9 + offset, new Timestamp(labReq.getDate().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();

@@ -1,88 +1,81 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.databases.Location;
+import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.databases.Patient;
+import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
 import edu.wpi.cs3733.D22.teamB.requests.InternalPatientTransferRequest;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
+import java.util.LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 
-public class InternalPatientTransferController extends RequestController {
-  @FXML private ComboBox<String> destinationFloorInput;
-  @FXML private ComboBox<String> destinationRoomInput;
-
-  private String destinationFloor;
-  private String destinationRoom;
-
-  public void setDestinationFloor() {
-    destinationFloor = destinationFloorInput.getValue();
-    resetDestinationRoomBox();
-  }
-
-  public void setDestinationRoom() {
-    destinationRoom = destinationRoomInput.getValue();
-  }
-
-  private void resetDestinationRoomBox() {
-    destinationRoomInput.getItems().clear();
-    switch (destinationFloor) {
-      case "F3":
-        for (String roomF3 : roomsF3) {
-          destinationRoomInput.getItems().add(roomF3);
-        }
-        break;
-      case "F2":
-        for (String roomF2 : roomsF2) {
-          destinationRoomInput.getItems().add(roomF2);
-        }
-        break;
-      case "F1":
-        for (String roomF1 : roomsF1) {
-          destinationRoomInput.getItems().add(roomF1);
-        }
-        break;
-      case "L1":
-        for (String roomFL1 : roomsFL1) {
-          destinationRoomInput.getItems().add(roomFL1);
-        }
-        break;
-      case "L2":
-        for (String roomFL2 : roomsFL2) {
-          destinationRoomInput.getItems().add(roomFL2);
-        }
-        break;
+public class InternalPatientTransferController extends PatientAndLocationBasedRequestController {
+  @FXML
+  public void enableSubmission() {
+    setLocation();
+    if (!patientName.equals("") && !locationName.equals("")) {
+      submitButton.setDisable(false);
     }
+  }
+
+  @Override
+  public void initialize() {
+    locationsDAO = LocationsDB.getInstance();
+    LinkedList<Location> locations = locationsDAO.list();
+
+    for (Location location : locations) {
+      if (location.getNodeType().equals("PATI")) {
+        switch (location.getFloor()) {
+          case "3":
+            locationsF3.add(location.getLongName());
+            break;
+          case "2":
+            locationsF2.add(location.getLongName());
+            break;
+          case "1":
+            locationsF1.add(location.getLongName());
+            break;
+          case "L1":
+            locationsFL1.add(location.getLongName());
+            break;
+          case "L2":
+            locationsFL2.add(location.getLongName());
+            break;
+        }
+      }
+    }
+    locationName = "";
+    floor = "";
+
+    patientsDB = PatientsDB.getInstance();
+
+    for (Patient patient : patientsDB.list()) {
+      patientInput.getItems().add(patient.getOverview());
+    }
+    patientName = patientInput.getValue();
   }
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    setDestinationRoom();
-    if (room.equals("") && destinationRoom.equals("")) {
-      requestLabel.setText("Please enter a room and a destination room.");
-    } else if (room.equals("")) {
-      requestLabel.setText("Please enter a room.");
-    } else if (destinationRoom.equals("")) {
-      requestLabel.setText("Please enter a destination room.");
-    } else {
-      String locationID = dao.getLocationID(room);
-      String destinationID = dao.getLocationID(destinationRoom);
-      InternalPatientTransferRequest request =
-          new InternalPatientTransferRequest(locationID, destinationID);
-      RequestQueue.addRequest(request);
-      requestLabel.setText("Request sent: Moving patient in " + room + " to " + destinationRoom);
-    }
+    String patientID = patientsDB.getPatientID(patientName);
+    String destinationID = locationsDAO.getLocationID(locationName);
+    InternalPatientTransferRequest request =
+        new InternalPatientTransferRequest(patientName, destinationID);
+    RequestQueue.addRequest(request);
+    requestLabel.setText("Request sent: Moving " + patientName + " to " + locationName);
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
     floorInput.setValue("");
-    roomInput.setValue("");
-    destinationFloorInput.setValue("");
-    destinationRoomInput.setValue("");
+    locationInput.setValue("");
+    patientInput.setValue("");
+    submitButton.setDisable(true);
 
     floor = "";
-    room = "";
-    destinationFloor = "";
-    destinationRoom = "";
+    locationName = "";
+    patientName = "";
   }
 }
