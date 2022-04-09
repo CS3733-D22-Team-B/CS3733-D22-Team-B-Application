@@ -33,8 +33,11 @@ public class LoginController {
     // Login functionality
     this.setPassword();
     this.setUsername();
+    Employee employee = null;
     EmployeesDB emp = EmployeesDB.getInstance();
-    Employee employee = emp.getEmployee(this.username);
+    if (emp.searchFor(this.username).size() == 1) {
+      employee = emp.searchFor(this.username).get(0);
+    }
     if (employee == null) {
       loginFail.setText("Invalid ID");
     } else {
