@@ -16,7 +16,7 @@ public class MealRequest extends Request {
       String status,
       int priority,
       String information) {
-    super(requestID, type, employeeID, locationID, patientID, status, priority, information);
+    super(requestID, employeeID, null, patientID, type, status, priority, information);
   }
 
   public final String createRequestID() {

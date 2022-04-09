@@ -66,23 +66,21 @@ public class DatabaseInitializer {
       statement.execute(
           "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
       statement.execute(
-          "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), type VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), status VARCHAR(15), equipmentID VARCHAR(10), notes VARCHAR(50), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
+          "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), equipmentID VARCHAR(10), type VARCHAR(100), status VARCHAR(25), priority int, information VARCHAR(512), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT ER_EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID),CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
       statement.execute(
-          "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), nodeID VARCHAR(10), testRoomID VARCHAR(10),"
-              + "type VARCHAR(10), status VARCHAR(15), test VARCHAR(15), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
-              + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID), CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID))");
-      /*
+          "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), patientID VARCHAR(10), testRoomID VARCHAR(10),"
+              + "type VARCHAR(50), status VARCHAR(25), priority int, test VARCHAR(50), date TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
+              + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_PAT foreign key (patientID) REFERENCES Patients (patientID), CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID))");
       statement.execute(
-          "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), transferID VARCHAR(10), type VARCHAR(10), status VARCHAR(25), information VARCHAR(250), CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT TRANSFER_FK foreign key (transferID) REFERENCES Locations (nodeID))");
-       */
+          "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), type VARCHAR(500), status VARCHAR(25), priority int, information VARCHAR(512), CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID))");
 
       populateDatabase(locationCSVFilePath, "Locations", 8);
       populateDatabase(medicalEQCSVFilePath, "MedicalEquipment", 5);
       populateDatabase(employeesCSVFilePath, "Employees", 7);
       populateDatabase(patientsCSVFilePath, "Patients", 4);
-      populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 7);
+      populateDatabase(equipmentRequestCSVFilePath, "EquipmentRequests", 8);
       populateDatabaseLabRequestDB(labRequestCSVFilePath, "LabRequests", 7);
-      // populateServiceRequestsDatabase();
+      populateServiceRequestsDatabase();
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
@@ -114,7 +112,7 @@ public class DatabaseInitializer {
             "INSERT INTO Patients(patientID, lastName, firstName, nodeID) VALUES(?, ?, ?, ?)";
       } else if (databaseName == "EquipmentRequests") {
         addToTable =
-            "INSERT INTO EquipmentRequests(requestID, type, employeeID, locationID, status, equipmentID, notes) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
       }
 
       PreparedStatement pStatement = connection.prepareStatement(addToTable);
@@ -163,7 +161,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO LabRequests (requestID, employeeID, nodeID, testRoomID, type, status, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, test, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = reader.read(filepath);
@@ -175,23 +173,26 @@ public class DatabaseInitializer {
         String[] data = lineText.split(",");
         String requestID = data[0];
         String employeeID = data[1];
-        String nodeID = data[2];
+        String patientID = data[2];
         String testRoomID = data[3];
         String type = data[4];
         String status = data[5];
-        String test = data[6];
-        String date = data[7];
+        String priority = data[6];
+        String test = data[7];
+        String date = data[8];
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
-        statement.setString(3, nodeID);
+        statement.setString(3, patientID);
         statement.setString(4, testRoomID);
         statement.setString(5, type);
         statement.setString(6, status);
-        statement.setString(7, test);
+        int priorityInt = Integer.parseInt(priority);
+        statement.setInt(7, priorityInt);
+        statement.setString(8, test);
 
         Timestamp sqlTimestamp = Timestamp.valueOf(date);
-        statement.setTimestamp(8, sqlTimestamp);
+        statement.setTimestamp(9, sqlTimestamp);
 
         statement.addBatch();
         statement.executeBatch();
@@ -220,7 +221,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, transferID, type, status, information) VALUES (?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, patientID, type, status, priority, information) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = reader.read(serviceRequestCSVFilePath);
@@ -233,33 +234,37 @@ public class DatabaseInitializer {
         String requestID = data[0];
         String employeeID = data[1];
         String locationID = data[2];
-        String transferID = data[3];
+        String patientID = data[3];
         String type = data[4];
         String status = data[5];
-        String information = data[6];
+        String priority = data[6];
+        String information = data.length == 8 ? data[7] : "";
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
-        statement.setString(3, locationID);
-        if (transferID.compareTo("") != 0) {
-          statement.setString(4, transferID);
+        if (locationID.compareTo("") != 0) {
+          statement.setString(3, locationID);
+        } else {
+          statement.setString(3, null);
+        }
+        if (patientID.compareTo("") != 0) {
+          statement.setString(4, patientID);
         }
         statement.setString(5, type);
         statement.setString(6, status);
-        if (information.compareTo("") != 0) {
-          statement.setString(7, information);
-        }
+        int priorityInt = Integer.parseInt(priority);
+        statement.setInt(7, priorityInt);
+        statement.setString(8, information);
 
-        statement.addBatch();
-        statement.executeBatch();
+        statement.executeUpdate();
       }
-
       lineReader.close();
       connection.commit();
       connection.close();
 
     } catch (IOException ex) {
       System.err.println(ex);
+
     } catch (SQLException ex) {
       ex.printStackTrace();
       try {

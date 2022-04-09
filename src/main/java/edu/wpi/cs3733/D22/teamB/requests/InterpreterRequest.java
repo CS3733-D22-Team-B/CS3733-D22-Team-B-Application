@@ -16,7 +16,7 @@ public class InterpreterRequest extends Request {
       String status,
       int priority,
       String information) {
-    super(requestID, type, employeeID, locationID, patientID, status, priority, information);
+    super(requestID, employeeID, locationID, null, type, status, priority, information);
   }
 
   public final String createRequestID() {

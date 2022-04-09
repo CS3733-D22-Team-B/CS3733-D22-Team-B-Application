@@ -4,10 +4,10 @@ import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.Date;
 
 public class LabRequest extends Request {
-  private final String test;
-  private final Date date;
   private final String testRoomID;
   private Location testRoom;
+  private final String test;
+  private final Date date;
 
   public LabRequest(String patientID, String test, Date date, String testRoomID) {
     super(null, patientID, "Lab Test");
@@ -15,30 +15,30 @@ public class LabRequest extends Request {
     this.date = date;
     this.testRoomID = testRoomID;
     information = "Lab Test: " + test + "\n" + "Testing Time: " + date;
+
+    testRoom = getTestRoom();
   }
 
   public LabRequest(
       String requestID,
       String employeeID,
-      String nodeID,
+      String patientID,
       String testRoomID,
       String type,
       String status,
       int priority,
       String test,
       Date date) {
-    super(requestID, type, employeeID, null, nodeID, status, priority, "");
+    super(requestID, employeeID, null, patientID, type, status, priority, "");
     this.test = test;
     this.date = date;
     this.testRoomID = testRoomID;
+
+    testRoom = getTestRoom();
   }
 
   public final String createRequestID() {
     return "LAB" + getHashCode();
-  }
-
-  public String getNodeID() {
-    return locationID;
   }
 
   public String getTest() {
