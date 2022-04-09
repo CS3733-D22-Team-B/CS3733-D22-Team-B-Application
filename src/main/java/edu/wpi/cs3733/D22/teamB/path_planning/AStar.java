@@ -18,14 +18,16 @@ public class AStar {
     EdgeGetter edgy = new EdgeGetter();
     this.edgeMap = edgy.getEdges();
 
-    // System.out.println(startLoc.getNodeID());
     this.startNode = new Node(startLoc, edgeMap.get(startLoc.getNodeID()));
     this.targetNode = new Node(targetLoc, edgeMap.get(targetLoc.getNodeID()));
-
-    //    nodeMap.put(startNode.getNodeId(), startNode);
-    //    nodeMap.put(targetNode.getNodeId(), targetNode);
   }
 
+  /**
+   * Calculate the Euclidian distance between two points
+   * @param firstNode starting node
+   * @param secondNode end node
+   * @return the distance between them
+   */
   private double getCurrentCost(Node firstNode, Node secondNode) {
     double xDiff = secondNode.getXCoord() - firstNode.getXCoord();
     double yDiff = secondNode.getYCoord() - firstNode.getYCoord();
@@ -35,8 +37,12 @@ public class AStar {
     return cost;
   }
 
+  /**
+   * Runs the AStar algorithm between the start node and target node declared in the constructor.
+   * @return
+   */
   public ArrayList<Location> getPath() {
-    ArrayList<Location> path = new ArrayList<Location>();
+    ArrayList<Location> path = new ArrayList<>();
 
     PriorityQueue<Node> frontier = new PriorityQueue(300, new NodeComparator());
     frontier.add(startNode);
@@ -45,14 +51,13 @@ public class AStar {
       Node currentNode = frontier.poll();
 
       if (currentNode.getNodeId().equals(targetNode.getNodeId())) {
-        // System.out.println("Found Target");
-        // System.out.println("Target came from: " + targetNode.getCameFrom());
+        // We need to save the cameFrom attribute from current node to targetNode
+        // We can do that by just setting them equal
         targetNode = currentNode;
         break;
       }
 
-      // System.out.println(currentNode.getNodeId());
-      // System.out.println(edgeMap.get(currentNode.getNodeId()));
+      // We pull the current list of neighbors from the edgeMap and then iterate thru it
       LinkedList<String> neighbors = edgeMap.get(currentNode.getNodeId());
       for (int i = 0; i < neighbors.size(); i++) {
         Node nextNode = null;
@@ -80,50 +85,19 @@ public class AStar {
           double priority = newCost + getCurrentCost(nextNode, targetNode);
           nextNode.setPriority(priority);
           frontier.add(nextNode);
-
-          //          LinkedList<String> nextNeighbors = nextNode.getEdges();
-          //          for(int j = 0; j < nextNeighbors.size(); j++){
-          //            if(!nodeMap.containsKey(nextNeighbors.get(i))){
-          //              Node nextNeighbor =
-          //            }
-          //            frontier.add(nodeMap.get(nextNeighbors.get(i)));
-          //          }
         }
       }
     }
 
+    // Here we get the path starting from the targetNode
     Node node = targetNode;
-
     while (!node.equals(startNode)) {
-      System.out.println(node.getNodeId());
+      // Trace back the paths using the cameFrom attribute
       path.add(0, locDB.getByID(node.getNodeId()));
       node = node.getCameFrom();
     }
 
     return path;
   }
-
-  /*
-  frontier = PriorityQueue()
-  frontier.put(start, 0)
-  came_from = dict()
-  cost_so_far = dict()
-  came_from[start] = None
-  cost_so_far[start] = 0
-
-  while not frontier.empty():
-      current = frontier.get()
-
-  if current == goal:
-      break
-
-  for next in graph.neighbors(current):
-      new_cost = cost_so_far[current] + graph.cost(current, next)
-      if next not in cost_so_far or new_cost < cost_so_far[next]:
-          cost_so_far[next] = new_cost
-          priority = new_cost + heuristic(goal, next)
-          frontier.put(next, priority)
-          came_from[next] = current
-   */
 
 }
