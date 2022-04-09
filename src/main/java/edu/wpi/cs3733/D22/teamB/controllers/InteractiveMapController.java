@@ -4,6 +4,7 @@ import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +26,7 @@ public class InteractiveMapController {
   @FXML private Label equipType;
   @FXML private Rectangle locationPane;
   @FXML private Rectangle equipmentPane;
+  @FXML private Button deleteButton;
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
   protected ServiceRequestsDB rdao;
@@ -372,10 +374,12 @@ public class InteractiveMapController {
       locationInfo.setVisible(false);
       lockHover = false;
       locInfoVisible = false;
+      deleteButton.setVisible(false);
     } else {
       getLocInfo(location);
       lockHover = true;
       locInfoVisible = true;
+      deleteButton.setVisible(true);
     }
   }
 
@@ -397,5 +401,19 @@ public class InteractiveMapController {
     lockHover = false;
     locationInfo.setVisible(false);
     equipInfo.setVisible(false);
+  }
+
+  public void deleteLoc() {
+    String name = roomName.getText();
+    Location target = null;
+    LinkedList<Location> listChange = dao.searchFor(name);
+    for (Location loc : listChange) {
+      if (loc.getLongName().equals(name)) target = loc;
+    }
+    dao.delete(target);
+    deleteButton.setVisible(false);
+    floorReset();
+    setRoomIcons();
+    resetDisplayPanes();
   }
 }
