@@ -15,66 +15,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestQueueController">
+<AnchorPane prefHeight="1152.0" prefWidth="2048.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestQueueController">
    <Button layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-   <ScrollPane layoutX="441.0" layoutY="39.0" prefHeight="318.0" prefWidth="145.0" />
-   <SplitPane dividerPositions="0.34205933682373474" layoutX="9.0" layoutY="38.0" prefHeight="318.0" prefWidth="575.0">
+   <SplitPane dividerPositions="0.34205933682373474" layoutX="9.0" layoutY="38.0" prefHeight="318.0" prefWidth="688.0">
      <items>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-            <children>
-               <ComboBox fx:id="statusInput" layoutX="42.0" layoutY="232.0" prefHeight="25.0" prefWidth="109.0">
-                  <items>
-                     <FXCollections fx:factory="observableArrayList">
-                      <String fx:id="pending" fx:value="Pending" />
-                      <String fx:id="proccessing" fx:value="In-Progress" />
-                      <String fx:id="complete" fx:value="Complete" />
-                    </FXCollections>
-                  </items>
-               </ComboBox>
-               <Button layoutX="76.0" layoutY="271.0" mnemonicParsing="false" onAction="#saveData" text="Save" />
-               <Label contentDisplay="CENTER" layoutX="77.0" layoutY="215.0" text="Status:">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label contentDisplay="CENTER" layoutX="11.0" layoutY="6.0" text="Currently Viewing Request ">
-                  <font>
-                     <Font name="System Bold" size="14.0" />
-                  </font>
-               </Label>
-               <Label fx:id="requestIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="26.0" prefHeight="17.0" prefWidth="144.0">
-                  <font>
-                     <Font name="System Bold" size="14.0" />
-                  </font>
-               </Label>
-               <Label contentDisplay="CENTER" layoutX="39.0" layoutY="53.0" text="Employee In Charge:">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label contentDisplay="CENTER" layoutX="71.0" layoutY="115.0" text="Location:">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="locationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="112.0" prefHeight="93.0" prefWidth="156.0" wrapText="true" />
-               <ComboBox fx:id="employeeInput" layoutX="41.0" layoutY="71.0" prefHeight="25.0" prefWidth="109.0">
-                  <items>
-                     <FXCollections fx:factory="observableArrayList">
+         <ScrollPane prefHeight="200.0" prefWidth="200.0">
+           <content>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="675.0" prefWidth="200.0">
+                  <children>
+                     <Button layoutX="83.0" layoutY="635.0" mnemonicParsing="false" onAction="#saveData" text="Save" />
+                     <Label contentDisplay="CENTER" layoutX="54.0" layoutY="211.0" text="Information:">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="locationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="233.0" prefHeight="373.0" prefWidth="156.0" wrapText="true" />
+                     <ComboBox fx:id="employeeInput" layoutX="37.0" layoutY="73.0" prefHeight="25.0" prefWidth="109.0">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
 
                      </FXCollections>
-                  </items>
-               </ComboBox>
-            </children>
-         </AnchorPane>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="294.0">
+                        </items>
+                     </ComboBox>
+                     <Label contentDisplay="CENTER" layoutX="2.0" layoutY="4.0" text="Currently Viewing Request ">
+                        <font>
+                           <Font name="System Bold" size="14.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="requestIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="17.0" prefWidth="144.0">
+                        <font>
+                           <Font name="System Bold" size="14.0" />
+                        </font>
+                     </Label>
+                     <Label contentDisplay="CENTER" layoutX="30.0" layoutY="56.0" text="Employee In Charge:">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Label>
+                     <ComboBox fx:id="statusInput" layoutX="32.0" layoutY="146.0" prefHeight="25.0" prefWidth="109.0">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                            <String fx:id="pending" fx:value="Pending" />
+                            <String fx:id="proccessing" fx:value="In-Progress" />
+                            <String fx:id="complete" fx:value="Complete" />
+                          </FXCollections>
+                        </items>
+                     </ComboBox>
+                     <Label contentDisplay="CENTER" layoutX="65.0" layoutY="129.0" text="Status:">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </AnchorPane>
+           </content>
+         </ScrollPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="415.0">
             <children>
-               <TableView fx:id="requestTable" prefHeight="318.0" prefWidth="374.0">
+               <TableView fx:id="requestTable" prefHeight="318.0" prefWidth="452.0">
                  <columns>
                    <TableColumn fx:id="columnRequestID" editable="false" prefWidth="87.33333587646484" text="Request ID" />
                    <TableColumn fx:id="columnType" editable="false" prefWidth="70.0" text="Type" />
-                     <TableColumn fx:id="columnStatus" editable="false" minWidth="0.0" prefWidth="114.0" text="Status" />
-                     <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="101.0" text="View Request" />
+                     <TableColumn fx:id="columnStatus" editable="false" minWidth="0.0" prefWidth="109.33329772949219" text="Status" />
+                     <TableColumn fx:id="columnStatus1" editable="false" minWidth="0.0" prefWidth="65.33331298828125" text="Priority" />
+                     <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="122.66668701171875" text="View Request" />
                  </columns>
                </TableView>
             </children>

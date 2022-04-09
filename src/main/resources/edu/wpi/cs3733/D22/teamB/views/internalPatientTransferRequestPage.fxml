@@ -12,38 +12,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
+<AnchorPane prefHeight="1152.0" prefWidth="2048.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
    <children>
-      <Button alignment="TOP_LEFT" layoutX="22.0" layoutY="348.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back" />
-      <Label layoutX="126.0" layoutY="57.0" prefHeight="54.0" prefWidth="347.0" text="Request Internal Patient Transfer">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="250.0" layoutY="239.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
-      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="326.0" prefHeight="35.0" prefWidth="444.0" textAlignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="425.0" layoutY="113.0" text="Destination Room" />
-      <Label alignment="CENTER" layoutX="266.0" layoutY="115.0" text="Destination Floor" />
-      <ComboBox fx:id="locationInput" layoutX="394.0" layoutY="135.0" onAction="#setLocation" prefWidth="150.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList" />
-         </items>
-      </ComboBox>
-      <ComboBox fx:id="floorInput" layoutX="275.0" layoutY="137.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3R" fx:value="F3" />
-               <String fx:id="2R" fx:value="F2" />
-               <String fx:id="1R" fx:value="F1" />
-               <String fx:id="L1R" fx:value="L1" />
-               <String fx:id="L2R" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
       <MenuBar fx:id="homeBar" layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -86,11 +56,41 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button layoutX="544.0" layoutY="348.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
-      <Slider fx:id="prioritySlider" blockIncrement="1.0" layoutX="202.0" layoutY="196.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="5" prefHeight="33.0" prefWidth="211.0" showTickLabels="true" value="1.0" />
-      <Label layoutX="289.0" layoutY="171.0" text="Priority" />
-      <Label alignment="CENTER" layoutX="127.0" layoutY="122.0" text="Patient" />
-      <ComboBox fx:id="patientInput" layoutX="71.0" layoutY="139.0" onAction="#setPatient" prefWidth="150.0">
+      <Button alignment="TOP_LEFT" layoutX="139.0" layoutY="1091.0" mnemonicParsing="false" onAction="#goToHomepage" scaleX="3.0" scaleY="3.0" text="Back To Homepage" />
+      <Label layoutX="908.0" layoutY="220.0" prefHeight="54.0" prefWidth="347.0" scaleX="3.0" scaleY="3.0" text="Request Internal Patient Transfer">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button disable="true" layoutX="1847.0" layoutY="1079.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="25.0" prefWidth="91.0" scaleX="3.0" scaleY="3.0" text="Send Request" />
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="506.0" layoutY="987.0" prefHeight="26.0" prefWidth="682.0" scaleX="3.0" scaleY="3.0" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1397.0" layoutY="585.0" scaleX="3.0" scaleY="3.0" text="Destination Room" />
+      <Label alignment="CENTER" layoutX="1013.0" layoutY="574.0" scaleX="3.0" scaleY="3.0" text="Destination Floor" />
+      <ComboBox fx:id="locationInput" layoutX="1356.0" layoutY="650.0" onAction="#setLocation" prefWidth="150.0" scaleX="3.0" scaleY="3.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList" />
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="floorInput" layoutX="1014.0" layoutY="648.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0" scaleX="3.0" scaleY="3.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="3R" fx:value="F3" />
+               <String fx:id="2R" fx:value="F2" />
+               <String fx:id="1R" fx:value="F1" />
+               <String fx:id="L1R" fx:value="L1" />
+               <String fx:id="L2R" fx:value="L2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Button layoutX="1928.0" layoutY="987.0" mnemonicParsing="false" onAction="#reset" scaleX="3.0" scaleY="3.0" text="Reset" />
+      <Slider fx:id="prioritySlider" blockIncrement="1.0" layoutX="972.0" layoutY="862.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="5" prefHeight="33.0" prefWidth="211.0" scaleX="3.0" scaleY="3.0" showTickLabels="true" value="1.0" />
+      <Label layoutX="1059.0" layoutY="780.0" scaleX="3.0" scaleY="3.0" text="Priority" />
+      <Label alignment="CENTER" layoutX="646.0" layoutY="583.0" scaleX="3.0" scaleY="3.0" text="Patient" />
+      <ComboBox fx:id="patientInput" layoutX="569.0" layoutY="647.0" onAction="#setPatient" prefWidth="150.0" scaleX="3.0" scaleY="3.0">
          <items>
             <FXCollections fx:factory="observableArrayList" />
          </items>

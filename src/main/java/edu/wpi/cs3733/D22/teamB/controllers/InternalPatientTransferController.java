@@ -6,10 +6,9 @@ import edu.wpi.cs3733.D22.teamB.databases.Patient;
 import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
 import edu.wpi.cs3733.D22.teamB.requests.InternalPatientTransferRequest;
 import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
+import java.util.LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import java.util.LinkedList;
 
 public class InternalPatientTransferController extends PatientAndLocationBasedRequestController {
   @FXML
@@ -19,15 +18,14 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
       submitButton.setDisable(false);
     }
   }
+
   @Override
-  public void initialize()
-  {
+  public void initialize() {
     locationsDAO = LocationsDB.getInstance();
     LinkedList<Location> locations = locationsDAO.list();
 
     for (Location location : locations) {
-      if(location.getNodeType().equals("PATI"))
-      {
+      if (location.getNodeType().equals("PATI")) {
         switch (location.getFloor()) {
           case "3":
             locationsF3.add(location.getLongName());
