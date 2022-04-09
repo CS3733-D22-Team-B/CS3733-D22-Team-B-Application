@@ -31,7 +31,7 @@
       </font>
    </Label>
    <Label layoutX="1065.0" layoutY="302.0" scaleX="2.5" scaleY="2.5" text="Room" />
-   <ComboBox fx:id="roomInput" layoutX="989.0" layoutY="359.0" onAction="#setRoom" prefWidth="150.0" scaleX="2.5" scaleY="2.5">
+   <ComboBox fx:id="roomInput" layoutX="989.0" layoutY="359.0" onAction="#setLocation" prefWidth="150.0" scaleX="2.5" scaleY="2.5">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:id="ROOM_1" fx:value="Room 1" />
