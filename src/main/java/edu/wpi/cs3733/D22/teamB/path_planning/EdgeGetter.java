@@ -20,21 +20,31 @@ public class EdgeGetter {
       while ((lineText = buff.readLine()) != null) {
         String[] data = lineText.split(",");
 
+        // System.out.println("0: " + data[0] + " 1: " + data[1] + " 2: " + data[2]);
         if (edgeMap.containsKey(data[1])) {
           LinkedList<String> newList = edgeMap.get(data[1]);
           newList.add(data[2]);
 
           edgeMap.put(data[1], newList);
-
-          System.out.println(newList);
         } else {
           LinkedList<String> newList = new LinkedList<String>();
           newList.add(data[2]);
 
           edgeMap.put(data[1], newList);
-
-          System.out.println(newList);
         }
+
+        if (edgeMap.containsKey(data[2])) {
+          LinkedList<String> newList = edgeMap.get(data[2]);
+          newList.add(data[1]);
+
+          edgeMap.put(data[2], newList);
+        } else {
+          LinkedList<String> newList = new LinkedList<String>();
+          newList.add(data[1]);
+
+          edgeMap.put(data[2], newList);
+        }
+        // System.out.println(edgeMap.keySet());
       }
     } catch (IOException e) {
       System.out.println("Didn't work :(");

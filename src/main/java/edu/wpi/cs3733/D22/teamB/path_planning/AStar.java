@@ -2,88 +2,105 @@ package edu.wpi.cs3733.D22.teamB.path_planning;
 
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.lang.Math;
 
 public class AStar {
-  LocationsDB locDB;
+  LocationsDB locDB = LocationsDB.getInstance();
   Node startNode;
   Node targetNode;
-  HashMap<String, LinkedList<String>> edgeMap = new HashMap<String, LinkedList<String>>();
+  HashMap<String, LinkedList<String>> edgeMap;
   HashMap<String, Node> nodeMap = new HashMap<String, Node>();
 
+  public AStar(Location startLoc, Location targetLoc) {
+    EdgeGetter edgy = new EdgeGetter();
+    this.edgeMap = edgy.getEdges();
 
-    public AStar(Location startLoc, Location targetLoc) {
-      EdgeGetter edgy = new EdgeGetter();
-      this.edgeMap = edgy.getEdges();
+    // System.out.println(startLoc.getNodeID());
+    this.startNode = new Node(startLoc, edgeMap.get(startLoc.getNodeID()));
+    this.targetNode = new Node(targetLoc, edgeMap.get(targetLoc.getNodeID()));
 
-      this.startNode = new Node(startLoc, edgeMap.get(startLoc.getNodeID()));
-      this.targetNode = new Node(targetLoc, edgeMap.get(targetLoc.getNodeID()));
-
-      nodeMap.put(startNode.getNodeId(), startNode);
-      nodeMap.put(targetNode.getNodeId(), targetNode);
+    //    nodeMap.put(startNode.getNodeId(), startNode);
+    //    nodeMap.put(targetNode.getNodeId(), targetNode);
   }
 
-  private double getCurrentCost(Node firstNode, Node secondNode){
-      double xDiff = secondNode.getXCoord() - firstNode.getXCoord();
-      double yDiff = secondNode.getYCoord() - firstNode.getYCoord();
+  private double getCurrentCost(Node firstNode, Node secondNode) {
+    double xDiff = secondNode.getXCoord() - firstNode.getXCoord();
+    double yDiff = secondNode.getYCoord() - firstNode.getYCoord();
 
-      double cost = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
+    double cost = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
 
-      return cost;
+    return cost;
   }
 
-  public ArrayList<Location> getPath(){
-      ArrayList<Location> path = new ArrayList<Location>();
+  public ArrayList<Location> getPath() {
+    ArrayList<Location> path = new ArrayList<Location>();
 
-      PriorityQueue<Node> frontier = new PriorityQueue(300, new NodeComparator());
-      frontier.add(startNode);
+    PriorityQueue<Node> frontier = new PriorityQueue(300, new NodeComparator());
+    frontier.add(startNode);
 
-      while(!frontier.isEmpty()){
-          Node currentNode = frontier.poll();
+    while (!frontier.isEmpty()) {
+      Node currentNode = frontier.poll();
 
-          if(currentNode.getNodeId().equals(targetNode.getNodeId())){
-              break;
-          }
-
-          LinkedList<String> neighbors  = edgeMap.get(currentNode.getNodeId());
-          for(int i = 0; i < neighbors.size(); i++){
-              Node neighborNode = null;
-              boolean isNewNode = false;
-
-              // If the node does not yet exist in the hash map, create it and add to the map
-              if(!nodeMap.containsKey(neighbors.get(i))) {
-                  neighborNode = new Node(locDB.getByID(neighbors.get(i)), edgeMap.get(neighbors.get(i)));
-                  nodeMap.put(neighborNode.getNodeId(), neighborNode);
-                  isNewNode = true;
-              } else{
-                  neighborNode = nodeMap.get(neighbors.get(i));
-              }
-
-              // Add the cost from current -> neighbor to cost so far for current
-              double newCost = getCurrentCost(currentNode, neighborNode) + currentNode.getCostsoFar();
-              if(isNewNode || newCost < neighborNode.getCostsoFar()){
-                  neighborNode.setCostsoFar(newCost);
-                  neighborNode.setCameFrom(currentNode);
-
-                  double priority  = newCost + getCurrentCost(neighborNode, targetNode);
-
-                  frontier.add(neighborNode);
-              }
-              neighborNode.setCostsoFar(newCost);
-          }
+      if (currentNode.getNodeId().equals(targetNode.getNodeId())) {
+        // System.out.println("Found Target");
+        // System.out.println("Target came from: " + targetNode.getCameFrom());
+        targetNode = currentNode;
+        break;
       }
 
-      path.add(0, locDB.getByID(targetNode.getNodeId()));
+      // System.out.println(currentNode.getNodeId());
+      // System.out.println(edgeMap.get(currentNode.getNodeId()));
+      LinkedList<String> neighbors = edgeMap.get(currentNode.getNodeId());
+      for (int i = 0; i < neighbors.size(); i++) {
+        Node nextNode = null;
+        boolean isNewNode = false;
 
+        // If the node does not yet exist in the hash map, create it and add to the map
+        if (!nodeMap.containsKey(neighbors.get(i))) {
+          nextNode = new Node(locDB.getByID(neighbors.get(i)), edgeMap.get(neighbors.get(i)));
+          nodeMap.put(nextNode.getNodeId(), nextNode);
+          isNewNode = true;
+        }
+        // Otherwise, we get the next node
+        else {
+          nextNode = nodeMap.get(neighbors.get(i));
+        }
 
+        // Add the cost from current -> neighbor to cost so far for current
+        double newCost = getCurrentCost(currentNode, nextNode) + currentNode.getCostsoFar();
+        if (isNewNode || newCost < nextNode.getCostsoFar()) {
+          nextNode.setCostsoFar(newCost);
+          nextNode.setCameFrom(currentNode);
 
+          // Here we add a heuristic value. In this case, it is just the distance between
+          // the target node and the next node, so we can reuse the cost function
+          double priority = newCost + getCurrentCost(nextNode, targetNode);
+          nextNode.setPriority(priority);
+          frontier.add(nextNode);
 
-      return path;
+          //          LinkedList<String> nextNeighbors = nextNode.getEdges();
+          //          for(int j = 0; j < nextNeighbors.size(); j++){
+          //            if(!nodeMap.containsKey(nextNeighbors.get(i))){
+          //              Node nextNeighbor =
+          //            }
+          //            frontier.add(nodeMap.get(nextNeighbors.get(i)));
+          //          }
+        }
+      }
+    }
+
+    Node node = targetNode;
+
+    while (!node.equals(startNode)) {
+      System.out.println(node.getNodeId());
+      path.add(0, locDB.getByID(node.getNodeId()));
+      node = node.getCameFrom();
+    }
+
+    return path;
   }
 
   /*
