@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LocationDataController">
+<AnchorPane prefHeight="1152.0" prefWidth="2048.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LocationDataController">
    <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
    <TableView fx:id="locationTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="532.0">
      <columns>

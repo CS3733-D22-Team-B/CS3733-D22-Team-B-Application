@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -13,9 +14,22 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
   @FXML private TextField typeInput;
   @FXML private TextArea notesInput;
   @FXML private Button sendButton;
+  @FXML private Label charactersRemainingLabel;
 
   private String type;
   private String notes;
+
+  @FXML
+  public void initialize() {
+    super.initialize();
+    notesInput.textProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.length() > 256) {
+        notesInput.setText(oldValue);
+      }
+
+      charactersRemainingLabel.setText(String.valueOf(256 - notesInput.getText().length()) + " characters remaining");
+    });
+  }
 
   @FXML
   public void setType() {
