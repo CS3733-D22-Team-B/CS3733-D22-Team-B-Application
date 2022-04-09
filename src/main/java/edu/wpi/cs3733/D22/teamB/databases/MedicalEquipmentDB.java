@@ -6,12 +6,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
-
-  private final String url = "jdbc:derby:Databases;";
-  private final String backupFile = "CSVs/BackupMedicalEquipment.csv";
+  // private final String url = "jdbc:derby:Databases;";
 
   private static MedicalEquipmentDB medicalEquipmentDBManager;
-
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();
 
@@ -24,7 +21,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
   }
 
   private MedicalEquipmentDB() {
-    super("MedicalEquipment", "equipmentID", "CSVs/ApplicationMedicalEquipment.csv");
+    super("MedicalEquipment", "equipmentID", Filepath.getInstance().getMedicalEQCSVFilePath());
     initDB();
   }
 
@@ -81,6 +78,33 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       locList.add(medicalEquipmentMap.get(pkList.get(i)));
     }
     return locList;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
   }
 
   public int update(MedicalEquipment medObj) {

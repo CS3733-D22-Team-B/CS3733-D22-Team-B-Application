@@ -6,12 +6,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabRequest> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupLabRequest.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static LabRequestsDB labRequestsDBManager;
-
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();
 
   public HashMap<String, LabRequest> getLabRequestMap() {
@@ -23,7 +20,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
   }
 
   private LabRequestsDB() {
-    super("LabRequests", "requestID", "CSVs/ApplicationLabRequest.csv");
+    super("LabRequests", "requestID", Filepath.getInstance().getLabRequestCSVFilePath());
     initDB();
   }
 
@@ -87,6 +84,33 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
       labReqList.add(labRequestMap.get(pkList.get(i)));
     }
     return labReqList;
+  }
+
+  public LinkedList<LabRequest> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<LabRequest> list = new LinkedList<LabRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(labRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<LabRequest> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<LabRequest> list = new LinkedList<LabRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(labRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<LabRequest> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<LabRequest> list = new LinkedList<LabRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(labRequestMap.get(pkList.get(i)));
+    }
+    return list;
   }
 
   @Override

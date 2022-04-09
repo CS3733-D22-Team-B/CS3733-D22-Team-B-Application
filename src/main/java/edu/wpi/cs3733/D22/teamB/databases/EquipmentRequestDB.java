@@ -5,12 +5,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
-
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupEquipmentRequest.csv";
+  // private final String url = "jdbc:derby:Databases";
 
   private static EquipmentRequestDB equipmentRequestDBManager;
-
   private HashMap<String, EquipmentRequest> equipmentRequestMap =
       new HashMap<String, EquipmentRequest>();
 
@@ -23,7 +20,8 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
   }
 
   private EquipmentRequestDB() {
-    super("EquipmentRequests", "requestID", "CSVs/ApplicationEquipmentRequest.csv");
+    super(
+        "EquipmentRequests", "requestID", Filepath.getInstance().getEquipmentRequestCSVFilePath());
     initDB();
   }
 
@@ -75,6 +73,33 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       locList.add(equipmentRequestMap.get(pkList.get(i)));
     }
     return locList;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<EquipmentRequest> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<EquipmentRequest> list = new LinkedList<EquipmentRequest>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(equipmentRequestMap.get(pkList.get(i)));
+    }
+    return list;
   }
 
   public EquipmentRequest getByID(String id) {
