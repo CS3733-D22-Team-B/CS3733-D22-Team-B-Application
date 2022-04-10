@@ -26,25 +26,6 @@ public class App extends Application {
     primaryStage.setScene(new Scene(root));
     primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
-
-    // import requests from database
-    //    EquipmentRequestDB equipmentRequestDB = EquipmentRequestDB.getInstance();
-    //    LabRequestsDB labRequestsDB = LabRequestsDB.getInstance();
-    //    ServiceRequestsDB serviceDB = ServiceRequestsDB.getInstance();
-    //
-    //    LinkedList<EquipmentRequest> equipmentRequests = equipmentRequestDB.list();
-    //    LinkedList<LabRequest> labRequests = labRequestsDB.list();
-    //    LinkedList<Request> serviceRequests = serviceDB.list();
-    //
-    //    for (EquipmentRequest request : equipmentRequests) {
-    //      RequestQueue.addRequest(request);
-    //    }
-    //    for (LabRequest request : labRequests) {
-    //      RequestQueue.addRequest(request);
-    //    }
-    //    for (Request request : serviceRequests) {
-    //      RequestQueue.addRequest(request);
-    //    }
   }
 
   @Override

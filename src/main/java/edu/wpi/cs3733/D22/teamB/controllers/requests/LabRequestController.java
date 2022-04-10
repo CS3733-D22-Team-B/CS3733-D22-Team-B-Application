@@ -1,8 +1,8 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
+import edu.wpi.cs3733.D22.teamB.databases.LabRequestsDB;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
-import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -67,7 +67,7 @@ public class LabRequestController extends PatientBasedRequestController {
     String patientID = patientsDB.getPatientID(patientName);
     String testRoomID = locationsDB.getLocationID(labRoom);
     LabRequest request = new LabRequest(patientID, labTest, testingTime, testRoomID);
-    RequestQueue.addRequest(request);
+    LabRequestsDB.getInstance().add(request);
     requestLabel.setText(
         "Request sent: "
             + labTest

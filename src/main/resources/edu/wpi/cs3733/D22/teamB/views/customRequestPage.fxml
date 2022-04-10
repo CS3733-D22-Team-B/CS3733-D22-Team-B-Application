@@ -1,113 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.CustomRequestController">
-   <Button layoutX="157.0" layoutY="1088.0" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="4.0" prefWidth="133.0" scaleX="3.0" scaleY="3.0" text="Back to Homepage" />
-   <Button fx:id="sendButton" disable="false" layoutX="1862.0" layoutY="1088.0" mnemonicParsing="false" onAction="#sendRequest" scaleX="3.0" scaleY="3.0" text="Send Request" />
-   <TextField fx:id="typeInput" layoutX="913.0" layoutY="258.0" prefHeight="26.0" prefWidth="178.0" scaleX="3.0" scaleY="3.0" />
-   <TextArea fx:id="notesInput" layoutX="854.0" layoutY="646.0" prefHeight="73.0" prefWidth="297.0" scaleX="3.0" scaleY="3.0" />
-   <Label layoutX="930.0" layoutY="104.0" scaleX="3.0" scaleY="3.0" text="Custom Request">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Label>
-   <Label layoutX="975.0" layoutY="532.0" scaleX="3.0" scaleY="3.0" text="Notes:" />
-   <Label fx:id="requestLabel" alignment="CENTER" layoutX="688.0" layoutY="987.0" prefHeight="30.0" prefWidth="592.0" scaleX="3.0" scaleY="3.0">
-      <font>
-         <Font size="10.0" />
-      </font>
-   </Label>
-   <Label layoutX="1065.0" layoutY="302.0" scaleX="2.5" scaleY="2.5" text="Room" />
-   <ComboBox fx:id="roomInput" layoutX="989.0" layoutY="359.0" onAction="#setLocation" prefWidth="150.0" scaleX="2.5" scaleY="2.5">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:id="ROOM_1" fx:value="Room 1" />
-            <String fx:id="ROOM_2" fx:value="Room 2" />
-            <String fx:id="ROOM_3" fx:value="Room 3" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <ComboBox fx:id="floorInput" layoutX="605.0" layoutY="361.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0" scaleX="2.5" scaleY="2.5">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:id="3" fx:value="F3" />
-            <String fx:id="2" fx:value="F2" />
-            <String fx:id="1" fx:value="F1" />
-            <String fx:id="L1" fx:value="L1" />
-            <String fx:id="L2" fx:value="L2" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <Label layoutX="988.0" layoutY="379.0" scaleX="3.0" scaleY="3.0" text="Floor" />
-   <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-      <menus>
-         <Menu mnemonicParsing="false" text="Profile">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-               <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-               <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Map">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Requests">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-               <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-               <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-            </items>
-         </Menu>
-         <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
-         <Menu mnemonicParsing="false" text="Help">
-            <items>
-               <MenuItem mnemonicParsing="false" text="About" />
-               <MenuItem mnemonicParsing="false" text="ඞ" />
-            </items>
-         </Menu>
-      </menus>
-   </MenuBar>
-   <Slider fx:id="prioritySlider" blockIncrement="1.0" layoutX="886.0" layoutY="895.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="5" prefHeight="33.0" prefWidth="211.0" scaleX="3.0" scaleY="3.0" showTickLabels="true" value="1.0" />
-   <Label layoutX="975.0" layoutY="825.0" scaleX="3.0" scaleY="3.0" text="Priority" />
-   <Label alignment="CENTER" layoutX="567.0" layoutY="375.0" scaleX="3.0" scaleY="3.0" text="Patient" />
-   <ComboBox fx:id="patientInput" layoutX="506.0" layoutY="435.0" onAction="#setPatient" prefWidth="150.0" scaleX="3.0" scaleY="3.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList" />
-      </items>
-   </ComboBox>
-   <Label layoutX="993.0" layoutY="197.0" scaleX="3.0" scaleY="3.0" text="Type" />
-   <Label fx:id="charactersRemainingLabel" layoutX="1269.0" layoutY="798.0" text="256 characters remaining" textFill="RED">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </Label>
-   <Button layoutX="1938.0" layoutY="997.0" mnemonicParsing="false" onAction="#reset" scaleX="3.0" scaleY="3.0" text="Reset" />
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
+   <children>
+      <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
+         <children>
+            <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" text="Back to Homepage" />
+            <JFXButton layoutX="598.0" layoutY="449.0" onAction="#reset" text="Reset" />
+            <JFXButton fx:id="submitButton" layoutX="650.0" layoutY="449.0" onAction="#sendRequest" text="Submit" />
+            <Label layoutX="532.0" layoutY="286.0" text="Priority" />
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="401.0" layoutY="309.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="28.0" prefWidth="290.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+            <TextArea fx:id="notesInput" layoutX="406.0" layoutY="44.0" prefHeight="200.0" prefWidth="279.0" promptText="Additional Notes:" />
+            <TextField fx:id="typeInput" layoutX="23.0" layoutY="64.0" promptText="Type" />
+            <ComboBox fx:id="patientInput" layoutX="26.0" layoutY="144.0" onAction="#setPatient" prefHeight="35.0" prefWidth="210.0" promptText="Patient" />
+            <ComboBox fx:id="floorInput" layoutX="23.0" layoutY="102.0" onAction="#setFloor" prefHeight="35.0" prefWidth="100.0" promptText="Floor" />
+            <ComboBox fx:id="locationInput" layoutX="131.0" layoutY="102.0" onAction="#setLocation" prefHeight="35.0" prefWidth="210.0" promptText="Location" />
+            <SVGPath content="M40,60 C42,48 44,30 25,32" layoutX="98.0" layoutY="246.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="371.0" prefHeight="25.0" prefWidth="672.0" />
+            <Label fx:id="charactersRemainingLabel" layoutX="573.0" layoutY="244.0" text="500 characters remaining" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

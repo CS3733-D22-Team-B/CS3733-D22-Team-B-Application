@@ -2,6 +2,8 @@ package edu.wpi.cs3733.D22.teamB.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
 
+import java.util.Date;
+
 public abstract class Request {
   protected final String requestID;
   protected String employeeID;
@@ -14,6 +16,8 @@ public abstract class Request {
   protected String status;
   protected int priority;
   protected String information;
+  protected Date timeCreated;
+  protected Date lastEdited;
 
   public Request(String locationID, String patientID, String type) {
     this.employeeID = "0";
@@ -24,6 +28,9 @@ public abstract class Request {
     this.priority = 0;
     this.information = "";
     this.requestID = createRequestID();
+    this.timeCreated = new Date();
+    this.lastEdited = new Date();
+
 
     employee = getEmployee();
     location = getLocation();
@@ -38,7 +45,9 @@ public abstract class Request {
       String type,
       String status,
       int priority,
-      String information) {
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
     this.requestID = requestID;
     this.employeeID = employeeID;
     this.locationID = locationID;
@@ -47,6 +56,8 @@ public abstract class Request {
     this.status = status;
     this.priority = priority;
     this.information = information;
+    this.timeCreated = timeCreated;
+    this.lastEdited = lastEdited;
 
     employee = getEmployee();
     location = getLocation();
