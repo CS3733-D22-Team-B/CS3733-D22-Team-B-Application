@@ -40,7 +40,9 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
                 rs.getString(5),
                 rs.getString(6),
                 rs.getInt(7),
-                rs.getString(8));
+                rs.getString(8),
+                new java.util.Date(rs.getTimestamp(9).getTime()),
+                new java.util.Date(rs.getTimestamp(10).getTime()));
         equipmentRequestMap.put(rs.getString(1), eqreqOb);
       }
     } catch (SQLException e) {
@@ -109,7 +111,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     }
     return transform(
         eqreqObj,
-        "UPDATE EquipmentRequests SET employeeID = ?, locationID = ?, equipmentID = ?, type = ?, status = ?, priority = ?, information = ? WHERE requestID = ?",
+        "UPDATE EquipmentRequests SET employeeID = ?, locationID = ?, equipmentID = ?, type = ?, status = ?, priority = ?, information = ?, timeCreated = ?, lastEdited = ? WHERE requestID = ?",
         true);
   }
 
@@ -117,7 +119,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
     if (equipmentRequestMap.containsKey(eqreqObj.getRequestID())) {
       return -1;
     }
-    return transform(eqreqObj, "INSERT INTO EquipmentRequests VALUES(?,?,?,?,?,?,?,?)", false);
+    return transform(eqreqObj, "INSERT INTO EquipmentRequests VALUES(?,?,?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(EquipmentRequest eqreqObj) {
@@ -137,7 +139,7 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(8, eqreqObj.getRequestID());
+        pStatement.setString(10, eqreqObj.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, eqreqObj.getRequestID());
@@ -150,6 +152,8 @@ public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases
       pStatement.setString(6 + offset, eqreqObj.getStatus());
       pStatement.setInt(7 + offset, eqreqObj.getPriority());
       pStatement.setString(8 + offset, eqreqObj.getInformation());
+      pStatement.setTimestamp(9 + offset, new Timestamp(eqreqObj.getTimeCreated().getTime()));
+      pStatement.setTimestamp(10 + offset, new Timestamp(eqreqObj.getLastEdited().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();

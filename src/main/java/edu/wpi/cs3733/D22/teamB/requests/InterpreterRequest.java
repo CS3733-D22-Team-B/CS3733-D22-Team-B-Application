@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import java.util.Date;
+
 public class InterpreterRequest extends Request {
 
   public InterpreterRequest(String locationID, String information) {
@@ -15,8 +17,20 @@ public class InterpreterRequest extends Request {
       String type,
       String status,
       int priority,
-      String information) {
-    super(requestID, employeeID, locationID, null, type, status, priority, information);
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
+    super(
+        requestID,
+        employeeID,
+        locationID,
+        null,
+        type,
+        status,
+        priority,
+        information,
+        timeCreated,
+        lastEdited);
   }
 
   public final String createRequestID() {
