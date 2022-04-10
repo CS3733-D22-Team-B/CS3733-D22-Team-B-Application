@@ -6,25 +6,23 @@ import java.sql.*;
 public class DatabaseInitializer {
 
   private Connection connection = null;
-  final String DBURL = "jdbc:derby:Databases;create=true";
-  // private String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
-  // private String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
-  // private String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
-  // private String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
-  // private String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
-  // private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
-  // private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
+  private String embedded = "jdbc:derby:Databases;create=true";
+  private String remote = "jdbc:derby://localhost:1527/Databases;create=true";
+  private String DBURL;
 
-  public DatabaseInitializer() {}
+  public DatabaseInitializer(boolean isRemote) {
+    if (isRemote) {
+      DBURL = remote;
+    } else {
+      DBURL = embedded;
+    }
+  }
 
   public void initDB() {
     try {
       // Create database
       connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
-      // statement.execute("DROP TABLE MedicalEquipment");
-      // statement.execute("DROP TABLE Patients");
-      // statement.execute("DROP TABLE Locations");
 
       if (!tableExists(connection, "LOCATIONS")) {
         statement.execute(
