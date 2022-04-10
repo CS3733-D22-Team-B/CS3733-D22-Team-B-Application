@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
-
 import java.util.Date;
 
 public abstract class Request {
@@ -30,7 +29,6 @@ public abstract class Request {
     this.requestID = createRequestID();
     this.timeCreated = new Date();
     this.lastEdited = new Date();
-
 
     employee = getEmployee();
     location = getLocation();
@@ -126,6 +124,18 @@ public abstract class Request {
 
   public final int getPriority() {
     return priority;
+  }
+
+  public final Date getTimeCreated() {
+    return timeCreated;
+  }
+
+  public final Date getLastEdited() {
+    return lastEdited;
+  }
+
+  public final void setLastEdited(Date d) {
+    lastEdited = d;
   }
 
   // Josh Bloch's Hashing method

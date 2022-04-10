@@ -11,14 +11,6 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   private static ServiceRequestsDB serviceRequestsDBManager;
   private HashMap<String, Request> requestMap = new HashMap<String, Request>();
 
-  public HashMap<String, Request> getRequestMap() {
-    return requestMap;
-  }
-
-  public void setRequestMap(HashMap<String, Request> requestMap) {
-    this.requestMap = requestMap;
-  }
-
   private ServiceRequestsDB() {
     super("ServiceRequests", "requestID", Filepath.getInstance().getServiceRequestCSVFilePath());
     initDB();
@@ -32,6 +24,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   }
 
   protected void initDB() {
+    requestMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -50,7 +43,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(5),
                     rs.getString(6),
                     rs.getInt(7),
-                    rs.getString(8));
+                    rs.getString(8),
+                    new java.util.Date(rs.getTimestamp(9).getTime()),
+                    new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
           case "Medicine":
             req =
@@ -62,7 +57,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(5),
                     rs.getString(6),
                     rs.getInt(7),
-                    rs.getString(8));
+                    rs.getString(8),
+                    new java.util.Date(rs.getTimestamp(9).getTime()),
+                    new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
           case "Interpreter":
             req =
@@ -74,7 +71,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(5),
                     rs.getString(6),
                     rs.getInt(7),
-                    rs.getString(8));
+                    rs.getString(8),
+                    new java.util.Date(rs.getTimestamp(9).getTime()),
+                    new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
           case "Transfer":
             req =
@@ -86,7 +85,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(5),
                     rs.getString(6),
                     rs.getInt(7),
-                    rs.getString(8));
+                    rs.getString(8),
+                    new java.util.Date(rs.getTimestamp(9).getTime()),
+                    new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
           default:
             req =
@@ -98,7 +99,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(5),
                     rs.getString(6),
                     rs.getInt(7),
-                    rs.getString(8));
+                    rs.getString(8),
+                    new java.util.Date(rs.getTimestamp(9).getTime()),
+                    new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
         }
         requestMap.put(rs.getString(1), req);
@@ -168,7 +171,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     }
     return transform(
         reqObj,
-        "UPDATE ServiceRequests SET employeeID = ?, locationID = ?, patientID = ?, type = ?, status = ?, priority = ?, information = ? WHERE requestID = ?",
+        "UPDATE ServiceRequests SET employeeID = ?, locationID = ?, patientID = ?, type = ?, status = ?, priority = ?, information = ?, timeCreated = ?, lastEdited = ? WHERE requestID = ?",
         true);
   }
 
@@ -176,7 +179,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     if (requestMap.containsKey(reqObj.getRequestID())) {
       return -1;
     }
-    return transform(reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?)", false);
+    return transform(reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Request reqObj) {
@@ -196,7 +199,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(8, reqObj.getRequestID());
+        pStatement.setString(10, reqObj.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, reqObj.getRequestID());
@@ -209,6 +212,8 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       pStatement.setString(6 + offset, reqObj.getStatus());
       pStatement.setInt(7 + offset, reqObj.getPriority());
       pStatement.setString(8 + offset, reqObj.getInformation());
+      pStatement.setTimestamp(9 + offset, new Timestamp(reqObj.getTimeCreated().getTime()));
+      pStatement.setTimestamp(10 + offset, new Timestamp(reqObj.getLastEdited().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();
