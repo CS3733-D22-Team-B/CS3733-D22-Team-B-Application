@@ -10,41 +10,40 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.LoginController">
    <children>
-      <HBox layoutX="263.0" prefHeight="401.0" prefWidth="338.0" style="-fx-background-color: #3d6183#3d6183;" />
-
-      <ImageView fitHeight="168.0" fitWidth="135.0" layoutX="70.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+      <HBox layoutX="388.0" layoutY="93.0" prefHeight="401.0" prefWidth="338.0" style="-fx-background-color: #3d6183#3d6183;" />
+      <ImageView fitHeight="168.0" fitWidth="135.0" layoutX="195.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Brigham_and_Womens_Hospital_logo.png" />
+            <Image url="@../../assets/Brigham_and_Womens_Hospital_logo.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" focusTraversable="false" layoutX="296.0" layoutY="55.0" prefHeight="55.0" prefWidth="278.0" text="Login" textFill="WHITE">
+      <Label alignment="CENTER" focusTraversable="false" layoutX="421.0" layoutY="148.0" prefHeight="55.0" prefWidth="278.0" text="Login" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameField" layoutX="363.0" layoutY="188.0" onAction="#setUsername" />
-      <PasswordField fx:id="passwordBox" layoutX="363.0" layoutY="264.0" onAction="#setPassword" />
-      <Label focusTraversable="false" layoutX="408.0" layoutY="242.0" text="Password" textFill="WHITE" />
-      <Label focusTraversable="false" layoutX="409.0" layoutY="164.0" prefHeight="18.0" prefWidth="70.0" text="Username" textFill="WHITE" />
-      <Button fx:id="loginButton" layoutX="414.0" layoutY="332.0" mnemonicParsing="false" onAction="#login" text="Login" />
-      <ImageView fitHeight="55.0" fitWidth="54.0" layoutX="446.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="usernameField" layoutX="488.0" layoutY="281.0" onAction="#setUsername" />
+      <PasswordField fx:id="passwordBox" layoutX="488.0" layoutY="357.0" onAction="#setPassword" />
+      <Label focusTraversable="false" layoutX="533.0" layoutY="335.0" text="Password" textFill="WHITE" />
+      <Label focusTraversable="false" layoutX="534.0" layoutY="257.0" prefHeight="18.0" prefWidth="70.0" text="Username" textFill="WHITE" />
+      <Button fx:id="loginButton" layoutX="539.0" layoutY="425.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <ImageView fitHeight="55.0" fitWidth="54.0" layoutX="571.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/icons8-Fluency-People.png" />
+            <Image url="@../../Documents/GitHub/CS3733-D22-Team-B-Prototype-Application/src/main/resources/edu/Downloads/icons8-Fluency-People.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="318.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" translateX="55.0" translateY="-10.0">
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="443.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/person.png" />
+            <Image url="@../../Documents/GitHub/CS3733-D22-Team-B-Prototype-Application/src/main/resources/edu/wpi/cs3733/D22/teamB/assets/person.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="321.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" x="54.0" y="-15.0">
+      <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="446.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" x="54.0" y="-15.0">
          <image>
-            <Image url="@../assets/Lock.png" />
+            <Image url="@../../Documents/GitHub/CS3733-D22-Team-B-Prototype-Application/src/main/resources/edu/wpi/cs3733/D22/teamB/assets/Lock.png" />
          </image>
       </ImageView>
-      <Label fx:id="loginFail" focusTraversable="false" layoutX="78.0" layoutY="313.0" prefHeight="18.0" prefWidth="118.0" />
-      <Button focusTraversable="false" layoutX="14.0" layoutY="345.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+      <Label fx:id="loginFail" focusTraversable="false" layoutX="203.0" layoutY="406.0" prefHeight="18.0" prefWidth="118.0" />
+      <Button focusTraversable="false" layoutX="139.0" layoutY="438.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
    </children>
 </AnchorPane>

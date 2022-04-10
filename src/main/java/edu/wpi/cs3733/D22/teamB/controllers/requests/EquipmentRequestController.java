@@ -1,7 +1,7 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequest;
-import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
+import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequestDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -37,7 +37,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     setNotes();
     String locationID = locationsDAO.getLocationID(locationName);
     EquipmentRequest request = new EquipmentRequest(locationID, equipment, notes);
-    RequestQueue.addRequest(request);
+    EquipmentRequestDB.getInstance().add(request);
     requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }
 
