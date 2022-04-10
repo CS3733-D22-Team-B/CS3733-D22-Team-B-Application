@@ -18,7 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
-import javax.swing.*;
 
 public class InteractiveMapController {
   @FXML private AnchorPane anchorPane;
@@ -31,11 +30,14 @@ public class InteractiveMapController {
   @FXML private Label equipType;
   @FXML private Rectangle locationPane;
   @FXML private Rectangle equipmentPane;
+  @FXML private Button addButton;
   @FXML private Button deleteButton;
+  @FXML private Button editButton;
   @FXML private Label errorLabel;
   @FXML private TextField addLocationName;
   @FXML private ComboBox<String> typeDropdown;
-  @FXML private Button confirmAdd;
+  @FXML private Button confirmButton;
+  @FXML private Button markerButton;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -53,6 +55,7 @@ public class InteractiveMapController {
   private Boolean lockHover = false;
   private Boolean equipInfoVisible = false;
   private Boolean addEnabled = false;
+  private Boolean editEnabled = false;
 
   private int floorLevel = 2;
   private int[] coordinates;
@@ -396,11 +399,13 @@ public class InteractiveMapController {
       lockHover = false;
       locInfoVisible = false;
       deleteButton.setVisible(false);
+      editButton.setVisible(false);
     } else {
       getLocInfo(location);
       lockHover = true;
       locInfoVisible = true;
       deleteButton.setVisible(true);
+      editButton.setVisible(true);
     }
   }
 
@@ -445,20 +450,22 @@ public class InteractiveMapController {
   public void startAdd() {
     lockHover = true;
     addEnabled = true;
+    markerButton.setVisible(true);
     typeDropdown.setVisible(true);
     addLocationName.setVisible(true);
-    confirmAdd.setVisible(true);
+    confirmButton.setVisible(true);
   }
 
   public void endAdd() {
     lockHover = false;
     addEnabled = false;
+    markerButton.setVisible(false);
     typeDropdown.setVisible(false);
     addLocationName.setVisible(false);
-    confirmAdd.setVisible(false);
+    confirmButton.setVisible(false);
     typeDropdown.setValue("");
     addLocationName.setText("");
-    removeIcon(marker);
+    clearMarker();
     floorReset();
     setRoomIcons();
     resetDisplayPanes();
@@ -487,13 +494,67 @@ public class InteractiveMapController {
               name);
       // Pass new location into database
       dao.add(newLoc);
-      System.out.println("Add worked!");
       endAdd();
     }
   }
 
+  public void confirmChanges() {
+    if (editEnabled) editLocation();
+    if (addEnabled) addLocation();
+  }
+
+  public void startEdit() {
+    editEnabled = true;
+    lockHover = true;
+    markerButton.setVisible(true);
+    typeDropdown.setVisible(true);
+    addLocationName.setVisible(true);
+    confirmButton.setVisible(true);
+    deleteButton.setDisable(true);
+    addButton.setDisable(true);
+  }
+
+  public void endEdit() {
+    editEnabled = false;
+    lockHover = false;
+    markerButton.setVisible(false);
+    typeDropdown.setVisible(false);
+    addLocationName.setVisible(false);
+    confirmButton.setVisible(false);
+    deleteButton.setDisable(false);
+    addButton.setDisable(false);
+    removeIcon(marker);
+    floorReset();
+    setRoomIcons();
+    resetDisplayPanes();
+  }
+
+  public void editLocation() {
+    String oldName = roomName.getText();
+    LinkedList<Location> findLoc = dao.listByAttribute("longName", oldName);
+    Location toChange = findLoc.pop();
+    String name = toChange.getLongName();
+    String nodeType = toChange.getNodeType();
+    if (!addLocationName.getText().equals("") && !addLocationName.getText().equals(name)) {
+      toChange.setShortName(addLocationName.getText());
+      toChange.setLongName(addLocationName.getText());
+    }
+    if (typeDropdown.getValue() != null && !typeDropdown.getValue().equals(nodeType)) {
+      toChange.setNodeType(typeDropdown.getValue());
+    }
+    if (mapPane.getChildren().contains(marker)) {
+      int markerX = (int) marker.getLayoutX();
+      int markerY = (int) marker.getLayoutY();
+      int[] newCoords = imageCoordsToCSVCoords(markerX, markerY);
+      toChange.setXCoord(newCoords[0]);
+      toChange.setYCoord(newCoords[1]);
+    }
+    dao.update(toChange);
+    endEdit();
+  }
+
   public void getCoordinates(MouseEvent event) {
-    if (addEnabled) {
+    if (addEnabled || editEnabled) {
       if (mapPane.getChildren().contains(marker)) {
         removeIcon(marker);
       }
@@ -506,6 +567,12 @@ public class InteractiveMapController {
       mapPane.getChildren().add(marker);
       marker.setLayoutX(coordinates[0] - 10);
       marker.setLayoutY(coordinates[1] - 10);
+    }
+  }
+
+  public void clearMarker() {
+    if (mapPane.getChildren().contains(marker)) {
+      removeIcon(marker);
     }
   }
 }
