@@ -54,7 +54,7 @@ public class DatabaseInitializer {
         statement.execute(
             "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), equipmentID VARCHAR(10), type VARCHAR(100), status VARCHAR(25), priority int, information VARCHAR(512), CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT ER_EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID),CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
         populateDatabase(
-            Filepath.getInstance().getEquipmentRequestCSVFilePath(), "EquipmentRequests", 7);
+            Filepath.getInstance().getEquipmentRequestCSVFilePath(), "EquipmentRequests", 8);
       }
       if (!tableExists(connection, "LABREQUESTS")) {
         statement.execute(

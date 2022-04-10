@@ -11,14 +11,6 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   private static ServiceRequestsDB serviceRequestsDBManager;
   private HashMap<String, Request> requestMap = new HashMap<String, Request>();
 
-  public HashMap<String, Request> getRequestMap() {
-    return requestMap;
-  }
-
-  public void setRequestMap(HashMap<String, Request> requestMap) {
-    this.requestMap = requestMap;
-  }
-
   private ServiceRequestsDB() {
     super("ServiceRequests", "requestID", Filepath.getInstance().getServiceRequestCSVFilePath());
     initDB();
@@ -32,6 +24,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
   }
 
   protected void initDB() {
+    requestMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

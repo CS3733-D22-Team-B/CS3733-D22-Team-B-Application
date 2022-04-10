@@ -11,14 +11,6 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
   private static LabRequestsDB labRequestsDBManager;
   private HashMap<String, LabRequest> labRequestMap = new HashMap<String, LabRequest>();
 
-  public HashMap<String, LabRequest> getLabRequestMap() {
-    return labRequestMap;
-  }
-
-  public void setLabRequestMap(HashMap<String, LabRequest> labRequestMap) {
-    this.labRequestMap = labRequestMap;
-  }
-
   private LabRequestsDB() {
     super("LabRequests", "requestID", Filepath.getInstance().getLabRequestCSVFilePath());
     initDB();
@@ -33,6 +25,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
 
   @Override
   protected void initDB() {
+    labRequestMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

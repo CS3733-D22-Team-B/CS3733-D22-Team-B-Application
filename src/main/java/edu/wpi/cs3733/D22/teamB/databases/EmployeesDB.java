@@ -10,14 +10,6 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
   private static EmployeesDB employeesDBManager;
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
 
-  public HashMap<String, Employee> getEmployeeMap() {
-    return employeeMap;
-  }
-
-  public void setEmployeeMap(HashMap<String, Employee> employeeMap) {
-    this.employeeMap = employeeMap;
-  }
-
   private EmployeesDB() {
     super("Employees", "employeeID", Filepath.getInstance().getEmployeesCSVFilePath());
     initDB();
@@ -31,6 +23,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
   }
 
   public void initDB() {
+    employeeMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

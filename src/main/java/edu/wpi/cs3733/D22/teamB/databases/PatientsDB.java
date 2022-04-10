@@ -12,14 +12,6 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   private static PatientsDB patientsDBManager;
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
 
-  public HashMap<String, Patient> getPatientMap() {
-    return patientMap;
-  }
-
-  public void setPatientMap(HashMap<String, Patient> patientMap) {
-    this.patientMap = patientMap;
-  }
-
   private PatientsDB() {
     super("Patients", "patientID", Filepath.getInstance().getPatientsCSVFilePath());
     initDB();
@@ -33,6 +25,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   }
 
   protected void initDB() {
+    patientMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();

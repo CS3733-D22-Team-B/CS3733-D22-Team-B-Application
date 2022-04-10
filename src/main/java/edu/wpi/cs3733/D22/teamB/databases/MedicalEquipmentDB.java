@@ -12,14 +12,6 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();
 
-  public HashMap<String, MedicalEquipment> getMedicalEquipmentMap() {
-    return medicalEquipmentMap;
-  }
-
-  public void setMedicalEquipmentMap(HashMap<String, MedicalEquipment> medicalEquipmentMap) {
-    this.medicalEquipmentMap = medicalEquipmentMap;
-  }
-
   private MedicalEquipmentDB() {
     super("MedicalEquipment", "equipmentID", Filepath.getInstance().getMedicalEQCSVFilePath());
     initDB();
@@ -33,6 +25,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
   }
 
   protected void initDB() {
+    medicalEquipmentMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
