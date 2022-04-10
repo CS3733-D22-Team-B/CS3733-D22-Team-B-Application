@@ -256,16 +256,6 @@ public abstract class DatabaseSuperclass {
     return pkList;
   }
 
-  /*
-  protected LinkedList<String> searchWhere(String attribute, boolean value) {
-    if (value) {
-      return searchWhere(attribute, 1);
-    } else {
-      return searchWhere(attribute, 0);
-    }
-  }
-   */
-
   protected int deleteFrom(String pk) {
     try {
       Connection connection = DriverManager.getConnection(url);

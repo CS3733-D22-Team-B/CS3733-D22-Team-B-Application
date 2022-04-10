@@ -185,9 +185,9 @@ public class MenuBarController {
     EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
     EmployeesDB empDB = EmployeesDB.getInstance();
     LabRequestsDB labReqDB = LabRequestsDB.getInstance();
-    // ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
+    ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
 
-    // serReqDB.quit();
+    serReqDB.quit();
     labReqDB.quit();
     eqReqDB.quit();
     patDB.quit();
