@@ -1,7 +1,7 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
+import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
 import edu.wpi.cs3733.D22.teamB.requests.InterpreterRequest;
-import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -25,7 +25,7 @@ public class InterpreterRequestController extends LocationBasedRequestController
   public void sendRequest(ActionEvent actionEvent) {
     String locationID = locationsDAO.getLocationID(locationName);
     InterpreterRequest request = new InterpreterRequest(locationID, language);
-    RequestQueue.addRequest(request);
+    ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request Sent: " + language + " interpreter to " + locationName);
   }
 

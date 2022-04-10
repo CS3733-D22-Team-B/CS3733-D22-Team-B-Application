@@ -1,7 +1,7 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
+import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
 import edu.wpi.cs3733.D22.teamB.requests.MedicineRequest;
-import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -27,7 +27,7 @@ public class MedicineRequestController extends PatientBasedRequestController {
   public void sendRequest(ActionEvent actionEvent) {
     String patientID = patientsDB.getPatientID(patientName);
     MedicineRequest request = new MedicineRequest(patientID, medicine);
-    RequestQueue.addRequest(request);
+    ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: " + medicine + " to " + patientName);
   }
 

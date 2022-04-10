@@ -1,11 +1,7 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
-import edu.wpi.cs3733.D22.teamB.databases.Patient;
-import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.InternalPatientTransferRequest;
-import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import java.util.LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,7 +58,7 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
     String destinationID = locationsDAO.getLocationID(locationName);
     InternalPatientTransferRequest request =
         new InternalPatientTransferRequest(patientName, destinationID);
-    RequestQueue.addRequest(request);
+    ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: Moving " + patientName + " to " + locationName);
   }
 

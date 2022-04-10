@@ -2,6 +2,8 @@ package edu.wpi.cs3733.D22.teamB.databases;
 
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 
+import java.util.Date;
+
 public class EquipmentRequest extends Request {
   private final String equipmentID;
   private MedicalEquipment medicalEquipment;
@@ -15,15 +17,17 @@ public class EquipmentRequest extends Request {
   }
 
   public EquipmentRequest(
-      String requestID,
-      String employeeID,
-      String locationID,
-      String equipmentID,
-      String type,
-      String status,
-      int priority,
-      String information) {
-    super(requestID, employeeID, locationID, null, type, status, priority, information);
+          String requestID,
+          String employeeID,
+          String locationID,
+          String equipmentID,
+          String type,
+          String status,
+          int priority,
+          String information,
+          Date timeCreated,
+          Date lastEdited) {
+    super(requestID, employeeID, locationID, null, type, status, priority, information, timeCreated, lastEdited);
     this.equipmentID = equipmentID;
     medicalEquipment = getMedicalEquipment();
   }

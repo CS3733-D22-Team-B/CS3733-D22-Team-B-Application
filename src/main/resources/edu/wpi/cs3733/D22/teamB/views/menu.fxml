@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar fx:id="homeBar" prefHeight="25.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+    <menus>
+        <Menu mnemonicParsing="false" text="Profile">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
+                <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
+                <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="View">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToMap" text="Map" />
+                <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+                <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
+                <MenuItem mnemonicParsing="false" onAction="#goToPatientDatabase" text="Patient Database" />
+                <MenuItem mnemonicParsing="false" onAction="#goToEmployeeDatabase" text="Employee Database" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Create a Request">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToRequestLandingPage" text="Request" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+                <MenuItem mnemonicParsing="false" text="ඞ" />
+            </items>
+        </Menu>
+    </menus>
+</MenuBar>

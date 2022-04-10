@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.Patient;
 import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
