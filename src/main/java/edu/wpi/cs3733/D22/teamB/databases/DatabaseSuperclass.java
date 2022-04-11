@@ -6,10 +6,14 @@ import java.util.LinkedList;
 import javax.lang.model.util.Elements;
 
 public abstract class DatabaseSuperclass {
-  protected final String url = "jdbc:derby:Databases;";
+  protected String embedded = "jdbc:derby:Databases;";
+  protected String remote = "jdbc:derby://localhost:1527/Databases;";
+  protected String url = embedded;
+
   protected String tableType;
   protected String pkName;
   protected String filePath;
+  protected boolean isRemote = false;
 
   public DatabaseSuperclass(String initTableType, String initPkName, String initFilePath) {
     tableType = initTableType;
@@ -281,6 +285,15 @@ public abstract class DatabaseSuperclass {
       System.out.println("Connection failed. Check output console.");
       e.printStackTrace();
       return;
+    }
+  }
+
+  public void switchConnection(boolean isRemote) {
+    this.isRemote = isRemote;
+    if (this.isRemote) {
+      url = remote;
+    } else {
+      url = embedded;
     }
   }
 

@@ -5,8 +5,10 @@ import java.util.LinkedList;
 
 public class DatabaseController {
 
+  private boolean isRemote = false;
+
   public DatabaseController() {
-    DatabaseInitializer DI = new DatabaseInitializer();
+    DatabaseInitializer DI = new DatabaseInitializer(isRemote);
     DI.initDB();
   }
 
@@ -26,7 +28,7 @@ public class DatabaseController {
     LocationsDB.getInstance().listDB();
     MedicalEquipmentDB.getInstance().listDB();
     PatientsDB.getInstance().listDB();
-    // ServiceRequestsDB.getInstance().listDB();
+    ServiceRequestsDB.getInstance().listDB();
   }
 
   public LinkedList<Location> listLocations() {
@@ -161,7 +163,7 @@ public class DatabaseController {
     locationsDB.quit();
 
     // ReInitialize
-    DatabaseInitializer DI = new DatabaseInitializer();
+    DatabaseInitializer DI = new DatabaseInitializer(isRemote);
     // ReInit
     DI.initDB();
 
@@ -173,5 +175,17 @@ public class DatabaseController {
     patientsDB.initDB();
     employeesDB.initDB();
     locationsDB.initDB();
+  }
+
+  public void switchConnection() {
+    this.isRemote = !isRemote;
+    DatabaseInitializer DI = new DatabaseInitializer(isRemote);
+    EmployeesDB.getInstance().switchConnection(isRemote);
+    EquipmentRequestDB.getInstance().switchConnection(isRemote);
+    LabRequestsDB.getInstance().switchConnection(isRemote);
+    LocationsDB.getInstance().switchConnection(isRemote);
+    MedicalEquipmentDB.getInstance().switchConnection(isRemote);
+    PatientsDB.getInstance().switchConnection(isRemote);
+    ServiceRequestsDB.getInstance().switchConnection(isRemote);
   }
 }
