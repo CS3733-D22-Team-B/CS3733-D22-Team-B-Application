@@ -54,7 +54,7 @@
          </children>
       </Pane>
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="449.0" layoutY="238.0" prefHeight="140.0" prefWidth="121.0" wrapText="true" />
-      <Button fx:id="confirmButton" layoutX="534.0" layoutY="251.0" mnemonicParsing="false" onAction="#confirmChanges" text="Confirm" visible="false" />
+      <Button fx:id="confirmButton" layoutX="525.0" layoutY="251.0" mnemonicParsing="false" onAction="#confirmChanges" text="Confirm" visible="false" />
       <ComboBox fx:id="typeDropdown" layoutX="448.0" layoutY="212.0" prefWidth="150.0" promptText="Room Type" visible="false">
          <items>
             <FXCollections fx:factory="observableArrayList">
@@ -80,5 +80,6 @@
       <TextField fx:id="addLocationName" layoutX="449.0" layoutY="173.0" promptText="Location Name" visible="false" />
       <Button fx:id="addButton" layoutX="471.0" layoutY="40.0" mnemonicParsing="false" onAction="#startAdd" text="Add" />
       <Button fx:id="markerButton" layoutX="448.0" layoutY="78.0" mnemonicParsing="false" onAction="#clearMarker" text="Clear Marker" visible="false" />
+      <Button fx:id="cancelButton" layoutX="457.0" layoutY="251.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" visible="false" />
    </children>
 </AnchorPane>

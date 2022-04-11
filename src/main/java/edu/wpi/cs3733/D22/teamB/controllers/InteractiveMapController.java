@@ -37,6 +37,7 @@ public class InteractiveMapController {
   @FXML private TextField addLocationName;
   @FXML private ComboBox<String> typeDropdown;
   @FXML private Button confirmButton;
+  @FXML private Button cancelButton;
   @FXML private Button markerButton;
 
   protected LocationsDB dao;
@@ -199,7 +200,17 @@ public class InteractiveMapController {
             });
     icon.setOnMouseClicked(
         event -> {
-          if (!equipInfoVisible) toggleRoomInfo(location);
+          if (!equipInfoVisible) {
+            locationPane.setFill(icon.getFill());
+            if (!location.getNodeType().equals("EXIT")) {
+              roomName.setTextFill(Color.rgb(255, 255, 255));
+              nodeType.setTextFill(Color.rgb(255, 255, 255));
+            } else {
+              roomName.setTextFill(Color.rgb(0, 0, 0));
+              nodeType.setTextFill(Color.rgb(0, 0, 0));
+            }
+            toggleRoomInfo(location);
+          }
         });
     icon.setLayoutX(viewCoords[0] - 5);
     icon.setLayoutY(viewCoords[1] - 5);
@@ -416,6 +427,7 @@ public class InteractiveMapController {
       equipInfoVisible = false;
     } else {
       getEquipInfo(eq);
+
       lockHover = true;
       equipInfoVisible = true;
     }
@@ -454,6 +466,7 @@ public class InteractiveMapController {
     typeDropdown.setVisible(true);
     addLocationName.setVisible(true);
     confirmButton.setVisible(true);
+    cancelButton.setVisible(true);
   }
 
   public void endAdd() {
@@ -465,6 +478,7 @@ public class InteractiveMapController {
     confirmButton.setVisible(false);
     typeDropdown.setValue("");
     addLocationName.setText("");
+    cancelButton.setVisible(false);
     clearMarker();
     floorReset();
     setRoomIcons();
@@ -512,6 +526,7 @@ public class InteractiveMapController {
     confirmButton.setVisible(true);
     deleteButton.setDisable(true);
     addButton.setDisable(true);
+    cancelButton.setVisible(true);
   }
 
   public void endEdit() {
@@ -523,6 +538,9 @@ public class InteractiveMapController {
     confirmButton.setVisible(false);
     deleteButton.setDisable(false);
     addButton.setDisable(false);
+    cancelButton.setVisible(false);
+    deleteButton.setVisible(false);
+    editButton.setVisible(false);
     removeIcon(marker);
     floorReset();
     setRoomIcons();
@@ -574,5 +592,10 @@ public class InteractiveMapController {
     if (mapPane.getChildren().contains(marker)) {
       removeIcon(marker);
     }
+  }
+
+  public void cancel() {
+    endEdit();
+    endAdd();
   }
 }
