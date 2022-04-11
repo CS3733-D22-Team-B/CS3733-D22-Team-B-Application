@@ -231,7 +231,6 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     for (Location loc : floorLocations) {
       if (loc.getNodeType().equals(roomType)) {
         lastID = loc.getNodeID();
-        System.out.println(lastID);
       }
     }
     char[] nums = new char[3];

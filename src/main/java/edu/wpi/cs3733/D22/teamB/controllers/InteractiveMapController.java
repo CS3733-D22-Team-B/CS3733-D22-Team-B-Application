@@ -78,10 +78,9 @@ public class InteractiveMapController {
     setRoomIcons();
     // Set Equipment
     setEquipIcons();
+    // Set Requests
     setServiceIcons();
     resetDisplayPanes();
-    // Set Requests
-
   }
 
   public void setRoomIcons() {
@@ -300,7 +299,7 @@ public class InteractiveMapController {
             (obs, oldVal, newVal) -> {
               if (newVal && !lockHover) {
                 getRequestInfo(r);
-                equipmentPane.setFill(icon.getFill());
+                requestPane.setFill(icon.getFill());
               } else {
                 if (!equipInfoVisible && !lockHover) {
                   equipInfo.setVisible(false);
@@ -341,7 +340,7 @@ public class InteractiveMapController {
     requestType.setText(r.getType());
     requestInfo.setLayoutX(mapCoords[0] - 50);
     requestInfo.setLayoutY(mapCoords[1] + 15);
-    equipInfo.setVisible(true);
+    requestInfo.setVisible(true);
   }
 
   public int[] mapCoordsToViewCoords(int x, int y) {
