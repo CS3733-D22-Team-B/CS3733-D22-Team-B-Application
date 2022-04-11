@@ -66,12 +66,11 @@ public class DatabaseInitializer {
             "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID), CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID))");
         populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Edges", 3);
       }
-      /*
       if (!tableExists(connection, "SERVICEREQUESTS")) {
         statement.execute(
             "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE)");
         populateServiceRequestsDatabase();
-      }*/
+      }
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
