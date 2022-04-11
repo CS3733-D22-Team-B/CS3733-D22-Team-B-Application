@@ -56,6 +56,10 @@ public class Patient {
     return location;
   }
 
+  public String getOverview() {
+    return firstName + " " + lastName + " (" + patientID + ")";
+  }
+
   /////////////////// LOCATION GETTERS////////////////////
   public int getXCoord() {
     return location.getXCoord();

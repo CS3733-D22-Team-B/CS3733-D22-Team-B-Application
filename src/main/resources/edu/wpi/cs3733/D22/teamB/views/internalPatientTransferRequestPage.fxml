@@ -1,113 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.InternalPatientTransferController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.InternalPatientTransferController">
    <children>
-      <Button alignment="TOP_LEFT" layoutX="22.0" layoutY="348.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back" />
-      <Label layoutX="126.0" layoutY="57.0" prefHeight="54.0" prefWidth="347.0" text="Request Internal Patient Transfer">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="250.0" layoutY="211.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="40.0" prefWidth="97.0" text="Send Request" />
-      <Label layoutX="288.0" layoutY="153.0" text="to">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="326.0" prefHeight="35.0" prefWidth="444.0" textAlignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="175.0" layoutY="136.0" text="Room" />
-      <ComboBox fx:id="destinationRoomInput" layoutX="417.0" layoutY="158.0" onAction="#setDestinationRoom" prefWidth="150.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList" />
-         </items>
-      </ComboBox>
-      <ComboBox fx:id="destinationFloorInput" layoutX="333.0" layoutY="158.0" onAction="#setDestinationFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3" fx:value="F3" />
-               <String fx:id="2" fx:value="F2" />
-               <String fx:id="1" fx:value="F1" />
-               <String fx:id="L1" fx:value="L1" />
-               <String fx:id="L2" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label alignment="CENTER" layoutX="49.0" layoutY="136.0" text="Floor" />
-      <Label alignment="CENTER" layoutX="480.0" layoutY="135.0" text="Room" />
-      <ComboBox fx:id="roomInput" layoutX="110.0" layoutY="158.0" onAction="#setRoom" prefWidth="150.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList" />
-         </items>
-      </ComboBox>
-      <ComboBox fx:id="floorInput" layoutX="26.0" layoutY="158.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="3R" fx:value="F3" />
-               <String fx:id="2R" fx:value="F2" />
-               <String fx:id="1R" fx:value="F1" />
-               <String fx:id="L1R" fx:value="L1" />
-               <String fx:id="L2R" fx:value="L2" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label alignment="CENTER" layoutX="354.0" layoutY="135.0" text="Floor" />
-      <MenuBar fx:id="homeBar" layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Profile">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+         <children>
+            <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Background.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/SidePiece.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/SidePiece.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/CollectionBackground.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="375.0" prefHeight="25.0" prefWidth="625.0" textFill="#7bcce4" />
+            <Label fx:id="charactersRemainingLabel" layoutX="685.0" layoutY="298.0" text="500 characters remaining" textFill="#7bcce4">
+               <font>
+                  <Font size="7.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="876.0" layoutY="35.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="38.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/menuButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="679.0" layoutY="403.0" onAction="#reset" text=" ">
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resetButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="submitButton" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
+               <graphic>
+                  <ImageView disable="true" fitHeight="82.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/submitButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="610.0" layoutY="316.0" text="Priority" textFill="#7bcce4" />
+            <TextArea fx:id="additionalInformationInput" layoutX="485.0" layoutY="98.0" prefHeight="200.0" prefWidth="279.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" />
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="481.0" layoutY="330.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="34.0" prefWidth="290.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
+            <ComboBox fx:id="patientInput" layoutX="177.0" layoutY="98.0" onAction="#setPatient" prefHeight="35.0" prefWidth="281.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
+            <ComboBox fx:id="floorInput" layoutX="176.0" layoutY="148.0" onAction="#setFloor" prefHeight="35.0" prefWidth="143.0" promptText="Destination Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="3" fx:value="F3" />
+                     <String fx:id="2" fx:value="F2" />
+                     <String fx:id="1" fx:value="F1" />
+                     <String fx:id="L1" fx:value="L1" />
+                     <String fx:id="L2" fx:value="L2" />
+                  </FXCollections>
                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Map">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Requests">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-               </items>
-            </Menu>
-            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="ඞ" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <Button layoutX="544.0" layoutY="348.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
+            </ComboBox>
+            <ComboBox fx:id="locationInput" layoutX="177.0" layoutY="198.0" onAction="#setLocation" prefHeight="35.0" prefWidth="210.0" promptText="Destination Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
+            <Label layoutX="-185.0" layoutY="252.0" prefHeight="0.0" prefWidth="469.0" rotate="-90.0" text="Internal Patient Transfer Request" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+            <fx:include source="menu.fxml" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

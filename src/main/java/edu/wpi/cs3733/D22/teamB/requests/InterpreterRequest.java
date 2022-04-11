@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import java.util.Date;
+
 public class InterpreterRequest extends Request {
 
   public InterpreterRequest(String locationID, String information) {
-    super(locationID, "Interpreter");
+    super(locationID, null, information, "Interpreter");
     this.information = "Language: " + information;
   }
 
@@ -11,10 +13,24 @@ public class InterpreterRequest extends Request {
       String requestID,
       String employeeID,
       String locationID,
+      String patientID,
       String type,
       String status,
-      String information) {
-    super(requestID, type, employeeID, locationID, status, information);
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
+    super(
+        requestID,
+        employeeID,
+        locationID,
+        null,
+        type,
+        status,
+        priority,
+        information,
+        timeCreated,
+        lastEdited);
   }
 
   public final String createRequestID() {

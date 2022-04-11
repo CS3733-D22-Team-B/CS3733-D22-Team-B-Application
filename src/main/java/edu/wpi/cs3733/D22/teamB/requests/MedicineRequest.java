@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import java.util.Date;
+
 public class MedicineRequest extends Request {
 
-  public MedicineRequest(String locationID, String information) {
-    super(locationID, "Medicine");
+  public MedicineRequest(String patientID, String information) {
+    super(null, patientID, information, "Medicine");
     this.information = "Medicine Request: " + information;
   }
 
@@ -11,10 +13,24 @@ public class MedicineRequest extends Request {
       String requestID,
       String employeeID,
       String locationID,
+      String patientID,
       String type,
       String status,
-      String information) {
-    super(requestID, type, employeeID, locationID, status, information);
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
+    super(
+        requestID,
+        employeeID,
+        null,
+        patientID,
+        type,
+        status,
+        priority,
+        information,
+        timeCreated,
+        lastEdited);
   }
 
   public final String createRequestID() {

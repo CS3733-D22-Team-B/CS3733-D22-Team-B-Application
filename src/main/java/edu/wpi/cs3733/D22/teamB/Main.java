@@ -8,6 +8,7 @@ public class Main {
     System.out.println("-------Embedded Apache Derby Connection Testing-------");
     try {
       Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+      Class.forName("org.apache.derby.jdbc.ClientDriver");
     } catch (ClassNotFoundException e) {
       System.out.println("Apache Derby Driver not found. Add the classpath to your module.");
       System.out.println("For IntelliJ do the following:");

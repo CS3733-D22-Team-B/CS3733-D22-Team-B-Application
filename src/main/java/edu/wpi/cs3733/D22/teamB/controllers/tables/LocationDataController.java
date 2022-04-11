@@ -1,5 +1,6 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import java.net.URL;

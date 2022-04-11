@@ -1,5 +1,6 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
@@ -20,6 +21,7 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
   @FXML TableColumn<MedicalEquipment, String> columnEquipment;
   @FXML TableColumn<MedicalEquipment, String> columnLocation;
   @FXML TableColumn<MedicalEquipment, String> columnSterilization;
+  @FXML TableColumn<MedicalEquipment, String> columnAvailability;
 
   private ObservableList<Location> locations = FXCollections.observableArrayList();
   private ObservableList<MedicalEquipment> equipment = FXCollections.observableArrayList();
@@ -39,6 +41,12 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
     columnEquipment.setCellValueFactory(new PropertyValueFactory<>("equipmentID"));
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
     columnSterilization.setCellValueFactory(new PropertyValueFactory<>("isSterilized"));
+    columnAvailability.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
+
+    columnEquipment.getStyleClass().add("simple-table-column-left");
+    columnLocation.getStyleClass().add("simple-table-column-middle");
+    columnSterilization.getStyleClass().add("simple-table-column-middle");
+    columnAvailability.getStyleClass().add("simple-table-column-right");
 
     equipmentTable.setItems(equipment);
   }

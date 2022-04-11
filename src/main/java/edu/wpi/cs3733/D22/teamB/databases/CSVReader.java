@@ -19,20 +19,24 @@ public class CSVReader {
     InputStream is = getClass().getResourceAsStream(filepath);
     BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
     System.out.println(is);
+
     try {
       String line = lineReader.readLine();
-      System.out.println(line);
+      while (line != null) {
+        line = lineReader.readLine();
+        System.out.println(line);
+      }
     } catch (Exception e) {
     }
   }
 
   public void bigTest() {
-    test(locationCSVFilePath);
-    test(medicalEQCSVFilePath);
-    test(employeesCSVFilePath);
-    test(patientsCSVFilePath);
-    test(equipmentRequestCSVFilePath);
-    test(labRequestCSVFilePath);
+    // test(locationCSVFilePath);
+    // test(medicalEQCSVFilePath);
+    // test(employeesCSVFilePath);
+    // test(patientsCSVFilePath);
+    // test(equipmentRequestCSVFilePath);
+    // test(labRequestCSVFilePath);
     test(serviceRequestCSVFilePath);
   }
    */

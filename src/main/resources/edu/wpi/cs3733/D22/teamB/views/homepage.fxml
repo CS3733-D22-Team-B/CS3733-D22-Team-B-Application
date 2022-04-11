@@ -1,86 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
-    <children>
-        <ImageView fitHeight="375.0" fitWidth="600.0" layoutY="27.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../assets/hospitalExterior.jpg" />
-            </image>
-        </ImageView>
-        <Button fx:id="profileButton" layoutX="536.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToProfilePage" text="Profile" />
-        <Button fx:id="mapButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#displayMapButtons" prefHeight="25.0" prefWidth="115.0" text="Map" />
-        <Button fx:id="equipmentTrackerButton" layoutX="471.0" layoutY="132.0" mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-        <Button fx:id="requestButton" layoutX="471.0" layoutY="162.0" mnemonicParsing="false" onAction="#displayRequestButtons" prefHeight="25.0" prefWidth="115.0" text="Requests" />
-        <Button fx:id="equipmentRequestButton" layoutX="374.0" layoutY="103.0" mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" visible="false" />
-        <Button fx:id="labRequestButton" layoutX="374.0" layoutY="135.0" mnemonicParsing="false" onAction="#goToLabServiceRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Lab Service" visible="false" />
-        <Button fx:id="medicineRequestButton" layoutX="374.0" layoutY="196.0" mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Medicine Delivery" visible="false" />
-        <Button fx:id="mealRequestButton" layoutX="374.0" layoutY="166.0" mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Patient Meal Delivery" visible="false" />
-        <Button fx:id="interpreterRequestButton" layoutX="373.0" layoutY="227.0" mnemonicParsing="false" onAction="#goToInterpreterRequestPage" prefHeight="25.0" prefWidth="211.0" text="Request Language Interpreter" textAlignment="CENTER" visible="false" />
-        <Button fx:id="internalPatientTransferButton" layoutX="375.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" prefWidth="211.0" text="Request Internal Patient Transfer" visible="false" />
-      <Button fx:id="customRequestButton" layoutX="376.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToCustomRequestPage" prefHeight="26.0" prefWidth="210.0" text="Custom Request" visible="false" />
-        <Button fx:id="backButton" layoutX="14.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" visible="false" />
-
-        <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="Profile">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-                        <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-                    </items>
-                </Menu>
-
-                <Menu mnemonicParsing="false" text="Map">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items></Menu>
-
-                <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-               </items></Menu>
-
-                <Menu mnemonicParsing="false" text="Requests">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-                        <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-                        <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-                        <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-                        <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-                        <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-                    </items>
-                </Menu>
-
-                <Menu disable="true" mnemonicParsing="false" text="Patient Database">
-                </Menu>
-
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="ඞ" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-      <Button fx:id="mapViewerButton" layoutX="471.0" layoutY="102.0" mnemonicParsing="false" onAction="#goToMapViewPage" prefHeight="25.0" prefWidth="115.0" text="Map Viewer" visible="false" />
-      <Button fx:id="mapEditorButton" layoutX="472.0" layoutY="134.0" mnemonicParsing="false" onAction="#goToMapEditPage" prefHeight="25.0" prefWidth="115.0" text="Map Editor" visible="false" />
-      <Button fx:id="mapDatabaseButton" layoutX="471.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToLocationData" prefHeight="25.0" prefWidth="115.0" text="Map Database" visible="false" />
-      <Button fx:id="requestQueueButton" layoutX="471.0" layoutY="193.0" mnemonicParsing="false" onAction="#goToRequestQueue" prefHeight="26.0" prefWidth="115.0" text="Request Queue" />
-      <Button fx:id="patientDatabaseButton" disable="true" layoutX="471.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Patient Database" />
-      <Button layoutX="486.0" layoutY="38.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-
-    </children>
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Background.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="employeeDatabaseButton" contentDisplay="TOP" layoutX="564.0" layoutY="293.0" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database">
+         <graphic>
+            <Circle fill="#e91c23" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="patientDatabaseButton" contentDisplay="TOP" layoutX="403.0" layoutY="293.0" onAction="#goToPatientDatabase" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database">
+         <graphic>
+            <Circle fill="#f7941d" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="requestQueueButton" contentDisplay="TOP" layoutX="564.0" layoutY="197.0" onAction="#goToRequestQueue" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Request Queue">
+         <graphic>
+            <Circle fill="#fbf002" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="requestButton" contentDisplay="TOP" layoutX="403.0" layoutY="197.0" onAction="#goToRequestLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Request">
+         <graphic>
+            <Circle fill="#8cc73b" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="mapButton" contentDisplay="TOP" layoutX="244.0" layoutY="197.0" onAction="#goToMap" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+         <graphic>
+            <Circle fill="#2b73bf" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" layoutX="244.0" layoutY="293.0" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker">
+         <graphic>
+            <Circle fill="#922590" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <fx:include source="menu.fxml" />
+      <Label layoutX="144.0" layoutY="54.0" text="Brigham and Women's Hospital" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="257.0" layoutY="116.0" text="Boston Hospital and Medical Center" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

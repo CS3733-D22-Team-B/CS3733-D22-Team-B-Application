@@ -1,0 +1,35 @@
+*{
+    -fx-base: #cdcdcd;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.text-area {
+    -fx-control-inner-background: #2e3c4b;
+    -fx-background-color: #2e3c4b;
+    -fx-prompt-text-fill: #4b7486;
+    -fx-text-fill: #4b7486;
+    -fx-inner-background-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+.simple-text-area {
+    -fx-border-color: #7bcce4;
+}
+
+.text-field {
+    -fx-background-color: #2e3c4b;
+    -fx-prompt-text-fill: #4b7486;
+    -fx-text-fill: #4b7486;
+    -fx-border-radius: 10px;
+ }
+.simple-text-field {
+    -fx-border-color: #7bcce4;
+}

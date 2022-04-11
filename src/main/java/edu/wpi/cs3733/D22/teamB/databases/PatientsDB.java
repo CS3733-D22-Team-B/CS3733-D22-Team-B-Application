@@ -3,20 +3,14 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
   // private final String url = "jdbc:derby:Databases;";
 
   private static PatientsDB patientsDBManager;
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
-
-  public HashMap<String, Patient> getPatientMap() {
-    return patientMap;
-  }
-
-  public void setPatientMap(HashMap<String, Patient> patientMap) {
-    this.patientMap = patientMap;
-  }
 
   private PatientsDB() {
     super("Patients", "patientID", Filepath.getInstance().getPatientsCSVFilePath());
@@ -31,6 +25,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
   }
 
   protected void initDB() {
+    patientMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -151,5 +146,13 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       return -1;
     }
     return 0;
+  }
+
+  public String getPatientID(String patientName) {
+    Stream<String> keys =
+        patientMap.entrySet().stream()
+            .filter(entry -> patientName.equals(entry.getValue().getOverview()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 }

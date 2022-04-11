@@ -1,10 +1,7 @@
 package edu.wpi.cs3733.D22.teamB;
 
-import edu.wpi.cs3733.D22.teamB.databases.Employee;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +17,10 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    // TODO: Switch back to login as landing page
-    Parent root = FXMLLoader.load(getClass().getResource("views/loginPage.fxml"));
-    Scene scene = new Scene(root);
-    primaryStage.setScene(scene);
+    UIController.getInstance().setPrimaryStage(primaryStage);
+    UIController.getInstance().goToPage("loginPage");
+
+    primaryStage.setTitle("CS3733 Project");
     primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
   }

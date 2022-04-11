@@ -1,63 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.EquipmentTrackerController">
-   <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-   <TableView fx:id="equipmentTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="532.0">
-     <columns>
-       <TableColumn fx:id="columnEquipment" prefWidth="148.6666603088379" text="Equipment" />
-         <TableColumn fx:id="columnLocation" prefWidth="292.6666717529297" text="Location" />
-         <TableColumn fx:id="columnSterilization" minWidth="0.0" prefWidth="90.00003051757812" text="Sterilized" />
-     </columns>
-   </TableView>
-   <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-      <menus>
-         <Menu mnemonicParsing="false" text="Profile">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-               <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-               <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Map">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Requests">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-               <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-               <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-            </items>
-         </Menu>
-         <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
-         <Menu mnemonicParsing="false" text="Help">
-            <items>
-               <MenuItem mnemonicParsing="false" text="About" />
-               <MenuItem mnemonicParsing="false" text="ඞ" />
-            </items>
-         </Menu>
-      </menus>
-   </MenuBar>
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EquipmentTrackerController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+         <children>
+            <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Background.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/SidePiece.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/SidePiece.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/CollectionBackground.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="871.0" layoutY="38.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/menuButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="-187.0" layoutY="244.0" rotate="-90.0" text="Equipment Tracker" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="56.0" />
+               </font>
+            </Label>
+            <fx:include source="menu.fxml" />
+            <TableView fx:id="equipmentTable" layoutX="134.0" layoutY="62.0" prefHeight="428.0" prefWidth="690.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
+              <columns>
+                <TableColumn fx:id="columnEquipment" prefWidth="130.0" text="Equipment" />
+                <TableColumn fx:id="columnLocation" minWidth="0.0" prefWidth="379.0" text="Location" />
+                  <TableColumn fx:id="columnSterilization" prefWidth="87.0" text="Sterilized" />
+                  <TableColumn fx:id="columnAvailability" prefWidth="93.0" text="Availablity" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

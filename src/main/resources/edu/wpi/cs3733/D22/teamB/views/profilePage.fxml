@@ -1,120 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.ProfileController">
    <children>
-      <ImageView fitHeight="112.0" fitWidth="146.0" layoutX="152.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/EmptyProfile.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="nameDisplay" alignment="CENTER" layoutX="275.0" layoutY="65.0" prefHeight="55.0" prefWidth="174.0" text="*name here*">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="employeeID" alignment="CENTER" layoutX="287.0" layoutY="120.0" prefHeight="20.0" prefWidth="150.0" text="*Employee ID*">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <GridPane layoutX="162.0" layoutY="185.0" prefHeight="131.0" prefWidth="275.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="33.4" minHeight="10.0" prefHeight="33.4" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="65.80001831054688" minHeight="10.0" prefHeight="48.59996643066407" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="87.99999389648437" minHeight="10.0" prefHeight="52.199981689453125" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="94.0" text="Username:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Background.png" />
+               </image>
+            </ImageView>
+            <fx:include source="menu.fxml" />
+            <JFXButton layoutX="14.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <Label fx:id="nameLabel" layoutX="368.0" layoutY="61.0" text="Employee Name" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="48.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="20.0" prefWidth="76.0" text="Position:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="positionLabel" layoutX="368.0" layoutY="128.0" text="Position" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="94.0" text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/EmptyProfile.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="idLabel" layoutX="368.0" layoutY="171.0" text="ID Number" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label fx:id="usernameDisplay" alignment="CENTER" prefHeight="18.0" prefWidth="83.0" text="*username*" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="usernameLabel" layoutX="188.0" layoutY="230.0" text="Username:" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="passwordDisplay" alignment="CENTER" prefHeight="20.0" prefWidth="112.0" text="Reset Password" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="passwordLabel" layoutX="188.0" layoutY="254.0" text="Password:" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="positionDisplay" alignment="CENTER" prefHeight="20.0" prefWidth="133.0" text="Hospital Employee" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="viewPasswordButton" layoutX="188.0" layoutY="281.0" onAction="#togglePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Password" />
+            <JFXButton layoutX="294.0" layoutY="281.0" onAction="#openChangePasswordDisplay" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Change Password" />
+            <JFXButton fx:id="changePasswordButton" layoutX="188.0" layoutY="437.0" onAction="#changePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Submit" visible="false" />
+            <Label fx:id="changePasswordLabel" layoutX="188.0" layoutY="330.0" text="Change Password" textFill="WHITE" visible="false">
                <font>
-                  <Font size="14.0" />
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <TextField fx:id="confirmPasswordField" layoutX="187.0" layoutY="404.0" prefHeight="25.0" prefWidth="219.0" promptText="Re-enter New Password" visible="false" />
+            <TextField fx:id="newPasswordField" layoutX="187.0" layoutY="370.0" prefHeight="25.0" prefWidth="219.0" promptText="Enter New Password" visible="false" />
+            <Label fx:id="errorLabel" layoutX="252.0" layoutY="437.0" prefHeight="27.0" prefWidth="647.0" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
-      </GridPane>
-      <Button layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-      <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Profile">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-                  <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Map">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Requests">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-               </items>
-            </Menu>
-            <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="ඞ" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
+      </AnchorPane>
    </children>
 </AnchorPane>

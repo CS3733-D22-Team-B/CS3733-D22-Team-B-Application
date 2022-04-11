@@ -1,51 +1,71 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
+import java.util.Date;
 
 public abstract class Request {
   protected final String requestID;
-  protected String type;
   protected String employeeID;
   protected Employee employee;
   protected final String locationID;
   protected Location location;
+  protected final String patientID;
+  protected Patient patient;
+  protected String type;
   protected String status;
+  protected int priority;
   protected String information;
+  protected Date timeCreated;
+  protected Date lastEdited;
 
-  public Request(String locationID, String type) {
-    this.type = type;
+  public Request(String locationID, String patientID, String information, String type) {
     this.employeeID = "0";
     this.locationID = locationID;
+    this.patientID = patientID;
+    this.type = type;
     this.status = "Pending";
+    this.priority = 0;
+    this.information = information;
     this.requestID = createRequestID();
+    this.timeCreated = new Date();
+    this.lastEdited = new Date();
+
+    employee = getEmployee();
+    location = getLocation();
+    patient = getPatient();
   }
 
   public Request(
       String requestID,
-      String type,
       String employeeID,
       String locationID,
+      String patientID,
+      String type,
       String status,
-      String information) {
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
     this.requestID = requestID;
-    this.type = type;
     this.employeeID = employeeID;
     this.locationID = locationID;
+    this.patientID = patientID;
+    this.type = type;
     this.status = status;
+    this.priority = priority;
     this.information = information;
+    this.timeCreated = timeCreated;
+    this.lastEdited = lastEdited;
+
+    employee = getEmployee();
+    location = getLocation();
+    patient = getPatient();
   }
 
   public abstract String createRequestID();
 
   public final String getRequestID() {
     return requestID;
-  }
-
-  public final String getType() {
-    return type;
   }
 
   public final String getEmployeeID() {
@@ -76,6 +96,20 @@ public abstract class Request {
     return location;
   }
 
+  public final String getPatientID() {
+    return patientID;
+  }
+
+  public Patient getPatient() {
+    PatientsDB patientsDB = PatientsDB.getInstance();
+    patient = patientsDB.getByID(patientID);
+    return patient;
+  }
+
+  public final String getType() {
+    return type;
+  }
+
   public final String getStatus() {
     return status;
   }
@@ -86,6 +120,22 @@ public abstract class Request {
 
   public final String getInformation() {
     return information;
+  }
+
+  public final int getPriority() {
+    return priority;
+  }
+
+  public final Date getTimeCreated() {
+    return timeCreated;
+  }
+
+  public final Date getLastEdited() {
+    return lastEdited;
+  }
+
+  public final void setLastEdited(Date d) {
+    lastEdited = d;
   }
 
   // Josh Bloch's Hashing method

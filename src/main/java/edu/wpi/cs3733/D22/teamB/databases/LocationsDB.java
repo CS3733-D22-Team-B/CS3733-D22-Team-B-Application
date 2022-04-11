@@ -12,14 +12,6 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   private static LocationsDB locationsDBManager;
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
-  public HashMap<String, Location> getLocationMap() {
-    return locationMap;
-  }
-
-  public void setLocationMap(HashMap<String, Location> locationMap) {
-    this.locationMap = locationMap;
-  }
-
   private LocationsDB() {
     super("Locations", "nodeID", Filepath.getInstance().getLocationCSVFilePath());
     initDB();
@@ -33,6 +25,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   }
 
   protected void initDB() {
+    locationMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
