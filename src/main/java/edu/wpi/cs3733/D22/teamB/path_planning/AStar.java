@@ -11,15 +11,16 @@ public class AStar {
   LocationsDB locDB = LocationsDB.getInstance();
   Node startNode;
   Node targetNode;
-  HashMap<String, LinkedList<String>> edgeMap;
+  // HashMap<String, LinkedList<String>> edgeMap;
   HashMap<String, Node> nodeMap = new HashMap<String, Node>();
+  EdgeGetter edgeGetter = EdgeGetter.getInstance();
 
   public AStar(Location startLoc, Location targetLoc) {
-    EdgeGetter edgy = new EdgeGetter();
-    this.edgeMap = edgy.getEdges();
 
-    this.startNode = new Node(startLoc, edgeMap.get(startLoc.getNodeID()));
-    this.targetNode = new Node(targetLoc, edgeMap.get(targetLoc.getNodeID()));
+    // this.edgeMap = edgy.getEdges();
+
+    this.startNode = new Node(startLoc, edgeGetter.getEdges(startLoc.getNodeID()));
+    this.targetNode = new Node(targetLoc, edgeGetter.getEdges(targetLoc.getNodeID()));
   }
 
   /**
@@ -60,14 +61,15 @@ public class AStar {
       }
 
       // We pull the current list of neighbors from the edgeMap and then iterate thru it
-      LinkedList<String> neighbors = edgeMap.get(currentNode.getNodeId());
+      LinkedList<String> neighbors = edgeGetter.getEdges(currentNode.getNodeId());
       for (int i = 0; i < neighbors.size(); i++) {
         Node nextNode = null;
         boolean isNewNode = false;
 
         // If the node does not yet exist in the hash map, create it and add to the map
         if (!nodeMap.containsKey(neighbors.get(i))) {
-          nextNode = new Node(locDB.getByID(neighbors.get(i)), edgeMap.get(neighbors.get(i)));
+          nextNode =
+              new Node(locDB.getByID(neighbors.get(i)), edgeGetter.getEdges(neighbors.get(i)));
           nodeMap.put(nextNode.getNodeId(), nextNode);
           isNewNode = true;
         }

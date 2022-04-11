@@ -11,6 +11,15 @@ import java.util.LinkedList;
 
 public class EdgeGetter {
 
+  private static EdgeGetter edgeGetter;
+
+  public static EdgeGetter getInstance() {
+    if (edgeGetter == null) {
+      edgeGetter = new EdgeGetter();
+    }
+    return edgeGetter;
+  }
+
   public LinkedList<String> getEdges(String startID) {
     DatabaseController DC = DatabaseController.getInstance();
     EdgesDB edgesDB = EdgesDB.getInstance();
