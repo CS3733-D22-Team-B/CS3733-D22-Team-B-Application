@@ -29,6 +29,7 @@ public class DatabaseController {
     MedicalEquipmentDB.getInstance().listDB();
     PatientsDB.getInstance().listDB();
     ServiceRequestsDB.getInstance().listDB();
+    EdgesDB.getInstance().listDB();
   }
 
   public LinkedList<Location> listLocations() {
@@ -152,12 +153,14 @@ public class DatabaseController {
     MedicalEquipmentDB medicalEquipmentDB = MedicalEquipmentDB.getInstance();
     PatientsDB patientsDB = PatientsDB.getInstance();
     ServiceRequestsDB serviceRequestsDB = ServiceRequestsDB.getInstance();
+    EdgesDB edgesDB = EdgesDB.getInstance();
 
     // Drop All
     equipmentRequestDB.quit();
     medicalEquipmentDB.quit();
     labRequestsDB.quit();
     serviceRequestsDB.quit();
+    edgesDB.quit();
     patientsDB.quit();
     employeesDB.quit();
     locationsDB.quit();
@@ -172,6 +175,7 @@ public class DatabaseController {
     equipmentRequestDB.initDB();
     labRequestsDB.initDB();
     serviceRequestsDB.initDB();
+    edgesDB.initDB();
     patientsDB.initDB();
     employeesDB.initDB();
     locationsDB.initDB();
