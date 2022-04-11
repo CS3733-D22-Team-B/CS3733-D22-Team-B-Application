@@ -18,7 +18,7 @@ public class MenuBarController {
 
   @FXML
   void goToMap(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("mapPage");
+    UIController.getInstance().goToPage("interactiveMap");
   }
 
   @FXML

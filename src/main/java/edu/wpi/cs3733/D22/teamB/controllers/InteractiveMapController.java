@@ -444,13 +444,21 @@ public class InteractiveMapController {
   public void deleteLoc() {
     String name = roomName.getText();
     Location target = null;
+    Boolean hasEquip = false;
     LinkedList<Location> listChange = dao.listByAttribute("longName", name);
     for (Location loc : listChange) {
       if (loc.getLongName().equals(name)) target = loc;
     }
-    if (dao.delete(target) == -1) {
+    LinkedList<MedicalEquipment> allEquip = edao.list();
+    for (MedicalEquipment eq : allEquip) {
+      if (eq.getLocation() == target) {
+        hasEquip = true;
+      }
+    }
+    if (hasEquip) {
       errorLabel.setText("Delete Failed! Check that no equipment is tied to the room!");
     } else {
+      dao.delete(target);
       errorLabel.setText("");
       deleteButton.setVisible(false);
       floorReset();
