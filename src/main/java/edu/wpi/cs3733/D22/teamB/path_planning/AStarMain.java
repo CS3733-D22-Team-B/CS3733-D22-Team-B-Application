@@ -9,7 +9,12 @@ import java.util.LinkedList;
 public class AStarMain {
 
   public static void main(String[] args) {
+    CSVTester();
+  }
 
+  private static void DatabaseTester() {}
+
+  private static void CSVTester() {
     // Get edges from the the EdgeGetter
     // TODO get implement database calls to get edges
     EdgeGetter edgy = new EdgeGetter();

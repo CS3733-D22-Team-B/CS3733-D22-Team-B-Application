@@ -7,13 +7,6 @@ public class DatabaseInitializer {
 
   private Connection connection = null;
   final String DBURL = "jdbc:derby:Databases;create=true";
-  // private String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
-  // private String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
-  // private String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
-  // private String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
-  // private String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
-  // private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
-  // private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
 
   public DatabaseInitializer() {}
 
@@ -22,9 +15,6 @@ public class DatabaseInitializer {
       // Create database
       connection = DriverManager.getConnection(DBURL);
       Statement statement = connection.createStatement();
-      // statement.execute("DROP TABLE MedicalEquipment");
-      // statement.execute("DROP TABLE Patients");
-      // statement.execute("DROP TABLE Locations");
 
       if (!tableExists(connection, "LOCATIONS")) {
         statement.execute(
@@ -63,6 +53,11 @@ public class DatabaseInitializer {
                 + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_LOC foreign key (nodeID) REFERENCES Locations(nodeID), CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID))");
         populateDatabaseLabRequestDB(
             Filepath.getInstance().getLabRequestCSVFilePath(), "LabRequests", 7);
+      }
+      if (!tableExists(connection, "EDGES")) {
+        statement.execute(
+            "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID), CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID))");
+        populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Patients", 4);
       }
       /*
       if (!tableExists(connection, "SERVICEREQUESTS")) {
@@ -103,8 +98,9 @@ public class DatabaseInitializer {
       } else if (databaseName == "EquipmentRequests") {
         addToTable =
             "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+      } else if (databaseName == "Edges") {
+        addToTable = "INSERT INTO Edges(edgeID, nodeID1, nodeID2) VALUES(?, ?, ?)";
       }
-
       PreparedStatement pStatement = connection.prepareStatement(addToTable);
 
       while ((lineText = lineReader.readLine()) != null) // While line is not empty, read data

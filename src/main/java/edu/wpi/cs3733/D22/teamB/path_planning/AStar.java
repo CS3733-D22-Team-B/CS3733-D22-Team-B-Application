@@ -24,6 +24,7 @@ public class AStar {
 
   /**
    * Calculate the Euclidian distance between two points
+   *
    * @param firstNode starting node
    * @param secondNode end node
    * @return the distance between them
@@ -39,6 +40,7 @@ public class AStar {
 
   /**
    * Runs the AStar algorithm between the start node and target node declared in the constructor.
+   *
    * @return
    */
   public ArrayList<Location> getPath() {
@@ -99,5 +101,4 @@ public class AStar {
 
     return path;
   }
-
 }

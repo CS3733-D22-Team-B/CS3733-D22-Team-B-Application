@@ -3,23 +3,6 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import java.util.HashMap;
 
 public class DatabaseController {
-  // private final String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
-  // private final String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
-  // private final String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
-  // private final String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
-  // private final String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
-  // private final String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
-  // private final String serviceRequestCSVFilePath =
-  // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/ApplicationServiceRequest.csv";
-
-  // private final String locationBCSVFilePath = "CSVs/BackupLocations.csv";
-  // private final String medicalEQBCSVFilePath = "CSVs/BackupMedicalEquipment.csv";
-  // private final String employeesBCSVFilePath = "CSVs/BackupEmployees.csv";
-  // private final String patientsBCSVFilePath = "CSVs/BackupPatients.csv";
-  // private final String equipmentRequestBCSVFilePath = "CSVs/BackupEquipmentRequest.csv";
-  // private final String labRequestBCSVFilePath = "CSVs/BackupLabRequest.csv";
-  // private final String serviceRequestBCSVFilePath =
-  // "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupServiceRequest.csv";
 
   public DatabaseController() {
     DatabaseInitializer DI = new DatabaseInitializer();
@@ -43,6 +26,7 @@ public class DatabaseController {
     MedicalEquipmentDB.getInstance().listDB();
     PatientsDB.getInstance().listDB();
     // ServiceRequestsDB.getInstance().listDB();
+    EdgesDB.getInstance().listDB();
   }
 
   public void resetAllDBs() {
@@ -54,11 +38,13 @@ public class DatabaseController {
     MedicalEquipmentDB medicalEquipmentDB = MedicalEquipmentDB.getInstance();
     PatientsDB patientsDB = PatientsDB.getInstance();
     // ServiceRequestsDB serviceRequestsDB = ServiceRequestsDB.getInstance();
+    EdgesDB edgesDB = EdgesDB.getInstance();
 
     // Drop All
     equipmentRequestDB.quit();
     medicalEquipmentDB.quit();
     labRequestsDB.quit();
+    edgesDB.quit();
     // serviceRequestsDB.quit();
     patientsDB.quit();
     employeesDB.quit();
@@ -74,6 +60,7 @@ public class DatabaseController {
     medicalEquipmentDB.setMedicalEquipmentMap(new HashMap<>());
     equipmentRequestDB.setEquipmentRequestMap(new HashMap<>());
     labRequestsDB.setLabRequestMap(new HashMap<>());
+    edgesDB.setEdgeMap(new HashMap<>());
     // serviceRequestsDB.setRequestMap(new HashMap<>());
     patientsDB.setPatientMap(new HashMap<>());
     employeesDB.setEmployeeMap(new HashMap<>());
@@ -83,24 +70,17 @@ public class DatabaseController {
     medicalEquipmentDB.initDB();
     equipmentRequestDB.initDB();
     labRequestsDB.initDB();
+    edgesDB.initDB();
     // serviceRequestsDB.initDB();
     patientsDB.initDB();
     employeesDB.initDB();
     locationsDB.initDB();
 
-    // ChangeBackCSVs
-    // DI.setEmployeesCSVFilePath(Filepath.getInstance().getEmployeesCSVFilePath());
-    // DI.setEquipmentRequestCSVFilePath(Filepath.getInstance().getEquipmentRequestCSVFilePath());
-    // DI.setLabRequestCSVFilePath(Filepath.getInstance().getLabRequestCSVFilePath());
-    // DI.setLocationCSVFilePath(Filepath.getInstance().getLocationCSVFilePath());
-    // DI.setMedicalEQCSVFilePath(Filepath.getInstance().getMedicalEQCSVFilePath());
-    // DI.setPatientsCSVFilePath(Filepath.getInstance().getPatientsCSVFilePath());
-    // DI.setServiceRequestCSVFilePath(Filepath.getInstance().getServiceRequestCSVFilePath());
-
     // Drop All
     equipmentRequestDB.quit();
     medicalEquipmentDB.quit();
     labRequestsDB.quit();
+    edgesDB.quit();
     // serviceRequestsDB.quit();
     patientsDB.quit();
     employeesDB.quit();
