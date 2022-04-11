@@ -391,7 +391,7 @@ public class InteractiveMapController {
   public void goToFloorL2() {
     floorLevel = 0;
     floorString = "L2";
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel2.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel2.png"));
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
@@ -402,7 +402,7 @@ public class InteractiveMapController {
   public void goToFloorL1() {
     floorLevel = 1;
     floorString = "L1";
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel1.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel1.png"));
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
@@ -413,7 +413,7 @@ public class InteractiveMapController {
   public void goToFloor1() {
     floorLevel = 2;
     floorString = "1";
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/firstFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
@@ -424,7 +424,7 @@ public class InteractiveMapController {
   public void goToFloor2() {
     floorLevel = 3;
     floorString = "2";
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/secondFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
@@ -435,7 +435,7 @@ public class InteractiveMapController {
   public void goToFloor3() {
     floorLevel = 4;
     floorString = "3";
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/thirdFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();

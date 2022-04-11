@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Background.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="780.0" layoutY="-76.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/SidePiece.png" />
+         </image>
+      </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="875.0" layoutY="46.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="38.0" text=" " />
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="875.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/menuButton.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="addButton" layoutX="20.0" layoutY="20.0" prefHeight="158.0" prefWidth="130.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/mapAssets/AddButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="deleteButton" layoutX="20.0" layoutY="193.333" prefHeight="158.0" prefWidth="130.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/mapAssets/deleteButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="deleteButton1" layoutX="20.0" layoutY="366.66" prefHeight="158.0" prefWidth="130.0" text=" ">
+         <graphic>
+            <ImageView fx:id="editButton" fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/mapAssets/editButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

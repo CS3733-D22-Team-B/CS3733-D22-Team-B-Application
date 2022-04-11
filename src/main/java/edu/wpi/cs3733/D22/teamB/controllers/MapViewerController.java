@@ -44,20 +44,20 @@ public class MapViewerController extends MenuBarController {
     switch (floorLevel) {
       default:
       case 0:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel1.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel1.png"));
         floorDisplay.setText("L1");
         downButton.setDisable(false);
         break;
       case 1:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/firstFloor.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
         floorDisplay.setText("1");
         break;
       case 2:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/secondFloor.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
         floorDisplay.setText("2");
         break;
       case 3:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/thirdFloor.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
         floorDisplay.setText("3");
         upButton.setDisable(true);
         break;
@@ -72,20 +72,20 @@ public class MapViewerController extends MenuBarController {
     switch (floorLevel) {
       default:
       case 1:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel2.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel2.png"));
         floorDisplay.setText("L2");
         downButton.setDisable(true);
         break;
       case 2:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel1.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel1.png"));
         floorDisplay.setText("L1");
         break;
       case 3:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/firstFloor.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
         floorDisplay.setText("1");
         break;
       case 4:
-        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/secondFloor.png"));
+        mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
         floorDisplay.setText("2");
         upButton.setDisable(false);
         break;

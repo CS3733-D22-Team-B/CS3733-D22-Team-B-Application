@@ -20,7 +20,7 @@
          <children>
             <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/firstFloor.png" />
+                  <Image url="@../assets/mapAssets/firstFloor.png" />
                </image>
             </ImageView>
          </children>
