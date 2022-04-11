@@ -34,9 +34,9 @@ public class DatabaseInitializer {
       if (!tableExists(connection, "MEDICALEQUIPMENT")) {
         statement.execute(
             "CREATE TABLE MedicalEquipment(equipmentID VARCHAR(10), nodeID VARCHAR(10), type VARCHAR(50), "
-                + "isClean BOOLEAN, isRequested BOOLEAN, CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
+                + "isClean BOOLEAN, availability VARCHAR(50), name VARCHAR(50), CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
                 + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-        populateDatabase(Filepath.getInstance().getMedicalEQCSVFilePath(), "MedicalEquipment", 5);
+        populateDatabase(Filepath.getInstance().getMedicalEQCSVFilePath(), "MedicalEquipment", 6);
       }
       if (!tableExists(connection, "EMPLOYEES")) {
         statement.execute(
@@ -88,7 +88,7 @@ public class DatabaseInitializer {
             "INSERT INTO Locations(nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "MedicalEquipment") {
         addToTable =
-            "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, isRequested) VALUES(?, ?, ?, ?, ?)";
+            "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, availability, name) VALUES(?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Employees") {
         addToTable =
             "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
