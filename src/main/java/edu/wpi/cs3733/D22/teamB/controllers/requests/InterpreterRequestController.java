@@ -16,6 +16,7 @@ public class InterpreterRequestController extends LocationBasedRequestController
 
   @FXML
   public void enableSubmission() {
+    setNotes();
     if (!locationName.equals("") && !language.equals("")) {
       submitButton.setDisable(false);
     }
@@ -35,10 +36,12 @@ public class InterpreterRequestController extends LocationBasedRequestController
     floorInput.setValue("");
     locationInput.setValue("");
     languageInput.setValue("");
+    additionalInformationInput.setText("");
     submitButton.setDisable(true);
 
     floor = "";
     locationName = "";
     language = "";
+    notes = "";
   }
 }

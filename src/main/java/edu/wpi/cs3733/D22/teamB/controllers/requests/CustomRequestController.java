@@ -5,33 +5,29 @@ import edu.wpi.cs3733.D22.teamB.requests.CustomRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class CustomRequestController extends PatientAndLocationBasedRequestController {
   @FXML private TextField typeInput;
-  @FXML private TextArea notesInput;
-  @FXML private Button sendButton;
   @FXML private Label charactersRemainingLabel;
 
   private String type;
-  private String notes;
 
   @FXML
   public void initialize() {
     super.initialize();
-    notesInput
+    additionalInformationInput
         .textProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
               if (newValue.length() > 500) {
-                notesInput.setText(oldValue);
+                additionalInformationInput.setText(oldValue);
               }
 
               charactersRemainingLabel.setText(
-                  String.valueOf(500 - notesInput.getText().length()) + " characters remaining");
+                  String.valueOf(500 - additionalInformationInput.getText().length())
+                      + " characters remaining");
             });
   }
 
@@ -42,7 +38,7 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
 
   @FXML
   public void setNotes() {
-    notes = notesInput.getText();
+    notes = additionalInformationInput.getText();
   }
 
   @FXML
@@ -52,7 +48,7 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
     if ((!locationName.equals("") || !patientName.equals(""))
         && !type.equals("")
         && !notes.equals("")) {
-      sendButton.setDisable(false);
+      submitButton.setDisable(false);
     }
   }
 
@@ -84,7 +80,7 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
     floorInput.setValue("");
     locationInput.setValue("");
     typeInput.setText("");
-    notesInput.setText("");
+    additionalInformationInput.setText("");
     prioritySlider.setValue(1);
     submitButton.setDisable(true);
 

@@ -8,10 +8,10 @@ public class EquipmentRequest extends Request {
   private MedicalEquipment medicalEquipment;
 
   public EquipmentRequest(String locationID, String equipmentID, String information) {
-    super(locationID, null, "Equipment Request");
+    super(locationID, null, information, "Equipment Request");
     this.equipmentID = equipmentID;
     setMedicalEquipment();
-    information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + information;
+    this.information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + information;
     medicalEquipment = getMedicalEquipment();
   }
 

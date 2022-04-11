@@ -18,6 +18,7 @@ public class MealRequestController extends PatientBasedRequestController {
   @FXML
   public void enableSubmission() {
     setMealName();
+    setNotes();
     if (!patientName.equals("") && !mealName.equals("")) {
       submitButton.setDisable(false);
     }
@@ -36,9 +37,11 @@ public class MealRequestController extends PatientBasedRequestController {
     requestLabel.setText("");
     patientInput.setValue("");
     mealInput.setText("");
+    additionalInformationInput.setText("");
     submitButton.setDisable(true);
 
     patientName = "";
     mealName = "";
+    notes = "";
   }
 }

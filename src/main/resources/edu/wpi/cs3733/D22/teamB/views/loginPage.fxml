@@ -7,43 +7,56 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.LoginController">
    <children>
-      <HBox layoutX="388.0" layoutY="93.0" prefHeight="401.0" prefWidth="338.0" style="-fx-background-color: #3d6183#3d6183;" />
-      <ImageView fitHeight="168.0" fitWidth="135.0" layoutX="195.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane layoutX="480.0" prefHeight="540.0" prefWidth="480.0" style="-fx-background-color: #3d6183#3d6183;">
+         <children>
+            <Label alignment="CENTER" focusTraversable="false" layoutX="119.0" layoutY="67.0" prefHeight="55.0" prefWidth="278.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="54.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameField" layoutX="100.0" layoutY="227.0" onAction="#setUsername" prefHeight="36.0" prefWidth="306.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="loginButton" layoutX="226.0" layoutY="393.0" mnemonicParsing="false" onAction="#login" text="Login">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="passwordBox" layoutX="105.0" layoutY="323.0" onAction="#setPassword" prefHeight="36.0" prefWidth="298.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </PasswordField>
+            <Label focusTraversable="false" layoutX="221.0" layoutY="288.0" text="Password" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="213.0" layoutY="198.0" prefHeight="25.0" prefWidth="79.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="265.0" fitWidth="298.0" layoutX="120.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../assets/Brigham_and_Womens_Hospital_logo.png" />
+            <Image url="@../assets/Brigham_and_Womens_Hospital_logo.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" focusTraversable="false" layoutX="421.0" layoutY="148.0" prefHeight="55.0" prefWidth="278.0" text="Login" textFill="WHITE">
+      <Label fx:id="loginFail" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="365.0" prefHeight="36.0" prefWidth="347.0" textFill="#3d6183">
          <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <TextField fx:id="usernameField" layoutX="488.0" layoutY="281.0" onAction="#setUsername" />
-      <PasswordField fx:id="passwordBox" layoutX="488.0" layoutY="357.0" onAction="#setPassword" />
-      <Label focusTraversable="false" layoutX="533.0" layoutY="335.0" text="Password" textFill="WHITE" />
-      <Label focusTraversable="false" layoutX="534.0" layoutY="257.0" prefHeight="18.0" prefWidth="70.0" text="Username" textFill="WHITE" />
-      <Button fx:id="loginButton" layoutX="539.0" layoutY="425.0" mnemonicParsing="false" onAction="#login" text="Login" />
-      <ImageView fitHeight="55.0" fitWidth="54.0" layoutX="571.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Documents/GitHub/CS3733-D22-Team-B-Prototype-Application/src/main/resources/edu/Downloads/icons8-Fluency-People.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="443.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Documents/GitHub/CS3733-D22-Team-B-Prototype-Application/src/main/resources/edu/wpi/cs3733/D22/teamB/assets/person.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="446.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" x="54.0" y="-15.0">
-         <image>
-            <Image url="@../../Documents/GitHub/CS3733-D22-Team-B-Prototype-Application/src/main/resources/edu/wpi/cs3733/D22/teamB/assets/Lock.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="loginFail" focusTraversable="false" layoutX="203.0" layoutY="406.0" prefHeight="18.0" prefWidth="118.0" />
-      <Button focusTraversable="false" layoutX="139.0" layoutY="438.0" mnemonicParsing="false" onAction="#quitApplication" text="Close" />
+            <Font size="16.0" />
+         </font></Label>
+      <Button focusTraversable="false" layoutX="14.0" layoutY="494.0" mnemonicParsing="false" onAction="#quitApplication" prefHeight="33.0" prefWidth="70.0" text="Close">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
    </children>
 </AnchorPane>

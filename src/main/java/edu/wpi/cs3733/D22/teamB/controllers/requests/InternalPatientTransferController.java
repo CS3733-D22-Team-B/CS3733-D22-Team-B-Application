@@ -7,9 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class InternalPatientTransferController extends PatientAndLocationBasedRequestController {
+  private String notes;
+
   @FXML
   public void enableSubmission() {
     setLocation();
+    setNotes();
     if (!patientName.equals("") && !locationName.equals("")) {
       submitButton.setDisable(false);
     }
@@ -57,7 +60,7 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
     String patientID = patientsDB.getPatientID(patientName);
     String destinationID = locationsDAO.getLocationID(locationName);
     InternalPatientTransferRequest request =
-        new InternalPatientTransferRequest(patientName, destinationID);
+        new InternalPatientTransferRequest(patientName, destinationID, notes);
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: Moving " + patientName + " to " + locationName);
   }
@@ -68,10 +71,12 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
     floorInput.setValue("");
     locationInput.setValue("");
     patientInput.setValue("");
+    additionalInformationInput.setText("");
     submitButton.setDisable(true);
 
     floor = "";
     locationName = "";
     patientName = "";
+    notes = "";
   }
 }

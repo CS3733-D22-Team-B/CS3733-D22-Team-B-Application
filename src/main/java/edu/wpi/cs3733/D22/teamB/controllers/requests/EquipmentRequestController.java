@@ -5,24 +5,16 @@ import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequestDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 
 public class EquipmentRequestController extends LocationBasedRequestController {
   @FXML private ComboBox<String> equipmentInput;
-  @FXML private TextArea additionalNotesInput;
 
   private String equipment = "";
-  private String notes = "";
 
   @FXML
   public void setEquipment() {
     equipment = equipmentInput.getValue();
     enableSubmission();
-  }
-
-  @FXML
-  public void setNotes() {
-    notes = (additionalNotesInput.getText() == null) ? "" : additionalNotesInput.getText();
   }
 
   @FXML
@@ -47,7 +39,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     floorInput.setValue("");
     locationInput.setValue("");
     equipmentInput.setValue("");
-    additionalNotesInput.setText("");
+    additionalInformationInput.setText("");
     submitButton.setDisable(true);
 
     floor = "";

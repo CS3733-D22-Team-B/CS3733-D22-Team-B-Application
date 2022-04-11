@@ -2,25 +2,59 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
    <children>
-      <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
-         <children>
-            <JFXButton fx:id="mapButton" layoutX="633.0" layoutY="68.0" onAction="#goToMap" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map" />
-            <JFXButton fx:id="equipmentTrackerButton" layoutX="561.0" layoutY="93.0" onAction="#goToEquipmentTrackerPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker" />
-            <SVGPath content="M40,60 C42,48 44,30 25,32" layoutX="98.0" layoutY="246.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="371.0" prefHeight="25.0" prefWidth="672.0" />
-            <JFXButton fx:id="requestButton" layoutX="592.0" layoutY="118.0" onAction="#goToRequestLandingPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Request" />
-            <JFXButton fx:id="requestQueueButton" layoutX="570.0" layoutY="143.0" onAction="#goToRequestQueue" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Request Queue" />
-            <JFXButton fx:id="patientDatabaseButton" layoutX="558.0" layoutY="168.0" onAction="#goToPatientDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database" />
-            <JFXButton fx:id="employeeDatabaseButton" layoutX="544.0" layoutY="193.0" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database" />
-            <JFXButton layoutX="606.0" layoutY="14.0" onAction="#quitApplication" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Close" />
-            <JFXButton fx:id="profileButton" layoutX="652.0" layoutY="14.0" onAction="#goToProfilePage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Profile" />
-         </children>
-      </AnchorPane>
+      <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Background.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="employeeDatabaseButton" contentDisplay="TOP" layoutX="564.0" layoutY="293.0" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database">
+         <graphic>
+            <Circle fill="#e91c23" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="patientDatabaseButton" contentDisplay="TOP" layoutX="403.0" layoutY="293.0" onAction="#goToPatientDatabase" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database">
+         <graphic>
+            <Circle fill="#f7941d" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="requestQueueButton" contentDisplay="TOP" layoutX="564.0" layoutY="197.0" onAction="#goToRequestQueue" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Request Queue">
+         <graphic>
+            <Circle fill="#fbf002" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="requestButton" contentDisplay="TOP" layoutX="403.0" layoutY="197.0" onAction="#goToRequestLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Request">
+         <graphic>
+            <Circle fill="#8cc73b" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="mapButton" contentDisplay="TOP" layoutX="244.0" layoutY="197.0" onAction="#goToMap" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+         <graphic>
+            <Circle fill="#2b73bf" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" layoutX="244.0" layoutY="293.0" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker">
+         <graphic>
+            <Circle fill="#922590" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
       <fx:include source="menu.fxml" />
+      <Label layoutX="144.0" layoutY="54.0" text="Brigham and Women's Hospital" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="257.0" layoutY="116.0" text="Boston Hospital and Medical Center" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -18,6 +18,7 @@ public class MedicineRequestController extends PatientBasedRequestController {
   @FXML
   public void enableSubmission() {
     setMedication();
+    setNotes();
     if (!patientName.equals("") && !medicine.equals("")) {
       submitButton.setDisable(false);
     }
@@ -36,9 +37,11 @@ public class MedicineRequestController extends PatientBasedRequestController {
     requestLabel.setText("");
     patientInput.setValue("");
     medicineInput.setValue("");
+    additionalInformationInput.setText("");
     submitButton.setDisable(true);
 
     patientName = "";
     medicine = "";
+    notes = "";
   }
 }

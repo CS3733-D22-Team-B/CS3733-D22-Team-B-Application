@@ -1,22 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestLandingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestLandingPageController">
    <children>
-      <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
+      <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Background.png" />
+         </image>
+      </ImageView>
+      <fx:include source="menu.fxml" />
+      <JFXButton layoutX="14.0" layoutY="498.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+      <JFXButton fx:id="equipmentRequestButton" contentDisplay="TOP" layoutX="207.0" layoutY="134.0" onAction="#goToEquipmentRequestPage" prefHeight="28.0" prefWidth="245.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Equipment Request">
+         <graphic>
+            <Circle fill="#e91c23" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="labRequestButton" contentDisplay="TOP" layoutX="462.0" layoutY="134.0" onAction="#goToLabRequestPage" prefHeight="28.0" prefWidth="245.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Lab Request">
+         <graphic>
+            <Circle fill="#f7941d" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="mealRequestButton" contentDisplay="TOP" layoutX="74.0" layoutY="247.0" onAction="#goToMealRequestPage" prefHeight="28.0" prefWidth="245.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Meal Request">
+         <graphic>
+            <Circle fill="#fbf002" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="medicineRequestButton" contentDisplay="TOP" layoutX="339.0" layoutY="247.0" onAction="#goToMedicineRequestPage" prefHeight="28.0" prefWidth="245.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Medicine Request">
+         <graphic>
+            <Circle fill="#8cc73b" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="interpreterRequestButton" contentDisplay="TOP" layoutX="601.0" layoutY="247.0" onAction="#goToInterpreterRequestPage" prefHeight="28.0" prefWidth="245.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Interpreter Request">
+         <graphic>
+            <Circle fill="#2b73bf" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="internalPatientTransferButton" contentDisplay="TOP" layoutX="207.0" layoutY="363.0" onAction="#goToInternalPatientTransferRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Internal Patient Transfer Request">
+         <graphic>
+            <Circle fill="#922590" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="customRequestButton" contentDisplay="TOP" layoutX="461.0" layoutY="363.0" onAction="#goToCustomRequestPage" prefHeight="28.0" prefWidth="245.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Custom Request">
+         <graphic>
+            <Circle fill="#f699cd" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="808.0" layoutY="498.0" onAction="#toggleUglyNames" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Toggle Creator Names" />
+      <AnchorPane fx:id="uglyNamePane" layoutX="52.0" layoutY="115.0" prefHeight="348.0" prefWidth="813.0" visible="false">
          <children>
-            <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" text="Back to Homepage" />
-            <JFXButton fx:id="equipmentRequestButton" layoutX="366.0" layoutY="14.0" onAction="#goToEquipmentRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Equipment Request" />
-            <JFXButton fx:id="labRequestButton" layoutX="409.0" layoutY="39.0" onAction="#goToLabRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Lab Request" />
-            <JFXButton fx:id="mealRequestButton" layoutX="401.0" layoutY="64.0" onAction="#goToMealRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Meal Request" />
-            <JFXButton fx:id="medicineRequestButton" layoutX="410.0" layoutY="89.0" onAction="#goToMedicineRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Medicine Request" />
-            <JFXButton fx:id="interpreterRequestButton" layoutX="406.0" layoutY="114.0" onAction="#goToInterpreterRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Interpreter Request" />
-            <JFXButton fx:id="internalPatientTransferButton" layoutX="331.0" layoutY="139.0" onAction="#goToInternalPatientTransferRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Internal Patient Transfer Request" />
-            <JFXButton fx:id="customRequestButton" layoutX="386.0" layoutY="164.0" onAction="#goToCustomRequestPage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Custom Request" />
+            <Label layoutX="213.0" layoutY="102.0" text="Created By Chase Miller" textFill="WHITE" />
+            <Label layoutX="462.0" layoutY="102.0" text="Created By Ethan Moynihan" textFill="WHITE" />
+            <Label layoutX="66.0" layoutY="216.0" text="Created By Marek Garbaczonek" textFill="WHITE" />
+            <Label layoutX="341.0" layoutY="216.0" text="Created By Sean Barbour" textFill="WHITE" />
+            <Label layoutX="603.0" layoutY="216.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
+            <Label layoutX="203.0" layoutY="332.0" text="Created By Adian MacNevin" textFill="WHITE" />
+            <Label layoutX="463.0" layoutY="331.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <fx:include source="menu.fxml" />
+      <Label layoutX="272.0" layoutY="45.0" text="Create a Request" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

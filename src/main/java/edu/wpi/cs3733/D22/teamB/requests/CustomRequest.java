@@ -6,7 +6,7 @@ public class CustomRequest extends Request {
 
   public CustomRequest(
       String locationID, String patientID, String requestType, String information) {
-    super(locationID, patientID, requestType);
+    super(locationID, patientID, information, requestType);
     this.information = "Custom Request: " + information;
   }
 

@@ -5,7 +5,7 @@ import java.util.Date;
 public class MedicineRequest extends Request {
 
   public MedicineRequest(String patientID, String information) {
-    super(null, patientID, "Medicine");
+    super(null, patientID, information, "Medicine");
     this.information = "Medicine Request: " + information;
   }
 

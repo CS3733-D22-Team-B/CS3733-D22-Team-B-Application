@@ -4,17 +4,51 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.EquipmentTrackerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.EquipmentTrackerController">
    <children>
-      <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" text="Back to Homepage" />
-            <SVGPath content="M40,60 C42,48 44,30 25,32" layoutX="662.0" layoutY="415.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="371.0" prefHeight="25.0" prefWidth="672.0" />
-            <TableView fx:id="equipmentTable" layoutX="14.0" layoutY="14.0" prefHeight="428.0" prefWidth="690.0">
+            <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Background.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/SidePiece.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/SidePiece.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/CollectionBackground.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="871.0" layoutY="38.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/menuButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="-187.0" layoutY="244.0" rotate="-90.0" text="Equipment Tracker" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="56.0" />
+               </font>
+            </Label>
+            <fx:include source="menu.fxml" />
+            <TableView fx:id="equipmentTable" layoutX="134.0" layoutY="62.0" prefHeight="428.0" prefWidth="690.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
               <columns>
                 <TableColumn fx:id="columnEquipment" prefWidth="130.0" text="Equipment" />
                 <TableColumn fx:id="columnLocation" minWidth="0.0" prefWidth="379.0" text="Location" />

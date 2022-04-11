@@ -9,12 +9,20 @@ public class LabRequest extends Request {
   private final String test;
   private final Date date;
 
-  public LabRequest(String patientID, String test, Date date, String testRoomID) {
-    super(null, patientID, "Lab Test");
+  public LabRequest(
+      String patientID, String test, Date date, String testRoomID, String information) {
+    super(null, patientID, information, "Lab Test");
     this.test = test;
     this.date = date;
     this.testRoomID = testRoomID;
-    information = "Lab Test: " + test + "\n" + "Testing Time: " + date;
+    this.information =
+        "Lab Test: "
+            + test
+            + "\n"
+            + "Testing Time: "
+            + date
+            + "\nAdditional Information: "
+            + information;
 
     testRoom = getTestRoom();
   }

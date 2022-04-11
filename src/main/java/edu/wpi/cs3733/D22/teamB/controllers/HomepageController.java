@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 
 public class HomepageController extends MenuBarController {
-  @FXML private JFXButton profileButton;
   @FXML private JFXButton mapButton;
   @FXML private JFXButton equipmentTrackerButton;
   @FXML private JFXButton requestButton;

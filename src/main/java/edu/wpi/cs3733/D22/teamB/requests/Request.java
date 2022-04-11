@@ -18,14 +18,14 @@ public abstract class Request {
   protected Date timeCreated;
   protected Date lastEdited;
 
-  public Request(String locationID, String patientID, String type) {
+  public Request(String locationID, String patientID, String information, String type) {
     this.employeeID = "0";
     this.locationID = locationID;
     this.patientID = patientID;
     this.type = type;
     this.status = "Pending";
     this.priority = 0;
-    this.information = "";
+    this.information = information;
     this.requestID = createRequestID();
     this.timeCreated = new Date();
     this.lastEdited = new Date();

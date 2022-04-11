@@ -1,0 +1,41 @@
+*{
+    -fx-base: #cdcdcd;
+}
+
+.combo-box .cell{
+    -fx-text-fill: #4b7486;
+    -fx-font: 12px "Sans-Serif";
+}
+.combo-box .arrow{
+    -fx-background-color: #7bcce4;
+}
+.simple-dropdown {
+    -fx-background-color: #2e3c4b;
+    -fx-border-color: #7bcce4;
+    -fx-border-radius: 10px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+.date-picker .arrow {
+    -fx-background-color: #7bcce4;
+}
+.date-picker .cell {
+    -fx-text-fill: #4b7486;
+    -fx-font: 12px "Sans-Serif";
+}
+
+.date-picker .text-field {
+    -fx-control-inner-background: #2e3c4b;
+    -fx-background-radius: 10px 0px 0px 10px;
+    -fx-prompt-text-fill: #4b7486;
+    -fx-text-fill: #4b7486;
+}
+
+.simple-date-picker {
+    -fx-background-color: #2e3c4b;
+    -fx-border-color: #7bcce4;
+    -fx-border-radius: 10px;
+}

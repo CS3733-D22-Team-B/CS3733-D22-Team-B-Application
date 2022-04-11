@@ -54,6 +54,7 @@ public class LabRequestController extends PatientBasedRequestController {
   public void enableSubmission() {
     setLabTest();
     setTestingTime();
+    setNotes();
     if (!patientName.equals("")
         && !labTest.equals("")
         && testingTime != null
@@ -66,7 +67,7 @@ public class LabRequestController extends PatientBasedRequestController {
   public void sendRequest(ActionEvent actionEvent) {
     String patientID = patientsDB.getPatientID(patientName);
     String testRoomID = locationsDB.getLocationID(labRoom);
-    LabRequest request = new LabRequest(patientID, labTest, testingTime, testRoomID);
+    LabRequest request = new LabRequest(patientID, labTest, testingTime, testRoomID, notes);
     LabRequestsDB.getInstance().add(request);
     requestLabel.setText(
         "Request sent: "
@@ -85,10 +86,12 @@ public class LabRequestController extends PatientBasedRequestController {
     labRoomInput.setValue("");
     labTestInput.setValue("");
     testingTimeInput.setValue(null);
+    additionalInformationInput.setText("");
     submitButton.setDisable(true);
 
     labRoom = "";
     labTest = "";
     testingTime = null;
+    notes = "";
   }
 }

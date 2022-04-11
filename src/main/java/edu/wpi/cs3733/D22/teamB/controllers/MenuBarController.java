@@ -1,180 +1,89 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import java.awt.*;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
-import javafx.stage.Stage;
 
 public class MenuBarController {
   @FXML private MenuBar homeBar;
 
   @FXML
   void goToHomepage(ActionEvent event) throws Exception {
-    Parent homepageRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
-    Scene homepageScene = new Scene(homepageRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(homepageScene);
-    window.show();
+    UIController.getInstance().goToPage("homepage");
   }
 
   @FXML
   void goToMap(ActionEvent event) throws Exception {
-    Parent mapRoot =
-        FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mapPage.fxml"));
-    Scene mapScene = new Scene(mapRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(mapScene);
-    window.show();
+    UIController.getInstance().goToPage("mapPage");
   }
 
   @FXML
   void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
-    Parent equipmentTrackerRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentTrackerPage.fxml"));
-    Scene equipmentTrackerScene = new Scene(equipmentTrackerRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(equipmentTrackerScene);
-    window.show();
+    UIController.getInstance().goToPage("equipmentTrackerPage");
   }
 
   @FXML
   void goToRequestLandingPage(ActionEvent event) throws Exception {
-    Parent requestLandingRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestLandingPage.fxml"));
-    Scene requestLandingScene = new Scene(requestLandingRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(requestLandingScene);
-    window.show();
+    UIController.getInstance().goToPage("requestLandingPage");
   }
 
   @FXML
   void goToRequestQueue(ActionEvent event) throws Exception {
-    Parent requestQueueRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/requestQueuePage.fxml"));
-    Scene requestQueueScene = new Scene(requestQueueRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(requestQueueScene);
-    window.show();
+    UIController.getInstance().goToPage("requestQueuePage");
   }
 
   @FXML
   void goToPatientDatabase(ActionEvent event) throws Exception {
-    Parent patientDatabaseRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/patientDatabasePage.fxml"));
-    Scene patientDatabaseScene = new Scene(patientDatabaseRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(patientDatabaseScene);
-    window.show();
+    UIController.getInstance().goToPage("patientDatabasePage");
   }
 
   @FXML
   void goToEmployeeDatabase(ActionEvent event) throws Exception {
-    Parent employeeDatabaseRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/employeeDatabasePage.fxml"));
-    Scene employeeDatabaseScene = new Scene(employeeDatabaseRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(employeeDatabaseScene);
-    window.show();
+    UIController.getInstance().goToPage("employeeDatabasePage");
   }
 
   @FXML
   void goToProfilePage(ActionEvent event) throws Exception {
-    Parent profileRoot =
-        FXMLLoader.load(
-            getClass()
-                .getResource("src/main/resources/edu/wpi/cs3733/D22/teamB/views/profilePage.fxml"));
-    Scene profileScene = new Scene(profileRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(profileScene);
-    window.show();
+    UIController.getInstance().goToPage("profilePage");
   }
 
   @FXML
   void goToEquipmentRequestPage(ActionEvent event) throws Exception {
-    Parent equipmentRequestRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/equipmentRequestPage.fxml"));
-    Scene equipmentRequestScene = new Scene(equipmentRequestRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(equipmentRequestScene);
-    window.show();
+    UIController.getInstance().goToPage("equipmentRequestPage");
   }
 
   @FXML
   void goToLabRequestPage(ActionEvent event) throws Exception {
-    Parent labRequestRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/labRequestPage.fxml"));
-    Scene labRequestScene = new Scene(labRequestRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(labRequestScene);
-    window.show();
+    UIController.getInstance().goToPage("labRequestPage");
   }
 
   @FXML
   void goToMealRequestPage(ActionEvent event) throws Exception {
-    Parent mealRequestRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/mealRequestPage.fxml"));
-    Scene mealRequestScene = new Scene(mealRequestRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(mealRequestScene);
-    window.show();
+    UIController.getInstance().goToPage("mealRequestPage");
   }
 
   @FXML
   void goToMedicineRequestPage(ActionEvent event) throws Exception {
-    Parent medicineRequestRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/medicineRequestPage.fxml"));
-    Scene medicineRequestScene = new Scene(medicineRequestRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(medicineRequestScene);
-    window.show();
+    UIController.getInstance().goToPage("medicineRequestPage");
   }
 
   @FXML
   void goToInterpreterRequestPage(ActionEvent event) throws Exception {
-    Parent interpreterRequestRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/interpreterRequestPage.fxml"));
-    Scene interpreterRequestScene = new Scene(interpreterRequestRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(interpreterRequestScene);
-    window.show();
+    UIController.getInstance().goToPage("interpreterRequestPage");
   }
 
   @FXML
   void goToInternalPatientTransferRequestPage(ActionEvent event) throws Exception {
-    Parent internalPatientTransferRoot =
-        FXMLLoader.load(
-            getClass()
-                .getResource("/edu/wpi/cs3733/D22/teamB/views/internalPatientTransferPage.fxml"));
-    Scene internalPatientTransferScene = new Scene(internalPatientTransferRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(internalPatientTransferScene);
-    window.show();
+    UIController.getInstance().goToPage("internalPatientTransferRequestPage");
   }
 
   @FXML
   void goToCustomRequestPage(ActionEvent event) throws Exception {
-    Parent customRequestRoot =
-        FXMLLoader.load(
-            getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/customRequestPage.fxml"));
-    Scene customRequestScene = new Scene(customRequestRoot);
-    Stage window = (Stage) homeBar.getScene().getWindow();
-    window.setScene(customRequestScene);
-    window.show();
+    UIController.getInstance().goToPage("customRequestPage");
   }
 
   @FXML
@@ -196,5 +105,17 @@ public class MenuBarController {
     empDB.quit();
 
     System.exit(0);
+  }
+
+  @FXML
+  void amongUsButton() {
+    System.out.println("Among Us button clicked");
+
+    // link to Among Us website
+    try {
+      Desktop.getDesktop().browse(new URL("http://wilsonwong.org").toURI());
+    } catch (Exception e) {
+      System.out.println("Error opening Among Us website");
+    }
   }
 }
