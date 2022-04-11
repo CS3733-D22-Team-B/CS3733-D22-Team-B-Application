@@ -34,7 +34,7 @@ public class DatabaseInitializer {
       if (!tableExists(connection, "MEDICALEQUIPMENT")) {
         statement.execute(
             "CREATE TABLE MedicalEquipment(equipmentID VARCHAR(10), nodeID VARCHAR(10), type VARCHAR(50), "
-                + "isClean BOOLEAN, availibility VARCHAR(50), name VARCHAR(50), CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
+                + "isClean BOOLEAN, availability VARCHAR(50), name VARCHAR(50), CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
                 + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
         populateDatabase(Filepath.getInstance().getMedicalEQCSVFilePath(), "MedicalEquipment", 6);
       }
