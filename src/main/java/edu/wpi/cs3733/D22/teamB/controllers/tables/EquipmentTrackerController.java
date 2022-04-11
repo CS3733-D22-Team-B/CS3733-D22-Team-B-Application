@@ -41,12 +41,12 @@ public class EquipmentTrackerController extends MenuBarController implements Ini
     columnEquipment.setCellValueFactory(new PropertyValueFactory<>("equipmentID"));
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
     columnSterilization.setCellValueFactory(new PropertyValueFactory<>("isSterilized"));
-    columnAvailability.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
+    columnAvailability.setCellValueFactory(new PropertyValueFactory<>("availability"));
 
-    columnEquipment.getStyleClass().add("simple-table-column-left");
-    columnLocation.getStyleClass().add("simple-table-column-middle");
-    columnSterilization.getStyleClass().add("simple-table-column-middle");
-    columnAvailability.getStyleClass().add("simple-table-column-right");
+    columnEquipment.getStyleClass().add("table-column-left");
+    columnLocation.getStyleClass().add("table-column-middle");
+    columnSterilization.getStyleClass().add("table-column-middle");
+    columnAvailability.getStyleClass().add("table-column-right");
 
     equipmentTable.setItems(equipment);
   }

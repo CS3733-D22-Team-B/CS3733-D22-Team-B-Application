@@ -34,9 +34,9 @@ public class DatabaseInitializer {
       if (!tableExists(connection, "MEDICALEQUIPMENT")) {
         statement.execute(
             "CREATE TABLE MedicalEquipment(equipmentID VARCHAR(10), nodeID VARCHAR(10), type VARCHAR(50), "
-                + "isClean BOOLEAN, isRequested BOOLEAN, CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
+                + "isClean BOOLEAN, availability VARCHAR(50), name VARCHAR(50), CONSTRAINT MEDICAL_EQUIPMENT_PK primary key (equipmentID), "
                 + "CONSTRAINT MEDICAL_EQUIPMENT_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-        populateDatabase(Filepath.getInstance().getMedicalEQCSVFilePath(), "MedicalEquipment", 5);
+        populateDatabase(Filepath.getInstance().getMedicalEQCSVFilePath(), "MedicalEquipment", 6);
       }
       if (!tableExists(connection, "EMPLOYEES")) {
         statement.execute(
@@ -50,20 +50,25 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "EQUIPMENTREQUESTS")) {
         statement.execute(
-            "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), equipmentID VARCHAR(10), type VARCHAR(100), status VARCHAR(25), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT ER_EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID),CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID))");
+            "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), equipmentID VARCHAR(10), type VARCHAR(100), status VARCHAR(25), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT ER_EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID) ON DELETE CASCADE)");
         populateDatabaseEquipmentRequestDB();
       }
       if (!tableExists(connection, "LABREQUESTS")) {
         statement.execute(
             "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), patientID VARCHAR(10), testRoomID VARCHAR(10),"
                 + "type VARCHAR(50), status VARCHAR(50), priority int, test VARCHAR(50), date TIMESTAMP, timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
-                + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LAB_REQUEST_PAT foreign key (patientID) REFERENCES Patients (patientID), CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID))");
+                + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LAB_REQUEST_PAT foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID) ON DELETE CASCADE)");
         populateDatabaseLabRequestDB(
             Filepath.getInstance().getLabRequestCSVFilePath(), "LabRequests", 7);
       }
+      if (!tableExists(connection, "EDGES")) {
+        statement.execute(
+            "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID), CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID))");
+        populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Edges", 3);
+      }
       if (!tableExists(connection, "SERVICEREQUESTS")) {
         statement.execute(
-            "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID), CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID), CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID))");
+            "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE)");
         populateServiceRequestsDatabase();
       }
 
@@ -88,7 +93,7 @@ public class DatabaseInitializer {
             "INSERT INTO Locations(nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "MedicalEquipment") {
         addToTable =
-            "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, isRequested) VALUES(?, ?, ?, ?, ?)";
+            "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, availability, name) VALUES(?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Employees") {
         addToTable =
             "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -98,8 +103,10 @@ public class DatabaseInitializer {
       } else if (databaseName == "EquipmentRequests") {
         addToTable =
             "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+      } else if (databaseName == "Edges") {
+        System.out.println("populating Edges");
+        addToTable = "INSERT INTO Edges(edgeID, nodeID1, nodeID2) VALUES(?, ?, ?)";
       }
-
       PreparedStatement pStatement = connection.prepareStatement(addToTable);
 
       while ((lineText = lineReader.readLine()) != null) // While line is not empty, read data

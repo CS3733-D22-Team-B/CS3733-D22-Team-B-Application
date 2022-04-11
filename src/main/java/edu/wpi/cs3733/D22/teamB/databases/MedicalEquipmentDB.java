@@ -37,7 +37,8 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
                 rs.getString(2),
                 rs.getString(3),
                 rs.getBoolean(4),
-                rs.getBoolean(5));
+                rs.getString(5),
+                rs.getString(6));
         medicalEquipmentMap.put(rs.getString(1), medOb);
       }
     } catch (SQLException e) {
@@ -106,7 +107,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     }
     return transform(
         medObj,
-        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, isRequested = ? WHERE equipmentID = ?",
+        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, availability = ?, name = ?,  WHERE equipmentID = ?",
         true);
   }
 
@@ -114,7 +115,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     if (medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
       return -1;
     }
-    return transform(medObj, "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?)", false);
+    return transform(medObj, "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?,?)", false);
   }
 
   public int delete(MedicalEquipment medObj) {
@@ -134,7 +135,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(5, medObj.getEquipmentID());
+        pStatement.setString(6, medObj.getEquipmentID());
         offset = -1;
       } else {
         pStatement.setString(1, medObj.getEquipmentID());
@@ -143,7 +144,8 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       pStatement.setString(2 + offset, medObj.getNodeID());
       pStatement.setString(3 + offset, medObj.getType());
       pStatement.setBoolean(4 + offset, medObj.getIsClean());
-      pStatement.setBoolean(5 + offset, medObj.getIsRequested());
+      pStatement.setString(5 + offset, medObj.getAvailability());
+      pStatement.setString(6 + offset, medObj.getName());
 
       pStatement.addBatch();
       pStatement.executeBatch();
