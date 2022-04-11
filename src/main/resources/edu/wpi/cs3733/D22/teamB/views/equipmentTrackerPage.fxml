@@ -48,7 +48,7 @@
                </font>
             </Label>
             <fx:include source="menu.fxml" />
-            <TableView fx:id="equipmentTable" layoutX="134.0" layoutY="62.0" prefHeight="428.0" prefWidth="690.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
+            <TableView fx:id="equipmentTable" layoutX="134.0" layoutY="62.0" prefHeight="428.0" prefWidth="693.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
               <columns>
                 <TableColumn fx:id="columnEquipment" prefWidth="130.0" text="Equipment" />
                 <TableColumn fx:id="columnLocation" minWidth="0.0" prefWidth="379.0" text="Location" />
