@@ -1,6 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.path_planning;
 
 import edu.wpi.cs3733.D22.teamB.databases.CSVReader;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
+import edu.wpi.cs3733.D22.teamB.databases.Edge;
+import edu.wpi.cs3733.D22.teamB.databases.EdgesDB;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,8 +11,27 @@ import java.util.LinkedList;
 
 public class EdgeGetter {
 
+  public LinkedList<String> getEdges(String startID) {
+    DatabaseController DC = DatabaseController.getInstance();
+    EdgesDB edgesDB = EdgesDB.getInstance();
+
+    LinkedList<Edge> edgeList1 = edgesDB.listByAttribute("nodeID1", startID);
+    LinkedList<Edge> edgeList2 = edgesDB.listByAttribute("nodeID2", startID);
+    LinkedList<String> idList = new LinkedList<String>();
+
+    for (int i = 0; i < edgeList1.size(); i++) {
+      idList.add(edgeList1.get(i).getNodeID2());
+    }
+
+    for (int i = 0; i < edgeList2.size(); i++) {
+      idList.add(edgeList2.get(i).getNodeID2());
+    }
+
+    return idList;
+  }
+
   public HashMap<String, LinkedList<String>> getEdges() {
-    HashMap<String, LinkedList<String>> edgeMap = new HashMap<String, LinkedList<String>>();
+    HashMap<String, LinkedList<String>> edgeMap = new HashMap<>();
 
     CSVReader reader = new CSVReader();
     try {
@@ -43,7 +65,6 @@ public class EdgeGetter {
 
           edgeMap.put(data[2], newList);
         }
-        // System.out.println(edgeMap.keySet());
       }
     } catch (IOException e) {
       System.out.println("Didn't work :(");

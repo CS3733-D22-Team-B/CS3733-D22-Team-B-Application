@@ -17,9 +17,21 @@ public class AStarMain {
 
   private static void DatabaseTester() {
     DatabaseController DC = DatabaseController.getInstance();
+    LocationsDB locDB = LocationsDB.getInstance();
 
     EdgesDB edges = EdgesDB.getInstance();
-    edges.list();
+
+    // Set the start and target locations
+    Location start = locDB.getByID("bDEPT00101");
+    Location target = locDB.getByID("bINFO00101");
+
+    EdgeGetter edgeGetter = new EdgeGetter();
+    LinkedList<String> firstNeighbors = edgeGetter.getEdges("bDEPT00101");
+
+    System.out.println(firstNeighbors);
+    // Call AStar
+    //    AStar astar = new AStar(start, target);
+    //    astar.getPath();
   }
 
   private static void CSVTester() {
@@ -39,5 +51,9 @@ public class AStarMain {
     // Call AStar
     AStar astar = new AStar(start, target);
     astar.getPath();
+  }
+
+  public void fullAstarTester(){
+
   }
 }
