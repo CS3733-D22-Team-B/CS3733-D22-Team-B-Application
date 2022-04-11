@@ -9,7 +9,7 @@ import javafx.scene.control.ComboBox;
 public class MedicineRequestController extends PatientBasedRequestController {
   @FXML private ComboBox<String> medicineInput;
 
-  private String medicine;
+  private String medicine = "";
 
   public void setMedication() {
     medicine = medicineInput.getValue();
@@ -33,10 +33,9 @@ public class MedicineRequestController extends PatientBasedRequestController {
   }
 
   @FXML
-  public void reset() {
-    super.reset();
-    medicineInput.setValue("");
-    medicineInput.setPromptText("Medication");
+  public void reset(ActionEvent actionEvent) {
+    super.reset(actionEvent);
+    medicineInput.getSelectionModel().clearSelection();
     medicine = "";
   }
 }

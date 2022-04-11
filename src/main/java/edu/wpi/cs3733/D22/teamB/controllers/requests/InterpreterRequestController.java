@@ -8,7 +8,8 @@ import javafx.scene.control.ComboBox;
 
 public class InterpreterRequestController extends LocationBasedRequestController {
   @FXML private ComboBox<String> languageInput;
-  private String language;
+
+  private String language = "";
 
   public void setLanguage() {
     language = languageInput.getValue();
@@ -31,10 +32,9 @@ public class InterpreterRequestController extends LocationBasedRequestController
   }
 
   @FXML
-  public void reset() {
-    super.reset();
-    languageInput.setValue("");
-    languageInput.setPromptText("Language");
+  public void reset(ActionEvent actionEvent) {
+    super.reset(actionEvent);
+    languageInput.getSelectionModel().clearSelection();
     language = "";
   }
 }

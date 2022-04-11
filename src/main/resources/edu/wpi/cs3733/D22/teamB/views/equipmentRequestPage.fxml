@@ -36,7 +36,7 @@
                   <Image url="@../assets/CollectionBackground.png" />
                </image>
             </ImageView>
-            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="375.0" prefHeight="25.0" prefWidth="625.0" text="Request Sent" textFill="#7bcce4" />
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="375.0" prefHeight="25.0" prefWidth="625.0" text="" textFill="#7bcce4" />
             <Label fx:id="charactersRemainingLabel" layoutX="685.0" layoutY="298.0" text="500 characters remaining" textFill="#7bcce4">
                <font>
                   <Font size="7.0" />

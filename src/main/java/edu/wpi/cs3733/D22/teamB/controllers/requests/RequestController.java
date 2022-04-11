@@ -15,7 +15,7 @@ public abstract class RequestController extends MenuBarController {
   @FXML protected Slider prioritySlider;
   @FXML protected Button submitButton;
 
-  protected String notes;
+  protected String notes = "";
 
   public void initialize() {
     additionalInformationInput
@@ -45,5 +45,5 @@ public abstract class RequestController extends MenuBarController {
   public abstract void sendRequest(ActionEvent event);
 
   @FXML
-  public abstract void reset();
+  public abstract void reset(ActionEvent actionEvent);
 }

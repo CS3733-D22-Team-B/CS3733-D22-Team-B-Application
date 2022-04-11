@@ -2,13 +2,14 @@ package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.Patient;
 import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
 public abstract class PatientBasedRequestController extends RequestController {
   @FXML protected ComboBox<String> patientInput;
 
-  protected String patientName;
+  protected String patientName = "";
 
   protected PatientsDB patientsDB;
 
@@ -19,7 +20,6 @@ public abstract class PatientBasedRequestController extends RequestController {
     for (Patient patient : patientsDB.list()) {
       patientInput.getItems().add(patient.getOverview());
     }
-    patientName = patientInput.getValue();
   }
 
   public void setPatient() {
@@ -28,12 +28,10 @@ public abstract class PatientBasedRequestController extends RequestController {
   }
 
   @FXML
-  public void reset() {
+  public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    patientInput.setValue("");
-    patientInput.setPromptText("Patient");
-    additionalInformationInput.setText("");
-    additionalInformationInput.setPromptText("Additional Information");
+    patientInput.getSelectionModel().clearSelection();
+    additionalInformationInput.clear();
     prioritySlider.setValue(1);
     submitButton.setDisable(true);
 

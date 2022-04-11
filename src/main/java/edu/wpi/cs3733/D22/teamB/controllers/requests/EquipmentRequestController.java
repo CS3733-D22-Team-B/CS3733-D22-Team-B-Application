@@ -35,10 +35,9 @@ public class EquipmentRequestController extends LocationBasedRequestController {
   }
 
   @FXML
-  public void reset() {
-    super.reset();
-    equipmentInput.setValue("");
-    equipmentInput.setPromptText("Equipment");
+  public void reset(ActionEvent actionEvent) {
+    super.reset(actionEvent);
+    equipmentInput.getSelectionModel().clearSelection();
     equipment = "";
   }
 }

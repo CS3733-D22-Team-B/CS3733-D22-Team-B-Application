@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 public class MealRequestController extends PatientBasedRequestController {
   @FXML private TextField mealInput;
 
-  private String mealName;
+  private String mealName = "";
 
   public void setMealName() {
     mealName = mealInput.getText();
@@ -33,10 +33,9 @@ public class MealRequestController extends PatientBasedRequestController {
   }
 
   @FXML
-  public void reset() {
-    super.reset();
-    mealInput.setText("");
-    mealInput.setPromptText("Meal");
+  public void reset(ActionEvent actionEvent) {
+    super.reset(actionEvent);
+    mealInput.clear();
     mealName = "";
   }
 }

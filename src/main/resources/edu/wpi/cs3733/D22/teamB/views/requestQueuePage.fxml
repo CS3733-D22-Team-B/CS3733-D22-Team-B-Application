@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.RequestQueueController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.RequestQueueController">
    <children>
       <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
          <children>
@@ -76,7 +76,7 @@
                               <TableColumn fx:id="columnRequestID" editable="false" prefWidth="87.33333587646484" text="Request ID" />
                               <TableColumn fx:id="columnType" editable="false" prefWidth="70.0" text="Type" />
                               <TableColumn fx:id="columnStatus" editable="false" minWidth="0.0" prefWidth="109.33329772949219" text="Status" />
-                              <TableColumn fx:id="columnStatus1" editable="false" minWidth="0.0" prefWidth="65.33331298828125" text="Priority" />
+                              <TableColumn fx:id="columnPriority" editable="false" minWidth="0.0" prefWidth="65.33331298828125" text="Priority" />
                               <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="122.66668701171875" text="View Request" />
                            </columns>
                         </TableView>
