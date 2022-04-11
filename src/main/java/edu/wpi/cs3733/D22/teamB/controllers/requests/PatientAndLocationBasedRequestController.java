@@ -27,6 +27,7 @@ public abstract class PatientAndLocationBasedRequestController extends RequestCo
   protected PatientsDB patientsDB;
 
   public void initialize() {
+    super.initialize();
     locationsDAO = LocationsDB.getInstance();
     LinkedList<Location> locations = locationsDAO.list();
 
@@ -104,5 +105,25 @@ public abstract class PatientAndLocationBasedRequestController extends RequestCo
   public void setPatient() {
     patientName = patientInput.getValue();
     enableSubmission();
+  }
+
+  @FXML
+  public void reset() {
+    requestLabel.setText("");
+    floorInput.setValue("");
+    floorInput.setPromptText("Floor");
+    locationInput.setValue("");
+    locationInput.setPromptText("Location");
+    patientInput.setValue("");
+    patientInput.setPromptText("Patient");
+    additionalInformationInput.setText("");
+    additionalInformationInput.setPromptText("Additional Information");
+    prioritySlider.setValue(1);
+    submitButton.setDisable(true);
+
+    floor = "";
+    locationName = "";
+    patientName = "";
+    notes = "";
   }
 }

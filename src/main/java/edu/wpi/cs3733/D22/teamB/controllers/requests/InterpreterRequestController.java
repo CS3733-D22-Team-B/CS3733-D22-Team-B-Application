@@ -31,17 +31,10 @@ public class InterpreterRequestController extends LocationBasedRequestController
   }
 
   @FXML
-  public void reset(ActionEvent actionEvent) {
-    requestLabel.setText("");
-    floorInput.setValue("");
-    locationInput.setValue("");
+  public void reset() {
+    super.reset();
     languageInput.setValue("");
-    additionalInformationInput.setText("");
-    submitButton.setDisable(true);
-
-    floor = "";
-    locationName = "";
+    languageInput.setPromptText("Language");
     language = "";
-    notes = "";
   }
 }

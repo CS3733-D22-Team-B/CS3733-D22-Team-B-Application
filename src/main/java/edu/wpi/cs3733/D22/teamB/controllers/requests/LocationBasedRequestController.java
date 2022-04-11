@@ -22,6 +22,7 @@ public abstract class LocationBasedRequestController extends RequestController {
   protected LocationsDB locationsDAO;
 
   public void initialize() {
+    super.initialize();
     locationsDAO = LocationsDB.getInstance();
     LinkedList<Location> locations = locationsDAO.list();
 
@@ -87,5 +88,22 @@ public abstract class LocationBasedRequestController extends RequestController {
         }
         break;
     }
+  }
+
+  @FXML
+  public void reset() {
+    requestLabel.setText("");
+    floorInput.setValue("");
+    floorInput.setPromptText("Floor");
+    locationInput.setValue("");
+    locationInput.setPromptText("Location");
+    additionalInformationInput.setText("");
+    additionalInformationInput.setPromptText("Additional Information");
+    prioritySlider.setValue(1);
+    submitButton.setDisable(true);
+
+    floor = "";
+    locationName = "";
+    notes = "";
   }
 }

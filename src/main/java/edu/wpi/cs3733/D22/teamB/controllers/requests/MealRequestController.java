@@ -33,15 +33,10 @@ public class MealRequestController extends PatientBasedRequestController {
   }
 
   @FXML
-  public void reset(ActionEvent actionEvent) {
-    requestLabel.setText("");
-    patientInput.setValue("");
+  public void reset() {
+    super.reset();
     mealInput.setText("");
-    additionalInformationInput.setText("");
-    submitButton.setDisable(true);
-
-    patientName = "";
+    mealInput.setPromptText("Meal");
     mealName = "";
-    notes = "";
   }
 }

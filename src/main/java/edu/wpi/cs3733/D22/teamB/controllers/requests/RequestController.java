@@ -11,10 +11,26 @@ import javafx.scene.control.TextArea;
 public abstract class RequestController extends MenuBarController {
   @FXML protected Label requestLabel;
   @FXML protected TextArea additionalInformationInput;
+  @FXML protected Label charactersRemainingLabel;
   @FXML protected Slider prioritySlider;
   @FXML protected Button submitButton;
 
   protected String notes;
+
+  public void initialize() {
+    additionalInformationInput
+        .textProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (newValue.length() > 500) {
+                additionalInformationInput.setText(oldValue);
+              }
+
+              charactersRemainingLabel.setText(
+                  String.valueOf(500 - additionalInformationInput.getText().length())
+                      + " characters remaining");
+            });
+  }
 
   @FXML
   public void setNotes() {
@@ -29,5 +45,5 @@ public abstract class RequestController extends MenuBarController {
   public abstract void sendRequest(ActionEvent event);
 
   @FXML
-  public abstract void reset(ActionEvent event);
+  public abstract void reset();
 }

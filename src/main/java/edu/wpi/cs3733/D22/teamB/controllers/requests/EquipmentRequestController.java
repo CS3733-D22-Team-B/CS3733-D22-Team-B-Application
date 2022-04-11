@@ -19,6 +19,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
 
   @FXML
   public void enableSubmission() {
+    setNotes();
     if (!locationName.equals("") && !equipment.equals("")) {
       submitButton.setDisable(false);
     }
@@ -34,17 +35,10 @@ public class EquipmentRequestController extends LocationBasedRequestController {
   }
 
   @FXML
-  public void reset(ActionEvent actionEvent) {
-    requestLabel.setText("");
-    floorInput.setValue("");
-    locationInput.setValue("");
+  public void reset() {
+    super.reset();
     equipmentInput.setValue("");
-    additionalInformationInput.setText("");
-    submitButton.setDisable(true);
-
-    floor = "";
-    locationName = "";
+    equipmentInput.setPromptText("Equipment");
     equipment = "";
-    notes = "";
   }
 }

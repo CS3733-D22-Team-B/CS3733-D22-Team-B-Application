@@ -5,31 +5,12 @@ import edu.wpi.cs3733.D22.teamB.requests.CustomRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class CustomRequestController extends PatientAndLocationBasedRequestController {
   @FXML private TextField typeInput;
-  @FXML private Label charactersRemainingLabel;
 
   private String type;
-
-  @FXML
-  public void initialize() {
-    super.initialize();
-    additionalInformationInput
-        .textProperty()
-        .addListener(
-            (observable, oldValue, newValue) -> {
-              if (newValue.length() > 500) {
-                additionalInformationInput.setText(oldValue);
-              }
-
-              charactersRemainingLabel.setText(
-                  String.valueOf(500 - additionalInformationInput.getText().length())
-                      + " characters remaining");
-            });
-  }
 
   @FXML
   public void setType() {
@@ -75,19 +56,10 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
   }
 
   @FXML
-  public void reset(ActionEvent event) {
-    requestLabel.setText("");
-    floorInput.setValue("");
-    locationInput.setValue("");
+  public void reset() {
+    super.reset();
     typeInput.setText("");
-    additionalInformationInput.setText("");
-    prioritySlider.setValue(1);
-    submitButton.setDisable(true);
-
-    floor = "";
-    locationName = "";
-    patientName = "";
+    typeInput.setPromptText("Type");
     type = "";
-    notes = "";
   }
 }

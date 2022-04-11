@@ -13,6 +13,7 @@ public abstract class PatientBasedRequestController extends RequestController {
   protected PatientsDB patientsDB;
 
   public void initialize() {
+    super.initialize();
     patientsDB = PatientsDB.getInstance();
 
     for (Patient patient : patientsDB.list()) {
@@ -24,5 +25,19 @@ public abstract class PatientBasedRequestController extends RequestController {
   public void setPatient() {
     patientName = patientInput.getValue();
     enableSubmission();
+  }
+
+  @FXML
+  public void reset() {
+    requestLabel.setText("");
+    patientInput.setValue("");
+    patientInput.setPromptText("Patient");
+    additionalInformationInput.setText("");
+    additionalInformationInput.setPromptText("Additional Information");
+    prioritySlider.setValue(1);
+    submitButton.setDisable(true);
+
+    patientName = "";
+    notes = "";
   }
 }

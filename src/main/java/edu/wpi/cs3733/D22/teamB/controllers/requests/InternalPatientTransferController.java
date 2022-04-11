@@ -20,6 +20,7 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
 
   @Override
   public void initialize() {
+    super.initialize();
     locationsDAO = LocationsDB.getInstance();
     LinkedList<Location> locations = locationsDAO.list();
 
@@ -63,20 +64,5 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
         new InternalPatientTransferRequest(patientName, destinationID, notes);
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: Moving " + patientName + " to " + locationName);
-  }
-
-  @FXML
-  public void reset(ActionEvent actionEvent) {
-    requestLabel.setText("");
-    floorInput.setValue("");
-    locationInput.setValue("");
-    patientInput.setValue("");
-    additionalInformationInput.setText("");
-    submitButton.setDisable(true);
-
-    floor = "";
-    locationName = "";
-    patientName = "";
-    notes = "";
   }
 }

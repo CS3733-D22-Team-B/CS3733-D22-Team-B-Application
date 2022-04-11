@@ -1,10 +1,6 @@
 package edu.wpi.cs3733.D22.teamB;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
-import edu.wpi.cs3733.D22.teamB.requests.InterpreterRequest;
-import edu.wpi.cs3733.D22.teamB.requests.MealRequest;
-import edu.wpi.cs3733.D22.teamB.requests.MedicineRequest;
-import java.util.Date;
 
 public class Main {
 
@@ -26,6 +22,6 @@ public class Main {
     }
 
     DatabaseController DC = DatabaseController.getInstance();
-    // App.launch(App.class, args);
+    App.launch(App.class, args);
   }
 }

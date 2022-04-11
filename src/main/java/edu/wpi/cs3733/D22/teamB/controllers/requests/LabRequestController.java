@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,14 +26,14 @@ public class LabRequestController extends PatientBasedRequestController {
   private LocationsDB locationsDB;
 
   public void initialize() {
+    super.initialize();
     locationsDB = LocationsDB.getInstance();
-    labRoomInput
-        .getItems()
-        .addAll(
-            locationsDB.list().stream()
-                .filter(location -> location.getNodeType().equals("Lab"))
-                .map(location -> location.getLongName())
-                .collect(Collectors.toList()));
+    List<String> l =
+        locationsDB.list().stream()
+            .filter(location -> location.getNodeType().equalsIgnoreCase("Labs"))
+            .map(location -> location.getLongName())
+            .collect(Collectors.toList());
+    labRoomInput.getItems().addAll(l);
   }
 
   public void setLabTest() {
@@ -81,17 +82,16 @@ public class LabRequestController extends PatientBasedRequestController {
   }
 
   @FXML
-  public void reset(ActionEvent actionEvent) {
-    requestLabel.setText("");
+  public void reset() {
+    super.reset();
     labRoomInput.setValue("");
+    labRoomInput.setPromptText("Lab Room");
     labTestInput.setValue("");
+    labTestInput.setPromptText("Lab Test");
     testingTimeInput.setValue(null);
-    additionalInformationInput.setText("");
-    submitButton.setDisable(true);
 
     labRoom = "";
     labTest = "";
     testingTime = null;
-    notes = "";
   }
 }
