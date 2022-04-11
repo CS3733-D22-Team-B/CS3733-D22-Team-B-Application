@@ -25,6 +25,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @FXML Button saveButton;
   @FXML Button addSaveButton;
+  @FXML Button deleteButton;
 
   @FXML TextField usernameInput;
   @FXML TextField passwordInput;
@@ -54,6 +55,8 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
     departmentInput.setDisable(true);
+    saveButton.setDisable(true);
+    deleteButton.setDisable(true);
 
     dao = EmployeesDB.getInstance();
     LinkedList<Employee> employeesL = dao.list();
@@ -96,6 +99,8 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           lastNameInput.setDisable(false);
                           positionInput.setDisable(false);
                           departmentInput.setDisable(false);
+                          saveButton.setDisable(false);
+                          deleteButton.setDisable(false);
                         });
                   }
 
@@ -129,6 +134,11 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     dao.update(currentEmployee);
     departmentInput.setValue("");
     positionInput.setValue("");
+    usernameInput.setText("");
+    passwordInput.setText("");
+    idInput.setText("");
+    firstNameInput.setText("");
+    lastNameInput.setText("");
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
@@ -137,6 +147,9 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
     departmentInput.setDisable(true);
+    employeeTable.refresh();
+    saveButton.setDisable(true);
+    deleteButton.setDisable(true);
   }
 
   @FXML
@@ -161,6 +174,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     departmentInput.setDisable(false);
     saveButton.setDisable(true);
     saveButton.setVisible(false);
+    deleteButton.setDisable(true);
     addSaveButton.setDisable(false);
     addSaveButton.setVisible(true);
   }
@@ -218,5 +232,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
     departmentInput.setDisable(true);
+    saveButton.setDisable(true);
+    deleteButton.setDisable(true);
   }
 }
