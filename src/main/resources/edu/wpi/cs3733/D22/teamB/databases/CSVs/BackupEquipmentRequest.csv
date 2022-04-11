@@ -1,4 +1,4 @@
-requestID,employeeID,locationID,equipmentID,type,status,priority,information
-EQU000001,PTDR01,bHALL00901,BED1,Equipment Delivery,Pending,1,This request is not urgent.
-EQU000002,EMNU01,bHALL01001,RECL3,Equipment Delivery,In Progress,3,This request is somewhat urgent.
-EQU000003,ICAM01,bHALL01101,PUMP2,Equipment Delivery,Completed,5,This request is urgent.
+requestID,employeeID,locationID,equipmentID,type,status,priority,information,timeCreated,lastEdited
+EQU000001,PTDR01,bHALL00901,BED1,Equipment Delivery,Pending,1,This request is not urgent.,2022-04-01 00:00:00.000,2022-04-01 00:00:00.000
+EQU000002,EMNU01,bHALL01001,RECL3,Equipment Delivery,In Progress,3,This request is somewhat urgent. ,2022-04-01 00:00:00.000,2022-04-01 00:00:00.000
+EQU000003,ICAM01,bHALL01101,PUMP2,Equipment Delivery,Completed,5,This request is urgent.,2022-04-01 00:00:00.000,2022-04-01 00:00:00.000

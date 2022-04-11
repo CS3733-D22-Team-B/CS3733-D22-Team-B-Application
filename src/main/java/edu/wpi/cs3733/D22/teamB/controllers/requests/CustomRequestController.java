@@ -1,8 +1,8 @@
-package edu.wpi.cs3733.D22.teamB.controllers;
+package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
+import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
 import edu.wpi.cs3733.D22.teamB.requests.CustomRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
-import edu.wpi.cs3733.D22.teamB.requests.RequestQueue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,12 +26,12 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
         .textProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
-              if (newValue.length() > 256) {
+              if (newValue.length() > 500) {
                 notesInput.setText(oldValue);
               }
 
               charactersRemainingLabel.setText(
-                  String.valueOf(256 - notesInput.getText().length()) + " characters remaining");
+                  String.valueOf(500 - notesInput.getText().length()) + " characters remaining");
             });
   }
 
@@ -75,7 +75,7 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
       request = new CustomRequest(null, patientID, type, notes);
       requestLabel.setText("Custom request sent: " + notes + " for " + patientName);
     }
-    RequestQueue.addRequest(request);
+    ServiceRequestsDB.getInstance().add(request);
   }
 
   @FXML
