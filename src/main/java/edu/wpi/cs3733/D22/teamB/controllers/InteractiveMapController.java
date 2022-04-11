@@ -28,8 +28,11 @@ public class InteractiveMapController {
   @FXML private Label nodeType;
   @FXML private Pane equipInfo;
   @FXML private Label equipType;
+  @FXML private Pane requestInfo;
+  @FXML private Label requestType;
   @FXML private Rectangle locationPane;
   @FXML private Rectangle equipmentPane;
+  @FXML private Rectangle requestPane;
   @FXML private Button addButton;
   @FXML private Button deleteButton;
   @FXML private Button editButton;
@@ -55,6 +58,7 @@ public class InteractiveMapController {
   private Boolean locInfoVisible = false;
   private Boolean lockHover = false;
   private Boolean equipInfoVisible = false;
+  private Boolean requestInfoVisible = false;
   private Boolean addEnabled = false;
   private Boolean editEnabled = false;
 
@@ -74,6 +78,7 @@ public class InteractiveMapController {
     setRoomIcons();
     // Set Equipment
     setEquipIcons();
+    setServiceIcons();
     resetDisplayPanes();
     // Set Requests
 
@@ -200,7 +205,7 @@ public class InteractiveMapController {
             });
     icon.setOnMouseClicked(
         event -> {
-          if (!equipInfoVisible) {
+          if (!equipInfoVisible && !requestInfoVisible) {
             locationPane.setFill(icon.getFill());
             if (!location.getNodeType().equals("EXIT")) {
               roomName.setTextFill(Color.rgb(255, 255, 255));
@@ -262,7 +267,7 @@ public class InteractiveMapController {
             });
     icon.setOnMouseClicked(
         event -> {
-          if (!locInfoVisible) toggleEquipInfo(eq);
+          if (!locInfoVisible && !requestInfoVisible) toggleEquipInfo(eq);
         });
 
     icon.setLayoutX(viewCoords[0]);
@@ -278,10 +283,38 @@ public class InteractiveMapController {
     int x = r.getLocation().getXCoord();
     int y = r.getLocation().getYCoord();
     int[] viewCoords = mapCoordsToViewCoords(x, y);
-    icon.setFill(Color.rgb(250, 0, 0));
+    switch (r.getStatus()) {
+      case "Pending":
+        icon.setFill(Color.rgb(250, 0, 0));
+        break;
+      case "In Progress":
+        icon.setFill(Color.rgb(100, 0, 100));
+        break;
+      default:
+        icon.setFill(Color.rgb(100, 100, 100));
+        break;
+    }
+    // TODO: hover property lol
+    icon.hoverProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              if (newVal && !lockHover) {
+                getRequestInfo(r);
+                equipmentPane.setFill(icon.getFill());
+              } else {
+                if (!equipInfoVisible && !lockHover) {
+                  equipInfo.setVisible(false);
+                }
+              }
+            });
+    icon.setOnMouseClicked(
+        event -> {
+          if (!locInfoVisible && !equipInfoVisible) toggleRequestInfo(r);
+        });
     icon.setLayoutX(viewCoords[0]);
     icon.setLayoutY(viewCoords[1]);
-    anchorPane.getChildren().add(icon);
+    mapPane.getChildren().add(icon);
+    serviceIcons.add(icon);
   }
 
   public void getLocInfo(Location location) {
@@ -299,6 +332,15 @@ public class InteractiveMapController {
     equipType.setText(eq.getType());
     equipInfo.setLayoutX(mapCoords[0] - 50);
     equipInfo.setLayoutY(mapCoords[1] + 15);
+    equipInfo.setVisible(true);
+  }
+
+  public void getRequestInfo(Request r) {
+    int[] mapCoords =
+        mapCoordsToViewCoords(r.getLocation().getXCoord(), r.getLocation().getYCoord());
+    requestType.setText(r.getType());
+    requestInfo.setLayoutX(mapCoords[0] - 50);
+    requestInfo.setLayoutY(mapCoords[1] + 15);
     equipInfo.setVisible(true);
   }
 
@@ -353,6 +395,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel2.png"));
     setRoomIcons();
     setEquipIcons();
+    setServiceIcons();
     resetDisplayPanes();
     floorReset();
   }
@@ -363,6 +406,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/lowerLevel1.png"));
     setRoomIcons();
     setEquipIcons();
+    setServiceIcons();
     resetDisplayPanes();
     floorReset();
   }
@@ -373,6 +417,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/firstFloor.png"));
     setRoomIcons();
     setEquipIcons();
+    setServiceIcons();
     resetDisplayPanes();
     floorReset();
   }
@@ -383,6 +428,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/secondFloor.png"));
     setRoomIcons();
     setEquipIcons();
+    setServiceIcons();
     resetDisplayPanes();
     floorReset();
   }
@@ -393,6 +439,7 @@ public class InteractiveMapController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/thirdFloor.png"));
     setRoomIcons();
     setEquipIcons();
+    setServiceIcons();
     resetDisplayPanes();
     floorReset();
   }
@@ -420,6 +467,18 @@ public class InteractiveMapController {
     }
   }
 
+  public void toggleRequestInfo(Request r) {
+    if (requestInfoVisible) {
+      requestInfo.setVisible(false);
+      lockHover = false;
+      requestInfoVisible = false;
+    } else {
+      getRequestInfo(r);
+      lockHover = true;
+      requestInfoVisible = true;
+    }
+  }
+
   public void toggleEquipInfo(MedicalEquipment eq) {
     if (equipInfoVisible) {
       equipInfo.setVisible(false);
@@ -436,9 +495,11 @@ public class InteractiveMapController {
   public void floorReset() {
     locInfoVisible = false;
     equipInfoVisible = false;
+    requestInfoVisible = false;
     lockHover = false;
     locationInfo.setVisible(false);
     equipInfo.setVisible(false);
+    requestInfo.setVisible(false);
   }
 
   public void deleteLoc() {

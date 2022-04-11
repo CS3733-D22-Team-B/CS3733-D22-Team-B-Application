@@ -40,7 +40,7 @@
       </JFXButton>
       <Pane fx:id="equipInfo" prefHeight="94.0" prefWidth="119.0" visible="false">
          <children>
-            <Rectangle fx:id="servicePane" arcHeight="5.0" arcWidth="5.0" fill="#ff1fc4" height="94.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+            <Rectangle fx:id="equipmentPane" arcHeight="5.0" arcWidth="5.0" fill="#ff1fc4" height="94.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
             <Label fx:id="equipType" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="80.0" text="Type" textFill="WHITE" wrapText="true" />
          </children>
       </Pane>
@@ -51,6 +51,12 @@
             <Label fx:id="nodeType" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="40.0" prefHeight="17.0" prefWidth="121.0" text="Node Type" textFill="WHITE" />
             <Button fx:id="deleteButton" layoutY="68.0" mnemonicParsing="false" onAction="#deleteLoc" text="Delete" visible="false" />
             <Button fx:id="editButton" layoutX="82.0" layoutY="68.0" mnemonicParsing="false" onAction="#startEdit" text="Edit" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="requestInfo" layoutX="10.0" layoutY="10.0" prefHeight="94.0" prefWidth="119.0" visible="false">
+         <children>
+            <Rectangle fx:id="requestPane" arcHeight="5.0" arcWidth="5.0" fill="#ff1fc4" height="94.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+            <Label fx:id="requestType" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="80.0" text="Type" textFill="WHITE" wrapText="true" />
          </children>
       </Pane>
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="449.0" layoutY="238.0" prefHeight="140.0" prefWidth="121.0" wrapText="true" />
