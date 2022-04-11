@@ -32,6 +32,7 @@ public class DatabaseController {
     EdgesDB.getInstance().listDB();
   }
 
+  /////////////////////////////// .list() //////////////////////////////////////////////////////
   public LinkedList<Location> listLocations() {
     return LocationsDB.getInstance().list();
   }
@@ -60,6 +61,11 @@ public class DatabaseController {
     return ServiceRequestsDB.getInstance().list();
   }
 
+  public LinkedList<Edge> listEdges() {
+    return EdgesDB.getInstance().list();
+  }
+
+  ////////////////////////////////////////// .add() ////////////////////////////////////////////////
   public int add(Location loc) {
     return LocationsDB.getInstance().add(loc);
   }
@@ -88,6 +94,11 @@ public class DatabaseController {
     return ServiceRequestsDB.getInstance().add(req);
   }
 
+  public int add(Edge edge) {
+    return EdgesDB.getInstance().add(edge);
+  }
+
+  /////////////////////////////////////// .update() //////////////////////////////////////////
   public int update(Location loc) {
     return LocationsDB.getInstance().update(loc);
   }
@@ -116,6 +127,11 @@ public class DatabaseController {
     return ServiceRequestsDB.getInstance().update(req);
   }
 
+  public int update(Edge edge) {
+    return EdgesDB.getInstance().update(edge);
+  }
+
+  /////////////////////////////////////// .delete() ///////////////////////////////////////////
   public int delete(Location loc) {
     return LocationsDB.getInstance().delete(loc);
   }
@@ -142,6 +158,10 @@ public class DatabaseController {
 
   public int delete(Request req) {
     return ServiceRequestsDB.getInstance().delete(req);
+  }
+
+  public int delete(Edge edge) {
+    return EdgesDB.getInstance().delete(edge);
   }
 
   public void resetAllDBs() {
@@ -191,5 +211,6 @@ public class DatabaseController {
     MedicalEquipmentDB.getInstance().switchConnection(isRemote);
     PatientsDB.getInstance().switchConnection(isRemote);
     ServiceRequestsDB.getInstance().switchConnection(isRemote);
+    EdgesDB.getInstance().switchConnection(isRemote);
   }
 }

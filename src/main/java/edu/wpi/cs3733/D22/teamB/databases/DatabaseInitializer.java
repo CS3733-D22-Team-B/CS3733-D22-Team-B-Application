@@ -64,7 +64,7 @@ public class DatabaseInitializer {
       if (!tableExists(connection, "EDGES")) {
         statement.execute(
             "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID), CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID))");
-        populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Patients", 4);
+        populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Edges", 3);
       }
       /*
       if (!tableExists(connection, "SERVICEREQUESTS")) {
@@ -105,6 +105,7 @@ public class DatabaseInitializer {
         addToTable =
             "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Edges") {
+        System.out.println("populating Edges");
         addToTable = "INSERT INTO Edges(edgeID, nodeID1, nodeID2) VALUES(?, ?, ?)";
       }
       PreparedStatement pStatement = connection.prepareStatement(addToTable);

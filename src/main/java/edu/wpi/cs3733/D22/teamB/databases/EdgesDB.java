@@ -102,17 +102,14 @@ public class EdgesDB extends DatabaseSuperclass implements IDatabases<Edge> {
     if (!edgeMap.containsKey(edgeObj.getEdgeID())) {
       return -1;
     }
-    return transform(
-        edgeObj,
-        "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ? WHERE patientID = ?",
-        true);
+    return transform(edgeObj, "UPDATE Edges SET nodeID1 = ?, nodeID2 = ?, WHERE edgeID = ?", true);
   }
 
   public int add(Edge edgeObj) {
     if (edgeMap.containsKey(edgeObj.getEdgeID())) {
       return -1;
     }
-    return transform(edgeObj, "INSERT INTO Patients VALUES(?,?,?,?)", false);
+    return transform(edgeObj, "INSERT INTO Edges VALUES(?,?,?)", false);
   }
 
   public int delete(Edge edgeObj) {

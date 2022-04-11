@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.path_planning;
 
 import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
+import edu.wpi.cs3733.D22.teamB.databases.EdgesDB;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import java.util.HashMap;
@@ -9,10 +10,17 @@ import java.util.LinkedList;
 public class AStarMain {
 
   public static void main(String[] args) {
-    CSVTester();
+    // CSVTester();
+
+    DatabaseTester();
   }
 
-  private static void DatabaseTester() {}
+  private static void DatabaseTester() {
+    DatabaseController DC = DatabaseController.getInstance();
+
+    EdgesDB edges = EdgesDB.getInstance();
+    edges.list();
+  }
 
   private static void CSVTester() {
     // Get edges from the the EdgeGetter

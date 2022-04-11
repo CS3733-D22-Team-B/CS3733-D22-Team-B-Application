@@ -96,6 +96,7 @@ public class AStar {
     while (!node.equals(startNode)) {
       // Trace back the paths using the cameFrom attribute
       path.add(0, locDB.getByID(node.getNodeId()));
+      System.out.println(node.getNodeId());
       node = node.getCameFrom();
     }
 
