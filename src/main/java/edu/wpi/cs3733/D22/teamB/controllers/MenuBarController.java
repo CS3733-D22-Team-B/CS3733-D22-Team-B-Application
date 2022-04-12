@@ -87,6 +87,11 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToDashboard(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("dashboard");
+  }
+
+  @FXML
   void quitApplication() {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
