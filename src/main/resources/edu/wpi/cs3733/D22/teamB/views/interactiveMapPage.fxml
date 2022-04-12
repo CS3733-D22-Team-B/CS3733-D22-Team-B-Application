@@ -29,7 +29,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="addButton" layoutX="12.0" layoutY="16.0" prefHeight="158.0" prefWidth="130.0" text=" ">
+      <JFXButton fx:id="addButton" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -131,7 +131,7 @@
       </ImageView>
       <Pane fx:id="mapPane" layoutX="323.5" layoutY="95.0" prefHeight="350.0" prefWidth="400.0">
          <children>
-            <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/mapAssets/firstFloor.png" />
                </image>
@@ -157,7 +157,7 @@
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="TypeDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" visible="false" />
+      <JFXComboBox fx:id="typeDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" visible="false" />
 
       <JFXComboBox fx:id="locationDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Location" visible="false" />
       <ImageView fx:id="secondTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="125.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
