@@ -1,0 +1,13 @@
+Name			Opacity	W	H		X	Y
+
+LoginBackground		0.75	671.5	398		144.5	71
+TextInput		0.75	316	65		164.5	280
+TextInput		0.75	316	65		164.5	365
+LoginButton		1	65	65		731	365
+
+TEXT - Room Type	0.4	1/3 Box Height Font	Left In Box		Color: #7BCCE4
+TEXT - Room Name	0.4	1/3 Box Height Font	Left In Box		Color: #7BCCE4
+
+SideBar			0.75	105	540		0	0
+SideBar			0.75	105	540		855	0
+ExitButton		1	65	65		875	20
