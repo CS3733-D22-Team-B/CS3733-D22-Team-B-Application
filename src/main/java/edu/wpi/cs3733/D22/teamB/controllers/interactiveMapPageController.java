@@ -179,10 +179,10 @@ public class interactiveMapPageController extends MenuBarController {
         icon.setFill(Color.rgb(146, 37, 144));
         break;
       case "STAI":
-        icon.setFill(Color.rgb(246, 153, 205));
+        icon.setFill(Color.rgb(255, 99, 167));
         break;
       case "STOR":
-        icon.setFill(Color.rgb(209, 192, 168));
+        icon.setFill(Color.rgb(72, 43, 0));
         break;
       default:
         icon.setFill(Color.rgb(12, 38, 210));
@@ -639,6 +639,7 @@ public class interactiveMapPageController extends MenuBarController {
     secondTopLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     locationName.setVisible(false);
+    locationName.setText("");
     confirmButton.setVisible(false);
     markerButton.setVisible(false);
     markerLabel.setVisible(false);
