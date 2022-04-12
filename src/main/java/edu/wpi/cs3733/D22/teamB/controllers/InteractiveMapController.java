@@ -247,7 +247,7 @@ public class InteractiveMapController {
             "M6 1c-2.665 2.275 -4 4.24 -4 5.9c0 2.49 1.9 4.1 4 4.1s4 -1.61 4 -4.1C10 5.24 8.665 3.275 6 1zM6 10c-1.675 0 -3 -1.285 -3 -3.1c0 -1.17 0.975 -2.72 3 -4.57c2.025 1.85 3 3.395 3 4.57C9 8.715 7.675 10 6 10z");
         break;
     }
-    if (eq.getIsRequested()) {
+    if (eq.getAvailability().equals("Requested")) {
       icon.setFill(Color.rgb(250, 0, 200));
     } else {
       icon.setFill(Color.rgb(60, 173, 241));
