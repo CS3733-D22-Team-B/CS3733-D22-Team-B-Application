@@ -32,16 +32,16 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="632.0" layoutY="78.0" text=" ">
+            <JFXButton layoutX="633.0" layoutY="70.0" text=" ">
                <graphic>
-                  <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-18.0">
+                  <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-16.0">
                      <image>
                         <Image url="@../assets/Return.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <ImageView fitHeight="695.0" fitWidth="875.0" layoutX="-65.0" layoutY="-120.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="695.0" fitWidth="689.0" layoutX="-59.0" layoutY="-120.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/MapButton.png" />
                </image>
@@ -52,7 +52,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="-60.0">
                <image>
-                  <Image url="@../assets/Add.png" />
+                  <Image url="@../assets/AddPageButton.png" />
                </image>
             </ImageView>
          </graphic>
@@ -61,7 +61,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/Edit.png" />
+                  <Image url="@../assets/EditPageButton.png" />
                </image>
             </ImageView>
          </graphic>
@@ -70,11 +70,10 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="-100.0" translateY="-60.0">
                <image>
-                  <Image url="@../assets/Delete.png" />
+                  <Image url="@../assets/DeletePageButton.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
