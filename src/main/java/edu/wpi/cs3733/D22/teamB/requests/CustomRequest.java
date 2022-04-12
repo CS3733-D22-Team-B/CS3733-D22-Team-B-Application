@@ -5,8 +5,8 @@ import java.util.Date;
 public class CustomRequest extends Request {
 
   public CustomRequest(
-      String locationID, String patientID, String requestType, String information) {
-    super(locationID, patientID, information, requestType);
+      String locationID, String patientID, String requestType, String information, int priority) {
+    super(locationID, patientID, information, priority, requestType);
     this.information = "Custom Request: " + information;
   }
 

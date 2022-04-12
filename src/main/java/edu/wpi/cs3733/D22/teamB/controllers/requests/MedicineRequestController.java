@@ -27,7 +27,8 @@ public class MedicineRequestController extends PatientBasedRequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     String patientID = patientsDB.getPatientID(patientName);
-    MedicineRequest request = new MedicineRequest(patientID, medicine);
+    MedicineRequest request =
+        new MedicineRequest(patientID, medicine, (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: " + medicine + " to " + patientName);
   }

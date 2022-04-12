@@ -7,8 +7,8 @@ public class EquipmentRequest extends Request {
   private final String equipmentID;
   private MedicalEquipment medicalEquipment;
 
-  public EquipmentRequest(String locationID, String equipmentID, String information) {
-    super(locationID, null, information, "Equipment Request");
+  public EquipmentRequest(String locationID, String equipmentID, String information, int priority) {
+    super(locationID, null, information, priority, "Equipment Request");
     this.equipmentID = equipmentID;
     setMedicalEquipment();
     this.information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + information;

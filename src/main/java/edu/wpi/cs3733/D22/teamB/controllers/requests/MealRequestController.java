@@ -27,7 +27,7 @@ public class MealRequestController extends PatientBasedRequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     String patientID = patientsDB.getPatientID(patientName);
-    MealRequest request = new MealRequest(patientID, mealName);
+    MealRequest request = new MealRequest(patientID, mealName, (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Meal request sent: " + mealName + " for " + patientName);
   }

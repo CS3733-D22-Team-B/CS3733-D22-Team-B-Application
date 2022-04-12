@@ -26,7 +26,8 @@ public class InterpreterRequestController extends LocationBasedRequestController
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     String locationID = locationsDAO.getLocationID(locationName);
-    InterpreterRequest request = new InterpreterRequest(locationID, language);
+    InterpreterRequest request =
+        new InterpreterRequest(locationID, language, (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request Sent: " + language + " interpreter to " + locationName);
   }

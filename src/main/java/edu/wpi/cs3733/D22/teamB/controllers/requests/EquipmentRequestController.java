@@ -29,7 +29,8 @@ public class EquipmentRequestController extends LocationBasedRequestController {
   public void sendRequest(ActionEvent actionEvent) {
     setNotes();
     String locationID = locationsDAO.getLocationID(locationName);
-    EquipmentRequest request = new EquipmentRequest(locationID, equipment, notes);
+    EquipmentRequest request =
+        new EquipmentRequest(locationID, equipment, notes, (int) prioritySlider.getValue());
     EquipmentRequestDB.getInstance().add(request);
     requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }
