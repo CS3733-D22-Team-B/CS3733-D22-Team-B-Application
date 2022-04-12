@@ -22,6 +22,11 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToMapLandingPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("mapLandingPage");
+  }
+
+  @FXML
   void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("equipmentTrackerPage");
   }
@@ -44,6 +49,11 @@ public class MenuBarController {
   @FXML
   void goToEmployeeDatabase(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("employeeDatabasePage");
+  }
+
+  @FXML
+  void goToLocationDataPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("locationDataPage");
   }
 
   @FXML

@@ -40,6 +40,7 @@ public class LabRequest extends Request {
       String type,
       String status,
       int priority,
+      String information,
       String test,
       Date date,
       Date timeCreated,
@@ -52,7 +53,7 @@ public class LabRequest extends Request {
         type,
         status,
         priority,
-        "",
+        information,
         timeCreated,
         lastEdited);
     this.test = test;

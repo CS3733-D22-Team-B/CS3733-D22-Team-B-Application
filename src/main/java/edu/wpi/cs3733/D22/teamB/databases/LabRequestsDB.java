@@ -41,9 +41,10 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
                 rs.getString(6),
                 rs.getInt(7),
                 rs.getString(8),
-                new java.util.Date(rs.getTimestamp(9).getTime()),
+                rs.getString(9),
                 new java.util.Date(rs.getTimestamp(10).getTime()),
-                new java.util.Date(rs.getTimestamp(11).getTime()));
+                new java.util.Date(rs.getTimestamp(11).getTime()),
+                new java.util.Date(rs.getTimestamp(12).getTime()));
         labRequestMap.put(rs.getString(1), labReqObj);
       }
     } catch (SQLException e) {
@@ -116,7 +117,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
     }
     return transform(
         labReqObj,
-        "UPDATE LabRequests SET employeeID = ?, patientID = ?, testRoomID = ?, type = ?, status = ?, priority = ?, test = ?, date = ?, timeCreated = ?, lastEdited = ? WHERE requestID = ?",
+        "UPDATE LabRequests SET employeeID = ?, patientID = ?, testRoomID = ?, type = ?, status = ?, priority = ?, information = ?, test = ?, date = ?, timeCreated = ?, lastEdited = ? WHERE requestID = ?",
         true);
   }
 
@@ -125,7 +126,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
     if (labRequestMap.containsKey(labReq.getRequestID())) {
       return -1;
     }
-    return transform(labReq, "INSERT INTO LabRequests VALUES(?,?,?,?,?,?,?,?,?,?,?)", false);
+    return transform(labReq, "INSERT INTO LabRequests VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", false);
   }
 
   @Override
@@ -145,7 +146,7 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(11, labReq.getRequestID());
+        pStatement.setString(12, labReq.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, labReq.getRequestID());
@@ -157,10 +158,11 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
       pStatement.setString(5 + offset, labReq.getType());
       pStatement.setString(6 + offset, labReq.getStatus());
       pStatement.setInt(7 + offset, labReq.getPriority());
-      pStatement.setString(8 + offset, labReq.getTest());
-      pStatement.setTimestamp(9 + offset, new Timestamp(labReq.getDate().getTime()));
-      pStatement.setTimestamp(10 + offset, new Timestamp(labReq.getTimeCreated().getTime()));
-      pStatement.setTimestamp(11 + offset, new Timestamp(labReq.getLastEdited().getTime()));
+      pStatement.setString(8 + offset, labReq.getInformation());
+      pStatement.setString(9 + offset, labReq.getTest());
+      pStatement.setTimestamp(10 + offset, new Timestamp(labReq.getDate().getTime()));
+      pStatement.setTimestamp(11 + offset, new Timestamp(labReq.getTimeCreated().getTime()));
+      pStatement.setTimestamp(12 + offset, new Timestamp(labReq.getLastEdited().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();

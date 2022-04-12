@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +12,7 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Background.png" />
+            <Image url="@../assets/components/Background.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="employeeDatabaseButton" contentDisplay="TOP" layoutX="564.0" layoutY="293.0" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database">
@@ -36,7 +35,7 @@
             <Circle fill="#8cc73b" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="mapButton" contentDisplay="TOP" layoutX="244.0" layoutY="197.0" onAction="#goToMap" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+      <JFXButton fx:id="mapButton" contentDisplay="TOP" layoutX="244.0" layoutY="197.0" onAction="#goToMapLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
          <graphic>
             <Circle fill="#2b73bf" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
          </graphic>
@@ -57,6 +56,5 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button layoutX="92.0" layoutY="227.0" mnemonicParsing="false" onAction="#goToDashboard" text="Dashboard" />
    </children>
 </AnchorPane>

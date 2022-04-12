@@ -11,22 +11,22 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Background.png" />
+            <Image url="@../assets/components/Background.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="84.0" layoutY="10.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/CollectionBackground.png" />
+            <Image url="@../assets/components/CollectionBackground.png" />
          </image>
       </ImageView>
       <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="785.0" layoutY="-76.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/SidePiece.png" />
+            <Image url="@../assets/components/SidePiece.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-82.0" layoutY="-76.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/SidePiece.png" />
+            <Image url="@../assets/components/SidePiece.png" />
          </image>
       </ImageView>
       <Label layoutX="-27.0" layoutY="238.0" rotate="270.0" text="About" textFill="#7bcce4">
@@ -74,7 +74,7 @@
          <graphic>
             <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/menuButton.png" />
+                  <Image url="@../assets/components/menuButton.png" />
                </image>
             </ImageView>
          </graphic>

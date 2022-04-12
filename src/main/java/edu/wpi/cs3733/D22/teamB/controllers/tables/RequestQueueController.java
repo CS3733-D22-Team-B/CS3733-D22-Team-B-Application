@@ -4,6 +4,7 @@ import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 public class RequestQueueController extends MenuBarController implements Initializable {
@@ -29,6 +31,9 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML Label createdLabel;
   @FXML Label lastEditedLabel;
   @FXML Label informationLabel;
+
+  @FXML ScrollPane scrollPane;
+  @FXML AnchorPane otherAnchorPane;
 
   @FXML ComboBox<String> statusInput;
   @FXML ComboBox<String> employeeInput;
@@ -45,11 +50,11 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
-    columnRequestID.getStyleClass().add("simple-table-column-left");
-    columnType.getStyleClass().add("simple-table-column-middle");
-    columnStatus.getStyleClass().add("simple-table-column-middle");
-    columnPriority.getStyleClass().add("simple-table-column-middle");
-    columnButtons.getStyleClass().add("simple-table-column-right");
+    columnRequestID.getStyleClass().add("");
+    columnType.getStyleClass().add("table-column-middle");
+    columnStatus.getStyleClass().add("table-column-middle");
+    columnPriority.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
 
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
@@ -79,6 +84,8 @@ public class RequestQueueController extends MenuBarController implements Initial
     for (Request request : ServiceRequestsDB.getInstance().list()) {
       requests.add(request);
     }
+
+    sortRequestsByCreationDate(requests);
 
     requestTable.setItems(requests);
     addButtonToTable();
@@ -112,6 +119,9 @@ public class RequestQueueController extends MenuBarController implements Initial
                           employeeInput.setDisable(false);
                           statusInput.setValue(request.getStatus());
                           statusInput.setDisable(false);
+
+                          otherAnchorPane.setVisible(false);
+                          scrollPane.setVisible(true);
                         });
                   }
 
@@ -141,5 +151,13 @@ public class RequestQueueController extends MenuBarController implements Initial
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
     currentRequest.setLastEdited(new Date());
+
+    scrollPane.setVisible(false);
+    otherAnchorPane.setVisible(true);
+  }
+
+  private void sortRequestsByCreationDate(ObservableList<Request> requests) {
+    Collections.sort(
+        requests, (Request r1, Request r2) -> r1.getTimeCreated().compareTo(r2.getTimeCreated()));
   }
 }

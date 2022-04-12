@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Background.png" />
+            <Image url="@../assets/components/Background.png" />
          </image>
       </ImageView>
       <fx:include source="menu.fxml" />

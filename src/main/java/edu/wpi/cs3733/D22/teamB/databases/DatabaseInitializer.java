@@ -56,7 +56,7 @@ public class DatabaseInitializer {
       if (!tableExists(connection, "LABREQUESTS")) {
         statement.execute(
             "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), patientID VARCHAR(10), testRoomID VARCHAR(10),"
-                + "type VARCHAR(50), status VARCHAR(50), priority int, test VARCHAR(50), date TIMESTAMP, timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
+                + "type VARCHAR(50), status VARCHAR(50), priority int, information VARCHAR(512), test VARCHAR(50), date TIMESTAMP, timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
                 + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LAB_REQUEST_PAT foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID) ON DELETE CASCADE)");
         populateDatabaseLabRequestDB(
             Filepath.getInstance().getLabRequestCSVFilePath(), "LabRequests", 7);
@@ -225,7 +225,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, test, date, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, information, test, date, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = reader.read(filepath);

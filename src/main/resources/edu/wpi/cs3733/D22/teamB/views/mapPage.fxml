@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Background.png" />
+            <Image url="@../assets/components/Background.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="246.0" layoutY="53.0" prefHeight="488.0" prefWidth="716.0">
@@ -20,14 +20,14 @@
                </graphic></JFXButton>
             <ImageView fitHeight="690.0" fitWidth="261.0" layoutX="537.0" layoutY="-130.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/SidePiece.png" />
+                  <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
             <JFXButton layoutX="642.0" layoutY="2.0" text=" ">
                <graphic>
                   <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0" translateY="-20.0">
                      <image>
-                        <Image url="@../assets/Menu.png" />
+                        <Image url="@../assets/components/Menu.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -36,14 +36,14 @@
                <graphic>
                   <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-16.0">
                      <image>
-                        <Image url="@../assets/Return.png" />
+                        <Image url="@../assets/components/Return.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
             <ImageView fitHeight="695.0" fitWidth="689.0" layoutX="-59.0" layoutY="-120.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/MapButton.png" />
+                  <Image url="@../assets/components/MapButton.png" />
                </image>
             </ImageView>
          </children>
@@ -52,7 +52,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="-60.0">
                <image>
-                  <Image url="@../assets/AddPageButton.png" />
+                  <Image url="@../assets/components/AddPageButton.png" />
                </image>
             </ImageView>
          </graphic>
@@ -61,7 +61,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/EditPageButton.png" />
+                  <Image url="@../assets/components/EditPageButton.png" />
                </image>
             </ImageView>
          </graphic>
@@ -70,7 +70,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="-100.0" translateY="-60.0">
                <image>
-                  <Image url="@../assets/DeletePageButton.png" />
+                  <Image url="@../assets/components/DeletePageButton.png" />
                </image>
             </ImageView>
          </graphic>

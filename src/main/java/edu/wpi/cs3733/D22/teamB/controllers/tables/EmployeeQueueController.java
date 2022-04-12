@@ -30,7 +30,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @FXML TextField usernameInput;
   @FXML TextField passwordInput;
-  @FXML TextField idInput;
   @FXML TextField firstNameInput;
   @FXML TextField lastNameInput;
   @FXML ComboBox<String> positionInput;
@@ -44,7 +43,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    idInput.setDisable(true);
     columnEmployeeID.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
     columnPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -52,7 +50,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
@@ -90,7 +87,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           lastNameInput.setText(currentEmployee.getLastName());
                           positionInput.setValue(currentEmployee.getPosition());
                           departmentInput.setValue(currentEmployee.getDepartment());
-                          idInput.setText(currentEmployee.getEmployeeID());
                           usernameInput.setText(currentEmployee.getUsername());
                           passwordInput.setText(currentEmployee.getPassword());
 
@@ -103,6 +99,10 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           departmentInput.setDisable(false);
                           saveButton.setDisable(false);
                           deleteButton.setDisable(false);
+
+                          addSaveButton.setDisable(true);
+                          addSaveButton.setVisible(false);
+                          saveButton.setVisible(true);
                         });
                   }
 
@@ -138,13 +138,11 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     positionInput.setValue("");
     usernameInput.setText("");
     passwordInput.setText("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
@@ -161,7 +159,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     positionInput.setValue("");
     usernameInput.setText("");
     passwordInput.setText("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
     departmentInput.setValue("");
@@ -169,7 +166,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     usernameInput.setDisable(false);
     passwordInput.setDisable(false);
-    idInput.setDisable(false);
     firstNameInput.setDisable(false);
     lastNameInput.setDisable(false);
     positionInput.setDisable(false);
@@ -186,7 +182,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     Employee newEmp =
         new Employee(
-            idInput.getText(),
+            "TestID",
             lastNameInput.getText(),
             firstNameInput.getText(),
             departmentInput.getValue(),
@@ -202,7 +198,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
@@ -223,13 +218,11 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     positionInput.setValue("");
     usernameInput.setText("");
     passwordInput.setText("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
