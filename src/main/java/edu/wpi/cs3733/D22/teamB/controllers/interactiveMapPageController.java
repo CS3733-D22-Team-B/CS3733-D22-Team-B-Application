@@ -33,6 +33,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML Pane mapPane;
   @FXML ImageView mapImage;
   @FXML JFXButton backButton;
+  @FXML JFXButton toLocDatabase;
   @FXML ImageView floorBackground;
   @FXML ImageView topLeftBox;
   @FXML ImageView secondTopLeftBox;
@@ -467,6 +468,7 @@ public class interactiveMapPageController extends MenuBarController {
     editButton.setVisible(false);
     deleteButton.setVisible(false);
     resetButton.setVisible(false);
+    toLocDatabase.setVisible(false);
     backButton.setVisible(true);
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
@@ -515,6 +517,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(true);
     resetButton.setVisible(true);
     backButton.setVisible(false);
+    toLocDatabase.setVisible(true);
     floorBackground.setVisible(false);
     topLeftBox.setVisible(false);
     secondTopLeftBox.setVisible(false);
@@ -545,6 +548,7 @@ public class interactiveMapPageController extends MenuBarController {
     topLeftBox.setVisible(true);
     locationDropdown.setVisible(true);
     confirmButton.setVisible(true);
+    toLocDatabase.setVisible(false);
   }
 
   public void deleteLoc() {
@@ -583,6 +587,7 @@ public class interactiveMapPageController extends MenuBarController {
     topLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     confirmButton.setVisible(false);
+    toLocDatabase.setVisible(true);
     locationDropdown.setValue("");
     clearMarker();
   }
@@ -596,6 +601,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(false);
     resetButton.setVisible(false);
     backButton.setVisible(true);
+    toLocDatabase.setVisible(false);
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
     secondTopLeftBox.setVisible(true);
@@ -629,6 +635,7 @@ public class interactiveMapPageController extends MenuBarController {
   public void endEdit() {
     lockHover = false;
     editEnabled = false;
+    toLocDatabase.setVisible(true);
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);
