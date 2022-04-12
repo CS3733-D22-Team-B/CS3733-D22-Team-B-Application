@@ -2,6 +2,8 @@ package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequest;
 import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequestDB;
+import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
+import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -12,6 +14,8 @@ public class EquipmentRequestController extends LocationBasedRequestController {
   @FXML private ComboBox<String> equipmentInput;
 
   private String equipment = "";
+
+  private MedicalEquipmentDB equDAO = MedicalEquipmentDB.getInstance();
 
   public void initialize() {
     super.initialize();
@@ -26,6 +30,12 @@ public class EquipmentRequestController extends LocationBasedRequestController {
                 setNotes();
               }
             });
+
+    for (MedicalEquipment equipment : equDAO.list()) {
+      if (equipment.getIsClean() && equipment.getAvailability().equals("Available")) {
+        equipmentInput.getItems().add(equipment.getName());
+      }
+    }
   }
 
   @FXML
@@ -43,11 +53,12 @@ public class EquipmentRequestController extends LocationBasedRequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    setNotes();
     String locationID = locationsDAO.getLocationID(locationName);
+    String equipmentID = equDAO.getEquipmentID(equipment);
     EquipmentRequest request =
-        new EquipmentRequest(locationID, equipment, notes, (int) prioritySlider.getValue());
+        new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
     EquipmentRequestDB.getInstance().add(request);
+    request.getMedicalEquipment().setAvailability("Requested");
     requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }
 

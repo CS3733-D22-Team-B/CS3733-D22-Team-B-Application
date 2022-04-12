@@ -154,7 +154,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @FXML
   public void addStart(ActionEvent event) {
-
     departmentInput.setValue("");
     positionInput.setValue("");
     usernameInput.setText("");
@@ -182,7 +181,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     Employee newEmp =
         new Employee(
-            "TestID",
             lastNameInput.getText(),
             firstNameInput.getText(),
             departmentInput.getValue(),

@@ -7,6 +7,13 @@ public class Patient {
   private String nodeID;
   private Location location;
 
+  public Patient(String lastName, String firstName, String nodeID) {
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.nodeID = nodeID;
+    this.patientID = "PA" + getHashCode();
+  }
+
   public Patient(String newPatientID, String newLastName, String newFirstName, String newNodeID) {
     setPatientID(newPatientID);
     setLastName(newLastName);
@@ -58,6 +65,29 @@ public class Patient {
 
   public String getOverview() {
     return firstName + " " + lastName + " (" + patientID + ")";
+  }
+
+  // Josh Bloch's Hashing method
+  protected final String getHashCode() {
+    // generate random value between 0 and 1 inclusive
+    double result = (Math.random() + 1) / 2.0;
+
+    // calculate the field component weights
+    long c =
+        firstName.hashCode() + lastName.hashCode() + ((nodeID == null) ? 0 : nodeID.hashCode());
+
+    // calculate the hash
+    int hash = (int) (37 * result + c);
+
+    // convert hash to string
+    String hashCode = Integer.toString(Math.abs(hash));
+
+    // pad with zeros
+    while (hashCode.length() < 6) {
+      hashCode = "0" + hashCode;
+    }
+
+    return hashCode.substring(0, 6);
   }
 
   /////////////////// LOCATION GETTERS////////////////////

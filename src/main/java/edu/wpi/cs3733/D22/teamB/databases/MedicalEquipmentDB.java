@@ -4,6 +4,8 @@ import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
   // private final String url = "jdbc:derby:Databases;";
@@ -155,5 +157,13 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       return -1;
     }
     return 0;
+  }
+
+  public String getEquipmentID(String name) {
+    Stream<String> keys =
+        medicalEquipmentMap.entrySet().stream()
+            .filter(entry -> name.equals(entry.getValue().getName()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 }

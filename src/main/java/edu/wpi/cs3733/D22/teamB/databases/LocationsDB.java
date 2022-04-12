@@ -192,6 +192,12 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       case 4:
         floorName = "3";
         break;
+      case 5:
+        floorName = "4";
+        break;
+      case 6:
+        floorName = "5";
+        break;
     }
 
     LinkedList<Location> locList = new LinkedList<Location>();
@@ -224,6 +230,14 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       case "3":
         floorKey = "03";
         floorAsInt = 4;
+        break;
+      case "4":
+        floorKey = "04";
+        floorAsInt = 5;
+        break;
+      case "5":
+        floorKey = "05";
+        floorAsInt = 6;
         break;
     }
     String lastID = "bXXXX99901";
