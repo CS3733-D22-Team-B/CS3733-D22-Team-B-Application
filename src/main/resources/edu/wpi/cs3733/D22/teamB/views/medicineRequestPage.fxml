@@ -18,22 +18,22 @@
          <children>
             <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/Background.png" />
+                  <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/SidePiece.png" />
+                  <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
             <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/SidePiece.png" />
+                  <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/CollectionBackground.png" />
+                  <Image url="@../assets/components/CollectionBackground.png" />
                </image>
             </ImageView>
             <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="375.0" prefHeight="25.0" prefWidth="625.0" textFill="#7bcce4" />
@@ -46,7 +46,7 @@
                <graphic>
                   <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/menuButton.png" />
+                        <Image url="@../assets/components/menuButton.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -55,16 +55,16 @@
                <graphic>
                   <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resetButton.png" />
+                        <Image url="@../assets/components/resetButton.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="submitButton" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
+            <JFXButton fx:id="submitButton" disable="true" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
                <graphic>
                   <ImageView disable="true" fitHeight="82.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/submitButton.png" />
+                        <Image url="@../assets/components/submitButton.png" />
                      </image>
                   </ImageView>
                </graphic>

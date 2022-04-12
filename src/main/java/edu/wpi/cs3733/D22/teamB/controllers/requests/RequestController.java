@@ -1,9 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -13,7 +13,7 @@ public abstract class RequestController extends MenuBarController {
   @FXML protected TextArea additionalInformationInput;
   @FXML protected Label charactersRemainingLabel;
   @FXML protected Slider prioritySlider;
-  @FXML protected Button submitButton;
+  @FXML protected JFXButton submitButton;
 
   protected String notes = "";
 
@@ -36,6 +36,7 @@ public abstract class RequestController extends MenuBarController {
   public void setNotes() {
     notes =
         (additionalInformationInput.getText() == null) ? "" : additionalInformationInput.getText();
+    enableSubmission();
   }
 
   @FXML

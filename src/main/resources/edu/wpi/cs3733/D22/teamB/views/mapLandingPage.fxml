@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapLandingPageController">
+   <children>
+      <AnchorPane layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+         <children>
+            <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/components/Background.png" />
+               </image>
+            </ImageView>
+            <fx:include source="menu.fxml" />
+            <JFXButton layoutX="14.0" layoutY="498.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <JFXButton fx:id="dashboardButton" contentDisplay="GRAPHIC_ONLY" layoutX="166.0" layoutY="115.0" onAction="#goToDashboard" prefHeight="238.0" prefWidth="293.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Equipment Request">
+               <graphic>
+                  <ImageView fitHeight="189.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons/dashboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <AnchorPane fx:id="uglyNamePane" layoutX="52.0" layoutY="115.0" prefHeight="348.0" prefWidth="813.0" visible="false">
+               <children>
+                  <Label layoutX="213.0" layoutY="102.0" text="Created By Chase Miller" textFill="WHITE" />
+                  <Label layoutX="462.0" layoutY="102.0" text="Created By Ethan Moynihan" textFill="WHITE" />
+                  <Label layoutX="66.0" layoutY="216.0" text="Created By Marek Garbaczonek" textFill="WHITE" />
+                  <Label layoutX="341.0" layoutY="216.0" text="Created By Sean Barbour" textFill="WHITE" />
+                  <Label layoutX="603.0" layoutY="216.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
+                  <Label layoutX="203.0" layoutY="332.0" text="Created By Adian MacNevin" textFill="WHITE" />
+                  <Label layoutX="463.0" layoutY="331.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="mapButton" contentDisplay="GRAPHIC_ONLY" layoutX="534.0" layoutY="115.0" onAction="#goToMap" prefHeight="238.0" prefWidth="293.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create an Equipment Request">
+               <graphic>
+                  <ImageView fitHeight="204.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons/map.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="235.0" layoutY="353.0" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="649.0" layoutY="353.0" text="Map" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -4,6 +4,8 @@ import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -14,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 public class RequestQueueController extends MenuBarController implements Initializable {
@@ -24,9 +27,16 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML TableColumn<Request, Integer> columnPriority;
   @FXML TableColumn<Request, Void> columnButtons;
 
+  @FXML private TextField downloadText;
+  @FXML private Label errorLabel;
+
   @FXML Label requestIDLabel;
-  @FXML Label locationLabel;
-  @FXML Label employeeLabel;
+  @FXML Label createdLabel;
+  @FXML Label lastEditedLabel;
+  @FXML Label informationLabel;
+
+  @FXML ScrollPane scrollPane;
+  @FXML AnchorPane otherAnchorPane;
 
   @FXML ComboBox<String> statusInput;
   @FXML ComboBox<String> employeeInput;
@@ -43,11 +53,11 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
-    columnRequestID.getStyleClass().add("simple-table-column-left");
-    columnType.getStyleClass().add("simple-table-column-middle");
-    columnStatus.getStyleClass().add("simple-table-column-middle");
-    columnPriority.getStyleClass().add("simple-table-column-middle");
-    columnButtons.getStyleClass().add("simple-table-column-right");
+    columnRequestID.getStyleClass().add("");
+    columnType.getStyleClass().add("table-column-middle");
+    columnStatus.getStyleClass().add("table-column-middle");
+    columnPriority.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
 
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
@@ -78,6 +88,8 @@ public class RequestQueueController extends MenuBarController implements Initial
       requests.add(request);
     }
 
+    sortRequestsByCreationDate(requests);
+
     requestTable.setItems(requests);
     addButtonToTable();
   }
@@ -97,7 +109,10 @@ public class RequestQueueController extends MenuBarController implements Initial
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
                           requestIDLabel.setText(request.getRequestID());
-                          locationLabel.setText(request.getInformation());
+                          createdLabel.setText("Created: " + request.getTimeCreated().toString());
+                          lastEditedLabel.setText(
+                              "Last Edited: " + request.getLastEdited().toString());
+                          informationLabel.setText(request.getInformation());
 
                           String employeeID = request.getEmployeeID();
                           if (!employeeID.equals("0")) {
@@ -107,6 +122,9 @@ public class RequestQueueController extends MenuBarController implements Initial
                           employeeInput.setDisable(false);
                           statusInput.setValue(request.getStatus());
                           statusInput.setDisable(false);
+
+                          otherAnchorPane.setVisible(false);
+                          scrollPane.setVisible(true);
                         });
                   }
 
@@ -125,7 +143,6 @@ public class RequestQueueController extends MenuBarController implements Initial
         };
 
     columnButtons.setCellFactory(cellFactory);
-    requestTable.getColumns().add(columnButtons);
   }
 
   @FXML
@@ -136,5 +153,27 @@ public class RequestQueueController extends MenuBarController implements Initial
     requestTable.refresh();
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
+    currentRequest.setLastEdited(new Date());
+
+    scrollPane.setVisible(false);
+    otherAnchorPane.setVisible(true);
+  }
+
+  private void sortRequestsByCreationDate(ObservableList<Request> requests) {
+    Collections.sort(
+        requests, (Request r1, Request r2) -> r1.getTimeCreated().compareTo(r2.getTimeCreated()));
+  }
+
+  @FXML
+  public void download() {
+    if (downloadText.getText().equals("")) {
+      errorLabel.setText("Please enter filename");
+    } else {
+      EquipmentRequestDB.getInstance()
+          .downloadCSV(downloadText.getText() + " - Equipment Requests");
+      LabRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Lab Requests");
+      ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
+      errorLabel.setText("Files downloaded");
+    }
   }
 }

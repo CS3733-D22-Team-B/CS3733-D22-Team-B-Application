@@ -10,8 +10,13 @@ public class LabRequest extends Request {
   private final Date date;
 
   public LabRequest(
-      String patientID, String test, Date date, String testRoomID, String information) {
-    super(null, patientID, information, "Lab Test");
+      String patientID,
+      String test,
+      Date date,
+      String testRoomID,
+      String information,
+      int priority) {
+    super(null, patientID, information, priority, "Lab Test");
     this.test = test;
     this.date = date;
     this.testRoomID = testRoomID;
@@ -21,7 +26,7 @@ public class LabRequest extends Request {
             + "\n"
             + "Testing Time: "
             + date
-            + "\nAdditional Information: "
+            + "\n\nAdditional Information: "
             + information;
 
     testRoom = getTestRoom();
@@ -35,6 +40,7 @@ public class LabRequest extends Request {
       String type,
       String status,
       int priority,
+      String information,
       String test,
       Date date,
       Date timeCreated,
@@ -47,7 +53,7 @@ public class LabRequest extends Request {
         type,
         status,
         priority,
-        "",
+        information,
         timeCreated,
         lastEdited);
     this.test = test;

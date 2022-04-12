@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class InterpreterRequest extends Request {
 
-  public InterpreterRequest(String locationID, String information) {
-    super(locationID, null, information, "Interpreter");
-    this.information = "Language: " + information;
+  public InterpreterRequest(String locationID, String information, int priority) {
+    super(locationID, null, information, priority, "Interpreter");
+    this.information = information;
   }
 
   public InterpreterRequest(

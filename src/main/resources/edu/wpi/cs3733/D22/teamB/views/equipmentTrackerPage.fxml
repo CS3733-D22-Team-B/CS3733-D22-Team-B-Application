@@ -15,29 +15,29 @@
          <children>
             <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/Background.png" />
+                  <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/SidePiece.png" />
+                  <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
             <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/SidePiece.png" />
+                  <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/CollectionBackground.png" />
+                  <Image url="@../assets/components/CollectionBackground.png" />
                </image>
             </ImageView>
             <JFXButton layoutX="871.0" layoutY="38.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
                <graphic>
                   <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/menuButton.png" />
+                        <Image url="@../assets/components/menuButton.png" />
                      </image>
                   </ImageView>
                </graphic>

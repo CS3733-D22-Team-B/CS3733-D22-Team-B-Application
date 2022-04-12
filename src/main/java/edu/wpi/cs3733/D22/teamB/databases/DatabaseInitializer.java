@@ -56,7 +56,7 @@ public class DatabaseInitializer {
       if (!tableExists(connection, "LABREQUESTS")) {
         statement.execute(
             "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), patientID VARCHAR(10), testRoomID VARCHAR(10),"
-                + "type VARCHAR(50), status VARCHAR(50), priority int, test VARCHAR(50), date TIMESTAMP, timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
+                + "type VARCHAR(50), status VARCHAR(50), priority int, information VARCHAR(512), test VARCHAR(50), date TIMESTAMP, timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
                 + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LAB_REQUEST_PAT foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID) ON DELETE CASCADE)");
         populateDatabaseLabRequestDB(
             Filepath.getInstance().getLabRequestCSVFilePath(), "LabRequests", 7);
@@ -225,7 +225,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, test, date, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, information, test, date, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = reader.read(filepath);
@@ -242,10 +242,11 @@ public class DatabaseInitializer {
         String type = data[4];
         String status = data[5];
         String priority = data[6];
-        String test = data[7];
-        String date = data[8];
-        String timeCreated = data[9];
-        String lastEdited = data[10];
+        String information = data[7];
+        String test = data[8];
+        String date = data[9];
+        String timeCreated = data[10];
+        String lastEdited = data[11];
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
@@ -255,16 +256,17 @@ public class DatabaseInitializer {
         statement.setString(6, status);
         int priorityInt = Integer.parseInt(priority);
         statement.setInt(7, priorityInt);
-        statement.setString(8, test);
+        statement.setString(8, information);
+        statement.setString(9, test);
 
         Timestamp sqlTimestamp1 = Timestamp.valueOf(date);
-        statement.setTimestamp(9, sqlTimestamp1);
+        statement.setTimestamp(10, sqlTimestamp1);
 
         Timestamp sqlTimestamp2 = Timestamp.valueOf(timeCreated);
-        statement.setTimestamp(10, sqlTimestamp2);
+        statement.setTimestamp(11, sqlTimestamp2);
 
         Timestamp sqlTimestamp3 = Timestamp.valueOf(lastEdited);
-        statement.setTimestamp(11, sqlTimestamp3);
+        statement.setTimestamp(12, sqlTimestamp3);
 
         statement.addBatch();
         statement.executeBatch();

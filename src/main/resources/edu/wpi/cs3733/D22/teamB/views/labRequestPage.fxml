@@ -17,22 +17,22 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Background.png" />
+            <Image url="@../assets/components/Background.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/SidePiece.png" />
+            <Image url="@../assets/components/SidePiece.png" />
          </image>
       </ImageView>
       <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/SidePiece.png" />
+            <Image url="@../assets/components/SidePiece.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/CollectionBackground.png" />
+            <Image url="@../assets/components/CollectionBackground.png" />
          </image>
       </ImageView>
       <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="375.0" prefHeight="25.0" prefWidth="625.0" textFill="#7bcce4" />
@@ -45,7 +45,7 @@
          <graphic>
             <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/menuButton.png" />
+                  <Image url="@../assets/components/menuButton.png" />
                </image>
             </ImageView>
          </graphic>
@@ -54,16 +54,16 @@
          <graphic>
             <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resetButton.png" />
+                  <Image url="@../assets/components/resetButton.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="submitButton" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
+      <JFXButton fx:id="submitButton" disable="true" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
          <graphic>
             <ImageView disable="true" fitHeight="82.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/submitButton.png" />
+                  <Image url="@../assets/components/submitButton.png" />
                </image>
             </ImageView>
          </graphic>
@@ -71,7 +71,7 @@
       <Label layoutX="610.0" layoutY="316.0" text="Priority" textFill="#7bcce4" />
       <TextArea fx:id="additionalInformationInput" layoutX="485.0" layoutY="98.0" prefHeight="200.0" prefWidth="279.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" />
       <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="481.0" layoutY="330.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="34.0" prefWidth="290.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
-      <DatePicker fx:id="testingTimeInput" layoutX="177.0" layoutY="325.0" onAction="#setTestingTime" prefHeight="35.0" prefWidth="282.0" promptText="Testing Time" styleClass="simple-date-picker" stylesheets="@styles/dropdownStyles.css" />
+      <DatePicker fx:id="testingDateInput" layoutX="177.0" layoutY="252.0" onAction="#setTestingTime" prefHeight="35.0" prefWidth="282.0" promptText="Testing Date" styleClass="simple-date-picker" stylesheets="@styles/dropdownStyles.css" />
       <ComboBox fx:id="patientInput" layoutX="177.0" layoutY="103.0" onAction="#setPatient" prefHeight="35.0" prefWidth="281.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
       <ComboBox fx:id="labRoomInput" layoutX="177.0" layoutY="152.0" onAction="#setLabRoom" prefHeight="35.0" prefWidth="281.0" promptText="Lab Room" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
       <ComboBox fx:id="labTestInput" layoutX="177.0" layoutY="203.0" onAction="#setLabTest" prefHeight="35.0" prefWidth="282.0" promptText="Lab Test" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
@@ -91,5 +91,35 @@
          </font>
       </Label>
       <fx:include source="menu.fxml" />
+      <ComboBox fx:id="testingTimeInput" layoutX="177.0" layoutY="302.0" prefHeight="35.0" prefWidth="282.0" promptText="Testing Time" onAction="#setTestingTime" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="ZERO" fx:value="00:00" />
+               <String fx:id="ONE" fx:value="01:00" />
+               <String fx:id="TWO" fx:value="02:00" />
+               <String fx:id="THREE" fx:value="03:00" />
+               <String fx:id="FOUR" fx:value="04:00" />
+               <String fx:id="FIVE" fx:value="05:00" />
+               <String fx:id="SIX" fx:value="06:00" />
+               <String fx:id="SEVEN" fx:value="07:00" />
+               <String fx:id="EIGHT" fx:value="08:00" />
+               <String fx:id="NINE" fx:value="09:00" />
+               <String fx:id="TEN" fx:value="10:00" />
+               <String fx:id="ELEVEN" fx:value="11:00" />
+               <String fx:id="TWELVE" fx:value="12:00" />
+               <String fx:id="THIRTEEN" fx:value="13:00" />
+               <String fx:id="FOURTEEN" fx:value="14:00" />
+               <String fx:id="FIFTEEN" fx:value="15:00" />
+               <String fx:id="SIXTEEN" fx:value="16:00" />
+               <String fx:id="SEVENTEEN" fx:value="17:00" />
+               <String fx:id="EIGHTEEN" fx:value="18:00" />
+               <String fx:id="NINETEEN" fx:value="19:00" />
+               <String fx:id="TWENTY" fx:value="20:00" />
+               <String fx:id="TWENTYONE" fx:value="21:00" />
+               <String fx:id="TWENTYTWO" fx:value="22:00" />
+               <String fx:id="TWENTYTHREE" fx:value="23:00" />
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>

@@ -1,22 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXSlider?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.MapController">
    <children>
-      <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
+      <ImageView fitHeight="540.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/components/Background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="246.0" layoutY="53.0" prefHeight="488.0" prefWidth="716.0">
          <children>
-            <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" text="Back to Homepage" />
+            <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" text="Back to Homepage">
+               <graphic>
+                  <JFXButton />
+               </graphic></JFXButton>
+            <ImageView fitHeight="690.0" fitWidth="261.0" layoutX="537.0" layoutY="-130.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/components/SidePiece.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="642.0" layoutY="2.0" onAction="#goToHomepage" text=" ">
+               <graphic>
+                  <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0" translateY="-20.0">
+                     <image>
+                        <Image url="@../assets/components/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="633.0" layoutY="70.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-16.0">
+                     <image>
+                        <Image url="@../assets/components/Return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <ImageView fitHeight="695.0" fitWidth="689.0" layoutX="-59.0" layoutY="-120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/components/MapButton.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
+      <JFXButton layoutX="26.0" layoutY="93.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="-60.0">
+               <image>
+                  <Image url="@../assets/components/AddPageButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="66.0" layoutY="407.0" text=" " translateX="-35.0" translateY="-35.0">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/components/EditPageButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="87.0" layoutY="261.0" text=" " translateX="45.0">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="-100.0" translateY="-60.0">
+               <image>
+                  <Image url="@../assets/components/DeletePageButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

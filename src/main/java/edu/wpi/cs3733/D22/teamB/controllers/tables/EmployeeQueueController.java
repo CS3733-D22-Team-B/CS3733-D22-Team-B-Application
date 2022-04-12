@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import java.net.URL;
@@ -29,20 +30,19 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @FXML TextField usernameInput;
   @FXML TextField passwordInput;
-  @FXML TextField idInput;
   @FXML TextField firstNameInput;
   @FXML TextField lastNameInput;
   @FXML ComboBox<String> positionInput;
   @FXML ComboBox<String> departmentInput;
 
   Employee currentEmployee = null;
+  DatabaseController db = new DatabaseController();
   protected EmployeesDB dao;
 
   private ObservableList<Employee> employees = FXCollections.observableArrayList();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    idInput.setDisable(true);
     columnEmployeeID.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
     columnPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -50,7 +50,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
@@ -88,7 +87,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           lastNameInput.setText(currentEmployee.getLastName());
                           positionInput.setValue(currentEmployee.getPosition());
                           departmentInput.setValue(currentEmployee.getDepartment());
-                          idInput.setText(currentEmployee.getEmployeeID());
                           usernameInput.setText(currentEmployee.getUsername());
                           passwordInput.setText(currentEmployee.getPassword());
 
@@ -101,6 +99,10 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           departmentInput.setDisable(false);
                           saveButton.setDisable(false);
                           deleteButton.setDisable(false);
+
+                          addSaveButton.setDisable(true);
+                          addSaveButton.setVisible(false);
+                          saveButton.setVisible(true);
                         });
                   }
 
@@ -136,13 +138,11 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     positionInput.setValue("");
     usernameInput.setText("");
     passwordInput.setText("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
@@ -159,7 +159,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     positionInput.setValue("");
     usernameInput.setText("");
     passwordInput.setText("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
     departmentInput.setValue("");
@@ -167,7 +166,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     usernameInput.setDisable(false);
     passwordInput.setDisable(false);
-    idInput.setDisable(false);
     firstNameInput.setDisable(false);
     lastNameInput.setDisable(false);
     positionInput.setDisable(false);
@@ -184,7 +182,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     Employee newEmp =
         new Employee(
-            idInput.getText(),
+            "TestID",
             lastNameInput.getText(),
             firstNameInput.getText(),
             departmentInput.getValue(),
@@ -200,7 +198,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
@@ -221,18 +218,23 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     positionInput.setValue("");
     usernameInput.setText("");
     passwordInput.setText("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     positionInput.setDisable(true);
     departmentInput.setDisable(true);
     saveButton.setDisable(true);
     deleteButton.setDisable(true);
+  }
+
+  @FXML
+  public void toggleClientServer() {
+    db.switchConnection();
+
+    employeeTable.refresh();
   }
 }

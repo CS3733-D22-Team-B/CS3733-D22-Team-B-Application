@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class MealRequest extends Request {
 
-  public MealRequest(String patientID, String information) {
-    super(null, patientID, information, "Meal");
-    this.information = "Meal: " + information;
+  public MealRequest(String patientID, String information, int priority) {
+    super(null, patientID, information, priority, "Meal");
+    this.information = information;
   }
 
   public MealRequest(

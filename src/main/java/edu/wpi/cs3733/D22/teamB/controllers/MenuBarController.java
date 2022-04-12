@@ -22,6 +22,11 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToMapLandingPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("mapLandingPage");
+  }
+
+  @FXML
   void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("equipmentTrackerPage");
   }
@@ -44,6 +49,11 @@ public class MenuBarController {
   @FXML
   void goToEmployeeDatabase(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("employeeDatabasePage");
+  }
+
+  @FXML
+  void goToLocationDataPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("locationDataPage");
   }
 
   @FXML
@@ -87,6 +97,16 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToAboutPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("aboutPage");
+  }
+
+  @FXML
+  void goToDashboard(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("dashboard");
+  }
+
+  @FXML
   void quitApplication() {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
@@ -95,11 +115,13 @@ public class MenuBarController {
     EmployeesDB empDB = EmployeesDB.getInstance();
     LabRequestsDB labReqDB = LabRequestsDB.getInstance();
     ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
+    EdgesDB edgesDB = EdgesDB.getInstance();
 
     serReqDB.quit();
     labReqDB.quit();
     eqReqDB.quit();
     patDB.quit();
+    edgesDB.quit();
     medEqDB.quit();
     locDB.quit();
     empDB.quit();

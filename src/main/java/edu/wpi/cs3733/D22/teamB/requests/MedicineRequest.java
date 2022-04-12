@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class MedicineRequest extends Request {
 
-  public MedicineRequest(String patientID, String information) {
-    super(null, patientID, information, "Medicine");
-    this.information = "Medicine Request: " + information;
+  public MedicineRequest(String patientID, String information, int priority) {
+    super(null, patientID, information, priority, "Medicine");
+    this.information = information;
   }
 
   public MedicineRequest(
