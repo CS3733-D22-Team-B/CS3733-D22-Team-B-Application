@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import java.net.URL;
@@ -36,6 +37,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
   @FXML ComboBox<String> departmentInput;
 
   Employee currentEmployee = null;
+  DatabaseController db = new DatabaseController();
   protected EmployeesDB dao;
 
   private ObservableList<Employee> employees = FXCollections.observableArrayList();
@@ -234,5 +236,12 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     departmentInput.setDisable(true);
     saveButton.setDisable(true);
     deleteButton.setDisable(true);
+  }
+
+  @FXML
+  public void toggleClientServer() {
+    db.switchConnection();
+
+    employeeTable.refresh();
   }
 }
