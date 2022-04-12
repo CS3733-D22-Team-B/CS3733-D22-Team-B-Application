@@ -191,7 +191,7 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              if (newVal && !lockHover) {
+              if (newVal) {
                 locInfoPane.setVisible(true);
                 locInfoPane.setLayoutX(viewCoords[0] - 78);
                 locInfoPane.setLayoutY(viewCoords[1] + 8);
@@ -261,7 +261,7 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              if (newVal && !lockHover) {
+              if (newVal) {
                 equipInfoPane.setVisible(true);
                 equipInfoPane.setLayoutX(viewCoords[0] - 78);
                 equipInfoPane.setLayoutY(viewCoords[1] + 15);
@@ -317,7 +317,7 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              if (newVal && !lockHover) {
+              if (newVal) {
                 reqInfoPane.setVisible(true);
                 reqInfoPane.setLayoutX(viewCoords[0] - 76);
                 reqInfoPane.setLayoutY(viewCoords[1] + 15);
