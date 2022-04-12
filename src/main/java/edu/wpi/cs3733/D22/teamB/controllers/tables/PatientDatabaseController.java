@@ -27,7 +27,6 @@ public class PatientDatabaseController extends LocationBasedRequestController
   @FXML Button addSaveButton;
   @FXML Button deleteButton;
 
-  @FXML TextField idInput;
   @FXML TextField firstNameInput;
   @FXML TextField lastNameInput;
 
@@ -62,13 +61,11 @@ public class PatientDatabaseController extends LocationBasedRequestController
           break;
       }
     }
-    idInput.setDisable(true);
     columnPatientID.setCellValueFactory(new PropertyValueFactory<>("patientID"));
-    columnPatientLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
+    columnPatientLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     saveButton.setDisable(true);
@@ -104,6 +101,12 @@ public class PatientDatabaseController extends LocationBasedRequestController
                           lastNameInput.setText(currentPatient.getLastName());
 
                           switch (currentPatient.getLocation().getFloor()) {
+                            case "5":
+                              floorInput.setValue("F5");
+                              break;
+                            case "4":
+                              floorInput.setValue("F4");
+                              break;
                             case "3":
                               floorInput.setValue("F3");
                               break;
@@ -124,8 +127,6 @@ public class PatientDatabaseController extends LocationBasedRequestController
                           setFloor();
                           locationInput.setValue(currentPatient.getLocation().getLongName());
 
-                          idInput.setText(currentPatient.getPatientID());
-
                           firstNameInput.setDisable(false);
                           lastNameInput.setDisable(false);
                           floorInput.setDisable(false);
@@ -133,6 +134,8 @@ public class PatientDatabaseController extends LocationBasedRequestController
 
                           saveButton.setDisable(false);
                           deleteButton.setDisable(false);
+                          addSaveButton.setDisable(true);
+                          addSaveButton.setVisible(false);
                         });
                   }
 
@@ -165,13 +168,14 @@ public class PatientDatabaseController extends LocationBasedRequestController
     dao.update(currentPatient);
     locationInput.setValue("");
     floorInput.setValue("");
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
 
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
+
+    addSaveButton.setDisable(true);
+    addSaveButton.setVisible(false);
 
     saveButton.setDisable(true);
     deleteButton.setDisable(true);
@@ -184,12 +188,10 @@ public class PatientDatabaseController extends LocationBasedRequestController
     locationInput.setValue("");
     floorInput.setValue("");
 
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
     locationInput.setValue("");
 
-    idInput.setDisable(false);
     firstNameInput.setDisable(false);
     lastNameInput.setDisable(false);
     locationInput.setDisable(false);
@@ -207,7 +209,6 @@ public class PatientDatabaseController extends LocationBasedRequestController
 
     Patient newPat =
         new Patient(
-            idInput.getText(),
             lastNameInput.getText(),
             firstNameInput.getText(),
             locationsDAO.getLocationID(locationInput.getValue()));
@@ -219,7 +220,6 @@ public class PatientDatabaseController extends LocationBasedRequestController
     patients.add(currentPatient);
     patientTable.refresh();
 
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     locationInput.setDisable(true);
@@ -240,11 +240,9 @@ public class PatientDatabaseController extends LocationBasedRequestController
     locationInput.setValue("");
     floorInput.setValue("");
 
-    idInput.setText("");
     firstNameInput.setText("");
     lastNameInput.setText("");
 
-    idInput.setDisable(true);
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
     locationInput.setDisable(true);

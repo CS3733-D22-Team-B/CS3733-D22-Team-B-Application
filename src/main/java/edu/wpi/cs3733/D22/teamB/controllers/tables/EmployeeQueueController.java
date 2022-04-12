@@ -76,7 +76,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
           public TableCell<Employee, Void> call(final TableColumn<Employee, Void> param) {
             final TableCell<Employee, Void> cell =
                 new TableCell<Employee, Void>() {
-                  private final Button requestViewerButton = new Button("View Request");
+                  private final Button requestViewerButton = new Button("View Employee");
 
                   {
                     requestViewerButton.setOnAction(
@@ -154,7 +154,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @FXML
   public void addStart(ActionEvent event) {
-
     departmentInput.setValue("");
     positionInput.setValue("");
     usernameInput.setText("");
@@ -182,7 +181,6 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
     Employee newEmp =
         new Employee(
-            "TestID",
             lastNameInput.getText(),
             firstNameInput.getText(),
             departmentInput.getValue(),

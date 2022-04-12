@@ -21,13 +21,7 @@ public class LabRequest extends Request {
     this.date = date;
     this.testRoomID = testRoomID;
     this.information =
-        "Lab Test: "
-            + test
-            + "\n"
-            + "Testing Time: "
-            + date
-            + "\n\nAdditional Information: "
-            + information;
+        "Lab Test: " + test + "Testing Time: " + date + "Additional Information: " + information;
 
     testRoom = getTestRoom();
   }

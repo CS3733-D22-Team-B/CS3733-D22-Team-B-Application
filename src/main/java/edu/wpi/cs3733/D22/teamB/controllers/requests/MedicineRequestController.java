@@ -46,7 +46,7 @@ public class MedicineRequestController extends PatientBasedRequestController {
     MedicineRequest request =
         new MedicineRequest(
             patientID,
-            "Medicine Request: " + medicine + "\n\nAdditional Information: " + notes,
+            "Medicine Request: " + medicine + "Additional Information: " + notes,
             (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: " + medicine + " to " + patientName);

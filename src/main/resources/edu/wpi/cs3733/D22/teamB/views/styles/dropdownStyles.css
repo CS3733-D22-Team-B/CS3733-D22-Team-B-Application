@@ -39,3 +39,9 @@
     -fx-border-color: #7bcce4;
     -fx-border-radius: 10px;
 }
+.map-dropdown {
+    -fx-background-color: #2e3c4b;
+    -fx-border-color: #7bcce4;
+    -fx-border-radius: 10px;
+    -fx-prompt-text-fill: #7bcce4;
+}

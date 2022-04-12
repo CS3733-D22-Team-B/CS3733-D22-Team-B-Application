@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
+import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -73,6 +74,7 @@ public class ProfileController extends MenuBarController {
       errorLabel.setText("Passwords do not match");
     } else {
       App.currentUser.setPassword(newPassword);
+      EmployeesDB.getInstance().update(App.currentUser);
       password = newPassword;
       hiddenPassword = "";
       for (int i = 0; i < password.length(); i++) {

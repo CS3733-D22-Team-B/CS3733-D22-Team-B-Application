@@ -68,12 +68,12 @@ public class LoginController {
     // ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
 
     // serReqDB.quit();
-    labReqDB.quit();
-    eqReqDB.quit();
-    patDB.quit();
-    medEqDB.quit();
-    locDB.quit();
-    empDB.quit();
+    //    labReqDB.quit();
+    //    eqReqDB.quit();
+    //    patDB.quit();
+    //    medEqDB.quit();
+    //    locDB.quit();
+    //    empDB.quit();
 
     System.exit(0);
   }

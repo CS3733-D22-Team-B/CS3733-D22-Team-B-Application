@@ -14,20 +14,36 @@
          <children>
             <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/Background.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="599.0" fitWidth="907.0" layoutX="58.0" layoutY="-38.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/CollectionBackground.png" />
+                  <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
             <fx:include source="menu.fxml" />
+            <JFXButton layoutX="14.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <Label fx:id="nameLabel" layoutX="368.0" layoutY="61.0" text="Employee Name" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionLabel" layoutX="368.0" layoutY="128.0" text="Position" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/ProfilePic.png" />
+                  <Image url="@../assets/components/EmptyProfile.png" />
                </image>
             </ImageView>
+            <Label fx:id="idLabel" layoutX="368.0" layoutY="171.0" text="ID Number" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="usernameLabel" layoutX="188.0" layoutY="230.0" text="Username:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
             <Label fx:id="passwordLabel" layoutX="188.0" layoutY="254.0" text="Password:" textFill="WHITE">
                <font>
                   <Font size="18.0" />
@@ -46,83 +62,6 @@
             <Label fx:id="errorLabel" layoutX="252.0" layoutY="437.0" prefHeight="27.0" prefWidth="647.0" textFill="WHITE" visible="false">
                <font>
                   <Font size="18.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="391.0" fitWidth="663.0" layoutX="-10.0" layoutY="-156.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="-37.0" layoutY="221.0" rotate="-90.0" text="Profile" textFill="#7bcce4">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="56.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="655.0" fitWidth="246.0" layoutX="-75.0" layoutY="-41.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/SidePiece.png" />
-               </image>
-            </ImageView>
-            <JFXButton layoutX="14.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
-            <ImageView fitHeight="39.0" fitWidth="170.0" layoutX="618.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/ResetPassword.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="68.0" fitWidth="455.0" layoutX="355.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="nameLabel" layoutX="368.0" layoutY="61.0" text="Employee Name" textFill="WHITE">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="358.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="358.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="idLabel" layoutX="376.0" layoutY="134.0" text="ID Number" textFill="WHITE">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="597.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="124.0" fitWidth="694.0" layoutX="168.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/NewPasswordBackground.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="184.0" layoutX="652.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/NewPasswordTextField.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="28.0" fitWidth="196.0" layoutX="651.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/NewPasswordTextField.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="126.0" fitWidth="448.0" layoutX="194.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Message.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="usernameLabel" layoutX="628.0" layoutY="141.0" text="Username:" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="positionLabel" layoutX="397.0" layoutY="173.0" text="Position" textFill="WHITE">
-               <font>
-                  <Font size="28.0" />
                </font>
             </Label>
          </children>

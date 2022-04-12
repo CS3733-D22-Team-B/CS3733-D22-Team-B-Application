@@ -74,6 +74,8 @@
             <ComboBox fx:id="floorInput" layoutX="164.5" layoutY="110.0" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
                <items>
                   <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="5" fx:value="F5" />
+                     <String fx:id="4" fx:value="F4" />
                      <String fx:id="3" fx:value="F3" />
                      <String fx:id="2" fx:value="F2" />
                      <String fx:id="1" fx:value="F1" />

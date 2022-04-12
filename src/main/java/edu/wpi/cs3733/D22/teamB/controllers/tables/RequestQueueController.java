@@ -155,6 +155,14 @@ public class RequestQueueController extends MenuBarController implements Initial
     employeeInput.setDisable(true);
     currentRequest.setLastEdited(new Date());
 
+    if (currentRequest instanceof EquipmentRequest) {
+      EquipmentRequestDB.getInstance().update((EquipmentRequest) currentRequest);
+    } else if (currentRequest instanceof LabRequest) {
+      LabRequestsDB.getInstance().update((LabRequest) currentRequest);
+    } else {
+      ServiceRequestsDB.getInstance().update(currentRequest);
+    }
+
     scrollPane.setVisible(false);
     otherAnchorPane.setVisible(true);
   }

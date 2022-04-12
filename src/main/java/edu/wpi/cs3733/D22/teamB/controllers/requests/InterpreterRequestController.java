@@ -46,7 +46,7 @@ public class InterpreterRequestController extends LocationBasedRequestController
     InterpreterRequest request =
         new InterpreterRequest(
             locationID,
-            "Language: " + language + "\n\nAdditional Information: " + notes,
+            "Language: " + language + "Additional Information: " + notes,
             (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request Sent: " + language + " interpreter to " + locationName);

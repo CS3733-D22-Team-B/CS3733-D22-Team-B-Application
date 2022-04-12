@@ -18,7 +18,7 @@ public class MenuBarController {
 
   @FXML
   void goToMap(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("mapPage");
+    UIController.getInstance().goToPage("interactiveMapPage");
   }
 
   @FXML
@@ -117,14 +117,14 @@ public class MenuBarController {
     ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
     EdgesDB edgesDB = EdgesDB.getInstance();
 
-    serReqDB.quit();
-    labReqDB.quit();
-    eqReqDB.quit();
-    patDB.quit();
-    edgesDB.quit();
-    medEqDB.quit();
-    locDB.quit();
-    empDB.quit();
+    //    serReqDB.quit();
+    //    labReqDB.quit();
+    //    eqReqDB.quit();
+    //    patDB.quit();
+    //    edgesDB.quit();
+    //    medEqDB.quit();
+    //    locDB.quit();
+    //    empDB.quit();
 
     System.exit(0);
   }

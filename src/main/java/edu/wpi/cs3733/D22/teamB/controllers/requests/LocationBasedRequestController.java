@@ -14,6 +14,8 @@ public abstract class LocationBasedRequestController extends RequestController {
   protected String floor = "";
   protected String locationName = "";
 
+  protected LinkedList<String> locationsF5 = new LinkedList<>();
+  protected LinkedList<String> locationsF4 = new LinkedList<>();
   protected LinkedList<String> locationsF3 = new LinkedList<>();
   protected LinkedList<String> locationsF2 = new LinkedList<>();
   protected LinkedList<String> locationsF1 = new LinkedList<>();
@@ -29,6 +31,12 @@ public abstract class LocationBasedRequestController extends RequestController {
 
     for (Location location : locations) {
       switch (location.getFloor()) {
+        case "5":
+          locationsF5.add(location.getLongName());
+          break;
+        case "4":
+          locationsF4.add(location.getLongName());
+          break;
         case "3":
           locationsF3.add(location.getLongName());
           break;
@@ -61,6 +69,16 @@ public abstract class LocationBasedRequestController extends RequestController {
   private void resetLocations() {
     locationInput.getItems().clear();
     switch (floor) {
+      case "F5":
+        for (String locationF5 : locationsF5) {
+          locationInput.getItems().add(locationF5);
+        }
+        break;
+      case "F4":
+        for (String locationF4 : locationsF4) {
+          locationInput.getItems().add(locationF4);
+        }
+        break;
       case "F3":
         for (String locationF3 : locationsF3) {
           locationInput.getItems().add(locationF3);
