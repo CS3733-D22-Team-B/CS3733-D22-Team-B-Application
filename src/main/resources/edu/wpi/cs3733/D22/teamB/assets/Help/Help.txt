@@ -1,0 +1,6 @@
+Name			Opacity	W	H		X	Y
+
+TextBoxHelp		0.75	710	500		125	20
+
+SideBar			0.75	105	540		0	0
+Menu Bar		0.75	105	540		855	0

@@ -1,0 +1,9 @@
+Name			Opacity	W	H		X	Y
+
+SideBar			0.75	105	540		855	0
+MenuButton		1	65	65		875	20
+ProfileButton		1	65	65		875	105
+MapsButton		1	65	65		875	190
+MenuButton		1	65	65		875	275
+ProfileButton		1	65	65		875	360
+MapsButton		1	65	65		875	445
