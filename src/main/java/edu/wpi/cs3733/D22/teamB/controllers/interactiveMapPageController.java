@@ -349,6 +349,10 @@ public class interactiveMapPageController extends MenuBarController {
         return 3;
       case "3":
         return 4;
+      case "4":
+        return 5;
+      case "5":
+        return 6;
       default:
         return -1;
     }
@@ -437,7 +441,23 @@ public class interactiveMapPageController extends MenuBarController {
     setAll();
   }
 
-  // TODO: Floors 4 and 5
+  public void goToFloor4() {
+    floorLevel = 5;
+    floorString = "4";
+    resetFloorSelectors();
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
+    f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    setAll();
+  }
+
+  public void goToFloor5() {
+    floorLevel = 6;
+    floorString = "5";
+    resetFloorSelectors();
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
+    f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    setAll();
+  }
 
   public void startAdd() {
     confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Add.png"));

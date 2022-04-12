@@ -122,7 +122,7 @@
             <Image url="@../assets/mapAssets/FloorBackgroundElement.png" />
          </image>
       </ImageView>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="254.0" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="254.0" onAction="#goToFloor5" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f5Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -131,7 +131,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="290.0" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="290.0" onAction="#goToFloor4" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f4Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
