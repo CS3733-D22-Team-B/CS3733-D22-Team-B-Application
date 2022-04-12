@@ -6,7 +6,7 @@ public class MedicineRequest extends Request {
 
   public MedicineRequest(String patientID, String information, int priority) {
     super(null, patientID, information, priority, "Medicine");
-    this.information = "Medicine Request: " + information;
+    this.information = information;
   }
 
   public MedicineRequest(

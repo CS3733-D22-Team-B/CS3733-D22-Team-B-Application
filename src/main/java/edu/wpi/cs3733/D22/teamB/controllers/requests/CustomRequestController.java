@@ -3,6 +3,8 @@ package edu.wpi.cs3733.D22.teamB.controllers.requests;
 import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
 import edu.wpi.cs3733.D22.teamB.requests.CustomRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -12,20 +14,40 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
 
   private String type = "";
 
-  @FXML
-  public void setType() {
-    type = typeInput.getText();
+  public void initialize() {
+    super.initialize();
+
+    typeInput
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                setType();
+              }
+            });
+
+    additionalInformationInput
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                setNotes();
+              }
+            });
   }
 
   @FXML
-  public void setNotes() {
-    notes = additionalInformationInput.getText();
+  public void setType() {
+    type = typeInput.getText();
+    enableSubmission();
   }
 
   @FXML
   public void enableSubmission() {
-    setType();
-    setNotes();
     if ((!locationName.equals("") || !patientName.equals(""))
         && !type.equals("")
         && !notes.equals("")) {

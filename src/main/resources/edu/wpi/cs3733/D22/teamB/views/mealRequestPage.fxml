@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="submitButton1" disable="true" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
+            <JFXButton fx:id="submitButton" disable="true" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
                <graphic>
                   <ImageView disable="true" fitHeight="82.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>

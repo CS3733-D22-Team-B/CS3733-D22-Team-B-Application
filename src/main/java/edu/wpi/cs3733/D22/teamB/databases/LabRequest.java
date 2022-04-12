@@ -26,7 +26,7 @@ public class LabRequest extends Request {
             + "\n"
             + "Testing Time: "
             + date
-            + "\nAdditional Information: "
+            + "\n\nAdditional Information: "
             + information;
 
     testRoom = getTestRoom();

@@ -12,7 +12,7 @@ public class InternalPatientTransferRequest extends Request {
             + getPatient().getOverview()
             + " to "
             + getLocation().getLongName()
-            + "\nAdditional Information: "
+            + "\n\nAdditional Information: "
             + information;
   }
 

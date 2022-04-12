@@ -6,7 +6,7 @@ public class InterpreterRequest extends Request {
 
   public InterpreterRequest(String locationID, String information, int priority) {
     super(locationID, null, information, priority, "Interpreter");
-    this.information = "Language: " + information;
+    this.information = information;
   }
 
   public InterpreterRequest(

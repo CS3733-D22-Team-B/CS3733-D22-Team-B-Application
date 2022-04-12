@@ -6,7 +6,7 @@ public class MealRequest extends Request {
 
   public MealRequest(String patientID, String information, int priority) {
     super(null, patientID, information, priority, "Meal");
-    this.information = "Meal: " + information;
+    this.information = information;
   }
 
   public MealRequest(

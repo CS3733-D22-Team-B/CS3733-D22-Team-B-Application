@@ -27,6 +27,9 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML TableColumn<Request, Integer> columnPriority;
   @FXML TableColumn<Request, Void> columnButtons;
 
+  @FXML private TextField downloadText;
+  @FXML private Label errorLabel;
+
   @FXML Label requestIDLabel;
   @FXML Label createdLabel;
   @FXML Label lastEditedLabel;
@@ -159,5 +162,18 @@ public class RequestQueueController extends MenuBarController implements Initial
   private void sortRequestsByCreationDate(ObservableList<Request> requests) {
     Collections.sort(
         requests, (Request r1, Request r2) -> r1.getTimeCreated().compareTo(r2.getTimeCreated()));
+  }
+
+  @FXML
+  public void download() {
+    if (downloadText.getText().equals("")) {
+      errorLabel.setText("Please enter filename");
+    } else {
+      EquipmentRequestDB.getInstance()
+          .downloadCSV(downloadText.getText() + " - Equipment Requests");
+      LabRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Lab Requests");
+      ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
+      errorLabel.setText("Files downloaded");
+    }
   }
 }

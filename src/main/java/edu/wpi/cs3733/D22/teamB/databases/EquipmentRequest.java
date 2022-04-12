@@ -11,7 +11,8 @@ public class EquipmentRequest extends Request {
     super(locationID, null, information, priority, "Equipment Request");
     this.equipmentID = equipmentID;
     setMedicalEquipment();
-    this.information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + information;
+    this.information =
+        "Equipment Request: " + getEquipmentID() + "\n\nAdditional Information: " + information;
     medicalEquipment = getMedicalEquipment();
   }
 

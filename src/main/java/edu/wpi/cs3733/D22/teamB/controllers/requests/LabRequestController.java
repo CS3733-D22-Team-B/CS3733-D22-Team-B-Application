@@ -10,6 +10,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -36,6 +38,17 @@ public class LabRequestController extends PatientBasedRequestController {
             .map(location -> location.getLongName())
             .collect(Collectors.toList());
     labRoomInput.getItems().addAll(l);
+
+    additionalInformationInput
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                setNotes();
+              }
+            });
   }
 
   public void setLabTest() {
@@ -60,7 +73,6 @@ public class LabRequestController extends PatientBasedRequestController {
   }
 
   public void enableSubmission() {
-    setNotes();
     if (!patientName.equals("")
         && !labTest.equals("")
         && testingDate != null
