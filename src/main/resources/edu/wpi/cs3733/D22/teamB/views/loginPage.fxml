@@ -19,7 +19,7 @@
       </ImageView>
       <ImageView fitHeight="555.0" fitWidth="755.0" layoutX="92.0">
          <image>
-            <Image url="@../../../../../../../../../../../../../Downloads/LoginPageElements-20220411T171509Z-001/LoginPageElements/CombinedBackgroundElement.png" />
+            <Image url="@../assets/components/loginscreen.png" />
          </image>
       </ImageView>
       <TextField fx:id="usernameField" layoutX="325.0" layoutY="288.0" onAction="#setUsername" promptText="Username" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
