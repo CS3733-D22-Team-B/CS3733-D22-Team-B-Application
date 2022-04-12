@@ -14,11 +14,11 @@
             <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" text="Back to Homepage" />
             <TableView fx:id="locationTable" layoutX="-1.0" prefHeight="436.0" prefWidth="716.0">
               <columns>
-                <TableColumn prefWidth="308.0" text="Location" />
-                <TableColumn prefWidth="56.0" text="X" />
-                  <TableColumn prefWidth="115.0" text="Y" />
-                  <TableColumn prefWidth="67.0" text="Floor" />
-                  <TableColumn prefWidth="169.0" text="Building" />
+                <TableColumn fx:id="columnName" prefWidth="308.0" text="Location" />
+                <TableColumn fx:id="columnX" prefWidth="56.0" text="X" />
+                  <TableColumn fx:id="columnY" prefWidth="115.0" text="Y" />
+                  <TableColumn fx:id="columnFloor" prefWidth="67.0" text="Floor" />
+                  <TableColumn fx:id="columnBuilding" prefWidth="169.0" text="Building" />
               </columns>
             </TableView>
             <JFXButton fx:id="downloadButton" layoutX="631.0" layoutY="449.0" onAction="#download" text="Download" />

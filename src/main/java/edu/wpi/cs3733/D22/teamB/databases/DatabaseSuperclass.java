@@ -275,7 +275,7 @@ public abstract class DatabaseSuperclass {
 
   public void quit() {
     // toCSV();
-    listDB();
+    // listDB();
 
     try {
       Connection connection = DriverManager.getConnection(url);
