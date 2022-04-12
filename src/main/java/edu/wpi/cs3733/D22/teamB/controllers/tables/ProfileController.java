@@ -5,7 +5,6 @@ import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
-import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
