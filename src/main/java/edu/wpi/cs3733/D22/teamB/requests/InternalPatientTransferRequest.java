@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class InternalPatientTransferRequest extends Request {
 
-  public InternalPatientTransferRequest(String patientID, String locationID, String information) {
-    super(locationID, patientID, information, "Internal Patient Transfer");
+  public InternalPatientTransferRequest(
+      String patientID, String locationID, String information, int priority) {
+    super(locationID, patientID, information, priority, "Internal Patient Transfer");
     this.information =
         "Internal Patient Transfer Request from "
             + getPatient().getOverview()

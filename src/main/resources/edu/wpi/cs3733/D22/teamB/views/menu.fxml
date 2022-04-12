@@ -35,8 +35,8 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
             <items>
-                <MenuItem mnemonicParsing="false" text="About" />
-                <MenuItem mnemonicParsing="false" text="ඞ" onAction="#amongUsButton"/>
+                <MenuItem mnemonicParsing="false" onAction="#goToAboutPage" text="About" />
+                <MenuItem mnemonicParsing="false" onAction="#amongUsButton" text="ඞ" />
             </items>
         </Menu>
     </menus>

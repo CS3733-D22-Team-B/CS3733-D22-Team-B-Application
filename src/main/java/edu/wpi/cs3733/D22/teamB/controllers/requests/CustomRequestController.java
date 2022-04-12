@@ -40,16 +40,17 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
       String locationID = locationsDAO.getLocationID(locationName);
       if (!patientName.equals("")) {
         String patientID = patientsDB.getPatientID(patientName);
-        request = new CustomRequest(locationID, patientID, type, notes);
+        request =
+            new CustomRequest(locationID, patientID, type, notes, (int) prioritySlider.getValue());
         requestLabel.setText(
             "Custom request sent: " + notes + " for " + patientName + " at " + locationName);
       } else {
-        request = new CustomRequest(locationID, null, type, notes);
+        request = new CustomRequest(locationID, null, type, notes, (int) prioritySlider.getValue());
         requestLabel.setText("Custom request sent: " + notes + " at " + locationName);
       }
     } else {
       String patientID = patientsDB.getPatientID(patientName);
-      request = new CustomRequest(null, patientID, type, notes);
+      request = new CustomRequest(null, patientID, type, notes, (int) prioritySlider.getValue());
       requestLabel.setText("Custom request sent: " + notes + " for " + patientName);
     }
     ServiceRequestsDB.getInstance().add(request);

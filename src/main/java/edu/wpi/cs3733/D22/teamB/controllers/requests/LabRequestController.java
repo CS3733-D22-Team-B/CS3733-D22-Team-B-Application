@@ -66,7 +66,9 @@ public class LabRequestController extends PatientBasedRequestController {
   public void sendRequest(ActionEvent actionEvent) {
     String patientID = patientsDB.getPatientID(patientName);
     String testRoomID = locationsDB.getLocationID(labRoom);
-    LabRequest request = new LabRequest(patientID, labTest, testingTime, testRoomID, notes);
+    LabRequest request =
+        new LabRequest(
+            patientID, labTest, testingTime, testRoomID, notes, (int) prioritySlider.getValue());
     LabRequestsDB.getInstance().add(request);
     requestLabel.setText(
         "Request sent: "
