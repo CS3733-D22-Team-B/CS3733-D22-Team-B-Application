@@ -129,15 +129,6 @@
             <Image url="@../assets/mapAssets/MapViewer.png" />
          </image>
       </ImageView>
-      <Pane fx:id="mapPane" layoutX="323.5" layoutY="95.0" prefHeight="350.0" prefWidth="400.0">
-         <children>
-            <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/firstFloor.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
       <JFXButton fx:id="backButton" layoutX="867.0" layoutY="105.0" onAction="#cancel" text=" " visible="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -175,5 +166,18 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <AnchorPane layoutX="212.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="623.0">
+         <children>
+            <Pane fx:id="mapPane" layoutX="104.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0">
+               <children>
+                  <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/firstFloor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

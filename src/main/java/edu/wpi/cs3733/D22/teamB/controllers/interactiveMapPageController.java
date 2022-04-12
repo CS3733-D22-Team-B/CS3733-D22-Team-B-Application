@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
@@ -60,6 +61,9 @@ public class interactiveMapPageController extends MenuBarController {
   private int[] coordinates;
   private String floorString = "1";
 
+  private double startDragX, startDragY;
+  private double scaleX = 1.0, scaleY = 1.0;
+
   public void initialize() {
     roomIcons = new LinkedList<SVGPath>();
     equipIcons = new LinkedList<SVGPath>();
@@ -77,6 +81,23 @@ public class interactiveMapPageController extends MenuBarController {
     //        // Set Requests
     setServiceIcons();
     //        resetDisplayPanes();
+
+    mapPane.setOnMousePressed(
+        e -> {
+          startDragX = e.getSceneX();
+          startDragY = e.getSceneY();
+        });
+
+    mapPane.setOnMouseDragged(
+        e -> {
+          mapPane.setTranslateX(e.getSceneX() - startDragX);
+          mapPane.setTranslateY(e.getSceneY() - startDragY);
+        });
+
+    mapPane.setOnScroll(
+        e -> {
+          zoom(e);
+        });
   }
 
   public void setAll() {
@@ -656,5 +677,23 @@ public class interactiveMapPageController extends MenuBarController {
       endEdit();
     }
     setAll();
+  }
+
+  public void zoom(ScrollEvent event) {
+    // get scroll delta
+    double delta = event.getDeltaY();
+
+    // zoom in/out
+    if (delta > 0) {
+      scaleX *= 1.1;
+      scaleY *= 1.1;
+    } else {
+      scaleX *= 0.9;
+      scaleY *= 0.9;
+    }
+
+    // set new scale
+    mapPane.setScaleX(scaleX);
+    mapPane.setScaleY(scaleY);
   }
 }
