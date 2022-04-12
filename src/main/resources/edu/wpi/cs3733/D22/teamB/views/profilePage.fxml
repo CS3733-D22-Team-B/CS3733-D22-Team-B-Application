@@ -12,35 +12,18 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Background.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="599.0" fitWidth="907.0" layoutX="58.0" layoutY="-38.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/CollectionBackground.png" />
+                  <Image url="@../assets/Profile/BackgroundElement.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
             <fx:include source="menu.fxml" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/ProfilePic.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="passwordLabel" layoutX="188.0" layoutY="254.0" text="Password:" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="viewPasswordButton" layoutX="188.0" layoutY="281.0" onAction="#togglePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Password" />
-            <JFXButton layoutX="294.0" layoutY="281.0" onAction="#openChangePasswordDisplay" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Change Password" />
             <JFXButton fx:id="changePasswordButton" layoutX="188.0" layoutY="437.0" onAction="#changePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Submit" visible="false" />
-            <Label fx:id="changePasswordLabel" layoutX="188.0" layoutY="330.0" text="Change Password" textFill="WHITE" visible="false">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
             <TextField fx:id="confirmPasswordField" layoutX="187.0" layoutY="404.0" prefHeight="25.0" prefWidth="219.0" promptText="Re-enter New Password" visible="false" />
             <TextField fx:id="newPasswordField" layoutX="187.0" layoutY="370.0" prefHeight="25.0" prefWidth="219.0" promptText="Enter New Password" visible="false" />
             <Label fx:id="errorLabel" layoutX="252.0" layoutY="437.0" prefHeight="27.0" prefWidth="647.0" textFill="WHITE" visible="false">
@@ -48,81 +31,91 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="391.0" fitWidth="663.0" layoutX="-10.0" layoutY="-156.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="-37.0" layoutY="221.0" rotate="-90.0" text="Profile" textFill="#7bcce4">
                <font>
                   <Font name="Microsoft Sans Serif" size="56.0" />
                </font>
             </Label>
-            <ImageView fitHeight="655.0" fitWidth="246.0" layoutX="-75.0" layoutY="-41.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="411.0" fitWidth="707.0" layoutX="139.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/SidePiece.png" />
+                  <Image url="@../assets/Profile/BackgroundElement.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="14.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
-            <ImageView fitHeight="39.0" fitWidth="170.0" layoutX="618.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/ResetPassword.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="68.0" fitWidth="455.0" layoutX="355.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="nameLabel" layoutX="368.0" layoutY="61.0" text="Employee Name" textFill="WHITE">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="358.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="358.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="idLabel" layoutX="376.0" layoutY="134.0" text="ID Number" textFill="WHITE">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="597.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Name.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="124.0" fitWidth="694.0" layoutX="168.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="111.0" fitWidth="664.0" layoutX="158.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/NewPasswordBackground.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="184.0" layoutX="652.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="394.5" layoutX="166.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/NewPasswordTextField.png" />
+                  <Image url="@../assets/Profile/Message.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="28.0" fitWidth="196.0" layoutX="651.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+            <JFXButton layoutX="585.0" layoutY="183.0" onAction="#openChangePasswordDisplay" prefHeight="35.0" prefWidth="193.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Reset Password" />
+            <ImageView fitHeight="32.5" fitWidth="217.25" layoutX="565.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/NewPasswordTextField.png" />
+                  <Image url="@../assets/Profile/NewPasswordTextField.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="126.0" fitWidth="448.0" layoutX="194.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="655.0" fitWidth="246.0" layoutX="-75.0" layoutY="-41.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/Message.png" />
+                  <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
-            <Label fx:id="usernameLabel" layoutX="628.0" layoutY="141.0" text="Username:" textFill="WHITE">
+            <ImageView fitHeight="68.0" fitWidth="452.0" layoutX="344.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Profile/Name.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.5" fitWidth="217.25" layoutX="565.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Profile/NewPasswordTextField.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameLabel" layoutX="427.0" layoutY="80.0" text="Employee Name" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="163.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Profile/ProfilePic.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="14.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="580.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Profile/Name.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="usernameLabel" layoutX="632.0" layoutY="151.0" text="Username:" textFill="#7bcce4">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="positionLabel" layoutX="397.0" layoutY="173.0" text="Position" textFill="WHITE">
+            <Label fx:id="changePasswordLabel" layoutX="188.0" layoutY="330.0" text="Change Password" textFill="WHITE" visible="false">
                <font>
                   <Font size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="344.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Name.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="344.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Profile/Name.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="positionLabel" layoutX="419.0" layoutY="194.0" text="Position" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="idLabel" layoutX="406.0" layoutY="150.0" text="ID Number" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </Label>
          </children>
