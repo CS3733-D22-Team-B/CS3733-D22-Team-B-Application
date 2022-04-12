@@ -100,11 +100,13 @@ public class MenuBarController {
     EmployeesDB empDB = EmployeesDB.getInstance();
     LabRequestsDB labReqDB = LabRequestsDB.getInstance();
     ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
+    EdgesDB edgesDB = EdgesDB.getInstance();
 
     serReqDB.quit();
     labReqDB.quit();
     eqReqDB.quit();
     patDB.quit();
+    edgesDB.quit();
     medEqDB.quit();
     locDB.quit();
     empDB.quit();
