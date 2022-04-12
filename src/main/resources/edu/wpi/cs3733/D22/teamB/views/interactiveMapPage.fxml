@@ -204,15 +204,15 @@
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="typeDropdown" focusColor="WHITE" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" unFocusColor="WHITE" visible="false" />
+      <JFXComboBox fx:id="typeDropdown" focusColor="WHITE" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="WHITE" visible="false" />
 
-      <JFXComboBox fx:id="locationDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Location" unFocusColor="WHITE" visible="false" />
+      <JFXComboBox fx:id="locationDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="WHITE" visible="false" />
       <ImageView fx:id="secondTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="125.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="locationName" focusColor="WHITE" layoutX="51.0" layoutY="138.0" prefHeight="38.0" prefWidth="110.0" unFocusColor="WHITE" visible="false" />
+      <JFXTextArea fx:id="locationName" focusColor="WHITE" layoutX="51.0" layoutY="138.0" prefHeight="38.0" prefWidth="110.0" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" unFocusColor="WHITE" visible="false" />
       <JFXButton fx:id="markerButton" focusTraversable="false" layoutX="32.0" layoutY="206.0" onAction="#clearMarker" text=" " visible="false">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="132.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
