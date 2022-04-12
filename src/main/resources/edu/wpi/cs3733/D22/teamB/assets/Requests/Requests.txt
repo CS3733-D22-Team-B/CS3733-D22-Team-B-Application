@@ -1,7 +1,7 @@
 Name		Opacity		W	H		X	Y
 
 Equipment	1		125	125		162.5	122.5
-Lab		1		125	125		332.5	122.5
+Lab		    1		125	125		332.5	122.5
 Medicine	1		125	125		502.5	122.5
 Meal		1		125	125		672.5	122.5
 Translator	1		125	125		162.5	292.5

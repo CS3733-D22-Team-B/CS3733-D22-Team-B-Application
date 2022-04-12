@@ -84,12 +84,20 @@
             </ComboBox>
             <ComboBox fx:id="locationInput" layoutX="164.5" layoutY="170.0" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
             <ComboBox fx:id="patientInput" layoutX="164.5" layoutY="230.0" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-            <Label layoutX="-59.0" layoutY="252.0" rotate="-90.0" text="Custom Request" textFill="#7bcce4">
+            <Label layoutX="-59.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Custom Request" textFill="#7bcce4">
                <font>
                   <Font name="Microsoft Sans Serif" size="30.0" />
                </font>
             </Label>
             <fx:include source="menu.fxml" />
+            <JFXButton layoutX="867.5" layoutY="105.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
          </children>
       </AnchorPane>
    </children>
