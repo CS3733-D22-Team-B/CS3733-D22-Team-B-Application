@@ -81,11 +81,20 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="resetButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="105.0" onAction="#resetLocations" prefHeight="60.0" prefWidth="38.0" text=" ">
+      <JFXButton fx:id="resetButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="95.0" onAction="#resetLocations" prefHeight="60.0" prefWidth="38.0" text=" ">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/components/resetButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="toLocDatabase" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="170.0" onAction="#goToLocationDataPage" prefHeight="60.0" prefWidth="38.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/mapAssets/Databases.png" />
                </image>
             </ImageView>
          </graphic>
