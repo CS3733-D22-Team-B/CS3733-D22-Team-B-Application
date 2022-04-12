@@ -9,6 +9,7 @@ import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,6 +41,15 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXTextArea locationName;
   @FXML JFXButton confirmButton;
   @FXML ImageView confirmImage;
+  @FXML JFXButton resetButton;
+  @FXML JFXButton markerButton;
+  @FXML Label markerLabel;
+  @FXML Pane locInfoPane;
+  @FXML Label nameLabel;
+  @FXML Label nodeLabel;
+  @FXML Pane equipInfoPane;
+  @FXML Label equipTypeLabel;
+  @FXML Label statusLabel;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -72,15 +82,7 @@ public class interactiveMapPageController extends MenuBarController {
     edao = MedicalEquipmentDB.getInstance();
     rdao = ServiceRequestsDB.getInstance();
     populateTypeDropdown();
-    populateLocationDropdown();
-
-    //        // Set Locations
-    setRoomIcons();
-    //        // Set Equipment
-    setEquipIcons();
-    //        // Set Requests
-    setServiceIcons();
-    //        resetDisplayPanes();
+    setAll();
 
     mapPane.setOnMousePressed(
         e -> {
@@ -90,8 +92,10 @@ public class interactiveMapPageController extends MenuBarController {
 
     mapPane.setOnMouseDragged(
         e -> {
-          mapPane.setTranslateX(e.getSceneX() - startDragX);
-          mapPane.setTranslateY(e.getSceneY() - startDragY);
+          if (!addEnabled && !editEnabled) {
+            mapPane.setTranslateX(e.getSceneX() - startDragX);
+            mapPane.setTranslateY(e.getSceneY() - startDragY);
+          }
         });
 
     mapPane.setOnScroll(
@@ -105,6 +109,7 @@ public class interactiveMapPageController extends MenuBarController {
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
+    resetPane();
   }
 
   public void removeIcon(SVGPath icon) {
@@ -183,21 +188,15 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              //                            if (newVal && !lockHover) {
-              //                                locationPane.setFill(icon.getFill());
-              //                                if (!location.getNodeType().equals("EXIT")) {
-              //                                    roomName.setTextFill(Color.rgb(255, 255, 255));
-              //                                    nodeType.setTextFill(Color.rgb(255, 255, 255));
-              //                                } else {
-              //                                    roomName.setTextFill(Color.rgb(0, 0, 0));
-              //                                    nodeType.setTextFill(Color.rgb(0, 0, 0));
-              //                                }
-              //                                getLocInfo(location);
-              //                            } else {
-              //                                if (!locInfoVisible && !lockHover) {
-              //                                    locationInfo.setVisible(false);
-              //                                }
-              //                            }
+              if (newVal && !lockHover) {
+                locInfoPane.setVisible(true);
+                locInfoPane.setLayoutX(viewCoords[0] - 76);
+                locInfoPane.setLayoutY(viewCoords[1] + 8);
+                nameLabel.setText(location.getLongName());
+                nodeLabel.setText(location.getNodeType());
+              } else {
+                locInfoPane.setVisible(false);
+              }
             });
     icon.setOnMouseClicked(
         event -> {
@@ -259,14 +258,15 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              //                      if (newVal && !lockHover) {
-              //                        getEquipInfo(eq);
-              //                        equipmentPane.setFill(icon.getFill());
-              //                      } else {
-              //                        if (!equipInfoVisible && !lockHover) {
-              //                          equipInfo.setVisible(false);
-              //                        }
-              //                      }
+              if (newVal && !lockHover) {
+                equipInfoPane.setVisible(true);
+                equipInfoPane.setLayoutX(viewCoords[0] - 76);
+                equipInfoPane.setLayoutY(viewCoords[1] + 15);
+                equipTypeLabel.setText(eq.getType());
+                statusLabel.setText(eq.getAvailability());
+              } else {
+                equipInfoPane.setVisible(false);
+              }
             });
     icon.setOnMouseClicked(
         event -> {
@@ -442,6 +442,7 @@ public class interactiveMapPageController extends MenuBarController {
     addButton.setVisible(false);
     editButton.setVisible(false);
     deleteButton.setVisible(false);
+    resetButton.setVisible(false);
     backButton.setVisible(true);
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
@@ -449,6 +450,8 @@ public class interactiveMapPageController extends MenuBarController {
     typeDropdown.setVisible(true);
     locationName.setVisible(true);
     confirmButton.setVisible(true);
+    markerButton.setVisible(true);
+    markerLabel.setVisible(true);
   }
 
   public void addLocation() {
@@ -475,6 +478,8 @@ public class interactiveMapPageController extends MenuBarController {
       // Pass new location into database
       dao.add(newLoc);
       endAdd();
+    } else {
+      System.out.println("Missing required field!");
     }
   }
 
@@ -484,12 +489,16 @@ public class interactiveMapPageController extends MenuBarController {
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);
+    resetButton.setVisible(true);
     backButton.setVisible(false);
     floorBackground.setVisible(false);
     topLeftBox.setVisible(false);
     secondTopLeftBox.setVisible(false);
     typeDropdown.setVisible(false);
     locationName.setVisible(false);
+
+    markerButton.setVisible(false);
+    markerLabel.setVisible(false);
 
     confirmButton.setVisible(false);
     typeDropdown.setValue("");
@@ -506,6 +515,7 @@ public class interactiveMapPageController extends MenuBarController {
     addButton.setVisible(false);
     editButton.setVisible(false);
     deleteButton.setVisible(false);
+    resetButton.setVisible(false);
     backButton.setVisible(true);
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
@@ -543,12 +553,14 @@ public class interactiveMapPageController extends MenuBarController {
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);
+    resetButton.setVisible(true);
     backButton.setVisible(false);
     floorBackground.setVisible(false);
     topLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     confirmButton.setVisible(false);
     locationDropdown.setValue("");
+    clearMarker();
   }
 
   public void startEdit() {
@@ -558,6 +570,7 @@ public class interactiveMapPageController extends MenuBarController {
     addButton.setVisible(false);
     editButton.setVisible(false);
     deleteButton.setVisible(false);
+    resetButton.setVisible(false);
     backButton.setVisible(true);
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
@@ -565,6 +578,8 @@ public class interactiveMapPageController extends MenuBarController {
     locationDropdown.setVisible(true);
     locationName.setVisible(true);
     confirmButton.setVisible(true);
+    markerButton.setVisible(true);
+    markerLabel.setVisible(true);
   }
 
   public void editLocation() {
@@ -593,6 +608,7 @@ public class interactiveMapPageController extends MenuBarController {
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);
+    resetButton.setVisible(true);
     backButton.setVisible(false);
     floorBackground.setVisible(false);
     topLeftBox.setVisible(false);
@@ -600,6 +616,8 @@ public class interactiveMapPageController extends MenuBarController {
     locationDropdown.setVisible(false);
     locationName.setVisible(false);
     confirmButton.setVisible(false);
+    markerButton.setVisible(false);
+    markerLabel.setVisible(false);
   }
 
   public void getCoordinates(MouseEvent event) {
@@ -682,6 +700,7 @@ public class interactiveMapPageController extends MenuBarController {
   public void zoom(ScrollEvent event) {
     // get scroll delta
     double delta = event.getDeltaY();
+    double pixelAdjust = 0;
 
     // zoom in/out
     if (delta > 0) {
@@ -695,5 +714,18 @@ public class interactiveMapPageController extends MenuBarController {
     // set new scale
     mapPane.setScaleX(scaleX);
     mapPane.setScaleY(scaleY);
+  }
+
+  @FXML
+  public void resetLocations() {
+    DatabaseController.getInstance().resetAllDBs();
+    setAll();
+  }
+
+  public void resetPane() {
+    mapPane.getChildren().remove(locInfoPane);
+    mapPane.getChildren().add(locInfoPane);
+    mapPane.getChildren().remove(equipInfoPane);
+    mapPane.getChildren().add(equipInfoPane);
   }
 }
