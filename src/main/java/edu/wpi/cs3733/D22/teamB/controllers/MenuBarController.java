@@ -87,6 +87,11 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToAboutPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("aboutPage");
+  }
+
+  @FXML
   void goToDashboard(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("dashboard");
   }
