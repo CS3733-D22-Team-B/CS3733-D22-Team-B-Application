@@ -118,8 +118,10 @@ public class InteractiveMapController {
     }
     serviceIcons.clear();
     for (Request r : allRequests) {
-      String floor = r.getLocation().getFloor();
-      if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
+      if (r.getLocation() != null) {
+        String floor = r.getLocation().getFloor();
+        if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
+      }
     }
   }
 
@@ -293,7 +295,6 @@ public class InteractiveMapController {
         icon.setFill(Color.rgb(100, 100, 100));
         break;
     }
-    // TODO: hover property lol
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
@@ -301,8 +302,8 @@ public class InteractiveMapController {
                 getRequestInfo(r);
                 requestPane.setFill(icon.getFill());
               } else {
-                if (!equipInfoVisible && !lockHover) {
-                  equipInfo.setVisible(false);
+                if (!requestInfoVisible && !lockHover) {
+                  requestInfo.setVisible(false);
                 }
               }
             });
