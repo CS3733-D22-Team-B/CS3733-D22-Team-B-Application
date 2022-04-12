@@ -50,6 +50,9 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML Pane equipInfoPane;
   @FXML Label equipTypeLabel;
   @FXML Label statusLabel;
+  @FXML Pane reqInfoPane;
+  @FXML Label reqTypeLabel;
+  @FXML Label reqStatusLabel;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -190,7 +193,7 @@ public class interactiveMapPageController extends MenuBarController {
             (obs, oldVal, newVal) -> {
               if (newVal && !lockHover) {
                 locInfoPane.setVisible(true);
-                locInfoPane.setLayoutX(viewCoords[0] - 76);
+                locInfoPane.setLayoutX(viewCoords[0] - 78);
                 locInfoPane.setLayoutY(viewCoords[1] + 8);
                 nameLabel.setText(location.getLongName());
                 nodeLabel.setText(location.getNodeType());
@@ -260,7 +263,7 @@ public class interactiveMapPageController extends MenuBarController {
             (obs, oldVal, newVal) -> {
               if (newVal && !lockHover) {
                 equipInfoPane.setVisible(true);
-                equipInfoPane.setLayoutX(viewCoords[0] - 76);
+                equipInfoPane.setLayoutX(viewCoords[0] - 78);
                 equipInfoPane.setLayoutY(viewCoords[1] + 15);
                 equipTypeLabel.setText(eq.getType());
                 statusLabel.setText(eq.getAvailability());
@@ -314,14 +317,15 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              //                      if (newVal && !lockHover) {
-              //                        getRequestInfo(r);
-              //                        requestPane.setFill(icon.getFill());
-              //                      } else {
-              //                        if (!requestInfoVisible && !lockHover) {
-              //                          requestInfo.setVisible(false);
-              //                        }
-              //                      }
+              if (newVal && !lockHover) {
+                reqInfoPane.setVisible(true);
+                reqInfoPane.setLayoutX(viewCoords[0] - 76);
+                reqInfoPane.setLayoutY(viewCoords[1] + 15);
+                reqTypeLabel.setText(r.getType());
+                reqStatusLabel.setText(r.getStatus());
+              } else {
+                reqInfoPane.setVisible(false);
+              }
             });
     icon.setOnMouseClicked(
         event -> {
@@ -727,5 +731,7 @@ public class interactiveMapPageController extends MenuBarController {
     mapPane.getChildren().add(locInfoPane);
     mapPane.getChildren().remove(equipInfoPane);
     mapPane.getChildren().add(equipInfoPane);
+    mapPane.getChildren().remove(reqInfoPane);
+    mapPane.getChildren().add(reqInfoPane);
   }
 }

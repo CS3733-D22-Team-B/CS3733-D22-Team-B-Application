@@ -47,6 +47,17 @@
                         <Label fx:id="statusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
                      </children>
                   </Pane>
+                  <Pane fx:id="reqInfoPane" layoutX="20.0" layoutY="20.0" prefHeight="80.0" prefWidth="156.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="reqTypeLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Req Type" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="reqStatusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children>
@@ -79,7 +90,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="addButton" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
+      <JFXButton fx:id="addButton" focusTraversable="false" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -88,7 +99,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="deleteButton" layoutX="12.0" layoutY="189.333" onAction="#startDelete" prefHeight="158.0" prefWidth="130.0" text=" ">
+      <JFXButton fx:id="deleteButton" focusTraversable="false" layoutX="12.0" layoutY="189.333" onAction="#startDelete" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -97,7 +108,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="editButton" layoutX="12.0" layoutY="362.66" onAction="#startEdit" prefHeight="158.0" prefWidth="130.0" text=" ">
+      <JFXButton fx:id="editButton" focusTraversable="false" layoutX="12.0" layoutY="362.66" onAction="#startEdit" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -111,7 +122,7 @@
             <Image url="@../assets/mapAssets/FloorBackgroundElement.png" />
          </image>
       </ImageView>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="254.0" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="254.0" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f5Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -120,7 +131,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="290.0" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="290.0" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f4Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -129,7 +140,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="326.0" onAction="#goToFloor3" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="326.0" onAction="#goToFloor3" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f3Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -138,7 +149,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="362.0" onAction="#goToFloor2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="362.0" onAction="#goToFloor2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -147,7 +158,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="398.0" onAction="#goToFloor1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="398.0" onAction="#goToFloor1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="f1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -156,7 +167,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="434.0" onAction="#goToFloorL1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="434.0" onAction="#goToFloorL1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="l1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -165,7 +176,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="883.0" layoutY="470.0" onAction="#goToFloorL2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="470.0" onAction="#goToFloorL2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
          <graphic>
             <ImageView fx:id="l2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -174,7 +185,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="backButton" layoutX="867.0" layoutY="105.0" onAction="#cancel" text=" " visible="false">
+      <JFXButton fx:id="backButton" focusTraversable="false" layoutX="867.0" layoutY="105.0" onAction="#cancel" text=" " visible="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -202,7 +213,7 @@
          </image>
       </ImageView>
       <JFXTextArea fx:id="locationName" focusColor="WHITE" layoutX="51.0" layoutY="138.0" prefHeight="38.0" prefWidth="110.0" unFocusColor="WHITE" visible="false" />
-      <JFXButton fx:id="markerButton" layoutX="32.0" layoutY="206.0" onAction="#clearMarker" text=" " visible="false">
+      <JFXButton fx:id="markerButton" focusTraversable="false" layoutX="32.0" layoutY="206.0" onAction="#clearMarker" text=" " visible="false">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="132.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -212,7 +223,7 @@
          </graphic>
       </JFXButton>
       <Label fx:id="markerLabel" alignment="CENTER" layoutX="40.0" layoutY="232.0" onMouseClicked="#clearMarker" prefHeight="26.0" prefWidth="132.0" text="Reset Marker" textFill="WHITE" visible="false" />
-      <JFXButton fx:id="confirmButton" layoutX="65.5" layoutY="435.0" onAction="#confirmChanges" text=" " visible="false">
+      <JFXButton fx:id="confirmButton" focusTraversable="false" layoutX="65.5" layoutY="435.0" onAction="#confirmChanges" text=" " visible="false">
          <graphic>
             <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
