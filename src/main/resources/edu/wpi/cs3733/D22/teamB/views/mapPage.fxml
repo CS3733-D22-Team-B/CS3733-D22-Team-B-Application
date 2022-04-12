@@ -23,7 +23,7 @@
                   <Image url="@../assets/components/SidePiece.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="642.0" layoutY="2.0" text=" ">
+            <JFXButton layoutX="642.0" layoutY="2.0" onAction="#goToHomepage" text=" ">
                <graphic>
                   <ImageView fitHeight="94.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0" translateY="-20.0">
                      <image>
