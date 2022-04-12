@@ -242,10 +242,11 @@ public class DatabaseInitializer {
         String type = data[4];
         String status = data[5];
         String priority = data[6];
-        String test = data[7];
-        String date = data[8];
-        String timeCreated = data[9];
-        String lastEdited = data[10];
+        String information = data[7];
+        String test = data[8];
+        String date = data[9];
+        String timeCreated = data[10];
+        String lastEdited = data[11];
 
         statement.setString(1, requestID);
         statement.setString(2, employeeID);
@@ -255,16 +256,17 @@ public class DatabaseInitializer {
         statement.setString(6, status);
         int priorityInt = Integer.parseInt(priority);
         statement.setInt(7, priorityInt);
-        statement.setString(8, test);
+        statement.setString(8, information);
+        statement.setString(9, test);
 
         Timestamp sqlTimestamp1 = Timestamp.valueOf(date);
-        statement.setTimestamp(9, sqlTimestamp1);
+        statement.setTimestamp(10, sqlTimestamp1);
 
         Timestamp sqlTimestamp2 = Timestamp.valueOf(timeCreated);
-        statement.setTimestamp(10, sqlTimestamp2);
+        statement.setTimestamp(11, sqlTimestamp2);
 
         Timestamp sqlTimestamp3 = Timestamp.valueOf(lastEdited);
-        statement.setTimestamp(11, sqlTimestamp3);
+        statement.setTimestamp(12, sqlTimestamp3);
 
         statement.addBatch();
         statement.executeBatch();
