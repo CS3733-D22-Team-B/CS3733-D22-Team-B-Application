@@ -54,6 +54,8 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML Pane reqInfoPane;
   @FXML Label reqTypeLabel;
   @FXML Label reqStatusLabel;
+  @FXML JFXButton equipEditButton;
+  @FXML JFXComboBox<String> availabilityDropdown;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -70,6 +72,10 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean addEnabled = false;
   private Boolean editEnabled = false;
   private Boolean deleteEnabled = false;
+  private Boolean editEquipEnabled = false;
+  private Boolean equipPaneVisible = false;
+
+  private MedicalEquipment toEdit;
 
   private int floorLevel = 2;
   private int[] coordinates;
@@ -86,6 +92,7 @@ public class interactiveMapPageController extends MenuBarController {
     edao = MedicalEquipmentDB.getInstance();
     rdao = ServiceRequestsDB.getInstance();
     populateTypeDropdown();
+    populateAvailabilityDropdown();
     setAll();
 
     mapPane.setOnMousePressed(
@@ -269,12 +276,14 @@ public class interactiveMapPageController extends MenuBarController {
                 equipTypeLabel.setText(eq.getType());
                 statusLabel.setText(eq.getAvailability());
               } else {
-                equipInfoPane.setVisible(false);
+                if (equipPaneVisible) {
+
+                } else equipInfoPane.setVisible(false);
               }
             });
     icon.setOnMouseClicked(
         event -> {
-          // if (!locInfoVisible && !requestInfoVisible) toggleEquipInfo(eq);
+          toggleEquipPane(eq);
         });
 
     icon.setLayoutX(viewCoords[0]);
@@ -695,6 +704,12 @@ public class interactiveMapPageController extends MenuBarController {
     typeDropdown.getItems().add("PATI");
   }
 
+  public void populateAvailabilityDropdown() {
+    availabilityDropdown.getItems().add("Unavailable");
+    availabilityDropdown.getItems().add("Requested");
+    availabilityDropdown.getItems().add("Available");
+  }
+
   public void populateLocationDropdown() {
     locationDropdown.getItems().clear();
     floorLocations = dao.getLocationsByFloor(floorLevel);
@@ -714,6 +729,9 @@ public class interactiveMapPageController extends MenuBarController {
     if (editEnabled) {
       editLocation();
     }
+    if (editEquipEnabled) {
+      editEquip();
+    }
     setAll();
   }
 
@@ -726,6 +744,9 @@ public class interactiveMapPageController extends MenuBarController {
     }
     if (editEnabled) {
       endEdit();
+    }
+    if (editEquipEnabled) {
+      endEquipEdit();
     }
     setAll();
   }
@@ -762,5 +783,75 @@ public class interactiveMapPageController extends MenuBarController {
     mapPane.getChildren().add(equipInfoPane);
     mapPane.getChildren().remove(reqInfoPane);
     mapPane.getChildren().add(reqInfoPane);
+  }
+
+  public void toggleEquipPane(MedicalEquipment eq) {
+    if (equipPaneVisible) {
+      equipInfoPane.setVisible(false);
+      equipEditButton.setVisible(false);
+      equipPaneVisible = false;
+      availabilityDropdown.setValue("");
+      locationDropdown.setValue("");
+      toEdit = null;
+    } else {
+      equipInfoPane.setVisible(true);
+      equipEditButton.setVisible(true);
+      equipPaneVisible = true;
+      availabilityDropdown.setValue(eq.getAvailability());
+      locationDropdown.setValue(eq.getLocation().getLongName());
+      toEdit = eq;
+    }
+  }
+
+  public void startEquipEdit() {
+    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Edit.png"));
+    lockHover = true;
+    editEquipEnabled = true;
+    addButton.setVisible(false);
+    editButton.setVisible(false);
+    deleteButton.setVisible(false);
+    resetButton.setVisible(false);
+    backButton.setVisible(true);
+    toLocDatabase.setVisible(false);
+    floorBackground.setVisible(true);
+    topLeftBox.setVisible(true);
+    secondTopLeftBox.setVisible(true);
+    locationDropdown.setVisible(true);
+    availabilityDropdown.setVisible(true);
+    confirmButton.setVisible(true);
+  }
+
+  public void editEquip() {
+    LinkedList<Location> equipLoc = dao.listByAttribute("longName", locationDropdown.getValue());
+    Location loc = equipLoc.pop();
+    if (toEdit != null) {
+      toEdit.setAvailability(availabilityDropdown.getValue());
+      toEdit.setLocation(loc);
+      edao.update(toEdit);
+    }
+    endEquipEdit();
+  }
+
+  public void endEquipEdit() {
+    lockHover = false;
+    editEquipEnabled = false;
+    addButton.setVisible(true);
+    editButton.setVisible(true);
+    deleteButton.setVisible(true);
+    resetButton.setVisible(true);
+    backButton.setVisible(false);
+    toLocDatabase.setVisible(true);
+    floorBackground.setVisible(false);
+    topLeftBox.setVisible(false);
+    secondTopLeftBox.setVisible(false);
+    locationDropdown.setVisible(false);
+    availabilityDropdown.setVisible(false);
+    confirmButton.setVisible(false);
+    equipInfoPane.setVisible(false);
+    equipEditButton.setVisible(false);
+    equipPaneVisible = false;
+    availabilityDropdown.setValue("");
+    locationDropdown.setValue("");
+    toEdit = null;
   }
 }
