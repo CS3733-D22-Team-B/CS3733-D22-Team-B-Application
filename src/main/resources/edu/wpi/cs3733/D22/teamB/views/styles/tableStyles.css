@@ -2,6 +2,16 @@
     -fx-base: #cdcdcd;
 }
 
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
 .table-column-right {
     -fx-base: #4b7486;
     -fx-text-fill: #7bcce4;
