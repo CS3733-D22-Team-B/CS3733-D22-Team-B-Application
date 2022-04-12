@@ -45,7 +45,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="875.0" layoutY="20.0" onAction="#quitApplication" text=" ">
+      <JFXButton layoutX="870.0" layoutY="20.0" onAction="#quitApplication" text=" ">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
