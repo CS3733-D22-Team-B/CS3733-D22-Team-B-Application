@@ -76,7 +76,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
           public TableCell<Employee, Void> call(final TableColumn<Employee, Void> param) {
             final TableCell<Employee, Void> cell =
                 new TableCell<Employee, Void>() {
-                  private final Button requestViewerButton = new Button("View Request");
+                  private final Button requestViewerButton = new Button("View Employee");
 
                   {
                     requestViewerButton.setOnAction(
