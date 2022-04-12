@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 public class CustomRequestController extends PatientAndLocationBasedRequestController {
   @FXML private TextField typeInput;
 
-  private String type;
+  private String type = "";
 
   @FXML
   public void setType() {
@@ -56,8 +56,8 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
   }
 
   @FXML
-  public void reset() {
-    super.reset();
+  public void reset(ActionEvent actionEvent) {
+    super.reset(actionEvent);
     typeInput.setText("");
     typeInput.setPromptText("Type");
     type = "";

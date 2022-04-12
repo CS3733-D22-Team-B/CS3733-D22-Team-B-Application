@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.databases.EquipmentTrackerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EquipmentTrackerController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -42,18 +42,18 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="-187.0" layoutY="244.0" rotate="-90.0" text="Equipment Tracker" textFill="#7bcce4">
+            <Label layoutX="-77.0" layoutY="252.0" rotate="-90.0" text="Equipment Tracker" textFill="#7bcce4">
                <font>
-                  <Font name="Microsoft Sans Serif" size="56.0" />
+                  <Font name="Microsoft Sans Serif" size="30.0" />
                </font>
             </Label>
             <fx:include source="menu.fxml" />
-            <TableView fx:id="equipmentTable" layoutX="134.0" layoutY="62.0" prefHeight="428.0" prefWidth="690.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
+            <TableView fx:id="equipmentTable" layoutX="129.0" layoutY="63.0" prefHeight="428.0" prefWidth="700.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
               <columns>
-                <TableColumn fx:id="columnEquipment" prefWidth="130.0" text="Equipment" />
-                <TableColumn fx:id="columnLocation" minWidth="0.0" prefWidth="379.0" text="Location" />
-                  <TableColumn fx:id="columnSterilization" prefWidth="87.0" text="Sterilized" />
-                  <TableColumn fx:id="columnAvailability" prefWidth="93.0" text="Availablity" />
+                <TableColumn fx:id="columnEquipment" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" resizable="false" text="Equipment" />
+                <TableColumn fx:id="columnLocation" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" resizable="false" text="Location" />
+                  <TableColumn fx:id="columnSterilization" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Sterilized" />
+                  <TableColumn fx:id="columnAvailability" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" resizable="false" text="Availability" />
               </columns>
             </TableView>
          </children>

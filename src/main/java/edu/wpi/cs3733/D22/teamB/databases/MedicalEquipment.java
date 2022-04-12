@@ -7,18 +7,24 @@ public class MedicalEquipment {
   private Location location;
   private String type;
   private boolean isClean;
-  private String isSterilized;
-  private boolean isRequested;
+  private String availability;
+  private String name;
 
   // Pending, In-Progress, Complete
 
   public MedicalEquipment(
-      String equipmentID, String nodeID, String type, boolean isClean, boolean isRequested) {
+      String equipmentID,
+      String nodeID,
+      String type,
+      boolean isClean,
+      String availability,
+      String name) {
     setEquipmentID(equipmentID);
     setNodeID(nodeID);
     setType(type);
     setIsClean(isClean);
-    setIsRequested(isRequested);
+    setAvailability(availability);
+    setName(name);
   }
 
   private void setEquipmentID(String newEquipmentID) {
@@ -57,7 +63,6 @@ public class MedicalEquipment {
 
   public void setIsClean(boolean newIsClean) {
     isClean = newIsClean;
-    isSterilized = (isClean) ? "\u2713" : "\u2717";
   }
 
   public boolean getIsClean() {
@@ -65,15 +70,23 @@ public class MedicalEquipment {
   }
 
   public String getIsSterilized() {
-    return isSterilized;
+    return (isClean) ? "\u2713" : "\u2717";
   }
 
-  public void setIsRequested(boolean newIsRequested) {
-    isRequested = newIsRequested;
+  public void setAvailability(String newAvailability) {
+    availability = newAvailability;
   }
 
-  public boolean getIsRequested() {
-    return isRequested;
+  public String getAvailability() {
+    return availability;
+  }
+
+  public void setName(String newName) {
+    name = newName;
+  }
+
+  public String getName() {
+    return name;
   }
 
   /////////////////// LOCATION GETTERS////////////////////

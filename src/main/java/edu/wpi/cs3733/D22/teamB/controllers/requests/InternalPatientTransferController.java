@@ -7,8 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class InternalPatientTransferController extends PatientAndLocationBasedRequestController {
-  private String notes;
-
   @FXML
   public void enableSubmission() {
     setLocation();

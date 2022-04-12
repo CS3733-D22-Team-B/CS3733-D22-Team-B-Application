@@ -31,9 +31,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
         Request req;
-        String type = rs.getString(5);
+        String type = rs.getString(5).toUpperCase();
         switch (type) {
-          case "Meal":
+          case "MEAL":
             req =
                 new MealRequest(
                     rs.getString(1),
@@ -47,7 +47,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     new java.util.Date(rs.getTimestamp(9).getTime()),
                     new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
-          case "Medicine":
+          case "MEDICINE":
             req =
                 new MedicineRequest(
                     rs.getString(1),
@@ -61,7 +61,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     new java.util.Date(rs.getTimestamp(9).getTime()),
                     new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
-          case "Interpreter":
+          case "INTERPRETER":
             req =
                 new InterpreterRequest(
                     rs.getString(1),
@@ -75,7 +75,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     new java.util.Date(rs.getTimestamp(9).getTime()),
                     new java.util.Date(rs.getTimestamp(10).getTime()));
             break;
-          case "Transfer":
+          case "TRANSFER":
             req =
                 new InternalPatientTransferRequest(
                     rs.getString(1),

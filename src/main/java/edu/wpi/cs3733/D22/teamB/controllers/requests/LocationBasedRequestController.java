@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamB.controllers.requests;
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import java.util.LinkedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
@@ -10,8 +11,8 @@ public abstract class LocationBasedRequestController extends RequestController {
   @FXML protected ComboBox<String> floorInput;
   @FXML protected ComboBox<String> locationInput;
 
-  protected String floor;
-  protected String locationName;
+  protected String floor = "";
+  protected String locationName = "";
 
   protected LinkedList<String> locationsF3 = new LinkedList<>();
   protected LinkedList<String> locationsF2 = new LinkedList<>();
@@ -45,8 +46,6 @@ public abstract class LocationBasedRequestController extends RequestController {
           break;
       }
     }
-    locationName = "";
-    floor = "";
   }
 
   public void setFloor() {
@@ -91,14 +90,11 @@ public abstract class LocationBasedRequestController extends RequestController {
   }
 
   @FXML
-  public void reset() {
+  public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    floorInput.setValue("");
-    floorInput.setPromptText("Floor");
-    locationInput.setValue("");
-    locationInput.setPromptText("Location");
-    additionalInformationInput.setText("");
-    additionalInformationInput.setPromptText("Additional Information");
+    floorInput.getSelectionModel().clearSelection();
+    locationInput.getSelectionModel().clearSelection();
+    additionalInformationInput.clear();
     prioritySlider.setValue(1);
     submitButton.setDisable(true);
 

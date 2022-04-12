@@ -19,9 +19,9 @@ public class LabRequestController extends PatientBasedRequestController {
   @FXML private DatePicker testingTimeInput;
   @FXML private ComboBox<String> labRoomInput;
 
-  private String labTest;
-  private Date testingTime;
-  private String labRoom;
+  private String labTest = "";
+  private Date testingTime = null;
+  private String labRoom = "";
 
   private LocationsDB locationsDB;
 
@@ -53,8 +53,6 @@ public class LabRequestController extends PatientBasedRequestController {
   }
 
   public void enableSubmission() {
-    setLabTest();
-    setTestingTime();
     setNotes();
     if (!patientName.equals("")
         && !labTest.equals("")
@@ -82,12 +80,10 @@ public class LabRequestController extends PatientBasedRequestController {
   }
 
   @FXML
-  public void reset() {
-    super.reset();
-    labRoomInput.setValue("");
-    labRoomInput.setPromptText("Lab Room");
-    labTestInput.setValue("");
-    labTestInput.setPromptText("Lab Test");
+  public void reset(ActionEvent actionEvent) {
+    super.reset(actionEvent);
+    labRoomInput.getSelectionModel().clearSelection();
+    labTestInput.getSelectionModel().clearSelection();
     testingTimeInput.setValue(null);
 
     labRoom = "";

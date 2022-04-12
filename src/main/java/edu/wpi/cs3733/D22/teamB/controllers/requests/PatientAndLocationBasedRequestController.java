@@ -5,6 +5,7 @@ import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
 import edu.wpi.cs3733.D22.teamB.databases.Patient;
 import edu.wpi.cs3733.D22.teamB.databases.PatientsDB;
 import java.util.LinkedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
@@ -13,9 +14,9 @@ public abstract class PatientAndLocationBasedRequestController extends RequestCo
   @FXML protected ComboBox<String> locationInput;
   @FXML protected ComboBox<String> patientInput;
 
-  protected String floor;
-  protected String locationName;
-  protected String patientName;
+  protected String floor = "";
+  protected String locationName = "";
+  protected String patientName = "";
 
   protected LinkedList<String> locationsF3 = new LinkedList<>();
   protected LinkedList<String> locationsF2 = new LinkedList<>();
@@ -50,15 +51,12 @@ public abstract class PatientAndLocationBasedRequestController extends RequestCo
           break;
       }
     }
-    locationName = "";
-    floor = "";
 
     patientsDB = PatientsDB.getInstance();
 
     for (Patient patient : patientsDB.list()) {
       patientInput.getItems().add(patient.getOverview());
     }
-    patientName = patientInput.getValue();
   }
 
   public void setFloor() {
@@ -108,16 +106,12 @@ public abstract class PatientAndLocationBasedRequestController extends RequestCo
   }
 
   @FXML
-  public void reset() {
+  public void reset(ActionEvent actionEvent) {
     requestLabel.setText("");
-    floorInput.setValue("");
-    floorInput.setPromptText("Floor");
-    locationInput.setValue("");
-    locationInput.setPromptText("Location");
-    patientInput.setValue("");
-    patientInput.setPromptText("Patient");
-    additionalInformationInput.setText("");
-    additionalInformationInput.setPromptText("Additional Information");
+    floorInput.getSelectionModel().clearSelection();
+    locationInput.getSelectionModel().clearSelection();
+    patientInput.getSelectionModel().clearSelection();
+    additionalInformationInput.clear();
     prioritySlider.setValue(1);
     submitButton.setDisable(true);
 
