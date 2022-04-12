@@ -642,6 +642,7 @@ public class interactiveMapPageController extends MenuBarController {
     confirmButton.setVisible(false);
     markerButton.setVisible(false);
     markerLabel.setVisible(false);
+    clearMarker();
   }
 
   public void getCoordinates(MouseEvent event) {
