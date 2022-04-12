@@ -20,7 +20,7 @@
             <Image url="@../assets/SidePiece.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" layoutX="867.0" layoutY="20.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="38.0" text=" ">
+      <JFXButton fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="20.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="38.0" text=" ">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -38,7 +38,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="deleteButton" layoutX="12.0" layoutY="189.333" prefHeight="158.0" prefWidth="130.0" text=" ">
+      <JFXButton fx:id="deleteButton" layoutX="12.0" layoutY="189.333" onAction="#startDelete" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="editButton" layoutX="12.0" layoutY="362.66" prefHeight="158.0" prefWidth="130.0" text=" ">
+      <JFXButton fx:id="editButton" layoutX="12.0" layoutY="362.66" onAction="#startEdit" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -138,7 +138,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="backButton" layoutX="867.0" layoutY="105.0" text=" " visible="false">
+      <JFXButton fx:id="backButton" layoutX="867.0" layoutY="105.0" onAction="#cancel" text=" " visible="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -157,16 +157,16 @@
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="typeDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" visible="false" />
+      <JFXComboBox fx:id="typeDropdown" focusColor="WHITE" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" unFocusColor="WHITE" visible="false" />
 
-      <JFXComboBox fx:id="locationDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Location" visible="false" />
+      <JFXComboBox fx:id="locationDropdown" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Location" unFocusColor="WHITE" visible="false" />
       <ImageView fx:id="secondTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="125.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="locationName" layoutX="51.0" layoutY="138.0" prefHeight="38.0" prefWidth="110.0" visible="false" />
-      <JFXButton fx:id="confirmButton" layoutX="65.5" layoutY="435.0" text=" " visible="false">
+      <JFXTextArea fx:id="locationName" focusColor="WHITE" layoutX="51.0" layoutY="138.0" prefHeight="38.0" prefWidth="110.0" unFocusColor="WHITE" visible="false" />
+      <JFXButton fx:id="confirmButton" layoutX="65.5" layoutY="435.0" onAction="#confirmChanges" text=" " visible="false">
          <graphic>
             <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>

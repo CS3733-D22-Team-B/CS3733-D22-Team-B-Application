@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -66,14 +67,23 @@ public class interactiveMapPageController extends MenuBarController {
     dao = LocationsDB.getInstance();
     edao = MedicalEquipmentDB.getInstance();
     rdao = ServiceRequestsDB.getInstance();
+    populateTypeDropdown();
+    populateLocationDropdown();
 
     //        // Set Locations
     setRoomIcons();
     //        // Set Equipment
     setEquipIcons();
     //        // Set Requests
-    //        setServiceIcons();
+    setServiceIcons();
     //        resetDisplayPanes();
+  }
+
+  public void setAll() {
+    populateLocationDropdown();
+    setRoomIcons();
+    setEquipIcons();
+    setServiceIcons();
   }
 
   public void removeIcon(SVGPath icon) {
@@ -170,17 +180,9 @@ public class interactiveMapPageController extends MenuBarController {
             });
     icon.setOnMouseClicked(
         event -> {
-          //                    if (!equipInfoVisible && !requestInfoVisible) {
-          //                        locationPane.setFill(icon.getFill());
-          //                        if (!location.getNodeType().equals("EXIT")) {
-          //                            roomName.setTextFill(Color.rgb(255, 255, 255));
-          //                            nodeType.setTextFill(Color.rgb(255, 255, 255));
-          //                        } else {
-          //                            roomName.setTextFill(Color.rgb(0, 0, 0));
-          //                            nodeType.setTextFill(Color.rgb(0, 0, 0));
-          //                        }
-          //                        toggleRoomInfo(location);
-          //                    }
+          if (deleteEnabled || editEnabled) {
+            locationDropdown.setValue(location.getLongName());
+          }
         });
     icon.setLayoutX(viewCoords[0] - 5);
     icon.setLayoutY(viewCoords[1] - 5);
@@ -256,6 +258,60 @@ public class interactiveMapPageController extends MenuBarController {
     equipIcons.add(icon);
   }
 
+  public void setServiceIcons() {
+    LinkedList<Request> allRequests = rdao.list();
+    for (SVGPath icon : serviceIcons) {
+      removeIcon(icon);
+    }
+    serviceIcons.clear();
+    for (Request r : allRequests) {
+      if (r.getLocation() != null) {
+        String floor = r.getLocation().getFloor();
+        if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
+      }
+    }
+  }
+
+  public void addServiceIcon(Request r) {
+    SVGPath icon = new SVGPath();
+    icon.setContent(
+        "M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z");
+    int x = r.getLocation().getXCoord();
+    int y = r.getLocation().getYCoord();
+    int[] viewCoords = mapCoordsToViewCoords(x, y);
+    switch (r.getStatus()) {
+      case "Pending":
+        icon.setFill(Color.rgb(250, 0, 0));
+        break;
+      case "In Progress":
+        icon.setFill(Color.rgb(100, 0, 100));
+        break;
+      default:
+        icon.setFill(Color.rgb(100, 100, 100));
+        break;
+    }
+    icon.hoverProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              //                      if (newVal && !lockHover) {
+              //                        getRequestInfo(r);
+              //                        requestPane.setFill(icon.getFill());
+              //                      } else {
+              //                        if (!requestInfoVisible && !lockHover) {
+              //                          requestInfo.setVisible(false);
+              //                        }
+              //                      }
+            });
+    icon.setOnMouseClicked(
+        event -> {
+          //              if (!locInfoVisible && !equipInfoVisible) toggleRequestInfo(r);
+        });
+    icon.setLayoutX(viewCoords[0]);
+    icon.setLayoutY(viewCoords[1]);
+    mapPane.getChildren().add(icon);
+    serviceIcons.add(icon);
+  }
+
   private int stringtoFloorLevel(String floor) {
     switch (floor) {
       case "L2":
@@ -317,9 +373,7 @@ public class interactiveMapPageController extends MenuBarController {
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel2.png"));
     l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
-    setRoomIcons();
-    //    setEquipIcons();
-    //    setServiceIcons();
+    setAll();
   }
 
   public void goToFloorL1() {
@@ -328,9 +382,7 @@ public class interactiveMapPageController extends MenuBarController {
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel1.png"));
     l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
-    setRoomIcons();
-    //    setEquipIcons();
-    //    setServiceIcons();
+    setAll();
   }
 
   public void goToFloor1() {
@@ -339,9 +391,7 @@ public class interactiveMapPageController extends MenuBarController {
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
     f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
-    setRoomIcons();
-    //    setEquipIcons();
-    //    setServiceIcons();
+    setAll();
   }
 
   public void goToFloor2() {
@@ -350,9 +400,7 @@ public class interactiveMapPageController extends MenuBarController {
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
     f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
-    setRoomIcons();
-    //    setEquipIcons();
-    //    setServiceIcons();
+    setAll();
   }
 
   public void goToFloor3() {
@@ -361,14 +409,13 @@ public class interactiveMapPageController extends MenuBarController {
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
-    setRoomIcons();
-    //    setEquipIcons();
-    //    setServiceIcons();
+    setAll();
   }
 
   // TODO: Floors 4 and 5
 
   public void startAdd() {
+    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Add.png"));
     lockHover = true;
     addEnabled = true;
     addButton.setVisible(false);
@@ -431,6 +478,109 @@ public class interactiveMapPageController extends MenuBarController {
     setRoomIcons();
   }
 
+  public void startDelete() {
+    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Delete.png"));
+    lockHover = true;
+    deleteEnabled = true;
+    addButton.setVisible(false);
+    editButton.setVisible(false);
+    deleteButton.setVisible(false);
+    backButton.setVisible(true);
+    floorBackground.setVisible(true);
+    topLeftBox.setVisible(true);
+    locationDropdown.setVisible(true);
+    confirmButton.setVisible(true);
+  }
+
+  public void deleteLoc() {
+    String name = locationDropdown.getValue();
+    Location target = null;
+    Boolean hasEquip = false;
+    LinkedList<Location> listChange = dao.listByAttribute("longName", name);
+    for (Location loc : listChange) {
+      if (loc.getLongName().equals(name)) target = loc;
+    }
+    LinkedList<MedicalEquipment> allEquip = edao.list();
+    for (MedicalEquipment eq : allEquip) {
+      if (eq.getLocation() == target) {
+        hasEquip = true;
+      }
+    }
+    if (hasEquip) {
+      // errorLabel.setText("Delete Failed! Check that no equipment is tied to the room!");
+    } else {
+      dao.delete(target);
+      endDelete();
+      setRoomIcons();
+      // resetDisplayPanes();
+    }
+  }
+
+  public void endDelete() {
+    lockHover = false;
+    deleteEnabled = false;
+    addButton.setVisible(true);
+    editButton.setVisible(true);
+    deleteButton.setVisible(true);
+    backButton.setVisible(false);
+    floorBackground.setVisible(false);
+    topLeftBox.setVisible(false);
+    locationDropdown.setVisible(false);
+    confirmButton.setVisible(false);
+    locationDropdown.setValue("");
+  }
+
+  public void startEdit() {
+    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Edit.png"));
+    lockHover = true;
+    editEnabled = true;
+    addButton.setVisible(false);
+    editButton.setVisible(false);
+    deleteButton.setVisible(false);
+    backButton.setVisible(true);
+    floorBackground.setVisible(true);
+    topLeftBox.setVisible(true);
+    secondTopLeftBox.setVisible(true);
+    locationDropdown.setVisible(true);
+    locationName.setVisible(true);
+    confirmButton.setVisible(true);
+  }
+
+  public void editLocation() {
+    String oldName = locationDropdown.getValue();
+    LinkedList<Location> findLoc = dao.listByAttribute("longName", oldName);
+    Location toChange = findLoc.pop();
+    String name = toChange.getLongName();
+    if (!locationName.getText().equals("") && !locationName.getText().equals(name)) {
+      toChange.setShortName(locationName.getText());
+      toChange.setLongName(locationName.getText());
+    }
+    if (mapPane.getChildren().contains(marker)) {
+      int markerX = (int) marker.getLayoutX();
+      int markerY = (int) marker.getLayoutY();
+      int[] newCoords = imageCoordsToCSVCoords(markerX, markerY);
+      toChange.setXCoord(newCoords[0]);
+      toChange.setYCoord(newCoords[1]);
+    }
+    dao.update(toChange);
+    endEdit();
+  }
+
+  public void endEdit() {
+    lockHover = false;
+    editEnabled = false;
+    addButton.setVisible(true);
+    editButton.setVisible(true);
+    deleteButton.setVisible(true);
+    backButton.setVisible(false);
+    floorBackground.setVisible(false);
+    topLeftBox.setVisible(false);
+    secondTopLeftBox.setVisible(false);
+    locationDropdown.setVisible(false);
+    locationName.setVisible(false);
+    confirmButton.setVisible(false);
+  }
+
   public void getCoordinates(MouseEvent event) {
     if (addEnabled || editEnabled) {
       if (mapPane.getChildren().contains(marker)) {
@@ -471,5 +621,40 @@ public class interactiveMapPageController extends MenuBarController {
     typeDropdown.getItems().add("DIRT");
     typeDropdown.getItems().add("LABS");
     typeDropdown.getItems().add("PATI");
+  }
+
+  public void populateLocationDropdown() {
+    locationDropdown.getItems().clear();
+    floorLocations = dao.getLocationsByFloor(floorLevel);
+    for (Location loc : floorLocations) {
+      String name = loc.getLongName();
+      locationDropdown.getItems().add(name);
+    }
+  }
+
+  public void confirmChanges() {
+    if (addEnabled) {
+      addLocation();
+    }
+    if (deleteEnabled) {
+      deleteLoc();
+    }
+    if (editEnabled) {
+      editLocation();
+    }
+    setAll();
+  }
+
+  public void cancel() {
+    if (addEnabled) {
+      endAdd();
+    }
+    if (deleteEnabled) {
+      endDelete();
+    }
+    if (editEnabled) {
+      endEdit();
+    }
+    setAll();
   }
 }
