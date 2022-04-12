@@ -19,6 +19,7 @@
     -fx-inner-background-radius: 10px;
     -fx-background-radius: 10px;
     -fx-border-radius: 20px;
+    -fx-border-width: 2.5px;
 }
 .simple-text-area {
     -fx-border-color: #7bcce4;
@@ -29,6 +30,7 @@
     -fx-prompt-text-fill: #7bcce4;
     -fx-text-fill: #7bcce4;
     -fx-border-radius: 10px;
+    -fx-border-width: 2.5px;
  }
 .simple-text-field {
     -fx-border-color: #7bcce4;

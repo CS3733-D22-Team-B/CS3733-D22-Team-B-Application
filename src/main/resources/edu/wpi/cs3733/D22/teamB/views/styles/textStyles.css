@@ -14,8 +14,8 @@
 .text-area {
     -fx-control-inner-background: #2e3c4b;
     -fx-background-color: #2e3c4b;
-    -fx-prompt-text-fill: #4b7486;
-    -fx-text-fill: #4b7486;
+    -fx-prompt-text-fill: #7bcce4;
+    -fx-text-fill: #7bcce4;
     -fx-inner-background-radius: 10px;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
@@ -26,8 +26,8 @@
 
 .text-field {
     -fx-background-color: #2e3c4b;
-    -fx-prompt-text-fill: #4b7486;
-    -fx-text-fill: #4b7486;
+    -fx-prompt-text-fill: #7bcce4;
+    -fx-text-fill: #7bcce4;
     -fx-border-radius: 10px;
  }
 .simple-text-field {

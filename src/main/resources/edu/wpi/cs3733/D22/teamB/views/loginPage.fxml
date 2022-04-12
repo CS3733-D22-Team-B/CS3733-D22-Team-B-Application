@@ -28,7 +28,7 @@
             <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameField" layoutX="166.0" layoutY="280.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setUsername" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Username" styleClass="simple-text-field" stylesheets="@styles/textStyles2.css">
+      <TextField fx:id="usernameField" layoutX="166.0" layoutY="280.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setUsername" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Username" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css">
          <font>
             <Font name="Microsoft Sans Serif" size="20.0" />
          </font></TextField>
