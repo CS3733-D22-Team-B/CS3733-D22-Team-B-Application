@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -216,7 +217,7 @@
       </ImageView>
       <JFXComboBox fx:id="typeDropdown" focusColor="#ffffff00" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
 
-      <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+      <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="60.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
       <ImageView fx:id="secondTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="125.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
@@ -242,6 +243,16 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="138.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+      <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="145.0" prefHeight="26.0" prefWidth="110.0" promptText="Availability" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+      <ImageView fx:id="thirdTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="210.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../assets/mapAssets/DropdownInputBox.png" />
+         </image>
+      </ImageView>
+      <JFXComboBox fx:id="stateDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="230.0" prefHeight="26.0" prefWidth="110.0" promptText="State" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXComboBox>
    </children>
 </AnchorPane>

@@ -35,6 +35,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton backButton;
   @FXML JFXButton toLocDatabase;
   @FXML ImageView floorBackground;
+  @FXML ImageView thirdTopLeftBox;
   @FXML ImageView topLeftBox;
   @FXML ImageView secondTopLeftBox;
   @FXML JFXComboBox<String> typeDropdown;
@@ -56,6 +57,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML Label reqStatusLabel;
   @FXML JFXButton equipEditButton;
   @FXML JFXComboBox<String> availabilityDropdown;
+  @FXML JFXComboBox<String> stateDropdown;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -93,6 +95,7 @@ public class interactiveMapPageController extends MenuBarController {
     rdao = ServiceRequestsDB.getInstance();
     populateTypeDropdown();
     populateAvailabilityDropdown();
+    populateStateDropdown();
     setAll();
 
     mapPane.setOnMousePressed(
@@ -263,6 +266,8 @@ public class interactiveMapPageController extends MenuBarController {
     }
     if (eq.getAvailability().equals("Requested")) {
       icon.setFill(Color.rgb(250, 0, 200));
+    } else if (eq.getAvailability().equals("Unavailable")) {
+      icon.setFill(Color.rgb(100, 100, 100));
     } else {
       icon.setFill(Color.rgb(60, 173, 241));
     }
@@ -719,6 +724,11 @@ public class interactiveMapPageController extends MenuBarController {
     }
   }
 
+  public void populateStateDropdown() {
+    stateDropdown.getItems().add("Clean");
+    stateDropdown.getItems().add("Dirty");
+  }
+
   public void confirmChanges() {
     if (addEnabled) {
       addLocation();
@@ -799,6 +809,9 @@ public class interactiveMapPageController extends MenuBarController {
       equipPaneVisible = true;
       availabilityDropdown.setValue(eq.getAvailability());
       locationDropdown.setValue(eq.getLocation().getLongName());
+      if (eq.getIsClean()) {
+        stateDropdown.setValue("Clean");
+      } else stateDropdown.setValue("Dirty");
       toEdit = eq;
     }
   }
@@ -818,6 +831,8 @@ public class interactiveMapPageController extends MenuBarController {
     secondTopLeftBox.setVisible(true);
     locationDropdown.setVisible(true);
     availabilityDropdown.setVisible(true);
+    thirdTopLeftBox.setVisible(true);
+    stateDropdown.setVisible(true);
     confirmButton.setVisible(true);
   }
 
@@ -827,6 +842,9 @@ public class interactiveMapPageController extends MenuBarController {
     if (toEdit != null) {
       toEdit.setAvailability(availabilityDropdown.getValue());
       toEdit.setLocation(loc);
+      if (stateDropdown.getValue().equals("Clean")) {
+        toEdit.setIsClean(true);
+      } else toEdit.setIsClean(false);
       edao.update(toEdit);
     }
     endEquipEdit();
@@ -850,8 +868,11 @@ public class interactiveMapPageController extends MenuBarController {
     equipInfoPane.setVisible(false);
     equipEditButton.setVisible(false);
     equipPaneVisible = false;
+    thirdTopLeftBox.setVisible(false);
+    stateDropdown.setVisible(false);
     availabilityDropdown.setValue("");
     locationDropdown.setValue("");
+    stateDropdown.setValue("");
     toEdit = null;
   }
 }
