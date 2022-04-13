@@ -93,7 +93,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="changePasswordLabel" layoutX="188.0" layoutY="330.0" text="Change Password" textFill="WHITE" visible="false">
+            <Label fx:id="passwordLabel" layoutX="188.0" layoutY="330.0" text="Change Password" textFill="WHITE" visible="false">
                <font>
                   <Font size="28.0" />
                </font>
