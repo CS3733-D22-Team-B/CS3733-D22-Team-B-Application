@@ -53,7 +53,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
-    columnRequestID.getStyleClass().add("");
+    columnRequestID.getStyleClass().add("table-column-left");
     columnType.getStyleClass().add("table-column-middle");
     columnStatus.getStyleClass().add("table-column-middle");
     columnPriority.getStyleClass().add("table-column-middle");

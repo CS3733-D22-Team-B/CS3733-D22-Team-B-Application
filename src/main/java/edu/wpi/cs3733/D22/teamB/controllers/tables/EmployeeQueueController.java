@@ -48,6 +48,12 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
+    columnEmployeeID.getStyleClass().add("table-column-left");
+    columnPosition.getStyleClass().add("table-column-middle");
+    columnFirstName.getStyleClass().add("table-column-middle");
+    columnLastName.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
+
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);
     firstNameInput.setDisable(true);

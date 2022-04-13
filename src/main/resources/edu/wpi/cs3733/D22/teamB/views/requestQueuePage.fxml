@@ -81,7 +81,7 @@
                   </ScrollPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="541.0">
                      <children>
-                        <TableView fx:id="requestTable" prefHeight="399.0" prefWidth="508.0">
+                        <TableView fx:id="requestTable" prefHeight="399.0" prefWidth="508.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
                            <columns>
                               <TableColumn fx:id="columnRequestID" editable="false" prefWidth="102.00000250339508" text="Request ID" />
                               <TableColumn fx:id="columnType" editable="false" prefWidth="98.6666488647461" text="Type" />
@@ -109,8 +109,8 @@
          </children>
       </AnchorPane>
       <fx:include source="menu.fxml" />
-      <JFXButton fx:id="downloadButton" layoutX="641.0" layoutY="488.0" onAction="#download" text="Download" />
+      <JFXButton fx:id="downloadButton" layoutX="653.0" layoutY="488.0" onAction="#download" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Download" />
       <Label fx:id="errorLabel" layoutX="188.0" layoutY="492.0" prefHeight="17.0" prefWidth="283.0" />
-      <TextField fx:id="downloadText" layoutX="492.0" layoutY="488.0" promptText="FIle Name" />
+      <TextField fx:id="downloadText" layoutX="492.0" layoutY="488.0" promptText="FIle Name" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" />
    </children>
 </AnchorPane>
