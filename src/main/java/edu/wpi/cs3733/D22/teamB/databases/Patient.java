@@ -92,30 +92,30 @@ public class Patient {
 
   /////////////////// LOCATION GETTERS////////////////////
   public int getXCoord() {
-    return location.getXCoord();
+    return getLocation().getXCoord();
   }
 
   public int getYCoord() {
-    return location.getYCoord();
+    return getLocation().getYCoord();
   }
 
   public String getFloor() {
-    return location.getFloor();
+    return getLocation().getFloor();
   }
 
   public String getBuilding() {
-    return location.getBuilding();
+    return getLocation().getBuilding();
   }
 
   public String getNodeType() {
-    return location.getNodeType();
+    return getLocation().getNodeType();
   }
 
   public String getLongName() {
-    return location.getLongName();
+    return getLocation().getLongName();
   }
 
   public String getShortName() {
-    return location.getShortName();
+    return getLocation().getShortName();
   }
 }

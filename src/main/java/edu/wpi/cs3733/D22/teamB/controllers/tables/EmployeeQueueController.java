@@ -36,7 +36,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
   @FXML ComboBox<String> departmentInput;
 
   Employee currentEmployee = null;
-  DatabaseController db = new DatabaseController();
+  DatabaseController db = DatabaseController.getInstance();
   protected EmployeesDB dao;
 
   private ObservableList<Employee> employees = FXCollections.observableArrayList();
@@ -47,6 +47,12 @@ public class EmployeeQueueController extends MenuBarController implements Initia
     columnPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+    columnEmployeeID.getStyleClass().add("table-column-left");
+    columnPosition.getStyleClass().add("table-column-middle");
+    columnFirstName.getStyleClass().add("table-column-middle");
+    columnLastName.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
 
     usernameInput.setDisable(true);
     passwordInput.setDisable(true);

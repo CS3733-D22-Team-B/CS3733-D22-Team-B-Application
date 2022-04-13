@@ -35,6 +35,12 @@ public class LocationDataController extends MenuBarController implements Initial
     columnFloor.setCellValueFactory(new PropertyValueFactory<>("floor"));
     columnBuilding.setCellValueFactory(new PropertyValueFactory<>("building"));
 
+    columnName.getStyleClass().add("table-column-left");
+    columnX.getStyleClass().add("table-column-middle");
+    columnY.getStyleClass().add("table-column-middle");
+    columnFloor.getStyleClass().add("table-column-middle");
+    columnBuilding.getStyleClass().add("table-column-right");
+
     dao = LocationsDB.getInstance();
     LinkedList<edu.wpi.cs3733.D22.teamB.databases.Location> locs = dao.list();
     for (edu.wpi.cs3733.D22.teamB.databases.Location location : locs) {

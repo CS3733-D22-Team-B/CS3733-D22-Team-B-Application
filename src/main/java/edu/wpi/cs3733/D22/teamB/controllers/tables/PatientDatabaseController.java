@@ -31,7 +31,7 @@ public class PatientDatabaseController extends LocationBasedRequestController
   @FXML TextField lastNameInput;
 
   Patient currentPatient = null;
-  DatabaseController db = new DatabaseController();
+  DatabaseController db = DatabaseController.getInstance();
   protected PatientsDB dao;
   protected LocationsDB dao2;
 
@@ -65,6 +65,12 @@ public class PatientDatabaseController extends LocationBasedRequestController
     columnPatientLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+    columnPatientID.getStyleClass().add("table-column-left");
+    columnPatientLocation.getStyleClass().add("table-column-middle");
+    columnFirstName.getStyleClass().add("table-column-middle");
+    columnLastName.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
 
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
