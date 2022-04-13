@@ -149,7 +149,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
-    currentRequest.setEmployeeID(employeeInput.getValue());
+    currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
     employeeInput.setValue("");
     requestTable.refresh();
     statusInput.setDisable(true);
