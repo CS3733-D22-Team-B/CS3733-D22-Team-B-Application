@@ -44,6 +44,12 @@ public class PatientDatabaseController extends LocationBasedRequestController
 
     for (Location location2 : locations) {
       switch (location2.getFloor()) {
+        case "5":
+          locationsF5.add(location2.getLongName());
+          break;
+        case "4":
+          locationsF4.add(location2.getLongName());
+          break;
         case "3":
           locationsF3.add(location2.getLongName());
           break;

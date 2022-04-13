@@ -22,6 +22,7 @@
               </items>
             </Menu>
                 <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+            <MenuItem mnemonicParsing="false" onAction="#goToLocationDataPage" text="Location Data" />
                 <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                 <MenuItem mnemonicParsing="false" onAction="#goToPatientDatabase" text="Patient Database" />
                 <MenuItem mnemonicParsing="false" onAction="#goToEmployeeDatabase" text="Employee Database" />
