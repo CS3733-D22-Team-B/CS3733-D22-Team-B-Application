@@ -109,7 +109,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     }
     return transform(
         medObj,
-        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, availability = ?, name = ?,  WHERE equipmentID = ?",
+        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, availability = ?, name = ?  WHERE equipmentID = ?",
         true);
   }
 
