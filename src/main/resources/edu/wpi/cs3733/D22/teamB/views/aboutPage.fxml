@@ -69,7 +69,7 @@
             <Font name="Microsoft Sans Serif" size="20.0" />
          </font>
       </Label>
-      <JFXButton layoutX="867.5" layoutY="20.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+      <JFXButton focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>

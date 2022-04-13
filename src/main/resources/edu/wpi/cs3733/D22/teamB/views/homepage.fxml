@@ -1,59 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.HomepageController">
    <children>
       <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/components/Background.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="employeeDatabaseButton" contentDisplay="TOP" layoutX="564.0" layoutY="293.0" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database">
+      <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="employeeDatabaseButton" contentDisplay="TOP" focusTraversable="false" layoutX="604.0" layoutY="295.0" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database">
          <graphic>
-            <Circle fill="#e91c23" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Menu/Databases.png" />
+               </image>
+            </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="patientDatabaseButton" contentDisplay="TOP" layoutX="403.0" layoutY="293.0" onAction="#goToPatientDatabase" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database">
+      <JFXButton fx:id="patientDatabaseButton" contentDisplay="TOP" focusTraversable="false" layoutX="403.0" layoutY="295.0" onAction="#goToPatientDatabase" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database">
          <graphic>
-            <Circle fill="#f7941d" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Menu/Databases.png" />
+               </image>
+            </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="requestQueueButton" contentDisplay="TOP" layoutX="564.0" layoutY="197.0" onAction="#goToRequestQueue" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Request Queue">
+      <JFXButton fx:id="requestQueueButton" contentDisplay="TOP" focusTraversable="false" layoutX="604.0" layoutY="85.0" onAction="#goToRequestQueue" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Request Queue">
          <graphic>
-            <Circle fill="#fbf002" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Menu/Databases.png" />
+               </image>
+            </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="requestButton" contentDisplay="TOP" layoutX="403.0" layoutY="197.0" onAction="#goToRequestLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Request">
+      <JFXButton fx:id="requestButton" contentDisplay="TOP" focusTraversable="false" layoutX="403.0" layoutY="85.0" onAction="#goToRequestLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Request">
          <graphic>
-            <Circle fill="#8cc73b" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Menu/Requests.png" />
+               </image>
+            </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="mapButton" contentDisplay="TOP" layoutX="244.0" layoutY="197.0" onAction="#goToMapLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+      <JFXButton fx:id="mapButton" contentDisplay="TOP" focusTraversable="false" layoutX="204.0" layoutY="85.0" onAction="#goToMapLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
          <graphic>
-            <Circle fill="#2b73bf" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Menu/Maps.png" />
+               </image>
+            </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" layoutX="244.0" layoutY="293.0" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker">
+      <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" focusTraversable="false" layoutX="204.0" layoutY="295.0" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker">
          <graphic>
-            <Circle fill="#922590" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Menu/Tracker.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="quitButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#quitApplication" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Exit.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="125.0" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Profile.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="helpButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="210.0" onAction="#goToAboutPage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Help.png" />
+               </image>
+            </ImageView>
          </graphic>
       </JFXButton>
       <fx:include source="menu.fxml" />
-      <Label layoutX="144.0" layoutY="54.0" text="Brigham and Women's Hospital" textFill="WHITE">
+      <Label layoutX="-157.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Brigham and Women's Hospital" textFill="#7bcce4">
          <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
-      <Label layoutX="257.0" layoutY="116.0" text="Boston Hospital and Medical Center" textFill="WHITE">
-         <font>
-            <Font size="28.0" />
+            <Font name="Microsoft Sans Serif" size="30.0" />
          </font>
       </Label>
    </children>
