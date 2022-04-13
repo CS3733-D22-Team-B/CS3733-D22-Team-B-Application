@@ -82,7 +82,7 @@
                   <Image url="@../assets/Profile/ProfilePic.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="14.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <JFXButton layoutX="11.0" layoutY="488.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
             <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="580.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Profile/Name.png" />
@@ -118,6 +118,7 @@
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </Label>
+            <JFXButton layoutX="25.0" layoutY="516.0" text="Abigail B" />
          </children>
       </AnchorPane>
    </children>
