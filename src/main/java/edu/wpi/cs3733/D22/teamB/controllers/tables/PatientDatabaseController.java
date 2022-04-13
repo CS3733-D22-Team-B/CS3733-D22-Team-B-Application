@@ -31,7 +31,7 @@ public class PatientDatabaseController extends LocationBasedRequestController
   @FXML TextField lastNameInput;
 
   Patient currentPatient = null;
-  DatabaseController db = new DatabaseController();
+  DatabaseController db = DatabaseController.getInstance();
   protected PatientsDB dao;
   protected LocationsDB dao2;
 
