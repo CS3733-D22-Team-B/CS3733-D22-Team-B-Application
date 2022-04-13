@@ -446,7 +446,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 5;
     floorString = "4";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/fourthFloor.png"));
     f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -455,7 +455,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 6;
     floorString = "5";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/fifthFloor.png"));
     f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
