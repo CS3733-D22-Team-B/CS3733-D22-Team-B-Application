@@ -667,6 +667,4 @@ public class InteractiveMapController {
     endEdit();
     endAdd();
   }
-
-  // TODO: Reset Location CSV Files
 }
