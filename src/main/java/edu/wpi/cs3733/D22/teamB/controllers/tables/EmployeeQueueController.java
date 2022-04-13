@@ -36,7 +36,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
   @FXML ComboBox<String> departmentInput;
 
   Employee currentEmployee = null;
-  DatabaseController db = new DatabaseController();
+  DatabaseController db = DatabaseController.getInstance();
   protected EmployeesDB dao;
 
   private ObservableList<Employee> employees = FXCollections.observableArrayList();
@@ -76,7 +76,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
           public TableCell<Employee, Void> call(final TableColumn<Employee, Void> param) {
             final TableCell<Employee, Void> cell =
                 new TableCell<Employee, Void>() {
-                  private final Button requestViewerButton = new Button("View Request");
+                  private final Button requestViewerButton = new Button("View Employee");
 
                   {
                     requestViewerButton.setOnAction(

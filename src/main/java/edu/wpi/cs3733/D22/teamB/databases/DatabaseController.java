@@ -7,7 +7,7 @@ public class DatabaseController {
 
   private boolean isRemote = false;
 
-  public DatabaseController() {
+  private DatabaseController() {
     DatabaseInitializer DI = new DatabaseInitializer(isRemote);
     DI.initDB();
   }
@@ -204,6 +204,7 @@ public class DatabaseController {
   public void switchConnection() {
     this.isRemote = !isRemote;
     DatabaseInitializer DI = new DatabaseInitializer(isRemote);
+    DI.initDB();
     EmployeesDB.getInstance().switchConnection(isRemote);
     EquipmentRequestDB.getInstance().switchConnection(isRemote);
     LabRequestsDB.getInstance().switchConnection(isRemote);
@@ -212,5 +213,14 @@ public class DatabaseController {
     PatientsDB.getInstance().switchConnection(isRemote);
     ServiceRequestsDB.getInstance().switchConnection(isRemote);
     EdgesDB.getInstance().switchConnection(isRemote);
+
+    EmployeesDB.getInstance().initDB();
+    EquipmentRequestDB.getInstance().initDB();
+    LabRequestsDB.getInstance().initDB();
+    LocationsDB.getInstance().initDB();
+    MedicalEquipmentDB.getInstance().initDB();
+    PatientsDB.getInstance().initDB();
+    ServiceRequestsDB.getInstance().initDB();
+    EdgesDB.getInstance().initDB();
   }
 }

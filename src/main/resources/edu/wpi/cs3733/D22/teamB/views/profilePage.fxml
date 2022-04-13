@@ -41,7 +41,7 @@
             </ImageView>
             <ImageView fitHeight="111.0" fitWidth="664.0" layoutX="158.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/NewPasswordBackground.png" />
+                  <Image url="@../assets/Profile/NewPasswordBackground.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="75.0" fitWidth="394.5" layoutX="166.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
@@ -98,7 +98,7 @@
             </Label>
             <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="344.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/Name.png" />
+                  <Image url="@../assets/Profile/Name.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="66.0" fitWidth="213.0" layoutX="344.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
