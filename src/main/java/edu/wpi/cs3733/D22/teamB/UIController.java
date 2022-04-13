@@ -26,6 +26,8 @@ public class UIController {
                 .getClass()
                 .getResource("/edu/wpi/cs3733/D22/teamB/views/" + fxmlFileName + ".fxml"));
     Parent root = loader.load();
-    this.primaryStage.setScene(new Scene(root));
+    Scene scene = new Scene(root);
+    scene.getStylesheets().add("/edu/wpi/cs3733/D22/teamB/views/styles/buttonStyles.css");
+    this.primaryStage.setScene(scene);
   }
 }

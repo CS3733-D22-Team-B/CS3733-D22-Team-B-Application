@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.ProfileController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -15,24 +17,9 @@
                   <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
-            <Label fx:id="errorLabel" layoutX="144.5" layoutY="280.0" prefHeight="27.0" prefWidth="671.5" textFill="WHITE" visible="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
             <ImageView fitHeight="390.5" fitWidth="710.0" layoutX="125.0" layoutY="75.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Profile/BackgroundElement.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="117.5" fitWidth="671.5" layoutX="144.5" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Profile/NewPasswordBackground.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="394.5" layoutX="164.5" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Profile/Message.png" />
                </image>
             </ImageView>
             <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="578.75" layoutY="222.5" maxHeight="32.5" minHeight="32.5" minWidth="217.5" onAction="#openChangePasswordDisplay" prefHeight="32.5" prefWidth="217.5" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Reset Password">
@@ -43,11 +30,6 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <ImageView fitHeight="32.5" fitWidth="217.0" layoutX="579.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Profile/NewPasswordTextField.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
@@ -56,11 +38,6 @@
             <ImageView fitHeight="65.0" fitWidth="454.5" layoutX="341.5" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Profile/Name.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.5" fitWidth="217.0" layoutX="579.0" layoutY="378.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Profile/NewPasswordTextField.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
@@ -101,11 +78,6 @@
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="passwordLabel" layoutX="188.0" layoutY="354.0" text="Change Password" textFill="WHITE" visible="false">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
             <ImageView fitHeight="32.5" fitWidth="217.25" layoutX="341.5" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Profile/Name.png" />
@@ -116,8 +88,6 @@
                   <Image url="@../assets/Profile/Name.png" />
                </image>
             </ImageView>
-            <TextField fx:id="newPasswordField" layoutX="579.0" layoutY="340.0" prefHeight="20.0" prefWidth="217.5" promptText="Enter New Password" visible="false" />
-            <TextField fx:id="confirmPasswordField" layoutX="579.0" layoutY="382.0" prefHeight="20.0" prefWidth="217.0" promptText="Re-enter New Password" visible="false" />
             <Label fx:id="positionLabel" layoutX="352.0" layoutY="227.0" text="Position" textFill="#7bcce4">
                <font>
                   <Font name="Microsoft Sans Serif" size="20.0" />
@@ -128,8 +98,34 @@
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="changePasswordButton" layoutX="188.0" layoutY="437.0" onAction="#changePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Submit" visible="false" />
             <fx:include source="menu.fxml" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changePasswordPane" layoutX="150.0" layoutY="275.0" prefHeight="167.0" prefWidth="669.0" visible="false">
+         <children>
+            <ImageView fitHeight="164.0" fitWidth="661.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Profile/NewPasswordBackground.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="120.0" fitWidth="392.0" layoutX="23.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Profile/Message.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="confirmPasswordField" layoutX="433.0" layoutY="77.0" prefHeight="25.0" prefWidth="201.0" promptText="Re-enter New Password" stylesheets="@styles/textStyles2.css" />
+            <TextField fx:id="newPasswordField" layoutX="433.0" layoutY="42.0" prefHeight="25.0" prefWidth="201.0" promptText="Enter New Password" stylesheets="@styles/textStyles2.css" />
+            <Label fx:id="passwordLabel" layoutX="35.0" layoutY="46.0" text="Change Password" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="changePasswordButton" disable="true" layoutX="23.0" layoutY="119.0" onAction="#changePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Submit" />
+            <Label fx:id="errorLabel" layoutX="100.0" layoutY="120.0" prefHeight="27.0" prefWidth="538.0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

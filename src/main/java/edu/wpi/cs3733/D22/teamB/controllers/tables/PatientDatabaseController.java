@@ -152,6 +152,7 @@ public class PatientDatabaseController extends LocationBasedRequestController
                       setGraphic(null);
                     } else {
                       setGraphic(requestViewerButton);
+                      requestViewerButton.getStyleClass().add("simple-button");
                     }
                   }
                 };

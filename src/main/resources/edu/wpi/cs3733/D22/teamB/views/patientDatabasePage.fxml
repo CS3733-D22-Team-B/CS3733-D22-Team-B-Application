@@ -11,53 +11,60 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.PatientDatabaseController">
    <children>
-      <Button layoutX="818.0" layoutY="500.0" mnemonicParsing="false" onAction="#addStart" prefHeight="26.0" prefWidth="128.0" text="Add New Patient" />
-      <Button layoutX="782.0" layoutY="36.0" mnemonicParsing="false" onAction="#toggleClientServer" prefHeight="26.0" prefWidth="163.0" text="Client-Server Toggle" />
-      <SplitPane dividerPositions="0.3158671586715867" layoutX="38.0" layoutY="77.0" prefHeight="400.0" prefWidth="906.0">
+      <ImageView fitHeight="659.0" fitWidth="960.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/components/Background.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="818.0" layoutY="500.0" mnemonicParsing="false" onAction="#addStart" prefHeight="26.0" prefWidth="128.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Patient" />
+      <Button layoutX="782.0" layoutY="36.0" mnemonicParsing="false" onAction="#toggleClientServer" prefHeight="26.0" prefWidth="163.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Client-Server Toggle" />
+      <SplitPane dividerPositions="0.3158671586715867" layoutX="38.0" layoutY="77.0" prefHeight="400.0" prefWidth="906.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
          <items>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
                <children>
-                  <Label contentDisplay="CENTER" layoutX="64.0" layoutY="14.0" prefHeight="20.0" prefWidth="163.0" text="Currently Viewing Patient">
+                  <Label contentDisplay="CENTER" layoutX="64.0" layoutY="14.0" prefHeight="20.0" prefWidth="163.0" text="Currently Viewing Patient" textFill="#7bcce4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label contentDisplay="CENTER" layoutX="33.0" layoutY="131.0" text="Floor:">
+                  <Label contentDisplay="CENTER" layoutX="33.0" layoutY="131.0" text="Floor:" textFill="#7bcce4">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="saveButton" layoutX="150.0" layoutY="199.0" mnemonicParsing="false" onAction="#saveData" text="Save" />
-                  <TextField fx:id="lastNameInput" layoutX="145.0" layoutY="64.0" prefHeight="26.0" prefWidth="72.0" />
-                  <TextField fx:id="firstNameInput" layoutX="67.0" layoutY="64.0" prefHeight="26.0" prefWidth="72.0" />
-                  <Button fx:id="deleteButton" layoutX="83.0" layoutY="199.0" mnemonicParsing="false" onAction="#deleteData" text="Delete" />
-                  <ComboBox fx:id="locationInput" disable="true" layoutX="89.0" layoutY="148.0" prefHeight="26.0" prefWidth="184.0">
+                  <Button fx:id="saveButton" layoutX="150.0" layoutY="199.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
+                  <TextField fx:id="lastNameInput" disable="true" layoutX="145.0" layoutY="64.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css" />
+                  <TextField fx:id="firstNameInput" disable="true" layoutX="67.0" layoutY="64.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css" />
+                  <Button fx:id="deleteButton" layoutX="83.0" layoutY="199.0" mnemonicParsing="false" onAction="#deleteData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Delete" />
+                  <ComboBox fx:id="locationInput" disable="true" layoutX="89.0" layoutY="148.0" prefHeight="26.0" prefWidth="184.0" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
                      <items>
                         <FXCollections fx:factory="observableArrayList" />
                      </items>
                   </ComboBox>
-                  <Label contentDisplay="CENTER" layoutX="150.0" layoutY="47.0" text="Last Name:">
+                  <Label contentDisplay="CENTER" layoutX="150.0" layoutY="47.0" text="Last Name:" textFill="#7bcce4">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label contentDisplay="CENTER" layoutX="71.0" layoutY="47.0" text="First Name:">
+                  <Label contentDisplay="CENTER" layoutX="71.0" layoutY="47.0" text="First Name:" textFill="#7bcce4">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label contentDisplay="CENTER" layoutX="112.0" layoutY="108.0" text="Location:">
+                  <Label contentDisplay="CENTER" layoutX="112.0" layoutY="108.0" text="Location:" textFill="#7bcce4">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="floorInput" disable="true" layoutX="12.0" layoutY="148.0" onAction="#setFloor" prefHeight="26.0" prefWidth="72.0">
+                  <ComboBox fx:id="floorInput" disable="true" layoutX="12.0" layoutY="148.0" onAction="#setFloor" prefHeight="26.0" prefWidth="72.0" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:id="5" fx:value="F5" />
@@ -70,17 +77,17 @@
                         </FXCollections>
                      </items>
                   </ComboBox>
-                  <Button fx:id="addSaveButton" disable="true" layoutX="151.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveAddData" text="Add" visible="false" />
-                  <Label contentDisplay="CENTER" layoutX="158.0" layoutY="132.0" text="Room:">
+                  <Button fx:id="addSaveButton" disable="true" layoutX="151.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveAddData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add" visible="false" />
+                  <Label contentDisplay="CENTER" layoutX="158.0" layoutY="132.0" text="Room:" textFill="#7bcce4">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2e3c4b; -fx-border-radius: 10px;">
                <content>
-                  <TableView fx:id="patientTable" prefHeight="400.0" prefWidth="617.0">
+                  <TableView fx:id="patientTable" prefHeight="400.0" prefWidth="617.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
                      <columns>
                         <TableColumn fx:id="columnPatientID" editable="false" prefWidth="86.0" text="ID" />
                         <TableColumn fx:id="columnPatientLocation" editable="false" prefWidth="257.33331298828125" text="Location" />
@@ -97,6 +104,6 @@
          </items>
       </SplitPane>
       <fx:include source="menu.fxml" />
-      <JFXButton layoutX="4.0" layoutY="500.0" onAction="#goToHomepage" text="Back to Homepage" />
+      <JFXButton layoutX="4.0" layoutY="500.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
    </children>
 </AnchorPane>

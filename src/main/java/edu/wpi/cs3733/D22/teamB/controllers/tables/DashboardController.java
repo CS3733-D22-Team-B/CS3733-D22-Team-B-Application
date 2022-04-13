@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
@@ -7,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
-public class DashboardController {
+public class DashboardController extends MenuBarController {
   @FXML private TextArea textArea;
 
   private EquipmentRequestDB equDAO;

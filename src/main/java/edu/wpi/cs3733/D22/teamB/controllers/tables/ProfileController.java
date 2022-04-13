@@ -5,10 +5,13 @@ import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class ProfileController extends MenuBarController {
 
@@ -17,12 +20,11 @@ public class ProfileController extends MenuBarController {
   @FXML private Label idLabel;
   @FXML private Label usernameLabel;
   @FXML private Label passwordLabel;
-  @FXML private JFXButton viewPasswordButton;
   @FXML private JFXButton changePasswordButton;
-  @FXML private Label changePasswordLabel;
   @FXML private TextField newPasswordField;
   @FXML private TextField confirmPasswordField;
   @FXML private Label errorLabel;
+  @FXML private AnchorPane changePasswordPane;
 
   private String password;
   private String hiddenPassword;
@@ -43,21 +45,39 @@ public class ProfileController extends MenuBarController {
       hiddenPassword += "\u2022";
     }
 
-    passwordLabel.setText("Password: " + hiddenPassword);
+    // passwordLabel.setText("Password: " + hiddenPassword);
+
+    newPasswordField
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                enableSubmission();
+              }
+            });
+
+    confirmPasswordField
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                enableSubmission();
+              }
+            });
   }
 
-  public void togglePassword(ActionEvent actionEvent) {
-    if (viewPasswordButton.getText().equals("View Password")) {
-      togglePassword(true);
-      viewPasswordButton.setText("Hide Password");
-    } else {
-      togglePassword(false);
-      viewPasswordButton.setText("View Password");
+  public void enableSubmission() {
+    if (!newPasswordField.getText().equals("") && !confirmPasswordField.getText().equals("")) {
+      changePasswordButton.setDisable(false);
     }
   }
 
   public void openChangePasswordDisplay(ActionEvent actionEvent) {
-    if (changePasswordButton.isVisible()) {
+    if (changePasswordPane.isVisible()) {
       toggleChangePasswordDisplay(false);
     } else {
       toggleChangePasswordDisplay(true);
@@ -80,11 +100,7 @@ public class ProfileController extends MenuBarController {
       for (int i = 0; i < password.length(); i++) {
         hiddenPassword += "\u2022";
       }
-      if (viewPasswordButton.getText().equals("View Password")) {
-        togglePassword(false);
-      } else {
-        togglePassword(true);
-      }
+      // passwordLabel.setText("Password: " + hiddenPassword);
       toggleChangePasswordDisplay(false);
 
       newPasswordField.setText("");
@@ -102,10 +118,6 @@ public class ProfileController extends MenuBarController {
   }
 
   private void toggleChangePasswordDisplay(boolean visible) {
-    changePasswordButton.setVisible(visible);
-    changePasswordLabel.setVisible(visible);
-    newPasswordField.setVisible(visible);
-    confirmPasswordField.setVisible(visible);
-    errorLabel.setVisible(visible);
+    changePasswordPane.setVisible(visible);
   }
 }

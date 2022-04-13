@@ -119,6 +119,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                       setGraphic(null);
                     } else {
                       setGraphic(requestViewerButton);
+                      requestViewerButton.getStyleClass().add("simple-button");
                     }
                   }
                 };

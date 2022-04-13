@@ -135,6 +135,7 @@ public class RequestQueueController extends MenuBarController implements Initial
                       setGraphic(null);
                     } else {
                       setGraphic(requestViewerButton);
+                      requestViewerButton.getStyleClass().add("simple-button");
                     }
                   }
                 };
