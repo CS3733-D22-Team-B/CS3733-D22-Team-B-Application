@@ -22,7 +22,6 @@
                   <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
-            <fx:include source="menu.fxml" />
             <JFXButton fx:id="changePasswordButton" layoutX="188.0" layoutY="437.0" onAction="#changePassword" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Submit" visible="false" />
             <TextField fx:id="confirmPasswordField" layoutX="187.0" layoutY="404.0" prefHeight="25.0" prefWidth="219.0" promptText="Re-enter New Password" visible="false" />
             <TextField fx:id="newPasswordField" layoutX="187.0" layoutY="370.0" prefHeight="25.0" prefWidth="219.0" promptText="Enter New Password" visible="false" />
@@ -118,6 +117,7 @@
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </Label>
+            <fx:include source="menu.fxml" />
             <JFXButton layoutX="25.0" layoutY="516.0" text="Abigail B" />
          </children>
       </AnchorPane>

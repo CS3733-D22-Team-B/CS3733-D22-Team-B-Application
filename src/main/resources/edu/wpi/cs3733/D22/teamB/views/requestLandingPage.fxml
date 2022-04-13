@@ -107,7 +107,7 @@
             <Label layoutX="430.0" layoutY="140.0" text="Created By Marek Garbaczonek" textFill="WHITE" />
             <Label layoutX="620.0" layoutY="140.0" text="Created By Sean Barbour" textFill="WHITE" />
             <Label layoutX="110.0" layoutY="310.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
-            <Label layoutX="270.0" layoutY="310.0" text="Created By Adian MacNevin" textFill="WHITE" />
+            <Label layoutX="270.0" layoutY="310.0" text="Created By Aidan MacNevin" textFill="WHITE" />
             <Label layoutX="430.0" layoutY="310.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
          </children>
       </AnchorPane>
