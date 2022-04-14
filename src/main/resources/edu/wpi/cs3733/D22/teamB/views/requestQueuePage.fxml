@@ -60,7 +60,7 @@
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:id="pending" fx:value="Pending" />
-                                       <String fx:id="proccessing" fx:value="In-Progress" />
+                                       <String fx:id="processing" fx:value="In-Progress" />
                                        <String fx:id="completed" fx:value="Completed" />
                                     </FXCollections>
                                  </items>
@@ -80,7 +80,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="informationLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="21.0" layoutY="244.0" prefHeight="144.0" prefWidth="213.0" style="-fx-border-radius: 10px;" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" wrapText="true" />
+                              <Label fx:id="informationLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="21.0" layoutY="244.0" prefHeight="144.0" prefWidth="213.0" style="-fx-border-radius: 10px;" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" wrapText="true" />
                               <Button layoutX="107.0" layoutY="408.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
                            </children>
                         </AnchorPane>

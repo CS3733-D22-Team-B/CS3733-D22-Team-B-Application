@@ -174,7 +174,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="informationLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="8.0" layoutY="117.0" prefHeight="120.0" prefWidth="171.0" style="-fx-border-radius: 10px;" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" wrapText="true" />
+                              <Label fx:id="informationLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="8.0" layoutY="117.0" prefHeight="120.0" prefWidth="171.0" style="-fx-border-radius: 10px;" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" wrapText="true" />
                               <Button layoutX="73.0" layoutY="279.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
                               <Label fx:id="requestIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="23.0" prefHeight="19.0" prefWidth="121.0" textFill="#7bcce4">
                                  <font>
