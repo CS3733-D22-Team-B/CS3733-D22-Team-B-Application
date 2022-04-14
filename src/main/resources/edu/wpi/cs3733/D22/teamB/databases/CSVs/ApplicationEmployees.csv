@@ -1,8 +1,14 @@
 employeeID,lastName,firstName,department,position,username,password
 0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED
 ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin
-PHDO01,Williams,Robert,PHYSICAL THERAPY,DOCTOR,Rob,Rob123
-EMNU01,Brown,William,EMERGENCY,NURSE,Will,Will123
-ICAD01,Davis,Patricia,ICU,ADMIN,Patty,Patty123
+STAFF,Member,Staff,STAFF,STAFF,staff,staff
+PTDR01,Williams,Robert,PT,DOCTOR,Rob,Rob123
+ICNU01,Brown,William,ICU,NURSE,Will,Will123
+SAPS01,Davis,Patricia,SANITARIUM,PSYCHOLOGIST,Patty,Patty123
 CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,Mary123
 RATE01,Martin,Jeniffer,RADIOLOGY,TECHNICIAN,Jen,Jen123
+RESC01,White ,Walter,RESEARCH ,SCIENTIST,Walt,walt123
+MACU01,Barton,Stephan,MAINTENANCE,CUSTODIAN,Bob,bob123
+HRSE01,Cleveland,Emelia,HR,SECRETARY,Emelia,em123
+ORAN01,Jackson,Jane,OR,ANESTHESIOLOGIST,Jane,jane123
+NSSU01,Andrews,John,NEUROSURGERY,SURGEON,John,john123
