@@ -1,8 +1,0 @@
-employeeID,lastName,firstName,department,position,username,password
-0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED
-ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin
-PHDO01,Williams,Robert,PHYSICAL THERAPY,DOCTOR,Rob,Rob123
-EMNU01,Brown,William,EMERGENCY,NURSE,Will,Will123
-ICAD01,Davis,Patricia,ICU,ADMIN,Patty,Patty123
-CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,Mary123
-RATE01,Martin,Jeniffer,RADIOLOGY,TECHNICIAN,Jen,Jen123
