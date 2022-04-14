@@ -48,7 +48,7 @@ public class DashboardController extends MenuBarController {
 
     for (EquipmentRequest equipmentRequest : equDAO.list()) {
       Location equipmentRequestLocation = equipmentRequest.getLocation();
-      if (equipmentRequestLocation != null) {
+      if (equipmentRequestLocation != null && !equipmentRequest.getStatus().equals("Completed")) {
         switch (equipmentRequestLocation.getFloor()) {
           case "1":
             requestsF1.add(equipmentRequest.getRequestID());
@@ -77,7 +77,7 @@ public class DashboardController extends MenuBarController {
 
     for (LabRequest labRequest : labDAO.list()) {
       Location labRequestLocation = labRequest.getLocation();
-      if (labRequestLocation != null) {
+      if (labRequestLocation != null && !labRequest.getStatus().equals("Completed")) {
         switch (labRequestLocation.getFloor()) {
           case "1":
             requestsF1.add(labRequest.getRequestID());
@@ -106,7 +106,7 @@ public class DashboardController extends MenuBarController {
 
     for (Request serviceRequest : servDAO.list()) {
       Location serviceRequestLocation = serviceRequest.getLocation();
-      if (serviceRequestLocation != null) {
+      if (serviceRequestLocation != null && !serviceRequest.getStatus().equals("Completed")) {
         switch (serviceRequestLocation.getFloor()) {
           case "1":
             requestsF1.add(serviceRequest.getRequestID());
