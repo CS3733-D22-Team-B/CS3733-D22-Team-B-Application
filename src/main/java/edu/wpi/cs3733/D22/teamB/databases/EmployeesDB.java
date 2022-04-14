@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employee> {
-  // private final String url = "jdbc:derby:Databases";
 
   private static EmployeesDB employeesDBManager;
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
