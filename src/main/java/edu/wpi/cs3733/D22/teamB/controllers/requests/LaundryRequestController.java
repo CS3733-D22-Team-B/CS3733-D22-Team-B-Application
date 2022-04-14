@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 
 public class LaundryRequestController extends PatientBasedRequestController {
     @FXML private ComboBox<String> laundryInput;
-
     private String laundry = "";
 
     public void initialize() {
@@ -61,6 +60,10 @@ public class LaundryRequestController extends PatientBasedRequestController {
         laundryInput.getSelectionModel().clearSelection();
         laundry = "";
     }
+
+
+
+
 }
 
 

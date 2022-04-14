@@ -35,6 +35,6 @@ public class LaundryRequest extends Request {
     }
 
     public final String createRequestID() {
-        return "MED" + getHashCode();
+        return "LAU" + getHashCode();
     }
 }
