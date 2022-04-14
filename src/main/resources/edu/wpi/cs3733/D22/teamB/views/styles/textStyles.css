@@ -22,6 +22,7 @@
 }
 .simple-text-area {
     -fx-border-color: #7bcce4;
+    -fx-text-fill: #7bcce4;
 }
 
 .text-field {

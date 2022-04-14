@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EquipmentRequestDB extends DatabaseSuperclass implements IDatabases<EquipmentRequest> {
-  // private final String url = "jdbc:derby:Databases";
 
   private static EquipmentRequestDB equipmentRequestDBManager;
   private HashMap<String, EquipmentRequest> equipmentRequestMap =

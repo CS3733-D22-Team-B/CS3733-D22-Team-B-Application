@@ -46,6 +46,7 @@
                   <Image url="@../assets/components/MapButton.png" />
                </image>
             </ImageView>
+            <JFXButton layoutX="644.0" layoutY="461.0" text="Abigail B" />
          </children>
       </AnchorPane>
       <JFXButton layoutX="26.0" layoutY="93.0" text=" ">

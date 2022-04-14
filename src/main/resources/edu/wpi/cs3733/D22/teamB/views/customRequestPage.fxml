@@ -35,10 +35,10 @@
             <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="369.0" prefHeight="65.0" prefWidth="461.5" textFill="#7bcce4" />
             <Label fx:id="charactersRemainingLabel" layoutX="716.0" layoutY="282.0" text="500 characters remaining" textFill="#7bcce4">
                <font>
-                  <Font size="7.0" />
+                  <Font name="Microsoft Sans Serif" size="7.0" />
                </font>
             </Label>
-            <JFXButton layoutX="867.5" layoutY="20.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+            <JFXButton layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -92,7 +92,7 @@
                </font>
             </Label>
             <fx:include source="menu.fxml" />
-            <JFXButton layoutX="867.5" layoutY="105.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+            <JFXButton layoutX="867.5" layoutY="125.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>

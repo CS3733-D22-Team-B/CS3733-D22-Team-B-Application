@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
@@ -7,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
-public class DashboardController {
+public class DashboardController extends MenuBarController {
   @FXML private TextArea textArea;
 
   private EquipmentRequestDB equDAO;
@@ -47,7 +48,7 @@ public class DashboardController {
 
     for (EquipmentRequest equipmentRequest : equDAO.list()) {
       Location equipmentRequestLocation = equipmentRequest.getLocation();
-      if (equipmentRequestLocation != null) {
+      if (equipmentRequestLocation != null && !equipmentRequest.getStatus().equals("Completed")) {
         switch (equipmentRequestLocation.getFloor()) {
           case "1":
             requestsF1.add(equipmentRequest.getRequestID());
@@ -76,7 +77,7 @@ public class DashboardController {
 
     for (LabRequest labRequest : labDAO.list()) {
       Location labRequestLocation = labRequest.getLocation();
-      if (labRequestLocation != null) {
+      if (labRequestLocation != null && !labRequest.getStatus().equals("Completed")) {
         switch (labRequestLocation.getFloor()) {
           case "1":
             requestsF1.add(labRequest.getRequestID());
@@ -105,7 +106,7 @@ public class DashboardController {
 
     for (Request serviceRequest : servDAO.list()) {
       Location serviceRequestLocation = serviceRequest.getLocation();
-      if (serviceRequestLocation != null) {
+      if (serviceRequestLocation != null && !serviceRequest.getStatus().equals("Completed")) {
         switch (serviceRequestLocation.getFloor()) {
           case "1":
             requestsF1.add(serviceRequest.getRequestID());

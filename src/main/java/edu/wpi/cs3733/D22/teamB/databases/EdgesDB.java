@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EdgesDB extends DatabaseSuperclass implements IDatabases<Edge> {
-  // private final String url = "jdbc:derby:Databases;";
 
   private static EdgesDB edgesDBManager;
   private HashMap<String, Edge> edgeMap = new HashMap<String, Edge>();

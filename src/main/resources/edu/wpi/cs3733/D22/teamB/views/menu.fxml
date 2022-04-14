@@ -4,7 +4,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar fx:id="homeBar" prefHeight="25.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<MenuBar fx:id="homeBar" prefHeight="25.0" prefWidth="960.0" style="-fx-background-color: #455A70;" stylesheets="@styles/menuStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
     <menus>
         <Menu mnemonicParsing="false" text="Profile">
             <items>
@@ -22,6 +22,7 @@
               </items>
             </Menu>
                 <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
+            <MenuItem mnemonicParsing="false" onAction="#goToLocationDataPage" text="Location Data" />
                 <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                 <MenuItem mnemonicParsing="false" onAction="#goToPatientDatabase" text="Patient Database" />
                 <MenuItem mnemonicParsing="false" onAction="#goToEmployeeDatabase" text="Employee Database" />

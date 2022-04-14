@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXSlider?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.MedicineRequestController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.MedicineRequestController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -21,59 +17,61 @@
                   <Image url="@../assets/components/Background.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="693.0" fitWidth="257.0" layoutX="-78.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/components/SidePiece.png" />
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="781.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="r" fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/components/SidePiece.png" />
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="74.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="398.0" fitWidth="671.5" layoutX="144.5" layoutY="71.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/components/CollectionBackground.png" />
+                  <Image url="@../assets/Requests/CreateRequest/BackgroundElement.png" />
                </image>
             </ImageView>
-            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="375.0" prefHeight="25.0" prefWidth="625.0" textFill="#7bcce4" />
-            <Label fx:id="charactersRemainingLabel" layoutX="685.0" layoutY="298.0" text="500 characters remaining" textFill="#7bcce4">
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="369.0" prefHeight="65.0" prefWidth="461.5" textFill="#7bcce4" />
+            <Label fx:id="charactersRemainingLabel" layoutX="716.0" layoutY="282.0" text="500 characters remaining" textFill="#7bcce4">
                <font>
-                  <Font size="7.0" />
+                  <Font name="Microsoft Sans Serif" size="7.0" />
                </font>
             </Label>
-            <JFXButton layoutX="871.0" layoutY="38.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+            <JFXButton layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
                <graphic>
-                  <ImageView fitHeight="83.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/components/menuButton.png" />
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="679.0" layoutY="403.0" onAction="#reset" text=" ">
+            <JFXButton layoutX="646.0" layoutY="365.0" onAction="#reset" text=" ">
                <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/components/resetButton.png" />
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Component%203%20–%205.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="submitButton" disable="true" layoutX="746.0" layoutY="404.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
+            <JFXButton fx:id="submitButton" disable="true" layoutX="725.0" layoutY="365.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
                <graphic>
-                  <ImageView disable="true" fitHeight="82.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/components/submitButton.png" />
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="610.0" layoutY="316.0" text="Priority" textFill="#7bcce4" />
-            <TextArea fx:id="additionalInformationInput" layoutX="485.0" layoutY="98.0" prefHeight="200.0" prefWidth="279.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" />
-            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="481.0" layoutY="330.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="34.0" prefWidth="290.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
-            <ComboBox fx:id="patientInput" layoutX="177.0" layoutY="103.0" onAction="#setPatient" prefHeight="35.0" prefWidth="281.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-            <ComboBox fx:id="medicineInput" layoutX="177.0" layoutY="149.0" onAction="#setMedication" prefHeight="35.0" prefWidth="279.0" promptText="Medication" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+            <TextArea fx:id="additionalInformationInput" layoutX="503.0" layoutY="110.0" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font></TextArea>
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="503.0" layoutY="307.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
+            <ComboBox fx:id="patientInput" layoutX="164.5" layoutY="110.0" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
+            <ComboBox fx:id="medicineInput" layoutX="164.5" layoutY="170.0" onAction="#setMedication" prefHeight="50.0" prefWidth="293.0" promptText="Medication" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:id="ACETAMINOPHEN" fx:value="Acetaminophen" />
@@ -82,12 +80,21 @@
                   </FXCollections>
                </items>
             </ComboBox>
-            <Label layoutX="-174.0" layoutY="249.0" rotate="-90.0" text="Medicine Request" textFill="#7bcce4">
+            <Label layoutX="-68.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Medicine Request" textFill="#7bcce4">
                <font>
-                  <Font name="Microsoft Sans Serif" size="56.0" />
+                  <Font name="Microsoft Sans Serif" size="30.0" />
                </font>
             </Label>
             <fx:include source="menu.fxml" />
+            <JFXButton layoutX="867.5" layoutY="125.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

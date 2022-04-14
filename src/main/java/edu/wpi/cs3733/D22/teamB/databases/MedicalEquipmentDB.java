@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
-  // private final String url = "jdbc:derby:Databases;";
 
   private static MedicalEquipmentDB medicalEquipmentDBManager;
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
@@ -109,7 +108,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     }
     return transform(
         medObj,
-        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, availability = ?, name = ?,  WHERE equipmentID = ?",
+        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, availability = ?, name = ?  WHERE equipmentID = ?",
         true);
   }
 

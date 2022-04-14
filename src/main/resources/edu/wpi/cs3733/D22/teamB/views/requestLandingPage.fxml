@@ -24,7 +24,7 @@
          </image>
       </ImageView>
       <fx:include source="menu.fxml" />
-      <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="20.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -107,7 +107,7 @@
             <Label layoutX="430.0" layoutY="140.0" text="Created By Marek Garbaczonek" textFill="WHITE" />
             <Label layoutX="620.0" layoutY="140.0" text="Created By Sean Barbour" textFill="WHITE" />
             <Label layoutX="110.0" layoutY="310.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
-            <Label layoutX="270.0" layoutY="310.0" text="Created By Adian MacNevin" textFill="WHITE" />
+            <Label layoutX="270.0" layoutY="310.0" text="Created By Aidan MacNevin" textFill="WHITE" />
             <Label layoutX="430.0" layoutY="310.0" text="Created By Ryan Rabbitt B]" textFill="WHITE" />
          </children>
       </AnchorPane>

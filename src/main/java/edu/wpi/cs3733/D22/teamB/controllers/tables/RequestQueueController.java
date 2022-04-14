@@ -53,7 +53,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
-    columnRequestID.getStyleClass().add("");
+    columnRequestID.getStyleClass().add("table-column-left");
     columnType.getStyleClass().add("table-column-middle");
     columnStatus.getStyleClass().add("table-column-middle");
     columnPriority.getStyleClass().add("table-column-middle");
@@ -79,13 +79,13 @@ public class RequestQueueController extends MenuBarController implements Initial
     }
 
     for (EquipmentRequest request : EquipmentRequestDB.getInstance().list()) {
-      requests.add(request);
+      if (!request.getStatus().equals("Completed")) requests.add(request);
     }
     for (LabRequest request : LabRequestsDB.getInstance().list()) {
-      requests.add(request);
+      if (!request.getStatus().equals("Completed")) requests.add(request);
     }
     for (Request request : ServiceRequestsDB.getInstance().list()) {
-      requests.add(request);
+      if (!request.getStatus().equals("Completed")) requests.add(request);
     }
 
     sortRequestsByCreationDate(requests);
@@ -135,6 +135,7 @@ public class RequestQueueController extends MenuBarController implements Initial
                       setGraphic(null);
                     } else {
                       setGraphic(requestViewerButton);
+                      requestViewerButton.getStyleClass().add("simple-button");
                     }
                   }
                 };
@@ -148,13 +149,12 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
-    currentRequest.setEmployeeID(employeeInput.getValue());
+    currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
     employeeInput.setValue("");
-    requestTable.refresh();
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
     currentRequest.setLastEdited(new Date());
-
+    if (currentRequest.getStatus().equals("Completed")) requests.remove(currentRequest);
     if (currentRequest instanceof EquipmentRequest) {
       EquipmentRequestDB.getInstance().update((EquipmentRequest) currentRequest);
     } else if (currentRequest instanceof LabRequest) {
@@ -162,6 +162,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     } else {
       ServiceRequestsDB.getInstance().update(currentRequest);
     }
+    requestTable.refresh();
 
     scrollPane.setVisible(false);
     otherAnchorPane.setVisible(true);

@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient> {
-  // private final String url = "jdbc:derby:Databases;";
 
   private static PatientsDB patientsDBManager;
   private HashMap<String, Patient> patientMap = new HashMap<String, Patient>();

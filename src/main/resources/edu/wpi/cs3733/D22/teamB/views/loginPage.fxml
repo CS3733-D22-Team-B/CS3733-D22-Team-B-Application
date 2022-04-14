@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
    <children>
-      <ImageView fitHeight="541.0" fitWidth="970.0" layoutX="-7.0">
+      <ImageView fitHeight="541.0" fitWidth="960.0">
          <image>
             <Image url="@../assets/components/Background.png" />
          </image>
@@ -23,7 +23,7 @@
             <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="540.0" fitWidth="105.0" layoutX="858.0" opacity="0.75">
+      <ImageView fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75">
          <image>
             <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
          </image>
@@ -45,7 +45,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="870.0" layoutY="20.0" onAction="#quitApplication" text=" ">
+      <JFXButton layoutX="867.5" layoutY="40.0" onAction="#quitApplication" text=" ">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>

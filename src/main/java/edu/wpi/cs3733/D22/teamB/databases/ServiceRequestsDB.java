@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<Request> {
-  // private final String url = "jdbc:derby:Databases";
 
   private static ServiceRequestsDB serviceRequestsDBManager;
   private HashMap<String, Request> requestMap = new HashMap<String, Request>();
@@ -220,6 +219,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       requestMap.put(reqObj.getRequestID(), reqObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
+      e.printStackTrace();
       return -1;
     }
     return 0;

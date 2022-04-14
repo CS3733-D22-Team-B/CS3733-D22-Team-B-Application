@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="623.0" layoutX="212.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -45,6 +42,7 @@
                         </ImageView>
                         <Label fx:id="equipTypeLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Equip Type" textFill="WHITE" wrapText="true" />
                         <Label fx:id="statusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
+                        <JFXButton fx:id="equipEditButton" layoutX="105.0" layoutY="50.0" onAction="#startEquipEdit" text="(edit)" textFill="WHITE" visible="false" />
                      </children>
                   </Pane>
                   <Pane fx:id="reqInfoPane" layoutX="20.0" layoutY="20.0" prefHeight="80.0" prefWidth="156.0" visible="false">
@@ -67,38 +65,30 @@
             <Image url="@../assets/mapAssets/mapBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="r" fitHeight="693.0" fitWidth="257.0" layoutX="780.0" layoutY="-77.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="r" fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/components/SidePiece.png" />
+            <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="20.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="38.0" text=" ">
+      <JFXButton fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
          <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/mapAssets/Menu.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="resetButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="95.0" onAction="#resetLocations" prefHeight="60.0" prefWidth="38.0" text=" ">
+      <JFXButton fx:id="resetButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="125.0" onAction="#resetLocations" prefHeight="60.0" prefWidth="38.0" text=" ">
          <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/components/resetButton.png" />
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/ArrowsInCircle.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="toLocDatabase" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="170.0" onAction="#goToLocationDataPage" prefHeight="60.0" prefWidth="38.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/Databases.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
+      <JFXButton fx:id="toLocDatabase" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="170.0" onAction="#goToLocationDataPage" prefHeight="60.0" prefWidth="38.0" text=" " />
       <JFXButton fx:id="addButton" focusTraversable="false" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -194,9 +184,9 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="backButton" focusTraversable="false" layoutX="867.0" layoutY="105.0" onAction="#cancel" text=" " visible="false">
+      <JFXButton fx:id="backButton" focusTraversable="false" layoutX="867.5" layoutY="125.0" onAction="#cancel" text=" " visible="false">
          <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Return.png" />
                </image>
@@ -215,7 +205,7 @@
       </ImageView>
       <JFXComboBox fx:id="typeDropdown" focusColor="#ffffff00" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
 
-      <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+      <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="60.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
       <ImageView fx:id="secondTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="125.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
@@ -241,5 +231,16 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="145.0" prefHeight="26.0" prefWidth="110.0" promptText="Availability" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+      <ImageView fx:id="thirdTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="210.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../assets/mapAssets/DropdownInputBox.png" />
+         </image>
+      </ImageView>
+      <JFXComboBox fx:id="stateDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="230.0" prefHeight="26.0" prefWidth="110.0" promptText="State" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXComboBox>
    </children>
 </AnchorPane>

@@ -118,7 +118,7 @@ public class InteractiveMapController {
     }
     serviceIcons.clear();
     for (Request r : allRequests) {
-      if (r.getLocation() != null) {
+      if (r.getLocation() != null && !r.getStatus().equals("Completed")) {
         String floor = r.getLocation().getFloor();
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
       }
@@ -667,6 +667,4 @@ public class InteractiveMapController {
     endEdit();
     endAdd();
   }
-
-  // TODO: Reset Location CSV Files
 }

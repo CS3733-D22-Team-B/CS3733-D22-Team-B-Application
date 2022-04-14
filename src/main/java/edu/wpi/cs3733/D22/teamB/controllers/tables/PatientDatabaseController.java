@@ -44,6 +44,12 @@ public class PatientDatabaseController extends LocationBasedRequestController
 
     for (Location location2 : locations) {
       switch (location2.getFloor()) {
+        case "5":
+          locationsF5.add(location2.getLongName());
+          break;
+        case "4":
+          locationsF4.add(location2.getLongName());
+          break;
         case "3":
           locationsF3.add(location2.getLongName());
           break;
@@ -65,6 +71,12 @@ public class PatientDatabaseController extends LocationBasedRequestController
     columnPatientLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
     columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+    columnPatientID.getStyleClass().add("table-column-left");
+    columnPatientLocation.getStyleClass().add("table-column-middle");
+    columnFirstName.getStyleClass().add("table-column-middle");
+    columnLastName.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
 
     firstNameInput.setDisable(true);
     lastNameInput.setDisable(true);
@@ -146,6 +158,7 @@ public class PatientDatabaseController extends LocationBasedRequestController
                       setGraphic(null);
                     } else {
                       setGraphic(requestViewerButton);
+                      requestViewerButton.getStyleClass().add("simple-button");
                     }
                   }
                 };

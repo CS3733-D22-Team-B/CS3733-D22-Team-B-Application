@@ -1,0 +1,11 @@
+*{
+    -fx-base: #cdcdcd;
+}
+
+.menu .label {
+    -fx-text-fill: #7bcce4;
+}
+
+.menu-item {
+    -fx-background-color: #4b7486;
+}
