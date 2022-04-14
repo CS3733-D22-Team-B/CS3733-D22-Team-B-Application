@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.databases;
 
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
+import javax.swing.*;
 
 public class DatabaseController {
 
@@ -63,6 +64,39 @@ public class DatabaseController {
 
   public LinkedList<Edge> listEdges() {
     return EdgesDB.getInstance().list();
+  }
+
+  /////////////////////////////// .getByID() //////////////////////////////////////////////////////
+  public Location getLocationByID(String pk) {
+    return LocationsDB.getInstance().getByID(pk);
+  }
+
+  public Employee getEmployeeByID(String pk) {
+    return EmployeesDB.getInstance().getByID(pk);
+  }
+
+  public Patient getPatientByID(String pk) {
+    return PatientsDB.getInstance().getByID(pk);
+  }
+
+  public MedicalEquipment getMedicalEquipmentByID(String pk) {
+    return MedicalEquipmentDB.getInstance().getByID(pk);
+  }
+
+  public EquipmentRequest getEquipmentRequestByID(String pk) {
+    return EquipmentRequestDB.getInstance().getByID(pk);
+  }
+
+  public LabRequest getLabRequestByID(String pk) {
+    return LabRequestsDB.getInstance().getByID(pk);
+  }
+
+  public Request getServiceRequestByID(String pk) {
+    return ServiceRequestsDB.getInstance().getByID(pk);
+  }
+
+  public Edge getEdgeByID(String pk) {
+    return EdgesDB.getInstance().getByID(pk);
   }
 
   ////////////////////////////////////////// .add() ////////////////////////////////////////////////

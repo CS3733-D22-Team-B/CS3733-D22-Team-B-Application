@@ -220,6 +220,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       requestMap.put(reqObj.getRequestID(), reqObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
+      e.printStackTrace();
       return -1;
     }
     return 0;
