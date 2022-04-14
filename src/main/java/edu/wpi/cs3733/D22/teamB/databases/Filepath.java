@@ -1,13 +1,13 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
 public class Filepath {
-  private String locationCSVFilePath = "CSVs/ApplicationLocations.csv";
-  private String medicalEQCSVFilePath = "CSVs/ApplicationMedicalEquipment.csv";
-  private String employeesCSVFilePath = "CSVs/ApplicationEmployees.csv";
-  private String patientsCSVFilePath = "CSVs/ApplicationPatients.csv";
-  private String equipmentRequestCSVFilePath = "CSVs/ApplicationEquipmentRequest.csv";
-  private String labRequestCSVFilePath = "CSVs/ApplicationLabRequest.csv";
-  private String serviceRequestCSVFilePath = "CSVs/ApplicationServiceRequest.csv";
+  private String locationCSVFilePath = "CSVs/Locations.csv";
+  private String medicalEQCSVFilePath = "CSVs/MedicalEquipment.csv";
+  private String employeesCSVFilePath = "CSVs/Employees.csv";
+  private String patientsCSVFilePath = "CSVs/Patients.csv";
+  private String equipmentRequestCSVFilePath = "CSVs/EquipmentRequest.csv";
+  private String labRequestCSVFilePath = "CSVs/LabRequest.csv";
+  private String serviceRequestCSVFilePath = "CSVs/ServiceRequest.csv";
   private String edgesCSVFilePath = "CSVs/Edges.csv";
 
   private static Filepath filepathManager;
