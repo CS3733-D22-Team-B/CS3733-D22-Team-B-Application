@@ -136,9 +136,9 @@
             </AnchorPane>
             <SplitPane fx:id="requestsDisplay" dividerPositions="0.3242730720606826" layoutX="164.0" layoutY="264.0" prefHeight="164.0" prefWidth="634.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
                <items>
-                  <ScrollPane fx:id="requestInfo" prefHeight="162.0" prefWidth="209.0" style="-fx-background-color: #2e3c4b;" visible="false">
+                  <ScrollPane fx:id="scrollPane" prefHeight="162.0" prefWidth="209.0" style="-fx-background-color: #2e3c4b;" visible="false">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="188.0" style="-fx-background-color: #2e3c4b;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="188.0" style="-fx-background-color: #2e3c4b;">
                            <children>
                               <Label contentDisplay="CENTER" layoutX="11.0" layoutY="4.0" text="Currently Viewing Request " textFill="#7bcce4">
                                  <font>
@@ -175,8 +175,8 @@
                                  </font>
                               </Label>
                               <Label fx:id="informationLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="8.0" layoutY="117.0" prefHeight="120.0" prefWidth="171.0" style="-fx-border-radius: 10px;" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" wrapText="true" />
-                              <Button layoutX="134.0" layoutY="259.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
-                              <Label fx:id="requestID" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="23.0" prefHeight="19.0" prefWidth="121.0" textFill="#7bcce4">
+                              <Button layoutX="73.0" layoutY="279.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
+                              <Label fx:id="requestIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="23.0" prefHeight="19.0" prefWidth="121.0" textFill="#7bcce4">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
