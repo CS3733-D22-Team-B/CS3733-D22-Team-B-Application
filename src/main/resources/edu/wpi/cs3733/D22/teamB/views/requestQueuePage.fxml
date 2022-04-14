@@ -61,7 +61,7 @@
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:id="pending" fx:value="Pending" />
                                        <String fx:id="proccessing" fx:value="In-Progress" />
-                                       <String fx:id="complete" fx:value="Complete" />
+                                       <String fx:id="completed" fx:value="Completed" />
                                     </FXCollections>
                                  </items>
                               </ComboBox>
