@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
-  // private final String url = "jdbc:derby:Databases";
 
   private static LocationsDB locationsDBManager;
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();

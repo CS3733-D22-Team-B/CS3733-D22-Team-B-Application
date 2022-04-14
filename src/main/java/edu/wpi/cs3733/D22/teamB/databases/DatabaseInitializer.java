@@ -104,7 +104,6 @@ public class DatabaseInitializer {
         addToTable =
             "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Edges") {
-        System.out.println("populating Edges");
         addToTable = "INSERT INTO Edges(edgeID, nodeID1, nodeID2) VALUES(?, ?, ?)";
       }
       PreparedStatement pStatement = connection.prepareStatement(addToTable);
