@@ -895,142 +895,151 @@ public class interactiveMapPageController extends MenuBarController {
     toEdit = null;
   }
 
-  public void filterLocs(LinkedList<Location> locList){
-    for(Location loc : locList){
-      for(String type: locFilterList){
-        if(loc.getNodeType().equals(type)) locList.remove(loc);
+  public void filterLocs(LinkedList<Location> locList) {
+    for (Location loc : locList) {
+      for (String type : locFilterList) {
+        if (loc.getNodeType().equals(type)) locList.remove(loc);
       }
     }
   }
 
-  public void toggleBath(){
-    if(bathOn){
+  public void toggleBath() {
+    if (bathOn) {
       locFilterList.add("BATH");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("BATH");
       bathOn = true;
     }
   }
-  public void toggleDept(){
-    if(deptOn){
+
+  public void toggleDept() {
+    if (deptOn) {
       locFilterList.add("DEPT");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("DEPT");
       bathOn = true;
     }
   }
-  public void toggleDirt(){
-    if(dirtOn){
+
+  public void toggleDirt() {
+    if (dirtOn) {
       locFilterList.add("DIRT");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("DIRT");
       bathOn = true;
     }
   }
-  public void toggleElev(){
-    if(elevOn){
+
+  public void toggleElev() {
+    if (elevOn) {
       locFilterList.add("ELEV");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("ELEV");
       bathOn = true;
     }
   }
-  public void toggleExit(){
-    if(exitOn){
+
+  public void toggleExit() {
+    if (exitOn) {
       locFilterList.add("EXIT");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("EXIT");
       bathOn = true;
     }
   }
-  public void toggleHall(){
-    if(hallOn){
+
+  public void toggleHall() {
+    if (hallOn) {
       locFilterList.add("HALL");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("HALL");
       bathOn = true;
     }
   }
-  public void toggleInfo(){
-    if(infoOn){
+
+  public void toggleInfo() {
+    if (infoOn) {
       locFilterList.add("INFO");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("INFO");
       bathOn = true;
     }
   }
-  public void toggleLabs(){
-    if(labsOn){
+
+  public void toggleLabs() {
+    if (labsOn) {
       locFilterList.add("LABS");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("LABS");
       bathOn = true;
     }
   }
-  public void togglePati(){
-    if(patiOn){
+
+  public void togglePati() {
+    if (patiOn) {
       locFilterList.add("PATI");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("PATI");
       bathOn = true;
     }
   }
-  public void toggleRest(){
-    if(restOn){
+
+  public void toggleRest() {
+    if (restOn) {
       locFilterList.add("REST");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("REST");
       bathOn = true;
     }
   }
-  public void toggleRetl(){
-    if(retlOn){
+
+  public void toggleRetl() {
+    if (retlOn) {
       locFilterList.add("RETL");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("RETL");
       bathOn = true;
     }
   }
-  public void toggleServ(){
-    if(servOn){
+
+  public void toggleServ() {
+    if (servOn) {
       locFilterList.add("SERV");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("SERV");
       bathOn = true;
     }
   }
-  public void toggleStai(){
-    if(staiOn){
+
+  public void toggleStai() {
+    if (staiOn) {
       locFilterList.add("STAI");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("STAI");
       bathOn = true;
     }
   }
-  public void toggleStor(){
-    if(storOn){
+
+  public void toggleStor() {
+    if (storOn) {
       locFilterList.add("STOR");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("STOR");
       bathOn = true;
     }
   }
-
-
-
-
 }
