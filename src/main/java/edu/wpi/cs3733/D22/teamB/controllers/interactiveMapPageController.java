@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
 import com.jfoenix.controls.JFXButton;
@@ -68,7 +67,6 @@ public class interactiveMapPageController extends MenuBarController {
   private LinkedList<SVGPath> equipIcons;
   private LinkedList<SVGPath> serviceIcons;
   private LinkedList<Location> floorLocations;
-  private LinkedList<String> locFilterList = new LinkedList<String>();
 
   private SVGPath marker = new SVGPath();
 
@@ -78,21 +76,6 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean deleteEnabled = false;
   private Boolean editEquipEnabled = false;
   private Boolean equipPaneVisible = false;
-
-  private Boolean bathOn = true;
-  private Boolean deptOn = true;
-  private Boolean dirtOn = true;
-  private Boolean elevOn = true;
-  private Boolean exitOn = true;
-  private Boolean hallOn = true;
-  private Boolean infoOn = true;
-  private Boolean labsOn = true;
-  private Boolean patiOn = true;
-  private Boolean restOn = true;
-  private Boolean retlOn = true;
-  private Boolean servOn = true;
-  private Boolean staiOn = true;
-  private Boolean storOn = true;
 
   private MedicalEquipment toEdit;
 
@@ -149,8 +132,6 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void setRoomIcons() {
     floorLocations = dao.getLocationsByFloor(floorLevel);
-    filterLocs(floorLocations);
-
     for (SVGPath marker : roomIcons) {
       removeIcon(marker);
     }
@@ -323,7 +304,7 @@ public class interactiveMapPageController extends MenuBarController {
     }
     serviceIcons.clear();
     for (Request r : allRequests) {
-      if (r.getLocation() != null && !r.getStatus().equals("Completed")) {
+      if (r.getLocation() != null) {
         String floor = r.getLocation().getFloor();
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
       }
