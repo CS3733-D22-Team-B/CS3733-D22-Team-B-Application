@@ -5,7 +5,7 @@ import java.util.Date;
 public class GiftRequest extends Request {
 
   public GiftRequest(String patientID, String information, int priority) {
-    super(null, patientID, information, priority, "Gift");
+    super(null, patientID, information, priority, "GIFT");
     this.information = information;
   }
 
@@ -34,6 +34,6 @@ public class GiftRequest extends Request {
   }
 
   public final String createRequestID() {
-    return "MEL" + getHashCode();
+    return "GIF" + getHashCode();
   }
 }
