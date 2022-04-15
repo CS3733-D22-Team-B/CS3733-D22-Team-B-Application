@@ -59,7 +59,27 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton equipEditButton;
   @FXML JFXComboBox<String> availabilityDropdown;
   @FXML JFXComboBox<String> stateDropdown;
+
   @FXML Pane filterPane;
+  @FXML JFXButton bath;
+  @FXML JFXButton dept;
+  @FXML JFXButton dirt;
+  @FXML JFXButton elev;
+  @FXML JFXButton exit;
+  @FXML JFXButton hall;
+  @FXML JFXButton info;
+  @FXML JFXButton labs;
+  @FXML JFXButton pati;
+  @FXML JFXButton rest;
+  @FXML JFXButton retl;
+  @FXML JFXButton serv;
+  @FXML JFXButton stai;
+  @FXML JFXButton stor;
+
+  @FXML JFXButton bed;
+  @FXML JFXButton xr;
+  @FXML JFXButton recl;
+  @FXML JFXButton pump;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -70,6 +90,7 @@ public class interactiveMapPageController extends MenuBarController {
   private LinkedList<SVGPath> serviceIcons;
   private LinkedList<Location> floorLocations;
   private LinkedList<String> locFilterList = new LinkedList<String>();
+  private LinkedList<String> equipFilterList = new LinkedList<String>();
 
   private SVGPath marker = new SVGPath();
 
@@ -95,6 +116,11 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean servOn = true;
   private Boolean staiOn = true;
   private Boolean storOn = true;
+
+  private Boolean bedOn = true;
+  private Boolean xrOn = true;
+  private Boolean reclOn = true;
+  private Boolean pumpOn = true;
 
   private MedicalEquipment toEdit;
 
@@ -142,7 +168,6 @@ public class interactiveMapPageController extends MenuBarController {
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
-    resetPane();
   }
 
   public void removeIcon(SVGPath icon) {
@@ -248,17 +273,20 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void setEquipIcons() {
     LinkedList<MedicalEquipment> allEquipment = edao.list();
+    LinkedList<MedicalEquipment> filtered = filterEquip(allEquipment);
+
     for (SVGPath icon : equipIcons) {
       removeIcon(icon);
     }
     equipIcons.clear();
 
-    for (MedicalEquipment eq : allEquipment) {
+    for (MedicalEquipment eq : filtered) {
       String floor = eq.getLocation().getFloor();
       if (stringtoFloorLevel(floor) == floorLevel) {
         addEquipIcon(eq);
       }
     }
+    resetPane();
   }
 
   public void addEquipIcon(MedicalEquipment eq) {
@@ -331,6 +359,7 @@ public class interactiveMapPageController extends MenuBarController {
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
       }
     }
+    resetPane();
   }
 
   public void addServiceIcon(Request r) {
@@ -931,9 +960,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleBath() {
     if (bathOn) {
       locFilterList.add("BATH");
+      bath.setTextFill(Color.DARKGREY);
       bathOn = false;
     } else {
       locFilterList.remove("BATH");
+      bath.setTextFill(Color.WHITE);
       bathOn = true;
     }
     setRoomIcons();
@@ -942,9 +973,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleDept() {
     if (deptOn) {
       locFilterList.add("DEPT");
+      dept.setTextFill(Color.DARKGREY);
       deptOn = false;
     } else {
       locFilterList.remove("DEPT");
+      dept.setTextFill(Color.WHITE);
       deptOn = true;
     }
     setRoomIcons();
@@ -953,9 +986,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleDirt() {
     if (dirtOn) {
       locFilterList.add("DIRT");
+      dirt.setTextFill(Color.DARKGREY);
       dirtOn = false;
     } else {
       locFilterList.remove("DIRT");
+      dirt.setTextFill(Color.WHITE);
       dirtOn = true;
     }
     setRoomIcons();
@@ -964,9 +999,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleElev() {
     if (elevOn) {
       locFilterList.add("ELEV");
+      elev.setTextFill(Color.DARKGREY);
       elevOn = false;
     } else {
       locFilterList.remove("ELEV");
+      elev.setTextFill(Color.WHITE);
       elevOn = true;
     }
     setRoomIcons();
@@ -975,9 +1012,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleExit() {
     if (exitOn) {
       locFilterList.add("EXIT");
+      exit.setTextFill(Color.DARKGREY);
       exitOn = false;
     } else {
       locFilterList.remove("EXIT");
+      exit.setTextFill(Color.WHITE);
       exitOn = true;
     }
     setRoomIcons();
@@ -986,9 +1025,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleHall() {
     if (hallOn) {
       locFilterList.add("HALL");
+      hall.setTextFill(Color.DARKGREY);
       hallOn = false;
     } else {
       locFilterList.remove("HALL");
+      hall.setTextFill(Color.WHITE);
       hallOn = true;
     }
     setRoomIcons();
@@ -997,9 +1038,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleInfo() {
     if (infoOn) {
       locFilterList.add("INFO");
+      info.setTextFill(Color.DARKGREY);
       infoOn = false;
     } else {
       locFilterList.remove("INFO");
+      info.setTextFill(Color.WHITE);
       infoOn = true;
     }
     setRoomIcons();
@@ -1008,9 +1051,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleLabs() {
     if (labsOn) {
       locFilterList.add("LABS");
+      labs.setTextFill(Color.DARKGREY);
       labsOn = false;
     } else {
       locFilterList.remove("LABS");
+      labs.setTextFill(Color.WHITE);
       labsOn = true;
     }
     setRoomIcons();
@@ -1019,9 +1064,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void togglePati() {
     if (patiOn) {
       locFilterList.add("PATI");
+      pati.setTextFill(Color.DARKGREY);
       patiOn = false;
     } else {
       locFilterList.remove("PATI");
+      pati.setTextFill(Color.WHITE);
       patiOn = true;
     }
     setRoomIcons();
@@ -1030,9 +1077,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleRest() {
     if (restOn) {
       locFilterList.add("REST");
+      rest.setTextFill(Color.DARKGREY);
       restOn = false;
     } else {
       locFilterList.remove("REST");
+      rest.setTextFill(Color.WHITE);
       restOn = true;
     }
     setRoomIcons();
@@ -1041,9 +1090,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleRetl() {
     if (retlOn) {
       locFilterList.add("RETL");
+      retl.setTextFill(Color.DARKGREY);
       retlOn = false;
     } else {
       locFilterList.remove("RETL");
+      retl.setTextFill(Color.WHITE);
       retlOn = true;
     }
     setRoomIcons();
@@ -1052,9 +1103,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleServ() {
     if (servOn) {
       locFilterList.add("SERV");
+      serv.setTextFill(Color.DARKGREY);
       servOn = false;
     } else {
       locFilterList.remove("SERV");
+      serv.setTextFill(Color.WHITE);
       servOn = true;
     }
     setRoomIcons();
@@ -1063,9 +1116,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleStai() {
     if (staiOn) {
       locFilterList.add("STAI");
+      stai.setTextFill(Color.DARKGREY);
       staiOn = false;
     } else {
       locFilterList.remove("STAI");
+      stai.setTextFill(Color.WHITE);
       staiOn = true;
     }
     setRoomIcons();
@@ -1074,9 +1129,11 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleStor() {
     if (storOn) {
       locFilterList.add("STOR");
+      stor.setTextFill(Color.DARKGREY);
       storOn = false;
     } else {
       locFilterList.remove("STOR");
+      stor.setTextFill(Color.WHITE);
       storOn = true;
     }
     setRoomIcons();
@@ -1111,5 +1168,119 @@ public class interactiveMapPageController extends MenuBarController {
     toggleServ();
     toggleStai();
     toggleStor();
+
+    bedOn = false;
+    xrOn = false;
+    reclOn = false;
+    pumpOn = false;
+    toggleBed();
+    toggleXR();
+    toggleRecl();
+    togglePump();
+  }
+
+  public void allIconsOff() {
+    bathOn = true;
+    deptOn = true;
+    dirtOn = true;
+    elevOn = true;
+    exitOn = true;
+    hallOn = true;
+    infoOn = true;
+    labsOn = true;
+    patiOn = true;
+    restOn = true;
+    retlOn = true;
+    servOn = true;
+    staiOn = true;
+    storOn = true;
+    toggleBath();
+    toggleDept();
+    toggleDirt();
+    toggleElev();
+    toggleExit();
+    toggleHall();
+    toggleInfo();
+    toggleLabs();
+    togglePati();
+    toggleRest();
+    toggleRetl();
+    toggleServ();
+    toggleStai();
+    toggleStor();
+
+    bedOn = true;
+    xrOn = true;
+    reclOn = true;
+    pumpOn = true;
+    toggleBed();
+    toggleXR();
+    toggleRecl();
+    togglePump();
+  }
+
+  public LinkedList<MedicalEquipment> filterEquip(LinkedList<MedicalEquipment> equipList) {
+    LinkedList<MedicalEquipment> toRemove = new LinkedList<MedicalEquipment>();
+    for (MedicalEquipment eq : equipList) {
+      for (String type : equipFilterList) {
+        if (eq.getType().equals(type)) {
+          toRemove.add(eq);
+        }
+      }
+    }
+    equipList.removeAll(toRemove);
+    return equipList;
+  }
+
+  public void toggleBed() {
+    if (bedOn) {
+      equipFilterList.add("BED");
+      bed.setTextFill(Color.DARKGREY);
+      bedOn = false;
+    } else {
+      equipFilterList.remove("BED");
+      bed.setTextFill(Color.WHITE);
+      bedOn = true;
+    }
+    setEquipIcons();
+  }
+
+  public void toggleXR() {
+    if (xrOn) {
+      equipFilterList.add("XR");
+      xr.setTextFill(Color.DARKGREY);
+      xrOn = false;
+    } else {
+      equipFilterList.remove("XR");
+      xr.setTextFill(Color.WHITE);
+      xrOn = true;
+    }
+    setEquipIcons();
+  }
+
+  public void toggleRecl() {
+    if (reclOn) {
+      equipFilterList.add("RECL");
+      recl.setTextFill(Color.DARKGREY);
+      reclOn = false;
+    } else {
+      equipFilterList.remove("RECL");
+      recl.setTextFill(Color.WHITE);
+      reclOn = true;
+    }
+    setEquipIcons();
+  }
+
+  public void togglePump() {
+    if (pumpOn) {
+      equipFilterList.add("PUMP");
+      pump.setTextFill(Color.DARKGREY);
+      pumpOn = false;
+    } else {
+      equipFilterList.remove("PUMP");
+      pump.setTextFill(Color.WHITE);
+      pumpOn = true;
+    }
+    setEquipIcons();
   }
 }
