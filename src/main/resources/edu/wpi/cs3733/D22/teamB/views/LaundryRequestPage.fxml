@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+         <children>
+            <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/components/Background.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="r" fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="398.0" fitWidth="671.5" layoutX="144.5" layoutY="71.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Requests/CreateRequest/BackgroundElement.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="369.0" prefHeight="65.0" prefWidth="461.5" text="" textFill="#7bcce4" />
+            <Label fx:id="charactersRemainingLabel" layoutX="716.0" layoutY="282.0" text="500 characters remaining" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="7.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="867.5" layoutY="125.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="646.0" layoutY="365.0" onAction="#reset" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Component%203%20–%205.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="submitButton" disable="true" layoutX="725.0" layoutY="365.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
+               <graphic>
+                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <TextArea fx:id="additionalInformationInput" layoutX="503.0" layoutY="110.0" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" wrapText="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </TextArea>
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="503.0" layoutY="307.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
+            <ComboBox fx:id="equipmentInput" layoutX="164.5" layoutY="230.0" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
+            <ComboBox fx:id="floorInput" layoutX="164.5" layoutY="110.0" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="5" fx:value="F5" />
+                     <String fx:id="4" fx:value="F4" />
+                     <String fx:id="3" fx:value="F3" />
+                     <String fx:id="2" fx:value="F2" />
+                     <String fx:id="1" fx:value="F1" />
+                     <String fx:id="L1" fx:value="L1" />
+                     <String fx:id="L2" fx:value="L2" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <ComboBox fx:id="locationInput" layoutX="164.5" layoutY="170.0" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
+            <Label layoutX="-82.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Equipment Request" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+            <fx:include source="menu.fxml" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
