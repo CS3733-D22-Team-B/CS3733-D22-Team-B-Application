@@ -102,6 +102,11 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToLaundryPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("laundryRequestPage");
+  }
+
+  @FXML
   void goToDashboard(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("dashboard");
   }
