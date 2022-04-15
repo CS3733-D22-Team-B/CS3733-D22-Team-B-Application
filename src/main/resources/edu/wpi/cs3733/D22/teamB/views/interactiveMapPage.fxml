@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="623.0" layoutX="212.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -88,7 +92,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="toLocDatabase" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="170.0" onAction="#goToLocationDataPage" prefHeight="60.0" prefWidth="38.0" text=" " />
       <JFXButton fx:id="addButton" focusTraversable="false" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -237,10 +240,30 @@
             <Image url="@../assets/mapAssets/DropdownInputBox.png" />
          </image>
       </ImageView>
+      <Pane fx:id="filterPane" layoutX="28.0" layoutY="38.0" prefHeight="440.0" prefWidth="163.0" visible="false">
+         <children>
+            <JFXButton layoutX="37.0" layoutY="51.0" onAction="#toggleBath" text="Bath" textFill="WHITE" />
+            <JFXButton layoutX="84.0" layoutY="51.0" onAction="#toggleDept" text="Dept" textFill="WHITE" />
+            <JFXButton layoutX="39.0" layoutY="84.0" onAction="#toggleDirt" text="Dirt" textFill="WHITE" />
+            <JFXButton layoutX="88.0" layoutY="84.0" onAction="#toggleElev" text="Elev" textFill="WHITE" />
+            <JFXButton layoutX="38.0" layoutY="116.0" onAction="#toggleExit" text="Exit" textFill="WHITE" />
+            <JFXButton layoutX="86.0" layoutY="116.0" onAction="#toggleHall" text="Hall" textFill="WHITE" />
+            <JFXButton layoutX="38.0" layoutY="149.0" onAction="#toggleInfo" text="Info" textFill="WHITE" />
+            <JFXButton layoutX="86.0" layoutY="149.0" onAction="#toggleLabs" text="Labs" textFill="WHITE" />
+            <JFXButton layoutX="38.0" layoutY="190.0" onAction="#togglePati" text="Pati" textFill="WHITE" />
+            <JFXButton layoutX="86.0" layoutY="190.0" onAction="#toggleRest" text="Rest" textFill="WHITE" />
+            <JFXButton layoutX="38.0" layoutY="232.0" onAction="#toggleRetl" text="Retl" textFill="WHITE" />
+            <JFXButton layoutX="87.0" layoutY="232.0" onAction="#toggleServ" text="Serv" textFill="WHITE" />
+            <JFXButton layoutX="38.0" layoutY="267.0" onAction="#toggleStai" text="Stai" textFill="WHITE" />
+            <JFXButton layoutX="86.0" layoutY="267.0" onAction="#toggleStor" text="Stor" textFill="WHITE" />
+            <JFXButton layoutX="91.0" layoutY="14.0" onAction="#allIconsOn" text="Show All" textFill="WHITE" />
+         </children>
+      </Pane>
       <JFXComboBox fx:id="stateDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="230.0" prefHeight="26.0" prefWidth="110.0" promptText="State" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </JFXComboBox>
+      <JFXButton layoutX="220.0" layoutY="28.0" onAction="#toggleFilter" text="Filter" textFill="WHITE" />
    </children>
 </AnchorPane>

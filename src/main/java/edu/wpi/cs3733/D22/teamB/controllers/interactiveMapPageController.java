@@ -34,7 +34,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML Pane mapPane;
   @FXML ImageView mapImage;
   @FXML JFXButton backButton;
-  @FXML JFXButton toLocDatabase;
+
   @FXML ImageView floorBackground;
   @FXML ImageView thirdTopLeftBox;
   @FXML ImageView topLeftBox;
@@ -59,6 +59,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton equipEditButton;
   @FXML JFXComboBox<String> availabilityDropdown;
   @FXML JFXComboBox<String> stateDropdown;
+  @FXML Pane filterPane;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -78,6 +79,7 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean deleteEnabled = false;
   private Boolean editEquipEnabled = false;
   private Boolean equipPaneVisible = false;
+  private Boolean filterOpen = false;
 
   private Boolean bathOn = true;
   private Boolean deptOn = true;
@@ -149,17 +151,18 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void setRoomIcons() {
     floorLocations = dao.getLocationsByFloor(floorLevel);
-    filterLocs(floorLocations);
+    LinkedList<Location> filtered = filterLocs(floorLocations);
 
     for (SVGPath marker : roomIcons) {
       removeIcon(marker);
     }
     roomIcons.clear();
 
-    for (Location loc : floorLocations) {
+    for (Location loc : filtered) {
       // Create Icon that you can hover over
       addLocIcon(loc);
     }
+    resetPane();
   }
 
   public void addLocIcon(Location location) {
@@ -501,7 +504,7 @@ public class interactiveMapPageController extends MenuBarController {
     editButton.setVisible(false);
     deleteButton.setVisible(false);
     resetButton.setVisible(false);
-    toLocDatabase.setVisible(false);
+
     backButton.setVisible(true);
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
@@ -550,7 +553,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(true);
     resetButton.setVisible(true);
     backButton.setVisible(false);
-    toLocDatabase.setVisible(true);
+
     floorBackground.setVisible(false);
     topLeftBox.setVisible(false);
     secondTopLeftBox.setVisible(false);
@@ -581,7 +584,6 @@ public class interactiveMapPageController extends MenuBarController {
     topLeftBox.setVisible(true);
     locationDropdown.setVisible(true);
     confirmButton.setVisible(true);
-    toLocDatabase.setVisible(false);
   }
 
   public void deleteLoc() {
@@ -620,7 +622,7 @@ public class interactiveMapPageController extends MenuBarController {
     topLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     confirmButton.setVisible(false);
-    toLocDatabase.setVisible(true);
+
     locationDropdown.setValue("");
     clearMarker();
   }
@@ -634,7 +636,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(false);
     resetButton.setVisible(false);
     backButton.setVisible(true);
-    toLocDatabase.setVisible(false);
+
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
     secondTopLeftBox.setVisible(true);
@@ -668,7 +670,7 @@ public class interactiveMapPageController extends MenuBarController {
   public void endEdit() {
     lockHover = false;
     editEnabled = false;
-    toLocDatabase.setVisible(true);
+
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);
@@ -844,7 +846,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(false);
     resetButton.setVisible(false);
     backButton.setVisible(true);
-    toLocDatabase.setVisible(false);
+
     floorBackground.setVisible(true);
     topLeftBox.setVisible(true);
     secondTopLeftBox.setVisible(true);
@@ -877,7 +879,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(true);
     resetButton.setVisible(true);
     backButton.setVisible(false);
-    toLocDatabase.setVisible(true);
+
     floorBackground.setVisible(false);
     topLeftBox.setVisible(false);
     secondTopLeftBox.setVisible(false);
@@ -895,142 +897,219 @@ public class interactiveMapPageController extends MenuBarController {
     toEdit = null;
   }
 
-  public void filterLocs(LinkedList<Location> locList){
-    for(Location loc : locList){
-      for(String type: locFilterList){
-        if(loc.getNodeType().equals(type)) locList.remove(loc);
+  public LinkedList<Location> filterLocs(LinkedList<Location> locList) {
+    LinkedList<Location> toRemove = new LinkedList<Location>();
+    for (Location loc : locList) {
+      for (String type : locFilterList) {
+        if (loc.getNodeType().equals(type)) {
+          toRemove.add(loc);
+        }
       }
+    }
+    locList.removeAll(toRemove);
+    return locList;
+  }
+
+  public void toggleFilter() {
+    if (filterOpen) {
+      addButton.setVisible(true);
+      editButton.setVisible(true);
+      deleteButton.setVisible(true);
+      floorBackground.setVisible(false);
+      filterPane.setVisible(false);
+      filterOpen = false;
+    } else {
+      addButton.setVisible(false);
+      editButton.setVisible(false);
+      deleteButton.setVisible(false);
+      floorBackground.setVisible(true);
+      filterPane.setVisible(true);
+      filterOpen = true;
     }
   }
 
-  public void toggleBath(){
-    if(bathOn){
+  public void toggleBath() {
+    if (bathOn) {
       locFilterList.add("BATH");
       bathOn = false;
-    } else{
+    } else {
       locFilterList.remove("BATH");
       bathOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleDept(){
-    if(deptOn){
+
+  public void toggleDept() {
+    if (deptOn) {
       locFilterList.add("DEPT");
-      bathOn = false;
-    } else{
+      deptOn = false;
+    } else {
       locFilterList.remove("DEPT");
-      bathOn = true;
+      deptOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleDirt(){
-    if(dirtOn){
+
+  public void toggleDirt() {
+    if (dirtOn) {
       locFilterList.add("DIRT");
-      bathOn = false;
-    } else{
+      dirtOn = false;
+    } else {
       locFilterList.remove("DIRT");
-      bathOn = true;
+      dirtOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleElev(){
-    if(elevOn){
+
+  public void toggleElev() {
+    if (elevOn) {
       locFilterList.add("ELEV");
-      bathOn = false;
-    } else{
+      elevOn = false;
+    } else {
       locFilterList.remove("ELEV");
-      bathOn = true;
+      elevOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleExit(){
-    if(exitOn){
+
+  public void toggleExit() {
+    if (exitOn) {
       locFilterList.add("EXIT");
-      bathOn = false;
-    } else{
+      exitOn = false;
+    } else {
       locFilterList.remove("EXIT");
-      bathOn = true;
+      exitOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleHall(){
-    if(hallOn){
+
+  public void toggleHall() {
+    if (hallOn) {
       locFilterList.add("HALL");
-      bathOn = false;
-    } else{
+      hallOn = false;
+    } else {
       locFilterList.remove("HALL");
-      bathOn = true;
+      hallOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleInfo(){
-    if(infoOn){
+
+  public void toggleInfo() {
+    if (infoOn) {
       locFilterList.add("INFO");
-      bathOn = false;
-    } else{
+      infoOn = false;
+    } else {
       locFilterList.remove("INFO");
-      bathOn = true;
+      infoOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleLabs(){
-    if(labsOn){
+
+  public void toggleLabs() {
+    if (labsOn) {
       locFilterList.add("LABS");
-      bathOn = false;
-    } else{
+      labsOn = false;
+    } else {
       locFilterList.remove("LABS");
-      bathOn = true;
+      labsOn = true;
     }
+    setRoomIcons();
   }
-  public void togglePati(){
-    if(patiOn){
+
+  public void togglePati() {
+    if (patiOn) {
       locFilterList.add("PATI");
-      bathOn = false;
-    } else{
+      patiOn = false;
+    } else {
       locFilterList.remove("PATI");
-      bathOn = true;
+      patiOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleRest(){
-    if(restOn){
+
+  public void toggleRest() {
+    if (restOn) {
       locFilterList.add("REST");
-      bathOn = false;
-    } else{
+      restOn = false;
+    } else {
       locFilterList.remove("REST");
-      bathOn = true;
+      restOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleRetl(){
-    if(retlOn){
+
+  public void toggleRetl() {
+    if (retlOn) {
       locFilterList.add("RETL");
-      bathOn = false;
-    } else{
+      retlOn = false;
+    } else {
       locFilterList.remove("RETL");
-      bathOn = true;
+      retlOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleServ(){
-    if(servOn){
+
+  public void toggleServ() {
+    if (servOn) {
       locFilterList.add("SERV");
-      bathOn = false;
-    } else{
+      servOn = false;
+    } else {
       locFilterList.remove("SERV");
-      bathOn = true;
+      servOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleStai(){
-    if(staiOn){
+
+  public void toggleStai() {
+    if (staiOn) {
       locFilterList.add("STAI");
-      bathOn = false;
-    } else{
+      staiOn = false;
+    } else {
       locFilterList.remove("STAI");
-      bathOn = true;
+      staiOn = true;
     }
+    setRoomIcons();
   }
-  public void toggleStor(){
-    if(storOn){
+
+  public void toggleStor() {
+    if (storOn) {
       locFilterList.add("STOR");
-      bathOn = false;
-    } else{
+      storOn = false;
+    } else {
       locFilterList.remove("STOR");
-      bathOn = true;
+      storOn = true;
     }
+    setRoomIcons();
   }
 
-
-
-
+  public void allIconsOn() {
+    bathOn = false;
+    deptOn = false;
+    dirtOn = false;
+    elevOn = false;
+    exitOn = false;
+    hallOn = false;
+    infoOn = false;
+    labsOn = false;
+    patiOn = false;
+    restOn = false;
+    retlOn = false;
+    servOn = false;
+    staiOn = false;
+    storOn = false;
+    toggleBath();
+    toggleDept();
+    toggleDirt();
+    toggleElev();
+    toggleExit();
+    toggleHall();
+    toggleInfo();
+    toggleLabs();
+    togglePati();
+    toggleRest();
+    toggleRetl();
+    toggleServ();
+    toggleStai();
+    toggleStor();
+  }
 }
