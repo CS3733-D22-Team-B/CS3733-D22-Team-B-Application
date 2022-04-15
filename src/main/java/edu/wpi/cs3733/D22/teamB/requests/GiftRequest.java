@@ -2,14 +2,14 @@ package edu.wpi.cs3733.D22.teamB.requests;
 
 import java.util.Date;
 
-public class LaundryRequest extends Request {
+public class GiftRequest extends Request {
 
-  public LaundryRequest(String patientID, String information, int priority) {
-    super(null, patientID, information, priority, "Laundry");
+  public GiftRequest(String patientID, String information, int priority) {
+    super(null, patientID, information, priority, "Gift");
     this.information = information;
   }
 
-  public LaundryRequest(
+  public GiftRequest(
       String requestID,
       String employeeID,
       String locationID,
@@ -34,6 +34,6 @@ public class LaundryRequest extends Request {
   }
 
   public final String createRequestID() {
-    return "LAU" + getHashCode();
+    return "MEL" + getHashCode();
   }
 }

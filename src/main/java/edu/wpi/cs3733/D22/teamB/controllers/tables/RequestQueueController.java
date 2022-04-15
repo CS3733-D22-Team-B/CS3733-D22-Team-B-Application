@@ -79,13 +79,13 @@ public class RequestQueueController extends MenuBarController implements Initial
     }
 
     for (EquipmentRequest request : EquipmentRequestDB.getInstance().list()) {
-      if (!request.getStatus().equals("Completed")) requests.add(request);
+      requests.add(request);
     }
     for (LabRequest request : LabRequestsDB.getInstance().list()) {
-      if (!request.getStatus().equals("Completed")) requests.add(request);
+      requests.add(request);
     }
     for (Request request : ServiceRequestsDB.getInstance().list()) {
-      if (!request.getStatus().equals("Completed")) requests.add(request);
+      requests.add(request);
     }
 
     sortRequestsByCreationDate(requests);
@@ -151,10 +151,11 @@ public class RequestQueueController extends MenuBarController implements Initial
     currentRequest.setStatus(statusInput.getValue());
     currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
     employeeInput.setValue("");
+    requestTable.refresh();
     statusInput.setDisable(true);
     employeeInput.setDisable(true);
     currentRequest.setLastEdited(new Date());
-    if (currentRequest.getStatus().equals("Completed")) requests.remove(currentRequest);
+
     if (currentRequest instanceof EquipmentRequest) {
       EquipmentRequestDB.getInstance().update((EquipmentRequest) currentRequest);
     } else if (currentRequest instanceof LabRequest) {
@@ -162,7 +163,6 @@ public class RequestQueueController extends MenuBarController implements Initial
     } else {
       ServiceRequestsDB.getInstance().update(currentRequest);
     }
-    requestTable.refresh();
 
     scrollPane.setVisible(false);
     otherAnchorPane.setVisible(true);
