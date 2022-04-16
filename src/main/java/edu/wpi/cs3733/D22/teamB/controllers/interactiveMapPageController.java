@@ -959,7 +959,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleBath() {
     if (bathOn) {
-      locFilterList.add("BATH");
+      if (!locFilterList.contains("BATH")) locFilterList.add("BATH");
       bath.setTextFill(Color.DARKGREY);
       bathOn = false;
     } else {
@@ -972,7 +972,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleDept() {
     if (deptOn) {
-      locFilterList.add("DEPT");
+      if (!locFilterList.contains("DEPT")) locFilterList.add("DEPT");
       dept.setTextFill(Color.DARKGREY);
       deptOn = false;
     } else {
@@ -985,7 +985,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleDirt() {
     if (dirtOn) {
-      locFilterList.add("DIRT");
+      if (!locFilterList.contains("DIRT")) locFilterList.add("DIRT");
       dirt.setTextFill(Color.DARKGREY);
       dirtOn = false;
     } else {
@@ -998,7 +998,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleElev() {
     if (elevOn) {
-      locFilterList.add("ELEV");
+      if (!locFilterList.contains("ELEV")) locFilterList.add("ELEV");
       elev.setTextFill(Color.DARKGREY);
       elevOn = false;
     } else {
@@ -1011,7 +1011,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleExit() {
     if (exitOn) {
-      locFilterList.add("EXIT");
+      if (!locFilterList.contains("EXIT")) locFilterList.add("EXIT");
       exit.setTextFill(Color.DARKGREY);
       exitOn = false;
     } else {
@@ -1024,7 +1024,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleHall() {
     if (hallOn) {
-      locFilterList.add("HALL");
+      if (!locFilterList.contains("HALL")) locFilterList.add("HALL");
       hall.setTextFill(Color.DARKGREY);
       hallOn = false;
     } else {
@@ -1037,7 +1037,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleInfo() {
     if (infoOn) {
-      locFilterList.add("INFO");
+      if (!locFilterList.contains("INFO")) locFilterList.add("INFO");
       info.setTextFill(Color.DARKGREY);
       infoOn = false;
     } else {
@@ -1050,7 +1050,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleLabs() {
     if (labsOn) {
-      locFilterList.add("LABS");
+      if (!locFilterList.contains("LABS")) locFilterList.add("LABS");
       labs.setTextFill(Color.DARKGREY);
       labsOn = false;
     } else {
@@ -1063,7 +1063,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void togglePati() {
     if (patiOn) {
-      locFilterList.add("PATI");
+      if (!locFilterList.contains("PATI")) locFilterList.add("PATI");
       pati.setTextFill(Color.DARKGREY);
       patiOn = false;
     } else {
@@ -1076,7 +1076,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleRest() {
     if (restOn) {
-      locFilterList.add("REST");
+      if (!locFilterList.contains("REST")) locFilterList.add("REST");
       rest.setTextFill(Color.DARKGREY);
       restOn = false;
     } else {
@@ -1089,7 +1089,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleRetl() {
     if (retlOn) {
-      locFilterList.add("RETL");
+      if (!locFilterList.contains("RETL")) locFilterList.add("RETL");
       retl.setTextFill(Color.DARKGREY);
       retlOn = false;
     } else {
@@ -1102,7 +1102,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleServ() {
     if (servOn) {
-      locFilterList.add("SERV");
+      if (!locFilterList.contains("SERV")) locFilterList.add("SERV");
       serv.setTextFill(Color.DARKGREY);
       servOn = false;
     } else {
@@ -1115,7 +1115,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleStai() {
     if (staiOn) {
-      locFilterList.add("STAI");
+      if (!locFilterList.contains("STAI")) locFilterList.add("STAI");
       stai.setTextFill(Color.DARKGREY);
       staiOn = false;
     } else {
@@ -1128,7 +1128,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleStor() {
     if (storOn) {
-      locFilterList.add("STOR");
+      if (!locFilterList.contains("STOR")) locFilterList.add("STOR");
       stor.setTextFill(Color.DARKGREY);
       storOn = false;
     } else {
@@ -1139,7 +1139,7 @@ public class interactiveMapPageController extends MenuBarController {
     setRoomIcons();
   }
 
-  public void allIconsOn() {
+  public void showAllLocs() {
     bathOn = false;
     deptOn = false;
     dirtOn = false;
@@ -1168,18 +1168,9 @@ public class interactiveMapPageController extends MenuBarController {
     toggleServ();
     toggleStai();
     toggleStor();
-
-    bedOn = false;
-    xrOn = false;
-    reclOn = false;
-    pumpOn = false;
-    toggleBed();
-    toggleXR();
-    toggleRecl();
-    togglePump();
   }
 
-  public void allIconsOff() {
+  public void hideAllLocs() {
     bathOn = true;
     deptOn = true;
     dirtOn = true;
@@ -1208,15 +1199,6 @@ public class interactiveMapPageController extends MenuBarController {
     toggleServ();
     toggleStai();
     toggleStor();
-
-    bedOn = true;
-    xrOn = true;
-    reclOn = true;
-    pumpOn = true;
-    toggleBed();
-    toggleXR();
-    toggleRecl();
-    togglePump();
   }
 
   public LinkedList<MedicalEquipment> filterEquip(LinkedList<MedicalEquipment> equipList) {
@@ -1234,7 +1216,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleBed() {
     if (bedOn) {
-      equipFilterList.add("BED");
+      if (!equipFilterList.contains("BED")) equipFilterList.add("BED");
       bed.setTextFill(Color.DARKGREY);
       bedOn = false;
     } else {
@@ -1247,7 +1229,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleXR() {
     if (xrOn) {
-      equipFilterList.add("XR");
+      if (!equipFilterList.contains("XR")) equipFilterList.add("XR");
       xr.setTextFill(Color.DARKGREY);
       xrOn = false;
     } else {
@@ -1260,7 +1242,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleRecl() {
     if (reclOn) {
-      equipFilterList.add("RECL");
+      if (!equipFilterList.contains("RECL")) equipFilterList.add("RECL");
       recl.setTextFill(Color.DARKGREY);
       reclOn = false;
     } else {
@@ -1273,7 +1255,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void togglePump() {
     if (pumpOn) {
-      equipFilterList.add("PUMP");
+      if (!equipFilterList.contains("PUMP")) equipFilterList.add("PUMP");
       pump.setTextFill(Color.DARKGREY);
       pumpOn = false;
     } else {
@@ -1282,5 +1264,37 @@ public class interactiveMapPageController extends MenuBarController {
       pumpOn = true;
     }
     setEquipIcons();
+  }
+
+  public void showAllEquip() {
+    bedOn = false;
+    xrOn = false;
+    reclOn = false;
+    pumpOn = false;
+    toggleBed();
+    toggleXR();
+    toggleRecl();
+    togglePump();
+  }
+
+  public void hideAllEquip() {
+    bedOn = true;
+    xrOn = true;
+    reclOn = true;
+    pumpOn = true;
+    toggleBed();
+    toggleXR();
+    toggleRecl();
+    togglePump();
+  }
+
+  public void allIconsOn() {
+    showAllLocs();
+    showAllEquip();
+  }
+
+  public void allIconsOff() {
+    hideAllLocs();
+    hideAllEquip();
   }
 }
