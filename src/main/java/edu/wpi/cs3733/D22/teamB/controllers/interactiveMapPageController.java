@@ -81,6 +81,14 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton recl;
   @FXML JFXButton pump;
 
+  @FXML JFXButton equip;
+  @FXML JFXButton lab;
+  @FXML JFXButton med;
+  @FXML JFXButton meal;
+  @FXML JFXButton interp;
+  @FXML JFXButton ipt;
+  @FXML JFXButton custom;
+
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
   protected ServiceRequestsDB rdao;
@@ -91,6 +99,7 @@ public class interactiveMapPageController extends MenuBarController {
   private LinkedList<Location> floorLocations;
   private LinkedList<String> locFilterList = new LinkedList<String>();
   private LinkedList<String> equipFilterList = new LinkedList<String>();
+  private LinkedList<String> requestFilterList = new LinkedList<String>();
 
   private SVGPath marker = new SVGPath();
 
@@ -121,6 +130,14 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean xrOn = true;
   private Boolean reclOn = true;
   private Boolean pumpOn = true;
+
+  private Boolean eqReqOn = true;
+  private Boolean labReqOn = true;
+  private Boolean medOn = true;
+  private Boolean mealOn = true;
+  private Boolean interpOn = true;
+  private Boolean iptOn = true;
+  private Boolean customOn = true;
 
   private MedicalEquipment toEdit;
 
@@ -349,11 +366,12 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void setServiceIcons() {
     LinkedList<Request> allRequests = rdao.list();
+    LinkedList<Request> filtered = filterRequests(allRequests);
     for (SVGPath icon : serviceIcons) {
       removeIcon(icon);
     }
     serviceIcons.clear();
-    for (Request r : allRequests) {
+    for (Request r : filtered) {
       if (r.getLocation() != null && !r.getStatus().equals("Completed")) {
         String floor = r.getLocation().getFloor();
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
@@ -1288,13 +1306,155 @@ public class interactiveMapPageController extends MenuBarController {
     togglePump();
   }
 
+  public LinkedList<Request> filterRequests(LinkedList<Request> reqList) {
+    LinkedList<Request> toRemove = new LinkedList<Request>();
+    for (Request r : reqList) {
+      for (String type : requestFilterList) {
+        if (r.getType().equals(type)) {
+          toRemove.add(r);
+        }
+      }
+      if (!customOn && r.getRequestID().substring(0, 3).equals("CUS")) toRemove.add(r);
+    }
+    reqList.removeAll(toRemove);
+    return reqList;
+  }
+
+  public void toggleEquipReq() {
+    if (eqReqOn) {
+      if (!requestFilterList.contains("Equipment Request"))
+        requestFilterList.add("Equipment Request");
+      equip.setTextFill(Color.DARKGREY);
+      eqReqOn = false;
+    } else {
+      equip.setTextFill(Color.WHITE);
+      requestFilterList.remove("Equipment Request");
+      eqReqOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleLabReq() {
+    if (labReqOn) {
+      if (!requestFilterList.contains("Lab Test")) requestFilterList.add("Lab Test");
+      lab.setTextFill(Color.DARKGREY);
+      labReqOn = false;
+    } else {
+      lab.setTextFill(Color.WHITE);
+      requestFilterList.remove("Lab Test");
+      labReqOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleMedReq() {
+    if (medOn) {
+      if (!requestFilterList.contains("Medicine")) requestFilterList.add("Medicine");
+      med.setTextFill(Color.DARKGREY);
+      medOn = false;
+    } else {
+      med.setTextFill(Color.WHITE);
+      requestFilterList.remove("Medicine");
+      medOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleMealReq() {
+    if (mealOn) {
+      if (!requestFilterList.contains("Meal")) requestFilterList.add("Meal");
+      meal.setTextFill(Color.DARKGREY);
+      mealOn = false;
+    } else {
+      meal.setTextFill(Color.WHITE);
+      requestFilterList.remove("Meal");
+      mealOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleInterpReq() {
+    if (interpOn) {
+      if (!requestFilterList.contains("Interpreter")) requestFilterList.add("Interpreter");
+      interp.setTextFill(Color.DARKGREY);
+      interpOn = false;
+    } else {
+      interp.setTextFill(Color.WHITE);
+      requestFilterList.remove("Interpreter");
+      interpOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleIptReq() {
+    if (iptOn) {
+      if (!requestFilterList.contains("Transfer")) requestFilterList.add("Transfer");
+      ipt.setTextFill(Color.DARKGREY);
+      iptOn = false;
+    } else {
+      ipt.setTextFill(Color.WHITE);
+      requestFilterList.remove("Transfer");
+      iptOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleCustom() {
+    if (customOn) {
+      custom.setTextFill(Color.DARKGREY);
+      customOn = false;
+    } else {
+      custom.setTextFill(Color.WHITE);
+      customOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void showAllReqs() {
+    eqReqOn = false;
+    labReqOn = false;
+    medOn = false;
+    mealOn = false;
+    interpOn = false;
+    iptOn = false;
+    customOn = false;
+
+    toggleEquipReq();
+    toggleLabReq();
+    toggleMedReq();
+    toggleMealReq();
+    toggleInterpReq();
+    toggleIptReq();
+    toggleCustom();
+  }
+
+  public void hideAllReqs() {
+    eqReqOn = true;
+    labReqOn = true;
+    medOn = true;
+    mealOn = true;
+    interpOn = true;
+    iptOn = true;
+    customOn = true;
+
+    toggleEquipReq();
+    toggleLabReq();
+    toggleMedReq();
+    toggleMealReq();
+    toggleInterpReq();
+    toggleIptReq();
+    toggleCustom();
+  }
+
   public void allIconsOn() {
     showAllLocs();
     showAllEquip();
+    showAllReqs();
   }
 
   public void allIconsOff() {
     hideAllLocs();
     hideAllEquip();
+    hideAllReqs();
   }
 }
