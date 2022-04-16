@@ -20,6 +20,8 @@ public class App extends Application {
     UIController.getInstance().goToPage("loginPage");
 
     primaryStage.setTitle("CS3733 Project");
+    primaryStage.setMinHeight(560);
+    primaryStage.setMinWidth(960);
     // primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
   }

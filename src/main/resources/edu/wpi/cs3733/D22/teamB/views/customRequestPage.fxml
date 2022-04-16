@@ -1,77 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+      <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/components/Background.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="r" fitHeight="540.0" fitWidth="105.0" layoutX="856.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="398.0" fitWidth="671.5" layoutX="144.5" layoutY="71.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Requests/CreateRequest/BackgroundElement.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="369.0" prefHeight="65.0" prefWidth="461.5" textFill="#7bcce4" />
-            <Label fx:id="charactersRemainingLabel" layoutX="716.0" layoutY="282.0" text="500 characters remaining" textFill="#7bcce4">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="7.0" />
-               </font>
-            </Label>
-            <JFXButton layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton layoutX="646.0" layoutY="365.0" onAction="#reset" text=" ">
-               <graphic>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Component%203%20–%205.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="submitButton" disable="true" layoutX="725.0" layoutY="365.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
-               <graphic>
-                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <TextArea fx:id="additionalInformationInput" layoutX="503.0" layoutY="110.0" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css">
+            <VBox layoutX="9.0" layoutY="34.0" prefHeight="200.0" prefWidth="73.0">
+               <children>
+                  <JFXButton onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <fx:include source="menu.fxml" />
+      <GridPane prefHeight="398.0" prefWidth="672.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="127.79999389648438" minHeight="0.0" prefHeight="37.39998168945313" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="53.40001831054687" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="112.59998779296876" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextArea fx:id="additionalInformationInput" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
-               </font></TextArea>
-            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="503.0" layoutY="307.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
-            <TextField fx:id="typeInput" layoutX="164.5" layoutY="290.0" prefHeight="50.0" prefWidth="293.0" promptText="Type" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-            <ComboBox fx:id="floorInput" layoutX="164.5" layoutY="110.0" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextArea>
+            <ComboBox fx:id="patientInput" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="3" />
+            <ComboBox fx:id="floorInput" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="1">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:id="5" fx:value="F5" />
@@ -84,23 +85,49 @@
                   </FXCollections>
                </items>
             </ComboBox>
-            <ComboBox fx:id="locationInput" layoutX="164.5" layoutY="170.0" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-            <ComboBox fx:id="patientInput" layoutX="164.5" layoutY="230.0" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-            <Label layoutX="-59.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Custom Request" textFill="#7bcce4">
+            <ComboBox fx:id="locationInput" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="2" />
+            <TextField fx:id="typeInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="295.0" promptText="Type" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" GridPane.rowIndex="4" />
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </JFXSlider>
+            <Label fx:id="charactersRemainingLabel" text="500 characters remaining" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <font>
-                  <Font name="Microsoft Sans Serif" size="30.0" />
+                  <Font name="Microsoft Sans Serif" size="7.0" />
                </font>
+               <GridPane.margin>
+                  <Insets right="25.0" />
+               </GridPane.margin>
             </Label>
-            <fx:include source="menu.fxml" />
-            <JFXButton layoutX="867.5" layoutY="125.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+            <JFXButton fx:id="submitButton" disable="true" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#reset" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                        <Image url="@../assets/components/xButton.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
+               </graphic>
+               <GridPane.margin>
+                  <Insets right="80.0" />
+               </GridPane.margin>
+            </JFXButton>
          </children>
-      </AnchorPane>
+      </GridPane>
+      <Label opacity="0.4" rotate="270.0" text="Custom Request" textFill="#7bcce4" AnchorPane.bottomAnchor="252.0" AnchorPane.leftAnchor="-59.0" AnchorPane.topAnchor="252.0">
+         <font>
+            <Font name="Microsoft Sans Serif" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="461.5" textFill="#7bcce4" />
    </children>
 </AnchorPane>
