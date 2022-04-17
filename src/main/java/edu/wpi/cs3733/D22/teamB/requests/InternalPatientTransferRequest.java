@@ -6,7 +6,7 @@ public class InternalPatientTransferRequest extends Request {
 
   public InternalPatientTransferRequest(
       String patientID, String locationID, String information, int priority) {
-    super(locationID, patientID, information, priority, "Internal Patient Transfer");
+    super(locationID, patientID, information, priority, "Patient Transfer");
     this.information =
         "Internal Patient Transfer Request from "
             + getPatient().getOverview()
@@ -21,6 +21,9 @@ public class InternalPatientTransferRequest extends Request {
       String employeeID,
       String locationID,
       String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -32,6 +35,9 @@ public class InternalPatientTransferRequest extends Request {
         employeeID,
         locationID,
         patientID,
+        null,
+        null,
+        null,
         type,
         status,
         priority,

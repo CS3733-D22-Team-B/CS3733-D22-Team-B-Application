@@ -68,7 +68,7 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "SERVICEREQUESTS")) {
         statement.execute(
-            "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE)");
+            "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), equipmentID VARCHAR(10), testType VARCHAR(50), testDate TIMESTAMP, type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT EQUIPMENT_FK foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID) ON DELETE CASCADE)");
         populateServiceRequestsDatabase();
       }
 
@@ -294,7 +294,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, patientID, type, status, priority, information, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, patientID, equipmentID, testType, testDate, type, status, priority, information, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader =
@@ -309,36 +309,66 @@ public class DatabaseInitializer {
         String employeeID = data[1];
         String locationID = data[2];
         String patientID = data[3];
-        String type = data[4];
-        String status = data[5];
-        String priority = data[6];
-        String information = data[7];
-        String timeCreated = data[8];
-        String lastEdited = data[9];
+        String equipmentID = data[4];
+        String testType = data[5];
+        String testDate = data[6];
+        String type = data[7];
+        String status = data[8];
+        String priority = data[9];
+        String information = data[10];
+        String timeCreated = data[11];
+        String lastEdited = data[12];
 
         statement.setString(1, requestID);
-        statement.setString(2, employeeID);
+
+        if (employeeID.compareTo("") != 0) {
+          statement.setString(2, employeeID);
+        } else {
+          statement.setString(2, null);
+        }
+
         if (locationID.compareTo("") != 0) {
           statement.setString(3, locationID);
         } else {
           statement.setString(3, null);
         }
+
         if (patientID.compareTo("") != 0) {
           statement.setString(4, patientID);
         } else {
           statement.setString(4, null);
         }
-        statement.setString(5, type);
-        statement.setString(6, status);
+
+        if (equipmentID.compareTo("") != 0) {
+          statement.setString(5, equipmentID);
+        } else {
+          statement.setString(5, null);
+        }
+
+        if (testType.compareTo("") != 0) {
+          statement.setString(6, testType);
+        } else {
+          statement.setString(6, null);
+        }
+
+        if (testDate.compareTo("") != 0) {
+          Timestamp sqlTimestamp1 = Timestamp.valueOf(testDate);
+          statement.setTimestamp(7, sqlTimestamp1);
+        } else {
+          statement.setTimestamp(7, null);
+        }
+
+        statement.setString(8, type);
+        statement.setString(9, status);
         int priorityInt = Integer.parseInt(priority);
-        statement.setInt(7, priorityInt);
-        statement.setString(8, information);
+        statement.setInt(10, priorityInt);
+        statement.setString(11, information);
 
-        Timestamp sqlTimestamp1 = Timestamp.valueOf(timeCreated);
-        statement.setTimestamp(9, sqlTimestamp1);
+        Timestamp sqlTimestamp2 = Timestamp.valueOf(timeCreated);
+        statement.setTimestamp(12, sqlTimestamp2);
 
-        Timestamp sqlTimestamp2 = Timestamp.valueOf(lastEdited);
-        statement.setTimestamp(10, sqlTimestamp2);
+        Timestamp sqlTimestamp3 = Timestamp.valueOf(lastEdited);
+        statement.setTimestamp(13, sqlTimestamp3);
 
         statement.executeUpdate();
       }

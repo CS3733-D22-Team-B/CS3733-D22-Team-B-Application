@@ -876,6 +876,7 @@ public class interactiveMapPageController extends MenuBarController {
     toEdit = null;
   }
 
+  /*
   public void filterLocs(LinkedList<Location> locList) {
     for (Location loc : locList) {
       for (String type : locFilterList) {
@@ -1023,4 +1024,6 @@ public class interactiveMapPageController extends MenuBarController {
       bathOn = true;
     }
   }
+
+   */
 }

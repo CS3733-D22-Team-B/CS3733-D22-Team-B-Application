@@ -37,11 +37,12 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
                 rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),
+                null,
+                null,
+                null,
                 rs.getString(6),
                 rs.getInt(7),
                 rs.getString(8),
-                rs.getString(9),
-                new java.util.Date(rs.getTimestamp(10).getTime()),
                 new java.util.Date(rs.getTimestamp(11).getTime()),
                 new java.util.Date(rs.getTimestamp(12).getTime()));
         labRequestMap.put(rs.getString(1), labReqObj);
@@ -153,13 +154,13 @@ public class LabRequestsDB extends DatabaseSuperclass implements IDatabases<LabR
 
       pStatement.setString(2 + offset, labReq.getEmployeeID());
       pStatement.setString(3 + offset, labReq.getPatientID());
-      pStatement.setString(4 + offset, labReq.getTestRoomID());
+      pStatement.setString(4 + offset, labReq.getLocationID());
       pStatement.setString(5 + offset, labReq.getType());
       pStatement.setString(6 + offset, labReq.getStatus());
       pStatement.setInt(7 + offset, labReq.getPriority());
       pStatement.setString(8 + offset, labReq.getInformation());
-      pStatement.setString(9 + offset, labReq.getTest());
-      pStatement.setTimestamp(10 + offset, new Timestamp(labReq.getDate().getTime()));
+      pStatement.setString(9 + offset, labReq.getTestType());
+      pStatement.setTimestamp(10 + offset, new Timestamp(labReq.getTestDate().getTime()));
       pStatement.setTimestamp(11 + offset, new Timestamp(labReq.getTimeCreated().getTime()));
       pStatement.setTimestamp(12 + offset, new Timestamp(labReq.getLastEdited().getTime()));
 
