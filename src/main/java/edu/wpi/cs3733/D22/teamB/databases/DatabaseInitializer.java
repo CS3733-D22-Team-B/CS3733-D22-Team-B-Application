@@ -71,6 +71,11 @@ public class DatabaseInitializer {
             "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), equipmentID VARCHAR(10), testType VARCHAR(50), testDate TIMESTAMP, type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT EQUIPMENT_FK foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID) ON DELETE CASCADE)");
         populateServiceRequestsDatabase();
       }
+      if (!tableExists(connection, "ACTIVITY")) {
+        statement.execute(
+            "CREATE TABLE Activity(time TIMESTAMP, employeeID VARCHAR(10), typeID VARCHAR(10), information VARCHAR(100), type VARCHAR(25), action VARCHAR(100), CONSTRAINT ACTIVITY_PK primary key (time), CONSTRAINT ACTIVITY_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE)");
+        populateActivityDatabase();
+      }
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
@@ -369,6 +374,64 @@ public class DatabaseInitializer {
 
         Timestamp sqlTimestamp3 = Timestamp.valueOf(lastEdited);
         statement.setTimestamp(13, sqlTimestamp3);
+
+        statement.executeUpdate();
+      }
+      lineReader.close();
+      connection.commit();
+      connection.close();
+
+    } catch (IOException ex) {
+      System.err.println(ex);
+
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+      try {
+        connection.rollback();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  public void populateActivityDatabase() {
+    Connection connection = null;
+    CSVReader reader = new CSVReader();
+    try {
+      connection = DriverManager.getConnection(DBURL);
+
+      String sql =
+          "INSERT INTO Activity (time, employeeID, typeID, information, type, action) VALUES (?, ?, ?, ?, ?, ?)";
+      PreparedStatement statement = connection.prepareStatement(sql);
+
+      BufferedReader lineReader = reader.read(Filepath.getInstance().getActivityCSVFilePath());
+      String lineText = null;
+
+      lineReader.readLine(); // skip header line
+
+      while ((lineText = lineReader.readLine()) != null) {
+        String[] data = lineText.split(",");
+        String time = data[0];
+        String employeeID = data[1];
+        String typeID = data[2];
+        String information = data[3];
+        String type = data[4];
+        String action = data[5];
+
+        Timestamp sqlTimestamp = Timestamp.valueOf(time);
+        statement.setTimestamp(1, sqlTimestamp);
+
+        statement.setString(2, employeeID);
+        statement.setString(3, typeID);
+
+        if (information.compareTo("") != 0) {
+          statement.setString(4, information);
+        } else {
+          statement.setString(4, null);
+        }
+
+        statement.setString(5, type);
+        statement.setString(6, action);
 
         statement.executeUpdate();
       }
