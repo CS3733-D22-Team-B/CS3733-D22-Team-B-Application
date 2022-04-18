@@ -17,6 +17,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 import javafx.util.Callback;
 
 public class RequestQueueController extends MenuBarController implements Initializable {
@@ -101,6 +103,8 @@ public class RequestQueueController extends MenuBarController implements Initial
           public TableCell<Request, Void> call(final TableColumn<Request, Void> param) {
             final TableCell<Request, Void> cell =
                 new TableCell<Request, Void>() {
+                  private final HBox hBox = new HBox();
+
                   private final Button requestViewerButton = new Button("View Request");
 
                   {
@@ -126,6 +130,9 @@ public class RequestQueueController extends MenuBarController implements Initial
                           otherAnchorPane.setVisible(false);
                           scrollPane.setVisible(true);
                         });
+
+                    hBox.getChildren().add(requestViewerButton);
+                    hBox.getChildren().add(new Circle(5));
                   }
 
                   @Override
@@ -134,7 +141,7 @@ public class RequestQueueController extends MenuBarController implements Initial
                     if (empty) {
                       setGraphic(null);
                     } else {
-                      setGraphic(requestViewerButton);
+                      setGraphic(hBox);
                       requestViewerButton.getStyleClass().add("simple-button");
                     }
                   }
