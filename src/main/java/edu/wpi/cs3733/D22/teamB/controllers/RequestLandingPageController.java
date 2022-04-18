@@ -3,7 +3,7 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 public class RequestLandingPageController extends MenuBarController {
   @FXML private JFXButton equipmentRequestButton;
@@ -13,7 +13,7 @@ public class RequestLandingPageController extends MenuBarController {
   @FXML private JFXButton interpreterRequestButton;
   @FXML private JFXButton internalPatientTransferButton;
   @FXML private JFXButton customRequestButton;
-  @FXML private AnchorPane uglyNamePane;
+  @FXML private GridPane uglyNamePane;
 
   @FXML
   public void toggleUglyNames(ActionEvent actionEvent) {
