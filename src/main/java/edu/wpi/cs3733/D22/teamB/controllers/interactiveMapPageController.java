@@ -514,7 +514,8 @@ public class interactiveMapPageController extends MenuBarController {
               building,
               nodeType,
               name,
-              name);
+              name,
+              true);
       // Pass new location into database
       dao.add(newLoc);
       endAdd();
@@ -876,6 +877,7 @@ public class interactiveMapPageController extends MenuBarController {
     toEdit = null;
   }
 
+  /*
   public void filterLocs(LinkedList<Location> locList) {
     for (Location loc : locList) {
       for (String type : locFilterList) {
@@ -1023,4 +1025,6 @@ public class interactiveMapPageController extends MenuBarController {
       bathOn = true;
     }
   }
+
+   */
 }

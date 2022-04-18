@@ -574,7 +574,8 @@ public class InteractiveMapController {
               building,
               nodeType,
               name,
-              name);
+              name,
+              true);
       // Pass new location into database
       dao.add(newLoc);
       endAdd();

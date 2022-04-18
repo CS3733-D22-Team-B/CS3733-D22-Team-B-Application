@@ -6,6 +6,7 @@ public class Patient {
   private String firstName;
   private String nodeID;
   private Location location;
+  private String information;
 
   public Patient(String lastName, String firstName, String nodeID) {
     this.lastName = lastName;
@@ -14,11 +15,17 @@ public class Patient {
     this.patientID = "PA" + getHashCode();
   }
 
-  public Patient(String newPatientID, String newLastName, String newFirstName, String newNodeID) {
+  public Patient(
+      String newPatientID,
+      String newLastName,
+      String newFirstName,
+      String newNodeID,
+      String newInformation) {
     setPatientID(newPatientID);
     setLastName(newLastName);
     setFirstName(newFirstName);
     setNodeID(newNodeID);
+    setInformation(newInformation);
   }
 
   public void setPatientID(String newPatientID) {
@@ -61,6 +68,14 @@ public class Patient {
     LocationsDB locDB = LocationsDB.getInstance();
     location = locDB.getByID(nodeID);
     return location;
+  }
+
+  public void setInformation(String information) {
+    this.information = information;
+  }
+
+  public String getInformation() {
+    return information;
   }
 
   public String getOverview() {

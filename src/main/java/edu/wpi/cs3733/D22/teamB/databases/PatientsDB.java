@@ -31,7 +31,12 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
         Patient patOb =
-            new Patient(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            new Patient(
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5));
         patientMap.put(rs.getString(1), patOb);
       }
     } catch (SQLException e) {
@@ -99,7 +104,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     }
     return transform(
         patObj,
-        "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ? WHERE patientID = ?",
+        "UPDATE Patients SET lastName = ?, firstName = ?, nodeID = ?, information = ? WHERE patientID = ?",
         true);
   }
 
@@ -107,7 +112,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     if (patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
-    return transform(patObj, "INSERT INTO Patients VALUES(?,?,?,?)", false);
+    return transform(patObj, "INSERT INTO Patients VALUES(?,?,?,?,?)", false);
   }
 
   public int delete(Patient patObj) {
@@ -127,7 +132,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(4, patObj.getPatientID());
+        pStatement.setString(5, patObj.getPatientID());
         offset = -1;
       } else {
         pStatement.setString(1, patObj.getPatientID());
@@ -136,6 +141,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
       pStatement.setString(2 + offset, patObj.getLastName());
       pStatement.setString(3 + offset, patObj.getFirstName());
       pStatement.setString(4 + offset, patObj.getNodeID());
+      pStatement.setString(5 + offset, patObj.getInformation());
 
       pStatement.addBatch();
       pStatement.executeBatch();
