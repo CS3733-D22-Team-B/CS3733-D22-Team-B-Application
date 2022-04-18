@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.util.Date;
+import java.util.Random;
 
 public abstract class Request {
   protected final String requestID;
@@ -166,11 +167,14 @@ public abstract class Request {
 
   // Josh Bloch's Hashing method
   protected final String getHashCode() {
+    Random generator = new Random();
+    double result = generator.nextDouble();
     // generate random value between 0 and 1 inclusive
-    double result = (Math.random() + 1) / 2.0;
+    // double result = (Math.random() + 1) / 2.0;
 
     // calculate the field component weights
-    long c = type.hashCode() + +((locationID == null) ? 0 : locationID.hashCode());
+    double c =
+        type.hashCode() * Math.random(); // + +((locationID == null) ? 0 : locationID.hashCode());
 
     // calculate the hash
     int hash = (int) (37 * result + c);

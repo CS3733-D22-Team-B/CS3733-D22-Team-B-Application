@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
@@ -151,6 +152,11 @@ public class RequestQueueController extends MenuBarController implements Initial
     currentRequest.setLastEdited(new Date());
 
     ServiceRequestsDB.getInstance().update(currentRequest);
+    if (currentRequest instanceof EquipmentRequest) {
+      EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
+      eqReq.updateMedicalEquipmentStatus();
+      AlertController alertController = new AlertController();
+    }
 
     scrollPane.setVisible(false);
     otherAnchorPane.setVisible(true);

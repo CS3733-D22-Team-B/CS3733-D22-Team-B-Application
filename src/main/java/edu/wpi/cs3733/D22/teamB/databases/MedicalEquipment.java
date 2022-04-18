@@ -89,6 +89,25 @@ public class MedicalEquipment {
     return name;
   }
 
+  public void moveToDirty() {
+    Location loc = getLocation();
+    String floor = loc.getFloor();
+
+    switch (floor) {
+      case "3":
+        this.setNodeID("bDIRT00103");
+        break;
+        //      case "4":
+        //        this.setNodeID("bDIRT00104");
+        //        break;
+        //      case "5":
+        //        this.setNodeID("bDIRT00105");
+        //        break;
+      default:
+        this.setNodeID("bDIRT00103");
+    }
+  }
+
   /////////////////// LOCATION GETTERS////////////////////
   public int getXCoord() {
     return location.getXCoord();
