@@ -112,6 +112,6 @@
       <Button layoutX="784.0" layoutY="35.0" mnemonicParsing="false" onAction="#toggleClientServer" prefHeight="26.0" prefWidth="163.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Client-Server Toggle" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="35.0" />
       <JFXButton layoutX="12.0" layoutY="503.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" AnchorPane.bottomAnchor="9.8" AnchorPane.leftAnchor="12.0" />
       <Button layoutX="822.0" layoutY="501.0" mnemonicParsing="false" onAction="#addStart" prefHeight="26.0" prefWidth="128.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Employee" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="12.0" />
-      <fx:include source="menu.fxml" />
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

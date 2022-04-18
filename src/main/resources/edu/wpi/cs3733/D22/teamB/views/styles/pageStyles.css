@@ -17,5 +17,10 @@
     -fx-background-color: #2e3c4b;
     -fx-border-radius: 10px;
     -fx-border-color: #7bcce4;
+}
+.container-box-2 {
+    -fx-background-color: #2e3c4b;
+    -fx-border-radius: 10px;
+    -fx-border-color: #7bcce4;
     -fx-opacity: .75;
 }

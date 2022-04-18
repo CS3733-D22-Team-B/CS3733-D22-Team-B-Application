@@ -42,6 +42,6 @@
             </ImageView>
          </children>
       </Pane>
-      <fx:include source="menu.fxml" />
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

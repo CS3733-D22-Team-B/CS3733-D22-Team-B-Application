@@ -40,6 +40,6 @@
          </children>
       </Pane>
       <TextArea fx:id="textArea" editable="false" layoutX="20.0" layoutY="50.0" opacity="0.85" prefHeight="446.0" prefWidth="298.0" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" wrapText="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="641.6" AnchorPane.topAnchor="50.0" />
-      <fx:include source="menu.fxml" />
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

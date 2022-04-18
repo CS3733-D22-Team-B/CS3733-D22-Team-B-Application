@@ -12,23 +12,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
-      <Pane layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-4.600000000000023" AnchorPane.topAnchor="0.0" />
-      <fx:include source="menu.fxml" />
+      <Pane layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children></Pane>
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label layoutX="7.0" layoutY="262.0" opacity="0.4" rotate="270.0" text="About" textFill="#7bcce4" AnchorPane.bottomAnchor="242.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="262.0">
          <font>
             <Font name="Microsoft Sans Serif" size="30.0" />
          </font>
       </Label>
-      <JFXButton focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" " AnchorPane.bottomAnchor="426.4" AnchorPane.rightAnchor="3.700000000000003" AnchorPane.topAnchor="20.0">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
       <VBox layoutX="112.0" layoutY="55.0" prefHeight="464.0" prefWidth="708.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="55.0">
          <children>
             <Label alignment="TOP_LEFT" prefHeight="39.0" prefWidth="616.0" text="Development Team: " textFill="#7bcce4" wrapText="true">
