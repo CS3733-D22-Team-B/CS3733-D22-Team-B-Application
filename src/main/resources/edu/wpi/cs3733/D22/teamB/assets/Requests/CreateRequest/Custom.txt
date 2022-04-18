@@ -1,0 +1,19 @@
+Name			Opacity		W	H		X	Y
+
+BackgroundElement	0.75		671.5	398		144.5	71
+Dropdown		0.75		293	50		164.5	110
+Dropdown		0.75		293	50		164.5	170
+Dropdown		0.75		293	50		164.5	230
+TextInput		0.75		293	50		164.5	290
+AdditionalNotes		0.75		293	170		503	110
+SliderBar		0.25		293	11		503	309.5
+Slider			0.75		30	30		716	300
+Message			0.75		461.5	65		164.5	365
+
+ResetButton		1		65	65		646	365
+AddButton		1		65	65		731	365
+
+SideBar			0.75		105	540		0	0
+SideBar			0.75		105	540		855	0
+MenuButton		1		65	65		875	20
+ReturnButton		1		65	65		875	105

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.LocationDataController">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="1068.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/components/Background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="91.0" layoutY="54.0" prefHeight="488.0" prefWidth="716.0">
+         <children>
+            <JFXButton layoutX="14.0" layoutY="449.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <TableView fx:id="locationTable" layoutX="-1.0" prefHeight="436.0" prefWidth="716.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
+              <columns>
+                <TableColumn fx:id="columnName" prefWidth="308.0" text="Location" />
+                <TableColumn fx:id="columnX" prefWidth="56.0" text="X" />
+                  <TableColumn fx:id="columnY" prefWidth="115.0" text="Y" />
+                  <TableColumn fx:id="columnFloor" prefWidth="67.0" text="Floor" />
+                  <TableColumn fx:id="columnBuilding" prefWidth="169.0" text="Building" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="downloadButton" layoutX="631.0" layoutY="449.0" onAction="#download" text="Download" />
+            <Label fx:id="errorLabel" layoutX="131.0" layoutY="453.0" prefHeight="17.0" prefWidth="283.0" textFill="#7bcce4" />
+            <TextField fx:id="downloadText" layoutX="482.0" layoutY="449.0" promptText="FIle Name" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" />
+         </children>
+      </AnchorPane>
+      <fx:include source="menu.fxml" />
+   </children>
+</AnchorPane>

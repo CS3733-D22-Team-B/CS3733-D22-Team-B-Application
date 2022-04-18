@@ -1,0 +1,16 @@
+*{
+    -fx-base: #cdcdcd;
+}
+
+.hidden-button {
+    -fx-base: transparent;
+    -fx-text-fill: black;
+}
+
+.simple-button {
+    -fx-text-fill: #7bcce4;
+    -fx-background-color: #4b7486;
+    -fx-border-color: #7bcce4;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}

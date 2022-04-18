@@ -1,0 +1,25 @@
+*{
+    -fx-base: #cdcdcd;
+}
+
+.jfx-slider > .track {
+    -fx-border-color: #7bcce4;
+    -fx-background-color: #4b7486;
+    -fx-pref-height: 5px;
+}
+.jfx-slider > .thumb {
+    -fx-border-color: #7bcce4;
+    -fx-background-color: #4b7486cf;
+    -fx-border-radius: 5px;
+}
+.jfx-slider > .colored-track {
+    -fx-border-color: #7bcce4;
+    -fx-background-color: #4b7486;
+    -fx-pref-height: 5px;
+}
+.jfx-slider > .axis {
+    -fx-tick-label-fill: #7bcce4;
+}
+.simple-slider {
+    -fx-base: #7bcce4;
+}
