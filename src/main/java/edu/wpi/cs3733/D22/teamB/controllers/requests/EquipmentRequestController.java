@@ -1,9 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequest;
-import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequestDB;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipmentDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -57,7 +54,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     String equipmentID = equDAO.getEquipmentID(equipment);
     EquipmentRequest request =
         new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
-    EquipmentRequestDB.getInstance().add(request);
+    ServiceRequestsDB.getInstance().add(request);
     request.getMedicalEquipment().setAvailability("Requested");
     requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }

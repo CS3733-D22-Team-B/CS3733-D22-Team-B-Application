@@ -62,10 +62,8 @@ public class LoginController {
     LocationsDB locDB = LocationsDB.getInstance();
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     PatientsDB patDB = PatientsDB.getInstance();
-    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
     EmployeesDB empDB = EmployeesDB.getInstance();
-    LabRequestsDB labReqDB = LabRequestsDB.getInstance();
-    // ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
+    ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
 
     // serReqDB.quit();
     //    labReqDB.quit();

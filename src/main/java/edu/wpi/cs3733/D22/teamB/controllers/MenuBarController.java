@@ -102,30 +102,17 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToLaundryPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("laundryRequestPage");
+  }
+
+  @FXML
   void goToDashboard(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("dashboard");
   }
 
   @FXML
   void quitApplication() {
-    LocationsDB locDB = LocationsDB.getInstance();
-    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
-    PatientsDB patDB = PatientsDB.getInstance();
-    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
-    EmployeesDB empDB = EmployeesDB.getInstance();
-    LabRequestsDB labReqDB = LabRequestsDB.getInstance();
-    ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
-    EdgesDB edgesDB = EdgesDB.getInstance();
-
-    //    serReqDB.quit();
-    //    labReqDB.quit();
-    //    eqReqDB.quit();
-    //    patDB.quit();
-    //    edgesDB.quit();
-    //    medEqDB.quit();
-    //    locDB.quit();
-    //    empDB.quit();
-
     System.exit(0);
   }
 

@@ -2,14 +2,14 @@ package edu.wpi.cs3733.D22.teamB.requests;
 
 import java.util.Date;
 
-public class InterpreterRequest extends Request {
+public class GiftRequest extends Request {
 
-  public InterpreterRequest(String locationID, String information, int priority) {
-    super(locationID, null, information, priority, "Interpreter");
+  public GiftRequest(String patientID, String information, int priority) {
+    super(null, patientID, information, priority, "Gift");
     this.information = information;
   }
 
-  public InterpreterRequest(
+  public GiftRequest(
       String requestID,
       String employeeID,
       String locationID,
@@ -26,8 +26,8 @@ public class InterpreterRequest extends Request {
     super(
         requestID,
         employeeID,
-        locationID,
         null,
+        patientID,
         null,
         null,
         null,
@@ -40,6 +40,6 @@ public class InterpreterRequest extends Request {
   }
 
   public final String createRequestID() {
-    return "INT" + getHashCode();
+    return "GIF" + getHashCode();
   }
 }

@@ -118,7 +118,7 @@ public class InteractiveMapController {
     }
     serviceIcons.clear();
     for (Request r : allRequests) {
-      if (r.getLocation() != null && !r.getStatus().equals("Completed")) {
+      if (r.getLocation() != null) {
         String floor = r.getLocation().getFloor();
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
       }
@@ -574,7 +574,8 @@ public class InteractiveMapController {
               building,
               nodeType,
               name,
-              name);
+              name,
+              true);
       // Pass new location into database
       dao.add(newLoc);
       endAdd();
