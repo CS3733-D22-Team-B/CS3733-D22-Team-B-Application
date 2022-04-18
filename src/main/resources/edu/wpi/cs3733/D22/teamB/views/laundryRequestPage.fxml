@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import java.lang.String?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.LaundryRequestController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -94,10 +94,10 @@
             <ComboBox fx:id="LaundryInput" layoutX="173.0" layoutY="185.0" onAction="#setLaundry" prefHeight="50.0" prefWidth="293.0" promptText="Laundry Type" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                      <String fx:id="REGULAR-WASH" fx:value="Regular-wash" />
+                      <String fx:id="REGULARWASH" fx:value="Regular-wash" />
                       <String fx:id="SPOTTING" fx:value="Spotting" />
-                      <String fx:id="DRY-CLEANING" fx:value="Dry-cleaning" />
-                      <String fx:id="HYPO-ALLERGENIC" fx:value="Hypo-allergenic" />
+                      <String fx:id="DRYCLEANING" fx:value="Dry-cleaning" />
+                      <String fx:id="HYPOALLERGENIC" fx:value="Hypo-allergenic" />
                   </FXCollections>
                </items>
             </ComboBox>

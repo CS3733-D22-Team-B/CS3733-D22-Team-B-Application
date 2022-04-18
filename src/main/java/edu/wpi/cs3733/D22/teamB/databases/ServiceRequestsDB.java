@@ -58,7 +58,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -75,7 +75,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -92,7 +92,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -109,7 +109,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -126,7 +126,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -143,7 +143,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -160,7 +160,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -177,7 +177,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -194,7 +194,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    null,
                     rs.getString(8),
                     rs.getString(9),
                     rs.getInt(10),
@@ -310,7 +310,9 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       pStatement.setString(4 + offset, reqObj.getPatientID());
       pStatement.setString(5 + offset, reqObj.getEquipmentID());
       pStatement.setString(6 + offset, reqObj.getTestType());
-      pStatement.setTimestamp(7 + offset, new Timestamp(reqObj.getTestDate().getTime()));
+      if (reqObj.getTestDate() != null) {
+        pStatement.setTimestamp(7 + offset, new Timestamp(reqObj.getTestDate().getTime()));
+      }
       pStatement.setString(8 + offset, reqObj.getType());
       pStatement.setString(9 + offset, reqObj.getStatus());
       pStatement.setInt(10 + offset, reqObj.getPriority());

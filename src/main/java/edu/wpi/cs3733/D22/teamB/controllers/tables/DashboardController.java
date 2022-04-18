@@ -11,8 +11,6 @@ import javafx.scene.control.TextArea;
 public class DashboardController extends MenuBarController {
   @FXML private TextArea textArea;
 
-  private EquipmentRequestDB equDAO;
-  private LabRequestsDB labDAO;
   private ServiceRequestsDB servDAO;
   private MedicalEquipmentDB medDAO;
   private PatientsDB patientDAO;
@@ -40,69 +38,9 @@ public class DashboardController extends MenuBarController {
       patientsLL2 = new LinkedList<>();
 
   public void initialize() {
-    equDAO = EquipmentRequestDB.getInstance();
-    labDAO = LabRequestsDB.getInstance();
     servDAO = ServiceRequestsDB.getInstance();
     medDAO = MedicalEquipmentDB.getInstance();
     patientDAO = PatientsDB.getInstance();
-
-    for (EquipmentRequest equipmentRequest : equDAO.list()) {
-      Location equipmentRequestLocation = equipmentRequest.getLocation();
-      if (equipmentRequestLocation != null) {
-        switch (equipmentRequestLocation.getFloor()) {
-          case "1":
-            requestsF1.add(equipmentRequest.getRequestID());
-            break;
-          case "2":
-            requestsF2.add(equipmentRequest.getRequestID());
-            break;
-          case "3":
-            requestsF3.add(equipmentRequest.getRequestID());
-            break;
-          case "4":
-            requestsF4.add(equipmentRequest.getRequestID());
-            break;
-          case "5":
-            requestsF5.add(equipmentRequest.getRequestID());
-            break;
-          case "L1":
-            requestsLL1.add(equipmentRequest.getRequestID());
-            break;
-          case "L2":
-            requestsLL2.add(equipmentRequest.getRequestID());
-            break;
-        }
-      }
-    }
-
-    for (LabRequest labRequest : labDAO.list()) {
-      Location labRequestLocation = labRequest.getLocation();
-      if (labRequestLocation != null) {
-        switch (labRequestLocation.getFloor()) {
-          case "1":
-            requestsF1.add(labRequest.getRequestID());
-            break;
-          case "2":
-            requestsF2.add(labRequest.getRequestID());
-            break;
-          case "3":
-            requestsF3.add(labRequest.getRequestID());
-            break;
-          case "4":
-            requestsF4.add(labRequest.getRequestID());
-            break;
-          case "5":
-            requestsF5.add(labRequest.getRequestID());
-            break;
-          case "L1":
-            requestsLL1.add(labRequest.getRequestID());
-            break;
-          case "L2":
-            requestsLL2.add(labRequest.getRequestID());
-            break;
-        }
-      }
-    }
 
     for (Request serviceRequest : servDAO.list()) {
       Location serviceRequestLocation = serviceRequest.getLocation();
