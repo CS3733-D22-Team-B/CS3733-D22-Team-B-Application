@@ -5,7 +5,7 @@ import java.util.Date;
 public class GiftRequest extends Request {
 
   public GiftRequest(String patientID, String information, int priority) {
-    super(null, patientID, information, priority, "GIFT");
+    super(null, patientID, information, priority, "Gift");
     this.information = information;
   }
 
@@ -14,6 +14,9 @@ public class GiftRequest extends Request {
       String employeeID,
       String locationID,
       String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -25,6 +28,9 @@ public class GiftRequest extends Request {
         employeeID,
         null,
         patientID,
+        null,
+        null,
+        null,
         type,
         status,
         priority,

@@ -5,7 +5,7 @@ import java.util.Date;
 public class LaundryRequest extends Request {
 
   public LaundryRequest(String patientID, String information, int priority) {
-    super(null, patientID, information, priority, "LAUNDRY");
+    super(null, patientID, information, priority, "Laundry");
     this.information = information;
   }
 
@@ -14,6 +14,9 @@ public class LaundryRequest extends Request {
       String employeeID,
       String locationID,
       String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -25,6 +28,9 @@ public class LaundryRequest extends Request {
         employeeID,
         null,
         patientID,
+        null,
+        null,
+        null,
         type,
         status,
         priority,

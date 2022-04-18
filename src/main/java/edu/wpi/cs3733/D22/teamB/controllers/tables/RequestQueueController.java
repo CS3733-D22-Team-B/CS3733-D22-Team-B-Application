@@ -80,12 +80,6 @@ public class RequestQueueController extends MenuBarController implements Initial
       }
     }
 
-    for (EquipmentRequest request : EquipmentRequestDB.getInstance().list()) {
-      requests.add(request);
-    }
-    for (LabRequest request : LabRequestsDB.getInstance().list()) {
-      requests.add(request);
-    }
     for (Request request : ServiceRequestsDB.getInstance().list()) {
       requests.add(request);
     }
@@ -163,13 +157,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     employeeInput.setDisable(true);
     currentRequest.setLastEdited(new Date());
 
-    if (currentRequest instanceof EquipmentRequest) {
-      EquipmentRequestDB.getInstance().update((EquipmentRequest) currentRequest);
-    } else if (currentRequest instanceof LabRequest) {
-      LabRequestsDB.getInstance().update((LabRequest) currentRequest);
-    } else {
-      ServiceRequestsDB.getInstance().update(currentRequest);
-    }
+    ServiceRequestsDB.getInstance().update(currentRequest);
 
     scrollPane.setVisible(false);
     otherAnchorPane.setVisible(true);
@@ -185,9 +173,6 @@ public class RequestQueueController extends MenuBarController implements Initial
     if (downloadText.getText().equals("")) {
       errorLabel.setText("Please enter filename");
     } else {
-      EquipmentRequestDB.getInstance()
-          .downloadCSV(downloadText.getText() + " - Equipment Requests");
-      LabRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Lab Requests");
       ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
       errorLabel.setText("Files downloaded");
     }

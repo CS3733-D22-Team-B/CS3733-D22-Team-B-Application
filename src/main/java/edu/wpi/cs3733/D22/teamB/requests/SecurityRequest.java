@@ -5,7 +5,7 @@ import java.util.Date;
 public class SecurityRequest extends Request {
 
   public SecurityRequest(String locationID, String information, int priority) {
-    super(locationID, null, information, priority, "SECURITY");
+    super(locationID, null, information, priority, "Security");
     this.information = information;
   }
 
@@ -14,6 +14,9 @@ public class SecurityRequest extends Request {
       String employeeID,
       String locationID,
       String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -25,6 +28,9 @@ public class SecurityRequest extends Request {
         employeeID,
         locationID,
         patientID,
+        null,
+        null,
+        null,
         type,
         status,
         priority,
