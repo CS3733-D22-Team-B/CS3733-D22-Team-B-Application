@@ -89,6 +89,10 @@ public class MedicalEquipment {
     return name;
   }
 
+  public String getStatus() {
+    return availability + " \u2022 " + ((isClean) ? "Clean" : "Dirty");
+  }
+
   /////////////////// LOCATION GETTERS////////////////////
   public int getXCoord() {
     return location.getXCoord();
