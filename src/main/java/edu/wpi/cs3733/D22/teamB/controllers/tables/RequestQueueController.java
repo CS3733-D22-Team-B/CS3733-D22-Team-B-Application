@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.DateHelper;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
@@ -84,12 +85,17 @@ public class RequestQueueController extends MenuBarController implements Initial
     requestTable.setItems(requests);
     addButtonToTable();
 
-    informationInput.textProperty().addListener((observable, oldValue, newValue) -> {
-        if (newValue.length() > 500) {
-            informationInput.setText(oldValue);
-        }
-        charactersRemainingLabel.setText(String.valueOf(500 - informationInput.getText().length()) + " characters remaining");
-    });
+    informationInput
+        .textProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (newValue.length() > 500) {
+                informationInput.setText(oldValue);
+              }
+              charactersRemainingLabel.setText(
+                  String.valueOf(500 - informationInput.getText().length())
+                      + " characters remaining");
+            });
   }
 
   private void addButtonToTable() {
@@ -115,8 +121,8 @@ public class RequestQueueController extends MenuBarController implements Initial
                           currentRequest = request;
 
                           requestIDText.setText(request.getRequestID());
-                          creationText.setText(request.getTimeCreated().toString());
-                          editText.setText(request.getLastEdited().toString());
+                          creationText.setText(DateHelper.stringify(request.getTimeCreated()));
+                          editText.setText(DateHelper.stringify(request.getLastEdited()));
                           employeeText.setText(request.getEmployee().getOverview());
                           statusText.setText(request.getStatus());
                           informationText.setText(request.getInformation());
@@ -137,7 +143,8 @@ public class RequestQueueController extends MenuBarController implements Initial
                           informationInput.setText(request.getInformation());
                         });
 
-                    hBox.getChildren().addAll(requestViewerButton, requestEditButton, requestDeleteButton);
+                    hBox.getChildren()
+                        .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
                   }
 
                   @Override
