@@ -58,11 +58,14 @@ public class DatabaseInitializer {
             "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), equipmentID VARCHAR(10), testType VARCHAR(50), testDate TIMESTAMP, type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT EQUIPMENT_FK foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID) ON DELETE CASCADE)");
         populateServiceRequestsDatabase();
       }
+      /*
       if (!tableExists(connection, "ACTIVITY")) {
         statement.execute(
-            "CREATE TABLE Activity(time TIMESTAMP, employeeID VARCHAR(10), typeID VARCHAR(10), information VARCHAR(100), type VARCHAR(25), action VARCHAR(100), CONSTRAINT ACTIVITY_PK primary key (time), CONSTRAINT ACTIVITY_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE)");
+            "CREATE TABLE Activity(activityID VARCHAR(10), time TIMESTAMP, employeeID VARCHAR(10), typeID VARCHAR(10), information VARCHAR(100), type VARCHAR(25), action VARCHAR(100), CONSTRAINT ACTIVITY_PK primary key (time), CONSTRAINT ACTIVITY_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE)");
         populateActivityDatabase();
       }
+
+       */
 
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");

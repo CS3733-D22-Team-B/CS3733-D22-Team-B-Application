@@ -10,7 +10,7 @@ public class EquipmentRequest extends Request {
     this.equipmentID = equipmentID;
     setMedicalEquipment();
     this.information =
-        "Equipment Request: " + getEquipmentID() + "\nAdditional Information: " + information;
+        "Equipment Request: " + getEquipmentID() + " Additional Information: " + information;
     medicalEquipment = getMedicalEquipment();
   }
 
@@ -46,7 +46,7 @@ public class EquipmentRequest extends Request {
     medicalEquipment = getMedicalEquipment();
   }
 
-  public final String createRequestID() {
+  public String createRequestID() {
     return "EQU" + getHashCode();
   }
 

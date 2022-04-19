@@ -129,7 +129,8 @@ public class DateHelper {
     String second = csvDate.substring(17, 19);
     String millisecond = csvDate.substring(20);
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss.S", Locale.ENGLISH);
+    DateTimeFormatter formatter =
+        DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss.SSS", Locale.ENGLISH);
     LocalDateTime date = LocalDateTime.parse(csvDate, formatter);
 
     return date.toString();
