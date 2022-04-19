@@ -32,6 +32,8 @@ public class Controller implements Initializable {
 
   @FXML private Button startButton;
 
+  @FXML Button goToHomepage;
+
   private int StartSizePaddle = 650;
 
   Robot robot = new Robot();
