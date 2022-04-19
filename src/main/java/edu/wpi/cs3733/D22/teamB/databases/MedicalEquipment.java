@@ -110,6 +110,7 @@ public class MedicalEquipment {
       default:
         this.setNodeID("bDIRT00103");
     }
+  }
 
   public String getStatus() {
     return availability + " \u2022 " + ((isClean) ? "Clean" : "Dirty");

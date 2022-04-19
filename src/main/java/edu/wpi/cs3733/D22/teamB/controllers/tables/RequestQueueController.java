@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
-import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.DateHelper;
+import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
