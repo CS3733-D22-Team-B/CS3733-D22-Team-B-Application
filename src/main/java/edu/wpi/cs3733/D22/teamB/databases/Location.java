@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import java.util.LinkedList;
+
 public class Location {
   private String nodeID;
   private int xCoord;
@@ -10,6 +12,8 @@ public class Location {
   private String longName;
   private String shortName;
   private boolean availability;
+
+  private LinkedList<MedicalEquipment> equipmentList;
 
   public Location(
       String nodeID,
@@ -102,5 +106,12 @@ public class Location {
 
   public boolean getAvailability() {
     return availability;
+  }
+
+  public LinkedList<MedicalEquipment> getEquipmentList() {
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
+    equipmentList = medEqDB.listByAttribute("nodeID", getNodeID());
+
+    return equipmentList;
   }
 }

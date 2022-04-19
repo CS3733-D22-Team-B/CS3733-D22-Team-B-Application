@@ -63,6 +63,10 @@ public class MedicalEquipment {
 
   public void setIsClean(boolean newIsClean) {
     isClean = newIsClean;
+    this.setAvailability("Unavailable");
+    if (newIsClean == false) {
+      this.moveToDirty();
+    }
   }
 
   public boolean getIsClean() {
@@ -88,6 +92,24 @@ public class MedicalEquipment {
   public String getName() {
     return name;
   }
+
+  public void moveToDirty() {
+    Location loc = getLocation();
+    String floor = loc.getFloor();
+
+    switch (floor) {
+      case "3":
+        this.setNodeID("bDIRT00103");
+        break;
+      case "4":
+        this.setNodeID("bDIRT00104");
+        break;
+      case "5":
+        this.setNodeID("bDIRT00105");
+        break;
+      default:
+        this.setNodeID("bDIRT00103");
+    }
 
   public String getStatus() {
     return availability + " \u2022 " + ((isClean) ? "Clean" : "Dirty");

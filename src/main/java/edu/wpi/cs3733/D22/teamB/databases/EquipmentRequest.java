@@ -61,6 +61,17 @@ public class EquipmentRequest extends Request {
     return medicalEquipment;
   }
 
+  public void updateMedicalEquipmentStatus() {
+    MedicalEquipment medEq = getMedicalEquipment();
+    if (this.status.equals("Completed")) {
+      medEq.setIsClean(false);
+      medEq.setAvailability("Unavailable");
+      medEq.moveToDirty();
+      DatabaseController DC = DatabaseController.getInstance();
+      DC.update(medEq);
+    }
+  }
+
   /////////////////// EMPLOYEE GETTERS////////////////////
   public String getLastName() {
     return employee.getLastName();
