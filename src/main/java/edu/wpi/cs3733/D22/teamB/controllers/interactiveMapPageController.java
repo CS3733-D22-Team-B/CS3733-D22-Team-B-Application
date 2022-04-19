@@ -190,11 +190,14 @@ public class interactiveMapPageController extends MenuBarController {
             Dragboard db = event.getDragboard();
             int newX = (int) event.getX();
             int newY = (int) event.getY();
+
+            int[] converted = imageCoordsToCSVCoords(newX, newY);
+
             String locName = db.getString();
             LinkedList<Location> correctLoc = dao.listByAttribute("longName", locName);
             Location toEdit = correctLoc.pop();
-            toEdit.setXCoord(newX);
-            toEdit.setYCoord(newY);
+            toEdit.setXCoord(converted[0]);
+            toEdit.setYCoord(converted[1]);
             dao.update(toEdit);
             setRoomIcons();
           }
@@ -325,10 +328,11 @@ public class interactiveMapPageController extends MenuBarController {
             }
           }
         });
-    icon.setLayoutX(viewCoords[0] - 5);
-    icon.setLayoutY(viewCoords[1] - 5);
+    //    icon.setLayoutX(viewCoords[0]);
+    //    icon.setLayoutY(viewCoords[1]);
     mapPane.getChildren().add(icon);
     roomIcons.add(icon);
+    icon.relocate(viewCoords[0], viewCoords[1]);
   }
 
   public void setEquipIcons() {
@@ -401,9 +405,9 @@ public class interactiveMapPageController extends MenuBarController {
           toggleEquipPane(eq);
         });
 
-    icon.setLayoutX(viewCoords[0]);
-    icon.setLayoutY(viewCoords[1]);
     mapPane.getChildren().add(icon);
+    icon.setLayoutY(viewCoords[1]);
+    icon.setLayoutX(viewCoords[0]);
     equipIcons.add(icon);
   }
 
@@ -497,31 +501,24 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public int[] mapCoordsToViewCoords(int x, int y) {
-    int mapWidth = 1060;
-    int mapHeight = 930;
+    double mapWidth = 1060;
+    double mapHeight = 930;
     int fitWidth = (int) mapImage.getFitWidth();
     int fitHeight = (int) mapImage.getFitHeight();
-    int xOffset = (int) mapImage.getLayoutX() + (mapWidth / fitWidth);
-    int yOffset = (int) mapImage.getLayoutY() + (mapHeight / fitHeight);
-
-    int xView = (fitWidth * x) / mapWidth + xOffset;
-    int yView = (fitHeight * y) / mapHeight + yOffset;
-
-    return new int[] {xView, yView};
+    double xView = ((x / mapWidth) * fitWidth);
+    double yView = ((y / mapHeight) * fitHeight);
+    return new int[] {(int) xView, (int) yView};
   }
 
   public int[] imageCoordsToCSVCoords(int x, int y) {
     int mapWidth = 1060;
     int mapHeight = 930;
-    int fitWidth = (int) mapImage.getFitWidth();
-    int fitHeight = (int) mapImage.getFitHeight();
-    int xOffset = (int) mapImage.getLayoutX() + (mapWidth / fitWidth);
-    int yOffset = (int) mapImage.getLayoutY() + (mapHeight / fitHeight);
+    double fitWidth = mapImage.getFitWidth();
+    double fitHeight = mapImage.getFitHeight();
+    double xCSV = ((x / fitWidth) * mapWidth);
+    double yCSV = ((y / fitHeight) * mapHeight);
 
-    int xCSV = mapWidth * (x - xOffset) / fitWidth + 40;
-    int yCSV = mapHeight * (y - yOffset) / fitHeight + 100;
-
-    return new int[] {xCSV, yCSV};
+    return new int[] {(int) xCSV, (int) yCSV};
   }
 
   public void resetFloorSelectors() {
@@ -618,9 +615,9 @@ public class interactiveMapPageController extends MenuBarController {
     if (!typeDropdown.getValue().equals("")
         && mapPane.getChildren().contains(marker)
         && !locationName.getText().equals("")) {
-      int markerCoordX = (int) marker.getLayoutX();
-      int markerCoordY = (int) marker.getLayoutY();
-      int[] newCoords = imageCoordsToCSVCoords((int) markerCoordX, (int) markerCoordY);
+      int markerCoordX = (int) marker.getLayoutX() + 2;
+      int markerCoordY = (int) marker.getLayoutY() + 2;
+      int[] newCoords = imageCoordsToCSVCoords(markerCoordX, markerCoordY);
       String nodeType = typeDropdown.getValue();
       String nodeID = dao.getNextID(floorString, nodeType);
       String name = locationName.getText();
@@ -628,8 +625,8 @@ public class interactiveMapPageController extends MenuBarController {
       Location newLoc =
           new Location(
               nodeID,
-              newCoords[0] - 20,
-              newCoords[1] - 50,
+              newCoords[0],
+              newCoords[1],
               floorString,
               building,
               nodeType,

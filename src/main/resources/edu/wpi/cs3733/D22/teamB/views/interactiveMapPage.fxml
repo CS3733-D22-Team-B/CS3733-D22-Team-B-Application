@@ -15,9 +15,9 @@
    <children>
       <AnchorPane layoutX="212.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="623.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="124.79999999999995" AnchorPane.topAnchor="20.0">
          <children>
-            <Pane fx:id="mapPane" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="623.0">
+            <Pane fx:id="mapPane" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="633.0">
                <children>
-                  <ImageView fx:id="mapImage" fitHeight="670.0" fitWidth="711.0" layoutX="-24.0" layoutY="-60.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="mapImage" fitHeight="633.0" fitWidth="633.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/mapAssets/Floor1.png" />
                      </image>
@@ -108,7 +108,7 @@
             <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="34.0" layoutY="148.0" prefHeight="26.0" prefWidth="110.0" promptText="Availability" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
             <JFXButton fx:id="confirmButton" focusTraversable="false" layoutX="89.0" layoutY="420.0" onAction="#confirmChanges" prefHeight="73.0" prefWidth="50.0" text=" ">
                <graphic>
-                  <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/mapAssets/Add.png" />
                      </image>
