@@ -42,6 +42,7 @@
         <Menu mnemonicParsing="false" text="Help">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#goToAboutPage" text="About" />
+                <MenuItem mnemonicParsing="false" onAction="#goToCovidPage" text="COVID Info" />
                 <MenuItem mnemonicParsing="false" onAction="#amongUsButton" text="ඞ" />
             </items>
         </Menu>
