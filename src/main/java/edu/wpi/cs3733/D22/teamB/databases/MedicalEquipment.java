@@ -64,8 +64,10 @@ public class MedicalEquipment {
   public void setIsClean(boolean newIsClean) {
     isClean = newIsClean;
     this.setAvailability("Unavailable");
-    if (newIsClean == false) {
+    if (!newIsClean) {
       this.moveToDirty();
+    } else {
+      this.moveToClean();
     }
   }
 
@@ -109,6 +111,25 @@ public class MedicalEquipment {
         break;
       default:
         this.setNodeID("bDIRT00103");
+    }
+  }
+
+  public void moveToClean() {
+    Location loc = getLocation();
+    String floor = loc.getFloor();
+
+    switch (floor) {
+      case "3":
+        this.setNodeID("bSTOR00103");
+        break;
+      case "4":
+        this.setNodeID("bSTOR00104");
+        break;
+      case "5":
+        this.setNodeID("bSTOR00105");
+        break;
+      default:
+        this.setNodeID("bSTOR00103");
     }
   }
 
