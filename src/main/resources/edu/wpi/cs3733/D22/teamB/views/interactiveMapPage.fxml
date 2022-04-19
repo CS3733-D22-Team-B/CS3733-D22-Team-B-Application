@@ -106,7 +106,7 @@
                </opaqueInsets>
             </JFXComboBox>
             <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="34.0" layoutY="148.0" prefHeight="26.0" prefWidth="110.0" promptText="Availability" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
-            <JFXButton fx:id="confirmButton" focusTraversable="false" layoutX="89.0" layoutY="420.0" onAction="#confirmChanges" prefHeight="73.0" prefWidth="50.0" text=" ">
+            <JFXButton fx:id="confirmButton" focusTraversable="false" layoutX="89.0" layoutY="420.0" onAction="#confirmChanges" prefHeight="73.0" prefWidth="50.0" text=" " visible="false">
                <graphic>
                   <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -248,7 +248,11 @@
             <JFXButton fx:id="meal" layoutX="97.0" layoutY="351.0" onAction="#toggleMealReq" text="Meal" textFill="WHITE" />
             <JFXButton fx:id="interp" layoutX="16.0" layoutY="376.0" onAction="#toggleInterpReq" text="Interpreter" textFill="WHITE" />
             <JFXButton fx:id="ipt" layoutX="102.0" layoutY="376.0" onAction="#toggleIptReq" text="IPT" textFill="WHITE" />
-            <JFXButton fx:id="custom" layoutX="53.0" layoutY="401.0" onAction="#toggleCustom" text="Custom" textFill="WHITE" />
+            <JFXButton fx:id="custom" layoutX="47.0" layoutY="451.0" onAction="#toggleCustom" text="Custom" textFill="WHITE" />
+            <JFXButton fx:id="laund" layoutX="18.0" layoutY="401.0" onAction="#toggleLaundReq" text="Laundry" textFill="WHITE" />
+            <JFXButton fx:id="sec" layoutX="89.0" layoutY="401.0" onAction="#toggleSecReq" text="Security" textFill="WHITE" />
+            <JFXButton fx:id="gift" layoutX="35.0" layoutY="426.0" onAction="#toggleGiftReq" text="Gift" textFill="WHITE" />
+            <JFXButton fx:id="san" layoutX="85.0" layoutY="426.0" onAction="#toggleSanReq" text="Sanitation" textFill="WHITE" />
          </children>
       </Pane>
    </children>

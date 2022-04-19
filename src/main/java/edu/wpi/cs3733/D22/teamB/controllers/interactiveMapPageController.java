@@ -84,6 +84,10 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton interp;
   @FXML JFXButton ipt;
   @FXML JFXButton custom;
+  @FXML JFXButton laund;
+  @FXML JFXButton sec;
+  @FXML JFXButton gift;
+  @FXML JFXButton san;
 
   protected LocationsDB dao;
   protected MedicalEquipmentDB edao;
@@ -135,6 +139,10 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean interpOn = true;
   private Boolean iptOn = true;
   private Boolean customOn = true;
+  private Boolean laundOn = true;
+  private Boolean secOn = true;
+  private Boolean giftOn = true;
+  private Boolean sanOn = true;
 
   private MedicalEquipment toEdit;
 
@@ -1361,13 +1369,13 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleEquipReq() {
     if (eqReqOn) {
-      if (!requestFilterList.contains("Equipment Request"))
-        requestFilterList.add("Equipment Request");
+      if (!requestFilterList.contains("Equipment Delivery"))
+        requestFilterList.add("Equipment Delivery");
       equip.setTextFill(Color.DARKGREY);
       eqReqOn = false;
     } else {
       equip.setTextFill(Color.WHITE);
-      requestFilterList.remove("Equipment Request");
+      requestFilterList.remove("Equipment Delivery");
       eqReqOn = true;
     }
     setServiceIcons();
@@ -1438,6 +1446,58 @@ public class interactiveMapPageController extends MenuBarController {
     setServiceIcons();
   }
 
+  public void toggleLaundReq() {
+    if (laundOn) {
+      if (!requestFilterList.contains("Laundry")) requestFilterList.add("Laundry");
+      ipt.setTextFill(Color.DARKGREY);
+      laundOn = false;
+    } else {
+      ipt.setTextFill(Color.WHITE);
+      requestFilterList.remove("Laundry");
+      laundOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleSecReq() {
+    if (secOn) {
+      if (!requestFilterList.contains("Security")) requestFilterList.add("Security");
+      sec.setTextFill(Color.DARKGREY);
+      secOn = false;
+    } else {
+      sec.setTextFill(Color.WHITE);
+      requestFilterList.remove("Security");
+      secOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleGiftReq() {
+    if (giftOn) {
+      if (!requestFilterList.contains("Gift")) requestFilterList.add("Gift");
+      gift.setTextFill(Color.DARKGREY);
+      giftOn = false;
+    } else {
+      gift.setTextFill(Color.WHITE);
+      requestFilterList.remove("Gift");
+      giftOn = true;
+    }
+    setServiceIcons();
+  }
+
+  public void toggleSanReq() {
+    if (sanOn) {
+      if (!requestFilterList.contains("Sanitation")) requestFilterList.add("Sanitation");
+      san.setTextFill(Color.DARKGREY);
+      sanOn = false;
+    } else {
+      san.setTextFill(Color.WHITE);
+      requestFilterList.remove("Sanitation");
+      sanOn = true;
+    }
+    setServiceIcons();
+  }
+
   public void toggleCustom() {
     if (customOn) {
       custom.setTextFill(Color.DARKGREY);
@@ -1457,6 +1517,10 @@ public class interactiveMapPageController extends MenuBarController {
     interpOn = false;
     iptOn = false;
     customOn = false;
+    laundOn = false;
+    secOn = false;
+    giftOn = false;
+    sanOn = false;
 
     toggleEquipReq();
     toggleLabReq();
@@ -1465,6 +1529,10 @@ public class interactiveMapPageController extends MenuBarController {
     toggleInterpReq();
     toggleIptReq();
     toggleCustom();
+    toggleLaundReq();
+    toggleSecReq();
+    toggleGiftReq();
+    toggleSanReq();
   }
 
   public void hideAllReqs() {
@@ -1475,6 +1543,10 @@ public class interactiveMapPageController extends MenuBarController {
     interpOn = true;
     iptOn = true;
     customOn = true;
+    laundOn = true;
+    secOn = true;
+    giftOn = true;
+    sanOn = true;
 
     toggleEquipReq();
     toggleLabReq();
@@ -1483,6 +1555,10 @@ public class interactiveMapPageController extends MenuBarController {
     toggleInterpReq();
     toggleIptReq();
     toggleCustom();
+    toggleLaundReq();
+    toggleSecReq();
+    toggleGiftReq();
+    toggleSanReq();
   }
 
   public void allIconsOn() {
