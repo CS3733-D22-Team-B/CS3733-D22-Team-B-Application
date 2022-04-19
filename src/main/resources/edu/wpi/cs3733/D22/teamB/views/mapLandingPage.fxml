@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapLandingPageController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MapLandingPageController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+      <Pane layoutX="865.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/components/Background.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-               </image>
-            </ImageView>
-            <fx:include source="menu.fxml" />
-            <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage">
+            <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="12.0" layoutY="44.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="dashboardButton" contentDisplay="TOP" focusTraversable="false" layoutX="210.0" layoutY="151.0" onAction="#goToDashboard" prefHeight="238.0" prefWidth="250.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Dashboard">
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox layoutX="183.0" layoutY="149.0" prefHeight="242.0" prefWidth="594.0" spacing="90.0">
+         <children>
+            <JFXButton fx:id="dashboardButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToDashboard" prefHeight="238.0" prefWidth="250.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Dashboard">
                <graphic>
                   <ImageView fitHeight="189.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -45,7 +39,7 @@
                   <Font name="Microsoft Sans Serif" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="mapButton" contentDisplay="TOP" focusTraversable="false" layoutX="500.0" layoutY="151.0" onAction="#goToMap" prefHeight="238.0" prefWidth="250.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Map Editor">
+            <JFXButton fx:id="mapButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToMap" prefHeight="238.0" prefWidth="250.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Map Editor">
                <graphic>
                   <ImageView fitHeight="189.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,6 +52,6 @@
                </font>
             </JFXButton>
          </children>
-      </AnchorPane>
+      </HBox>
    </children>
 </AnchorPane>

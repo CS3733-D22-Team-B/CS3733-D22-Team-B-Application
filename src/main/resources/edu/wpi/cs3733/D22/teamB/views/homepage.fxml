@@ -110,6 +110,5 @@
             <Font name="Microsoft Sans Serif" size="30.0" />
          </font>
       </Label>
-      <JFXButton fx:id="game" layoutX="891.0" layoutY="467.0" onAction="#goToGame" text="game" />
    </children>
 </AnchorPane>
