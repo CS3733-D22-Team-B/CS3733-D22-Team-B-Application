@@ -21,6 +21,13 @@
     -fx-border-radius: 10px;
     -fx-border-width: 2.5px;
 }
+
+.request-queue-text-area {
+    -fx-border-color: #7bcce4;
+    -fx-background-color: #2e3c4b;
+    -fx-border-width: 1px;
+}
+
 .simple-text-area {
     -fx-border-color: #7bcce4;
 }

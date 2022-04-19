@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
 import com.jfoenix.controls.JFXButton;
@@ -68,7 +67,6 @@ public class interactiveMapPageController extends MenuBarController {
   private LinkedList<SVGPath> equipIcons;
   private LinkedList<SVGPath> serviceIcons;
   private LinkedList<Location> floorLocations;
-  private LinkedList<String> locFilterList = new LinkedList<String>();
 
   private SVGPath marker = new SVGPath();
 
@@ -78,21 +76,6 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean deleteEnabled = false;
   private Boolean editEquipEnabled = false;
   private Boolean equipPaneVisible = false;
-
-  private Boolean bathOn = true;
-  private Boolean deptOn = true;
-  private Boolean dirtOn = true;
-  private Boolean elevOn = true;
-  private Boolean exitOn = true;
-  private Boolean hallOn = true;
-  private Boolean infoOn = true;
-  private Boolean labsOn = true;
-  private Boolean patiOn = true;
-  private Boolean restOn = true;
-  private Boolean retlOn = true;
-  private Boolean servOn = true;
-  private Boolean staiOn = true;
-  private Boolean storOn = true;
 
   private MedicalEquipment toEdit;
 
@@ -149,8 +132,6 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void setRoomIcons() {
     floorLocations = dao.getLocationsByFloor(floorLevel);
-    filterLocs(floorLocations);
-
     for (SVGPath marker : roomIcons) {
       removeIcon(marker);
     }
@@ -323,7 +304,7 @@ public class interactiveMapPageController extends MenuBarController {
     }
     serviceIcons.clear();
     for (Request r : allRequests) {
-      if (r.getLocation() != null && !r.getStatus().equals("Completed")) {
+      if (r.getLocation() != null) {
         String floor = r.getLocation().getFloor();
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
       }
@@ -533,7 +514,8 @@ public class interactiveMapPageController extends MenuBarController {
               building,
               nodeType,
               name,
-              name);
+              name,
+              true);
       // Pass new location into database
       dao.add(newLoc);
       endAdd();
@@ -895,151 +877,151 @@ public class interactiveMapPageController extends MenuBarController {
     toEdit = null;
   }
 
-  public void filterLocs(LinkedList<Location> locList) {
-    for (Location loc : locList) {
-      for (String type : locFilterList) {
-        if (loc.getNodeType().equals(type)) locList.remove(loc);
-      }
-    }
-  }
-
-  public void toggleBath() {
-    if (bathOn) {
-      locFilterList.add("BATH");
-      bathOn = false;
-    } else {
-      locFilterList.remove("BATH");
-      bathOn = true;
-    }
-  }
-
-  public void toggleDept() {
-    if (deptOn) {
-      locFilterList.add("DEPT");
-      bathOn = false;
-    } else {
-      locFilterList.remove("DEPT");
-      bathOn = true;
-    }
-  }
-
-  public void toggleDirt() {
-    if (dirtOn) {
-      locFilterList.add("DIRT");
-      bathOn = false;
-    } else {
-      locFilterList.remove("DIRT");
-      bathOn = true;
-    }
-  }
-
-  public void toggleElev() {
-    if (elevOn) {
-      locFilterList.add("ELEV");
-      bathOn = false;
-    } else {
-      locFilterList.remove("ELEV");
-      bathOn = true;
-    }
-  }
-
-  public void toggleExit() {
-    if (exitOn) {
-      locFilterList.add("EXIT");
-      bathOn = false;
-    } else {
-      locFilterList.remove("EXIT");
-      bathOn = true;
-    }
-  }
-
-  public void toggleHall() {
-    if (hallOn) {
-      locFilterList.add("HALL");
-      bathOn = false;
-    } else {
-      locFilterList.remove("HALL");
-      bathOn = true;
-    }
-  }
-
-  public void toggleInfo() {
-    if (infoOn) {
-      locFilterList.add("INFO");
-      bathOn = false;
-    } else {
-      locFilterList.remove("INFO");
-      bathOn = true;
-    }
-  }
-
-  public void toggleLabs() {
-    if (labsOn) {
-      locFilterList.add("LABS");
-      bathOn = false;
-    } else {
-      locFilterList.remove("LABS");
-      bathOn = true;
-    }
-  }
-
-  public void togglePati() {
-    if (patiOn) {
-      locFilterList.add("PATI");
-      bathOn = false;
-    } else {
-      locFilterList.remove("PATI");
-      bathOn = true;
-    }
-  }
-
-  public void toggleRest() {
-    if (restOn) {
-      locFilterList.add("REST");
-      bathOn = false;
-    } else {
-      locFilterList.remove("REST");
-      bathOn = true;
-    }
-  }
-
-  public void toggleRetl() {
-    if (retlOn) {
-      locFilterList.add("RETL");
-      bathOn = false;
-    } else {
-      locFilterList.remove("RETL");
-      bathOn = true;
-    }
-  }
-
-  public void toggleServ() {
-    if (servOn) {
-      locFilterList.add("SERV");
-      bathOn = false;
-    } else {
-      locFilterList.remove("SERV");
-      bathOn = true;
-    }
-  }
-
-  public void toggleStai() {
-    if (staiOn) {
-      locFilterList.add("STAI");
-      bathOn = false;
-    } else {
-      locFilterList.remove("STAI");
-      bathOn = true;
-    }
-  }
-
-  public void toggleStor() {
-    if (storOn) {
-      locFilterList.add("STOR");
-      bathOn = false;
-    } else {
-      locFilterList.remove("STOR");
-      bathOn = true;
-    }
-  }
+  //  public void filterLocs(LinkedList<Location> locList) {
+  //    for (Location loc : locList) {
+  //      for (String type : locFilterList) {
+  //        if (loc.getNodeType().equals(type)) locList.remove(loc);
+  //      }
+  //    }
+  //  }
+  //
+  //  public void toggleBath() {
+  //    if (bathOn) {
+  //      locFilterList.add("BATH");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("BATH");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleDept() {
+  //    if (deptOn) {
+  //      locFilterList.add("DEPT");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("DEPT");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleDirt() {
+  //    if (dirtOn) {
+  //      locFilterList.add("DIRT");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("DIRT");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleElev() {
+  //    if (elevOn) {
+  //      locFilterList.add("ELEV");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("ELEV");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleExit() {
+  //    if (exitOn) {
+  //      locFilterList.add("EXIT");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("EXIT");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleHall() {
+  //    if (hallOn) {
+  //      locFilterList.add("HALL");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("HALL");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleInfo() {
+  //    if (infoOn) {
+  //      locFilterList.add("INFO");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("INFO");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleLabs() {
+  //    if (labsOn) {
+  //      locFilterList.add("LABS");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("LABS");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void togglePati() {
+  //    if (patiOn) {
+  //      locFilterList.add("PATI");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("PATI");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleRest() {
+  //    if (restOn) {
+  //      locFilterList.add("REST");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("REST");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleRetl() {
+  //    if (retlOn) {
+  //      locFilterList.add("RETL");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("RETL");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleServ() {
+  //    if (servOn) {
+  //      locFilterList.add("SERV");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("SERV");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleStai() {
+  //    if (staiOn) {
+  //      locFilterList.add("STAI");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("STAI");
+  //      bathOn = true;
+  //    }
+  //  }
+  //
+  //  public void toggleStor() {
+  //    if (storOn) {
+  //      locFilterList.add("STOR");
+  //      bathOn = false;
+  //    } else {
+  //      locFilterList.remove("STOR");
+  //      bathOn = true;
+  //    }
+  //  }
 }

@@ -1,0 +1,122 @@
+time,employeeID,typeID,information,type,action
+2022-04-01 06:00:00.000,ADMIN,VADR01,,Employee,added to system
+2022-04-01 06:00:01.000,ADMIN,PTDO01,,Employee,added to system
+2022-04-01 06:00:02.000,ADMIN,ICNU01,,Employee,added to system
+2022-04-01 06:00:03.000,ADMIN,SAPS01,,Employee,added to system
+2022-04-01 06:00:04.000,ADMIN,CACH01,,Employee,added to system
+2022-04-01 06:00:05.000,ADMIN,RATE01,,Employee,added to system
+2022-04-02 09:35:05.000,ADMIN,PA000000,,Patient,checked in
+2022-04-02 09:37:26.000,ADMIN,PA000001,,Patient,checked in
+2022-04-02 09:38:02.000,ADMIN,PA000001,bPATI00103,Patient,admitted to room
+2022-04-02 09:40:56.000,ADMIN,PA000002,,Patient,checked in
+2022-04-02 09:41:28.000,ADMIN,PA000002,bPATI00104,Patient,admitted to room
+2022-04-02 09:57:12.000,ADMIN,PA000003,,Patient,checked in
+2022-04-02 09:58:03.000,ADMIN,INT000001,,Request,created
+2022-04-02 09:58:17.000,ADMIN,INT000001,PTDO01,Request,assigned to
+2022-04-02 10:02:24.000,PTDO01,INT000001,in progress,Request,marked as
+2022-04-02 10:03:09.000,ADMIN,PA000003,bPATI00105,Patient,admitted to room
+2022-04-02 10:03:59.000,PTDO01,INT000001,completed,Request,marked as
+2022-04-02 15:45:23.000,ADMIN,PA000004,,Patient,checked in
+2022-04-02 15:45:32.000,ADMIN,EQU000001,,Request,created
+2022-04-02 15:45:33.000,ADMIN,RECL1,requested,Medical Equipment,marked as
+2022-04-02 15:45:56.000,ADMIN,EQU000001,ICNU01,Request,assigned to
+2022-04-02 15:46:39.000,ICNU01,EQU000001,in progress,Request,marked as
+2022-04-02 15:48:28.000,ICNU01,RECL1,bHALL00701,Medical Equipment,moved to
+2022-04-02 15:48:29.000,ICNU01,RECL1,unavailable,Medical Equipment,marked as
+2022-04-02 15:48:30.000,ICNU01,EQU000001,completed,Request,marked as
+2022-04-02 15:49:18.000,ADMIN,PA000004,bPATI00203,Patient,admitted to room
+2022-04-02 15:54:10.000,ICNU01,RECL1,bDIRT00103,Medical Equipment,moved to
+2022-04-02 15:54:11.000,ICNU01,RECL1,dirty,Medical Equipment,marked as
+2022-04-03 08:02:16.000,ADMIN,MED000001,,Request,created
+2022-04-03 08:02:18.000,ADMIN,MED000001,SAPS01,Request,assigned to
+2022-04-03 08:03:54.000,SAPS01,MED000001,in progress,Request,marked as
+2022-04-03 08:04:23.000,ADMIN,MEL000000,,Request,created
+2022-04-03 08:04:29.000,ADMIN,MEL000000,,Request,removed
+2022-04-03 08:05:11.000,SAPS01,MED000001,completed,Request,marked as
+2022-04-03 11:53:38.000,ADMIN,PA000000,,Patient,checked out
+2022-04-03 16:43:55.000,ADMIN,LAB000001,,Request,created
+2022-04-03 16:44:09.000,ADMIN,VADR01,,Employee,removed from system
+2022-04-03 16:44:48.000,ADMIN,LAB000001,CACH01,Request,assigned to
+2022-04-04 09:15:29.000,ADMIN,bHALL00001,,Location,added
+2022-04-04 09:30:03.000,CACH01,LAB000001,in progress,Request,marked as
+2022-04-04 09:57:39.000,ADMIN,RESC01,,Employee,added to system
+2022-04-04 09:57:40.000,ADMIN,MACU01,,Employee,added to system
+2022-04-04 09:57:41.000,ADMIN,HRSE01,,Employee,added to system
+2022-04-04 09:57:42.000,ADMIN,ORAN01,,Employee,added to system
+2022-04-04 09:57:43.000,ADMIN,NSSU01,,Employee,added to system
+2022-04-04 10:09:16.000,ADMIN,LAB000002,,Request,created
+2022-04-04 10:29:28.000,CACH01,LAB000001,completed,Request,marked as
+2022-04-04 12:34:56.000,ADMIN,LAB000002,RATE01,Request,assigned to
+2022-04-05 10:24:28.000,ADMIN,PA000005,,Patient,checked in
+2022-04-05 10:25:11.000,ADMIN,PA000005,bPATI00205,Patient,admitted to room
+2022-04-05 10:31:39.000,ADMIN,LAB000003,,Request,created
+2022-04-05 10:32:01.000,ADMIN,LAB000003,RESC01,Request,assigned to
+2022-04-05 10:45:22.000,RATE01,LAB000002,in progress,Request,marked as
+2022-04-05 10:51:38.000,RATE01,LAB000002,completed,Request,marked as
+2022-04-05 11:01:02.000,RESC01,LAB000003,in progress,Request,marked as
+2022-04-05 11:36:15.000,ADMIN,CUS000001,,Request,created
+2022-04-05 11:37:42.000,ADMIN,CUS000001,MACU01,Request,assigned to
+2022-04-05 12:44:58.000,RESC01,LAB000003,completed,Request,marked as
+2022-04-05 12:47:39.000,MACU01,CUS000001,in progress,Request,marked as
+2022-04-05 13:20:06.000,MACU01,CUS000001,completed,Request,marked as
+2022-04-06 12:38:29.000,ADMIN,MEL000001,,Request,created
+2022-04-06 12:38:42.000,ADMIN,MEL000001,HRSE01,Request,assigned to
+2022-04-06 12:39:38.000,ADMIN,MACU01,,Employee,password updated
+2022-04-06 12:40:32.000,HRSE01,MEL000001,in progress,Request,marked as
+2022-04-06 12:52:17.000,ADMIN,LAB000004,,Request,created
+2022-04-06 12:54:27.000,ADMIN,LAB000004,ORAN01,Request,assigned to
+2022-04-06 13:03:11.000,HRSE01,MEL000001,completed,Request,marked as
+2022-04-07 05:12:28.000,ADMIN,IPT000001,,Request,created
+2022-04-07 05:12:43.000,ADMIN,IPT000001,NSSU01,Request,assigned to
+2022-04-07 05:13:33.000,NSSU01,IPT000001,in progress,Request,marked as
+2022-04-07 05:14:01.000,ADMIN,SEC000001,,Request,created
+2022-04-07 05:17:29.000,ADMIN,LAB000005,,Request,created
+2022-04-07 05:17:33.000,ADMIN,LAB000005,PTDO01,Request,assigned to
+2022-04-07 05:19:09.000,ADMIN,EQU000002,,Request,created
+2022-04-07 05:19:13.000,ADMIN,XR1,requested,Medical Equipment,marked as
+2022-04-07 05:22:17.000,NSSU01,PA000005,bPATI00204,Patient,transfered to room
+2022-04-07 05:22:53.000,NSSU01,IPT000001,completed,Request,marked as
+2022-04-07 05:23:40.000,ADMIN,bHALL00001,,Location,edited
+2022-04-07 05:25:14.000,ADMIN,EQU000002,ICNU01,Request,assigned to
+2022-04-08 08:55:24.000,ADMIN,SAPS01,,Employee,username updated
+2022-04-08 09:09:13.000,ADMIN,SAN000001,,Request,created
+2022-04-08 09:09:46.000,ADMIN,SAN000001,SAPS01,Request,assigned to
+2022-04-08 09:59:16.000,ORAN01,LAB000004,in progress,Request,marked as
+2022-04-08 10:08:19.000,ADMIN,bHALL00001,,Location,removed
+2022-04-08 10:09:57.000,ORAN01,LAB000004,completed,Request,marked as
+2022-04-08 16:30:31.000,SAPS01,SAN000001,in progress,Request,marked as
+2022-04-09 10:28:51.000,SAPS01,RECL1,bSTOR00203,Medical Equipment,moved to
+2022-04-09 10:28:58.000,SAPS01,RECL1,clean,Medical Equipment,marked as
+2022-04-09 10:29:27.000,SAPS01,SAN000001,completed,Request,marked as
+2022-04-09 14:49:29.000,ADMIN,CUS000002,,Request,created
+2022-04-09 14:49:44.000,ADMIN,CUS000002,CACH01,Request,assigned to
+2022-04-09 14:54:19.000,CACH01,CUS000002,in progress,Request,marked as
+2022-04-09 14:56:26.000,ICNU01,EQU000002,in progress,Request,marked as
+2022-04-09 14:57:54.000,ICNU01,XR1,bLABS00103,Medical Equipment,moved to
+2022-04-09 14:58:05.000,ICNU01,XR1,unavailable,Medical Equipment,marked as
+2022-04-09 14:58:13.000,ICNU01,EQU000002,completed,Request,marked as
+2022-04-09 14:59:49.000,PTDO01,LAB000005,in progress,Request,marked as
+2022-04-09 14:59:57.000,CACH01,CUS000002,completed,Request,marked as
+2022-04-09 15:38:16.000,PTDO01,LAB000005,completed,Request,marked as
+2022-04-09 15:46:33.000,PTDO01,XR1,bDIRT00103,Medical Equipment,moved to
+2022-04-09 15:46:38.000,PTDO01,XR1,dirty,Medical Equipment,marked as
+2022-04-10 12:43:16.000,ADMIN,EQU000003,,Request,created
+2022-04-10 12:43:34.000,ADMIN,BED1,requested,Medical Equipment,marked as
+2022-04-10 12:46:02.000,ADMIN,EQU000003,RATE01,Request,assigned to
+2022-04-10 12:58:51.000,ADMIN,GIF000001,,Request,created
+2022-04-10 13:03:38.000,ADMIN,GIF000001,RESC01,Request,assigned to
+2022-04-10 13:10:43.000,ADMIN,EQU000004,,Request,created
+2022-04-10 13:10:52.000,ADMIN,PUMP1,requested,Medical Equipment,marked as
+2022-04-10 13:16:22.000,ADMIN,LAU000001,,Request,created
+2022-04-10 13:23:19.000,RESC01,GIF000001,in progress,Request,marked as
+2022-04-10 13:27:05.000,RESC01,GIF000001,completed,Request,marked as
+2022-04-10 13:33:24.000,RATE01,EQU000003,in progress,Request,marked as
+2022-04-10 13:35:38.000,RATE01,BED1,bEXIT00301,Medical Equipment,moved to
+2022-04-10 13:35:45.000,RATE01,BED1,unavailable,Medical Equipment,marked as
+2022-04-10 13:35:56.000,RATE01,EQU000003,completed,Request,marked as
+2022-04-11 07:09:14.000,ADMIN,LAU000001,MACU01,Request,assigned to
+2022-04-11 07:35:43.000,MACU01,LAU000001,in progress,Request,marked as
+2022-04-11 08:02:28.000,ADMIN,CUS000003,,Request,created
+2022-04-11 08:13:26.000,MACU01,LAU000001,completed,Request,marked as
+2022-04-11 08:15:11.000,ADMIN,CUS000003,HRSE01,Request,assigned to
+2022-04-11 08:17:45.000,HRSE01,CUS000003,in progress,Request,marked as

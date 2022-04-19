@@ -39,7 +39,8 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
                 rs.getString(5),
                 rs.getString(6),
                 rs.getString(7),
-                rs.getString(8));
+                rs.getString(8),
+                rs.getBoolean(9));
         locationMap.put(rs.getString(1), locOb);
       }
     } catch (SQLException e) {
@@ -108,7 +109,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     }
     return transform(
         locObj,
-        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ? WHERE nodeID = ?",
+        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ?, availability = ? WHERE nodeID = ?",
         true);
   }
 
@@ -116,7 +117,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     if (locationMap.containsKey(locObj.getNodeID())) {
       return -1;
     }
-    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?)", false);
+    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Location locObj) {
@@ -136,7 +137,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(8, locObj.getNodeID());
+        pStatement.setString(9, locObj.getNodeID());
         offset = -1;
       } else {
         pStatement.setString(1, locObj.getNodeID());
@@ -149,6 +150,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       pStatement.setString(6 + offset, locObj.getNodeType());
       pStatement.setString(7 + offset, locObj.getLongName());
       pStatement.setString(8 + offset, locObj.getShortName());
+      pStatement.setBoolean(9 + offset, locObj.getAvailability());
 
       pStatement.addBatch();
       pStatement.executeBatch();

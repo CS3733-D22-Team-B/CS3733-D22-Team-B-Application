@@ -9,6 +9,7 @@ public class Location {
   private String nodeType;
   private String longName;
   private String shortName;
+  private boolean availability;
 
   public Location(
       String nodeID,
@@ -18,7 +19,8 @@ public class Location {
       String building,
       String nodeType,
       String longName,
-      String shortName) {
+      String shortName,
+      boolean availability) {
     setNodeID(nodeID);
     setXCoord(xCoord);
     setYCoord(yCoord);
@@ -27,6 +29,7 @@ public class Location {
     setNodeType(nodeType);
     setLongName(longName);
     setShortName(shortName);
+    setAvailability(availability);
   }
 
   private void setNodeID(String newNodeID) {
@@ -91,5 +94,13 @@ public class Location {
 
   public String getShortName() {
     return shortName;
+  }
+
+  public void setAvailability(boolean newAvailability) {
+    availability = newAvailability;
+  }
+
+  public boolean getAvailability() {
+    return availability;
   }
 }

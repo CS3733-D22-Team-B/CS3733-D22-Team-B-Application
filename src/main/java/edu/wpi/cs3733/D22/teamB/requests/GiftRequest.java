@@ -14,6 +14,9 @@ public class GiftRequest extends Request {
       String employeeID,
       String locationID,
       String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -25,6 +28,9 @@ public class GiftRequest extends Request {
         employeeID,
         null,
         patientID,
+        null,
+        null,
+        null,
         type,
         status,
         priority,
@@ -34,6 +40,6 @@ public class GiftRequest extends Request {
   }
 
   public final String createRequestID() {
-    return "MEL" + getHashCode();
+    return "GIF" + getHashCode();
   }
 }

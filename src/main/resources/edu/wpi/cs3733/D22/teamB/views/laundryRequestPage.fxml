@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSlider?>
-<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -12,8 +11,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
+<?import java.lang.String?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.LaundryRequestController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -85,27 +84,23 @@
                </font>
             </TextArea>
             <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="503.0" layoutY="307.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
-            <ComboBox fx:id="equipmentInput" layoutX="164.5" layoutY="230.0" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-            <ComboBox fx:id="floorInput" layoutX="164.5" layoutY="110.0" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:id="5" fx:value="F5" />
-                     <String fx:id="4" fx:value="F4" />
-                     <String fx:id="3" fx:value="F3" />
-                     <String fx:id="2" fx:value="F2" />
-                     <String fx:id="1" fx:value="F1" />
-                     <String fx:id="L1" fx:value="L1" />
-                     <String fx:id="L2" fx:value="L2" />
-                  </FXCollections>
-               </items>
-            </ComboBox>
-            <ComboBox fx:id="locationInput" layoutX="164.5" layoutY="170.0" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-            <Label layoutX="-82.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Equipment Request" textFill="#7bcce4">
+            <Label layoutX="-82.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Laundry  Request" textFill="#7bcce4">
                <font>
                   <Font name="Microsoft Sans Serif" size="30.0" />
                </font>
             </Label>
             <fx:include source="menu.fxml" />
+            <ComboBox fx:id="patientInput" layoutX="173.0" layoutY="114.0" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
+            <ComboBox fx:id="LaundryInput" layoutX="173.0" layoutY="185.0" onAction="#setLaundry" prefHeight="50.0" prefWidth="293.0" promptText="Laundry Type" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                      <String fx:id="REGULARWASH" fx:value="Regular-wash" />
+                      <String fx:id="SPOTTING" fx:value="Spotting" />
+                      <String fx:id="DRYCLEANING" fx:value="Dry-cleaning" />
+                      <String fx:id="HYPOALLERGENIC" fx:value="Hypo-allergenic" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
          </children>
       </AnchorPane>
    </children>

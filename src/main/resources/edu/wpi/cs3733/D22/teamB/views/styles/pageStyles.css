@@ -1,0 +1,26 @@
+.background-pane{
+-fx-background-image: url('Background.png');
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+.side-image-l {
+    -fx-background-image: url('Sidebar.png');
+    -fx-background-size: stretch;
+    -fx-opacity: .75;
+}
+.side-image-r {
+    -fx-background-image: url('Sidebar.png');
+    -fx-background-size: stretch;
+    -fx-opacity: .75;
+}
+.container-box {
+    -fx-background-color: #2e3c4b;
+    -fx-border-radius: 10px;
+    -fx-border-color: #7bcce4;
+}
+.container-box-2 {
+    -fx-background-color: #2e3c4b;
+    -fx-border-radius: 10px;
+    -fx-border-color: #7bcce4;
+    -fx-opacity: .75;
+}
