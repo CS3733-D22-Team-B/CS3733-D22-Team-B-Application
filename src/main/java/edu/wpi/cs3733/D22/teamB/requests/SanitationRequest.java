@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequest;
+import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
 import java.util.Date;
 
 public class SanitationRequest extends EquipmentRequest {
@@ -45,5 +46,16 @@ public class SanitationRequest extends EquipmentRequest {
 
   public final String createRequestID() {
     return "SAN" + getHashCode();
+  }
+
+  public void updateMedicalEquipmentStatus() {
+    MedicalEquipment medEq = getMedicalEquipment();
+    if (this.status.equals("Completed")) {
+      medEq.setIsClean(true);
+      medEq.setAvailability("Available");
+      medEq.moveToClean();
+      DatabaseController DC = DatabaseController.getInstance();
+      DC.update(medEq);
+    }
   }
 }

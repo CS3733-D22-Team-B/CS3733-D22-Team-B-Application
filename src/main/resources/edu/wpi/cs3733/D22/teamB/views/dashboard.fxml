@@ -20,11 +20,11 @@
    <children>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" mnemonicParsing="false" onAction="#goToHomepage" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Button" />
-      <SplitPane dividerPositions="0.4406901509705248" layoutX="10.0" layoutY="35.0" maxHeight="490.0" maxWidth="930.0" minHeight="490.0" minWidth="930.0" prefHeight="490.0" prefWidth="930.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="34.0">
+      <SplitPane dividerPositions="0.4406901509705248" layoutX="10.0" layoutY="35.0" maxHeight="490.0" maxWidth="930.0" minHeight="490.0" minWidth="930.0" prefHeight="490.0" prefWidth="930.0" style="-fx-background-color: #455A70;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="34.0">
         <items>
-            <SplitPane dividerPositions="0.7333333333333333" maxHeight="490.0" maxWidth="405.333333333333" minHeight="490.0" minWidth="405.333333333333" orientation="VERTICAL" prefHeight="490.0" prefWidth="405.333333333333" SplitPane.resizableWithParent="false">
+            <SplitPane dividerPositions="0.7333333333333333" maxHeight="490.0" maxWidth="405.333333333333" minHeight="490.0" minWidth="405.333333333333" orientation="VERTICAL" prefHeight="490.0" prefWidth="405.333333333333">
                <items>
-                  <AnchorPane prefHeight="480.0" prefWidth="220.0" style="-fx-background-color: #455A70;">
+                  <AnchorPane prefHeight="480.0" prefWidth="220.0" style="-fx-background-color: #2e3c4b;">
                      <children>
                         <ImageView fitHeight="463.0" fitWidth="381.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,19 +40,19 @@
                         <Button fx:id="floor4Button" layoutX="79.0" layoutY="61.0" mnemonicParsing="false" onAction="#loadFloor4Information" prefHeight="47.0" prefWidth="269.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Floor 4" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #455A70;">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2e3c4b;">
                      <children>
-                        <Label fx:id="overviewLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="27.0" prefWidth="381.0" styleClass="text-field" stylesheets="@styles/textStyles3.css">
+                        <Label fx:id="overviewLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="27.0" prefWidth="381.0">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="overviewText" editable="false" layoutX="12.0" layoutY="41.0" prefHeight="79.0" prefWidth="381.0" styleClass="text-area" stylesheets="@styles/textStyles3.css" wrapText="true" />
+                        <TextArea fx:id="overviewText" editable="false" layoutX="12.0" layoutY="41.0" prefHeight="79.0" prefWidth="381.0" style="-fx-background-color: #2e3c4b; -fx-text-fill: white;" styleClass="text-area" stylesheets="@styles/textStyles3.css" wrapText="true" />
                      </children>
                   </AnchorPane>
                </items>
             </SplitPane>
-            <TabPane maxHeight="490.0" maxWidth="515.0" minHeight="490.0" minWidth="515.0" prefHeight="490.0" prefWidth="515.0" tabClosingPolicy="UNAVAILABLE" SplitPane.resizableWithParent="false">
+            <TabPane maxHeight="490.0" maxWidth="515.0" minHeight="490.0" minWidth="515.0" prefHeight="490.0" prefWidth="515.0" style="-fx-background-color: #455A70;" stylesheets="@styles/tableStyles.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Equipment">
                      <content>
@@ -81,13 +81,13 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-2.0" prefHeight="463.0" prefWidth="515.0" vbarPolicy="NEVER">
+                              <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="-2.0" prefHeight="463.0" prefWidth="515.0" stylesheets="@styles/tableStyles.css" vbarPolicy="NEVER">
                                  <content>
-                                    <TitledPane animated="false" prefHeight="461.0" prefWidth="515.0" styleClass="tile-pane" stylesheets="@styles/tiledPaneStyles.css" text="April 1">
+                                    <TitledPane animated="false" prefHeight="461.0" prefWidth="515.0" stylesheets="@styles/tiledPaneStyles.css" text="April 1">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="264.0" prefWidth="487.0">
                                              <children>
-                                                <TableView fx:id="activityTable" layoutY="-3.0" prefHeight="439.0" prefWidth="515.0" stylesheets="@styles/tableStyles.css">
+                                                <TableView fx:id="activityTable" layoutY="-3.0" prefHeight="439.0" prefWidth="515.0" styleClass="queue-table" stylesheets="@styles/tableStyles.css">
                                                   <columns>
                                                     <TableColumn fx:id="columnTime" prefWidth="75.0" text="Time" />
                                                     <TableColumn fx:id="columnAction" prefWidth="329.3333282470703" text="Action" />
