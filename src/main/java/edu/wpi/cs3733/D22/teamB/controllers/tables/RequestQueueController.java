@@ -280,6 +280,10 @@ public class RequestQueueController extends MenuBarController implements Initial
         requests, (Request r1, Request r2) -> r1.getLastEdited().compareTo(r2.getLastEdited()));
   }
 
+  public void timeCreated() {
+    sortRequestsByCreationDate(requests);
+  }
+
   public void lastEdit() {
     sortRequestsByLastEdit(requests);
   }
