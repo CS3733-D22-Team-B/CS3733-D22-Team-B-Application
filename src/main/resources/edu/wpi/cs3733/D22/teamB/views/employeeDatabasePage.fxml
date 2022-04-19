@@ -93,7 +93,7 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="647.0">
                <children>
-                  <TableView fx:id="employeeTable" prefHeight="435.0" prefWidth="698.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.399999999999977" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="employeeTable" prefHeight="435.0" prefWidth="698.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="columnEmployeeID" editable="false" prefWidth="165.33328247070312" text="ID" />
                         <TableColumn fx:id="columnPosition" editable="false" prefWidth="196.00003051757812" text="Type" />

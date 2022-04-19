@@ -97,18 +97,38 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToLaundryRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("laundryRequestPage");
+  }
+
+  @FXML
+  void goToSecurityRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("securityRequestPage");
+  }
+
+  @FXML
+  void goToGiftDeliveryRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("giftRequestPage");
+  }
+
+  @FXML
+  void goToSanitationRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("sanitationRequestPage");
+  }
+
+  @FXML
   void goToAboutPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("aboutPage");
   }
 
   @FXML
-  void goToLaundryPage(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("laundryRequestPage");
+  void goToDashboard(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("dashboard");
   }
 
   @FXML
-  void goToDashboard(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("dashboard");
+  void goToGame(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("sample");
   }
 
   @FXML
@@ -126,5 +146,9 @@ public class MenuBarController {
     } catch (Exception e) {
       System.out.println("Error opening Among Us website");
     }
+  }
+
+  public void goToCovidPage(ActionEvent actionEvent) throws Exception {
+    UIController.getInstance().goToPage("COVID-19Page");
   }
 }

@@ -10,7 +10,7 @@ public abstract class EquipmentBasedRequestController extends RequestController 
 
   private String equipment = "";
 
-  private MedicalEquipmentDB equDAO = MedicalEquipmentDB.getInstance();
+  protected MedicalEquipmentDB equDAO = MedicalEquipmentDB.getInstance();
 
   @FXML
   public void setEquipment() {
@@ -30,27 +30,3 @@ public abstract class EquipmentBasedRequestController extends RequestController 
     notes = "";
   }
 }
-
-// PUT THIS METHOD IN YOUR CONTROLLER CLASS
-/*
-public void initialize() {
-		super.initialize();
-
-		additionalInformationInput
-				.textProperty()
-				.addListener(
-						new ChangeListener<String>() {
-							@Override
-							public void changed(
-									ObservableValue<? extends String> observable, String oldValue, String newValue) {
-								setNotes();
-							}
-						});
-
-		for (MedicalEquipment equipment : equDAO.list()) {
-			if (!equipment.getIsClean()) {
-				equipmentInput.getItems().add(equipment.getName());
-			}
-		}
-	}
- */

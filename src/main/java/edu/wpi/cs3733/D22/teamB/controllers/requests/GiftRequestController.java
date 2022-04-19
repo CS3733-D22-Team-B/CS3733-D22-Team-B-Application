@@ -57,7 +57,7 @@ public class GiftRequestController extends PatientBasedRequestController {
     GiftRequest request =
         new GiftRequest(
             patientID,
-            "Gift: " + giftName + "Additional Information: " + notes,
+            "Gift: " + giftName + "\nAdditional Information: " + notes,
             (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Gift request sent: " + giftName + " for " + patientName);

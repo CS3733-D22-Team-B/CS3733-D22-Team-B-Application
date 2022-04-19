@@ -2,8 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSlider?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -17,21 +15,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.LaundryRequestController">
-   <children>
-      <Pane prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="-61.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Laundry Request" textFill="#7bcce4">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <GridPane layoutX="154.0" layoutY="81.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="71.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.SanitationRequestController">
+    <children>
+      <GridPane layoutX="154.0" layoutY="81.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="374.20001220703125" minWidth="10.0" prefWidth="338.20001220703125" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="337.0000244140626" minWidth="10.0" prefWidth="331.39998779296883" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="374.20001220703125" minWidth="10.0" prefWidth="338.20001220703125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0000244140626" minWidth="10.0" prefWidth="331.39998779296883" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="126.19998779296876" minHeight="0.0" prefHeight="81.2" vgrow="SOMETIMES" />
@@ -42,7 +31,7 @@
             <RowConstraints maxHeight="146.39999999999998" minHeight="10.0" prefHeight="104.99997558593748" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="461.5" text="" textFill="#7bcce4" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="461.5" text="" textFill="#7bcce4" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -71,6 +60,11 @@
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </JFXButton>
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </JFXSlider>
             <Label fx:id="charactersRemainingLabel" text="500 characters remaining" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <font>
                   <Font name="Microsoft Sans Serif" size="7.0" />
@@ -79,7 +73,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="additionalInformationInput" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <TextArea fx:id="additionalInformationInput" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
@@ -87,25 +81,23 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextArea>
-            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ComboBox fx:id="equipmentInput" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <GridPane.margin>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="20.0" />
                </GridPane.margin>
-            </JFXSlider>
-            <ComboBox fx:id="patientInput" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="1" />
-            <ComboBox fx:id="laundryInput" onAction="#setLaundry" prefHeight="50.0" prefWidth="293.0" promptText="Laundry Type" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="2">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                      <String fx:id="REGULARWASH" fx:value="Regular-wash" />
-                      <String fx:id="SPOTTING" fx:value="Spotting" />
-                      <String fx:id="DRYCLEANING" fx:value="Dry-cleaning" />
-                      <String fx:id="HYPOALLERGENIC" fx:value="Hypo-allergenic" />
-                  </FXCollections>
-               </items>
             </ComboBox>
          </children>
       </GridPane>
-      <Pane prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="-79.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Sanitation Request" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <JFXButton layoutX="9.0" layoutY="46.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
                <graphic>
@@ -127,6 +119,6 @@
             </JFXButton>
          </children>
       </Pane>
-      <fx:include source="menu.fxml" />
-   </children>
+          <fx:include source="menu.fxml" />
+    </children>
 </AnchorPane>

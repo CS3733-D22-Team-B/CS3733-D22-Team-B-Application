@@ -14,51 +14,26 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
-      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="156.0" layoutY="43.0" prefHeight="453.0" prefWidth="647.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="156.0" AnchorPane.topAnchor="43.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label layoutX="-157.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Brigham and Women's Hospital" textFill="#7bcce4">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="30.0" />
-               </font>
-            </Label>
-         </children></Pane>
-      <Pane layoutX="855.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox layoutX="10.0" layoutY="38.0" prefHeight="221.0" prefWidth="86.0" spacing="5.0">
-               <children>
-                  <JFXButton fx:id="quitButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#quitApplication" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Close">
-                     <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Exit.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Profile">
-                     <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Profile.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="helpButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToAboutPage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="About">
-                     <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Help.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-               </children>
-            </VBox>
-         </children></Pane>
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <GridPane alignment="CENTER" hgap="30.0" layoutX="150.0" layoutY="25.0" prefHeight="491.0" prefWidth="664.0" vgap="30.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="25.0">
-         <children>
+            <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Menu/Tracker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
             <JFXButton fx:id="mapButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToMapLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -86,15 +61,6 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker" GridPane.rowIndex="1">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Tracker.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
             <JFXButton fx:id="patientDatabaseButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToPatientDatabase" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -114,15 +80,52 @@
                </graphic>
             </JFXButton>
          </children>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
       </GridPane>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="-157.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Brigham and Women's Hospital" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="855.0" layoutY="-3.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="9.0" layoutY="34.0" prefHeight="200.0" prefWidth="73.0">
+               <children>
+                  <JFXButton fx:id="quitButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#quitApplication" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Exit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Profile.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="helpButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToAboutPage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <JFXButton fx:id="game" layoutX="898.0" layoutY="500.0" onAction="#goToGame" text="game" textFill="#8e8383" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

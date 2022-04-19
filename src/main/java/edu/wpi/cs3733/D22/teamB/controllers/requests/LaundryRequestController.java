@@ -45,7 +45,7 @@ public class LaundryRequestController extends PatientBasedRequestController {
     LaundryRequest request =
         new LaundryRequest(
             patientID,
-            "Laundry Request: " + laundry + "Additional Information: " + notes,
+            "Laundry Request: " + laundry + "\nAdditional Information: " + notes,
             (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Request sent: " + laundry + " to " + patientName);

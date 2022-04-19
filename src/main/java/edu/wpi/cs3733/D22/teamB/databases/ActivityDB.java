@@ -10,7 +10,7 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
   private HashMap<String, Activity> activityMap = new HashMap<String, Activity>();
 
   private ActivityDB() {
-    super("Activity", "time", Filepath.getInstance().getActivityCSVFilePath());
+    super("Activity", "activityID", Filepath.getInstance().getActivityCSVFilePath());
     initDB();
   }
 
@@ -30,13 +30,14 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
       while (rs.next()) {
         Activity actOb =
             new Activity(
-                new java.util.Date(rs.getTimestamp(1).getTime()),
-                rs.getString(2),
+                (rs.getString(1)),
+                new java.util.Date(rs.getTimestamp(2).getTime()),
                 rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),
-                rs.getString(6));
-        activityMap.put(new java.util.Date(rs.getTimestamp(1).getTime()).toString(), actOb);
+                rs.getString(6),
+                rs.getString(7));
+        activityMap.put(rs.getString(1), actOb);
       }
     } catch (SQLException e) {
       System.out.println("Connection failed. Check output console.");
@@ -98,28 +99,28 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
   }
 
   public int update(Activity actObj) {
-    if (!activityMap.containsKey(actObj.getTime().toString())) {
+    if (!activityMap.containsKey(actObj.getActivityID())) {
       return -1;
     }
     return transform(
         actObj,
-        "UPDATE Activity SET employeeID = ?, typeID = ?, information = ?, type = ?, action = ? WHERE time = ?",
+        "UPDATE Activity SET time = ?, employeeID = ?, typeID = ?, information = ?, type = ?, action = ? WHERE activityID = ?",
         true);
   }
 
   public int add(Activity actObj) {
-    if (activityMap.containsKey(actObj.getTime().toString())) {
+    if (activityMap.containsKey(actObj.getActivityID())) {
       return -1;
     }
-    return transform(actObj, "INSERT INTO Patients VALUES(?,?,?,?,?,?)", false);
+    return transform(actObj, "INSERT INTO Patients VALUES(?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Activity actObj) {
-    if (!activityMap.containsKey(actObj.getTime().toString())) {
+    if (!activityMap.containsKey(actObj.getActivityID())) {
       return -1;
     }
-    activityMap.remove(actObj.getTime().toString());
-    return deleteFrom(actObj.getTime().toString());
+    activityMap.remove(actObj.getActivityID());
+    return deleteFrom(actObj.getActivityID());
   }
 
   /////////////////////////////////////////////////////////////////////// Helper
@@ -131,21 +132,22 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setTimestamp(6, new Timestamp(actObj.getTime().getTime()));
+        pStatement.setString(7, actObj.getActivityID());
         offset = -1;
       } else {
-        pStatement.setTimestamp(1, new Timestamp(actObj.getTime().getTime()));
+        pStatement.setString(1, actObj.getActivityID());
       }
 
-      pStatement.setString(2 + offset, actObj.getEmployeeID());
-      pStatement.setString(3 + offset, actObj.getTypeID());
-      pStatement.setString(4 + offset, actObj.getInformation());
-      pStatement.setString(5 + offset, actObj.getType());
-      pStatement.setString(6 + offset, actObj.getAction());
+      pStatement.setTimestamp(2, new Timestamp(actObj.getDateAndTime().getTime()));
+      pStatement.setString(3 + offset, actObj.getEmployeeID());
+      pStatement.setString(4 + offset, actObj.getTypeID());
+      pStatement.setString(5 + offset, actObj.getInformation());
+      pStatement.setString(6 + offset, actObj.getType());
+      pStatement.setString(7, actObj.getAction());
 
       pStatement.addBatch();
       pStatement.executeBatch();
-      activityMap.put(actObj.getTime().toString(), actObj);
+      activityMap.put(actObj.getActivityID(), actObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
       return -1;
