@@ -202,7 +202,7 @@ public class DashboardController extends MenuBarController {
   }
 
   private void drawEquipmentCard(int x, int y, MedicalEquipment equipment) {
-    Rectangle rectangle = new Rectangle(x, y, 160, 210);
+    Rectangle rectangle = new Rectangle(x, y, 160, 120);
     rectangle.setFill(Color.WHITE);
     rectangle.setStroke(Color.BLACK);
     rectangle.setStrokeWidth(1);
