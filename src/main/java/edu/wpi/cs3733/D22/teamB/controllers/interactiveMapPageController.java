@@ -34,10 +34,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML ImageView mapImage;
   @FXML JFXButton backButton;
 
-  @FXML ImageView floorBackground;
-  @FXML ImageView thirdTopLeftBox;
-  @FXML ImageView topLeftBox;
-  @FXML ImageView secondTopLeftBox;
+  @FXML Pane floorBackground;
   @FXML JFXComboBox<String> typeDropdown;
   @FXML JFXComboBox<String> locationDropdown;
   @FXML JFXTextArea locationName;
@@ -45,9 +42,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML ImageView confirmImage;
   @FXML JFXButton resetButton;
   @FXML JFXButton markerButton;
-  @FXML Label markerLabel;
   @FXML JFXButton undoMoveButton;
-  @FXML Label undoMoveLabel;
   @FXML Pane locInfoPane;
   @FXML Label nameLabel;
   @FXML Label nodeLabel;
@@ -613,13 +608,10 @@ public class interactiveMapPageController extends MenuBarController {
 
     backButton.setVisible(true);
     floorBackground.setVisible(true);
-    topLeftBox.setVisible(true);
-    secondTopLeftBox.setVisible(true);
     typeDropdown.setVisible(true);
     locationName.setVisible(true);
     confirmButton.setVisible(true);
     markerButton.setVisible(true);
-    markerLabel.setVisible(true);
   }
 
   public void addLocation() {
@@ -662,13 +654,10 @@ public class interactiveMapPageController extends MenuBarController {
     backButton.setVisible(false);
 
     floorBackground.setVisible(false);
-    topLeftBox.setVisible(false);
-    secondTopLeftBox.setVisible(false);
     typeDropdown.setVisible(false);
     locationName.setVisible(false);
 
     markerButton.setVisible(false);
-    markerLabel.setVisible(false);
 
     confirmButton.setVisible(false);
     typeDropdown.setValue("");
@@ -688,7 +677,6 @@ public class interactiveMapPageController extends MenuBarController {
     resetButton.setVisible(false);
     backButton.setVisible(true);
     floorBackground.setVisible(true);
-    topLeftBox.setVisible(true);
     locationDropdown.setVisible(true);
     confirmButton.setVisible(true);
   }
@@ -726,7 +714,6 @@ public class interactiveMapPageController extends MenuBarController {
     resetButton.setVisible(true);
     backButton.setVisible(false);
     floorBackground.setVisible(false);
-    topLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     confirmButton.setVisible(false);
 
@@ -746,13 +733,10 @@ public class interactiveMapPageController extends MenuBarController {
     backButton.setVisible(true);
 
     floorBackground.setVisible(true);
-    topLeftBox.setVisible(true);
-    secondTopLeftBox.setVisible(true);
     locationDropdown.setVisible(true);
     locationName.setVisible(true);
     confirmButton.setVisible(true);
     undoMoveButton.setVisible(true);
-    undoMoveLabel.setVisible(true);
   }
 
   public void editLocation() {
@@ -784,14 +768,11 @@ public class interactiveMapPageController extends MenuBarController {
     resetButton.setVisible(true);
     backButton.setVisible(false);
     floorBackground.setVisible(false);
-    topLeftBox.setVisible(false);
-    secondTopLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     locationName.setVisible(false);
     locationName.setText("");
     confirmButton.setVisible(false);
     undoMoveButton.setVisible(false);
-    undoMoveLabel.setVisible(false);
     startingCoordinates[0] = -1;
     startingCoordinates[1] = -1;
     clearMarker();
@@ -958,11 +939,8 @@ public class interactiveMapPageController extends MenuBarController {
     backButton.setVisible(true);
 
     floorBackground.setVisible(true);
-    topLeftBox.setVisible(true);
-    secondTopLeftBox.setVisible(true);
     locationDropdown.setVisible(true);
     availabilityDropdown.setVisible(true);
-    thirdTopLeftBox.setVisible(true);
     stateDropdown.setVisible(true);
     confirmButton.setVisible(true);
   }
@@ -991,15 +969,12 @@ public class interactiveMapPageController extends MenuBarController {
     backButton.setVisible(false);
 
     floorBackground.setVisible(false);
-    topLeftBox.setVisible(false);
-    secondTopLeftBox.setVisible(false);
     locationDropdown.setVisible(false);
     availabilityDropdown.setVisible(false);
     confirmButton.setVisible(false);
     equipInfoPane.setVisible(false);
     equipEditButton.setVisible(false);
     equipPaneVisible = false;
-    thirdTopLeftBox.setVisible(false);
     stateDropdown.setVisible(false);
     availabilityDropdown.setValue("");
     locationDropdown.setValue("");
@@ -1522,7 +1497,7 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void undoMove() {
-    if (editEnabled && locationDropdown.getValue() != null) {
+    if (editEnabled && locationDropdown.getValue() != "") {
       Location currentLoc = dao.listByAttribute("longName", locationDropdown.getValue()).pop();
       currentLoc.setXCoord(startingCoordinates[0]);
       currentLoc.setYCoord(startingCoordinates[1]);
