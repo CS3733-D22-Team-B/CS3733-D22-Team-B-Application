@@ -17,6 +17,6 @@
             <Font name="Al Nile" size="47.0" />
         </font>
     </Button>
-      <JFXButton fx:id="goToHomepage" layoutX="14.0" layoutY="354.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+      <JFXButton layoutX="14.0" layoutY="504.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
 </children>
 </AnchorPane>

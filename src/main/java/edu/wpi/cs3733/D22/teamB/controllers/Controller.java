@@ -20,7 +20,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class Controller implements Initializable {
+public class Controller extends MenuBarController implements Initializable {
 
   @FXML private AnchorPane scene;
 
@@ -125,7 +125,7 @@ public class Controller implements Initializable {
   }
 
   public void createBricks() {
-    double width = 560;
+    double width = 1000;
     double height = 200;
 
     int space = 1;
