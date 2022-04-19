@@ -25,7 +25,7 @@
       </Pane>
       <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox layoutX="183.0" layoutY="149.0" prefHeight="242.0" prefWidth="594.0" spacing="90.0">
+      <HBox layoutX="183.0" layoutY="149.0" prefHeight="242.0" prefWidth="594.0" spacing="90.0" AnchorPane.bottomAnchor="149.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="149.0">
          <children>
             <JFXButton fx:id="dashboardButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToDashboard" prefHeight="238.0" prefWidth="250.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Dashboard">
                <graphic>

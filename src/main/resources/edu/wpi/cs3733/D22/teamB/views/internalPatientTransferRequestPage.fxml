@@ -51,7 +51,7 @@
          </children>
       </Pane>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <GridPane layoutX="154.0" layoutY="81.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box">
+      <GridPane layoutX="154.0" layoutY="81.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="71.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="374.20001220703125" minWidth="10.0" prefWidth="338.20001220703125" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="337.0000244140626" minWidth="10.0" prefWidth="331.39998779296883" />

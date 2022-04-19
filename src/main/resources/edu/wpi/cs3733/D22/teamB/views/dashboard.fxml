@@ -18,14 +18,9 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.DashboardController">
    <children>
-      <ImageView fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/components/Background.png" />
-         </image>
-      </ImageView>
-      <fx:include source="menu.fxml" />
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" mnemonicParsing="false" onAction="#goToHomepage" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Button" />
-      <SplitPane dividerPositions="0.4406901509705248" layoutX="10.0" layoutY="35.0" maxHeight="490.0" maxWidth="930.0" minHeight="490.0" minWidth="930.0" prefHeight="490.0" prefWidth="930.0">
+      <SplitPane dividerPositions="0.4406901509705248" layoutX="10.0" layoutY="35.0" maxHeight="490.0" maxWidth="930.0" minHeight="490.0" minWidth="930.0" prefHeight="490.0" prefWidth="930.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="34.0">
         <items>
             <SplitPane dividerPositions="0.7333333333333333" maxHeight="490.0" maxWidth="405.333333333333" minHeight="490.0" minWidth="405.333333333333" orientation="VERTICAL" prefHeight="490.0" prefWidth="405.333333333333" SplitPane.resizableWithParent="false">
                <items>
