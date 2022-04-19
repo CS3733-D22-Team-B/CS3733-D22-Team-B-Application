@@ -1,17 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
    <children>
+      <GridPane layoutX="146.0" layoutY="70.0" prefHeight="400.0" prefWidth="668.0" styleClass="container-box" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="70.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="358.9999755859375" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="326.0000122070312" minWidth="10.0" prefWidth="308.60002441406243" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="242.19998779296876" minHeight="10.0" prefHeight="162.00001220703126" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="210.19999389648436" minHeight="10.0" prefHeight="81.99998779296874" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="154.5999816894531" minHeight="10.0" prefHeight="95.39999999999998" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="154.5999816894531" minHeight="10.0" prefHeight="95.39999999999998" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="usernameField" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setUsername" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Username" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="20.0" />
+               </font>
+            </TextField>
+            <Label text="Login" textAlignment="CENTER" textFill="#3d6183" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="SansSerif Regular" size="90.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordBox" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setPassword" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Password" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="20.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="loginFail" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" prefHeight="36.0" prefWidth="274.0" textFill="#3d6183" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="loginButton" onAction="#login" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Login.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+         </children>
+      </GridPane>
       <Pane layoutX="-10.0" layoutY="-8.0" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Pane layoutX="859.0" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,38 +75,5 @@
                </graphic>
             </JFXButton>
          </children></Pane>
-      <AnchorPane layoutX="146.0" layoutY="71.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="70.0">
-         <children>
-            <TextField fx:id="usernameField" layoutX="27.0" layoutY="168.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setUsername" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Username" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css" AnchorPane.bottomAnchor="165.4" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="168.0">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </TextField>
-            <JFXButton fx:id="loginButton" layoutX="569.0" layoutY="310.0" onAction="#login" text=" " AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
-               <graphic>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Login.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <PasswordField fx:id="passwordBox" layoutX="27.0" layoutY="244.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setPassword" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Password" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css" AnchorPane.bottomAnchor="89.4" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="244.0">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </PasswordField>
-            <Label fx:id="loginFail" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="371.0" layoutY="259.0" prefHeight="36.0" prefWidth="274.0" textFill="#3d6183">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="226.0" layoutY="42.0" text="Login" textFill="#3d6183" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="42.0">
-               <font>
-                  <Font name="SansSerif Regular" size="90.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
