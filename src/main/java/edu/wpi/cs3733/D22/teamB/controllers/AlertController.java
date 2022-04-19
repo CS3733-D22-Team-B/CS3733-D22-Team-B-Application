@@ -5,10 +5,14 @@ import java.util.LinkedList;
 
 public class AlertController {
 
-  //TODO make these work:
+  // TODO make these work:
+  private boolean statusDirtyBedThreeAlert = false;
+  private boolean statusDirtyBedFourAlert = false;
+  private boolean statusDirtyBedFiveAlert = false;
 
-  //  private boolean statusDirtyBedAlert = false;
-  //  private boolean statusDirtyPumpAlert = false;
+  private boolean statusDirtyPumpThreeAlert = false;
+  private boolean statusDirtyPumpFourAlert = false;
+  private boolean statusDirtyPumpFiveAlert = false;
 
   private boolean statusCleanPumpsThreeAlert = false;
   private boolean statusCleanPumpsFourAlert = false;
@@ -54,14 +58,58 @@ public class AlertController {
         }
       }
 
-      if (dirtyPumps >= 10) {
+      // Check third floor areas for dirty pumps
+      if (dirtyPumps >= 10 && l.getFloor().equals("3") && !statusDirtyPumpThreeAlert) {
         sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
         makeServiceRequest(dirtyMedEq, WestPlazaID);
+        statusDirtyPumpThreeAlert = true;
+      } else if (dirtyPumps < 10 && l.getFloor().equals("3")) {
+        statusDirtyPumpThreeAlert = false;
       }
 
-      if (dirtyBeds >= 6) {
+      // Check fourth floor areas for dirty pumps
+      if (dirtyPumps >= 10 && l.getFloor().equals("4") && !statusDirtyPumpFourAlert) {
+        sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
+        makeServiceRequest(dirtyMedEq, WestPlazaID);
+        statusDirtyBedFourAlert = true;
+      } else if (dirtyPumps < 10 && l.getFloor().equals("4")) {
+        statusDirtyPumpFourAlert = false;
+      }
+
+      // Check fifth floor areas for dirty pumps
+      if (dirtyPumps >= 10 && l.getFloor().equals("5") && !statusDirtyPumpFiveAlert) {
+        sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
+        makeServiceRequest(dirtyMedEq, WestPlazaID);
+        statusDirtyBedFiveAlert = true;
+      } else if (dirtyPumps < 10 && l.getFloor().equals("5")) {
+        statusDirtyPumpFiveAlert = false;
+      }
+
+      // Check third floor beds for dirty beds
+      if (dirtyBeds >= 6 && l.getFloor().equals("3") && !statusDirtyBedThreeAlert) {
         sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
         makeServiceRequest(dirtyMedEq, ORParkID);
+        statusDirtyBedThreeAlert = true;
+      } else if (dirtyBeds < 6 && l.getFloor().equals("3")) {
+        statusDirtyBedThreeAlert = false;
+      }
+
+      // Check fourth floor for dirty beds
+      if (dirtyBeds >= 6 && l.getFloor().equals("4") && !statusDirtyBedFourAlert) {
+        sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
+        makeServiceRequest(dirtyMedEq, ORParkID);
+        statusDirtyBedFourAlert = true;
+      } else if (dirtyBeds < 6 && l.getFloor().equals("4")) {
+        statusDirtyBedFourAlert = false;
+      }
+
+      // Check fifth floor for dirty beds
+      if (dirtyBeds >= 6 && l.getFloor().equals("5") && !statusDirtyBedFiveAlert) {
+        sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
+        makeServiceRequest(dirtyMedEq, ORParkID);
+        statusDirtyBedFiveAlert = true;
+      } else if (dirtyBeds < 6 && l.getFloor().equals("5")) {
+        statusDirtyBedFiveAlert = false;
       }
     }
 
