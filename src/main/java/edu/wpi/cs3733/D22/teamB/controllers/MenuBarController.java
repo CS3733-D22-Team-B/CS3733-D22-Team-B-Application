@@ -147,4 +147,8 @@ public class MenuBarController {
       System.out.println("Error opening Among Us website");
     }
   }
+
+  public void goToCovidPage(ActionEvent actionEvent) throws Exception {
+    UIController.getInstance().goToPage("COVID-19Page");
+  }
 }
