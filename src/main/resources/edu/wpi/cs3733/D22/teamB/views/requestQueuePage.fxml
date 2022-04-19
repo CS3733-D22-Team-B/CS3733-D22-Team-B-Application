@@ -170,5 +170,6 @@
             </FXCollections>
          </items>
       </ComboBox>
+      <Button layoutX="580.0" layoutY="25.0" mnemonicParsing="false" onAction="#lastEdit" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Last edited" />
    </children>
 </AnchorPane>
