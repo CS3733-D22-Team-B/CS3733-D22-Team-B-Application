@@ -185,6 +185,22 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     new java.util.Date(rs.getTimestamp(12).getTime()),
                     new java.util.Date(rs.getTimestamp(13).getTime()));
             break;
+          case "SANITATION":
+            req =
+                new SanitationRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    null,
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
           default:
             req =
                 new CustomRequest(

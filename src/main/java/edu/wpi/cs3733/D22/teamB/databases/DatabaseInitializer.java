@@ -60,7 +60,7 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "ACTIVITY")) {
         statement.execute(
-            "CREATE TABLE Activity(time TIMESTAMP, employeeID VARCHAR(10), typeID VARCHAR(10), information VARCHAR(100), type VARCHAR(25), action VARCHAR(100), CONSTRAINT ACTIVITY_PK primary key (time), CONSTRAINT ACTIVITY_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE)");
+            "CREATE TABLE Activity(activityID VARCHAR(10), time TIMESTAMP, employeeID VARCHAR(10), typeID VARCHAR(10), information VARCHAR(100), type VARCHAR(25), action VARCHAR(100), CONSTRAINT ACTIVITY_PK primary key (activityID), CONSTRAINT ACTIVITY_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE)");
         populateActivityDatabase();
       }
 
@@ -248,7 +248,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO Activity (time, employeeID, typeID, information, type, action) VALUES (?, ?, ?, ?, ?, ?)";
+          "INSERT INTO Activity (activityID, time, employeeID, typeID, information, type, action) VALUES (?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader = reader.read(Filepath.getInstance().getActivityCSVFilePath());
@@ -258,27 +258,30 @@ public class DatabaseInitializer {
 
       while ((lineText = lineReader.readLine()) != null) {
         String[] data = lineText.split(",");
-        String time = data[0];
-        String employeeID = data[1];
-        String typeID = data[2];
-        String information = data[3];
-        String type = data[4];
-        String action = data[5];
+        String activityID = data[0];
+        String time = data[1];
+        String employeeID = data[2];
+        String typeID = data[3];
+        String information = data[4];
+        String type = data[5];
+        String action = data[6];
+
+        statement.setString(1, activityID);
 
         Timestamp sqlTimestamp = Timestamp.valueOf(time);
-        statement.setTimestamp(1, sqlTimestamp);
+        statement.setTimestamp(2, sqlTimestamp);
 
-        statement.setString(2, employeeID);
-        statement.setString(3, typeID);
+        statement.setString(3, employeeID);
+        statement.setString(4, typeID);
 
         if (information.compareTo("") != 0) {
-          statement.setString(4, information);
+          statement.setString(5, information);
         } else {
-          statement.setString(4, null);
+          statement.setString(5, null);
         }
 
-        statement.setString(5, type);
-        statement.setString(6, action);
+        statement.setString(6, type);
+        statement.setString(7, action);
 
         statement.executeUpdate();
       }
