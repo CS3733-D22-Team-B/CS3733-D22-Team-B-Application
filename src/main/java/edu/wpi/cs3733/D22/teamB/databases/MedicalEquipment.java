@@ -63,6 +63,10 @@ public class MedicalEquipment {
 
   public void setIsClean(boolean newIsClean) {
     isClean = newIsClean;
+    this.setAvailability("Unavailable");
+    if(newIsClean == false) {
+      this.moveToDirty();
+    }
   }
 
   public boolean getIsClean() {

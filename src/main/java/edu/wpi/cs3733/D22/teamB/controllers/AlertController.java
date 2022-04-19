@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class AlertController {
 
   private String ORParkID = "bSTOR001L1";
-  private String WestPlazeID = "bSTOR00101";
+  private String WestPlazaID = "bSTOR00101";
 
   public AlertController() {
     checkForAlerts();
@@ -17,8 +17,8 @@ public class AlertController {
     LinkedList<Location> dirtyList = locDB.listByAttribute("nodeType", "DIRT");
     LinkedList<Location> cleanList = locDB.listByAttribute("nodeType", "STOR");
 
-    for(int i = 0; i < cleanList.size(); i++){
-      if(!cleanList.get(i).getLongName().contains("Clean Equipment")){
+    for (int i = 0; i < cleanList.size(); i++) {
+      if (!cleanList.get(i).getLongName().contains("Clean Equipment")) {
         cleanList.remove(i);
       }
     }
@@ -39,7 +39,7 @@ public class AlertController {
 
       if (dirtyPumps >= 10) {
         sendAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazeID);
+        makeServiceRequest(dirtyMedEq, WestPlazaID);
       }
 
       if (dirtyBeds >= 6) {
@@ -48,20 +48,21 @@ public class AlertController {
       }
     }
 
-    for(Location l : cleanList){
-      LinkedList<MedicalEquipment> cleanMedEq = l.getEquipmentList();
-      int cleanPumps = 0;
-
-      for (int i = 0; i < cleanMedEq.size(); i++) {
-        if (cleanMedEq.get(i).getType().equals("PUMP") && cleanMedEq.get(i).getIsClean() == true) {
-          cleanPumps++;
-        }
-      }
-
-      if (cleanPumps < 5) {
-        sendAlert(l.getFloor(), cleanPumps, "PUMP");
-      }
-    }
+    //    for (Location l : cleanList) {
+    //      LinkedList<MedicalEquipment> cleanMedEq = l.getEquipmentList();
+    //      int cleanPumps = 0;
+    //
+    //      for (int i = 0; i < cleanMedEq.size(); i++) {
+    //        if (cleanMedEq.get(i).getType().equals("PUMP") && cleanMedEq.get(i).getIsClean() ==
+    // true) {
+    //          cleanPumps++;
+    //        }
+    //      }
+    //
+    //      if (cleanPumps < 5) {
+    //        sendAlert(l.getFloor(), cleanPumps, "PUMP");
+    //      }
+    //    }
   }
 
   public void sendAlert(String floor, int dirtyPumps, String type) {
