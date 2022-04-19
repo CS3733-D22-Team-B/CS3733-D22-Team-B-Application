@@ -37,3 +37,9 @@
     -fx-prompt-text-fill: #7bcce4;
     -fx-text-fill: #7bcce4;
 }
+
+.no-header-table .column-header-background {
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+    -fx-min-height: 0;
+}
