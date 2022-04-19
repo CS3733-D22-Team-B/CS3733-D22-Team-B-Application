@@ -1,21 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="623.0" layoutX="212.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/mapAssets/MapViewer.png" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="212.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="623.0">
+      <Pane layoutX="855.0" prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane fx:id="mapPane" layoutX="104.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0">
+            <JFXButton fx:id="backButton" focusTraversable="false" layoutX="13.0" layoutY="109.0" onAction="#cancel" text=" " visible="false">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="13.0" layoutY="36.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="resetButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="13.0" layoutY="109.0" onAction="#resetLocations" prefHeight="60.0" prefWidth="38.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/ArrowsInCircle.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <VBox alignment="CENTER" layoutX="21.0" layoutY="248.0" prefHeight="278.0" prefWidth="65.0" styleClass="container-box-3" stylesheets="@styles/pageStyles.css">
+               <children>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloor5" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="f5Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloor4" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="f4Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloor3" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="f3Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloor2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="f2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloor1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="f1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/SelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloorL1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="l1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" graphicTextGap="0.0" onAction="#goToFloorL2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
+                     <graphic>
+                        <ImageView fx:id="l2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children></Pane>
+      <AnchorPane layoutX="212.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="623.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="124.79999999999995" AnchorPane.topAnchor="20.0">
+         <children>
+            <Pane fx:id="mapPane" layoutX="104.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" AnchorPane.bottomAnchor="74.60000000000002" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="119.20000000000005" AnchorPane.topAnchor="75.0">
                <children>
                   <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,34 +157,6 @@
             </Pane>
          </children>
       </AnchorPane>
-      <ImageView disable="true" fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/mapAssets/mapBackground.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="r" fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/Menu.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="resetButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="125.0" onAction="#resetLocations" prefHeight="60.0" prefWidth="38.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/ArrowsInCircle.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
       <JFXButton fx:id="toLocDatabase" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="170.0" onAction="#goToLocationDataPage" prefHeight="60.0" prefWidth="38.0" text=" " />
       <JFXButton fx:id="addButton" focusTraversable="false" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
          <graphic>
@@ -112,83 +181,6 @@
             <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/mapAssets/editButton.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <ImageView fitHeight="277.5" fitWidth="65.0" layoutX="874.0" layoutY="242.5" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/mapAssets/FloorBackgroundElement.png" />
-         </image>
-      </ImageView>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="254.0" onAction="#goToFloor5" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="f5Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="290.0" onAction="#goToFloor4" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="f4Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="326.0" onAction="#goToFloor3" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="f3Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="362.0" onAction="#goToFloor2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="f2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="398.0" onAction="#goToFloor1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="f1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/SelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="434.0" onAction="#goToFloorL1" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="l1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="883.0" layoutY="470.0" onAction="#goToFloorL2" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text=" ">
-         <graphic>
-            <ImageView fx:id="l2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="backButton" focusTraversable="false" layoutX="867.5" layoutY="125.0" onAction="#cancel" text=" " visible="false">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Return.png" />
                </image>
             </ImageView>
          </graphic>

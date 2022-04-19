@@ -30,8 +30,42 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       ResultSet rs = statement.executeQuery("SELECT * FROM " + tableType + "");
       while (rs.next()) {
         Request req;
-        String type = rs.getString(5).toUpperCase();
+        String type = rs.getString(8).toUpperCase();
         switch (type) {
+          case "LAB TEST":
+            req =
+                new LabRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    new java.util.Date(rs.getTimestamp(7).getTime()),
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
+            break;
+          case "EQUIPMENT DELIVERY":
+            req =
+                new EquipmentRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    null,
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
+            break;
           case "MEAL":
             req =
                 new MealRequest(
@@ -41,10 +75,13 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getInt(7),
+                    null,
                     rs.getString(8),
-                    new java.util.Date(rs.getTimestamp(9).getTime()),
-                    new java.util.Date(rs.getTimestamp(10).getTime()));
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
             break;
           case "MEDICINE":
             req =
@@ -55,10 +92,13 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getInt(7),
+                    null,
                     rs.getString(8),
-                    new java.util.Date(rs.getTimestamp(9).getTime()),
-                    new java.util.Date(rs.getTimestamp(10).getTime()));
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
             break;
           case "INTERPRETER":
             req =
@@ -69,12 +109,15 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getInt(7),
+                    null,
                     rs.getString(8),
-                    new java.util.Date(rs.getTimestamp(9).getTime()),
-                    new java.util.Date(rs.getTimestamp(10).getTime()));
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
             break;
-          case "TRANSFER":
+          case "PATIENT TRANSFER":
             req =
                 new InternalPatientTransferRequest(
                     rs.getString(1),
@@ -83,11 +126,81 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getInt(7),
+                    null,
                     rs.getString(8),
-                    new java.util.Date(rs.getTimestamp(9).getTime()),
-                    new java.util.Date(rs.getTimestamp(10).getTime()));
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
             break;
+          case "LAUNDRY":
+            req =
+                new LaundryRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    null,
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
+            break;
+          case "GIFT":
+            req =
+                new GiftRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    null,
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
+            break;
+          case "SECURITY":
+            req =
+                new SecurityRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    null,
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
+            break;
+          case "SANITATION":
+            req =
+                new SanitationRequest(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    null,
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
           default:
             req =
                 new CustomRequest(
@@ -97,10 +210,13 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getInt(7),
+                    null,
                     rs.getString(8),
-                    new java.util.Date(rs.getTimestamp(9).getTime()),
-                    new java.util.Date(rs.getTimestamp(10).getTime()));
+                    rs.getString(9),
+                    rs.getInt(10),
+                    rs.getString(11),
+                    new java.util.Date(rs.getTimestamp(12).getTime()),
+                    new java.util.Date(rs.getTimestamp(13).getTime()));
             break;
         }
         requestMap.put(rs.getString(1), req);
@@ -170,7 +286,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     }
     return transform(
         reqObj,
-        "UPDATE ServiceRequests SET employeeID = ?, locationID = ?, patientID = ?, type = ?, status = ?, priority = ?, information = ?, timeCreated = ?, lastEdited = ? WHERE requestID = ?",
+        "UPDATE ServiceRequests SET employeeID = ?, locationID = ?, patientID = ?, equipmentID = ?, testType = ?, testDate = ?, type = ?, status = ?, priority = ?, information = ?, timeCreated = ?, lastEdited = ? WHERE requestID = ?",
         true);
   }
 
@@ -178,7 +294,8 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     if (requestMap.containsKey(reqObj.getRequestID())) {
       return -1;
     }
-    return transform(reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?,?,?)", false);
+    return transform(
+        reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Request reqObj) {
@@ -198,7 +315,7 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(10, reqObj.getRequestID());
+        pStatement.setString(13, reqObj.getRequestID());
         offset = -1;
       } else {
         pStatement.setString(1, reqObj.getRequestID());
@@ -207,12 +324,17 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       pStatement.setString(2 + offset, reqObj.getEmployeeID());
       pStatement.setString(3 + offset, reqObj.getLocationID());
       pStatement.setString(4 + offset, reqObj.getPatientID());
-      pStatement.setString(5 + offset, reqObj.getType());
-      pStatement.setString(6 + offset, reqObj.getStatus());
-      pStatement.setInt(7 + offset, reqObj.getPriority());
-      pStatement.setString(8 + offset, reqObj.getInformation());
-      pStatement.setTimestamp(9 + offset, new Timestamp(reqObj.getTimeCreated().getTime()));
-      pStatement.setTimestamp(10 + offset, new Timestamp(reqObj.getLastEdited().getTime()));
+      pStatement.setString(5 + offset, reqObj.getEquipmentID());
+      pStatement.setString(6 + offset, reqObj.getTestType());
+      if (reqObj.getTestDate() != null) {
+        pStatement.setTimestamp(7 + offset, new Timestamp(reqObj.getTestDate().getTime()));
+      }
+      pStatement.setString(8 + offset, reqObj.getType());
+      pStatement.setString(9 + offset, reqObj.getStatus());
+      pStatement.setInt(10 + offset, reqObj.getPriority());
+      pStatement.setString(11 + offset, reqObj.getInformation());
+      pStatement.setTimestamp(12 + offset, new Timestamp(reqObj.getTimeCreated().getTime()));
+      pStatement.setTimestamp(13 + offset, new Timestamp(reqObj.getLastEdited().getTime()));
 
       pStatement.addBatch();
       pStatement.executeBatch();

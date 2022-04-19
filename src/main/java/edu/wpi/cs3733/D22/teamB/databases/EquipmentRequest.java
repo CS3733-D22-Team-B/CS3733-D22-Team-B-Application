@@ -4,15 +4,13 @@ import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.Date;
 
 public class EquipmentRequest extends Request {
-  private final String equipmentID;
-  private MedicalEquipment medicalEquipment;
 
   public EquipmentRequest(String locationID, String equipmentID, String information, int priority) {
-    super(locationID, null, information, priority, "Equipment Request");
+    super(locationID, null, information, priority, "Equipment Delivery");
     this.equipmentID = equipmentID;
     setMedicalEquipment();
     this.information =
-        "Equipment Request: " + getEquipmentID() + "Additional Information: " + information;
+        "Equipment Request: " + getEquipmentID() + " Additional Information: " + information;
     medicalEquipment = getMedicalEquipment();
   }
 
@@ -20,7 +18,10 @@ public class EquipmentRequest extends Request {
       String requestID,
       String employeeID,
       String locationID,
+      String patientID,
       String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -32,6 +33,9 @@ public class EquipmentRequest extends Request {
         employeeID,
         locationID,
         null,
+        equipmentID,
+        null,
+        null,
         type,
         status,
         priority,
@@ -42,12 +46,8 @@ public class EquipmentRequest extends Request {
     medicalEquipment = getMedicalEquipment();
   }
 
-  public final String createRequestID() {
+  public String createRequestID() {
     return "EQU" + getHashCode();
-  }
-
-  public String getEquipmentID() {
-    return equipmentID;
   }
 
   public void setMedicalEquipment() {
@@ -59,6 +59,17 @@ public class EquipmentRequest extends Request {
     MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
     medicalEquipment = medEqDB.getByID(equipmentID);
     return medicalEquipment;
+  }
+
+  public void updateMedicalEquipmentStatus() {
+    MedicalEquipment medEq = getMedicalEquipment();
+    if (this.status.equals("Completed")) {
+      medEq.setIsClean(false);
+      medEq.setAvailability("Unavailable");
+      medEq.moveToDirty();
+      DatabaseController DC = DatabaseController.getInstance();
+      DC.update(medEq);
+    }
   }
 
   /////////////////// EMPLOYEE GETTERS////////////////////

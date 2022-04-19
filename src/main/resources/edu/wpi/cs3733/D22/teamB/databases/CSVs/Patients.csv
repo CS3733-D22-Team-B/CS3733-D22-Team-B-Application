@@ -1,6 +1,6 @@
-patientID,lastName,firstName,roomID
-PA000001,Smith,John,bPATI01603
-PA000002,Anderson,James,bPATI01604
-PA000003,Jones,Michael,bPATI01605
-PA000004,Garcia,Linda,bPATI01703
-PA000005,Gonzalez,Elizabeth,bPATI01804
+patientID,lastName,firstName,roomID,information
+PA000001,Smith,Jack,bPATI00103,He's healthy
+PA000002,Anderson,James,bPATI00104,He's healthy
+PA000003,Jones,Michael,bPATI00105,He's healthy
+PA000004,Garcia,Linda,bPATI00203,She's healthy
+PA000005,Gonzalez,Elizabeth,bPATI00204,She's dead (due to negligence)

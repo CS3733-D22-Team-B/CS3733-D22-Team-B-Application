@@ -9,6 +9,7 @@ public class Filepath {
   private String labRequestCSVFilePath = "CSVs/LabRequest.csv";
   private String serviceRequestCSVFilePath = "CSVs/ServiceRequest.csv";
   private String edgesCSVFilePath = "CSVs/Edges.csv";
+  private String activityCSVFilePath = "CSVs/Activity.csv";
 
   private static Filepath filepathManager;
 
@@ -51,5 +52,9 @@ public class Filepath {
 
   public String getEdgesCSVFilePath() {
     return edgesCSVFilePath;
+  }
+
+  public String getActivityCSVFilePath() {
+    return activityCSVFilePath;
   }
 }

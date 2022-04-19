@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.DateHelper;
+import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
+import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Date;
@@ -17,6 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 public class RequestQueueController extends MenuBarController implements Initializable {
@@ -30,16 +35,22 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML private TextField downloadText;
   @FXML private Label errorLabel;
 
+  @FXML Label requestIDText;
+  @FXML Text creationText;
+  @FXML Text editText;
+  @FXML Text employeeText;
+  @FXML Text statusText;
+  @FXML Text informationText;
+
   @FXML Label requestIDLabel;
-  @FXML Label createdLabel;
-  @FXML Label lastEditedLabel;
-  @FXML Label informationLabel;
-
-  @FXML ScrollPane scrollPane;
-  @FXML AnchorPane otherAnchorPane;
-
-  @FXML ComboBox<String> statusInput;
   @FXML ComboBox<String> employeeInput;
+  @FXML ComboBox<String> statusInput;
+  @FXML TextArea informationInput;
+  @FXML Label charactersRemainingLabel;
+
+  @FXML AnchorPane viewingPane;
+  @FXML AnchorPane editingPane;
+  @FXML AnchorPane otherAnchorPane;
 
   Request currentRequest = null;
   protected EmployeesDB dao;
@@ -59,39 +70,34 @@ public class RequestQueueController extends MenuBarController implements Initial
     columnPriority.getStyleClass().add("table-column-middle");
     columnButtons.getStyleClass().add("table-column-right");
 
-    statusInput.setDisable(true);
-    employeeInput.setDisable(true);
-
     dao = EmployeesDB.getInstance();
     LinkedList<Employee> employees = dao.list();
     for (Employee employeeItem : employees) {
       if (!employeeItem.getEmployeeID().equals("0")) {
-        employeeInput
-            .getItems()
-            .add(
-                employeeItem.getFirstName()
-                    + " "
-                    + employeeItem.getLastName()
-                    + " ("
-                    + employeeItem.getEmployeeID()
-                    + ")");
+        employeeInput.getItems().add(employeeItem.getOverview());
       }
     }
 
-    for (EquipmentRequest request : EquipmentRequestDB.getInstance().list()) {
-      if (!request.getStatus().equals("Completed")) requests.add(request);
-    }
-    for (LabRequest request : LabRequestsDB.getInstance().list()) {
-      if (!request.getStatus().equals("Completed")) requests.add(request);
-    }
     for (Request request : ServiceRequestsDB.getInstance().list()) {
-      if (!request.getStatus().equals("Completed")) requests.add(request);
+      requests.add(request);
     }
 
     sortRequestsByCreationDate(requests);
 
     requestTable.setItems(requests);
     addButtonToTable();
+
+    informationInput
+        .textProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (newValue.length() > 500) {
+                informationInput.setText(oldValue);
+              }
+              charactersRemainingLabel.setText(
+                  String.valueOf(500 - informationInput.getText().length())
+                      + " characters remaining");
+            });
   }
 
   private void addButtonToTable() {
@@ -101,31 +107,57 @@ public class RequestQueueController extends MenuBarController implements Initial
           public TableCell<Request, Void> call(final TableColumn<Request, Void> param) {
             final TableCell<Request, Void> cell =
                 new TableCell<Request, Void>() {
-                  private final Button requestViewerButton = new Button("View Request");
+                  private final HBox hBox = new HBox();
+                  private final Button requestViewerButton = new Button("View");
+                  private final Button requestEditButton = new Button("Edit");
+                  private final Button requestDeleteButton = new Button("Delete");
 
                   {
                     requestViewerButton.setOnAction(
                         (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(false);
+                          viewingPane.setVisible(true);
+                          editingPane.setVisible(false);
+
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
-                          requestIDLabel.setText(request.getRequestID());
-                          createdLabel.setText("Created: " + request.getTimeCreated().toString());
-                          lastEditedLabel.setText(
-                              "Last Edited: " + request.getLastEdited().toString());
-                          informationLabel.setText(request.getInformation());
 
-                          String employeeID = request.getEmployeeID();
-                          if (!employeeID.equals("0")) {
-                            employeeInput.setValue(employeeID);
-                          }
-
-                          employeeInput.setDisable(false);
-                          statusInput.setValue(request.getStatus());
-                          statusInput.setDisable(false);
-
-                          otherAnchorPane.setVisible(false);
-                          scrollPane.setVisible(true);
+                          requestIDText.setText(request.getRequestID());
+                          creationText.setText(DateHelper.stringify(request.getTimeCreated()));
+                          editText.setText(DateHelper.stringify(request.getLastEdited()));
+                          employeeText.setText(request.getEmployee().getOverview());
+                          statusText.setText(request.getStatus());
+                          informationText.setText(request.getInformation());
                         });
+
+                    requestEditButton.setOnAction(
+                        (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(false);
+                          viewingPane.setVisible(false);
+                          editingPane.setVisible(true);
+
+                          Request request = getTableView().getItems().get(getIndex());
+                          currentRequest = request;
+
+                          requestIDLabel.setText(request.getRequestID());
+                          employeeInput.setValue(request.getEmployee().getOverview());
+                          statusInput.setValue(request.getStatus());
+                          informationInput.setText(request.getInformation());
+                        });
+                    requestDeleteButton.setOnAction(
+                        (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(true);
+                          viewingPane.setVisible(false);
+                          editingPane.setVisible(false);
+
+                          Request request = getTableView().getItems().get(getIndex());
+                          ServiceRequestsDB.getInstance().delete(request);
+                          requests.remove(request);
+                          requestTable.refresh();
+                        });
+
+                    hBox.getChildren()
+                        .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
                   }
 
                   @Override
@@ -134,8 +166,10 @@ public class RequestQueueController extends MenuBarController implements Initial
                     if (empty) {
                       setGraphic(null);
                     } else {
-                      setGraphic(requestViewerButton);
+                      setGraphic(hBox);
                       requestViewerButton.getStyleClass().add("simple-button");
+                      requestEditButton.getStyleClass().add("simple-button");
+                      requestDeleteButton.getStyleClass().add("simple-button");
                     }
                   }
                 };
@@ -150,22 +184,29 @@ public class RequestQueueController extends MenuBarController implements Initial
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
     currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
-    employeeInput.setValue("");
-    statusInput.setDisable(true);
-    employeeInput.setDisable(true);
+    currentRequest.setInformation(informationInput.getText());
     currentRequest.setLastEdited(new Date());
-    if (currentRequest.getStatus().equals("Completed")) requests.remove(currentRequest);
-    if (currentRequest instanceof EquipmentRequest) {
-      EquipmentRequestDB.getInstance().update((EquipmentRequest) currentRequest);
-    } else if (currentRequest instanceof LabRequest) {
-      LabRequestsDB.getInstance().update((LabRequest) currentRequest);
-    } else {
-      ServiceRequestsDB.getInstance().update(currentRequest);
-    }
+
+    employeeInput.setValue("");
+    statusInput.setValue("");
+    informationInput.setText("");
+
     requestTable.refresh();
 
-    scrollPane.setVisible(false);
+    ServiceRequestsDB.getInstance().update(currentRequest);
+    if (currentRequest instanceof EquipmentRequest) {
+      EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
+      eqReq.updateMedicalEquipmentStatus();
+      AlertController alertController = AlertController.getInstance();
+      alertController.checkForAlerts();
+    } else if (currentRequest instanceof SanitationRequest) {
+      SanitationRequest sanReq = (SanitationRequest) currentRequest;
+      sanReq.updateMedicalEquipmentStatus();
+    }
+
     otherAnchorPane.setVisible(true);
+    viewingPane.setVisible(false);
+    editingPane.setVisible(false);
   }
 
   private void sortRequestsByCreationDate(ObservableList<Request> requests) {
@@ -178,9 +219,6 @@ public class RequestQueueController extends MenuBarController implements Initial
     if (downloadText.getText().equals("")) {
       errorLabel.setText("Please enter filename");
     } else {
-      EquipmentRequestDB.getInstance()
-          .downloadCSV(downloadText.getText() + " - Equipment Requests");
-      LabRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Lab Requests");
       ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
       errorLabel.setText("Files downloaded");
     }

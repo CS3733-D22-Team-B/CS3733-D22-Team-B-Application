@@ -4,18 +4,48 @@ import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class DashboardController extends MenuBarController {
-  @FXML private TextArea textArea;
+  @FXML private Label overviewLabel;
+  @FXML private TextArea overviewText;
 
-  private EquipmentRequestDB equDAO;
-  private LabRequestsDB labDAO;
+  private Button lower2Button,
+      lower1Button,
+      floor1Button,
+      floor2Button,
+      floor3Button,
+      floor4Button,
+      floor5Button;
+
+  @FXML private AnchorPane equipmentCardsPane;
+
+  @FXML TableView<Activity> activityTable;
+  @FXML TableColumn<Activity, String> columnTime;
+  @FXML TableColumn<Activity, String> columnAction;
+  @FXML TableColumn<Activity, String> columnEmployee;
+
   private ServiceRequestsDB servDAO;
   private MedicalEquipmentDB medDAO;
   private PatientsDB patientDAO;
+  private ActivityDB activityDAO;
 
   private LinkedList<String> requestsF1 = new LinkedList<>(),
       requestsF2 = new LinkedList<String>(),
@@ -39,75 +69,46 @@ public class DashboardController extends MenuBarController {
       patientsLL1 = new LinkedList<>(),
       patientsLL2 = new LinkedList<>();
 
+  private ObservableList<Activity> activityList = FXCollections.observableArrayList();
+
   public void initialize() {
-    equDAO = EquipmentRequestDB.getInstance();
-    labDAO = LabRequestsDB.getInstance();
     servDAO = ServiceRequestsDB.getInstance();
     medDAO = MedicalEquipmentDB.getInstance();
     patientDAO = PatientsDB.getInstance();
+    activityDAO = ActivityDB.getInstance();
 
-    for (EquipmentRequest equipmentRequest : equDAO.list()) {
-      Location equipmentRequestLocation = equipmentRequest.getLocation();
-      if (equipmentRequestLocation != null && !equipmentRequest.getStatus().equals("Completed")) {
-        switch (equipmentRequestLocation.getFloor()) {
-          case "1":
-            requestsF1.add(equipmentRequest.getRequestID());
-            break;
-          case "2":
-            requestsF2.add(equipmentRequest.getRequestID());
-            break;
-          case "3":
-            requestsF3.add(equipmentRequest.getRequestID());
-            break;
-          case "4":
-            requestsF4.add(equipmentRequest.getRequestID());
-            break;
-          case "5":
-            requestsF5.add(equipmentRequest.getRequestID());
-            break;
-          case "L1":
-            requestsLL1.add(equipmentRequest.getRequestID());
-            break;
-          case "L2":
-            requestsLL2.add(equipmentRequest.getRequestID());
-            break;
-        }
-      }
-    }
-
-    for (LabRequest labRequest : labDAO.list()) {
-      Location labRequestLocation = labRequest.getLocation();
-      if (labRequestLocation != null && !labRequest.getStatus().equals("Completed")) {
-        switch (labRequestLocation.getFloor()) {
-          case "1":
-            requestsF1.add(labRequest.getRequestID());
-            break;
-          case "2":
-            requestsF2.add(labRequest.getRequestID());
-            break;
-          case "3":
-            requestsF3.add(labRequest.getRequestID());
-            break;
-          case "4":
-            requestsF4.add(labRequest.getRequestID());
-            break;
-          case "5":
-            requestsF5.add(labRequest.getRequestID());
-            break;
-          case "L1":
-            requestsLL1.add(labRequest.getRequestID());
-            break;
-          case "L2":
-            requestsLL2.add(labRequest.getRequestID());
-            break;
-        }
-      }
-    }
+    List<Request> requests = servDAO.list();
 
     for (Request serviceRequest : servDAO.list()) {
       Location serviceRequestLocation = serviceRequest.getLocation();
-      if (serviceRequestLocation != null && !serviceRequest.getStatus().equals("Completed")) {
+      Patient serviceRequestPatient = serviceRequest.getPatient();
+
+      if (serviceRequestLocation != null) {
         switch (serviceRequestLocation.getFloor()) {
+          case "1":
+            requestsF1.add(serviceRequest.getRequestID());
+            break;
+          case "2":
+            requestsF2.add(serviceRequest.getRequestID());
+            break;
+          case "3":
+            requestsF3.add(serviceRequest.getRequestID());
+            break;
+          case "4":
+            requestsF4.add(serviceRequest.getRequestID());
+            break;
+          case "5":
+            requestsF5.add(serviceRequest.getRequestID());
+            break;
+          case "L1":
+            requestsLL1.add(serviceRequest.getRequestID());
+            break;
+          case "L2":
+            requestsLL2.add(serviceRequest.getRequestID());
+            break;
+        }
+      } else if (serviceRequestPatient != null) {
+        switch (serviceRequestPatient.getFloor()) {
           case "1":
             requestsF1.add(serviceRequest.getRequestID());
             break;
@@ -186,236 +187,426 @@ public class DashboardController extends MenuBarController {
           break;
       }
     }
+
+    columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+    columnAction.setCellValueFactory(new PropertyValueFactory<>("summary"));
+    columnEmployee.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
+
+    for (Activity activity : activityDAO.getInstance().list()) {
+      activityList.add(activity);
+    }
+
+    activityTable.setItems(activityList);
+
+    loadFloor1Information(null);
+  }
+
+  private void drawEquipmentCard(int x, int y, MedicalEquipment equipment) {
+    Rectangle rectangle = new Rectangle(x, y, 160, 120);
+    rectangle.setFill(Color.WHITE);
+    rectangle.setStroke(Color.BLACK);
+    rectangle.setStrokeWidth(1);
+    rectangle.setArcHeight(25);
+    rectangle.setArcWidth(25);
+    rectangle.setStrokeType(StrokeType.INSIDE);
+    rectangle.setStrokeLineCap(StrokeLineCap.ROUND);
+    rectangle.setStrokeLineJoin(StrokeLineJoin.ROUND);
+    rectangle.setStrokeMiterLimit(10);
+
+    Label equipmentName = new Label(equipment.getName());
+    equipmentName.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+    equipmentName.setTextAlignment(TextAlignment.CENTER);
+    equipmentName.setAlignment(Pos.CENTER);
+    equipmentName.setLayoutX(x);
+    equipmentName.setLayoutY(y + 10);
+    equipmentName.setPrefWidth(160);
+    equipmentName.setPrefHeight(25);
+
+    Label equipmentID = new Label("(" + equipment.getEquipmentID() + ")");
+    equipmentID.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+    equipmentID.setTextAlignment(TextAlignment.CENTER);
+    equipmentID.setAlignment(Pos.CENTER);
+    equipmentID.setLayoutX(x);
+    equipmentID.setLayoutY(y + 35);
+    equipmentID.setPrefWidth(160);
+    equipmentID.setPrefHeight(25);
+
+    Text locationText = new Text(x + 50, y + 80, "Location:");
+    locationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+    locationText.setTextAlignment(TextAlignment.CENTER);
+
+    Text equipmentLocation = new Text(x + 10, y + 100, equipment.getLocation().getLongName());
+    equipmentLocation.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+    equipmentLocation.setTextAlignment(TextAlignment.CENTER);
+    equipmentLocation.setWrappingWidth(140);
+
+    Text statusText = new Text(x + 60, y + 150, "Status:");
+    statusText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+    statusText.setTextAlignment(TextAlignment.CENTER);
+
+    Text equipmentStatus = new Text(x + 10, y + 170, equipment.getStatus());
+    equipmentStatus.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+    equipmentStatus.setTextAlignment(TextAlignment.CENTER);
+    equipmentStatus.setWrappingWidth(140);
+
+    equipmentCardsPane.getChildren().add(rectangle);
+    equipmentCardsPane.getChildren().add(equipmentName);
+    equipmentCardsPane.getChildren().add(equipmentID);
+    equipmentCardsPane.getChildren().add(locationText);
+    equipmentCardsPane.getChildren().add(equipmentLocation);
+    equipmentCardsPane.getChildren().add(statusText);
+    equipmentCardsPane.getChildren().add(equipmentStatus);
+  }
+
+  private int[] nextCardLocation(int cardNumber) {
+    int[] location = new int[2];
+
+    location[0] = (160 * (cardNumber / 2)) + (10 * ((cardNumber / 2) + 1));
+    location[1] = (cardNumber % 2 == 0) ? 10 : 230;
+
+    return location;
+  }
+
+  private void loadInformation(int floorNumber) {
+    equipmentCardsPane.getChildren().clear();
+
+    switch (floorNumber) {
+      case 0:
+        overviewLabel.setText("Overview of Lower Level 2");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsLL2.size()
+                + "\nPatients: "
+                + patientsLL2.size());
+
+        if (medEquipmentLL2.size() > 0) {
+          for (int i = 0; i < medEquipmentLL2.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentLL2.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+      case 1:
+        overviewLabel.setText("Overview of Lower Level 1");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsLL1.size()
+                + "\nPatients: "
+                + patientsLL1.size());
+
+        if (medEquipmentLL1.size() > 0) {
+          for (int i = 0; i < medEquipmentLL1.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentLL1.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+      case 2:
+        overviewLabel.setText("Overview of Floor 1");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsF1.size()
+                + "\nPatients: "
+                + patientsF1.size());
+
+        if (medEquipmentF1.size() > 0) {
+          for (int i = 0; i < medEquipmentF1.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentF1.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+      case 3:
+        overviewLabel.setText("Overview of Floor 2");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsF2.size()
+                + "\nPatients: "
+                + patientsF2.size());
+
+        if (medEquipmentF2.size() > 0) {
+          for (int i = 0; i < medEquipmentF2.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentF2.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+      case 4:
+        overviewLabel.setText("Overview of Floor 3");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsF3.size()
+                + "\nPatients: "
+                + patientsF3.size());
+
+        if (medEquipmentF3.size() > 0) {
+          for (int i = 0; i < medEquipmentF3.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentF3.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+      case 5:
+        overviewLabel.setText("Overview of Floor 4");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsF4.size()
+                + "\nPatients: "
+                + patientsF4.size());
+
+        if (medEquipmentF4.size() > 0) {
+          for (int i = 0; i < medEquipmentF4.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentF4.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+      case 6:
+        overviewLabel.setText("Overview of Floor 5");
+        overviewText.setText(
+            "Clean Equipment: "
+                + getCleanEquipmentCount(floorNumber)
+                + "\nDirty Equipment: "
+                + getDirtyEquipmentCount(floorNumber)
+                + "\nRequests: "
+                + requestsF5.size()
+                + "\nPatients: "
+                + patientsF5.size());
+
+        if (medEquipmentF5.size() > 0) {
+          for (int i = 0; i < medEquipmentF5.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentF5.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          equipmentCardsPane.getChildren().add(noEquipment);
+        }
+        break;
+    }
   }
 
   @FXML
-  public void showLL2Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentLL2.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentLL2) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsLL2.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsLL2) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsLL2.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsLL2) {
-        text += requestID + "\n";
-      }
-    }
-
-    textArea.setText(text);
+  public void loadFloor5Information(ActionEvent event) {
+    loadInformation(6);
   }
 
   @FXML
-  public void showLL1Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentLL1.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentLL1) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsLL1.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsLL1) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsLL1.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsLL1) {
-        text += requestID + "\n";
-      }
-    }
-
-    textArea.setText(text);
+  public void loadFloor4Information(ActionEvent event) {
+    loadInformation(5);
   }
 
   @FXML
-  public void showF5Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentF5.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentF5) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsF5.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsF5) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsF5.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsF5) {
-        text += requestID + "\n";
-      }
-    }
-
-    textArea.setText(text);
+  public void loadFloor3Information(ActionEvent event) {
+    loadInformation(4);
   }
 
   @FXML
-  public void showF4Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentF4.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentF4) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsF4.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsF4) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsF4.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsF4) {
-        text += requestID + "\n";
-      }
-    }
-
-    textArea.setText(text);
+  public void loadFloor2Information(ActionEvent event) {
+    loadInformation(3);
   }
 
   @FXML
-  public void showF3Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentF3.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentF3) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsF3.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsF3) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsF3.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsF3) {
-        text += requestID + "\n";
-      }
-    }
-
-    textArea.setText(text);
+  public void loadFloor1Information(ActionEvent event) {
+    loadInformation(2);
   }
 
   @FXML
-  public void showF2Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentF2.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentF2) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsF2.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsF2) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsF2.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsF2) {
-        text += requestID + "\n";
-      }
-    }
-
-    textArea.setText(text);
+  public void loadLower1Information(ActionEvent event) {
+    loadInformation(1);
   }
 
   @FXML
-  public void showF1Information(ActionEvent event) {
-    String text = "";
-    if (medEquipmentF1.size() > 0) {
-      text += "Medical Equipment:\n";
-      for (MedicalEquipment medEquipment : medEquipmentF1) {
-        text +=
-            medEquipment.getName()
-                + "\t"
-                + medEquipment.getLocation().getLongName()
-                + "\t"
-                + (medEquipment.getIsClean() ? "Clean" : "Dirty")
-                + "\n";
-      }
-      text += "\n";
-    }
-    if (patientsF1.size() > 0) {
-      text += "Patients:\n";
-      for (Patient patient : patientsF1) {
-        text += patient.getOverview() + "\t" + patient.getLocation().getLongName() + "\n";
-      }
-      text += "\n";
-    }
-    if (requestsF1.size() > 0) {
-      text += "Requests:\n";
-      for (String requestID : requestsF1) {
-        text += requestID + "\n";
-      }
-    }
+  public void loadLower2Information(ActionEvent event) {
+    loadInformation(0);
+  }
 
-    textArea.setText(text);
+  private int getCleanEquipmentCount(int floorNumber) {
+    int count = 0;
+    switch (floorNumber) {
+      case 0:
+        for (MedicalEquipment equipment : medEquipmentLL2) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 1:
+        for (MedicalEquipment equipment : medEquipmentLL1) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 2:
+        for (MedicalEquipment equipment : medEquipmentF1) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 3:
+        for (MedicalEquipment equipment : medEquipmentF2) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 4:
+        for (MedicalEquipment equipment : medEquipmentF3) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 5:
+        for (MedicalEquipment equipment : medEquipmentF4) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 6:
+        for (MedicalEquipment equipment : medEquipmentF5) {
+          if (equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+    }
+    return count;
+  }
+
+  private int getDirtyEquipmentCount(int floorNumber) {
+    int count = 0;
+    switch (floorNumber) {
+      case 0:
+        for (MedicalEquipment equipment : medEquipmentLL2) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 1:
+        for (MedicalEquipment equipment : medEquipmentLL1) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 2:
+        for (MedicalEquipment equipment : medEquipmentF1) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 3:
+        for (MedicalEquipment equipment : medEquipmentF2) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 4:
+        for (MedicalEquipment equipment : medEquipmentF3) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 5:
+        for (MedicalEquipment equipment : medEquipmentF4) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+      case 6:
+        for (MedicalEquipment equipment : medEquipmentF5) {
+          if (!equipment.getIsClean()) {
+            count++;
+          }
+        }
+        break;
+    }
+    return count;
   }
 }

@@ -34,6 +34,8 @@ public class ProfileController extends MenuBarController implements Initializabl
   @FXML private Label errorLabel;
   @FXML private AnchorPane changePasswordPane;
 
+  private String password;
+  private String hiddenPassword;
   @FXML TableView<Request> requestTable;
   @FXML TableColumn<Request, String> columnRequestID;
   @FXML TableColumn<Request, String> columnType;
@@ -51,8 +53,46 @@ public class ProfileController extends MenuBarController implements Initializabl
   private ObservableList<Request> requests = FXCollections.observableArrayList();
   Request currentRequest = null;
 
-  private String password;
-  private String hiddenPassword;
+  @FXML
+  public void initialize() {
+    Employee currentUser = App.currentUser;
+
+    nameLabel.setText(currentUser.getFirstName() + " " + currentUser.getLastName());
+    positionLabel.setText(currentUser.getPosition());
+    idLabel.setText(currentUser.getEmployeeID());
+    usernameLabel.setText("Username: " + currentUser.getUsername());
+
+    password = currentUser.getPassword();
+
+    hiddenPassword = "";
+    for (int i = 0; i < password.length(); i++) {
+      hiddenPassword += "\u2022";
+    }
+
+    // passwordLabel.setText("Password: " + hiddenPassword);
+
+    newPasswordField
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                enableSubmission();
+              }
+            });
+
+    confirmPasswordField
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                enableSubmission();
+              }
+            });
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -67,16 +107,6 @@ public class ProfileController extends MenuBarController implements Initializabl
     columnPriority.getStyleClass().add("table-column-middle");
     columnButtons.getStyleClass().add("table-column-right");
 
-    for (EquipmentRequest request : EquipmentRequestDB.getInstance().list()) {
-      if (request.getEmployeeID() != null
-          && request.getEmployeeID().equals(App.currentUser.getEmployeeID())
-          && !request.getStatus().equals("Completed")) requests.add(request);
-    }
-    for (LabRequest request : LabRequestsDB.getInstance().list()) {
-      if (request.getEmployeeID() != null
-          && request.getEmployeeID().equals(App.currentUser.getEmployeeID())
-          && !request.getStatus().equals("Completed")) requests.add(request);
-    }
     for (Request request : ServiceRequestsDB.getInstance().list()) {
       if (request.getEmployeeID() != null
           && request.getEmployeeID().equals(App.currentUser.getEmployeeID())
@@ -135,59 +165,12 @@ public class ProfileController extends MenuBarController implements Initializabl
   }
 
   @FXML
-  public void initialize() {
-    Employee currentUser = App.currentUser;
-
-    nameLabel.setText(currentUser.getFirstName() + " " + currentUser.getLastName());
-    positionLabel.setText(currentUser.getPosition());
-    idLabel.setText(currentUser.getEmployeeID());
-    usernameLabel.setText("Username: " + currentUser.getUsername());
-
-    password = currentUser.getPassword();
-
-    hiddenPassword = "";
-    for (int i = 0; i < password.length(); i++) {
-      hiddenPassword += "\u2022";
-    }
-
-    // passwordLabel.setText("Password: " + hiddenPassword);
-
-    newPasswordField
-        .textProperty()
-        .addListener(
-            new ChangeListener<String>() {
-              @Override
-              public void changed(
-                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                enableSubmission();
-              }
-            });
-
-    confirmPasswordField
-        .textProperty()
-        .addListener(
-            new ChangeListener<String>() {
-              @Override
-              public void changed(
-                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                enableSubmission();
-              }
-            });
-  }
-
-  @FXML
   public void saveData(ActionEvent event) {
     currentRequest.setStatus(statusInput.getValue());
     statusInput.setDisable(true);
     currentRequest.setLastEdited(new Date());
     if (currentRequest.getStatus().equals("Completed")) requests.remove(currentRequest);
-    if (currentRequest instanceof EquipmentRequest) {
-      EquipmentRequestDB.getInstance().update((EquipmentRequest) currentRequest);
-    } else if (currentRequest instanceof LabRequest) {
-      LabRequestsDB.getInstance().update((LabRequest) currentRequest);
-    } else {
-      ServiceRequestsDB.getInstance().update(currentRequest);
-    }
+    ServiceRequestsDB.getInstance().update(currentRequest);
     requestTable.refresh();
 
     scrollPane.setVisible(false);
