@@ -49,6 +49,7 @@ public class DateHelper {
 
     int year = date.getYear() + 1900;
     int hour = date.getHours() % 12;
+    hour = (hour == 0) ? 12 : hour;
     int minutes = date.getMinutes();
     String period = date.getHours() < 12 ? "AM" : "PM";
 
