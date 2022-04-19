@@ -9,12 +9,12 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
@@ -47,6 +47,8 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton resetButton;
   @FXML JFXButton markerButton;
   @FXML Label markerLabel;
+  @FXML JFXButton undoMoveButton;
+  @FXML Label undoMoveLabel;
   @FXML Pane locInfoPane;
   @FXML Label nameLabel;
   @FXML Label nodeLabel;
@@ -110,6 +112,7 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean editEquipEnabled = false;
   private Boolean equipPaneVisible = false;
   private Boolean filterOpen = false;
+  private Boolean firstMove = true;
 
   private Boolean bathOn = true;
   private Boolean deptOn = true;
@@ -143,6 +146,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   private int floorLevel = 2;
   private int[] coordinates;
+  private int[] startingCoordinates = new int[2];
   private String floorString = "1";
 
   private double startDragX, startDragY;
@@ -177,6 +181,29 @@ public class interactiveMapPageController extends MenuBarController {
     mapPane.setOnScroll(
         e -> {
           zoom(e);
+        });
+
+    mapPane.setOnDragOver(
+        new EventHandler<DragEvent>() {
+          public void handle(DragEvent event) {
+            event.acceptTransferModes(TransferMode.MOVE);
+          }
+        });
+
+    mapPane.setOnDragDropped(
+        new EventHandler<DragEvent>() {
+          public void handle(DragEvent event) {
+            Dragboard db = event.getDragboard();
+            int newX = (int) event.getX();
+            int newY = (int) event.getY();
+            String locName = db.getString();
+            LinkedList<Location> correctLoc = dao.listByAttribute("longName", locName);
+            Location toEdit = correctLoc.pop();
+            toEdit.setXCoord(newX);
+            toEdit.setYCoord(newY);
+            dao.update(toEdit);
+            setRoomIcons();
+          }
         });
   }
 
@@ -280,6 +307,28 @@ public class interactiveMapPageController extends MenuBarController {
         event -> {
           if (deleteEnabled || editEnabled) {
             locationDropdown.setValue(location.getLongName());
+            if (firstMove) {
+              startingCoordinates[0] = location.getXCoord();
+              startingCoordinates[1] = location.getYCoord();
+            }
+          }
+        });
+    icon.setOnDragDetected(
+        new EventHandler<MouseEvent>() {
+          public void handle(MouseEvent event) {
+            if (editEnabled) {
+              locationDropdown.setValue(location.getLongName());
+              if (firstMove) {
+                startingCoordinates[0] = location.getXCoord();
+                startingCoordinates[1] = location.getYCoord();
+                firstMove = false;
+              }
+              Dragboard db = icon.startDragAndDrop(TransferMode.MOVE);
+              ClipboardContent content = new ClipboardContent();
+              content.putString(location.getLongName());
+              db.setContent(content);
+              event.consume();
+            }
           }
         });
     icon.setLayoutX(viewCoords[0] - 5);
@@ -392,6 +441,7 @@ public class interactiveMapPageController extends MenuBarController {
         icon.setFill(Color.rgb(250, 0, 0));
         break;
       case "In Progress":
+      case "In-Progress":
         icon.setFill(Color.rgb(100, 0, 100));
         break;
       default:
@@ -411,10 +461,6 @@ public class interactiveMapPageController extends MenuBarController {
                 reqInfoPane.setVisible(false);
               }
             });
-    icon.setOnMouseClicked(
-        event -> {
-          //              if (!locInfoVisible && !equipInfoVisible) toggleRequestInfo(r);
-        });
     icon.setLayoutX(viewCoords[0]);
     icon.setLayoutY(viewCoords[1]);
     mapPane.getChildren().add(icon);
@@ -502,7 +548,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 2;
     floorString = "1";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
     f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -511,7 +557,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 3;
     floorString = "2";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
     f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -520,7 +566,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 4;
     floorString = "3";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -678,6 +724,7 @@ public class interactiveMapPageController extends MenuBarController {
     confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Edit.png"));
     lockHover = true;
     editEnabled = true;
+    firstMove = true;
     addButton.setVisible(false);
     editButton.setVisible(false);
     deleteButton.setVisible(false);
@@ -690,8 +737,8 @@ public class interactiveMapPageController extends MenuBarController {
     locationDropdown.setVisible(true);
     locationName.setVisible(true);
     confirmButton.setVisible(true);
-    markerButton.setVisible(true);
-    markerLabel.setVisible(true);
+    undoMoveButton.setVisible(true);
+    undoMoveLabel.setVisible(true);
   }
 
   public void editLocation() {
@@ -703,13 +750,13 @@ public class interactiveMapPageController extends MenuBarController {
       toChange.setShortName(locationName.getText());
       toChange.setLongName(locationName.getText());
     }
-    if (mapPane.getChildren().contains(marker)) {
-      int markerX = (int) marker.getLayoutX();
-      int markerY = (int) marker.getLayoutY();
-      int[] newCoords = imageCoordsToCSVCoords(markerX, markerY);
-      toChange.setXCoord(newCoords[0]);
-      toChange.setYCoord(newCoords[1]);
-    }
+    //    if (mapPane.getChildren().contains(marker)) {
+    //      int markerX = (int) marker.getLayoutX();
+    //      int markerY = (int) marker.getLayoutY();
+    //      int[] newCoords = imageCoordsToCSVCoords(markerX, markerY);
+    //      toChange.setXCoord(newCoords[0]);
+    //      toChange.setYCoord(newCoords[1]);
+    //    }
     dao.update(toChange);
     endEdit();
   }
@@ -730,13 +777,15 @@ public class interactiveMapPageController extends MenuBarController {
     locationName.setVisible(false);
     locationName.setText("");
     confirmButton.setVisible(false);
-    markerButton.setVisible(false);
-    markerLabel.setVisible(false);
+    undoMoveButton.setVisible(false);
+    undoMoveLabel.setVisible(false);
+    startingCoordinates[0] = -1;
+    startingCoordinates[1] = -1;
     clearMarker();
   }
 
   public void getCoordinates(MouseEvent event) {
-    if (addEnabled || editEnabled) {
+    if (addEnabled) {
       if (mapPane.getChildren().contains(marker)) {
         removeIcon(marker);
       }
@@ -821,6 +870,7 @@ public class interactiveMapPageController extends MenuBarController {
       endDelete();
     }
     if (editEnabled) {
+      undoMove();
       endEdit();
     }
     if (editEquipEnabled) {
@@ -1314,7 +1364,7 @@ public class interactiveMapPageController extends MenuBarController {
           toRemove.add(r);
         }
       }
-      if (!customOn && r.getRequestID().substring(0, 3).equals("CUS")) toRemove.add(r);
+      if (!customOn && r.getRequestID().startsWith("CUS")) toRemove.add(r);
     }
     reqList.removeAll(toRemove);
     return reqList;
@@ -1456,5 +1506,16 @@ public class interactiveMapPageController extends MenuBarController {
     hideAllLocs();
     hideAllEquip();
     hideAllReqs();
+  }
+
+  public void undoMove() {
+    if (editEnabled && locationDropdown.getValue() != null) {
+      Location currentLoc = dao.listByAttribute("longName", locationDropdown.getValue()).pop();
+      currentLoc.setXCoord(startingCoordinates[0]);
+      currentLoc.setYCoord(startingCoordinates[1]);
+      dao.update(currentLoc);
+      setRoomIcons();
+      firstMove = true;
+    }
   }
 }
