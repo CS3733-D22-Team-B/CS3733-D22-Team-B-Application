@@ -4,11 +4,9 @@ import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.Date;
 
 public class EquipmentRequest extends Request {
-  private final String equipmentID;
-  private MedicalEquipment medicalEquipment;
 
   public EquipmentRequest(String locationID, String equipmentID, String information, int priority) {
-    super(locationID, null, information, priority, "Equipment Request");
+    super(locationID, null, information, priority, "Equipment Delivery");
     this.equipmentID = equipmentID;
     setMedicalEquipment();
     this.information =
@@ -20,7 +18,10 @@ public class EquipmentRequest extends Request {
       String requestID,
       String employeeID,
       String locationID,
+      String patientID,
       String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -31,6 +32,9 @@ public class EquipmentRequest extends Request {
         requestID,
         employeeID,
         locationID,
+        null,
+        equipmentID,
+        null,
         null,
         type,
         status,
@@ -44,10 +48,6 @@ public class EquipmentRequest extends Request {
 
   public final String createRequestID() {
     return "EQU" + getHashCode();
-  }
-
-  public String getEquipmentID() {
-    return equipmentID;
   }
 
   public void setMedicalEquipment() {

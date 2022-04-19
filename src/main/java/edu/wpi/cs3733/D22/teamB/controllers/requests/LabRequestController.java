@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.LabRequest;
-import edu.wpi.cs3733.D22.teamB.databases.LabRequestsDB;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -88,7 +88,7 @@ public class LabRequestController extends PatientBasedRequestController {
     LabRequest request =
         new LabRequest(
             patientID, labTest, testingDate, testRoomID, notes, (int) prioritySlider.getValue());
-    LabRequestsDB.getInstance().add(request);
+    ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText(
         "Request sent: "
             + labTest

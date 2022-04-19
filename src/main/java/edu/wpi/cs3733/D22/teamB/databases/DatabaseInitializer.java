@@ -28,8 +28,8 @@ public class DatabaseInitializer {
         statement.execute(
             "CREATE TABLE Locations(nodeID VARCHAR(10), xcoord int, ycoord int, "
                 + "floor VARCHAR(10), building VARCHAR(10), nodeType VARCHAR(10), "
-                + "longName VARCHAR(100), shortName VARCHAR(50), CONSTRAINT LOCATIONS_PK primary key (nodeID))");
-        populateDatabase(Filepath.getInstance().getLocationCSVFilePath(), "Locations", 8);
+                + "longName VARCHAR(100), shortName VARCHAR(50), availability BOOLEAN, CONSTRAINT LOCATIONS_PK primary key (nodeID))");
+        populateDatabase(Filepath.getInstance().getLocationCSVFilePath(), "Locations", 9);
       }
       if (!tableExists(connection, "MEDICALEQUIPMENT")) {
         statement.execute(
@@ -45,21 +45,8 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "PATIENTS")) {
         statement.execute(
-            "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
-        populateDatabase(Filepath.getInstance().getPatientsCSVFilePath(), "Patients", 4);
-      }
-      if (!tableExists(connection, "EQUIPMENTREQUESTS")) {
-        statement.execute(
-            "CREATE TABLE EquipmentRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), equipmentID VARCHAR(10), type VARCHAR(100), status VARCHAR(25), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT EQUIPMENTREQUESTS_PK primary key (requestID), CONSTRAINT ER_EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT EQUIPMENTREQUESTS_LOC foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT EQUIPMENTREQUESTS_EQUIP foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID) ON DELETE CASCADE)");
-        populateDatabaseEquipmentRequestDB();
-      }
-      if (!tableExists(connection, "LABREQUESTS")) {
-        statement.execute(
-            "CREATE TABLE LabRequests(requestID VARCHAR(10), employeeID VARCHAR(10), patientID VARCHAR(10), testRoomID VARCHAR(10),"
-                + "type VARCHAR(50), status VARCHAR(50), priority int, information VARCHAR(512), test VARCHAR(50), date TIMESTAMP, timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT LAB_REQUEST_PK primary key (requestID), "
-                + "CONSTRAINT LAB_REQUEST_EMP foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LAB_REQUEST_PAT foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT TEST_ROOM_LOC foreign key (testRoomID) REFERENCES Locations (nodeID) ON DELETE CASCADE)");
-        populateDatabaseLabRequestDB(
-            Filepath.getInstance().getLabRequestCSVFilePath(), "LabRequests", 7);
+            "CREATE TABLE Patients(patientID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), nodeID VARCHAR(10), information VARCHAR(100), CONSTRAINT PATIENTS_PK primary key (patientID), CONSTRAINT PATIENTS_FK foreign key (nodeID) REFERENCES Locations (nodeID))");
+        populateDatabase(Filepath.getInstance().getPatientsCSVFilePath(), "Patients", 5);
       }
       if (!tableExists(connection, "EDGES")) {
         statement.execute(
@@ -68,8 +55,13 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "SERVICEREQUESTS")) {
         statement.execute(
-            "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE)");
+            "CREATE TABLE ServiceRequests(requestID VARCHAR(10), employeeID VARCHAR(10), locationID VARCHAR(10), patientID VARCHAR(10), equipmentID VARCHAR(10), testType VARCHAR(50), testDate TIMESTAMP, type VARCHAR(100), status VARCHAR(50), priority int, information VARCHAR(512), timeCreated TIMESTAMP, lastEdited TIMESTAMP, CONSTRAINT SERVICEREQUESTS_PK primary key (requestID), CONSTRAINT EMPLOYEE_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE, CONSTRAINT LOCATION_FK foreign key (locationID) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT PATIENT_FK foreign key (patientID) REFERENCES Patients (patientID) ON DELETE CASCADE, CONSTRAINT EQUIPMENT_FK foreign key (equipmentID) REFERENCES MedicalEquipment (equipmentID) ON DELETE CASCADE)");
         populateServiceRequestsDatabase();
+      }
+      if (!tableExists(connection, "ACTIVITY")) {
+        statement.execute(
+            "CREATE TABLE Activity(time TIMESTAMP, employeeID VARCHAR(10), typeID VARCHAR(10), information VARCHAR(100), type VARCHAR(25), action VARCHAR(100), CONSTRAINT ACTIVITY_PK primary key (time), CONSTRAINT ACTIVITY_FK foreign key (employeeID) REFERENCES Employees (employeeID) ON DELETE CASCADE)");
+        populateActivityDatabase();
       }
 
     } catch (SQLException e) {
@@ -90,7 +82,7 @@ public class DatabaseInitializer {
       String addToTable = "";
       if (databaseName == "Locations") {
         addToTable =
-            "INSERT INTO Locations(nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO Locations(nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName, availability) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "MedicalEquipment") {
         addToTable =
             "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, availability, name) VALUES(?, ?, ?, ?, ?, ?)";
@@ -99,10 +91,7 @@ public class DatabaseInitializer {
             "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Patients") {
         addToTable =
-            "INSERT INTO Patients(patientID, lastName, firstName, nodeID) VALUES(?, ?, ?, ?)";
-      } else if (databaseName == "EquipmentRequests") {
-        addToTable =
-            "INSERT INTO EquipmentRequests(requestID, employeeID, locationID, equipmentID, type, status, priority, information) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO Patients(patientID, lastName, firstName, nodeID, information) VALUES(?, ?, ?, ?, ?)";
       } else if (databaseName == "Edges") {
         addToTable = "INSERT INTO Edges(edgeID, nodeID1, nodeID2) VALUES(?, ?, ?)";
       }
@@ -150,143 +139,6 @@ public class DatabaseInitializer {
     return rs.next();
   }
 
-  private void populateDatabaseEquipmentRequestDB() {
-    Connection connection = null;
-    CSVReader reader = new CSVReader();
-    try {
-
-      connection = DriverManager.getConnection(DBURL);
-
-      String sql =
-          "INSERT INTO EquipmentRequests (requestID, employeeID, locationID, equipmentID, type, status, priority, information, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-      PreparedStatement statement = connection.prepareStatement(sql);
-
-      BufferedReader lineReader =
-          reader.read(Filepath.getInstance().getEquipmentRequestCSVFilePath());
-      String lineText = null;
-
-      lineReader.readLine(); // skip header line
-
-      while ((lineText = lineReader.readLine()) != null) {
-        String[] data = lineText.split(",");
-        String requestID = data[0];
-        String employeeID = data[1];
-        String locationID = data[2];
-        String equipmentID = data[3];
-        String type = data[4];
-        String status = data[5];
-        String priority = data[6];
-        String information = data[7];
-        String timeCreated = data[8];
-        String lastEdited = data[9];
-
-        statement.setString(1, requestID);
-        statement.setString(2, employeeID);
-        statement.setString(3, locationID);
-        statement.setString(4, equipmentID);
-        statement.setString(5, type);
-        statement.setString(6, status);
-        int priorityInt = Integer.parseInt(priority);
-        statement.setInt(7, priorityInt);
-        statement.setString(8, information);
-
-        Timestamp sqlTimestamp1 = Timestamp.valueOf(timeCreated);
-        statement.setTimestamp(9, sqlTimestamp1);
-
-        Timestamp sqlTimestamp2 = Timestamp.valueOf(lastEdited);
-        statement.setTimestamp(10, sqlTimestamp2);
-
-        statement.addBatch();
-        statement.executeBatch();
-      }
-
-      lineReader.close();
-      connection.commit();
-      connection.close();
-
-    } catch (IOException ex) {
-      System.err.println(ex);
-    } catch (SQLException ex) {
-      ex.printStackTrace();
-      try {
-        connection.rollback();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
-  }
-
-  private void populateDatabaseLabRequestDB(String filepath, String databaseName, int Elements) {
-    Connection connection = null;
-    CSVReader reader = new CSVReader();
-    try {
-
-      connection = DriverManager.getConnection(DBURL);
-
-      String sql =
-          "INSERT INTO LabRequests (requestID, employeeID, patientID, testRoomID, type, status, priority, information, test, date, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-      PreparedStatement statement = connection.prepareStatement(sql);
-
-      BufferedReader lineReader = reader.read(filepath);
-      String lineText = null;
-
-      lineReader.readLine(); // skip header line
-
-      while ((lineText = lineReader.readLine()) != null) {
-        String[] data = lineText.split(",");
-        String requestID = data[0];
-        String employeeID = data[1];
-        String patientID = data[2];
-        String testRoomID = data[3];
-        String type = data[4];
-        String status = data[5];
-        String priority = data[6];
-        String information = data[7];
-        String test = data[8];
-        String date = data[9];
-        String timeCreated = data[10];
-        String lastEdited = data[11];
-
-        statement.setString(1, requestID);
-        statement.setString(2, employeeID);
-        statement.setString(3, patientID);
-        statement.setString(4, testRoomID);
-        statement.setString(5, type);
-        statement.setString(6, status);
-        int priorityInt = Integer.parseInt(priority);
-        statement.setInt(7, priorityInt);
-        statement.setString(8, information);
-        statement.setString(9, test);
-
-        Timestamp sqlTimestamp1 = Timestamp.valueOf(date);
-        statement.setTimestamp(10, sqlTimestamp1);
-
-        Timestamp sqlTimestamp2 = Timestamp.valueOf(timeCreated);
-        statement.setTimestamp(11, sqlTimestamp2);
-
-        Timestamp sqlTimestamp3 = Timestamp.valueOf(lastEdited);
-        statement.setTimestamp(12, sqlTimestamp3);
-
-        statement.addBatch();
-        statement.executeBatch();
-      }
-
-      lineReader.close();
-      connection.commit();
-      connection.close();
-
-    } catch (IOException ex) {
-      System.err.println(ex);
-    } catch (SQLException ex) {
-      ex.printStackTrace();
-      try {
-        connection.rollback();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
-  }
-
   private void populateServiceRequestsDatabase() {
     Connection connection = null;
     CSVReader reader = new CSVReader();
@@ -294,7 +146,7 @@ public class DatabaseInitializer {
       connection = DriverManager.getConnection(DBURL);
 
       String sql =
-          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, patientID, type, status, priority, information, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO ServiceRequests (requestID, employeeID, locationID, patientID, equipmentID, testType, testDate, type, status, priority, information, timeCreated, lastEdited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement statement = connection.prepareStatement(sql);
 
       BufferedReader lineReader =
@@ -309,36 +161,124 @@ public class DatabaseInitializer {
         String employeeID = data[1];
         String locationID = data[2];
         String patientID = data[3];
-        String type = data[4];
-        String status = data[5];
-        String priority = data[6];
-        String information = data[7];
-        String timeCreated = data[8];
-        String lastEdited = data[9];
+        String equipmentID = data[4];
+        String testType = data[5];
+        String testDate = data[6];
+        String type = data[7];
+        String status = data[8];
+        String priority = data[9];
+        String information = data[10];
+        String timeCreated = data[11];
+        String lastEdited = data[12];
 
         statement.setString(1, requestID);
-        statement.setString(2, employeeID);
+
+        if (employeeID.compareTo("") != 0) {
+          statement.setString(2, employeeID);
+        } else {
+          statement.setString(2, null);
+        }
+
         if (locationID.compareTo("") != 0) {
           statement.setString(3, locationID);
         } else {
           statement.setString(3, null);
         }
+
         if (patientID.compareTo("") != 0) {
           statement.setString(4, patientID);
         } else {
           statement.setString(4, null);
         }
-        statement.setString(5, type);
-        statement.setString(6, status);
+
+        if (equipmentID.compareTo("") != 0) {
+          statement.setString(5, equipmentID);
+        } else {
+          statement.setString(5, null);
+        }
+
+        if (testType.compareTo("") != 0) {
+          statement.setString(6, testType);
+        } else {
+          statement.setString(6, null);
+        }
+
+        if (testDate.compareTo("") != 0) {
+          Timestamp sqlTimestamp1 = Timestamp.valueOf(testDate);
+          statement.setTimestamp(7, sqlTimestamp1);
+        } else {
+          statement.setTimestamp(7, null);
+        }
+
+        statement.setString(8, type);
+        statement.setString(9, status);
         int priorityInt = Integer.parseInt(priority);
-        statement.setInt(7, priorityInt);
-        statement.setString(8, information);
+        statement.setInt(10, priorityInt);
+        statement.setString(11, information);
 
-        Timestamp sqlTimestamp1 = Timestamp.valueOf(timeCreated);
-        statement.setTimestamp(9, sqlTimestamp1);
+        Timestamp sqlTimestamp2 = Timestamp.valueOf(timeCreated);
+        statement.setTimestamp(12, sqlTimestamp2);
 
-        Timestamp sqlTimestamp2 = Timestamp.valueOf(lastEdited);
-        statement.setTimestamp(10, sqlTimestamp2);
+        Timestamp sqlTimestamp3 = Timestamp.valueOf(lastEdited);
+        statement.setTimestamp(13, sqlTimestamp3);
+
+        statement.executeUpdate();
+      }
+      lineReader.close();
+      connection.commit();
+      connection.close();
+
+    } catch (IOException ex) {
+      System.err.println(ex);
+
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+      try {
+        connection.rollback();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  public void populateActivityDatabase() {
+    Connection connection = null;
+    CSVReader reader = new CSVReader();
+    try {
+      connection = DriverManager.getConnection(DBURL);
+
+      String sql =
+          "INSERT INTO Activity (time, employeeID, typeID, information, type, action) VALUES (?, ?, ?, ?, ?, ?)";
+      PreparedStatement statement = connection.prepareStatement(sql);
+
+      BufferedReader lineReader = reader.read(Filepath.getInstance().getActivityCSVFilePath());
+      String lineText = null;
+
+      lineReader.readLine(); // skip header line
+
+      while ((lineText = lineReader.readLine()) != null) {
+        String[] data = lineText.split(",");
+        String time = data[0];
+        String employeeID = data[1];
+        String typeID = data[2];
+        String information = data[3];
+        String type = data[4];
+        String action = data[5];
+
+        Timestamp sqlTimestamp = Timestamp.valueOf(time);
+        statement.setTimestamp(1, sqlTimestamp);
+
+        statement.setString(2, employeeID);
+        statement.setString(3, typeID);
+
+        if (information.compareTo("") != 0) {
+          statement.setString(4, information);
+        } else {
+          statement.setString(4, null);
+        }
+
+        statement.setString(5, type);
+        statement.setString(6, action);
 
         statement.executeUpdate();
       }

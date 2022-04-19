@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
 import com.jfoenix.controls.JFXButton;
@@ -629,7 +628,8 @@ public class interactiveMapPageController extends MenuBarController {
               building,
               nodeType,
               name,
-              name);
+              name,
+              true);
       // Pass new location into database
       dao.add(newLoc);
       endAdd();
@@ -764,7 +764,7 @@ public class interactiveMapPageController extends MenuBarController {
   public void endEdit() {
     lockHover = false;
     editEnabled = false;
-
+    toLocDatabase.setVisible(true);
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);

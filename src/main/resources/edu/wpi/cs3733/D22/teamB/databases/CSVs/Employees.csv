@@ -2,7 +2,7 @@ employeeID,lastName,firstName,department,position,username,password
 0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED
 ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin
 STAFF,Member,Staff,STAFF,STAFF,staff,staff
-PTDR01,Williams,Robert,PT,DOCTOR,Rob,Rob123
+PTDO01,Williams,Robert,PT,DOCTOR,Rob,Rob123
 ICNU01,Brown,William,ICU,NURSE,Will,Will123
 SAPS01,Davis,Patricia,SANITARIUM,PSYCHOLOGIST,Patty,Patty123
 CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,Mary123

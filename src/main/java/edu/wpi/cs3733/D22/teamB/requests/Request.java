@@ -11,6 +11,10 @@ public abstract class Request {
   protected Location location;
   protected final String patientID;
   protected Patient patient;
+  protected String equipmentID;
+  protected MedicalEquipment medicalEquipment;
+  protected String testType;
+  protected Date testDate;
   protected String type;
   protected String status;
   protected int priority;
@@ -23,6 +27,9 @@ public abstract class Request {
     this.employeeID = "0";
     this.locationID = locationID;
     this.patientID = patientID;
+    this.equipmentID = null;
+    this.testType = null;
+    this.testDate = null;
     this.type = type;
     this.status = "Pending";
     this.priority = priority;
@@ -41,6 +48,9 @@ public abstract class Request {
       String employeeID,
       String locationID,
       String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
       int priority,
@@ -51,6 +61,9 @@ public abstract class Request {
     this.employeeID = employeeID;
     this.locationID = locationID;
     this.patientID = patientID;
+    this.equipmentID = equipmentID;
+    this.testType = testType;
+    this.testDate = testDate;
     this.type = type;
     this.status = status;
     this.priority = priority;
@@ -105,6 +118,18 @@ public abstract class Request {
     PatientsDB patientsDB = PatientsDB.getInstance();
     patient = patientsDB.getByID(patientID);
     return patient;
+  }
+
+  public final String getEquipmentID() {
+    return this.equipmentID;
+  }
+
+  public final String getTestType() {
+    return this.testType;
+  }
+
+  public final Date getTestDate() {
+    return this.testDate;
   }
 
   public final String getType() {

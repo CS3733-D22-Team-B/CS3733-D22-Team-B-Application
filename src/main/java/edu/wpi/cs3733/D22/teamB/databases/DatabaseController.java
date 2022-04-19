@@ -24,8 +24,6 @@ public class DatabaseController {
 
   public void printAllDBs() {
     EmployeesDB.getInstance().listDB();
-    EquipmentRequestDB.getInstance().listDB();
-    LabRequestsDB.getInstance().listDB();
     LocationsDB.getInstance().listDB();
     MedicalEquipmentDB.getInstance().listDB();
     PatientsDB.getInstance().listDB();
@@ -48,14 +46,6 @@ public class DatabaseController {
 
   public LinkedList<MedicalEquipment> listMedicalEquipment() {
     return MedicalEquipmentDB.getInstance().list();
-  }
-
-  public LinkedList<EquipmentRequest> listEquipmentRequests() {
-    return EquipmentRequestDB.getInstance().list();
-  }
-
-  public LinkedList<LabRequest> listLabRequests() {
-    return LabRequestsDB.getInstance().list();
   }
 
   public LinkedList<Request> listRequests() {
@@ -83,14 +73,6 @@ public class DatabaseController {
     return MedicalEquipmentDB.getInstance().getByID(pk);
   }
 
-  public EquipmentRequest getEquipmentRequestByID(String pk) {
-    return EquipmentRequestDB.getInstance().getByID(pk);
-  }
-
-  public LabRequest getLabRequestByID(String pk) {
-    return LabRequestsDB.getInstance().getByID(pk);
-  }
-
   public Request getServiceRequestByID(String pk) {
     return ServiceRequestsDB.getInstance().getByID(pk);
   }
@@ -114,14 +96,6 @@ public class DatabaseController {
 
   public int add(MedicalEquipment medEq) {
     return MedicalEquipmentDB.getInstance().add(medEq);
-  }
-
-  public int add(EquipmentRequest eqReq) {
-    return EquipmentRequestDB.getInstance().add(eqReq);
-  }
-
-  public int add(LabRequest labReq) {
-    return LabRequestsDB.getInstance().add(labReq);
   }
 
   public int add(Request req) {
@@ -149,14 +123,6 @@ public class DatabaseController {
     return MedicalEquipmentDB.getInstance().update(medEq);
   }
 
-  public int update(EquipmentRequest eqReq) {
-    return EquipmentRequestDB.getInstance().update(eqReq);
-  }
-
-  public int update(LabRequest labReq) {
-    return LabRequestsDB.getInstance().update(labReq);
-  }
-
   public int update(Request req) {
     return ServiceRequestsDB.getInstance().update(req);
   }
@@ -182,14 +148,6 @@ public class DatabaseController {
     return MedicalEquipmentDB.getInstance().delete(medEq);
   }
 
-  public int delete(EquipmentRequest eqReq) {
-    return EquipmentRequestDB.getInstance().delete(eqReq);
-  }
-
-  public int delete(LabRequest labReq) {
-    return LabRequestsDB.getInstance().delete(labReq);
-  }
-
   public int delete(Request req) {
     return ServiceRequestsDB.getInstance().delete(req);
   }
@@ -200,9 +158,8 @@ public class DatabaseController {
 
   public void resetAllDBs() {
     // Get Instances
+    ActivityDB activityDB = ActivityDB.getInstance();
     EmployeesDB employeesDB = EmployeesDB.getInstance();
-    EquipmentRequestDB equipmentRequestDB = EquipmentRequestDB.getInstance();
-    LabRequestsDB labRequestsDB = LabRequestsDB.getInstance();
     LocationsDB locationsDB = LocationsDB.getInstance();
     MedicalEquipmentDB medicalEquipmentDB = MedicalEquipmentDB.getInstance();
     PatientsDB patientsDB = PatientsDB.getInstance();
@@ -210,10 +167,9 @@ public class DatabaseController {
     EdgesDB edgesDB = EdgesDB.getInstance();
 
     // Drop All
-    equipmentRequestDB.quit();
-    medicalEquipmentDB.quit();
-    labRequestsDB.quit();
+    activityDB.quit();
     serviceRequestsDB.quit();
+    medicalEquipmentDB.quit();
     edgesDB.quit();
     patientsDB.quit();
     employeesDB.quit();
@@ -225,9 +181,8 @@ public class DatabaseController {
     DI.initDB();
 
     // ReInit HasMaps
+    activityDB.initDB();
     medicalEquipmentDB.initDB();
-    equipmentRequestDB.initDB();
-    labRequestsDB.initDB();
     serviceRequestsDB.initDB();
     edgesDB.initDB();
     patientsDB.initDB();
@@ -240,21 +195,19 @@ public class DatabaseController {
     DatabaseInitializer DI = new DatabaseInitializer(isRemote);
     DI.initDB();
     EmployeesDB.getInstance().switchConnection(isRemote);
-    EquipmentRequestDB.getInstance().switchConnection(isRemote);
-    LabRequestsDB.getInstance().switchConnection(isRemote);
     LocationsDB.getInstance().switchConnection(isRemote);
     MedicalEquipmentDB.getInstance().switchConnection(isRemote);
     PatientsDB.getInstance().switchConnection(isRemote);
     ServiceRequestsDB.getInstance().switchConnection(isRemote);
     EdgesDB.getInstance().switchConnection(isRemote);
+    ActivityDB.getInstance().switchConnection(isRemote);
 
     EmployeesDB.getInstance().initDB();
-    EquipmentRequestDB.getInstance().initDB();
-    LabRequestsDB.getInstance().initDB();
     LocationsDB.getInstance().initDB();
     MedicalEquipmentDB.getInstance().initDB();
     PatientsDB.getInstance().initDB();
     ServiceRequestsDB.getInstance().initDB();
     EdgesDB.getInstance().initDB();
+    ActivityDB.getInstance().initDB();
   }
 }

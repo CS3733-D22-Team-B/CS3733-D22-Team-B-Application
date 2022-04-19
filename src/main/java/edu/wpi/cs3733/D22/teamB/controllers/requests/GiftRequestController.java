@@ -1,19 +1,31 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
-import edu.wpi.cs3733.D22.teamB.requests.LaundryRequest;
+import edu.wpi.cs3733.D22.teamB.requests.GiftRequest;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
-public class LaundryRequestController extends PatientBasedRequestController {
-  @FXML private ComboBox<String> laundryInput;
-  private String laundry = "";
+public class GiftRequestController extends PatientBasedRequestController {
+  @FXML private TextField giftInput;
+
+  private String giftName = "";
 
   public void initialize() {
     super.initialize();
+
+    giftInput
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                setGiftName();
+              }
+            });
 
     additionalInformationInput
         .textProperty()
@@ -27,14 +39,14 @@ public class LaundryRequestController extends PatientBasedRequestController {
             });
   }
 
-  public void setLaundry() {
-    laundry = laundryInput.getValue();
+  public void setGiftName() {
+    giftName = giftInput.getText();
     enableSubmission();
   }
 
   @FXML
   public void enableSubmission() {
-    if (!patientName.equals("") && !laundry.equals("")) {
+    if (!patientName.equals("") && !giftName.equals("")) {
       submitButton.setDisable(false);
     }
   }
@@ -42,19 +54,19 @@ public class LaundryRequestController extends PatientBasedRequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     String patientID = patientsDB.getPatientID(patientName);
-    LaundryRequest request =
-        new LaundryRequest(
+    GiftRequest request =
+        new GiftRequest(
             patientID,
-            "Laundry Request: " + laundry + "Additional Information: " + notes,
+            "Gift: " + giftName + "Additional Information: " + notes,
             (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
-    requestLabel.setText("Request sent: " + laundry + " to " + patientName);
+    requestLabel.setText("Gift request sent: " + giftName + " for " + patientName);
   }
 
   @FXML
   public void reset(ActionEvent actionEvent) {
     super.reset(actionEvent);
-    laundryInput.getSelectionModel().clearSelection();
-    laundry = "";
+    giftInput.clear();
+    giftName = "";
   }
 }
