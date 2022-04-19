@@ -679,26 +679,30 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void deleteLoc() {
-    String name = locationDropdown.getValue();
-    Location target = null;
-    Boolean hasEquip = false;
-    LinkedList<Location> listChange = dao.listByAttribute("longName", name);
-    for (Location loc : listChange) {
-      if (loc.getLongName().equals(name)) target = loc;
-    }
-    LinkedList<MedicalEquipment> allEquip = edao.list();
-    for (MedicalEquipment eq : allEquip) {
-      if (eq.getLocation() == target) {
-        hasEquip = true;
+    if (locationDropdown.getValue() != null) {
+      String name = locationDropdown.getValue();
+      Location target = null;
+      Boolean hasEquip = false;
+      LinkedList<Location> listChange = dao.listByAttribute("longName", name);
+      for (Location loc : listChange) {
+        if (loc.getLongName().equals(name)) target = loc;
       }
-    }
-    if (hasEquip) {
-      // errorLabel.setText("Delete Failed! Check that no equipment is tied to the room!");
+      LinkedList<MedicalEquipment> allEquip = edao.list();
+      for (MedicalEquipment eq : allEquip) {
+        if (eq.getLocation() == target) {
+          hasEquip = true;
+        }
+      }
+      if (hasEquip) {
+        // errorLabel.setText("Delete Failed! Check that no equipment is tied to the room!");
+      } else {
+        dao.delete(target);
+        endDelete();
+        setRoomIcons();
+        // resetDisplayPanes();
+      }
     } else {
-      dao.delete(target);
-      endDelete();
-      setRoomIcons();
-      // resetDisplayPanes();
+      System.out.println("No location selected!");
     }
   }
 
@@ -1494,7 +1498,7 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void undoMove() {
-    if (editEnabled && locationDropdown.getValue() != "") {
+    if (editEnabled && locationDropdown.getValue() != null) {
       Location currentLoc = dao.listByAttribute("longName", locationDropdown.getValue()).pop();
       currentLoc.setXCoord(startingCoordinates[0]);
       currentLoc.setYCoord(startingCoordinates[1]);
