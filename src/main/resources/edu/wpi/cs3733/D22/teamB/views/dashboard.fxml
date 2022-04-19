@@ -68,14 +68,30 @@
                      </content>
                   </Tab>
                 <Tab text="Requests">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="1000.0">
+                            <children>
+                                <ScrollPane hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER">
+                                    <content>
+                                        <AnchorPane fx:id="requestCardsPane" prefHeight="460.0" prefWidth="520.0" style="-fx-background-color: #455A70;" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
                   </Tab>
                   <Tab text="Patients">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="1000.0">
+                              <children>
+                                  <ScrollPane hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER">
+                                      <content>
+                                          <AnchorPane fx:id="patientsCardsPane" prefHeight="460.0" prefWidth="520.0" style="-fx-background-color: #455A70;" />
+                                      </content>
+                                  </ScrollPane>
+                              </children>
+                          </AnchorPane>
+                      </content>
                   </Tab>
                   <Tab text="Activity">
                     <content>
