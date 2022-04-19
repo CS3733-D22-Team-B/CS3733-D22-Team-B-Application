@@ -154,5 +154,21 @@
          </items>
       </SplitPane>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ComboBox fx:id="Type" layoutX="470.0" layoutY="25.0" prefHeight="25.0" prefWidth="109.0" promptText="Type" onAction="#setSortType" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="LabTest" fx:value="Lab Test" />
+               <String fx:id="EquipmentDelivery" fx:value="Equipment Delivery" />
+               <String fx:id="meal" fx:value="Meal" />
+               <String fx:id="Medicine" fx:value="Medicine" />
+               <String fx:id="Interpreter" fx:value="Interpreter" />
+               <String fx:id="Transfer" fx:value="Transfer" />
+               <String fx:id="Gift" fx:value="Gift" />
+               <String fx:id="Laundry" fx:value="Laundry" />
+               <String fx:id="ItemDelivery" fx:value="Item Delivery" />
+               <String fx:id="all" fx:value="All" />
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>

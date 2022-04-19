@@ -45,6 +45,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML Label requestIDLabel;
   @FXML ComboBox<String> employeeInput;
   @FXML ComboBox<String> statusInput;
+  @FXML ComboBox<String> Type;
   @FXML TextArea informationInput;
   @FXML Label charactersRemainingLabel;
 
@@ -272,6 +273,68 @@ public class RequestQueueController extends MenuBarController implements Initial
   private void sortRequestsByCreationDate(ObservableList<Request> requests) {
     Collections.sort(
         requests, (Request r1, Request r2) -> r1.getTimeCreated().compareTo(r2.getTimeCreated()));
+  }
+
+  private ObservableList<Request> sortRequestsByType(ObservableList<Request> request, String type) {
+
+    for (int x = 0; x < 5; x++) {
+      for (int i = 0; i < request.size(); i++) {
+        System.out.println(request.get(i).getType());
+        if (!request.get(i).getType().equals(type)) {
+          System.out.println(request.get(i).getType());
+          request.remove(i);
+        }
+      }
+    }
+    return request;
+  }
+
+  public void setSortType() {
+    // use combobox to choose type to sort by type
+    ObservableList<Request> tempRequests = requests;
+    String type = Type.getValue();
+    System.out.println(type);
+    if (type != null) {
+      ObservableList<Request> refreshRequest = FXCollections.observableArrayList();
+      for (Request request : ServiceRequestsDB.getInstance().list()) {
+        // if (!request.getStatus().equals("Completed"))
+        refreshRequest.add(request);
+      }
+      sortRequestsByCreationDate(refreshRequest);
+      requestTable.setItems(refreshRequest);
+      addButtonToTable();
+      switch (type) {
+        case "Lab Test":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Equipment Delivery":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Meal":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Medicine":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Interpreter":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Transfer":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Gift":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Laundry":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Item Delivery":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "All":
+          requestTable.setItems(refreshRequest);
+      }
+    }
   }
 
   @FXML
