@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Activity {
 
+  private String activityID;
   private Date dateAndTime;
   private String employeeID;
   private Employee employee;
@@ -14,7 +15,14 @@ public class Activity {
   private String action;
 
   public Activity(
-      Date date, String employeeID, String typeID, String information, String type, String action) {
+      String activityID,
+      Date date,
+      String employeeID,
+      String typeID,
+      String information,
+      String type,
+      String action) {
+    this.activityID = activityID;
     this.dateAndTime = date;
     this.employeeID = employeeID;
     this.typeID = typeID;
@@ -23,6 +31,14 @@ public class Activity {
     this.action = action;
 
     employee = getEmployee();
+  }
+
+  public String getActivityID() {
+    return activityID;
+  }
+
+  public void setActivityID(String activityID) {
+    this.activityID = activityID;
   }
 
   public Date getDateAndTime() {
