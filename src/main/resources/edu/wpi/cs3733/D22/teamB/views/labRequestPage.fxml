@@ -1,131 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.LabRequestController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.LabRequestController">
    <children>
-      <ImageView fitHeight="540.0" fitWidth="960.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/components/Background.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="540.0" fitWidth="105.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="r" fitHeight="540.0" fitWidth="105.0" layoutX="855.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Sidebar.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="398.0" fitWidth="671.5" layoutX="144.5" layoutY="71.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Requests/CreateRequest/BackgroundElement.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="369.0" prefHeight="65.0" prefWidth="461.5" textFill="#7bcce4" />
-      <Label fx:id="charactersRemainingLabel" layoutX="716.0" layoutY="282.0" text="500 characters remaining" textFill="#7bcce4">
-         <font>
-            <Font name="Microsoft Sans Serif" size="7.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="867.5" layoutY="40.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton layoutX="646.0" layoutY="365.0" onAction="#reset" text=" ">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Component%203%20–%205.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton layoutX="867.5" layoutY="125.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="submitButton" disable="true" layoutX="725.0" layoutY="365.0" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" ">
-         <graphic>
-            <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <TextArea fx:id="additionalInformationInput" layoutX="503.0" layoutY="110.0" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
-         <font>
-            <Font name="Microsoft Sans Serif" size="12.0" />
-         </font></TextArea>
-      <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" layoutX="503.0" layoutY="307.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" />
-      <DatePicker fx:id="testingDateInput" layoutX="165.0" layoutY="245.0" onAction="#setTestingTime" prefHeight="35.0" prefWidth="282.0" promptText="Testing Date" styleClass="simple-date-picker" stylesheets="@styles/dropdownStyles.css" />
-      <ComboBox fx:id="patientInput" layoutX="164.5" layoutY="110.0" onAction="#setPatient" prefHeight="35.0" prefWidth="281.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-      <ComboBox fx:id="labRoomInput" layoutX="165.0" layoutY="155.0" onAction="#setLabRoom" prefHeight="35.0" prefWidth="281.0" promptText="Lab Room" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" />
-      <ComboBox fx:id="labTestInput" layoutX="165.0" layoutY="200.0" onAction="#setLabTest" prefHeight="35.0" prefWidth="282.0" promptText="Lab Test" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="BLOOD" fx:value="Blood Test" />
-               <String fx:id="URINE" fx:value="Urine Test" />
-               <String fx:id="XRAY" fx:value="X-Ray" />
-               <String fx:id="CAT_SCAN" fx:value="CAT Scan" />
-               <String fx:id="MRI" fx:value="MRI" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label layoutX="-32.0" layoutY="252.0" opacity="0.4" rotate="-90.0" text="Lab Request" textFill="#7bcce4">
-         <font>
-            <Font name="Microsoft Sans Serif" size="30.0" />
-         </font>
-      </Label>
-      <fx:include source="menu.fxml" />
-      <ComboBox fx:id="testingTimeInput" layoutX="164.5" layoutY="290.0" onAction="#setTestingTime" prefHeight="35.0" prefWidth="282.0" promptText="Testing Time" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:id="ZERO" fx:value="00:00" />
-               <String fx:id="ONE" fx:value="01:00" />
-               <String fx:id="TWO" fx:value="02:00" />
-               <String fx:id="THREE" fx:value="03:00" />
-               <String fx:id="FOUR" fx:value="04:00" />
-               <String fx:id="FIVE" fx:value="05:00" />
-               <String fx:id="SIX" fx:value="06:00" />
-               <String fx:id="SEVEN" fx:value="07:00" />
-               <String fx:id="EIGHT" fx:value="08:00" />
-               <String fx:id="NINE" fx:value="09:00" />
-               <String fx:id="TEN" fx:value="10:00" />
-               <String fx:id="ELEVEN" fx:value="11:00" />
-               <String fx:id="TWELVE" fx:value="12:00" />
-               <String fx:id="THIRTEEN" fx:value="13:00" />
-               <String fx:id="FOURTEEN" fx:value="14:00" />
-               <String fx:id="FIFTEEN" fx:value="15:00" />
-               <String fx:id="SIXTEEN" fx:value="16:00" />
-               <String fx:id="SEVENTEEN" fx:value="17:00" />
-               <String fx:id="EIGHTEEN" fx:value="18:00" />
-               <String fx:id="NINETEEN" fx:value="19:00" />
-               <String fx:id="TWENTY" fx:value="20:00" />
-               <String fx:id="TWENTYONE" fx:value="21:00" />
-               <String fx:id="TWENTYTWO" fx:value="22:00" />
-               <String fx:id="TWENTYTHREE" fx:value="23:00" />
-            </FXCollections>
-         </items>
-      </ComboBox>
+      <Pane layoutX="858.0" prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton layoutX="9.0" layoutY="46.0" onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="9.0" layoutY="119.0" onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="-32.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Lab Request" textFill="#7bcce4">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <GridPane layoutX="144.0" layoutY="70.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="70.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="374.20001220703125" minWidth="10.0" prefWidth="338.20001220703125" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="337.0000244140626" minWidth="10.0" prefWidth="331.39998779296883" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="126.19998779296876" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="266.8" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="266.8" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="146.39999999999998" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="146.39999999999998" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="146.39999999999998" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="146.39999999999998" minHeight="10.0" prefHeight="105.60000610351562" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="461.5" text="" textFill="#7bcce4" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <JFXButton onAction="#reset" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/ArrowsInCircle.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets bottom="10.0" right="75.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="submitButton" disable="true" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+               <graphic>
+                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <Label fx:id="charactersRemainingLabel" text="500 characters remaining" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="7.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextArea fx:id="additionalInformationInput" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextArea>
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="11.0" prefWidth="293.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXSlider>
+            <ComboBox fx:id="patientInput" onAction="#setPatient" prefHeight="35.0" prefWidth="281.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="1" />
+            <ComboBox fx:id="labRoomInput" onAction="#setLabRoom" prefHeight="35.0" prefWidth="281.0" promptText="Lab Room" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="2" />
+            <ComboBox fx:id="labTestInput" onAction="#setLabTest" prefHeight="35.0" prefWidth="282.0" promptText="Lab Test" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="3">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="BLOOD" fx:value="Blood Test" />
+                     <String fx:id="URINE" fx:value="Urine Test" />
+                     <String fx:id="XRAY" fx:value="X-Ray" />
+                     <String fx:id="CAT_SCAN" fx:value="CAT Scan" />
+                     <String fx:id="MRI" fx:value="MRI" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <DatePicker fx:id="testingDateInput" onAction="#setTestingTime" prefHeight="35.0" prefWidth="282.0" promptText="Testing Date" styleClass="simple-date-picker" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="4" />
+            <ComboBox fx:id="testingTimeInput" onAction="#setTestingTime" prefHeight="35.0" prefWidth="282.0" promptText="Testing Time" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="5">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="ZERO" fx:value="00:00" />
+                     <String fx:id="ONE" fx:value="01:00" />
+                     <String fx:id="TWO" fx:value="02:00" />
+                     <String fx:id="THREE" fx:value="03:00" />
+                     <String fx:id="FOUR" fx:value="04:00" />
+                     <String fx:id="FIVE" fx:value="05:00" />
+                     <String fx:id="SIX" fx:value="06:00" />
+                     <String fx:id="SEVEN" fx:value="07:00" />
+                     <String fx:id="EIGHT" fx:value="08:00" />
+                     <String fx:id="NINE" fx:value="09:00" />
+                     <String fx:id="TEN" fx:value="10:00" />
+                     <String fx:id="ELEVEN" fx:value="11:00" />
+                     <String fx:id="TWELVE" fx:value="12:00" />
+                     <String fx:id="THIRTEEN" fx:value="13:00" />
+                     <String fx:id="FOURTEEN" fx:value="14:00" />
+                     <String fx:id="FIFTEEN" fx:value="15:00" />
+                     <String fx:id="SIXTEEN" fx:value="16:00" />
+                     <String fx:id="SEVENTEEN" fx:value="17:00" />
+                     <String fx:id="EIGHTEEN" fx:value="18:00" />
+                     <String fx:id="NINETEEN" fx:value="19:00" />
+                     <String fx:id="TWENTY" fx:value="20:00" />
+                     <String fx:id="TWENTYONE" fx:value="21:00" />
+                     <String fx:id="TWENTYTWO" fx:value="22:00" />
+                     <String fx:id="TWENTYTHREE" fx:value="23:00" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

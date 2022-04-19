@@ -149,6 +149,10 @@ public abstract class Request {
     return information;
   }
 
+  public final void setInformation(String information) {
+    this.information = information;
+  }
+
   public final int getPriority() {
     return priority;
   }
