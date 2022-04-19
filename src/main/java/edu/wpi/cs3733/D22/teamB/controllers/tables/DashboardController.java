@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.databases.Alert;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class DashboardController extends MenuBarController {
   @FXML private Label overviewLabel;
   @FXML private TextArea overviewText;
 
+  @FXML
   private Button lower2Button,
       lower1Button,
       floor1Button,
@@ -37,6 +39,10 @@ public class DashboardController extends MenuBarController {
 
   @FXML private AnchorPane equipmentCardsPane;
 
+  @FXML TableView alertTable;
+  @FXML TableColumn<Alert, String> columnLocation;
+  @FXML TableColumn<Alert, String> columnType;
+
   @FXML TableView<Activity> activityTable;
   @FXML TableColumn<Activity, String> columnTime;
   @FXML TableColumn<Activity, String> columnAction;
@@ -46,6 +52,7 @@ public class DashboardController extends MenuBarController {
   private MedicalEquipmentDB medDAO;
   private PatientsDB patientDAO;
   private ActivityDB activityDAO;
+  private ObservableList<Alert> alerts = FXCollections.observableArrayList();
 
   private LinkedList<String> requestsF1 = new LinkedList<>(),
       requestsF2 = new LinkedList<String>(),
@@ -197,6 +204,14 @@ public class DashboardController extends MenuBarController {
     }
 
     activityTable.setItems(activityList);
+
+    columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
+    columnLocation.setCellValueFactory(new PropertyValueFactory<>("locationID"));
+    for (Alert alert : AlertQueue.getAlerts()) {
+      alerts.add(alert);
+    }
+
+    alertTable.setItems(alerts);
 
     loadFloor1Information(null);
   }

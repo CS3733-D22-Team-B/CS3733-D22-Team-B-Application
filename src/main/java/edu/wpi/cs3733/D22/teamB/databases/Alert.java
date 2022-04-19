@@ -9,7 +9,7 @@ public class Alert {
 
   DatabaseController DC = DatabaseController.getInstance();
 
-  Alert(String alertID, String locationID, String type, String isRead) {
+  public Alert(String alertID, String locationID, String type, String isRead) {
     this.alertID = alertID;
     this.locationID = locationID;
     this.type = type;
