@@ -97,13 +97,28 @@ public class MenuBarController {
   }
 
   @FXML
-  void goToAboutPage(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("aboutPage");
+  void goToLaundryRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("laundryRequestPage");
   }
 
   @FXML
-  void goToLaundryPage(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("laundryRequestPage");
+  void goToSecurityRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("securityRequestPage");
+  }
+
+  @FXML
+  void goToGiftDeliveryRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("giftRequestPage");
+  }
+
+  @FXML
+  void goToSanitationRequestPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("sanitationRequestPage");
+  }
+
+  @FXML
+  void goToAboutPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("aboutPage");
   }
 
   @FXML
