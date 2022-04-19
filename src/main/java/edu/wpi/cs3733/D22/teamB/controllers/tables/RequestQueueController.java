@@ -5,6 +5,7 @@ import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
+import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
 import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
@@ -258,6 +259,9 @@ public class RequestQueueController extends MenuBarController implements Initial
       eqReq.updateMedicalEquipmentStatus();
       AlertController alertController = AlertController.getInstance();
       alertController.checkForAlerts();
+    } else if (currentRequest instanceof SanitationRequest) {
+      SanitationRequest sanReq = (SanitationRequest) currentRequest;
+      sanReq.updateMedicalEquipmentStatus();
     }
 
     otherAnchorPane.setVisible(true);
