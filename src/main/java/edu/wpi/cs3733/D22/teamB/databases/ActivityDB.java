@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import edu.wpi.cs3733.D22.teamB.DateHelper;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -49,7 +50,7 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
     LinkedList<Activity> actList = new LinkedList<Activity>();
 
     for (int i = 0; i < pkList.size(); i++) {
-      actList.add(activityMap.get(pkList.get(i)));
+      actList.add(activityMap.get(DateHelper.csvDateToDate(pkList.get(i))));
     }
     return actList;
   }
@@ -98,7 +99,7 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
   }
 
   public int update(Activity actObj) {
-    if (!activityMap.containsKey(actObj.getTime().toString())) {
+    if (!activityMap.containsKey(actObj.getDateAndTime().toString())) {
       return -1;
     }
     return transform(
@@ -108,18 +109,18 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
   }
 
   public int add(Activity actObj) {
-    if (activityMap.containsKey(actObj.getTime().toString())) {
+    if (activityMap.containsKey(actObj.getDateAndTime().toString())) {
       return -1;
     }
     return transform(actObj, "INSERT INTO Patients VALUES(?,?,?,?,?,?)", false);
   }
 
   public int delete(Activity actObj) {
-    if (!activityMap.containsKey(actObj.getTime().toString())) {
+    if (!activityMap.containsKey(actObj.getDateAndTime().toString())) {
       return -1;
     }
-    activityMap.remove(actObj.getTime().toString());
-    return deleteFrom(actObj.getTime().toString());
+    activityMap.remove(actObj.getDateAndTime().toString());
+    return deleteFrom(actObj.getDateAndTime().toString());
   }
 
   /////////////////////////////////////////////////////////////////////// Helper
@@ -131,10 +132,10 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setTimestamp(6, new Timestamp(actObj.getTime().getTime()));
+        pStatement.setTimestamp(6, new Timestamp(actObj.getDateAndTime().getTime()));
         offset = -1;
       } else {
-        pStatement.setTimestamp(1, new Timestamp(actObj.getTime().getTime()));
+        pStatement.setTimestamp(1, new Timestamp(actObj.getDateAndTime().getTime()));
       }
 
       pStatement.setString(2 + offset, actObj.getEmployeeID());
@@ -145,7 +146,7 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
 
       pStatement.addBatch();
       pStatement.executeBatch();
-      activityMap.put(actObj.getTime().toString(), actObj);
+      activityMap.put(actObj.getDateAndTime().toString(), actObj);
     } catch (SQLException e) {
       System.out.println("Connection failed.");
       return -1;

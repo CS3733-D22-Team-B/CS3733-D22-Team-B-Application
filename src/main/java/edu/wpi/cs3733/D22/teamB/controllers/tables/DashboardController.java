@@ -5,12 +5,13 @@ import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -25,7 +26,7 @@ import javafx.scene.text.TextAlignment;
 public class DashboardController extends MenuBarController {
   @FXML private Label overviewLabel;
   @FXML private TextArea overviewText;
-  @FXML
+
   private Button lower2Button,
       lower1Button,
       floor1Button,
@@ -33,11 +34,18 @@ public class DashboardController extends MenuBarController {
       floor3Button,
       floor4Button,
       floor5Button;
+
   @FXML private AnchorPane equipmentCardsPane;
+
+  @FXML TableView<Activity> activityTable;
+  @FXML TableColumn<Activity, String> columnTime;
+  @FXML TableColumn<Activity, String> columnAction;
+  @FXML TableColumn<Activity, String> columnEmployee;
 
   private ServiceRequestsDB servDAO;
   private MedicalEquipmentDB medDAO;
   private PatientsDB patientDAO;
+  private ActivityDB activityDAO;
 
   private LinkedList<String> requestsF1 = new LinkedList<>(),
       requestsF2 = new LinkedList<String>(),
@@ -61,10 +69,13 @@ public class DashboardController extends MenuBarController {
       patientsLL1 = new LinkedList<>(),
       patientsLL2 = new LinkedList<>();
 
+  private ObservableList<Activity> activityList = FXCollections.observableArrayList();
+
   public void initialize() {
     servDAO = ServiceRequestsDB.getInstance();
     medDAO = MedicalEquipmentDB.getInstance();
     patientDAO = PatientsDB.getInstance();
+    activityDAO = ActivityDB.getInstance();
 
     List<Request> requests = servDAO.list();
 
@@ -176,6 +187,16 @@ public class DashboardController extends MenuBarController {
           break;
       }
     }
+
+    columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+    columnAction.setCellValueFactory(new PropertyValueFactory<>("summary"));
+    columnEmployee.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
+
+    for (Activity activity : activityDAO.getInstance().list()) {
+      activityList.add(activity);
+    }
+
+    activityTable.setItems(activityList);
 
     loadFloor1Information(null);
   }
