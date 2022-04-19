@@ -6,18 +6,18 @@ import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.net.URL;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.ResourceBundle;
+import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -111,7 +111,46 @@ public class RequestQueueController extends MenuBarController implements Initial
                   private final Button requestEditButton = new Button("Edit");
                   private final Button requestDeleteButton = new Button("Delete");
 
+                  private final ImageView viewIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+                  private final ImageView editIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/editIcon.png"));
+                  private final ImageView deleteIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/deleteIcon.jpg"));
+
                   {
+                    hBox.setSpacing(10);
+
+                    requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestViewerButton.setMinSize(25, 25);
+                    requestViewerButton.setPrefSize(25, 25);
+                    requestViewerButton.setMaxSize(25, 25);
+                    requestViewerButton.setGraphic(viewIcon);
+                    viewIcon.setFitHeight(25);
+                    viewIcon.setFitWidth(25);
+
+                    requestEditButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestEditButton.setMinSize(25, 25);
+                    requestEditButton.setPrefSize(25, 25);
+                    requestEditButton.setMaxSize(25, 25);
+                    requestEditButton.setGraphic(editIcon);
+                    editIcon.setFitHeight(25);
+                    editIcon.setFitWidth(25);
+
+                    requestDeleteButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestDeleteButton.setMinSize(25, 25);
+                    requestDeleteButton.setPrefSize(25, 25);
+                    requestDeleteButton.setMaxSize(25, 25);
+                    requestDeleteButton.setGraphic(deleteIcon);
+                    deleteIcon.setFitHeight(25);
+                    deleteIcon.setFitWidth(25);
+
                     requestViewerButton.setOnAction(
                         (ActionEvent event) -> {
                           otherAnchorPane.setVisible(false);
@@ -143,6 +182,7 @@ public class RequestQueueController extends MenuBarController implements Initial
                           statusInput.setValue(request.getStatus());
                           informationInput.setText(request.getInformation());
                         });
+
                     requestDeleteButton.setOnAction(
                         (ActionEvent event) -> {
                           otherAnchorPane.setVisible(true);
@@ -150,9 +190,29 @@ public class RequestQueueController extends MenuBarController implements Initial
                           editingPane.setVisible(false);
 
                           Request request = getTableView().getItems().get(getIndex());
-                          ServiceRequestsDB.getInstance().delete(request);
-                          requests.remove(request);
-                          requestTable.refresh();
+                          currentRequest = request;
+
+                          // create a confirmation dialog
+                          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                          alert.setTitle("Confirm Delete");
+                          alert.setHeaderText(
+                              "Are you sure you want to delete request "
+                                  + currentRequest.getRequestID()
+                                  + "?");
+                          alert.setContentText("This action cannot be undone.");
+
+                          ((Button) alert.getDialogPane().lookupButton(ButtonType.OK))
+                              .setText("Delete");
+                          ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL))
+                              .setText("Cancel");
+
+                          Optional<ButtonType> result = alert.showAndWait();
+                          if (result.get() == ButtonType.OK) {
+                            ServiceRequestsDB.getInstance().delete(request);
+                            requests.remove(request);
+                            requestTable.refresh();
+                            currentRequest = null;
+                          }
                         });
 
                     hBox.getChildren()
@@ -166,9 +226,9 @@ public class RequestQueueController extends MenuBarController implements Initial
                       setGraphic(null);
                     } else {
                       setGraphic(hBox);
-                      requestViewerButton.getStyleClass().add("simple-button");
-                      requestEditButton.getStyleClass().add("simple-button");
-                      requestDeleteButton.getStyleClass().add("simple-button");
+                      requestViewerButton.getStyleClass().add("hidden-button");
+                      requestEditButton.getStyleClass().add("hidden-button");
+                      requestDeleteButton.getStyleClass().add("hidden-button");
                     }
                   }
                 };
