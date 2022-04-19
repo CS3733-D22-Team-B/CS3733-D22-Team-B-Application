@@ -155,7 +155,8 @@ public class RequestQueueController extends MenuBarController implements Initial
     if (currentRequest instanceof EquipmentRequest) {
       EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
       eqReq.updateMedicalEquipmentStatus();
-      AlertController alertController = new AlertController();
+      AlertController alertController = AlertController.getInstance();
+      alertController.checkForAlerts();
     }
 
     scrollPane.setVisible(false);
