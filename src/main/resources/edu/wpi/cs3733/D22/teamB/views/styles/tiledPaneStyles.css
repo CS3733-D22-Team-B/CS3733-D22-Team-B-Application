@@ -2,6 +2,11 @@
     -fx-base: #cdcdcd;
 }
 
-.tile-pane {
+.titled-pane {
+ -fx-text-fill: white;
 
+}
+.titled-pane > .title
+{
+    -fx-color: #2e3c4b;
 }
