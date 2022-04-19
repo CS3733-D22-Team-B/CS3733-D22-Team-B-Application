@@ -413,6 +413,7 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void setServiceIcons() {
+    String floor = null;
     LinkedList<Request> allRequests = rdao.list();
     LinkedList<Request> filtered = filterRequests(allRequests);
     for (SVGPath icon : serviceIcons) {
@@ -420,8 +421,14 @@ public class interactiveMapPageController extends MenuBarController {
     }
     serviceIcons.clear();
     for (Request r : filtered) {
-      if (r.getLocation() != null && !r.getStatus().equals("Completed")) {
-        String floor = r.getLocation().getFloor();
+      if ((r.getLocation() != null || r.getPatient() != null)
+          && !r.getStatus().equals("Completed")) {
+        if (r.getLocation() != null) {
+          floor = r.getLocation().getFloor();
+        }
+        if (r.getPatient() != null) {
+          floor = r.getPatient().getLocation().getFloor();
+        }
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
       }
     }
@@ -429,11 +436,18 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void addServiceIcon(Request r) {
+    int x = 0;
+    int y = 0;
     SVGPath icon = new SVGPath();
     icon.setContent(
         "M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z");
-    int x = r.getLocation().getXCoord();
-    int y = r.getLocation().getYCoord();
+    if (r.getLocation() == null) {
+      x = r.getPatient().getLocation().getXCoord();
+      y = r.getPatient().getLocation().getYCoord();
+    } else {
+      x = r.getLocation().getXCoord();
+      y = r.getLocation().getYCoord();
+    }
     int[] viewCoords = mapCoordsToViewCoords(x, y);
     switch (r.getStatus()) {
       case "Pending":
@@ -764,7 +778,6 @@ public class interactiveMapPageController extends MenuBarController {
   public void endEdit() {
     lockHover = false;
     editEnabled = false;
-    toLocDatabase.setVisible(true);
     addButton.setVisible(true);
     editButton.setVisible(true);
     deleteButton.setVisible(true);
