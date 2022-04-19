@@ -13,23 +13,26 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
    <children>
       <Pane layoutX="-10.0" layoutY="-8.0" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="859.0" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <JFXButton layoutX="867.5" layoutY="40.0" onAction="#quitApplication" text=" " AnchorPane.bottomAnchor="446.0" AnchorPane.rightAnchor="4.5" AnchorPane.topAnchor="20.0">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/components/xButton.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
+      <Pane layoutX="859.0" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton layoutX="9.0" layoutY="14.0" onAction="#quitApplication" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/components/xButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children></Pane>
       <AnchorPane layoutX="146.0" layoutY="71.0" prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="70.0">
          <children>
-            <TextField fx:id="usernameField" layoutX="27.0" layoutY="168.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setUsername" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Username" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css">
+            <TextField fx:id="usernameField" layoutX="27.0" layoutY="168.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setUsername" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Username" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css" AnchorPane.bottomAnchor="165.4" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="168.0">
                <font>
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </TextField>
-            <JFXButton fx:id="loginButton" layoutX="569.0" layoutY="310.0" onAction="#login" text=" ">
+            <JFXButton fx:id="loginButton" layoutX="569.0" layoutY="310.0" onAction="#login" text=" " AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <PasswordField fx:id="passwordBox" layoutX="27.0" layoutY="244.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setPassword" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Password" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css">
+            <PasswordField fx:id="passwordBox" layoutX="27.0" layoutY="244.0" maxHeight="65.0" maxWidth="316.0" minHeight="65.0" minWidth="316.0" onAction="#setPassword" opacity="0.75" prefHeight="65.0" prefWidth="316.0" promptText="Password" styleClass="simple-text-area" stylesheets="@styles/textStyles2.css" AnchorPane.bottomAnchor="89.4" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="244.0">
                <font>
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
@@ -48,7 +51,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="226.0" layoutY="42.0" text="Login" textFill="#3d6183">
+            <Label layoutX="226.0" layoutY="42.0" text="Login" textFill="#3d6183" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="42.0">
                <font>
                   <Font name="SansSerif Regular" size="90.0" />
                </font>
