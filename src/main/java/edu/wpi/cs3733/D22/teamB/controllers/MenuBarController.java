@@ -127,6 +127,11 @@ public class MenuBarController {
   }
 
   @FXML
+  void goToGame(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("sample");
+  }
+
+  @FXML
   void quitApplication() {
     System.exit(0);
   }
