@@ -16,7 +16,12 @@ public class LabRequest extends Request {
     this.testType = test;
     this.testDate = date;
     this.information =
-        "Lab Test: " + test + "Testing Time: " + date + "Additional Information: " + information;
+        "Lab Test: "
+            + test
+            + "\nTesting Time: "
+            + date
+            + "\nAdditional Information: "
+            + information;
   }
 
   public LabRequest(

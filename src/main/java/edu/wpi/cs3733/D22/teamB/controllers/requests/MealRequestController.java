@@ -57,7 +57,7 @@ public class MealRequestController extends PatientBasedRequestController {
     MealRequest request =
         new MealRequest(
             patientID,
-            "Meal: " + mealName + "Additional Information: " + notes,
+            "Meal: " + mealName + "\nAdditional Information: " + notes,
             (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
     requestLabel.setText("Meal request sent: " + mealName + " for " + patientName);

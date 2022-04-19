@@ -10,7 +10,7 @@ public class EquipmentRequest extends Request {
     this.equipmentID = equipmentID;
     setMedicalEquipment();
     this.information =
-        "Equipment Request: " + getEquipmentID() + "Additional Information: " + information;
+        "Equipment Request: " + getEquipmentID() + "\nAdditional Information: " + information;
     medicalEquipment = getMedicalEquipment();
   }
 

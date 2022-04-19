@@ -30,9 +30,9 @@
             <JFXButton fx:id="downloadButton" onAction="#download" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Download" />
          </children>
       </HBox>
-      <SplitPane dividerPositions="0.32716568544995794" layoutX="82.0" layoutY="70.0" prefHeight="399.0" prefWidth="795.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="70.0">
+      <SplitPane dividerPositions="0.2729296527159394" layoutX="82.0" layoutY="70.0" prefHeight="399.0" prefWidth="795.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="255.0" style="-fx-background-color: #2e3c4b;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-color: #2e3c4b;">
                <children>
                   <AnchorPane fx:id="otherAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="256.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
                      <children>
@@ -139,22 +139,18 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="541.0" style="-fx-background-color: #2e3c4b;">
-               <children>
-                  <TableView fx:id="requestTable" prefHeight="399.0" prefWidth="530.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
-                     <columns>
-                        <TableColumn fx:id="columnRequestID" editable="false" prefWidth="102.00000250339508" text="Request ID" />
-                        <TableColumn fx:id="columnType" editable="false" prefWidth="98.6666488647461" text="Type" />
-                        <TableColumn fx:id="columnStatus" editable="false" minWidth="0.0" prefWidth="87.33332824707031" text="Status" />
-                        <TableColumn fx:id="columnPriority" editable="false" minWidth="0.0" prefWidth="104.0" text="Priority" />
-                        <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="151.3333740234375" text="Actions" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children>
-            </AnchorPane>
+            <TableView fx:id="requestTable" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
+               <columns>
+                  <TableColumn fx:id="columnRequestID" editable="false" prefWidth="107.99993592500687" text="Request ID" />
+                  <TableColumn fx:id="columnType" editable="false" prefWidth="99.20001220703125" text="Type" />
+                  <TableColumn fx:id="columnStatus" editable="false" minWidth="0.0" prefWidth="106.40003967285156" text="Status" />
+                  <TableColumn fx:id="columnPriority" editable="false" minWidth="0.0" prefWidth="95.2000732421875" text="Priority" />
+                  <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="151.9998779296875" text="Actions" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
          </items>
       </SplitPane>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

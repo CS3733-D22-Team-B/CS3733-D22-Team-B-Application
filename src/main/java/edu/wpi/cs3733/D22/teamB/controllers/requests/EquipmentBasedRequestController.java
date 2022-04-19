@@ -10,7 +10,7 @@ public abstract class EquipmentBasedRequestController extends RequestController 
 
   private String equipment = "";
 
-  private MedicalEquipmentDB equDAO = MedicalEquipmentDB.getInstance();
+  protected MedicalEquipmentDB equDAO = MedicalEquipmentDB.getInstance();
 
   @FXML
   public void setEquipment() {

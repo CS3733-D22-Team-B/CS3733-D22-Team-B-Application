@@ -142,6 +142,17 @@ public class RequestQueueController extends MenuBarController implements Initial
                           statusInput.setValue(request.getStatus());
                           informationInput.setText(request.getInformation());
                         });
+                    requestDeleteButton.setOnAction(
+                        (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(true);
+                          viewingPane.setVisible(false);
+                          editingPane.setVisible(false);
+
+                          Request request = getTableView().getItems().get(getIndex());
+                          ServiceRequestsDB.getInstance().delete(request);
+                          requests.remove(request);
+                          requestTable.refresh();
+                        });
 
                     hBox.getChildren()
                         .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
