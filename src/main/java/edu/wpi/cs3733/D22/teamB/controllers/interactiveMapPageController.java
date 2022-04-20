@@ -538,6 +538,7 @@ public class interactiveMapPageController extends MenuBarController {
   public int[] mapCoordsToViewCoords(int x, int y) {
     double mapWidth = 1060;
     double mapHeight = 930;
+    double ratio = (mapHeight / mapWidth) * 1.05;
     int fitWidth = (int) mapImage.getFitWidth();
     int fitHeight = (int) mapImage.getFitHeight();
     double xView = ((x / mapWidth) * fitWidth);
@@ -548,6 +549,7 @@ public class interactiveMapPageController extends MenuBarController {
   public int[] imageCoordsToCSVCoords(int x, int y) {
     int mapWidth = 1060;
     int mapHeight = 930;
+    double ratio = mapHeight / mapWidth;
     double fitWidth = mapImage.getFitWidth();
     double fitHeight = mapImage.getFitHeight();
     double xCSV = ((x / fitWidth) * mapWidth);
@@ -588,7 +590,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 2;
     floorString = "1";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
     f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -597,7 +599,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 3;
     floorString = "2";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
     f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -606,7 +608,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 4;
     floorString = "3";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
