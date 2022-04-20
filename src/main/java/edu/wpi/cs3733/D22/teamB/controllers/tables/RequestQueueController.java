@@ -25,361 +25,361 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 public class RequestQueueController extends MenuBarController implements Initializable {
-    @FXML TableView<Request> requestTable;
-    @FXML TableColumn<Request, String> columnRequestID;
-    @FXML TableColumn<Request, String> columnType;
-    @FXML TableColumn<Request, String> columnStatus;
-    @FXML TableColumn<Request, Integer> columnPriority;
-    @FXML TableColumn<Request, HBox> columnButtons;
+  @FXML TableView<Request> requestTable;
+  @FXML TableColumn<Request, String> columnRequestID;
+  @FXML TableColumn<Request, String> columnType;
+  @FXML TableColumn<Request, String> columnStatus;
+  @FXML TableColumn<Request, Integer> columnPriority;
+  @FXML TableColumn<Request, HBox> columnButtons;
 
-    @FXML private TextField downloadText;
-    @FXML private Label errorLabel;
+  @FXML private TextField downloadText;
+  @FXML private Label errorLabel;
 
-    @FXML Label requestIDText;
-    @FXML Text creationText;
-    @FXML Text editText;
-    @FXML Text employeeText;
-    @FXML Text statusText;
-    @FXML Text informationText;
+  @FXML Label requestIDText;
+  @FXML Text creationText;
+  @FXML Text editText;
+  @FXML Text employeeText;
+  @FXML Text statusText;
+  @FXML Text informationText;
 
-    @FXML Label requestIDLabel;
-    @FXML ComboBox<String> employeeInput;
-    @FXML ComboBox<String> statusInput;
-    @FXML ComboBox<String> Type;
-    @FXML TextArea informationInput;
-    @FXML Label charactersRemainingLabel;
+  @FXML Label requestIDLabel;
+  @FXML ComboBox<String> employeeInput;
+  @FXML ComboBox<String> statusInput;
+  @FXML ComboBox<String> Type;
+  @FXML TextArea informationInput;
+  @FXML Label charactersRemainingLabel;
 
-    @FXML AnchorPane viewingPane;
-    @FXML AnchorPane editingPane;
-    @FXML AnchorPane otherAnchorPane;
+  @FXML AnchorPane viewingPane;
+  @FXML AnchorPane editingPane;
+  @FXML AnchorPane otherAnchorPane;
 
-    public static Request currentRequest;
-    protected EmployeesDB dao;
+  public static Request currentRequest;
+  protected EmployeesDB dao;
 
-    private ObservableList<Request> requests = FXCollections.observableArrayList();
+  private ObservableList<Request> requests = FXCollections.observableArrayList();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        columnRequestID.setCellValueFactory(new PropertyValueFactory<>("requestID"));
-        columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    columnRequestID.setCellValueFactory(new PropertyValueFactory<>("requestID"));
+    columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
+    columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+    columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
-        columnRequestID.getStyleClass().add("table-column-left");
-        columnType.getStyleClass().add("table-column-middle");
-        columnStatus.getStyleClass().add("table-column-middle");
-        columnPriority.getStyleClass().add("table-column-middle");
-        columnButtons.getStyleClass().add("table-column-right");
+    columnRequestID.getStyleClass().add("table-column-left");
+    columnType.getStyleClass().add("table-column-middle");
+    columnStatus.getStyleClass().add("table-column-middle");
+    columnPriority.getStyleClass().add("table-column-middle");
+    columnButtons.getStyleClass().add("table-column-right");
 
-        dao = EmployeesDB.getInstance();
-        LinkedList<Employee> employees = dao.list();
-        for (Employee employeeItem : employees) {
-            if (!employeeItem.getEmployeeID().equals("0")) {
-                employeeInput.getItems().add(employeeItem.getOverview());
-            }
-        }
+    dao = EmployeesDB.getInstance();
+    LinkedList<Employee> employees = dao.list();
+    for (Employee employeeItem : employees) {
+      if (!employeeItem.getEmployeeID().equals("0")) {
+        employeeInput.getItems().add(employeeItem.getOverview());
+      }
+    }
 
-        for (Request request : ServiceRequestsDB.getInstance().list()) {
-            requests.add(request);
-        }
+    for (Request request : ServiceRequestsDB.getInstance().list()) {
+      requests.add(request);
+    }
 
-        sortRequestsByCreationDate(requests);
+    sortRequestsByCreationDate(requests);
 
-        requestTable.setItems(requests);
-        addButtonToTable();
+    requestTable.setItems(requests);
+    addButtonToTable();
 
-        informationInput
-                .textProperty()
-                .addListener(
-                        (observable, oldValue, newValue) -> {
-                            if (newValue.length() > 500) {
-                                informationInput.setText(oldValue);
-                            }
-                            charactersRemainingLabel.setText(
-                                    String.valueOf(500 - informationInput.getText().length())
-                                            + " characters remaining");
+    informationInput
+        .textProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (newValue.length() > 500) {
+                informationInput.setText(oldValue);
+              }
+              charactersRemainingLabel.setText(
+                  String.valueOf(500 - informationInput.getText().length())
+                      + " characters remaining");
+            });
+
+    view();
+  }
+
+  private void addButtonToTable() {
+    Callback<TableColumn<Request, HBox>, TableCell<Request, HBox>> cellFactory =
+        new Callback<TableColumn<Request, HBox>, TableCell<Request, HBox>>() {
+          @Override
+          public TableCell<Request, HBox> call(final TableColumn<Request, HBox> param) {
+            final TableCell<Request, HBox> cell =
+                new TableCell<Request, HBox>() {
+                  private final HBox hBox = new HBox();
+                  private final Button requestViewerButton = new Button("View");
+                  private final Button requestEditButton = new Button("Edit");
+                  private final Button requestDeleteButton = new Button("Delete");
+
+                  private final ImageView viewIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+                  private final ImageView editIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/editIcon.png"));
+                  private final ImageView deleteIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/deleteIcon.jpg"));
+
+                  {
+                    hBox.setSpacing(10);
+
+                    requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestViewerButton.setMinSize(25, 25);
+                    requestViewerButton.setPrefSize(25, 25);
+                    requestViewerButton.setMaxSize(25, 25);
+                    requestViewerButton.setGraphic(viewIcon);
+                    viewIcon.setFitHeight(25);
+                    viewIcon.setFitWidth(25);
+
+                    requestEditButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestEditButton.setMinSize(25, 25);
+                    requestEditButton.setPrefSize(25, 25);
+                    requestEditButton.setMaxSize(25, 25);
+                    requestEditButton.setGraphic(editIcon);
+                    editIcon.setFitHeight(25);
+                    editIcon.setFitWidth(25);
+
+                    requestDeleteButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestDeleteButton.setMinSize(25, 25);
+                    requestDeleteButton.setPrefSize(25, 25);
+                    requestDeleteButton.setMaxSize(25, 25);
+                    requestDeleteButton.setGraphic(deleteIcon);
+                    deleteIcon.setFitHeight(25);
+                    deleteIcon.setFitWidth(25);
+
+                    requestViewerButton.setOnAction(
+                        (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(false);
+                          viewingPane.setVisible(true);
+                          editingPane.setVisible(false);
+
+                          Request request = getTableView().getItems().get(getIndex());
+                          currentRequest = request;
+
+                          requestIDText.setText(request.getRequestID());
+                          creationText.setText(DateHelper.stringify(request.getTimeCreated()));
+                          editText.setText(DateHelper.stringify(request.getLastEdited()));
+                          employeeText.setText(request.getEmployee().getOverview());
+                          statusText.setText(request.getStatus());
+                          informationText.setText(request.getInformation());
                         });
 
-        view();
-    }
+                    requestEditButton.setOnAction(
+                        (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(false);
+                          viewingPane.setVisible(false);
+                          editingPane.setVisible(true);
 
-    private void addButtonToTable() {
-        Callback<TableColumn<Request, HBox>, TableCell<Request, HBox>> cellFactory =
-                new Callback<TableColumn<Request, HBox>, TableCell<Request, HBox>>() {
-                    @Override
-                    public TableCell<Request, HBox> call(final TableColumn<Request, HBox> param) {
-                        final TableCell<Request, HBox> cell =
-                                new TableCell<Request, HBox>() {
-                                    private final HBox hBox = new HBox();
-                                    private final Button requestViewerButton = new Button("View");
-                                    private final Button requestEditButton = new Button("Edit");
-                                    private final Button requestDeleteButton = new Button("Delete");
+                          Request request = getTableView().getItems().get(getIndex());
+                          currentRequest = request;
 
-                                    private final ImageView viewIcon =
-                                            new ImageView(
-                                                    new Image(
-                                                            "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
-                                    private final ImageView editIcon =
-                                            new ImageView(
-                                                    new Image(
-                                                            "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/editIcon.png"));
-                                    private final ImageView deleteIcon =
-                                            new ImageView(
-                                                    new Image(
-                                                            "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/deleteIcon.jpg"));
+                          requestIDLabel.setText(request.getRequestID());
+                          employeeInput.setValue(request.getEmployee().getOverview());
+                          statusInput.setValue(request.getStatus());
+                          informationInput.setText(request.getInformation());
+                        });
 
-                                    {
-                                        hBox.setSpacing(10);
+                    requestDeleteButton.setOnAction(
+                        (ActionEvent event) -> {
+                          otherAnchorPane.setVisible(true);
+                          viewingPane.setVisible(false);
+                          editingPane.setVisible(false);
 
-                                        requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                                        requestViewerButton.setMinSize(25, 25);
-                                        requestViewerButton.setPrefSize(25, 25);
-                                        requestViewerButton.setMaxSize(25, 25);
-                                        requestViewerButton.setGraphic(viewIcon);
-                                        viewIcon.setFitHeight(25);
-                                        viewIcon.setFitWidth(25);
+                          Request request = getTableView().getItems().get(getIndex());
+                          currentRequest = request;
 
-                                        requestEditButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                                        requestEditButton.setMinSize(25, 25);
-                                        requestEditButton.setPrefSize(25, 25);
-                                        requestEditButton.setMaxSize(25, 25);
-                                        requestEditButton.setGraphic(editIcon);
-                                        editIcon.setFitHeight(25);
-                                        editIcon.setFitWidth(25);
+                          // create a confirmation dialog
+                          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                          alert.setTitle("Confirm Delete");
+                          alert.setHeaderText(
+                              "Are you sure you want to delete request "
+                                  + currentRequest.getRequestID()
+                                  + "?");
+                          alert.setContentText("This action cannot be undone.");
 
-                                        requestDeleteButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                                        requestDeleteButton.setMinSize(25, 25);
-                                        requestDeleteButton.setPrefSize(25, 25);
-                                        requestDeleteButton.setMaxSize(25, 25);
-                                        requestDeleteButton.setGraphic(deleteIcon);
-                                        deleteIcon.setFitHeight(25);
-                                        deleteIcon.setFitWidth(25);
+                          ((Button) alert.getDialogPane().lookupButton(ButtonType.OK))
+                              .setText("Delete");
+                          ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL))
+                              .setText("Cancel");
 
-                                        requestViewerButton.setOnAction(
-                                                (ActionEvent event) -> {
-                                                    otherAnchorPane.setVisible(false);
-                                                    viewingPane.setVisible(true);
-                                                    editingPane.setVisible(false);
+                          Optional<ButtonType> result = alert.showAndWait();
+                          if (result.get() == ButtonType.OK) {
+                            ServiceRequestsDB.getInstance().delete(request);
+                            requests.remove(request);
+                            requestTable.refresh();
+                            currentRequest = null;
+                          }
+                        });
 
-                                                    Request request = getTableView().getItems().get(getIndex());
-                                                    currentRequest = request;
+                    hBox.getChildren()
+                        .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
+                  }
 
-                                                    requestIDText.setText(request.getRequestID());
-                                                    creationText.setText(DateHelper.stringify(request.getTimeCreated()));
-                                                    editText.setText(DateHelper.stringify(request.getLastEdited()));
-                                                    employeeText.setText(request.getEmployee().getOverview());
-                                                    statusText.setText(request.getStatus());
-                                                    informationText.setText(request.getInformation());
-                                                });
-
-                                        requestEditButton.setOnAction(
-                                                (ActionEvent event) -> {
-                                                    otherAnchorPane.setVisible(false);
-                                                    viewingPane.setVisible(false);
-                                                    editingPane.setVisible(true);
-
-                                                    Request request = getTableView().getItems().get(getIndex());
-                                                    currentRequest = request;
-
-                                                    requestIDLabel.setText(request.getRequestID());
-                                                    employeeInput.setValue(request.getEmployee().getOverview());
-                                                    statusInput.setValue(request.getStatus());
-                                                    informationInput.setText(request.getInformation());
-                                                });
-
-                                        requestDeleteButton.setOnAction(
-                                                (ActionEvent event) -> {
-                                                    otherAnchorPane.setVisible(true);
-                                                    viewingPane.setVisible(false);
-                                                    editingPane.setVisible(false);
-
-                                                    Request request = getTableView().getItems().get(getIndex());
-                                                    currentRequest = request;
-
-                                                    // create a confirmation dialog
-                                                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                                    alert.setTitle("Confirm Delete");
-                                                    alert.setHeaderText(
-                                                            "Are you sure you want to delete request "
-                                                                    + currentRequest.getRequestID()
-                                                                    + "?");
-                                                    alert.setContentText("This action cannot be undone.");
-
-                                                    ((Button) alert.getDialogPane().lookupButton(ButtonType.OK))
-                                                            .setText("Delete");
-                                                    ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL))
-                                                            .setText("Cancel");
-
-                                                    Optional<ButtonType> result = alert.showAndWait();
-                                                    if (result.get() == ButtonType.OK) {
-                                                        ServiceRequestsDB.getInstance().delete(request);
-                                                        requests.remove(request);
-                                                        requestTable.refresh();
-                                                        currentRequest = null;
-                                                    }
-                                                });
-
-                                        hBox.getChildren()
-                                                .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
-                                    }
-
-                                    @Override
-                                    public void updateItem(HBox item, boolean empty) {
-                                        super.updateItem(item, empty);
-                                        if (empty) {
-                                            setGraphic(null);
-                                        } else {
-                                            setGraphic(hBox);
-                                            requestViewerButton.getStyleClass().add("hidden-button");
-                                            requestEditButton.getStyleClass().add("hidden-button");
-                                            requestDeleteButton.getStyleClass().add("hidden-button");
-                                        }
-                                    }
-                                };
-                        return cell;
+                  @Override
+                  public void updateItem(HBox item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                      setGraphic(null);
+                    } else {
+                      setGraphic(hBox);
+                      requestViewerButton.getStyleClass().add("hidden-button");
+                      requestEditButton.getStyleClass().add("hidden-button");
+                      requestDeleteButton.getStyleClass().add("hidden-button");
                     }
+                  }
                 };
+            return cell;
+          }
+        };
 
-        columnButtons.setCellFactory(cellFactory);
+    columnButtons.setCellFactory(cellFactory);
+  }
+
+  @FXML
+  public void saveData(ActionEvent event) {
+    currentRequest.setStatus(statusInput.getValue());
+    currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
+    currentRequest.setInformation(informationInput.getText());
+    currentRequest.setLastEdited(new Date());
+
+    employeeInput.setValue("");
+    statusInput.setValue("");
+    informationInput.setText("");
+
+    requestTable.refresh();
+
+    ServiceRequestsDB.getInstance().update(currentRequest);
+    if (currentRequest instanceof EquipmentRequest) {
+      EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
+      eqReq.updateMedicalEquipmentStatus();
+      AlertController alertController = AlertController.getInstance();
+      alertController.checkForAlerts();
+    } else if (currentRequest instanceof SanitationRequest) {
+      SanitationRequest sanReq = (SanitationRequest) currentRequest;
+      sanReq.updateMedicalEquipmentStatus();
     }
 
-    @FXML
-    public void saveData(ActionEvent event) {
-        currentRequest.setStatus(statusInput.getValue());
-        currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
-        currentRequest.setInformation(informationInput.getText());
-        currentRequest.setLastEdited(new Date());
+    otherAnchorPane.setVisible(true);
+    viewingPane.setVisible(false);
+    editingPane.setVisible(false);
+  }
 
-        employeeInput.setValue("");
-        statusInput.setValue("");
-        informationInput.setText("");
+  private void sortRequestsByCreationDate(ObservableList<Request> requests) {
+    Collections.sort(
+        requests, (Request r1, Request r2) -> r1.getTimeCreated().compareTo(r2.getTimeCreated()));
+  }
 
-        requestTable.refresh();
+  private void sortRequestsByLastEdit(ObservableList<Request> requests) {
+    Collections.sort(
+        requests, (Request r1, Request r2) -> r1.getLastEdited().compareTo(r2.getLastEdited()));
+  }
 
-        ServiceRequestsDB.getInstance().update(currentRequest);
-        if (currentRequest instanceof EquipmentRequest) {
-            EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
-            eqReq.updateMedicalEquipmentStatus();
-            AlertController alertController = AlertController.getInstance();
-            alertController.checkForAlerts();
-        } else if (currentRequest instanceof SanitationRequest) {
-            SanitationRequest sanReq = (SanitationRequest) currentRequest;
-            sanReq.updateMedicalEquipmentStatus();
+  public void timeCreated() {
+    sortRequestsByCreationDate(requests);
+  }
+
+  public void lastEdit() {
+    sortRequestsByLastEdit(requests);
+  }
+
+  private ObservableList<Request> sortRequestsByType(ObservableList<Request> request, String type) {
+
+    for (int x = 0; x < 5; x++) {
+      for (int i = 0; i < request.size(); i++) {
+        System.out.println(request.get(i).getType());
+        if (!request.get(i).getType().equals(type)) {
+          System.out.println(request.get(i).getType());
+          request.remove(i);
         }
-
-        otherAnchorPane.setVisible(true);
-        viewingPane.setVisible(false);
-        editingPane.setVisible(false);
+      }
     }
+    return request;
+  }
 
-    private void sortRequestsByCreationDate(ObservableList<Request> requests) {
-        Collections.sort(
-                requests, (Request r1, Request r2) -> r1.getTimeCreated().compareTo(r2.getTimeCreated()));
+  public void setSortType() {
+    // use combobox to choose type to sort by type
+    ObservableList<Request> tempRequests = requests;
+    String type = Type.getValue();
+    System.out.println(type);
+    if (type != null) {
+      ObservableList<Request> refreshRequest = FXCollections.observableArrayList();
+      for (Request request : ServiceRequestsDB.getInstance().list()) {
+        // if (!request.getStatus().equals("Completed"))
+        refreshRequest.add(request);
+      }
+      sortRequestsByCreationDate(refreshRequest);
+      requestTable.setItems(refreshRequest);
+      addButtonToTable();
+      switch (type) {
+        case "Lab Test":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Equipment Delivery":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Meal":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Medicine":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Interpreter":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Transfer":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Gift":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Laundry":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "Item Delivery":
+          sortRequestsByType(refreshRequest, type);
+          requestTable.setItems(refreshRequest);
+        case "All":
+          requestTable.setItems(refreshRequest);
+      }
     }
+  }
 
-    private void sortRequestsByLastEdit(ObservableList<Request> requests) {
-        Collections.sort(
-                requests, (Request r1, Request r2) -> r1.getLastEdited().compareTo(r2.getLastEdited()));
+  @FXML
+  public void download() {
+    if (downloadText.getText().equals("")) {
+      errorLabel.setText("Please enter filename");
+    } else {
+      ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
+      errorLabel.setText("Files downloaded");
     }
+  }
 
-    public void timeCreated() {
-        sortRequestsByCreationDate(requests);
+  public void view() {
+    Request desiredRequest = currentRequest;
+    currentRequest = null;
+
+    if (desiredRequest != null) {
+      requestTable.getSelectionModel().select(desiredRequest);
+      requestTable.scrollTo(desiredRequest);
+
+      otherAnchorPane.setVisible(false);
+      viewingPane.setVisible(true);
+      editingPane.setVisible(false);
+
+      requestIDText.setText(desiredRequest.getRequestID());
+      creationText.setText(DateHelper.stringify(desiredRequest.getTimeCreated()));
+      editText.setText(DateHelper.stringify(desiredRequest.getLastEdited()));
+      employeeText.setText(desiredRequest.getEmployee().getOverview());
+      statusText.setText(desiredRequest.getStatus());
+      informationText.setText(desiredRequest.getInformation());
     }
-
-    public void lastEdit() {
-        sortRequestsByLastEdit(requests);
-    }
-
-    private ObservableList<Request> sortRequestsByType(ObservableList<Request> request, String type) {
-
-        for (int x = 0; x < 5; x++) {
-            for (int i = 0; i < request.size(); i++) {
-                System.out.println(request.get(i).getType());
-                if (!request.get(i).getType().equals(type)) {
-                    System.out.println(request.get(i).getType());
-                    request.remove(i);
-                }
-            }
-        }
-        return request;
-    }
-
-    public void setSortType() {
-        // use combobox to choose type to sort by type
-        ObservableList<Request> tempRequests = requests;
-        String type = Type.getValue();
-        System.out.println(type);
-        if (type != null) {
-            ObservableList<Request> refreshRequest = FXCollections.observableArrayList();
-            for (Request request : ServiceRequestsDB.getInstance().list()) {
-                // if (!request.getStatus().equals("Completed"))
-                refreshRequest.add(request);
-            }
-            sortRequestsByCreationDate(refreshRequest);
-            requestTable.setItems(refreshRequest);
-            addButtonToTable();
-            switch (type) {
-                case "Lab Test":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Equipment Delivery":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Meal":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Medicine":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Interpreter":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Transfer":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Gift":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Laundry":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "Item Delivery":
-                    sortRequestsByType(refreshRequest, type);
-                    requestTable.setItems(refreshRequest);
-                case "All":
-                    requestTable.setItems(refreshRequest);
-            }
-        }
-    }
-
-    @FXML
-    public void download() {
-        if (downloadText.getText().equals("")) {
-            errorLabel.setText("Please enter filename");
-        } else {
-            ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
-            errorLabel.setText("Files downloaded");
-        }
-    }
-
-    public void view() {
-        Request desiredRequest = currentRequest;
-        currentRequest = null;
-
-        if (desiredRequest != null) {
-            requestTable.getSelectionModel().select(desiredRequest);
-            requestTable.scrollTo(desiredRequest);
-
-            otherAnchorPane.setVisible(false);
-            viewingPane.setVisible(true);
-            editingPane.setVisible(false);
-
-            requestIDText.setText(desiredRequest.getRequestID());
-            creationText.setText(DateHelper.stringify(desiredRequest.getTimeCreated()));
-            editText.setText(DateHelper.stringify(desiredRequest.getLastEdited()));
-            employeeText.setText(desiredRequest.getEmployee().getOverview());
-            statusText.setText(desiredRequest.getStatus());
-            informationText.setText(desiredRequest.getInformation());
-        }
-    }
+  }
 }

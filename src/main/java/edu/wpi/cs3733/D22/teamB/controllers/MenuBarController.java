@@ -154,10 +154,13 @@ public class MenuBarController {
   }
 
   @FXML
-  public void launchAPI() throws ServiceException, IOException {
+  public void launchAPI() throws ServiceException {
     API api = new API();
-    DatabaseController databaseController = new DatabaseController();
-    databaseController.addEmployee("Wong", "Wilson");
-    api.run(0, 0, 600, 400, null, null, null);
+    try {
+      api.run(0, 0, 600, 400, null, null, null);
+      DatabaseController databaseController = new DatabaseController();
+      databaseController.addEmployee("Wong", "Wilson");
+    } catch (IOException e) {
+    }
   }
 }
