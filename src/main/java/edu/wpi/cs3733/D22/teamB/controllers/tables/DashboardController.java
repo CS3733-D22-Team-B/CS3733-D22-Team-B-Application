@@ -312,7 +312,7 @@ public class DashboardController extends MenuBarController {
     equipmentName.setPrefWidth(160);
     equipmentName.setPrefHeight(25);
 
-    Label equipmentID = new Label("(" + patient.getLocation() + ")");
+    Label equipmentID = new Label("(" + patient.getOverview() + ")");
     equipmentID.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     equipmentID.setTextAlignment(TextAlignment.CENTER);
     equipmentID.setAlignment(Pos.CENTER);
