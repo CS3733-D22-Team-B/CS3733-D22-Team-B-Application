@@ -56,6 +56,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXComboBox<String> availabilityDropdown;
   @FXML JFXComboBox<String> stateDropdown;
   @FXML JFXButton filterButton;
+  @FXML Label floorLabel;
 
   @FXML Pane filterPane;
   @FXML JFXButton bath;
@@ -573,7 +574,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 0;
     floorString = "L2";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel2.png"));
+    floorLabel.setText(floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL2.png"));
     l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -582,7 +584,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 1;
     floorString = "L1";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/lowerLevel1.png"));
+    floorLabel.setText(floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL1.png"));
     l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -591,7 +594,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 2;
     floorString = "1";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/firstFloor.png"));
+    floorLabel.setText("F" + floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
     f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -600,7 +604,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 3;
     floorString = "2";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/secondFloor.png"));
+    floorLabel.setText("F" + floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
     f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -609,7 +614,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 4;
     floorString = "3";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/thirdFloor.png"));
+    floorLabel.setText("F" + floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -618,7 +624,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 5;
     floorString = "4";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/fourthFloor.png"));
+    floorLabel.setText("F" + floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
     f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -627,7 +634,8 @@ public class interactiveMapPageController extends MenuBarController {
     floorLevel = 6;
     floorString = "5";
     resetFloorSelectors();
-    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/fifthFloor.png"));
+    floorLabel.setText("F" + floorString);
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
     f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
   }
@@ -1491,10 +1499,10 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleLaundReq() {
     if (laundOn) {
       if (!requestFilterList.contains("Laundry")) requestFilterList.add("Laundry");
-      ipt.setTextFill(Color.DARKGREY);
+      laund.setTextFill(Color.DARKGREY);
       laundOn = false;
     } else {
-      ipt.setTextFill(Color.WHITE);
+      laund.setTextFill(Color.WHITE);
       requestFilterList.remove("Laundry");
       laundOn = true;
     }
