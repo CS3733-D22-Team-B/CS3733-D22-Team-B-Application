@@ -15,16 +15,16 @@
 }
 .container-box {
     -fx-background-color: #2e3c4b;
-    -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-border-color: #7bcce4;
+    -fx-background-radius: 10px;
 }
 .container-box-2 {
     -fx-background-color: #2e3c4b;
-    -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-border-color: #7bcce4;
     -fx-opacity: .75;
+    -fx-background-radius: 10px;
 }
 .container-box-3 {
     -fx-background-color: #0c1b26;
