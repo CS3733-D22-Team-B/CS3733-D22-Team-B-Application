@@ -1,7 +1,5 @@
 package edu.wpi.cs3733.D22.teamB;
 
-import edu.wpi.cs3733.D22.teamB.databases.*;
-
 public class Main {
 
   public static void main(String[] args) {
@@ -21,7 +19,8 @@ public class Main {
       return;
     }
 
-    DatabaseController DC = DatabaseController.getInstance();
+    edu.wpi.cs3733.D22.teamB.databases.DatabaseController DC =
+        edu.wpi.cs3733.D22.teamB.databases.DatabaseController.getInstance();
     App.launch(App.class, args);
   }
 }

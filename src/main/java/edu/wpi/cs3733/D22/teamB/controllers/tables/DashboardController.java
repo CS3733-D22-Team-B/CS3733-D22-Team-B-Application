@@ -272,7 +272,6 @@ public class DashboardController extends MenuBarController {
         event -> {
           try {
             goToRequestQueue(null);
-            RequestQueueController.instance.view(request);
           } catch (Exception e) {
           }
         });

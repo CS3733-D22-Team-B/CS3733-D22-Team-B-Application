@@ -14,6 +14,10 @@ repositories {
     maven {
         url 'https://apisite.crmyers.dev/maven'
     }
+
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 javafx {
@@ -35,6 +39,8 @@ dependencies {
             'org.slf4j:slf4j-simple:1.7.30',
     )
     implementation 'junit:junit:4.13.1'
+
+    implementation files('lib/teamBAPI.jar')
 
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",

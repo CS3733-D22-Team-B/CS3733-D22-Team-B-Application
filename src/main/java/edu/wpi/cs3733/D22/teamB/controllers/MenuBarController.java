@@ -1,8 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.UIController;
-import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.api.*;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -150,5 +151,13 @@ public class MenuBarController {
 
   public void goToCovidPage(ActionEvent actionEvent) throws Exception {
     UIController.getInstance().goToPage("COVID-19Page");
+  }
+
+  @FXML
+  public void launchAPI() throws ServiceException, IOException {
+    API api = new API();
+    DatabaseController databaseController = new DatabaseController();
+    databaseController.addEmployee("Wong", "Wilson");
+    api.run(0, 0, 600, 400, null, null, null);
   }
 }

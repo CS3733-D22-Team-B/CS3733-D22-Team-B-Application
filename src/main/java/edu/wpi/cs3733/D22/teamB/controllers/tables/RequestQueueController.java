@@ -32,8 +32,6 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML TableColumn<Request, Integer> columnPriority;
   @FXML TableColumn<Request, HBox> columnButtons;
 
-  TableColumn<Request, HBox> localColumnButtons;
-
   @FXML private TextField downloadText;
   @FXML private Label errorLabel;
 
@@ -61,10 +59,6 @@ public class RequestQueueController extends MenuBarController implements Initial
   protected EmployeesDB dao;
 
   private ObservableList<Request> requests = FXCollections.observableArrayList();
-
-  public RequestQueueController(TableColumn<Request, HBox> columnButtons) {
-    this.localColumnButtons = columnButtons;
-  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -369,7 +363,8 @@ public class RequestQueueController extends MenuBarController implements Initial
   }
 
   public void view(Request request) {
-    Button button = (Button) columnButtons.getCellObservableValue(request).getValue().getChildren().get(0);
+    Button button =
+        (Button) columnButtons.getCellObservableValue(request).getValue().getChildren().get(0);
     button.fire();
   }
 }

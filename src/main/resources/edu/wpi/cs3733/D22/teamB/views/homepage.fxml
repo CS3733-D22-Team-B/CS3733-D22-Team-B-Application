@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -127,5 +128,6 @@
       </Pane>
       <JFXButton fx:id="game" layoutX="898.0" layoutY="500.0" onAction="#goToGame" text="game" textFill="#8e8383" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="443.0" layoutY="501.0" mnemonicParsing="false" onAction="#launchAPI" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Launch API" />
    </children>
 </AnchorPane>
