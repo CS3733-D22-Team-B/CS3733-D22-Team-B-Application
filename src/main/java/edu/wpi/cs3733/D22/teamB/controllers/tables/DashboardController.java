@@ -277,21 +277,6 @@ public class DashboardController extends MenuBarController {
   }
 
   private void drawPatientCard(int x, int y, Patient patient) {
-    /*Button button = new Button("");
-    button.setLayoutX(x);
-    button.setLayoutY(y);
-    button.setPrefWidth(160);
-    button.setPrefHeight(210);
-    button.getStyleClass().add("hidden-button");
-    button.setOnAction(
-        event -> {
-          try {
-            goToRequestQueue(null);
-            RequestQueueController.instance.view(request);
-          } catch (Exception e) {
-          }
-        });*/
-
     Rectangle rectangle = new Rectangle(x, y, 160, 210);
     rectangle.setFill(Color.WHITE);
     rectangle.setStroke(Color.BLACK);
@@ -362,11 +347,11 @@ public class DashboardController extends MenuBarController {
     button.setOnAction(
         event -> {
           try {
+            RequestQueueController.currentRequest = request;
             goToRequestQueue(null);
           } catch (Exception e) {
           }
         });
-    PatientsDB patient = PatientsDB.getInstance();
 
     Rectangle rectangle = new Rectangle(x, y, 160, 210);
     rectangle.setFill(Color.WHITE);
