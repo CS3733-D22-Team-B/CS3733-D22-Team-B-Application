@@ -96,7 +96,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <JFXButton layoutX="220.0" layoutY="28.0" onAction="#toggleFilter" text="Filter" textFill="WHITE" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="28.0" />
+      <JFXButton fx:id="filterButton" layoutX="220.0" layoutY="28.0" onAction="#toggleFilter" text="Filter" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="28.0" />
       <Pane fx:id="floorBackground" layoutX="568.0" layoutY="8.0" prefHeight="500.0" prefWidth="178.0" styleClass="container-box-2" stylesheets="@styles/pageStyles.css" visible="false" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="8.0">
          <children>
             <JFXButton fx:id="undoMoveButton" focusTraversable="false" layoutX="17.0" layoutY="231.0" onAction="#undoMove" prefHeight="38.0" prefWidth="144.0" styleClass="border-button" stylesheets="@styles/buttonStyles.css" text="Undo Move" visible="false" />

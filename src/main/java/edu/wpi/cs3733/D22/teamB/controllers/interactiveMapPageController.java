@@ -55,6 +55,7 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML JFXButton equipEditButton;
   @FXML JFXComboBox<String> availabilityDropdown;
   @FXML JFXComboBox<String> stateDropdown;
+  @FXML JFXButton filterButton;
 
   @FXML Pane filterPane;
   @FXML JFXButton bath;
@@ -646,6 +647,7 @@ public class interactiveMapPageController extends MenuBarController {
     locationName.setVisible(true);
     confirmButton.setVisible(true);
     markerButton.setVisible(true);
+    filterButton.setDisable(true);
   }
 
   public void addLocation() {
@@ -696,7 +698,7 @@ public class interactiveMapPageController extends MenuBarController {
     confirmButton.setVisible(false);
     typeDropdown.setValue("");
     locationName.setText("");
-
+    filterButton.setDisable(false);
     clearMarker();
     setRoomIcons();
   }
@@ -713,6 +715,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorBackground.setVisible(true);
     locationDropdown.setVisible(true);
     confirmButton.setVisible(true);
+    filterButton.setDisable(true);
   }
 
   public void deleteLoc() {
@@ -754,6 +757,7 @@ public class interactiveMapPageController extends MenuBarController {
     floorBackground.setVisible(false);
     locationDropdown.setVisible(false);
     confirmButton.setVisible(false);
+    filterButton.setDisable(false);
 
     locationDropdown.setValue("");
     clearMarker();
@@ -769,6 +773,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(false);
     resetButton.setVisible(false);
     backButton.setVisible(true);
+    filterButton.setDisable(true);
 
     floorBackground.setVisible(true);
     locationDropdown.setVisible(true);
@@ -811,6 +816,7 @@ public class interactiveMapPageController extends MenuBarController {
     locationName.setText("");
     confirmButton.setVisible(false);
     undoMoveButton.setVisible(false);
+    filterButton.setDisable(false);
     startingCoordinates[0] = -1;
     startingCoordinates[1] = -1;
     clearMarker();
@@ -981,7 +987,7 @@ public class interactiveMapPageController extends MenuBarController {
     availabilityDropdown.setVisible(true);
     stateDropdown.setVisible(true);
     confirmButton.setVisible(true);
-
+    filterButton.setDisable(true);
     equipInfoPane.setVisible(false);
   }
 
@@ -1009,7 +1015,7 @@ public class interactiveMapPageController extends MenuBarController {
     deleteButton.setVisible(true);
     resetButton.setVisible(true);
     backButton.setVisible(false);
-
+    filterButton.setDisable(false);
     floorBackground.setVisible(false);
     locationDropdown.setVisible(false);
     availabilityDropdown.setVisible(false);
@@ -1040,6 +1046,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   public void toggleFilter() {
     if (filterOpen) {
+      equipEditButton.setDisable(false);
       addButton.setVisible(true);
       editButton.setVisible(true);
       deleteButton.setVisible(true);
@@ -1047,6 +1054,7 @@ public class interactiveMapPageController extends MenuBarController {
       filterPane.setVisible(false);
       filterOpen = false;
     } else {
+      equipEditButton.setDisable(true);
       addButton.setVisible(false);
       editButton.setVisible(false);
       deleteButton.setVisible(false);
