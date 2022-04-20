@@ -42,7 +42,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2e3c4b;">
                      <children>
-                        <Label fx:id="overviewLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="27.0" prefWidth="381.0">
+                        <Label fx:id="overviewLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="27.0" prefWidth="381.0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

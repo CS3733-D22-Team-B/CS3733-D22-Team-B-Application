@@ -40,7 +40,7 @@ dependencies {
     )
     implementation 'junit:junit:4.13.1'
 
-    implementation files('lib/teamBAPI.jar')
+    implementation name: 'teamBAPI'
 
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",
