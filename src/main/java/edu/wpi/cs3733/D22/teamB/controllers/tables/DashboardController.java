@@ -205,7 +205,7 @@ public class DashboardController extends MenuBarController {
   }
 
   private void drawEquipmentCard(int x, int y, MedicalEquipment equipment) {
-    Rectangle rectangle = new Rectangle(x, y, 160, 120);
+    Rectangle rectangle = new Rectangle(x, y, 160, 210);
     rectangle.setFill(Color.WHITE);
     rectangle.setStroke(Color.BLACK);
     rectangle.setStrokeWidth(1);
@@ -262,7 +262,22 @@ public class DashboardController extends MenuBarController {
   }
 
   private void drawRequestCard(int x, int y, Request request) {
-    Rectangle rectangle = new Rectangle(x, y, 160, 120);
+    Button button = new Button("");
+    button.setLayoutX(x);
+    button.setLayoutY(y);
+    button.setPrefWidth(160);
+    button.setPrefHeight(210);
+    button.getStyleClass().add("hidden-button");
+    button.setOnAction(
+        event -> {
+          try {
+            goToRequestQueue(null);
+            RequestQueueController.instance.view(request);
+          } catch (Exception e) {
+          }
+        });
+
+    Rectangle rectangle = new Rectangle(x, y, 160, 210);
     rectangle.setFill(Color.WHITE);
     rectangle.setStroke(Color.BLACK);
     rectangle.setStrokeWidth(1);
@@ -295,7 +310,12 @@ public class DashboardController extends MenuBarController {
     locationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     locationText.setTextAlignment(TextAlignment.CENTER);
 
-    Text equipmentLocation = new Text(x + 10, y + 100, request.getLocation().getLongName());
+    Text equipmentLocation = new Text(x + 10, y + 100, "");
+    if (request.getLocation() != null) {
+      equipmentLocation.setText(request.getLocation().getLongName());
+    } else {
+      equipmentLocation.setText(request.getPatient().getLocation().getLongName());
+    }
     equipmentLocation.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
     equipmentLocation.setTextAlignment(TextAlignment.CENTER);
     equipmentLocation.setWrappingWidth(140);
@@ -316,6 +336,7 @@ public class DashboardController extends MenuBarController {
     requestCardsPane.getChildren().add(equipmentLocation);
     requestCardsPane.getChildren().add(statusText);
     requestCardsPane.getChildren().add(equipmentStatus);
+    requestCardsPane.getChildren().add(button);
   }
 
   private int[] nextCardLocation(int cardNumber) {
@@ -350,7 +371,7 @@ public class DashboardController extends MenuBarController {
             drawEquipmentCard(cardCoordinates[0], cardCoordinates[1], medEquipmentLL2.get(i));
           }
         } else {
-          Text noEquipment = new Text(100, 175, "No requests on this floor");
+          Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
           noEquipment.setFill(Color.WHITE);
           noEquipment.setTextAlignment(TextAlignment.CENTER);
@@ -372,7 +393,7 @@ public class DashboardController extends MenuBarController {
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
-          equipmentCardsPane.getChildren().add(noEquipment);
+          requestCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 1:
@@ -402,10 +423,10 @@ public class DashboardController extends MenuBarController {
           equipmentCardsPane.getChildren().add(noEquipment);
         }
         if (requestsLL2.size() > 0) {
-          for (int i = 0; i < requestsLL1.size(); i++) {
+          for (int i = 0; i < requestsLL2.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
-                cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsLL1.get(i)));
+                cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsLL2.get(i)));
           }
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
@@ -414,7 +435,7 @@ public class DashboardController extends MenuBarController {
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
-          equipmentCardsPane.getChildren().add(noEquipment);
+          requestCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 2:
@@ -444,7 +465,7 @@ public class DashboardController extends MenuBarController {
           equipmentCardsPane.getChildren().add(noEquipment);
         }
         if (requestsF1.size() > 0) {
-          for (int i = 0; i < requestsLL1.size(); i++) {
+          for (int i = 0; i < requestsF1.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
                 cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsF1.get(i)));
@@ -456,7 +477,7 @@ public class DashboardController extends MenuBarController {
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
-          equipmentCardsPane.getChildren().add(noEquipment);
+          requestCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 3:
@@ -486,7 +507,7 @@ public class DashboardController extends MenuBarController {
           equipmentCardsPane.getChildren().add(noEquipment);
         }
         if (requestsF2.size() > 0) {
-          for (int i = 0; i < requestsLL1.size(); i++) {
+          for (int i = 0; i < requestsF2.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
                 cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsF2.get(i)));
@@ -498,7 +519,7 @@ public class DashboardController extends MenuBarController {
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
-          equipmentCardsPane.getChildren().add(noEquipment);
+          requestCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 4:
@@ -528,7 +549,7 @@ public class DashboardController extends MenuBarController {
           equipmentCardsPane.getChildren().add(noEquipment);
         }
         if (requestsF3.size() > 0) {
-          for (int i = 0; i < requestsLL1.size(); i++) {
+          for (int i = 0; i < requestsF3.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
                 cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsF3.get(i)));
@@ -570,7 +591,7 @@ public class DashboardController extends MenuBarController {
           equipmentCardsPane.getChildren().add(noEquipment);
         }
         if (requestsF4.size() > 0) {
-          for (int i = 0; i < requestsLL1.size(); i++) {
+          for (int i = 0; i < requestsF4.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
                 cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsF4.get(i)));
@@ -582,7 +603,7 @@ public class DashboardController extends MenuBarController {
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
-          equipmentCardsPane.getChildren().add(noEquipment);
+          requestCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 6:
@@ -612,7 +633,7 @@ public class DashboardController extends MenuBarController {
           equipmentCardsPane.getChildren().add(noEquipment);
         }
         if (requestsF5.size() > 0) {
-          for (int i = 0; i < requestsLL1.size(); i++) {
+          for (int i = 0; i < requestsF5.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
                 cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsF5.get(i)));
@@ -624,7 +645,7 @@ public class DashboardController extends MenuBarController {
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
-          equipmentCardsPane.getChildren().add(noEquipment);
+          requestCardsPane.getChildren().add(noEquipment);
         }
         break;
     }

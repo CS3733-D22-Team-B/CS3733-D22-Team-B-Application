@@ -12,132 +12,132 @@ public class MenuBarController {
   @FXML private MenuBar homeBar;
 
   @FXML
-  void goToHomepage(ActionEvent event) throws Exception {
+  public void goToHomepage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("homepage");
   }
 
   @FXML
-  void goToMap(ActionEvent event) throws Exception {
+  public void goToMap(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("interactiveMapPage");
   }
 
   @FXML
-  void goToMapLandingPage(ActionEvent event) throws Exception {
+  public void goToMapLandingPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("mapLandingPage");
   }
 
   @FXML
-  void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
+  public void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("equipmentTrackerPage");
   }
 
   @FXML
-  void goToRequestLandingPage(ActionEvent event) throws Exception {
+  public void goToRequestLandingPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("requestLandingPage");
   }
 
   @FXML
-  void goToRequestQueue(ActionEvent event) throws Exception {
+  public void goToRequestQueue(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("requestQueuePage");
   }
 
   @FXML
-  void goToPatientDatabase(ActionEvent event) throws Exception {
+  public void goToPatientDatabase(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("patientDatabasePage");
   }
 
   @FXML
-  void goToEmployeeDatabase(ActionEvent event) throws Exception {
+  public void goToEmployeeDatabase(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("employeeDatabasePage");
   }
 
   @FXML
-  void goToLocationDataPage(ActionEvent event) throws Exception {
+  public void goToLocationDataPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("locationDataPage");
   }
 
   @FXML
-  void goToProfilePage(ActionEvent event) throws Exception {
+  public void goToProfilePage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("profilePage");
   }
 
   @FXML
-  void goToEquipmentRequestPage(ActionEvent event) throws Exception {
+  public void goToEquipmentRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("equipmentRequestPage");
   }
 
   @FXML
-  void goToLabRequestPage(ActionEvent event) throws Exception {
+  public void goToLabRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("labRequestPage");
   }
 
   @FXML
-  void goToMealRequestPage(ActionEvent event) throws Exception {
+  public void goToMealRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("mealRequestPage");
   }
 
   @FXML
-  void goToMedicineRequestPage(ActionEvent event) throws Exception {
+  public void goToMedicineRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("medicineRequestPage");
   }
 
   @FXML
-  void goToInterpreterRequestPage(ActionEvent event) throws Exception {
+  public void goToInterpreterRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("interpreterRequestPage");
   }
 
   @FXML
-  void goToInternalPatientTransferRequestPage(ActionEvent event) throws Exception {
+  public void goToInternalPatientTransferRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("internalPatientTransferRequestPage");
   }
 
   @FXML
-  void goToCustomRequestPage(ActionEvent event) throws Exception {
+  public void goToCustomRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("customRequestPage");
   }
 
   @FXML
-  void goToLaundryRequestPage(ActionEvent event) throws Exception {
+  public void goToLaundryRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("laundryRequestPage");
   }
 
   @FXML
-  void goToSecurityRequestPage(ActionEvent event) throws Exception {
+  public void goToSecurityRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("securityRequestPage");
   }
 
   @FXML
-  void goToGiftDeliveryRequestPage(ActionEvent event) throws Exception {
+  public void goToGiftDeliveryRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("giftRequestPage");
   }
 
   @FXML
-  void goToSanitationRequestPage(ActionEvent event) throws Exception {
+  public void goToSanitationRequestPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("sanitationRequestPage");
   }
 
   @FXML
-  void goToAboutPage(ActionEvent event) throws Exception {
+  public void goToAboutPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("aboutPage");
   }
 
   @FXML
-  void goToDashboard(ActionEvent event) throws Exception {
+  public void goToDashboard(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("dashboard");
   }
 
   @FXML
-  void goToGame(ActionEvent event) throws Exception {
+  public void goToGame(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("sample");
   }
 
   @FXML
-  void quitApplication() {
+  public void quitApplication() {
     System.exit(0);
   }
 
   @FXML
-  void amongUsButton() {
+  public void amongUsButton() {
     System.out.println("Among Us button clicked");
 
     // link to Among Us website

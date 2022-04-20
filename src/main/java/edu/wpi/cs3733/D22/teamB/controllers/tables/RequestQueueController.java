@@ -30,7 +30,9 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML TableColumn<Request, String> columnType;
   @FXML TableColumn<Request, String> columnStatus;
   @FXML TableColumn<Request, Integer> columnPriority;
-  @FXML TableColumn<Request, Void> columnButtons;
+  @FXML TableColumn<Request, HBox> columnButtons;
+
+  TableColumn<Request, HBox> localColumnButtons;
 
   @FXML private TextField downloadText;
   @FXML private Label errorLabel;
@@ -53,10 +55,16 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML AnchorPane editingPane;
   @FXML AnchorPane otherAnchorPane;
 
+  public static RequestQueueController instance;
+
   Request currentRequest = null;
   protected EmployeesDB dao;
 
   private ObservableList<Request> requests = FXCollections.observableArrayList();
+
+  public RequestQueueController(TableColumn<Request, HBox> columnButtons) {
+    this.localColumnButtons = columnButtons;
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -102,12 +110,12 @@ public class RequestQueueController extends MenuBarController implements Initial
   }
 
   private void addButtonToTable() {
-    Callback<TableColumn<Request, Void>, TableCell<Request, Void>> cellFactory =
-        new Callback<TableColumn<Request, Void>, TableCell<Request, Void>>() {
+    Callback<TableColumn<Request, HBox>, TableCell<Request, HBox>> cellFactory =
+        new Callback<TableColumn<Request, HBox>, TableCell<Request, HBox>>() {
           @Override
-          public TableCell<Request, Void> call(final TableColumn<Request, Void> param) {
-            final TableCell<Request, Void> cell =
-                new TableCell<Request, Void>() {
+          public TableCell<Request, HBox> call(final TableColumn<Request, HBox> param) {
+            final TableCell<Request, HBox> cell =
+                new TableCell<Request, HBox>() {
                   private final HBox hBox = new HBox();
                   private final Button requestViewerButton = new Button("View");
                   private final Button requestEditButton = new Button("Edit");
@@ -222,7 +230,7 @@ public class RequestQueueController extends MenuBarController implements Initial
                   }
 
                   @Override
-                  public void updateItem(Void item, boolean empty) {
+                  public void updateItem(HBox item, boolean empty) {
                     super.updateItem(item, empty);
                     if (empty) {
                       setGraphic(null);
@@ -358,5 +366,10 @@ public class RequestQueueController extends MenuBarController implements Initial
       ServiceRequestsDB.getInstance().downloadCSV(downloadText.getText() + " - Service Requests");
       errorLabel.setText("Files downloaded");
     }
+  }
+
+  public void view(Request request) {
+    Button button = (Button) columnButtons.getCellObservableValue(request).getValue().getChildren().get(0);
+    button.fire();
   }
 }
