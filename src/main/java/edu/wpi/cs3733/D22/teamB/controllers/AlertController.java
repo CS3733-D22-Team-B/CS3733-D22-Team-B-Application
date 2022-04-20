@@ -1,7 +1,14 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import java.io.IOException;
 import java.util.LinkedList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class AlertController {
 
@@ -165,10 +172,16 @@ public class AlertController {
 
   public void sendDirtyAlert(String floor, int dirtyPumps, String type) {
     System.out.println("Floor: " + floor + " Number dirty: " + dirtyPumps + " Type: " + type);
+    Alert alert = new Alert("", ("Floor " + floor), ("DIRTY_" + type), "N");
+    AlertQueue.addAlert(alert);
+    showAlert(alert);
   }
 
   public void sendCleanAlert(String floor, int dirtyPumps, String type) {
     System.out.println("Floor: " + floor + " Number clean: " + dirtyPumps + " Type: " + type);
+    Alert alert = new Alert("", ("Floor " + floor), ("CLEAN_" + type), "N");
+    AlertQueue.addAlert(alert);
+    showAlert(alert);
   }
 
   public void makeServiceRequest(LinkedList<MedicalEquipment> equipment, String locationID) {
@@ -177,6 +190,55 @@ public class AlertController {
       EquipmentRequest eqReq =
           new EquipmentRequest(locationID, eq.getEquipmentID(), information, 3);
       DatabaseController.getInstance().add(eqReq);
+    }
+  }
+
+  public void showAlert(Alert changeStateAlert) {
+    UIController currentPlace = UIController.getInstance();
+    Scene place = currentPlace.primaryStage.getScene();
+
+    Stage popUpStage = new Stage();
+    Parent root;
+    root = null;
+    if (changeStateAlert.getType().equals("CLEAN_PUMP")) {
+
+      try {
+        root =
+            FXMLLoader.load(
+                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/popupCLP.fxml"));
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      popUpStage.setScene(new Scene(root));
+      popUpStage.initOwner(place.getWindow());
+      popUpStage.initModality(Modality.APPLICATION_MODAL); // popup
+      popUpStage.showAndWait();
+    }
+    if (changeStateAlert.getType().equals("DIRTY_PUMP")) {
+      try {
+        root =
+            FXMLLoader.load(
+                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/popupDTP.fxml"));
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      popUpStage.setScene(new Scene(root));
+      popUpStage.initOwner(place.getWindow());
+      popUpStage.initModality(Modality.APPLICATION_MODAL); // popup
+      popUpStage.showAndWait();
+    }
+    if (changeStateAlert.getType().equals("DIRTY_BED")) {
+      try {
+        root =
+            FXMLLoader.load(
+                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/popupDTB.fxml"));
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      popUpStage.setScene(new Scene(root));
+      popUpStage.initOwner(place.getWindow());
+      popUpStage.initModality(Modality.APPLICATION_MODAL); // popup
+      popUpStage.showAndWait();
     }
   }
 }

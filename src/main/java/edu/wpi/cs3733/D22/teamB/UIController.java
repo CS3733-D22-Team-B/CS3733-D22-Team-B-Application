@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class UIController {
   private static UIController instance = new UIController();
-  private Stage primaryStage;
+  public Stage primaryStage;
 
   private UIController() {}
 
