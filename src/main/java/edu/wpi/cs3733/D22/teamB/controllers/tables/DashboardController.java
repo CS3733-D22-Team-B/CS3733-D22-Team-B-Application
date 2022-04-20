@@ -261,6 +261,82 @@ public class DashboardController extends MenuBarController {
     equipmentCardsPane.getChildren().add(equipmentStatus);
   }
 
+  private void drawPatientCard(int x, int y, Patient patient) {
+    /*Button button = new Button("");
+    button.setLayoutX(x);
+    button.setLayoutY(y);
+    button.setPrefWidth(160);
+    button.setPrefHeight(210);
+    button.getStyleClass().add("hidden-button");
+    button.setOnAction(
+        event -> {
+          try {
+            goToRequestQueue(null);
+            RequestQueueController.instance.view(request);
+          } catch (Exception e) {
+          }
+        });*/
+
+    Rectangle rectangle = new Rectangle(x, y, 160, 210);
+    rectangle.setFill(Color.WHITE);
+    rectangle.setStroke(Color.BLACK);
+    rectangle.setStrokeWidth(1);
+    rectangle.setArcHeight(25);
+    rectangle.setArcWidth(25);
+    rectangle.setStrokeType(StrokeType.INSIDE);
+    rectangle.setStrokeLineCap(StrokeLineCap.ROUND);
+    rectangle.setStrokeLineJoin(StrokeLineJoin.ROUND);
+    rectangle.setStrokeMiterLimit(10);
+
+    Label equipmentName = new Label(patient.getPatientID());
+    equipmentName.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+    equipmentName.setTextAlignment(TextAlignment.CENTER);
+    equipmentName.setAlignment(Pos.CENTER);
+    equipmentName.setLayoutX(x);
+    equipmentName.setLayoutY(y + 10);
+    equipmentName.setPrefWidth(160);
+    equipmentName.setPrefHeight(25);
+
+    Label equipmentID = new Label("(" + patient.getLocation() + ")");
+    equipmentID.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+    equipmentID.setTextAlignment(TextAlignment.CENTER);
+    equipmentID.setAlignment(Pos.CENTER);
+    equipmentID.setLayoutX(x);
+    equipmentID.setLayoutY(y + 35);
+    equipmentID.setPrefWidth(160);
+    equipmentID.setPrefHeight(25);
+
+    Text locationText = new Text(x + 50, y + 80, "Location:");
+    locationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+    locationText.setTextAlignment(TextAlignment.CENTER);
+
+    Text equipmentLocation = new Text(x + 10, y + 100, "");
+    if (patient.getLocation() != null) {
+      equipmentLocation.setText(patient.getLocation().getLongName());
+    } else {
+    }
+    equipmentLocation.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+    equipmentLocation.setTextAlignment(TextAlignment.CENTER);
+    equipmentLocation.setWrappingWidth(140);
+
+    Text statusText = new Text(x + 60, y + 150, "Status:");
+    statusText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+    statusText.setTextAlignment(TextAlignment.CENTER);
+
+    Text equipmentStatus = new Text(x + 10, y + 170, patient.getInformation());
+    equipmentStatus.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+    equipmentStatus.setTextAlignment(TextAlignment.CENTER);
+    equipmentStatus.setWrappingWidth(140);
+
+    patientsCardsPane.getChildren().add(rectangle);
+    patientsCardsPane.getChildren().add(equipmentName);
+    patientsCardsPane.getChildren().add(equipmentID);
+    patientsCardsPane.getChildren().add(locationText);
+    patientsCardsPane.getChildren().add(equipmentLocation);
+    patientsCardsPane.getChildren().add(statusText);
+    patientsCardsPane.getChildren().add(equipmentStatus);
+  }
+
   private void drawRequestCard(int x, int y, Request request) {
     Button button = new Button("");
     button.setLayoutX(x);
@@ -276,6 +352,7 @@ public class DashboardController extends MenuBarController {
           } catch (Exception e) {
           }
         });
+    PatientsDB patient = PatientsDB.getInstance();
 
     Rectangle rectangle = new Rectangle(x, y, 160, 210);
     rectangle.setFill(Color.WHITE);
@@ -351,6 +428,7 @@ public class DashboardController extends MenuBarController {
   private void loadInformation(int floorNumber) {
     equipmentCardsPane.getChildren().clear();
     requestCardsPane.getChildren().clear();
+    patientsCardsPane.getChildren().clear();
     ServiceRequestsDB requests = ServiceRequestsDB.getInstance();
     switch (floorNumber) {
       case 0:
@@ -395,6 +473,20 @@ public class DashboardController extends MenuBarController {
 
           requestCardsPane.getChildren().add(noEquipment);
         }
+        if (patientsLL2.size() > 0) {
+          for (int i = 0; i < patientsLL2.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsLL2.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
+        }
         break;
       case 1:
         overviewLabel.setText("Overview of Lower Level 1");
@@ -422,11 +514,11 @@ public class DashboardController extends MenuBarController {
 
           equipmentCardsPane.getChildren().add(noEquipment);
         }
-        if (requestsLL2.size() > 0) {
-          for (int i = 0; i < requestsLL2.size(); i++) {
+        if (requestsLL1.size() > 0) {
+          for (int i = 0; i < requestsLL1.size(); i++) {
             int[] cardCoordinates = nextCardLocation(i);
             drawRequestCard(
-                cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsLL2.get(i)));
+                cardCoordinates[0], cardCoordinates[1], requests.getByID(requestsLL1.get(i)));
           }
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
@@ -436,6 +528,20 @@ public class DashboardController extends MenuBarController {
           noEquipment.setWrappingWidth(315);
 
           requestCardsPane.getChildren().add(noEquipment);
+        }
+        if (patientsLL1.size() > 0) {
+          for (int i = 0; i < patientsLL1.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsLL1.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 2:
@@ -479,6 +585,20 @@ public class DashboardController extends MenuBarController {
 
           requestCardsPane.getChildren().add(noEquipment);
         }
+        if (patientsF1.size() > 0) {
+          for (int i = 0; i < patientsF1.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsF1.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
+        }
         break;
       case 3:
         overviewLabel.setText("Overview of Floor 2");
@@ -520,6 +640,20 @@ public class DashboardController extends MenuBarController {
           noEquipment.setWrappingWidth(315);
 
           requestCardsPane.getChildren().add(noEquipment);
+        }
+        if (patientsF2.size() > 0) {
+          for (int i = 0; i < patientsF2.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsF2.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
         }
         break;
       case 4:
@@ -563,6 +697,20 @@ public class DashboardController extends MenuBarController {
 
           equipmentCardsPane.getChildren().add(noEquipment);
         }
+        if (patientsF3.size() > 0) {
+          for (int i = 0; i < patientsF3.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsF3.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
+        }
         break;
       case 5:
         overviewLabel.setText("Overview of Floor 4");
@@ -605,6 +753,20 @@ public class DashboardController extends MenuBarController {
 
           requestCardsPane.getChildren().add(noEquipment);
         }
+        if (patientsF4.size() > 0) {
+          for (int i = 0; i < patientsF4.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsF4.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
+        }
         break;
       case 6:
         overviewLabel.setText("Overview of Floor 5");
@@ -646,6 +808,20 @@ public class DashboardController extends MenuBarController {
           noEquipment.setWrappingWidth(315);
 
           requestCardsPane.getChildren().add(noEquipment);
+        }
+        if (patientsF5.size() > 0) {
+          for (int i = 0; i < patientsF5.size(); i++) {
+            int[] cardCoordinates = nextCardLocation(i);
+            drawPatientCard(cardCoordinates[0], cardCoordinates[1], patientsF5.get(i));
+          }
+        } else {
+          Text noEquipment = new Text(100, 175, "No patients on this floor");
+          noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
+          noEquipment.setFill(Color.WHITE);
+          noEquipment.setTextAlignment(TextAlignment.CENTER);
+          noEquipment.setWrappingWidth(315);
+
+          patientsCardsPane.getChildren().add(noEquipment);
         }
         break;
     }

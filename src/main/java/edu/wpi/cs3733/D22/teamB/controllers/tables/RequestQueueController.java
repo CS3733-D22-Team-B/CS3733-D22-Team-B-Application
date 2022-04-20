@@ -369,7 +369,8 @@ public class RequestQueueController extends MenuBarController implements Initial
   }
 
   public void view(Request request) {
-    Button button = (Button) columnButtons.getCellObservableValue(request).getValue().getChildren().get(0);
+    Button button =
+        (Button) columnButtons.getCellObservableValue(request).getValue().getChildren().get(0);
     button.fire();
   }
 }
