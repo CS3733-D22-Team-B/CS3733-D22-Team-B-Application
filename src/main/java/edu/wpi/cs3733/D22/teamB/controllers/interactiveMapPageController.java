@@ -111,6 +111,7 @@ public class interactiveMapPageController extends MenuBarController {
   private Boolean equipPaneVisible = false;
   private Boolean filterOpen = false;
   private Boolean firstMove = true;
+  private Boolean equipMoved = false;
 
   private Boolean bathOn = true;
   private Boolean deptOn = true;
@@ -153,6 +154,7 @@ public class interactiveMapPageController extends MenuBarController {
 
   private double startDragX, startDragY;
   private double scaleX = 1.0, scaleY = 1.0;
+  private double orgSceneX, orgSceneY;
 
   public void initialize() {
     roomIcons = new LinkedList<SVGPath>();
@@ -174,7 +176,7 @@ public class interactiveMapPageController extends MenuBarController {
 
     mapPane.setOnMouseDragged(
         e -> {
-          if (!addEnabled && !editEnabled) {
+          if (!addEnabled && !editEnabled && !editEquipEnabled) {
             mapPane.setTranslateX(e.getSceneX() - startDragX);
             mapPane.setTranslateY(e.getSceneY() - startDragY);
           }
@@ -195,19 +197,21 @@ public class interactiveMapPageController extends MenuBarController {
     mapPane.setOnDragDropped(
         new EventHandler<DragEvent>() {
           public void handle(DragEvent event) {
-            Dragboard db = event.getDragboard();
-            int newX = (int) event.getX();
-            int newY = (int) event.getY();
+            if (editEnabled) {
+              Dragboard db = event.getDragboard();
+              int newX = (int) event.getX();
+              int newY = (int) event.getY();
 
-            int[] converted = imageCoordsToCSVCoords(newX, newY);
+              int[] converted = imageCoordsToCSVCoords(newX, newY);
 
-            String locName = db.getString();
-            LinkedList<Location> correctLoc = dao.listByAttribute("longName", locName);
-            Location toEdit = correctLoc.pop();
-            toEdit.setXCoord(converted[0]);
-            toEdit.setYCoord(converted[1]);
-            dao.update(toEdit);
-            setRoomIcons();
+              String locName = db.getString();
+              LinkedList<Location> correctLoc = dao.listByAttribute("longName", locName);
+              Location toEdit = correctLoc.pop();
+              toEdit.setXCoord(converted[0]);
+              toEdit.setYCoord(converted[1]);
+              dao.update(toEdit);
+              setRoomIcons();
+            }
           }
         });
   }
@@ -304,6 +308,7 @@ public class interactiveMapPageController extends MenuBarController {
                 locInfoPane.setLayoutY(viewCoords[1] + 8);
                 nameLabel.setText(location.getLongName());
                 nodeLabel.setText(location.getNodeType());
+
               } else {
                 locInfoPane.setVisible(false);
               }
@@ -396,7 +401,7 @@ public class interactiveMapPageController extends MenuBarController {
     icon.hoverProperty()
         .addListener(
             (obs, oldVal, newVal) -> {
-              if (newVal) {
+              if (newVal && !editEquipEnabled) {
                 equipInfoPane.setVisible(true);
                 equipInfoPane.setLayoutX(viewCoords[0] - 78);
                 equipInfoPane.setLayoutY(viewCoords[1] + 15);
@@ -411,6 +416,28 @@ public class interactiveMapPageController extends MenuBarController {
     icon.setOnMouseClicked(
         event -> {
           toggleEquipPane(eq);
+          orgSceneX = event.getSceneX();
+          orgSceneY = event.getSceneY();
+        });
+    icon.setOnMouseDragged(
+        event -> {
+          if (editEquipEnabled) {
+            double offsetX = event.getX();
+            double offsetY = event.getY();
+            icon.relocate(icon.getLayoutX() + offsetX, icon.getLayoutY() + offsetY);
+            orgSceneX = event.getSceneX();
+            orgSceneY = event.getSceneY();
+            equipMoved = true;
+          }
+        });
+    icon.setOnMouseReleased(
+        event -> {
+          if (editEquipEnabled) {
+            Location loc = snapToClosestLocation(icon);
+            if (loc != null) {
+              eq.setLocation(loc);
+            }
+          }
         });
 
     mapPane.getChildren().add(icon);
@@ -952,6 +979,8 @@ public class interactiveMapPageController extends MenuBarController {
     availabilityDropdown.setVisible(true);
     stateDropdown.setVisible(true);
     confirmButton.setVisible(true);
+
+    equipInfoPane.setVisible(false);
   }
 
   public void editEquip() {
@@ -959,7 +988,9 @@ public class interactiveMapPageController extends MenuBarController {
     Location loc = equipLoc.pop();
     if (toEdit != null) {
       toEdit.setAvailability(availabilityDropdown.getValue());
-      toEdit.setLocation(loc);
+      if (!equipMoved) {
+        toEdit.setLocation(loc);
+      }
       if (stateDropdown.getValue().equals("Clean")) {
         toEdit.setIsClean(true);
       } else toEdit.setIsClean(false);
@@ -989,6 +1020,7 @@ public class interactiveMapPageController extends MenuBarController {
     locationDropdown.setValue("");
     stateDropdown.setValue("");
     toEdit = null;
+    equipMoved = false;
   }
 
   public LinkedList<Location> filterLocs(LinkedList<Location> locList) {
@@ -1582,5 +1614,27 @@ public class interactiveMapPageController extends MenuBarController {
       setRoomIcons();
       firstMove = true;
     }
+  }
+
+  private Location snapToClosestLocation(SVGPath icon) {
+    Location end = null;
+    double minDistance = Double.MAX_VALUE;
+
+    floorLocations = dao.getLocationsByFloor(floorLevel);
+    LinkedList<Location> filtered = filterLocs(floorLocations);
+
+    for (Location loc : filtered) {
+      int[] mapCoords = mapCoordsToViewCoords(loc.getXCoord(), loc.getYCoord());
+      double distance =
+          Math.sqrt(
+              Math.pow(mapCoords[0] - icon.getLayoutX(), 2)
+                  + Math.pow(mapCoords[1] - icon.getLayoutY(), 2));
+      if (distance < minDistance) {
+        minDistance = distance;
+        end = loc;
+      }
+    }
+
+    return end;
   }
 }
