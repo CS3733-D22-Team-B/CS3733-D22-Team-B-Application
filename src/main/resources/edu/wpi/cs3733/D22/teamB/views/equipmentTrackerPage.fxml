@@ -34,12 +34,14 @@
       </Pane>
       <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton layoutX="18.0" layoutY="51.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" " />
-            <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="21.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-               </image>
-            </ImageView>
+            <JFXButton layoutX="18.0" layoutY="51.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
          </children>
       </Pane>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

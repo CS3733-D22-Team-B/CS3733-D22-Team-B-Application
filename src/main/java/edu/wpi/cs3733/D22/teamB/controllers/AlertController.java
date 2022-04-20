@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
 import java.io.IOException;
 import java.util.LinkedList;
 import javafx.fxml.FXMLLoader;
@@ -187,8 +188,8 @@ public class AlertController {
   public void makeServiceRequest(LinkedList<MedicalEquipment> equipment, String locationID) {
     for (MedicalEquipment eq : equipment) {
       String information = "Needs to be sanitized. ";
-      EquipmentRequest eqReq =
-          new EquipmentRequest(locationID, eq.getEquipmentID(), information, 3);
+      SanitationRequest eqReq =
+          new SanitationRequest(eq.getEquipmentID(), information, 3, "Sanitation");
       DatabaseController.getInstance().add(eqReq);
     }
   }
