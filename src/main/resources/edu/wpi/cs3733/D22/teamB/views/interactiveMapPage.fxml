@@ -96,7 +96,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <JFXButton fx:id="filterButton" layoutX="220.0" layoutY="28.0" onAction="#toggleFilter" text="Filter" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="28.0" />
+      <JFXButton fx:id="filterButton" layoutX="220.0" layoutY="28.0" onAction="#toggleFilter" text="Filter" textFill="WHITE" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="28.0" />
       <Pane fx:id="floorBackground" layoutX="568.0" layoutY="8.0" prefHeight="500.0" prefWidth="178.0" styleClass="container-box-2" stylesheets="@styles/pageStyles.css" visible="false" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="8.0">
          <children>
             <JFXButton fx:id="undoMoveButton" focusTraversable="false" layoutX="17.0" layoutY="231.0" onAction="#undoMove" prefHeight="38.0" prefWidth="144.0" styleClass="border-button" stylesheets="@styles/buttonStyles.css" text="Undo Move" visible="false" />
@@ -222,37 +222,43 @@
       </Pane>
       <Pane fx:id="filterPane" layoutX="28.0" layoutY="38.0" prefHeight="440.0" prefWidth="163.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="bath" layoutX="37.0" layoutY="68.0" onAction="#toggleBath" text="Bath" textFill="WHITE" />
-            <JFXButton fx:id="dept" layoutX="86.0" layoutY="67.0" onAction="#toggleDept" text="Dept" textFill="WHITE" />
-            <JFXButton fx:id="dirt" layoutX="38.0" layoutY="91.0" onAction="#toggleDirt" text="Dirt" textFill="WHITE" />
-            <JFXButton fx:id="elev" layoutX="86.0" layoutY="91.0" onAction="#toggleElev" text="Elev" textFill="WHITE" />
-            <JFXButton fx:id="exit" layoutX="38.0" layoutY="116.0" onAction="#toggleExit" text="Exit" textFill="WHITE" />
-            <JFXButton fx:id="hall" layoutX="86.0" layoutY="116.0" onAction="#toggleHall" text="Hall" textFill="WHITE" />
-            <JFXButton fx:id="info" layoutX="38.0" layoutY="141.0" onAction="#toggleInfo" text="Info" textFill="WHITE" />
-            <JFXButton fx:id="labs" layoutX="86.0" layoutY="141.0" onAction="#toggleLabs" text="Labs" textFill="WHITE" />
-            <JFXButton fx:id="pati" layoutX="38.0" layoutY="166.0" onAction="#togglePati" text="Pati" textFill="WHITE" />
-            <JFXButton fx:id="rest" layoutX="86.0" layoutY="166.0" onAction="#toggleRest" text="Rest" textFill="WHITE" />
-            <JFXButton fx:id="retl" layoutX="38.0" layoutY="190.0" onAction="#toggleRetl" text="Retl" textFill="WHITE" />
-            <JFXButton fx:id="serv" layoutX="87.0" layoutY="190.0" onAction="#toggleServ" text="Serv" textFill="WHITE" />
-            <JFXButton fx:id="stai" layoutX="39.0" layoutY="215.0" onAction="#toggleStai" text="Stai" textFill="WHITE" />
-            <JFXButton fx:id="stor" layoutX="87.0" layoutY="215.0" onAction="#toggleStor" text="Stor" textFill="WHITE" />
+            <JFXButton fx:id="bath" layoutX="37.0" layoutY="65.0" onAction="#toggleBath" text="Bath" textFill="WHITE" />
+            <JFXButton fx:id="dept" layoutX="86.0" layoutY="64.0" onAction="#toggleDept" text="Dept" textFill="WHITE" />
+            <JFXButton fx:id="dirt" layoutX="38.0" layoutY="88.0" onAction="#toggleDirt" text="Dirt" textFill="WHITE" />
+            <JFXButton fx:id="elev" layoutX="86.0" layoutY="88.0" onAction="#toggleElev" text="Elev" textFill="WHITE" />
+            <JFXButton fx:id="exit" layoutX="38.0" layoutY="113.0" onAction="#toggleExit" text="Exit" textFill="WHITE" />
+            <JFXButton fx:id="hall" layoutX="86.0" layoutY="113.0" onAction="#toggleHall" text="Hall" textFill="WHITE" />
+            <JFXButton fx:id="info" layoutX="38.0" layoutY="138.0" onAction="#toggleInfo" text="Info" textFill="WHITE" />
+            <JFXButton fx:id="labs" layoutX="86.0" layoutY="138.0" onAction="#toggleLabs" text="Labs" textFill="WHITE" />
+            <JFXButton fx:id="pati" layoutX="38.0" layoutY="163.0" onAction="#togglePati" text="Pati" textFill="WHITE" />
+            <JFXButton fx:id="rest" layoutX="86.0" layoutY="163.0" onAction="#toggleRest" text="Rest" textFill="WHITE" />
+            <JFXButton fx:id="retl" layoutX="38.0" layoutY="187.0" onAction="#toggleRetl" text="Retl" textFill="WHITE" />
+            <JFXButton fx:id="serv" layoutX="87.0" layoutY="187.0" onAction="#toggleServ" text="Serv" textFill="WHITE" />
+            <JFXButton fx:id="stai" layoutX="39.0" layoutY="212.0" onAction="#toggleStai" text="Stai" textFill="WHITE" />
+            <JFXButton fx:id="stor" layoutX="87.0" layoutY="212.0" onAction="#toggleStor" text="Stor" textFill="WHITE" />
             <JFXButton layoutX="91.0" layoutY="14.0" onAction="#allIconsOff" text="Hide All" textFill="WHITE" />
             <JFXButton layoutX="6.0" layoutY="14.0" onAction="#allIconsOn" text="Show All" textFill="WHITE" />
-            <JFXButton fx:id="bed" layoutX="39.0" layoutY="259.0" onAction="#toggleBed" text="Bed" textFill="WHITE" />
-            <JFXButton layoutX="88.0" layoutY="259.0" onAction="#toggleXR" text="XR" textFill="WHITE" fx:id="xr" />
-            <JFXButton fx:id="recl" layoutX="38.0" layoutY="284.0" onAction="#toggleRecl" text="Recl" textFill="WHITE" />
-            <JFXButton fx:id="pump" layoutX="84.0" layoutY="284.0" onAction="#togglePump" text="Pump" textFill="WHITE" />
-            <JFXButton fx:id="equip" layoutX="17.0" layoutY="326.0" onAction="#toggleEquipReq" text="Equipment" textFill="WHITE" />
-            <JFXButton fx:id="lab" layoutX="101.0" layoutY="326.0" onAction="#toggleLabReq" text="Lab" textFill="WHITE" />
-            <JFXButton fx:id="med" layoutX="20.0" layoutY="351.0" onAction="#toggleMedReq" text="Medicine" textFill="WHITE" />
-            <JFXButton fx:id="meal" layoutX="97.0" layoutY="351.0" onAction="#toggleMealReq" text="Meal" textFill="WHITE" />
-            <JFXButton fx:id="interp" layoutX="16.0" layoutY="376.0" onAction="#toggleInterpReq" text="Interpreter" textFill="WHITE" />
-            <JFXButton fx:id="ipt" layoutX="102.0" layoutY="376.0" onAction="#toggleIptReq" text="IPT" textFill="WHITE" />
-            <JFXButton fx:id="custom" layoutX="47.0" layoutY="451.0" onAction="#toggleCustom" text="Custom" textFill="WHITE" />
-            <JFXButton fx:id="laund" layoutX="18.0" layoutY="401.0" onAction="#toggleLaundReq" text="Laundry" textFill="WHITE" />
-            <JFXButton fx:id="sec" layoutX="89.0" layoutY="401.0" onAction="#toggleSecReq" text="Security" textFill="WHITE" />
-            <JFXButton fx:id="gift" layoutX="35.0" layoutY="426.0" onAction="#toggleGiftReq" text="Gift" textFill="WHITE" />
-            <JFXButton fx:id="san" layoutX="85.0" layoutY="426.0" onAction="#toggleSanReq" text="Sanitation" textFill="WHITE" />
+            <JFXButton fx:id="bed" layoutX="42.0" layoutY="271.0" onAction="#toggleBed" text="Bed" textFill="WHITE" />
+            <JFXButton layoutX="91.0" layoutY="271.0" onAction="#toggleXR" text="XR" textFill="WHITE" fx:id="xr" />
+            <JFXButton fx:id="recl" layoutX="41.0" layoutY="296.0" onAction="#toggleRecl" text="Recl" textFill="WHITE" />
+            <JFXButton fx:id="pump" layoutX="84.0" layoutY="296.0" onAction="#togglePump" text="Pump" textFill="WHITE" />
+            <JFXButton fx:id="equip" layoutX="18.0" layoutY="352.0" onAction="#toggleEquipReq" text="Equipment" textFill="WHITE" />
+            <JFXButton fx:id="lab" layoutX="102.0" layoutY="352.0" onAction="#toggleLabReq" text="Lab" textFill="WHITE" />
+            <JFXButton fx:id="med" layoutX="21.0" layoutY="377.0" onAction="#toggleMedReq" text="Medicine" textFill="WHITE" />
+            <JFXButton fx:id="meal" layoutX="98.0" layoutY="377.0" onAction="#toggleMealReq" text="Meal" textFill="WHITE" />
+            <JFXButton fx:id="interp" layoutX="17.0" layoutY="402.0" onAction="#toggleInterpReq" text="Interpreter" textFill="WHITE" />
+            <JFXButton fx:id="ipt" layoutX="103.0" layoutY="402.0" onAction="#toggleIptReq" text="IPT" textFill="WHITE" />
+            <JFXButton fx:id="custom" layoutX="57.0" layoutY="477.0" onAction="#toggleCustom" text="Custom" textFill="WHITE" />
+            <JFXButton fx:id="laund" layoutX="25.0" layoutY="427.0" onAction="#toggleLaundReq" text="Laundry" textFill="WHITE" />
+            <JFXButton fx:id="sec" layoutX="90.0" layoutY="427.0" onAction="#toggleSecReq" text="Security" textFill="WHITE" />
+            <JFXButton fx:id="gift" layoutX="36.0" layoutY="452.0" onAction="#toggleGiftReq" text="Gift" textFill="WHITE" />
+            <JFXButton fx:id="san" layoutX="86.0" layoutY="452.0" onAction="#toggleSanReq" text="Sanitation" textFill="WHITE" />
+            <JFXButton layoutX="4.0" layoutY="328.0" onAction="#showAllReqs" text="Show Reqs" textFill="WHITE" />
+            <JFXButton layoutX="98.0" layoutY="328.0" onAction="#hideAllReqs" text="Hide Reqs" textFill="WHITE" />
+            <JFXButton layoutX="2.0" layoutY="246.0" onAction="#showAllEquip" text="Show Equip" textFill="WHITE" />
+            <JFXButton layoutX="89.0" layoutY="246.0" onAction="#hideAllEquip" text="Hide Equip" textFill="WHITE" />
+            <JFXButton layoutX="91.0" layoutY="42.0" onAction="#hideAllLocs" text="Hide Locs" textFill="WHITE" />
+            <JFXButton layoutX="6.0" layoutY="42.0" onAction="#showAllLocs" text="Show Locs" textFill="WHITE" />
          </children>
       </Pane>
    </children>

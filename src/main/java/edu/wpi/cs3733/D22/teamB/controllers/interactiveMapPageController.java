@@ -1491,10 +1491,10 @@ public class interactiveMapPageController extends MenuBarController {
   public void toggleLaundReq() {
     if (laundOn) {
       if (!requestFilterList.contains("Laundry")) requestFilterList.add("Laundry");
-      ipt.setTextFill(Color.DARKGREY);
+      laund.setTextFill(Color.DARKGREY);
       laundOn = false;
     } else {
-      ipt.setTextFill(Color.WHITE);
+      laund.setTextFill(Color.WHITE);
       requestFilterList.remove("Laundry");
       laundOn = true;
     }
