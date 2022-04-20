@@ -13,7 +13,116 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.interactiveMapPageController">
    <children>
-      <Pane layoutX="855.0" prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="212.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="623.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="124.79999999999995" AnchorPane.topAnchor="20.0">
+         <children>
+            <Pane fx:id="mapPane" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="662.0">
+               <children>
+                  <ImageView fx:id="mapImage" fitHeight="580.0" fitWidth="662.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/firstFloor.png" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="locInfoPane" prefHeight="80.0" prefWidth="156.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="nameLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Room Name" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="nodeLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Node Type" textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="equipInfoPane" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="156.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="equipTypeLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Equip Type" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="statusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
+                        <JFXButton fx:id="equipEditButton" layoutX="105.0" layoutY="50.0" onAction="#startEquipEdit" text="(edit)" textFill="WHITE" visible="false" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="reqInfoPane" layoutX="20.0" layoutY="20.0" prefHeight="80.0" prefWidth="156.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="reqTypeLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Req Type" textFill="WHITE" wrapText="true" />
+                        <Label fx:id="reqStatusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <ImageView disable="true" fitHeight="540.0" fitWidth="1049.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../assets/mapAssets/mapBackground.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutY="4.0" prefHeight="540.0" prefWidth="195.0" spacing="25.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0">
+         <children>
+            <JFXButton fx:id="addButton" focusTraversable="false" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/AddButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="deleteButton" focusTraversable="false" onAction="#startDelete" prefHeight="158.0" prefWidth="130.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/deleteButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="editButton" focusTraversable="false" onAction="#startEdit" prefHeight="158.0" prefWidth="130.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/editButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+      <JFXButton fx:id="filterButton" layoutX="220.0" layoutY="28.0" onAction="#toggleFilter" text="Filter" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="28.0" />
+      <Pane fx:id="floorBackground" layoutX="568.0" layoutY="8.0" prefHeight="500.0" prefWidth="178.0" styleClass="container-box-2" stylesheets="@styles/pageStyles.css" visible="false" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="8.0">
+         <children>
+            <JFXButton fx:id="undoMoveButton" focusTraversable="false" layoutX="17.0" layoutY="231.0" onAction="#undoMove" prefHeight="38.0" prefWidth="144.0" styleClass="border-button" stylesheets="@styles/buttonStyles.css" text="Undo Move" visible="false" />
+            <JFXComboBox fx:id="stateDropdown" focusColor="#405aa800" layoutX="34.0" layoutY="198.0" prefHeight="26.0" prefWidth="110.0" promptText="State" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXComboBox>
+            <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="34.0" layoutY="148.0" prefHeight="26.0" prefWidth="110.0" promptText="Availability" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+            <JFXButton fx:id="confirmButton" focusTraversable="false" layoutX="89.0" layoutY="420.0" onAction="#confirmChanges" prefHeight="73.0" prefWidth="50.0" text=" " visible="false">
+               <graphic>
+                  <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/Add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXComboBox fx:id="typeDropdown" focusColor="#ffffff00" layoutX="34.0" layoutY="39.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+      
+            <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="34.0" layoutY="39.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+            <JFXTextArea fx:id="locationName" focusColor="#ffffff00" layoutX="34.0" layoutY="101.0" prefHeight="38.0" prefWidth="110.0" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" unFocusColor="#ffffff00" visible="false" />
+            <JFXButton fx:id="markerButton" focusTraversable="false" layoutX="17.0" layoutY="281.0" onAction="#clearMarker" prefHeight="54.0" prefWidth="144.0" styleClass="border-button" stylesheets="@styles/buttonStyles.css" text="Reset Marker" visible="false" />
+         </children>
+      </Pane>
+      <Pane layoutX="849.0" prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <JFXButton fx:id="backButton" focusTraversable="false" layoutX="13.0" layoutY="109.0" onAction="#cancel" text=" " visible="false">
                <graphic>
@@ -109,130 +218,42 @@
                   </JFXButton>
                </children>
             </VBox>
-         </children></Pane>
-      <AnchorPane layoutX="212.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="623.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="124.79999999999995" AnchorPane.topAnchor="20.0">
-         <children>
-            <Pane fx:id="mapPane" layoutX="104.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" AnchorPane.bottomAnchor="74.60000000000002" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="119.20000000000005" AnchorPane.topAnchor="75.0">
-               <children>
-                  <ImageView fx:id="mapImage" fitHeight="350.0" fitWidth="400.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/mapAssets/firstFloor.png" />
-                     </image>
-                  </ImageView>
-                  <Pane fx:id="locInfoPane" prefHeight="80.0" prefWidth="156.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="nameLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Room Name" textFill="WHITE" wrapText="true" />
-                        <Label fx:id="nodeLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Node Type" textFill="WHITE" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="equipInfoPane" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="156.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="equipTypeLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Equip Type" textFill="WHITE" wrapText="true" />
-                        <Label fx:id="statusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
-                        <JFXButton fx:id="equipEditButton" layoutX="105.0" layoutY="50.0" onAction="#startEquipEdit" text="(edit)" textFill="WHITE" visible="false" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="reqInfoPane" layoutX="20.0" layoutY="20.0" prefHeight="80.0" prefWidth="156.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="93.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="reqTypeLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Req Type" textFill="WHITE" wrapText="true" />
-                        <Label fx:id="reqStatusLabel" alignment="CENTER" layoutX="11.0" layoutY="43.0" prefHeight="17.0" prefWidth="132.0" text="Status" textFill="WHITE" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
          </children>
-      </AnchorPane>
-      <JFXButton fx:id="toLocDatabase" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.0" layoutY="170.0" onAction="#goToLocationDataPage" prefHeight="60.0" prefWidth="38.0" text=" " />
-      <JFXButton fx:id="addButton" focusTraversable="false" layoutX="12.0" layoutY="16.0" onAction="#startAdd" prefHeight="158.0" prefWidth="130.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/AddButton.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="deleteButton" focusTraversable="false" layoutX="12.0" layoutY="189.333" onAction="#startDelete" prefHeight="158.0" prefWidth="130.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/deleteButton.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="editButton" focusTraversable="false" layoutX="12.0" layoutY="362.66" onAction="#startEdit" prefHeight="158.0" prefWidth="130.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="153.333" fitWidth="172.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/editButton.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <ImageView fx:id="floorBackground" fitHeight="500.0" fitWidth="172.0" layoutX="20.0" layoutY="20.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../assets/mapAssets/InputBackgroundElement.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="topLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="40.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-         </image>
-      </ImageView>
-      <JFXComboBox fx:id="typeDropdown" focusColor="#ffffff00" layoutX="51.0" layoutY="59.0" prefHeight="26.0" prefWidth="110.0" promptText="Room Type" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
-
-      <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="60.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
-      <ImageView fx:id="secondTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="125.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-         </image>
-      </ImageView>
-      <JFXTextArea fx:id="locationName" focusColor="#ffffff00" layoutX="51.0" layoutY="138.0" prefHeight="38.0" prefWidth="110.0" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" unFocusColor="#ffffff00" visible="false" />
-      <JFXButton fx:id="markerButton" focusTraversable="false" layoutX="32.0" layoutY="206.0" onAction="#clearMarker" text=" " visible="false">
-         <graphic>
-            <ImageView fitHeight="65.0" fitWidth="132.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <Label fx:id="markerLabel" alignment="CENTER" layoutX="40.0" layoutY="232.0" onMouseClicked="#clearMarker" prefHeight="26.0" prefWidth="132.0" text="Reset Marker" textFill="WHITE" visible="false" />
-      <JFXButton fx:id="confirmButton" focusTraversable="false" layoutX="65.5" layoutY="435.0" onAction="#confirmChanges" text=" " visible="false">
-         <graphic>
-            <ImageView fx:id="confirmImage" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/mapAssets/Add.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXComboBox fx:id="availabilityDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="145.0" prefHeight="26.0" prefWidth="110.0" promptText="Availability" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
-      <ImageView fx:id="thirdTopLeftBox" fitHeight="65.0" fitWidth="132.0" layoutX="40.0" layoutY="210.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../assets/mapAssets/DropdownInputBox.png" />
-         </image>
-      </ImageView>
-      <JFXComboBox fx:id="stateDropdown" focusColor="#405aa800" layoutX="51.0" layoutY="230.0" prefHeight="26.0" prefWidth="110.0" promptText="State" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXComboBox>
+      </Pane>
+      <Pane fx:id="filterPane" layoutX="28.0" layoutY="38.0" prefHeight="440.0" prefWidth="163.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="bath" layoutX="37.0" layoutY="68.0" onAction="#toggleBath" text="Bath" textFill="WHITE" />
+            <JFXButton fx:id="dept" layoutX="86.0" layoutY="67.0" onAction="#toggleDept" text="Dept" textFill="WHITE" />
+            <JFXButton fx:id="dirt" layoutX="38.0" layoutY="91.0" onAction="#toggleDirt" text="Dirt" textFill="WHITE" />
+            <JFXButton fx:id="elev" layoutX="86.0" layoutY="91.0" onAction="#toggleElev" text="Elev" textFill="WHITE" />
+            <JFXButton fx:id="exit" layoutX="38.0" layoutY="116.0" onAction="#toggleExit" text="Exit" textFill="WHITE" />
+            <JFXButton fx:id="hall" layoutX="86.0" layoutY="116.0" onAction="#toggleHall" text="Hall" textFill="WHITE" />
+            <JFXButton fx:id="info" layoutX="38.0" layoutY="141.0" onAction="#toggleInfo" text="Info" textFill="WHITE" />
+            <JFXButton fx:id="labs" layoutX="86.0" layoutY="141.0" onAction="#toggleLabs" text="Labs" textFill="WHITE" />
+            <JFXButton fx:id="pati" layoutX="38.0" layoutY="166.0" onAction="#togglePati" text="Pati" textFill="WHITE" />
+            <JFXButton fx:id="rest" layoutX="86.0" layoutY="166.0" onAction="#toggleRest" text="Rest" textFill="WHITE" />
+            <JFXButton fx:id="retl" layoutX="38.0" layoutY="190.0" onAction="#toggleRetl" text="Retl" textFill="WHITE" />
+            <JFXButton fx:id="serv" layoutX="87.0" layoutY="190.0" onAction="#toggleServ" text="Serv" textFill="WHITE" />
+            <JFXButton fx:id="stai" layoutX="39.0" layoutY="215.0" onAction="#toggleStai" text="Stai" textFill="WHITE" />
+            <JFXButton fx:id="stor" layoutX="87.0" layoutY="215.0" onAction="#toggleStor" text="Stor" textFill="WHITE" />
+            <JFXButton layoutX="91.0" layoutY="14.0" onAction="#allIconsOff" text="Hide All" textFill="WHITE" />
+            <JFXButton layoutX="6.0" layoutY="14.0" onAction="#allIconsOn" text="Show All" textFill="WHITE" />
+            <JFXButton fx:id="bed" layoutX="39.0" layoutY="259.0" onAction="#toggleBed" text="Bed" textFill="WHITE" />
+            <JFXButton layoutX="88.0" layoutY="259.0" onAction="#toggleXR" text="XR" textFill="WHITE" fx:id="xr" />
+            <JFXButton fx:id="recl" layoutX="38.0" layoutY="284.0" onAction="#toggleRecl" text="Recl" textFill="WHITE" />
+            <JFXButton fx:id="pump" layoutX="84.0" layoutY="284.0" onAction="#togglePump" text="Pump" textFill="WHITE" />
+            <JFXButton fx:id="equip" layoutX="17.0" layoutY="326.0" onAction="#toggleEquipReq" text="Equipment" textFill="WHITE" />
+            <JFXButton fx:id="lab" layoutX="101.0" layoutY="326.0" onAction="#toggleLabReq" text="Lab" textFill="WHITE" />
+            <JFXButton fx:id="med" layoutX="20.0" layoutY="351.0" onAction="#toggleMedReq" text="Medicine" textFill="WHITE" />
+            <JFXButton fx:id="meal" layoutX="97.0" layoutY="351.0" onAction="#toggleMealReq" text="Meal" textFill="WHITE" />
+            <JFXButton fx:id="interp" layoutX="16.0" layoutY="376.0" onAction="#toggleInterpReq" text="Interpreter" textFill="WHITE" />
+            <JFXButton fx:id="ipt" layoutX="102.0" layoutY="376.0" onAction="#toggleIptReq" text="IPT" textFill="WHITE" />
+            <JFXButton fx:id="custom" layoutX="47.0" layoutY="451.0" onAction="#toggleCustom" text="Custom" textFill="WHITE" />
+            <JFXButton fx:id="laund" layoutX="18.0" layoutY="401.0" onAction="#toggleLaundReq" text="Laundry" textFill="WHITE" />
+            <JFXButton fx:id="sec" layoutX="89.0" layoutY="401.0" onAction="#toggleSecReq" text="Security" textFill="WHITE" />
+            <JFXButton fx:id="gift" layoutX="35.0" layoutY="426.0" onAction="#toggleGiftReq" text="Gift" textFill="WHITE" />
+            <JFXButton fx:id="san" layoutX="85.0" layoutY="426.0" onAction="#toggleSanReq" text="Sanitation" textFill="WHITE" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
