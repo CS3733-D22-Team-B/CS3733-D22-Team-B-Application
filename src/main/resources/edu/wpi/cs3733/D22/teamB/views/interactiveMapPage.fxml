@@ -19,7 +19,7 @@
                <children>
                   <ImageView fx:id="mapImage" fitHeight="580.0" fitWidth="662.0" onMouseClicked="#getCoordinates" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/mapAssets/firstFloor.png" />
+                        <Image url="@../assets/mapAssets/Floor1.png" />
                      </image>
                   </ImageView>
                   <Pane fx:id="locInfoPane" prefHeight="80.0" prefWidth="156.0" visible="false">
