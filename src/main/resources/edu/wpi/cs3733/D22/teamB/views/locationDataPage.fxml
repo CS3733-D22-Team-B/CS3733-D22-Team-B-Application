@@ -1,71 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LocationDataController">
-   <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-   <TableView fx:id="locationTable" layoutX="32.0" layoutY="38.0" prefHeight="310.0" prefWidth="532.0">
-     <columns>
-       <TableColumn fx:id="columnName" prefWidth="128.800048828125" text="Location" />
-       <TableColumn fx:id="columnX" minWidth="0.0" prefWidth="60" text="X" />
-         <TableColumn fx:id="columnY" prefWidth="60" text="Y" />
-         <TableColumn fx:id="columnFloor" prefWidth="139.99993896484375" text="Floor" />
-         <TableColumn fx:id="columnBuilding" prefWidth="141.5999755859375" text="Building" />
-     </columns>
-   </TableView>
-   <Button fx:id="downloadButton" layoutX="458.0" layoutY="359.0" mnemonicParsing="false" onAction="#download" prefHeight="26.0" prefWidth="105.0" text="Download" />
-
-   <TextField fx:id="downloadText" layoutX="298.0" layoutY="360.0" promptText="File Name" />
-   <Label fx:id="errorLabel" layoutX="143.0" layoutY="363.0" prefHeight="18.0" prefWidth="150.0" />
-   <MenuBar fx:id="homeBar" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-      <menus>
-         <Menu mnemonicParsing="false" text="Profile">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-               <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-               <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Map">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Requests">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-               <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-               <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-            </items>
-         </Menu>
-         <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
-         <Menu mnemonicParsing="false" text="Help">
-            <items>
-               <MenuItem mnemonicParsing="false" text="About" />
-               <MenuItem mnemonicParsing="false" text="ඞ" />
-            </items>
-         </Menu>
-      </menus>
-   </MenuBar>
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.LocationDataController">
+   <children>
+      <TableView fx:id="locationTable" layoutX="122.0" layoutY="49.0" prefHeight="436.0" prefWidth="716.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="49.0">
+         <columns>
+            <TableColumn fx:id="columnName" prefWidth="308.0" text="Location" />
+            <TableColumn fx:id="columnX" prefWidth="56.0" text="X" />
+            <TableColumn fx:id="columnY" prefWidth="115.0" text="Y" />
+            <TableColumn fx:id="columnFloor" prefWidth="67.0" text="Floor" />
+            <TableColumn fx:id="columnBuilding" prefWidth="169.0" text="Building" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox layoutX="69.0" layoutY="494.0" prefHeight="39.0" prefWidth="822.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="69.0">
+         <children>
+            <JFXButton onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
+            <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="283.0" textFill="#7bcce4">
+               <HBox.margin>
+                  <Insets left="15.0" right="100.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="downloadText" promptText="FIle Name" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" />
+            <JFXButton fx:id="downloadButton" onAction="#download" prefHeight="26.0" prefWidth="97.0" text="Download" textFill="#7bcce4" />
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

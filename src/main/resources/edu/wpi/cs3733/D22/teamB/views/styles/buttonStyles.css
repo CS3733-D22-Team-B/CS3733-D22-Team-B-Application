@@ -2,8 +2,29 @@
     -fx-base: #cdcdcd;
 }
 
-.arrow-button {
-    -fx-text-fill: #000000;
-    -fx-shape: "M 25 150 L 125 150 L 125 125 L 150 125 L 75 0 L 0 125 L 25 125 Z";
-    -fx-background-color: #cdcdcd;
+.hidden-button {
+    -fx-base: transparent;
+    -fx-text-fill: black;
+}
+
+.simple-button {
+    -fx-text-fill: #7bcce4;
+    -fx-background-color: #4b7486;
+    -fx-border-color: #7bcce4;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+.border-button {
+    -fx-border-color: #7bcce4;
+    -fx-text-fill: #7bcce4;
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+}
+
+.request-button {
+    -fx-text-fill: #7bcce4;
+    -fx-background-color: #2e3c4b;
+    -fx-border-color: #7bcce4;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 }

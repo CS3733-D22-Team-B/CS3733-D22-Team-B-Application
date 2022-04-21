@@ -4,57 +4,59 @@ import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.Date;
 
 public class LabRequest extends Request {
-  private final String test;
-  private final Date date;
-  private final String testRoomID;
-  private Location testRoom;
 
-  public LabRequest(String locationID, String test, Date date, String testRoomID) {
-    super(locationID, "Lab Test");
-    this.test = test;
-    this.date = date;
-    this.testRoomID = testRoomID;
-    information = "Lab Test: " + test + "\n" + "Testing Time: " + date;
+  public LabRequest(
+      String patientID,
+      String test,
+      Date date,
+      String testRoomID,
+      String information,
+      int priority) {
+    super(testRoomID, patientID, information, priority, "Lab Test");
+    this.testType = test;
+    this.testDate = date;
+    this.information =
+        "Lab Test: "
+            + test
+            + "\nTesting Time: "
+            + date
+            + "\nAdditional Information: "
+            + information;
   }
 
   public LabRequest(
       String requestID,
       String employeeID,
-      String nodeID,
-      String testRoomID,
+      String locationID,
+      String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
-      String test,
-      Date date) {
-    super(requestID, type, employeeID, nodeID, status, "");
-    this.test = test;
-    this.date = date;
-    this.testRoomID = testRoomID;
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
+    super(
+        requestID,
+        employeeID,
+        locationID,
+        patientID,
+        null,
+        testType,
+        testDate,
+        type,
+        status,
+        priority,
+        information,
+        timeCreated,
+        lastEdited);
+    this.testType = testType;
+    this.testDate = testDate;
   }
 
   public final String createRequestID() {
     return "LAB" + getHashCode();
-  }
-
-  public String getNodeID() {
-    return locationID;
-  }
-
-  public String getTest() {
-    return test;
-  }
-
-  public Date getDate() {
-    return date;
-  }
-
-  public String getTestRoomID() {
-    return testRoomID;
-  }
-
-  public Location getTestRoom() {
-    LocationsDB locationsDB = LocationsDB.getInstance();
-    testRoom = locationsDB.getByID(testRoomID);
-    return testRoom;
   }
 }

@@ -3,25 +3,16 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employee> {
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile =
-      "src/main/resources/edu/wpi/cs3733/D22/teamB/CSVs/BackupEmployees.csv";
-  private static EmployeesDB employeesDBManager;
 
+  private static EmployeesDB employeesDBManager;
   private HashMap<String, Employee> employeeMap = new HashMap<String, Employee>();
 
-  public HashMap<String, Employee> getEmployeeMap() {
-    return employeeMap;
-  }
-
-  public void setEmployeeMap(HashMap<String, Employee> employeeMap) {
-    this.employeeMap = employeeMap;
-  }
-
   private EmployeesDB() {
-    super("Employees", "employeeID", "CSVs/ApplicationEmployees.csv");
+    super("Employees", "employeeID", Filepath.getInstance().getEmployeesCSVFilePath());
     initDB();
   }
 
@@ -33,6 +24,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
   }
 
   public void initDB() {
+    employeeMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -65,6 +57,33 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
     return employeeList;
   }
 
+  public LinkedList<Employee> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Employee> list = new LinkedList<Employee>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(employeeMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Employee> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Employee> list = new LinkedList<Employee>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(employeeMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Employee> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Employee> list = new LinkedList<Employee>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(employeeMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public LinkedList<Employee> searchFor(String input) {
     LinkedList<String> pkList = filteredSearch(input);
     LinkedList<Employee> empList = new LinkedList<Employee>();
@@ -82,7 +101,6 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
     return employeeMap.get(id);
   }
 
-  ////////////////////////////////////////////////////////////// To Fix
   public Employee getEmployee(String employeeId) {
     return employeeMap.get(employeeId);
   }
@@ -142,5 +160,13 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
       return -1;
     }
     return 0;
+  }
+
+  public String getEmployeeID(String employeeName) {
+    Stream<String> keys =
+        employeeMap.entrySet().stream()
+            .filter(entry -> employeeName.equals(entry.getValue().getOverview()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 }

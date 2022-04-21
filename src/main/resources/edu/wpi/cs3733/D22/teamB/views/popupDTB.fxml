@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="265.0" prefWidth="330.0" style="-fx-background-color: #2e3c4b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.PopupController">
+   <children>
+      <Button fx:id="dashboardButton" layoutX="192.0" layoutY="227.0" mnemonicParsing="false" onAction="#setDashBoard" prefHeight="27.0" prefWidth="123.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Go to Dashboard" />
+      <Label contentDisplay="CENTER" layoutX="118.0" layoutY="14.0" prefHeight="51.0" prefWidth="94.0" text="Alert!" textFill="#7bcce4">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="CENTER" layoutX="37.0" layoutY="65.0" text="Too Many Dirty Beds" textFill="#7bcce4">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

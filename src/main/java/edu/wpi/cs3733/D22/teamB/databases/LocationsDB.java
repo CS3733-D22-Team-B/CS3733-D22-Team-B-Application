@@ -8,23 +8,11 @@ import java.util.stream.Stream;
 
 public class LocationsDB extends DatabaseSuperclass implements IDatabases<Location> {
 
-  private final String url = "jdbc:derby:Databases";
-  private final String backupFile = "CSVs/BackupLocations.csv";
-
   private static LocationsDB locationsDBManager;
-
   private HashMap<String, Location> locationMap = new HashMap<String, Location>();
 
-  public HashMap<String, Location> getLocationMap() {
-    return locationMap;
-  }
-
-  public void setLocationMap(HashMap<String, Location> locationMap) {
-    this.locationMap = locationMap;
-  }
-
   private LocationsDB() {
-    super("Locations", "nodeID", "CSVs/ApplicationLocations.csv");
+    super("Locations", "nodeID", Filepath.getInstance().getLocationCSVFilePath());
     initDB();
   }
 
@@ -36,6 +24,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
   }
 
   protected void initDB() {
+    locationMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -50,7 +39,8 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
                 rs.getString(5),
                 rs.getString(6),
                 rs.getString(7),
-                rs.getString(8));
+                rs.getString(8),
+                rs.getBoolean(9));
         locationMap.put(rs.getString(1), locOb);
       }
     } catch (SQLException e) {
@@ -86,13 +76,40 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     return locList;
   }
 
+  public LinkedList<Location> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<Location> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<Location> list = new LinkedList<Location>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(locationMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public int update(Location locObj) {
     if (!locationMap.containsKey(locObj.getNodeID())) {
       return -1;
     }
     return transform(
         locObj,
-        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ? WHERE nodeID = ?",
+        "UPDATE Locations SET xcoord = ?, ycoord = ?, floor = ?, building = ?, nodeType = ?, longName = ?, shortName = ?, availability = ? WHERE nodeID = ?",
         true);
   }
 
@@ -100,7 +117,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     if (locationMap.containsKey(locObj.getNodeID())) {
       return -1;
     }
-    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?)", false);
+    return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Location locObj) {
@@ -120,7 +137,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(8, locObj.getNodeID());
+        pStatement.setString(9, locObj.getNodeID());
         offset = -1;
       } else {
         pStatement.setString(1, locObj.getNodeID());
@@ -133,6 +150,7 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       pStatement.setString(6 + offset, locObj.getNodeType());
       pStatement.setString(7 + offset, locObj.getLongName());
       pStatement.setString(8 + offset, locObj.getShortName());
+      pStatement.setBoolean(9 + offset, locObj.getAvailability());
 
       pStatement.addBatch();
       pStatement.executeBatch();
@@ -175,14 +193,19 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
       case 4:
         floorName = "3";
         break;
+      case 5:
+        floorName = "4";
+        break;
+      case 6:
+        floorName = "5";
+        break;
     }
 
     LinkedList<Location> locList = new LinkedList<Location>();
-    for (Location loc : list()) {
-      if (loc.getFloor().equals(floorName)) {
+    for (Location loc : list())
+      if (loc != null && loc.getFloor().equals(floorName)) {
         locList.add(loc);
       }
-    }
     return locList;
   }
 
@@ -208,13 +231,20 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
         floorKey = "03";
         floorAsInt = 4;
         break;
+      case "4":
+        floorKey = "04";
+        floorAsInt = 5;
+        break;
+      case "5":
+        floorKey = "05";
+        floorAsInt = 6;
+        break;
     }
     String lastID = "bXXXX99901";
     LinkedList<Location> floorLocations = getLocationsByFloor(floorAsInt);
     for (Location loc : floorLocations) {
       if (loc.getNodeType().equals(roomType)) {
         lastID = loc.getNodeID();
-        System.out.println(lastID);
       }
     }
     char[] nums = new char[3];

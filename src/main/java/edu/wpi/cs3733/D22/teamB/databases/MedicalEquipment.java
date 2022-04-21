@@ -7,18 +7,24 @@ public class MedicalEquipment {
   private Location location;
   private String type;
   private boolean isClean;
-  private String isSterilized;
-  private boolean isRequested;
+  private String availability;
+  private String name;
 
   // Pending, In-Progress, Complete
 
   public MedicalEquipment(
-      String equipmentID, String nodeID, String type, boolean isClean, boolean isRequested) {
+      String equipmentID,
+      String nodeID,
+      String type,
+      boolean isClean,
+      String availability,
+      String name) {
     setEquipmentID(equipmentID);
     setNodeID(nodeID);
     setType(type);
     setIsClean(isClean);
-    setIsRequested(isRequested);
+    setAvailability(availability);
+    setName(name);
   }
 
   private void setEquipmentID(String newEquipmentID) {
@@ -57,7 +63,11 @@ public class MedicalEquipment {
 
   public void setIsClean(boolean newIsClean) {
     isClean = newIsClean;
-    isSterilized = (isClean) ? "\u2713" : "\u2717";
+
+    if (!newIsClean) {
+      this.setAvailability("Unavailable");
+      this.moveToDirty();
+    }
   }
 
   public boolean getIsClean() {
@@ -65,15 +75,65 @@ public class MedicalEquipment {
   }
 
   public String getIsSterilized() {
-    return isSterilized;
+    return (isClean) ? "\u2713" : "\u2717";
   }
 
-  public void setIsRequested(boolean newIsRequested) {
-    isRequested = newIsRequested;
+  public void setAvailability(String newAvailability) {
+    availability = newAvailability;
   }
 
-  public boolean getIsRequested() {
-    return isRequested;
+  public String getAvailability() {
+    return availability;
+  }
+
+  public void setName(String newName) {
+    name = newName;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void moveToDirty() {
+    Location loc = getLocation();
+    String floor = loc.getFloor();
+
+    switch (floor) {
+      case "3":
+        this.setNodeID("bDIRT00103");
+        break;
+      case "4":
+        this.setNodeID("bDIRT00104");
+        break;
+      case "5":
+        this.setNodeID("bDIRT00105");
+        break;
+      default:
+        this.setNodeID("bDIRT00103");
+    }
+  }
+
+  public void moveToClean() {
+    Location loc = getLocation();
+    String floor = loc.getFloor();
+
+    switch (floor) {
+      case "3":
+        this.setNodeID("bSTOR00103");
+        break;
+      case "4":
+        this.setNodeID("bSTOR00104");
+        break;
+      case "5":
+        this.setNodeID("bSTOR00105");
+        break;
+      default:
+        this.setNodeID("bSTOR00103");
+    }
+  }
+
+  public String getStatus() {
+    return availability + " \u2022 " + ((isClean) ? "Clean" : "Dirty");
   }
 
   /////////////////// LOCATION GETTERS////////////////////

@@ -4,27 +4,17 @@ import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases<MedicalEquipment> {
 
-  private final String url = "jdbc:derby:Databases;";
-  private final String backupFile = "CSVs/BackupMedicalEquipment.csv";
-
   private static MedicalEquipmentDB medicalEquipmentDBManager;
-
   private HashMap<String, MedicalEquipment> medicalEquipmentMap =
       new HashMap<String, MedicalEquipment>();
 
-  public HashMap<String, MedicalEquipment> getMedicalEquipmentMap() {
-    return medicalEquipmentMap;
-  }
-
-  public void setMedicalEquipmentMap(HashMap<String, MedicalEquipment> medicalEquipmentMap) {
-    this.medicalEquipmentMap = medicalEquipmentMap;
-  }
-
   private MedicalEquipmentDB() {
-    super("MedicalEquipment", "equipmentID", "CSVs/ApplicationMedicalEquipment.csv");
+    super("MedicalEquipment", "equipmentID", Filepath.getInstance().getMedicalEQCSVFilePath());
     initDB();
   }
 
@@ -36,6 +26,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
   }
 
   protected void initDB() {
+    medicalEquipmentMap.clear(); // Remove residual objects in hashmap
     try {
       Connection connection = DriverManager.getConnection(url);
       Statement statement = connection.createStatement();
@@ -47,7 +38,8 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
                 rs.getString(2),
                 rs.getString(3),
                 rs.getBoolean(4),
-                rs.getBoolean(5));
+                rs.getString(5),
+                rs.getString(6));
         medicalEquipmentMap.put(rs.getString(1), medOb);
       }
     } catch (SQLException e) {
@@ -83,13 +75,40 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     return locList;
   }
 
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, String value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, int value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
+  public LinkedList<MedicalEquipment> listByAttribute(String attribute, boolean value) {
+    LinkedList<String> pkList = searchWhere(attribute, value);
+    LinkedList<MedicalEquipment> list = new LinkedList<MedicalEquipment>();
+    for (int i = 0; i < pkList.size(); i++) {
+      list.add(medicalEquipmentMap.get(pkList.get(i)));
+    }
+    return list;
+  }
+
   public int update(MedicalEquipment medObj) {
     if (!medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
       return -1;
     }
     return transform(
         medObj,
-        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, isRequested = ? WHERE equipmentID = ?",
+        "UPDATE MedicalEquipment SET nodeID = ?, type = ?, isClean = ?, availability = ?, name = ?  WHERE equipmentID = ?",
         true);
   }
 
@@ -97,7 +116,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
     if (medicalEquipmentMap.containsKey(medObj.getEquipmentID())) {
       return -1;
     }
-    return transform(medObj, "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?)", false);
+    return transform(medObj, "INSERT INTO MedicalEquipment VALUES(?,?,?,?,?,?)", false);
   }
 
   public int delete(MedicalEquipment medObj) {
@@ -117,7 +136,7 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(5, medObj.getEquipmentID());
+        pStatement.setString(6, medObj.getEquipmentID());
         offset = -1;
       } else {
         pStatement.setString(1, medObj.getEquipmentID());
@@ -126,7 +145,8 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       pStatement.setString(2 + offset, medObj.getNodeID());
       pStatement.setString(3 + offset, medObj.getType());
       pStatement.setBoolean(4 + offset, medObj.getIsClean());
-      pStatement.setBoolean(5 + offset, medObj.getIsRequested());
+      pStatement.setString(5 + offset, medObj.getAvailability());
+      pStatement.setString(6 + offset, medObj.getName());
 
       pStatement.addBatch();
       pStatement.executeBatch();
@@ -136,5 +156,13 @@ public class MedicalEquipmentDB extends DatabaseSuperclass implements IDatabases
       return -1;
     }
     return 0;
+  }
+
+  public String getEquipmentID(String name) {
+    Stream<String> keys =
+        medicalEquipmentMap.entrySet().stream()
+            .filter(entry -> name.equals(entry.getValue().getName()))
+            .map(Map.Entry::getKey);
+    return keys.findFirst().orElse(null);
   }
 }

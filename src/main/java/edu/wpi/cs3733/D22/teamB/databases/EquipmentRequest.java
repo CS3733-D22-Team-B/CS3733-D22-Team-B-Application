@@ -1,42 +1,53 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
 import edu.wpi.cs3733.D22.teamB.requests.Request;
+import java.util.Date;
 
 public class EquipmentRequest extends Request {
-  private final String equipmentID;
-  private MedicalEquipment medicalEquipment;
-  private String notes;
 
-  public EquipmentRequest(String locationID, String equipmentID, String notes) {
-    super(locationID, "Equipment Request");
+  public EquipmentRequest(String locationID, String equipmentID, String information, int priority) {
+    super(locationID, null, information, priority, "Equipment Delivery");
     this.equipmentID = equipmentID;
-    this.notes = notes;
     setMedicalEquipment();
-    information = "Equipment Request: " + getEquipmentID() + "\n" + "Notes: " + getNotes();
+    this.information =
+        "Equipment Request: " + getEquipmentID() + " Additional Information: " + information;
+    medicalEquipment = getMedicalEquipment();
   }
 
   public EquipmentRequest(
       String requestID,
-      String type,
       String employeeID,
       String locationID,
-      String status,
+      String patientID,
       String equipmentID,
-      String notes) {
-    super(requestID, type, employeeID, locationID, status, notes);
+      String testType,
+      Date testDate,
+      String type,
+      String status,
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
+    super(
+        requestID,
+        employeeID,
+        locationID,
+        null,
+        equipmentID,
+        null,
+        null,
+        type,
+        status,
+        priority,
+        information,
+        timeCreated,
+        lastEdited);
     this.equipmentID = equipmentID;
+    medicalEquipment = getMedicalEquipment();
   }
 
-  public final String createRequestID() {
+  public String createRequestID() {
     return "EQU" + getHashCode();
-  }
-
-  public String getEquipmentID() {
-    return equipmentID;
-  }
-
-  public MedicalEquipment getMedicalEquipment() {
-    return medicalEquipment;
   }
 
   public void setMedicalEquipment() {
@@ -44,12 +55,21 @@ public class EquipmentRequest extends Request {
     medicalEquipment = medicalEquipmentDB.getByID(equipmentID);
   }
 
-  public String getNotes() {
-    return notes;
+  public MedicalEquipment getMedicalEquipment() {
+    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
+    medicalEquipment = medEqDB.getByID(equipmentID);
+    return medicalEquipment;
   }
 
-  public void setNotes(String notes) {
-    this.notes = notes;
+  public void updateMedicalEquipmentStatus() {
+    MedicalEquipment medEq = getMedicalEquipment();
+    if (this.status.equals("Completed")) {
+      medEq.setIsClean(false);
+      medEq.setAvailability("Unavailable");
+      medEq.moveToDirty();
+      DatabaseController DC = DatabaseController.getInstance();
+      DC.update(medEq);
+    }
   }
 
   /////////////////// EMPLOYEE GETTERS////////////////////

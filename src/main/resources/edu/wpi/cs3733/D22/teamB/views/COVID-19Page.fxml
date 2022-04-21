@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+    <children>
+        <Pane layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children></Pane>
+        <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label layoutX="-111.0" layoutY="286.0" opacity="0.4" prefHeight="160.0" prefWidth="309.0" rotate="270.0" text="COVID-19 Information" textFill="#7bcce4" translateY="-100.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="-111.0" AnchorPane.topAnchor="286.0">
+            <font>
+                <Font name="Microsoft Sans Serif" size="30.0" />
+            </font>
+        </Label>
+        <VBox layoutX="112.0" layoutY="55.0" prefHeight="464.0" prefWidth="708.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="55.0">
+            <children>
+                <Label alignment="TOP_LEFT" prefHeight="213.0" prefWidth="698.0" text="COVID-19 vaccination will help you avoid becoming ill with COVID-19. All COVID-19 vaccines currently available in the United States have been shown to be highly effective. More research is being conducted to determine whether the vaccines also prevent the spread of COVID-19. Wearing masks and avoiding contact with others can help reduce your chances of contracting the virus or spreading it to others, but these precautions are not enough. Getting vaccinated and following the CDC's recommendations to protect yourself and others will provide the best protection against COVID-19." textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="18.0" />
+                    </font>
+                </Label>
+            <Label prefHeight="76.0" prefWidth="316.0" text=" Vaccine Information:" textFill="#7bcce4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label prefHeight="54.0" prefWidth="167.0" text="Booster 1" textFill="#7bcce4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" prefHeight="109.0" prefWidth="698.0" text="After completing you primary vaccine series, anyone over the age of 12 can receive a booster: - At least 5 months after the completion of a primary series of an mRNA vaccine (Pfizer or Moderna). - At least two months after finishing a Janssen/J&amp;J primary dose." textFill="#7bcce4" wrapText="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="167.0" text="Booster 2" textFill="#7bcce4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" prefHeight="158.0" prefWidth="698.0" text="-Anyone over the age of 50 may receive a second booster at least four months after the first. -Anyone aged 12 and up with certain medical conditions may receive a second booster at least four months after the first. -Anyone between the ages of 18 and 49 who has certain medical conditions and has received the Janssen/J&amp;J COVID-19 Vaccine as both a primary series dose and a booster dose at least 4 months after the first Janssen booster dose." textFill="#7bcce4" wrapText="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="17.0" />
+               </font>
+            </Label>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

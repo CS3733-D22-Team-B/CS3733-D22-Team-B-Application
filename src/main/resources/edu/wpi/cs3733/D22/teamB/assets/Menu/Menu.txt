@@ -1,0 +1,12 @@
+Name			Opacity	W	H		X	Y
+
+Databases		1	175	175		295	85
+Maps			1	175	175		490	85
+Requests		1	175	175		295	280
+Tracker			1	175	175		490	280
+
+SideBar			0.75	105	540		0	0
+SideBar			0.75	105	540		855	0
+ExitButton		1	65	65		875	20
+ProfileButton		1	65	65		875	105
+HelpButton		1	65	65		875	190

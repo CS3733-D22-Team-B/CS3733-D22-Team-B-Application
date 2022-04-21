@@ -1,101 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.CustomRequestController">
-   <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToHomepage" text="Back to Homepage" />
-   <Button fx:id="sendButton" disable="false" layoutX="256.0" layoutY="305.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request" />
-   <TextField fx:id="typeInput" layoutX="285.0" layoutY="125.0" prefHeight="26.0" prefWidth="178.0" />
-   <TextArea fx:id="notesInput" layoutX="166.0" layoutY="172.0" prefHeight="110.0" prefWidth="297.0" />
-   <Label layoutX="95.0" layoutY="125.0" text="Custom Request Type:">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Label>
-   <Label layoutX="95.0" layoutY="172.0" text="Notes:">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Label>
-   <Label fx:id="requestLabel" alignment="CENTER" layoutX="96.0" layoutY="331.0" prefHeight="30.0" prefWidth="407.0">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Label>
-   <Label layoutX="329.0" layoutY="61.0" text="Room" />
-   <ComboBox fx:id="roomInput" layoutX="263.0" layoutY="79.0" onAction="#setRoom" prefWidth="150.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:id="ROOM_1" fx:value="Room 1" />
-            <String fx:id="ROOM_2" fx:value="Room 2" />
-            <String fx:id="ROOM_3" fx:value="Room 3" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <ComboBox fx:id="floorInput" layoutX="187.0" layoutY="79.0" onAction="#setFloor" prefHeight="26.0" prefWidth="66.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:id="3" fx:value="F3" />
-            <String fx:id="2" fx:value="F2" />
-            <String fx:id="1" fx:value="F1" />
-            <String fx:id="L1" fx:value="L1" />
-            <String fx:id="L2" fx:value="L2" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <Label layoutX="210.0" layoutY="61.0" text="Floor" />
-   <MenuBar fx:id="homeBar" layoutX="1.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-      <menus>
-         <Menu mnemonicParsing="false" text="Profile">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToProfilePage" text="View Profile" />
-               <MenuItem mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-               <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Close" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Map">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToMapViewPage" text="View" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMapEditPage" text="Edit" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLocationData" text="Data" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-            </items>
-         </Menu>
-         <Menu mnemonicParsing="false" text="Requests">
-            <items>
-               <MenuItem mnemonicParsing="false" onAction="#goToEquipmentDeliveryRequestPage" text="Request Medical Equipment Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToLabServiceRequestPage" text="Request Lab Service" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMedicineDeliveryRequestPage" text="Request Medicine Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToMealDeliveryRequestPage" text="Request Patient Meal Delivery" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInterpreterRequestPage" text="Request Language Interpreter" />
-               <MenuItem mnemonicParsing="false" onAction="#goToInternalPatientTransferRequestPage" text="Request Internal Patient Transfer" />
-               <MenuItem mnemonicParsing="false" onAction="#goToCustomRequestPage" text="Custom Request" />
-               <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
-            </items>
-         </Menu>
-         <Menu disable="true" mnemonicParsing="false" text="Patient Database" />
-         <Menu mnemonicParsing="false" text="Help">
-            <items>
-               <MenuItem mnemonicParsing="false" text="About" />
-               <MenuItem mnemonicParsing="false" text="ඞ" />
-            </items>
-         </Menu>
-      </menus>
-   </MenuBar>
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
+   <children>
+      <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="9.0" layoutY="34.0" prefHeight="200.0" prefWidth="73.0">
+               <children>
+                  <JFXButton onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <GridPane prefHeight="398.0" prefWidth="672.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="374.20001220703125" minWidth="10.0" prefWidth="333.39996337890625" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="342.6000000000001" minWidth="10.0" prefWidth="336.20003662109383" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="127.79999389648438" minHeight="0.0" prefHeight="37.39998168945313" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="53.40001831054687" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="112.59998779296876" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="461.5" text="" textFill="#7bcce4" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+            <TextArea fx:id="additionalInformationInput" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextArea>
+            <ComboBox fx:id="patientInput" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="3" />
+            <ComboBox fx:id="floorInput" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="1">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="5" fx:value="F5" />
+                     <String fx:id="4" fx:value="F4" />
+                     <String fx:id="3" fx:value="F3" />
+                     <String fx:id="2" fx:value="F2" />
+                     <String fx:id="1" fx:value="F1" />
+                     <String fx:id="L1" fx:value="L1" />
+                     <String fx:id="L2" fx:value="L2" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <ComboBox fx:id="locationInput" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="2" />
+            <TextField fx:id="typeInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="295.0" promptText="Type" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" GridPane.rowIndex="4" />
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </JFXSlider>
+            <Label fx:id="charactersRemainingLabel" text="500 characters remaining" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="7.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="25.0" />
+               </GridPane.margin>
+            </Label>
+            <JFXButton fx:id="submitButton" disable="true" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#reset" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/components/xButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets right="80.0" />
+               </GridPane.margin>
+            </JFXButton>
+         </children>
+      </GridPane>
+      <Label opacity="0.4" rotate="270.0" text="Custom Request" textFill="#7bcce4" AnchorPane.bottomAnchor="252.0" AnchorPane.leftAnchor="-59.0" AnchorPane.topAnchor="252.0">
+         <font>
+            <Font name="Microsoft Sans Serif" size="30.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

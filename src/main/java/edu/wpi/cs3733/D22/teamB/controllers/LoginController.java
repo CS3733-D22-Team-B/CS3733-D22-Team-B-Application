@@ -33,8 +33,11 @@ public class LoginController {
     // Login functionality
     this.setPassword();
     this.setUsername();
+    Employee employee = null;
     EmployeesDB emp = EmployeesDB.getInstance();
-    Employee employee = emp.getEmployee(this.username);
+    if (emp.searchFor(this.username).size() == 1) {
+      employee = emp.searchFor(this.username).get(0);
+    }
     if (employee == null) {
       loginFail.setText("Invalid ID");
     } else {
@@ -56,22 +59,6 @@ public class LoginController {
 
   @FXML
   void quitApplication() {
-    LocationsDB locDB = LocationsDB.getInstance();
-    MedicalEquipmentDB medEqDB = MedicalEquipmentDB.getInstance();
-    PatientsDB patDB = PatientsDB.getInstance();
-    EquipmentRequestDB eqReqDB = EquipmentRequestDB.getInstance();
-    EmployeesDB empDB = EmployeesDB.getInstance();
-    LabRequestsDB labReqDB = LabRequestsDB.getInstance();
-    // ServiceRequestsDB serReqDB = ServiceRequestsDB.getInstance();
-
-    // serReqDB.quit();
-    labReqDB.quit();
-    eqReqDB.quit();
-    patDB.quit();
-    medEqDB.quit();
-    locDB.quit();
-    empDB.quit();
-
     System.exit(0);
   }
 }

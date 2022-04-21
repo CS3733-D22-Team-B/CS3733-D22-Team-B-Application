@@ -1,53 +1,52 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import java.util.Date;
 
 public class InternalPatientTransferRequest extends Request {
-  private String destinationID;
-  private Location destination;
 
-  public InternalPatientTransferRequest(String locationID, String destinationID) {
-    super(locationID, "Internal Patient Transfer");
-    this.destinationID = destinationID;
-    information =
+  public InternalPatientTransferRequest(
+      String patientID, String locationID, String information, int priority) {
+    super(locationID, patientID, information, priority, "Patient Transfer");
+    this.information =
         "Internal Patient Transfer Request from "
-            + getLocation().getLongName()
+            + getPatient().getOverview()
             + " to "
-            + getDestination().getLongName();
+            + getLocation().getLongName()
+            + "\n\nAdditional Information: "
+            + information;
   }
 
   public InternalPatientTransferRequest(
       String requestID,
       String employeeID,
       String locationID,
-      String transferID,
+      String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
       String type,
       String status,
-      String information) {
-    super(requestID, type, employeeID, locationID, status, information);
-    this.destinationID = transferID;
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
+    super(
+        requestID,
+        employeeID,
+        locationID,
+        patientID,
+        null,
+        null,
+        null,
+        type,
+        status,
+        priority,
+        information,
+        timeCreated,
+        lastEdited);
   }
 
   public final String createRequestID() {
     return "IPT" + getHashCode();
-  }
-
-  private void setDestinationID(String destinationID) {
-    this.destinationID = destinationID;
-  }
-
-  public final String getDestinationID() {
-    return destinationID;
-  }
-
-  public final Location getDestination() {
-    LocationsDB locDB = LocationsDB.getInstance();
-    destination = locDB.getByID(destinationID);
-    return destination;
-  }
-
-  public final void setDestination(Location l) {
-    setDestinationID(l.getNodeID());
   }
 }

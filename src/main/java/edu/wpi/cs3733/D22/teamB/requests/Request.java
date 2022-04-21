@@ -1,51 +1,86 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Employee;
-import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
-import edu.wpi.cs3733.D22.teamB.databases.Location;
-import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.databases.*;
+import java.util.Date;
+import java.util.Random;
 
 public abstract class Request {
   protected final String requestID;
-  protected String type;
   protected String employeeID;
   protected Employee employee;
   protected final String locationID;
   protected Location location;
+  protected final String patientID;
+  protected Patient patient;
+  protected String equipmentID;
+  protected MedicalEquipment medicalEquipment;
+  protected String testType;
+  protected Date testDate;
+  protected String type;
   protected String status;
+  protected int priority;
   protected String information;
+  protected Date timeCreated;
+  protected Date lastEdited;
 
-  public Request(String locationID, String type) {
-    this.type = type;
+  public Request(
+      String locationID, String patientID, String information, int priority, String type) {
     this.employeeID = "0";
     this.locationID = locationID;
+    this.patientID = patientID;
+    this.equipmentID = null;
+    this.testType = null;
+    this.testDate = null;
+    this.type = type;
     this.status = "Pending";
+    this.priority = priority;
+    this.information = information;
     this.requestID = createRequestID();
+    this.timeCreated = new Date();
+    this.lastEdited = new Date();
+
+    employee = getEmployee();
+    location = getLocation();
+    patient = getPatient();
   }
 
   public Request(
       String requestID,
-      String type,
       String employeeID,
       String locationID,
+      String patientID,
+      String equipmentID,
+      String testType,
+      Date testDate,
+      String type,
       String status,
-      String information) {
+      int priority,
+      String information,
+      Date timeCreated,
+      Date lastEdited) {
     this.requestID = requestID;
-    this.type = type;
     this.employeeID = employeeID;
     this.locationID = locationID;
+    this.patientID = patientID;
+    this.equipmentID = equipmentID;
+    this.testType = testType;
+    this.testDate = testDate;
+    this.type = type;
     this.status = status;
+    this.priority = priority;
     this.information = information;
+    this.timeCreated = timeCreated;
+    this.lastEdited = lastEdited;
+
+    employee = getEmployee();
+    location = getLocation();
+    patient = getPatient();
   }
 
   public abstract String createRequestID();
 
   public final String getRequestID() {
     return requestID;
-  }
-
-  public final String getType() {
-    return type;
   }
 
   public final String getEmployeeID() {
@@ -76,6 +111,32 @@ public abstract class Request {
     return location;
   }
 
+  public final String getPatientID() {
+    return patientID;
+  }
+
+  public Patient getPatient() {
+    PatientsDB patientsDB = PatientsDB.getInstance();
+    patient = patientsDB.getByID(patientID);
+    return patient;
+  }
+
+  public final String getEquipmentID() {
+    return this.equipmentID;
+  }
+
+  public final String getTestType() {
+    return this.testType;
+  }
+
+  public final Date getTestDate() {
+    return this.testDate;
+  }
+
+  public final String getType() {
+    return type;
+  }
+
   public final String getStatus() {
     return status;
   }
@@ -88,13 +149,36 @@ public abstract class Request {
     return information;
   }
 
+  public final void setInformation(String information) {
+    this.information = information;
+  }
+
+  public final int getPriority() {
+    return priority;
+  }
+
+  public final Date getTimeCreated() {
+    return timeCreated;
+  }
+
+  public final Date getLastEdited() {
+    return lastEdited;
+  }
+
+  public final void setLastEdited(Date d) {
+    lastEdited = d;
+  }
+
   // Josh Bloch's Hashing method
   protected final String getHashCode() {
+    Random generator = new Random();
+    double result = generator.nextDouble();
     // generate random value between 0 and 1 inclusive
-    double result = (Math.random() + 1) / 2.0;
+    // double result = (Math.random() + 1) / 2.0;
 
     // calculate the field component weights
-    long c = type.hashCode() + +((locationID == null) ? 0 : locationID.hashCode());
+    double c =
+        type.hashCode() * Math.random(); // + +((locationID == null) ? 0 : locationID.hashCode());
 
     // calculate the hash
     int hash = (int) (37 * result + c);
