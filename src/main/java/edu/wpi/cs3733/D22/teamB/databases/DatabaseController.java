@@ -77,7 +77,8 @@ public class DatabaseController {
     return PatientsDB.getInstance().listByAttribute(attribute, value);
   }
 
-  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(String attribute, String value) {
+  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(
+      String attribute, String value) {
     return MedicalEquipmentDB.getInstance().listByAttribute(attribute, value);
   }
 
@@ -85,7 +86,8 @@ public class DatabaseController {
     return MedicalEquipmentDB.getInstance().listByAttribute(attribute, value);
   }
 
-  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(String attribute, boolean value) {
+  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(
+      String attribute, boolean value) {
     return MedicalEquipmentDB.getInstance().listByAttribute(attribute, value);
   }
 
