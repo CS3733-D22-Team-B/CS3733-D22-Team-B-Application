@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,123 +12,201 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
-      <GridPane layoutX="156.0" layoutY="43.0" prefHeight="453.0" prefWidth="647.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="156.0" AnchorPane.topAnchor="43.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <Pane layoutX="855.0" layoutY="-3.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" stylesheets="@newStyles/darkMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="equipmentTrackerButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToEquipmentTrackerPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Equipment Tracker" GridPane.rowIndex="1">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Tracker.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="mapButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToMapLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Map">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Maps.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="requestButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToRequestLandingPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Create a Request" GridPane.columnIndex="1">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Requests.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="requestQueueButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToLocationDataPage" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Location Data" GridPane.columnIndex="2">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Databases.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="patientDatabaseButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToPatientDatabase" prefHeight="84.0" prefWidth="152.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Patient Database" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Databases.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="employeeDatabaseButton" contentDisplay="TOP" focusTraversable="false" onAction="#goToEmployeeDatabase" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="View Employee Database" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Menu/Databases.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-      </GridPane>
-      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="-157.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Brigham and Women's Hospital" textFill="#7bcce4">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="855.0" layoutY="-3.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox layoutX="9.0" layoutY="34.0" prefHeight="200.0" prefWidth="73.0">
+            <VBox alignment="CENTER" prefHeight="259.0" prefWidth="106.0" spacing="10.0">
                <children>
-                  <JFXButton fx:id="quitButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#quitApplication" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+                  <JFXButton fx:id="quitButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#quitApplication" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
                      <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Exit.png" />
+                              <Image url="@../assets/newAssets/close.png" />
                            </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+                  <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
                      <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Profile.png" />
+                              <Image url="@../assets/newAssets/profile" />
                            </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="helpButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToAboutPage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="View Map">
+                  <JFXButton fx:id="helpButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToAboutPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
                      <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Help.png" />
+                              <Image url="@../assets/newAssets/about" />
                            </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </ImageView>
                      </graphic>
                   </JFXButton>
                </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </VBox>
          </children>
       </Pane>
-      <JFXButton fx:id="game" layoutX="898.0" layoutY="500.0" onAction="#goToGame" text="game" textFill="#8e8383" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button layoutX="443.0" layoutY="501.0" mnemonicParsing="false" onAction="#launchAPI" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Launch API" />
+      <JFXButton fx:id="game" alignment="BOTTOM_CENTER" focusTraversable="false" onAction="#goToGame" prefHeight="26.0" prefWidth="106.0" text="game" textFill="#ffffff40" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <GridPane layoutY="129.0" prefHeight="282.25" prefWidth="835.0" styleClass="container-box-2" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="129.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="115.0" prefWidth="115.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="157.5" prefWidth="157.5" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="157.5" prefWidth="157.5" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="157.5" prefWidth="157.5" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="157.5" prefWidth="157.5" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="62.5" minHeight="62.5" prefHeight="62.5" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="157.5" prefHeight="157.5" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="62.5" minHeight="62.5" prefHeight="62.5" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="requestQueueButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToLocationDataPage" prefHeight="157.5" prefWidth="157.5" styleClass="main-button" text="Databases" textFill="#ffffff40" GridPane.columnIndex="7" GridPane.rowIndex="1">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/databases" />
+                     </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToMapLandingPage" prefHeight="157.5" prefWidth="158.0" styleClass="main-button" text="Maps" textFill="#ffffff40" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="10.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="97.5" fitWidth="97.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/map" />
+                     </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="requestButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToRequestLandingPage" prefHeight="157.5" prefWidth="157.5" styleClass="main-button" text="Requests" textFill="#ffffff40" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="90.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/requests" />
+                     </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="equipmentTrackerButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToEquipmentTrackerPage" prefHeight="157.5" prefWidth="157.5" styleClass="main-button" text="Tracker" textFill="#ffffff40" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/tracker" />
+                     </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Maps" textFill="#ffffff40" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="10.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="10.0" top="140.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Databases" textFill="#ffffff40" GridPane.columnIndex="7" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="10.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" top="140.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Requests" textFill="#ffffff40" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="10.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" top="140.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Tracker" textFill="#ffffff40" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="10.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" top="140.0" />
+               </padding>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
