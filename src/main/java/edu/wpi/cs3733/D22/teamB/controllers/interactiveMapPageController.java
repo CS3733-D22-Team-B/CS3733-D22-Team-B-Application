@@ -105,6 +105,8 @@ public class interactiveMapPageController extends MenuBarController {
 
   private SVGPath marker = new SVGPath();
 
+  private String moveName = "";
+
   private Boolean lockHover = false;
   private Boolean addEnabled = false;
   private Boolean editEnabled = false;
@@ -319,6 +321,7 @@ public class interactiveMapPageController extends MenuBarController {
         event -> {
           if (deleteEnabled || editEnabled) {
             locationDropdown.setValue(location.getLongName());
+            moveName = location.getLongName();
             if (firstMove) {
               startingCoordinates[0] = location.getXCoord();
               startingCoordinates[1] = location.getYCoord();
@@ -330,9 +333,10 @@ public class interactiveMapPageController extends MenuBarController {
           public void handle(MouseEvent event) {
             if (editEnabled) {
               locationDropdown.setValue(location.getLongName());
-              if (firstMove) {
+              if (firstMove || !moveName.equals(location.getLongName())) {
                 startingCoordinates[0] = location.getXCoord();
                 startingCoordinates[1] = location.getYCoord();
+                moveName = location.getLongName();
                 firstMove = false;
               }
               Dragboard db = icon.startDragAndDrop(TransferMode.MOVE);
@@ -418,6 +422,7 @@ public class interactiveMapPageController extends MenuBarController {
     icon.setOnMouseClicked(
         event -> {
           toggleEquipPane(eq);
+          toEdit = eq;
           orgSceneX = event.getSceneX();
           orgSceneY = event.getSceneY();
         });
@@ -540,7 +545,6 @@ public class interactiveMapPageController extends MenuBarController {
   public int[] mapCoordsToViewCoords(int x, int y) {
     double mapWidth = 1060;
     double mapHeight = 930;
-    double ratio = (mapHeight / mapWidth) * 1.05;
     int fitWidth = (int) mapImage.getFitWidth();
     int fitHeight = (int) mapImage.getFitHeight();
     double xView = ((x / mapWidth) * fitWidth);
@@ -551,7 +555,6 @@ public class interactiveMapPageController extends MenuBarController {
   public int[] imageCoordsToCSVCoords(int x, int y) {
     int mapWidth = 1060;
     int mapHeight = 930;
-    double ratio = mapHeight / mapWidth;
     double fitWidth = mapImage.getFitWidth();
     double fitHeight = mapImage.getFitHeight();
     double xCSV = ((x / fitWidth) * mapWidth);
@@ -791,23 +794,18 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void editLocation() {
-    String oldName = locationDropdown.getValue();
-    LinkedList<Location> findLoc = dao.listByAttribute("longName", oldName);
-    Location toChange = findLoc.pop();
-    String name = toChange.getLongName();
-    if (!locationName.getText().equals("") && !locationName.getText().equals(name)) {
-      toChange.setShortName(locationName.getText());
-      toChange.setLongName(locationName.getText());
+    if (locationDropdown.getValue() != null) {
+      String oldName = locationDropdown.getValue();
+      LinkedList<Location> findLoc = dao.listByAttribute("longName", oldName);
+      Location toChange = findLoc.pop();
+      String name = toChange.getLongName();
+      if (!locationName.getText().equals("") && !locationName.getText().equals(name)) {
+        toChange.setShortName(locationName.getText());
+        toChange.setLongName(locationName.getText());
+      }
+      dao.update(toChange);
+      endEdit();
     }
-    //    if (mapPane.getChildren().contains(marker)) {
-    //      int markerX = (int) marker.getLayoutX();
-    //      int markerY = (int) marker.getLayoutY();
-    //      int[] newCoords = imageCoordsToCSVCoords(markerX, markerY);
-    //      toChange.setXCoord(newCoords[0]);
-    //      toChange.setYCoord(newCoords[1]);
-    //    }
-    dao.update(toChange);
-    endEdit();
   }
 
   public void endEdit() {
@@ -997,6 +995,13 @@ public class interactiveMapPageController extends MenuBarController {
     confirmButton.setVisible(true);
     filterButton.setDisable(true);
     equipInfoPane.setVisible(false);
+
+    for (SVGPath icon : equipIcons) {
+      removeIcon(icon);
+    }
+    equipIcons.clear();
+
+    addEquipIcon(toEdit);
   }
 
   public void editEquip() {
@@ -1035,6 +1040,7 @@ public class interactiveMapPageController extends MenuBarController {
     availabilityDropdown.setValue("");
     locationDropdown.setValue("");
     stateDropdown.setValue("");
+    setEquipIcons();
     toEdit = null;
     equipMoved = false;
   }
