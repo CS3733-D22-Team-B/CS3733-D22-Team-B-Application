@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -80,12 +82,27 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </Label>
-            <JFXButton fx:id="loginButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#login" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkMode.css" text=" " GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <JFXButton fx:id="loginButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="65.0" minWidth="65.0" onAction="#login" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkMode.css" text=" " GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/Login.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
          </children>
       </GridPane>
       <Pane layoutX="859.0" prefHeight="540.0" prefWidth="105.0" styleClass="side-panel" stylesheets="@newStyles/darkMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton layoutX="20.0" layoutY="14.0" onAction="#quitApplication" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkMode.css" text=" " />
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="20.0" layoutY="14.0" onAction="#quitApplication" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkMode.css" text=" ">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
          </children></Pane>
+      
    </children>
 </AnchorPane>
