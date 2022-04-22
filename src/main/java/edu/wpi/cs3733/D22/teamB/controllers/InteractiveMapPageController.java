@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 
-public class interactiveMapPageController extends MenuBarController {
+public class InteractiveMapPageController extends MenuBarController {
   @FXML JFXButton menuButton;
   @FXML JFXButton addButton;
   @FXML JFXButton editButton;
