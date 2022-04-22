@@ -68,8 +68,8 @@ public class AlertController {
 
       // Check third floor areas for dirty pumps
       if (dirtyPumps >= 10 && l.getFloor().equals("3") && !statusDirtyPumpThreeAlert) {
-        sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazaID);
+        Alert alert = sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
+        makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
         statusDirtyPumpThreeAlert = true;
       } else if (dirtyPumps < 10 && l.getFloor().equals("3")) {
         statusDirtyPumpThreeAlert = false;
@@ -77,8 +77,8 @@ public class AlertController {
 
       // Check fourth floor areas for dirty pumps
       if (dirtyPumps >= 10 && l.getFloor().equals("4") && !statusDirtyPumpFourAlert) {
-        sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazaID);
+        Alert alert = sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
+        makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
         statusDirtyBedFourAlert = true;
       } else if (dirtyPumps < 10 && l.getFloor().equals("4")) {
         statusDirtyPumpFourAlert = false;
@@ -86,8 +86,8 @@ public class AlertController {
 
       // Check fifth floor areas for dirty pumps
       if (dirtyPumps >= 10 && l.getFloor().equals("5") && !statusDirtyPumpFiveAlert) {
-        sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazaID);
+        Alert alert = sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
+        makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
         statusDirtyBedFiveAlert = true;
       } else if (dirtyPumps < 10 && l.getFloor().equals("5")) {
         statusDirtyPumpFiveAlert = false;
@@ -95,8 +95,8 @@ public class AlertController {
 
       // Check third floor beds for dirty beds
       if (dirtyBeds >= 6 && l.getFloor().equals("3") && !statusDirtyBedThreeAlert) {
-        sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
-        makeServiceRequest(dirtyMedEq, ORParkID);
+        Alert alert = sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
+        makeServiceRequest(dirtyMedEq, ORParkID, alert);
         statusDirtyBedThreeAlert = true;
       } else if (dirtyBeds < 6 && l.getFloor().equals("3")) {
         statusDirtyBedThreeAlert = false;
@@ -104,8 +104,8 @@ public class AlertController {
 
       // Check fourth floor for dirty beds
       if (dirtyBeds >= 6 && l.getFloor().equals("4") && !statusDirtyBedFourAlert) {
-        sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
-        makeServiceRequest(dirtyMedEq, ORParkID);
+        Alert alert = sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
+        makeServiceRequest(dirtyMedEq, ORParkID, alert);
         statusDirtyBedFourAlert = true;
       } else if (dirtyBeds < 6 && l.getFloor().equals("4")) {
         statusDirtyBedFourAlert = false;
@@ -113,8 +113,8 @@ public class AlertController {
 
       // Check fifth floor for dirty beds
       if (dirtyBeds >= 6 && l.getFloor().equals("5") && !statusDirtyBedFiveAlert) {
-        sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
-        makeServiceRequest(dirtyMedEq, ORParkID);
+        Alert alert = sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
+        makeServiceRequest(dirtyMedEq, ORParkID, alert);
         statusDirtyBedFiveAlert = true;
       } else if (dirtyBeds < 6 && l.getFloor().equals("5")) {
         statusDirtyBedFiveAlert = false;
@@ -169,28 +169,43 @@ public class AlertController {
     } else if (cleanPumpsFive >= 5 && statusCleanPumpsFiveAlert) {
       statusCleanPumpsFiveAlert = false;
     }
+
+    // Remove any outdated alerts from the queue
+    updateAlerts();
   }
 
-  public void sendDirtyAlert(String floor, int dirtyPumps, String type) {
+  public Alert sendDirtyAlert(String floor, int dirtyPumps, String type) {
     System.out.println("Floor: " + floor + " Number dirty: " + dirtyPumps + " Type: " + type);
     Alert alert = new Alert("", ("Floor " + floor), ("DIRTY_" + type), "N");
     AlertQueue.addAlert(alert);
     showAlert(alert);
+    return alert;
   }
 
-  public void sendCleanAlert(String floor, int dirtyPumps, String type) {
+  public Alert sendCleanAlert(String floor, int dirtyPumps, String type) {
     System.out.println("Floor: " + floor + " Number clean: " + dirtyPumps + " Type: " + type);
     Alert alert = new Alert("", ("Floor " + floor), ("CLEAN_" + type), "N");
     AlertQueue.addAlert(alert);
     showAlert(alert);
+    return alert;
   }
 
-  public void makeServiceRequest(LinkedList<MedicalEquipment> equipment, String locationID) {
+  public void makeServiceRequest(
+      LinkedList<MedicalEquipment> equipment, String locationID, Alert alert) {
     for (MedicalEquipment eq : equipment) {
       String information = "Needs to be sanitized. ";
       SanitationRequest eqReq =
           new SanitationRequest(eq.getEquipmentID(), information, 3, "Sanitation");
       DatabaseController.getInstance().add(eqReq);
+      alert.addSanitationRequest(eqReq);
+    }
+  }
+
+  public void updateAlerts() {
+    LinkedList<Alert> alertList = AlertQueue.getAlerts();
+    for (Alert alert : alertList) {
+      alert.updateDirty();
+      alert.updateClean();
     }
   }
 
