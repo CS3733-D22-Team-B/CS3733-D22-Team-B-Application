@@ -659,7 +659,7 @@ public class interactiveMapPageController extends MenuBarController {
   }
 
   public void addLocation() {
-    if (!typeDropdown.getValue().equals("")
+    if (typeDropdown.getValue() != null
         && mapPane.getChildren().contains(marker)
         && !locationName.getText().equals("")) {
       int markerCoordX = (int) marker.getLayoutX() + 2;

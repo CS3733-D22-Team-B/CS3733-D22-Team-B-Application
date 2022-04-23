@@ -61,6 +61,57 @@ public class DatabaseController {
   public LinkedList<Activity> listActivities() {
     return ActivityDB.getInstance().list();
   }
+  
+  /////////////////////////////// .listByAttribute() //////////////////////////////////////////////
+  public LinkedList<Location> listLocationsByAttribute(String attribute, String value) {
+    return LocationsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Location> listLocationsByAttribute(String attribute, int value) {
+    return LocationsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Location> listLocationsByAttribute(String attribute, boolean value) {
+    return LocationsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Employee> listEmployeesByAttribute(String attribute, String value) {
+    return EmployeesDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Patient> listPatientsByAttribute(String attribute, String value) {
+    return PatientsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(
+      String attribute, String value) {
+    return MedicalEquipmentDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(String attribute, int value) {
+    return MedicalEquipmentDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<MedicalEquipment> listMedicalEquipmentByAttribute(
+      String attribute, boolean value) {
+    return MedicalEquipmentDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Request> listRequestsByAttribute(String attribute, String value) {
+    return ServiceRequestsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Request> listRequestsByAttribute(String attribute, int value) {
+    return ServiceRequestsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Request> listRequestsByAttribute(String attribute, boolean value) {
+    return ServiceRequestsDB.getInstance().listByAttribute(attribute, value);
+  }
+
+  public LinkedList<Edge> listEdgesByAttribute(String attribute, String value) {
+    return EdgesDB.getInstance().listByAttribute(attribute, value);
+  }
 
   /////////////////////////////// .getByID() //////////////////////////////////////////////////////
   public Location getLocationByID(String pk) {

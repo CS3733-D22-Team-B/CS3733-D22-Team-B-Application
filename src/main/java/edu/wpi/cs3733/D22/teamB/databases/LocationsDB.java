@@ -202,11 +202,10 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     }
 
     LinkedList<Location> locList = new LinkedList<Location>();
-    for (Location loc : list()) {
-      if (loc.getFloor().equals(floorName)) {
+    for (Location loc : list())
+      if (loc != null && loc.getFloor().equals(floorName)) {
         locList.add(loc);
       }
-    }
     return locList;
   }
 
