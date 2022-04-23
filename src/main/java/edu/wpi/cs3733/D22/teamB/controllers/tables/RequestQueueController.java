@@ -4,6 +4,7 @@ import edu.wpi.cs3733.D22.teamB.DateHelper;
 import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.requests.InternalPatientTransferRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
 import java.net.URL;
@@ -272,6 +273,9 @@ public class RequestQueueController extends MenuBarController implements Initial
     } else if (currentRequest instanceof SanitationRequest) {
       SanitationRequest sanReq = (SanitationRequest) currentRequest;
       sanReq.updateMedicalEquipmentStatus();
+    } else if (currentRequest instanceof InternalPatientTransferRequest) {
+      InternalPatientTransferRequest patReq = (InternalPatientTransferRequest) currentRequest;
+      patReq.updatePatientStatus();
     }
 
     otherAnchorPane.setVisible(true);
