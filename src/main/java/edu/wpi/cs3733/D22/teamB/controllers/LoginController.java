@@ -60,6 +60,34 @@ public class LoginController {
       loginFail.setText("Invalid ID");
     } else {
       if (employee.getPassword().equals(password)) {
+        App.currentUser = employee;
+
+        Parent homepageRoot =
+                FXMLLoader.load(
+                        getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
+        Scene homepageScene = new Scene(homepageRoot);
+        Stage window = (Stage) loginButton.getScene().getWindow();
+        window.setScene(homepageScene);
+        window.show();
+      } else {
+        loginFail.setText("Invalid Password");
+      }
+    }
+  }
+
+  public void login2FA() throws Exception {
+    // Login functionality
+    this.setPassword();
+    this.setUsername();
+    Employee employee = null;
+    EmployeesDB emp = EmployeesDB.getInstance();
+    if (emp.searchFor(this.username).size() == 1) {
+      employee = emp.searchFor(this.username).get(0);
+    }
+    if (employee == null) {
+      loginFail.setText("Invalid ID");
+    } else {
+      if (employee.getPassword().equals(password)) {
         emailText = new Text("Enter your email to validate your identity");
         emailText.relocate(500, 270);
         loginPane.getChildren().add(emailText);
