@@ -15,12 +15,20 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkMode.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
       <Pane layoutX="855.0" layoutY="-3.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" stylesheets="@newStyles/darkMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="259.0" prefWidth="106.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="106.0" spacing="10.0">
                <children>
                   <JFXButton fx:id="quitButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#quitApplication" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
                      <graphic>
@@ -90,7 +98,7 @@
             </VBox>
          </children>
       </Pane>
-      <JFXButton fx:id="game" alignment="BOTTOM_CENTER" focusTraversable="false" onAction="#goToGame" prefHeight="26.0" prefWidth="106.0" text="game" textFill="#ffffff40" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXButton fx:id="game" alignment="BOTTOM_CENTER" focusTraversable="false" onAction="#goToGame" opacity="0.25" prefHeight="26.0" prefWidth="106.0" text="game" textFill="#ffffff40" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <GridPane layoutY="129.0" prefHeight="282.25" prefWidth="835.0" styleClass="container-box-2" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="129.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="115.0" prefWidth="115.0" />
