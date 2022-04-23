@@ -50,7 +50,7 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "EDGES")) {
         statement.execute(
-            "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID), CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID))");
+            "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID) ON DELETE CASCADE)");
         populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Edges", 3);
       }
       if (!tableExists(connection, "SERVICEREQUESTS")) {
