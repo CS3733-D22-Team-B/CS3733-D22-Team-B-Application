@@ -22,10 +22,11 @@
               </items>
             </Menu>
                 <MenuItem mnemonicParsing="false" onAction="#goToEquipmentTrackerPage" text="Equipment Tracker" />
-            <MenuItem mnemonicParsing="false" onAction="#goToLocationDataPage" text="Location Data" />
+                <MenuItem mnemonicParsing="false" onAction="#goToLocationDataPage" text="Location Data" />
                 <MenuItem mnemonicParsing="false" onAction="#goToRequestQueue" text="Request Queue" />
                 <MenuItem mnemonicParsing="false" onAction="#goToPatientDatabase" text="Patient Database" />
                 <MenuItem mnemonicParsing="false" onAction="#goToEmployeeDatabase" text="Employee Database" />
+                <MenuItem mnemonicParsing="false" onAction="#goToApiLandingPage" text="API Landing Page" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Create a Request">

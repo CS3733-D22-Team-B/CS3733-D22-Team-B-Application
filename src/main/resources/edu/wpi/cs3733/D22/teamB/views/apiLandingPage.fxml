@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.wpi.cs3733.D22.teamB.controllers.apiLandingPageController" prefHeight="400.0"
+            prefWidth="600.0">
+    <Pane layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+    <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+
+    <Button fx:id="api1" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="27.0" prefWidth="123.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="HomePage" />
+    <Button fx:id="api2" layoutX="50.0" layoutY="28.0" mnemonicParsing="false" onAction="#launchTeamBAPI" prefHeight="27.0" prefWidth="123.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Launch Team B API" />
+    <Button fx:id="api3" layoutX="50.0" layoutY="56.0" mnemonicParsing="false" onAction="#launchTeamCAPI" prefHeight="27.0" prefWidth="123.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Launch Team C API" />
+    <Button fx:id="api4" layoutX="50.0" layoutY="84.0" mnemonicParsing="false" onAction="#launchTeamDAPI" prefHeight="27.0" prefWidth="123.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Launch Team D API" />
+    <children/>
+</AnchorPane>

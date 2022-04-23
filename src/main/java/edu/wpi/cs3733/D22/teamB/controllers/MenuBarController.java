@@ -23,6 +23,11 @@ public class MenuBarController {
   }
 
   @FXML
+  public void goToApiLandingPage(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("apiLandingPage");
+  }
+
+  @FXML
   public void goToMapLandingPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("mapLandingPage");
   }
