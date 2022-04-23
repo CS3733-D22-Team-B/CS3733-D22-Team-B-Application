@@ -82,7 +82,8 @@ public class Alert {
       return;
     }
 
-    LinkedList<Location> cleanListInit = DC.getInstance().listLocationsByAttribute("nodeType", "STOR");
+    LinkedList<Location> cleanListInit =
+        DC.getInstance().listLocationsByAttribute("nodeType", "STOR");
     LinkedList<Location> cleanList = new LinkedList<Location>();
 
     for (int i = 0; i < cleanListInit.size(); i++) {
@@ -124,7 +125,6 @@ public class Alert {
     } else if (this.type.substring(type.length() - 1).equals("5") && cleanPumpsFive >= 5) {
       AlertQueue.removeAlert(this);
     }
-
   }
 
   ////////////////////////// Location /////////////////////////////
