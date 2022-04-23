@@ -167,7 +167,11 @@ public class RequestQueueController extends MenuBarController implements Initial
                           requestIDText.setText(request.getRequestID());
                           creationText.setText(DateHelper.stringify(request.getTimeCreated()));
                           editText.setText(DateHelper.stringify(request.getLastEdited()));
-                          employeeText.setText(request.getEmployee().getOverview());
+                          if (!request.getEmployee().getEmployeeID().equals("0")) {
+                            employeeText.setText(request.getEmployee().getOverview());
+                          } else {
+                            employeeText.setText("No employee assigned");
+                          }
                           statusText.setText(request.getStatus());
                           informationText.setText(request.getInformation());
                         });
@@ -182,7 +186,11 @@ public class RequestQueueController extends MenuBarController implements Initial
                           currentRequest = request;
 
                           requestIDLabel.setText(request.getRequestID());
-                          employeeInput.setValue(request.getEmployee().getOverview());
+                          if (!request.getEmployee().getEmployeeID().equals("0")) {
+                            employeeInput.setValue(request.getEmployee().getOverview());
+                          } else {
+                            employeeInput.setValue("");
+                          }
                           statusInput.setValue(request.getStatus());
                           informationInput.setText(request.getInformation());
                         });

@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.LinkedList;
 import javax.swing.*;
@@ -29,6 +30,7 @@ public class DatabaseController {
     PatientsDB.getInstance().listDB();
     ServiceRequestsDB.getInstance().listDB();
     EdgesDB.getInstance().listDB();
+    ActivityDB.getInstance().listDB();
   }
 
   /////////////////////////////// .list() //////////////////////////////////////////////////////
@@ -56,6 +58,10 @@ public class DatabaseController {
     return EdgesDB.getInstance().list();
   }
 
+  public LinkedList<Activity> listActivities() {
+    return ActivityDB.getInstance().list();
+  }
+
   /////////////////////////////// .getByID() //////////////////////////////////////////////////////
   public Location getLocationByID(String pk) {
     return LocationsDB.getInstance().getByID(pk);
@@ -81,6 +87,10 @@ public class DatabaseController {
     return EdgesDB.getInstance().getByID(pk);
   }
 
+  public Activity getActivityByID(String pk) {
+    return ActivityDB.getInstance().getByID(pk);
+  }
+
   ////////////////////////////////////////// .add() ////////////////////////////////////////////////
   public int add(Location loc) {
     return LocationsDB.getInstance().add(loc);
@@ -99,11 +109,24 @@ public class DatabaseController {
   }
 
   public int add(Request req) {
+    DatabaseController.getInstance()
+        .add(
+            new Activity(
+                req.getTimeCreated(),
+                App.currentUser.getEmployeeID(),
+                req.getRequestID(),
+                null,
+                "Request",
+                "created"));
     return ServiceRequestsDB.getInstance().add(req);
   }
 
   public int add(Edge edge) {
     return EdgesDB.getInstance().add(edge);
+  }
+
+  public int add(Activity act) {
+    return ActivityDB.getInstance().add(act);
   }
 
   /////////////////////////////////////// .update() //////////////////////////////////////////
@@ -131,6 +154,10 @@ public class DatabaseController {
     return EdgesDB.getInstance().update(edge);
   }
 
+  public int update(Activity act) {
+    return ActivityDB.getInstance().update(act);
+  }
+
   /////////////////////////////////////// .delete() ///////////////////////////////////////////
   public int delete(Location loc) {
     return LocationsDB.getInstance().delete(loc);
@@ -154,6 +181,10 @@ public class DatabaseController {
 
   public int delete(Edge edge) {
     return EdgesDB.getInstance().delete(edge);
+  }
+
+  public int delete(Activity act) {
+    return ActivityDB.getInstance().delete(act);
   }
 
   public void resetAllDBs() {
