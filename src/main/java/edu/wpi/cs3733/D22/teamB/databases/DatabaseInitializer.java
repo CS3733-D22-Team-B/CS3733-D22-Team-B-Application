@@ -40,8 +40,8 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "EMPLOYEES")) {
         statement.execute(
-            "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), username VARCHAR(25), password VARCHAR(25), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
-        populateDatabase(Filepath.getInstance().getEmployeesCSVFilePath(), "Employees", 7);
+            "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), username VARCHAR(25), password VARCHAR(25), lightOn BOOLEAN, color VARCHAR(100), CONSTRAINT EMPLOYEES_PK primary key (employeeID))");
+        populateDatabase(Filepath.getInstance().getEmployeesCSVFilePath(), "Employees", 9);
       }
       if (!tableExists(connection, "PATIENTS")) {
         statement.execute(
@@ -88,7 +88,7 @@ public class DatabaseInitializer {
             "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, availability, name) VALUES(?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Employees") {
         addToTable =
-            "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password, lightOn, color) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Patients") {
         addToTable =
             "INSERT INTO Patients(patientID, lastName, firstName, nodeID, information) VALUES(?, ?, ?, ?, ?)";
