@@ -1,4 +1,5 @@
 nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName,availability
+bHALL00101,984,276,1,Tower,HALL,Lower Pike Hallway Exit Lobby,Hallway Exit Lobby,FALSE
 bDEPT00101,486,199,1,Tower,DEPT,Center for International Medicine,CIM,FALSE
 bDEPT00201,507,495,1,Tower,DEPT,Bretholtz Center for Patients and Families,Bretholtz WR,FALSE
 bDEPT00301,594,261,1,Tower,DEPT,Multifaith Chapel,Chapel,FALSE
@@ -11,18 +12,17 @@ bELEV00M01,698,655,1,Tower,ELEV,Elevator M Floor 1,Elevator M1,FALSE
 bEXIT00101,902,165,1,Tower,EXIT,Shattuck Street Lobby Exit,Shattuck St. Exit,FALSE
 bEXIT00201,633,688,1,Tower,EXIT,75 Francis Valet Drop-Off,Valet Drop-Off,FALSE
 bEXIT00301,995,713,1,Tower,EXIT,Emergency Department Entrance,Emergency Entrance,FALSE
-bHALL00101,984,276,1,Tower,HALL,Lower Pike Hallway Exit Lobby,Hallway Exit Lobby,FALSE
 bHALL00201,942,276,1,Tower,HALL,Lobby Shattuck Street,Lobby Shattuck St,FALSE
-bHALL00301,766,295,1,Tower,HALL,Tower Lobby Entrance 1,Tower Entrance,FALSE
-bHALL00401,642,295,1,Tower,HALL,Tower Elevator Entrance,Hallway F00701,FALSE
-bHALL00501,656,511,1,Tower,HALL,Tower Hallway Entrance,Tower Entrance 2,FALSE
-bHALL00601,656,654,1,Tower,HALL,Hallway Lobby Entrance,Entrance Hallway,FALSE
-bHALL00701,649,654,1,Tower,HALL,Lobby Entrance Hallway,Lobby Hallway,FALSE
-bHALL00801,444,296,1,Tower,HALL,Tower Staff Entrance,Staff Entrance,FALSE
-bHALL00901,642,219,1,Tower,HALL,Tower Hallway 1,F1 Tower Hallway 1,FALSE
-bHALL01001,512,219,1,Tower,HALL,Tower Hallway 2,F1 Tower Hallway 2,FALSE
-bHALL01101,512,169,1,Tower,HALL,Tower Hallway 3,F1 Tower Hallway 3,FALSE
-bHALL01201,508,296,1,Tower,HALL,Tower Hallway 4,F1 Tower Hallway 4,FALSE
+bHALL00301,907,276,1,Tower,HALL,Shattuck Street Lobby 1,Shattuck St Lobby 1,FALSE
+bHALL00701,642,295,1,Tower,HALL,Tower Elevator Entrance,Hallway F00701,FALSE
+bHALL00401,868,276,1,Tower,HALL,Shattuck Street Lobby 2,Shattuck St Lobby 2,FALSE
+bHALL00501,845,276,1,Tower,HALL,Shattuck Street Lobby 3,Shattuck St Lobby 3,FALSE
+bHALL00601,766,295,1,Tower,HALL,Tower Lobby Entrance 1,Tower Entrance,FALSE
+bHALL00801,642,219,1,Tower,HALL,Tower Hallway 1,F1 Tower Hallway 1,FALSE
+bHALL00901,512,219,1,Tower,HALL,Tower Hallway 2,F1 Tower Hallway 2,FALSE
+bHALL01001,512,169,1,Tower,HALL,Tower Hallway 3,F1 Tower Hallway 3,FALSE
+bHALL01101,508,296,1,Tower,HALL,Tower Hallway 4,F1 Tower Hallway 4,FALSE
+bHALL01201,444,296,1,Tower,HALL,Tower Staff Entrance,Staff Entrance,FALSE
 bHALL01301,512,194,1,Tower,HALL,Tower Hallway 5,F1 Tower Hallway 5,FALSE
 bHALL01401,512,395,1,Tower,HALL,Tower Hallway 6,F1 Tower Hallway 6,FALSE
 bHALL01501,512,426,1,Tower,HALL,Tower Hallway 7,F1 Tower Hallway 7,FALSE
@@ -31,19 +31,19 @@ bHALL01701,607,321,1,Tower,HALL,Tower Hallway 9,F1 Tower Hallway 9,FALSE
 bHALL01801,644,332,1,Tower,HALL,Tower Hallway 10,F1 Tower Hallway 10,FALSE
 bHALL01901,644,496,1,Tower,HALL,Tower Hallway 11,F1 Tower Hallway 11,FALSE
 bHALL02001,586,496,1,Tower,HALL,Tower Hallway 12,F1 Tower Hallway 12,FALSE
-bHALL02101,652,396,1,Tower,HALL,Tower Hallway 13,F1 Tower Hallway 13,FALSE
-bHALL02201,744,654,1,Tower,HALL,Lobby Hallway 1,F1 Lobby Hallway 1,FALSE
-bHALL02301,854,654,1,Tower,HALL,Lobby Hallway 2,F1 Lobby Hallway 2,FALSE
-bHALL02401,854,613,1,Tower,HALL,Lobby Hallway 3,F1 Lobby Hallway 3,FALSE
-bHALL02501,923,613,1,Tower,HALL,Lobby Hallway 4,F1 Lobby Hallway 4,FALSE
-bHALL02601,539,619,1,Tower,HALL,Lobby Hallway 5,F1 Lobby Hallway 5,FALSE
-bHALL02701,916,349,1,Tower,HALL,Lobby Hallway 6,F1 Lobby Hallway 6,FALSE
-bHALL02801,953,613,1,Tower,HALL,Lobby Hallway 7,F1 Lobby Hallway 7,FALSE
-bHALL02901,953,654,1,Tower,HALL,Emergency Hallway,F1 Emergency Hallway,FALSE
-bHALL03001,907,276,1,Tower,HALL,Shattuck Street Lobby 1,Shattuck St Lobby 1,FALSE
-bHALL03101,868,276,1,Tower,HALL,Shattuck Street Lobby 2,Shattuck St Lobby 2,FALSE
-bHALL03201,845,276,1,Tower,HALL,Shattuck Street Lobby 3,Shattuck St Lobby 3,FALSE
-bHALL03301,599,654,1,Tower,HALL,75 Lobby,75 Lobby,FALSE
+bHALL02101,656,511,1,Tower,HALL,Tower Hallway Entrance,Tower Entrance 2,FALSE
+bHALL02201,656,654,1,Tower,HALL,Hallway Lobby Entrance,Entrance Hallway,FALSE
+bHALL02301,744,654,1,Tower,HALL,Lobby Hallway 1,F1 Lobby Hallway 1,FALSE
+bHALL02401,854,654,1,Tower,HALL,Lobby Hallway 2,F1 Lobby Hallway 2,FALSE
+bHALL02501,854,613,1,Tower,HALL,Lobby Hallway 3,F1 Lobby Hallway 3,FALSE
+bHALL02601,923,613,1,Tower,HALL,Lobby Hallway 4,F1 Lobby Hallway 4,FALSE
+bHALL02701,953,613,1,Tower,HALL,Lobby Hallway 7,F1 Lobby Hallway 7,FALSE
+bHALL02801,649,654,1,Tower,HALL,Lobby Entrance Hallway,Lobby Hallway,FALSE
+bHALL02901,599,654,1,Tower,HALL,75 Lobby,75 Lobby,FALSE
+bHALL03001,539,619,1,Tower,HALL,Lobby Hallway 5,F1 Lobby Hallway 5,FALSE
+bHALL03101,916,349,1,Tower,HALL,Lobby Hallway 6,F1 Lobby Hallway 6,FALSE
+bHALL03201,652,396,1,Tower,HALL,Tower Hallway 13,F1 Tower Hallway 13,FALSE
+bHALL03301,953,654,1,Tower,HALL,Emergency Hallway,F1 Emergency Hallway,FALSE
 bINFO00101,590,603,1,Tower,INFO,75 Lobby Information Desk,Lobby Info Desk,FALSE
 bLABS00101,730,625,1,Tower,LABS,Obstetrics Admitting,Obs Admitting,FALSE
 bREST00101,977,343,1,Tower,REST,Bathroom 75 Lobby,Bathroom Lobby,FALSE

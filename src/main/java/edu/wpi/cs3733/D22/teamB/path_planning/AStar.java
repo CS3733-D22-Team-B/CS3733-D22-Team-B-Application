@@ -57,6 +57,7 @@ public class AStar {
         // We need to save the cameFrom attribute from current node to targetNode
         // We can do that by just setting them equal
         targetNode = currentNode;
+        System.out.println("I found a path!");
         break;
       }
 
@@ -101,6 +102,7 @@ public class AStar {
       System.out.println(node.getNodeId());
       node = node.getCameFrom();
     }
+    path.add(0, locDB.getByID(startNode.getNodeId()));
 
     return path;
   }

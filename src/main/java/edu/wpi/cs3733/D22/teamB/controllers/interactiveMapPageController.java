@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 
-public class interactiveMapPageController extends MenuBarController {
+public class interactiveMapPageController extends aStarVisualization {
   @FXML JFXButton menuButton;
   @FXML JFXButton addButton;
   @FXML JFXButton editButton;
@@ -30,8 +30,6 @@ public class interactiveMapPageController extends MenuBarController {
   @FXML ImageView f1Button;
   @FXML ImageView l1Button;
   @FXML ImageView l2Button;
-  @FXML Pane mapPane;
-  @FXML ImageView mapImage;
   @FXML JFXButton backButton;
 
   @FXML Pane floorBackground;
@@ -169,6 +167,12 @@ public class interactiveMapPageController extends MenuBarController {
     populateAvailabilityDropdown();
     populateStateDropdown();
     setAll();
+    drawEdgesPerFloor(2);
+
+    //    AStar pathplanner = new AStar(dao.getByID("bELEV00LL2"), dao.getByID("bHALL006L2"));
+    //    ArrayList<Location> path = pathplanner.getPath();
+    //    drawPath(path);
+    //
 
     mapPane.setOnMousePressed(
         e -> {
@@ -535,29 +539,6 @@ public class interactiveMapPageController extends MenuBarController {
       default:
         return -1;
     }
-  }
-
-  public int[] mapCoordsToViewCoords(int x, int y) {
-    double mapWidth = 1060;
-    double mapHeight = 930;
-    double ratio = (mapHeight / mapWidth) * 1.05;
-    int fitWidth = (int) mapImage.getFitWidth();
-    int fitHeight = (int) mapImage.getFitHeight();
-    double xView = ((x / mapWidth) * fitWidth);
-    double yView = ((y / mapHeight) * fitHeight);
-    return new int[] {(int) xView, (int) yView};
-  }
-
-  public int[] imageCoordsToCSVCoords(int x, int y) {
-    int mapWidth = 1060;
-    int mapHeight = 930;
-    double ratio = mapHeight / mapWidth;
-    double fitWidth = mapImage.getFitWidth();
-    double fitHeight = mapImage.getFitHeight();
-    double xCSV = ((x / fitWidth) * mapWidth);
-    double yCSV = ((y / fitHeight) * mapHeight);
-
-    return new int[] {(int) xCSV, (int) yCSV};
   }
 
   public void resetFloorSelectors() {
