@@ -1,11 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.DateHelper;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.databases.Alert;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,29 +26,17 @@ import javafx.scene.text.TextAlignment;
 
 public class DashboardController extends MenuBarController {
   @FXML private Label overviewLabel;
-  @FXML private TextArea overviewText;
-
-  @FXML
-  private Button lower2Button,
-      lower1Button,
-      floor1Button,
-      floor2Button,
-      floor3Button,
-      floor4Button,
-      floor5Button;
+  @FXML private Label cleanBed, cleanRecliner, cleanPump, cleanXRay;
+  @FXML private Label dirtyBed, dirtyRecliner, dirtyPump, dirtyXRay;
 
   @FXML private AnchorPane equipmentCardsPane;
   @FXML private AnchorPane requestCardsPane;
   @FXML private AnchorPane patientsCardsPane;
+  @FXML private Accordion activityPane;
 
   @FXML TableView alertTable;
   @FXML TableColumn<Alert, String> columnLocation;
   @FXML TableColumn<Alert, String> columnType;
-
-  @FXML TableView<Activity> activityTable;
-  @FXML TableColumn<Activity, String> columnTime;
-  @FXML TableColumn<Activity, String> columnAction;
-  @FXML TableColumn<Activity, String> columnEmployee;
 
   private ServiceRequestsDB servDAO;
   private MedicalEquipmentDB medDAO;
@@ -78,7 +66,7 @@ public class DashboardController extends MenuBarController {
       patientsLL1 = new LinkedList<>(),
       patientsLL2 = new LinkedList<>();
 
-  private ObservableList<Activity> activityList = FXCollections.observableArrayList();
+  private HashMap<String, LinkedList<Activity>> activityMap = new HashMap<>();
 
   public void initialize() {
     servDAO = ServiceRequestsDB.getInstance();
@@ -198,15 +186,8 @@ public class DashboardController extends MenuBarController {
       }
     }
 
-    columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-    columnAction.setCellValueFactory(new PropertyValueFactory<>("summary"));
-    columnEmployee.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
-
-    for (Activity activity : activityDAO.getInstance().list()) {
-      activityList.add(activity);
-    }
-
-    activityTable.setItems(activityList);
+    populateActivityMap();
+    displayActivityReport();
 
     columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("locationID"));
@@ -432,15 +413,7 @@ public class DashboardController extends MenuBarController {
     switch (floorNumber) {
       case 0:
         overviewLabel.setText("Overview of Lower Level 2");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsLL2.size()
-                + "\nPatients: "
-                + patientsLL2.size());
+        setEquipmentInformation(medEquipmentLL2);
 
         if (medEquipmentLL2.size() > 0) {
           for (int i = 0; i < medEquipmentLL2.size(); i++) {
@@ -489,15 +462,7 @@ public class DashboardController extends MenuBarController {
         break;
       case 1:
         overviewLabel.setText("Overview of Lower Level 1");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsLL1.size()
-                + "\nPatients: "
-                + patientsLL1.size());
+        setEquipmentInformation(medEquipmentLL1);
 
         if (medEquipmentLL1.size() > 0) {
           for (int i = 0; i < medEquipmentLL1.size(); i++) {
@@ -545,15 +510,7 @@ public class DashboardController extends MenuBarController {
         break;
       case 2:
         overviewLabel.setText("Overview of Floor 1");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsF1.size()
-                + "\nPatients: "
-                + patientsF1.size());
+        setEquipmentInformation(medEquipmentF1);
 
         if (medEquipmentF1.size() > 0) {
           for (int i = 0; i < medEquipmentF1.size(); i++) {
@@ -601,15 +558,7 @@ public class DashboardController extends MenuBarController {
         break;
       case 3:
         overviewLabel.setText("Overview of Floor 2");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsF2.size()
-                + "\nPatients: "
-                + patientsF2.size());
+        setEquipmentInformation(medEquipmentF2);
 
         if (medEquipmentF2.size() > 0) {
           for (int i = 0; i < medEquipmentF2.size(); i++) {
@@ -657,15 +606,7 @@ public class DashboardController extends MenuBarController {
         break;
       case 4:
         overviewLabel.setText("Overview of Floor 3");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsF3.size()
-                + "\nPatients: "
-                + patientsF3.size());
+        setEquipmentInformation(medEquipmentF3);
 
         if (medEquipmentF3.size() > 0) {
           for (int i = 0; i < medEquipmentF3.size(); i++) {
@@ -713,15 +654,7 @@ public class DashboardController extends MenuBarController {
         break;
       case 5:
         overviewLabel.setText("Overview of Floor 4");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsF4.size()
-                + "\nPatients: "
-                + patientsF4.size());
+        setEquipmentInformation(medEquipmentF4);
 
         if (medEquipmentF4.size() > 0) {
           for (int i = 0; i < medEquipmentF4.size(); i++) {
@@ -769,15 +702,7 @@ public class DashboardController extends MenuBarController {
         break;
       case 6:
         overviewLabel.setText("Overview of Floor 5");
-        overviewText.setText(
-            "Clean Equipment: "
-                + getCleanEquipmentCount(floorNumber)
-                + "\nDirty Equipment: "
-                + getDirtyEquipmentCount(floorNumber)
-                + "\nRequests: "
-                + requestsF5.size()
-                + "\nPatients: "
-                + patientsF5.size());
+        setEquipmentInformation(medEquipmentF5);
 
         if (medEquipmentF5.size() > 0) {
           for (int i = 0; i < medEquipmentF5.size(); i++) {
@@ -971,5 +896,112 @@ public class DashboardController extends MenuBarController {
         break;
     }
     return count;
+  }
+
+  private void setEquipmentInformation(LinkedList<MedicalEquipment> equipmentList) {
+    int countCleanBed = 0,
+        countCleanRecliner = 0,
+        countCleanPump = 0,
+        countCleanXRay = 0,
+        countDirtyBed = 0,
+        countDirtyRecliner = 0,
+        countDirtyPump = 0,
+        countDirtyXRay = 0;
+
+    for (MedicalEquipment equipment : equipmentList) {
+      if (equipment.getIsClean()) {
+        switch (equipment.getType()) {
+          case "BED":
+            countCleanBed++;
+            break;
+          case "RECL":
+            countCleanRecliner++;
+            break;
+          case "PUMP":
+            countCleanPump++;
+            break;
+          case "XR":
+            countCleanXRay++;
+            break;
+        }
+      } else {
+        switch (equipment.getType()) {
+          case "BED":
+            countDirtyBed++;
+            break;
+          case "RECL":
+            countDirtyRecliner++;
+            break;
+          case "PUMP":
+            countDirtyPump++;
+            break;
+          case "XR":
+            countDirtyXRay++;
+            break;
+        }
+      }
+    }
+
+    cleanBed.setText(String.valueOf(countCleanBed));
+    cleanRecliner.setText(String.valueOf(countCleanRecliner));
+    cleanPump.setText(String.valueOf(countCleanPump));
+    cleanXRay.setText(String.valueOf(countCleanXRay));
+
+    dirtyBed.setText(String.valueOf(countDirtyBed));
+    dirtyRecliner.setText(String.valueOf(countDirtyRecliner));
+    dirtyPump.setText(String.valueOf(countDirtyPump));
+    dirtyXRay.setText(String.valueOf(countDirtyXRay));
+  }
+
+  private void populateActivityMap() {
+    for (Activity activity : activityDAO.getInstance().list()) {
+      String date = DateHelper.properDate(activity.getDateAndTime());
+
+      if (activityMap.containsKey(date)) {
+        activityMap.get(date).add(activity);
+      } else {
+        LinkedList<Activity> activityList = new LinkedList<>(Arrays.asList(activity));
+        activityMap.put(date, activityList);
+      }
+    }
+  }
+
+  public void displayActivityReport() {
+    ArrayList<String> keys = new ArrayList<>(activityMap.keySet());
+    DateHelper.sortDates(keys);
+
+    for (String date : keys) {
+      TitledPane titledPane = new TitledPane();
+      titledPane.setText(date);
+
+      TableView<Activity> activityTable = new TableView<>();
+
+      TableColumn<Activity, String> columnTime = new TableColumn<>("Time");
+      columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+      columnTime.setPrefWidth(75);
+      activityTable.getColumns().add(columnTime);
+
+      TableColumn<Activity, String> columnAction = new TableColumn<>("Action");
+      columnAction.setCellValueFactory(new PropertyValueFactory<>("summary"));
+      columnAction.setPrefWidth(330);
+      activityTable.getColumns().add(columnAction);
+
+      TableColumn<Activity, String> columnEmployee = new TableColumn<>("Employee");
+      columnEmployee.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
+      columnEmployee.setPrefWidth(110);
+      activityTable.getColumns().add(columnEmployee);
+
+      ObservableList<Activity> activityList = FXCollections.observableArrayList();
+
+      for (Activity activity : activityMap.get(date)) {
+        activityList.add(activity);
+      }
+
+      activityTable.setItems(activityList);
+      AnchorPane anchorPane = new AnchorPane();
+      anchorPane.getChildren().add(activityTable);
+      titledPane.setContent(anchorPane);
+      activityPane.getPanes().add(titledPane);
+    }
   }
 }

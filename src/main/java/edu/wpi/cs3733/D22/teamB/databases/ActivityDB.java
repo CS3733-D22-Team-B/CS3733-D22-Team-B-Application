@@ -112,7 +112,7 @@ public class ActivityDB extends DatabaseSuperclass implements IDatabases<Activit
     if (activityMap.containsKey(actObj.getActivityID())) {
       return -1;
     }
-    return transform(actObj, "INSERT INTO Patients VALUES(?,?,?,?,?,?,?)", false);
+    return transform(actObj, "INSERT INTO Activity VALUES(?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Activity actObj) {
