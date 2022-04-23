@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.LoginController">
    <children>
       <GridPane layoutX="164.0" layoutY="70.0" minHeight="398.0" minWidth="670.5" prefHeight="398.0" prefWidth="670.5" styleClass="container-box" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="144.5" AnchorPane.rightAnchor="144.5" AnchorPane.topAnchor="71.0">
         <columnConstraints>
@@ -84,7 +84,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </Label>
-            <JFXButton fx:id="loginButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="65.0" minWidth="65.0" onAction="#login" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkMode.css" text=" " GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <JFXButton fx:id="loginButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="65.0" minWidth="65.0" onAction="#login" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text=" " GridPane.columnIndex="3" GridPane.rowIndex="5">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -101,9 +101,9 @@
                </graphic></JFXButton>
          </children>
       </GridPane>
-      <Pane layoutX="859.0" prefHeight="540.0" prefWidth="105.0" styleClass="side-panel" stylesheets="@newStyles/darkMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="859.0" prefHeight="540.0" prefWidth="105.0" styleClass="side-panel" stylesheets="@newStyles/darkBlueMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="20.0" layoutY="14.0" onAction="#quitApplication" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkMode.css" text=" ">
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="20.0" layoutY="14.0" onAction="#quitApplication" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text=" ">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
