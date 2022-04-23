@@ -193,4 +193,17 @@ public abstract class Request {
 
     return hashCode.substring(0, 6);
   }
+
+  public boolean equals(Object o) {
+    try {
+      ((Request) o).getRequestID();
+    } catch (Exception e) {
+      return false;
+    }
+
+    if (this.requestID.equals(((Request) o).getRequestID())) {
+      return true;
+    }
+    return false;
+  }
 }

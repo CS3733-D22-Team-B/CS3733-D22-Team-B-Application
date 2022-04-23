@@ -65,15 +65,15 @@ public class AlertController {
       switch (location.getFloor()) {
         case "3":
           if (dirtyPumps >= 10 && !statusDirtyPumpThreeAlert) {
-            sendDirtyAlert("3", "PUMP");
-            makeServiceRequest(dirtyMedEq, WestPlazaID);
+            EquipmentAlert alert = sendDirtyAlert("3", "PUMP");
+            makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
             statusDirtyPumpThreeAlert = true;
           } else if (dirtyPumps < 10) {
             statusDirtyPumpThreeAlert = false;
           }
           if (dirtyBeds >= 6 && !statusDirtyBedThreeAlert) {
-            sendDirtyAlert("3", "BED");
-            makeServiceRequest(dirtyMedEq, ORParkID);
+            EquipmentAlert alert = sendDirtyAlert("3", "BED");
+            makeServiceRequest(dirtyMedEq, ORParkID, alert);
             statusDirtyBedThreeAlert = true;
           } else if (dirtyBeds < 6) {
             statusDirtyBedThreeAlert = false;
@@ -81,15 +81,15 @@ public class AlertController {
           break;
         case "4":
           if (dirtyPumps >= 10 && !statusDirtyPumpFourAlert) {
-            sendDirtyAlert("4", "PUMP");
-            makeServiceRequest(dirtyMedEq, WestPlazaID);
+            EquipmentAlert alert = sendDirtyAlert("4", "PUMP");
+            makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
             statusDirtyBedFourAlert = true;
           } else if (dirtyPumps < 10) {
             statusDirtyPumpFourAlert = false;
           }
           if (dirtyBeds >= 6 && !statusDirtyBedFourAlert) {
-            sendDirtyAlert("4", "BED");
-            makeServiceRequest(dirtyMedEq, ORParkID);
+            EquipmentAlert alert = sendDirtyAlert("4", "BED");
+            makeServiceRequest(dirtyMedEq, ORParkID, alert);
             statusDirtyBedFourAlert = true;
           } else if (dirtyBeds < 6) {
             statusDirtyBedFourAlert = false;
@@ -97,15 +97,15 @@ public class AlertController {
           break;
         case "5":
           if (dirtyPumps >= 10 && !statusDirtyPumpFiveAlert) {
-            sendDirtyAlert("5", "PUMP");
-            makeServiceRequest(dirtyMedEq, WestPlazaID);
+            EquipmentAlert alert = sendDirtyAlert("5", "PUMP");
+            makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
             statusDirtyBedFiveAlert = true;
           } else if (dirtyPumps < 10) {
             statusDirtyPumpFiveAlert = false;
           }
           if (dirtyBeds >= 6 && !statusDirtyBedFiveAlert) {
-            sendDirtyAlert("5", "BED");
-            makeServiceRequest(dirtyMedEq, ORParkID);
+            EquipmentAlert alert = sendDirtyAlert("5", "BED");
+            makeServiceRequest(dirtyMedEq, ORParkID, alert);
             statusDirtyBedFiveAlert = true;
           } else if (dirtyBeds < 6) {
             statusDirtyBedFiveAlert = false;
@@ -164,26 +164,41 @@ public class AlertController {
     } else if (cleanPumpsFive >= 5 && statusCleanPumpsFiveAlert) {
       statusCleanPumpsFiveAlert = false;
     }
+
+    // Remove any outdated alerts from the queue
+    updateAlerts();
   }
 
-  public void sendDirtyAlert(String floor, String type) {
+  public EquipmentAlert sendDirtyAlert(String floor, String type) {
     EquipmentAlert alert = new EquipmentAlert(floor, "DIRTY " + type);
     AlertQueue.addAlert(alert);
     showAlert(alert);
+    return alert;
   }
 
-  public void sendCleanAlert(String floor, String type) {
+  public EquipmentAlert sendCleanAlert(String floor, String type) {
     EquipmentAlert alert = new EquipmentAlert(floor, "CLEAN " + type);
     AlertQueue.addAlert(alert);
     showAlert(alert);
+    return alert;
   }
 
-  public void makeServiceRequest(LinkedList<MedicalEquipment> equipment, String locationID) {
+  public void makeServiceRequest(
+      LinkedList<MedicalEquipment> equipment, String locationID, EquipmentAlert alert) {
     for (MedicalEquipment eq : equipment) {
       String information = "Needs to be sanitized.";
       SanitationRequest eqReq =
           new SanitationRequest(eq.getEquipmentID(), information, 5, "Sanitation");
       DatabaseController.getInstance().add(eqReq);
+      alert.addSanitationRequest(eqReq);
+    }
+  }
+
+  public void updateAlerts() {
+    LinkedList<EquipmentAlert> alertList = AlertQueue.getAlerts();
+    for (EquipmentAlert alert : alertList) {
+      alert.updateDirty();
+      alert.updateClean();
     }
   }
 
