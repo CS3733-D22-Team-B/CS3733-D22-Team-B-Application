@@ -6,7 +6,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.path_planning.AStar;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -167,12 +169,11 @@ public class interactiveMapPageController extends aStarVisualization {
     populateAvailabilityDropdown();
     populateStateDropdown();
     setAll();
-    drawEdgesPerFloor(6);
+    // drawEdgesPerFloor(4);
 
-    //    AStar pathplanner = new AStar(dao.getByID("bELEV00LL2"), dao.getByID("bHALL006L2"));
-    //    ArrayList<Location> path = pathplanner.getPath();
-    //    drawPath(path);
-    //
+    AStar pathplanner = new AStar(dao.getByID("bHALL00203"), dao.getByID("bBATH00203"));
+    ArrayList<Location> path = pathplanner.getPath();
+    drawPath(path);
 
     mapPane.setOnMousePressed(
         e -> {
