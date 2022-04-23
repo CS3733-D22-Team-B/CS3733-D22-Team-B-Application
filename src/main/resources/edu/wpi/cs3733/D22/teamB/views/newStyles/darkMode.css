@@ -43,10 +43,29 @@
 }
 .text-field {
     -fx-background-color: #1E2129;
-    -fx-text-fill: rgb(255,255,255, .5);
+    -fx-text-fill: rgb(255,255,255);
     -fx-prompt-text-fill: rgb(255,255,255, .5);
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.75), 10, .2, 0, 0);
     -fx-background-radius: 10px;
+}
+.text-area {
+    -fx-control-inner-background: #1E2129;
+    -fx-background-color: #1E2129;
+    -fx-border-color: transparent;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-text-fill: white;
+    -fx-inner-background-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
 }
 .profile-table-background {
     -fx-background-color: #1A1A1F;
@@ -67,4 +86,36 @@
 }
 .label {
     -fx-text-fill: white;
+}
+.combo-box {
+    -fx-background-color: #1E2129;
+    -fx-text-fill: rgb(255,255,255, .5);
+    -fx-background-radius: 10px;
+}
+.combo-box-base .text{
+    -fx-fill: rgba(255, 255, 255, 0.5);
+}
+.combo-box .arrow{
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+.jfx-slider > .track {
+    -fx-background-color: #1A1A1F;
+    -fx-pref-height: 5px;
+}
+.jfx-slider > .thumb {
+    -fx-background-color: linear-gradient(to bottom right, #434B5B, #1080B9);
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 5, .1, 0.0, 0.0);
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.jfx-slider > .colored-track {
+    -fx-background-color: #1A1A1F;
+    -fx-pref-height: 5px;
+}
+.jfx-slider > .axis {
+    -fx-tick-label-fill: #7bcce4;
+}
+.simple-slider {
+    -fx-base: #7bcce4;
 }
