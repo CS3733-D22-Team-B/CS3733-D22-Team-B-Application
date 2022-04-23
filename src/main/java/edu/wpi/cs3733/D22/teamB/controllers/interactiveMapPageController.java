@@ -171,7 +171,7 @@ public class interactiveMapPageController extends aStarVisualization {
     setAll();
     // drawEdgesPerFloor(4);
 
-    AStar pathplanner = new AStar(dao.getByID("bHALL00203"), dao.getByID("bBATH00203"));
+    AStar pathplanner = new AStar(dao.getByID("bDEPT00301"), dao.getByID("bHALL00704"));
     ArrayList<Location> path = pathplanner.getPath();
     drawPath(path);
 
