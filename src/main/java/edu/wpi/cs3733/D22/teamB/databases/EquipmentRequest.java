@@ -66,7 +66,8 @@ public class EquipmentRequest extends Request {
     if (this.status.equals("Completed")) {
       medEq.setIsClean(false);
       medEq.setAvailability("Unavailable");
-      medEq.moveToDirty();
+      // medEq.moveToDirty();
+      medEq.setNodeID(locationID);
       DatabaseController DC = DatabaseController.getInstance();
       DC.update(medEq);
     }
