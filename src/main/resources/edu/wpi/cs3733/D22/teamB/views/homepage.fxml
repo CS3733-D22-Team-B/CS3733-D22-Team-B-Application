@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -61,6 +76,19 @@
                               </DropShadow>
                            </effect>
                         </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="30.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToCovidPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
+                     <graphic>
+                        <SVGPath content="M45.701 19.536l1.14 -1.14c4.211 -4.211 4.212 -11.026 0 -15.237c-4.211 -4.211 -11.026 -4.211 -15.237 0L30.464 4.299l-0.784 -0.784c-0.823 -0.823 -2.156 -0.823 -2.979 0L4.003 26.212c-0.822 0.822 -0.823 2.157 0 2.979l0.784 0.784l-1.629 1.629c-4.211 4.211 -4.211 11.026 0 15.237c4.211 4.211 11.026 4.211 15.237 0l1.629 -1.629l0.784 0.784c0.823 0.823 2.156 0.823 2.979 0l22.698 -22.698c0.823 -0.823 0.823 -2.156 0 -2.979L45.701 19.536zM28.19 7.983l2.897 2.897L11.369 30.598l-2.897 -2.897L28.19 7.983zM15.417 43.862c-2.564 2.564 -6.715 2.565 -9.279 0c-2.564 -2.564 -2.564 -6.714 0 -9.279l1.629 -1.629l7.166 7.166c0 0 0 0 0 0.001c0 0 0 0 0 0l2.112 2.112L15.417 43.862zM16.422 35.652l-2.075 -2.075l19.719 -19.719l2.075 2.075L16.422 35.652zM22.298 41.528l-2.897 -2.897l19.719 -19.719l2.897 2.897L22.298 41.528zM42.722 16.557l-9.279 -9.279l1.14 -1.14c2.564 -2.564 6.715 -2.565 9.279 0c2.564 2.564 2.565 6.715 0 9.279L42.722 16.557z" fill="WHITE" scaleX="0.8" scaleY="0.8">
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </SVGPath>
                      </graphic>
                   </JFXButton>
                </children>

@@ -147,3 +147,6 @@
 .tab .tab-label {
     -fx-text-fill: #7bcce4;
 }
+.label {
+    -fx-text-fill: white;
+}
