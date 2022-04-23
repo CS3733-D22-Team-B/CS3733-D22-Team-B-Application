@@ -1,15 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
-import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
-import java.io.IOException;
 import java.util.LinkedList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 
 public class AlertController {
 
@@ -43,81 +37,82 @@ public class AlertController {
   public void checkForAlerts() {
     LocationsDB locDB = LocationsDB.getInstance();
     LinkedList<Location> dirtyList = locDB.listByAttribute("nodeType", "DIRT");
-    LinkedList<Location> cleanListInit = locDB.listByAttribute("nodeType", "STOR");
+    LinkedList<Location> storageLocationsList = locDB.listByAttribute("nodeType", "STOR");
     LinkedList<Location> cleanList = new LinkedList<Location>();
 
-    for (int i = 0; i < cleanListInit.size(); i++) {
-      if (cleanListInit.get(i).getLongName().contains("Clean Equipment")) {
-        cleanList.add(cleanListInit.get(i));
+    for (int i = 0; i < storageLocationsList.size(); i++) {
+      if (storageLocationsList.get(i).getLongName().contains("Clean Equipment")) {
+        cleanList.add(storageLocationsList.get(i));
       }
     }
 
-    for (Location l : dirtyList) {
-      LinkedList<MedicalEquipment> dirtyMedEq = l.getEquipmentList();
+    for (Location location : dirtyList) {
+      LinkedList<MedicalEquipment> dirtyMedEq = location.getEquipmentList();
       int dirtyPumps = 0;
       int dirtyBeds = 0;
 
       for (int i = 0; i < dirtyMedEq.size(); i++) {
-        if (dirtyMedEq.get(i).getType().equals("PUMP") && dirtyMedEq.get(i).getIsClean() == false) {
-          dirtyPumps++;
-        } else if (dirtyMedEq.get(i).getType().equals("BED")
-            && dirtyMedEq.get(i).getIsClean() == false) {
-          dirtyBeds++;
+        if (!dirtyMedEq.get(i).getIsClean()) {
+          if (dirtyMedEq.get(i).getType().equals("PUMP")) {
+            dirtyPumps++;
+          } else if (dirtyMedEq.get(i).getType().equals("BED")) {
+            dirtyBeds++;
+          }
         }
       }
 
       // Check third floor areas for dirty pumps
-      if (dirtyPumps >= 10 && l.getFloor().equals("3") && !statusDirtyPumpThreeAlert) {
-        Alert alert = sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
-        statusDirtyPumpThreeAlert = true;
-      } else if (dirtyPumps < 10 && l.getFloor().equals("3")) {
-        statusDirtyPumpThreeAlert = false;
-      }
-
-      // Check fourth floor areas for dirty pumps
-      if (dirtyPumps >= 10 && l.getFloor().equals("4") && !statusDirtyPumpFourAlert) {
-        Alert alert = sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
-        statusDirtyBedFourAlert = true;
-      } else if (dirtyPumps < 10 && l.getFloor().equals("4")) {
-        statusDirtyPumpFourAlert = false;
-      }
-
-      // Check fifth floor areas for dirty pumps
-      if (dirtyPumps >= 10 && l.getFloor().equals("5") && !statusDirtyPumpFiveAlert) {
-        Alert alert = sendDirtyAlert(l.getFloor(), dirtyPumps, "PUMP");
-        makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
-        statusDirtyBedFiveAlert = true;
-      } else if (dirtyPumps < 10 && l.getFloor().equals("5")) {
-        statusDirtyPumpFiveAlert = false;
-      }
-
-      // Check third floor beds for dirty beds
-      if (dirtyBeds >= 6 && l.getFloor().equals("3") && !statusDirtyBedThreeAlert) {
-        Alert alert = sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
-        makeServiceRequest(dirtyMedEq, ORParkID, alert);
-        statusDirtyBedThreeAlert = true;
-      } else if (dirtyBeds < 6 && l.getFloor().equals("3")) {
-        statusDirtyBedThreeAlert = false;
-      }
-
-      // Check fourth floor for dirty beds
-      if (dirtyBeds >= 6 && l.getFloor().equals("4") && !statusDirtyBedFourAlert) {
-        Alert alert = sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
-        makeServiceRequest(dirtyMedEq, ORParkID, alert);
-        statusDirtyBedFourAlert = true;
-      } else if (dirtyBeds < 6 && l.getFloor().equals("4")) {
-        statusDirtyBedFourAlert = false;
-      }
-
-      // Check fifth floor for dirty beds
-      if (dirtyBeds >= 6 && l.getFloor().equals("5") && !statusDirtyBedFiveAlert) {
-        Alert alert = sendDirtyAlert(l.getFloor(), dirtyBeds, "BED");
-        makeServiceRequest(dirtyMedEq, ORParkID, alert);
-        statusDirtyBedFiveAlert = true;
-      } else if (dirtyBeds < 6 && l.getFloor().equals("5")) {
-        statusDirtyBedFiveAlert = false;
+      switch (location.getFloor()) {
+        case "3":
+          if (dirtyPumps >= 10 && !statusDirtyPumpThreeAlert) {
+            EquipmentAlert alert = sendDirtyAlert("3", "PUMP");
+            makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
+            statusDirtyPumpThreeAlert = true;
+          } else if (dirtyPumps < 10) {
+            statusDirtyPumpThreeAlert = false;
+          }
+          if (dirtyBeds >= 6 && !statusDirtyBedThreeAlert) {
+            EquipmentAlert alert = sendDirtyAlert("3", "BED");
+            makeServiceRequest(dirtyMedEq, ORParkID, alert);
+            statusDirtyBedThreeAlert = true;
+          } else if (dirtyBeds < 6) {
+            statusDirtyBedThreeAlert = false;
+          }
+          break;
+        case "4":
+          if (dirtyPumps >= 10 && !statusDirtyPumpFourAlert) {
+            EquipmentAlert alert = sendDirtyAlert("4", "PUMP");
+            makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
+            statusDirtyBedFourAlert = true;
+          } else if (dirtyPumps < 10) {
+            statusDirtyPumpFourAlert = false;
+          }
+          if (dirtyBeds >= 6 && !statusDirtyBedFourAlert) {
+            EquipmentAlert alert = sendDirtyAlert("4", "BED");
+            makeServiceRequest(dirtyMedEq, ORParkID, alert);
+            statusDirtyBedFourAlert = true;
+          } else if (dirtyBeds < 6) {
+            statusDirtyBedFourAlert = false;
+          }
+          break;
+        case "5":
+          if (dirtyPumps >= 10 && !statusDirtyPumpFiveAlert) {
+            EquipmentAlert alert = sendDirtyAlert("5", "PUMP");
+            makeServiceRequest(dirtyMedEq, WestPlazaID, alert);
+            statusDirtyBedFiveAlert = true;
+          } else if (dirtyPumps < 10) {
+            statusDirtyPumpFiveAlert = false;
+          }
+          if (dirtyBeds >= 6 && !statusDirtyBedFiveAlert) {
+            EquipmentAlert alert = sendDirtyAlert("5", "BED");
+            makeServiceRequest(dirtyMedEq, ORParkID, alert);
+            statusDirtyBedFiveAlert = true;
+          } else if (dirtyBeds < 6) {
+            statusDirtyBedFiveAlert = false;
+          }
+          break;
+        default:
+          break;
       }
     }
 
@@ -127,12 +122,12 @@ public class AlertController {
     int cleanPumpsFour = 0;
     int cleanPumpsFive = 0;
 
-    for (Location l : cleanList) {
-      LinkedList<MedicalEquipment> cleanMedEq = l.getEquipmentList();
+    for (Location location : cleanList) {
+      LinkedList<MedicalEquipment> cleanMedEq = location.getEquipmentList();
 
       for (int i = 0; i < cleanMedEq.size(); i++) {
         if (cleanMedEq.get(i).getType().equals("PUMP") && cleanMedEq.get(i).getIsClean()) {
-          switch (l.getFloor()) {
+          switch (location.getFloor()) {
             case "3":
               cleanPumpsThree++;
               break;
@@ -150,21 +145,21 @@ public class AlertController {
     }
 
     if (cleanPumpsThree < 5 && !statusCleanPumpsThreeAlert) {
-      sendCleanAlert("3", cleanPumpsThree, "PUMP");
+      sendCleanAlert("3", "PUMP");
       statusCleanPumpsThreeAlert = true;
     } else if (cleanPumpsThree >= 5 && statusCleanPumpsThreeAlert) {
       statusCleanPumpsThreeAlert = false;
     }
 
     if (cleanPumpsFour < 5 && !statusCleanPumpsFourAlert) {
-      sendCleanAlert("4", cleanPumpsFour, "PUMP");
+      sendCleanAlert("4", "PUMP");
       statusCleanPumpsFourAlert = true;
     } else if (cleanPumpsFour >= 5 && statusCleanPumpsFourAlert) {
       statusCleanPumpsFourAlert = false;
     }
 
     if (cleanPumpsFive < 5 && !statusCleanPumpsFiveAlert) {
-      sendCleanAlert("5", cleanPumpsFive, "PUMP");
+      sendCleanAlert("5", "PUMP");
       statusCleanPumpsFiveAlert = true;
     } else if (cleanPumpsFive >= 5 && statusCleanPumpsFiveAlert) {
       statusCleanPumpsFiveAlert = false;
@@ -174,87 +169,69 @@ public class AlertController {
     updateAlerts();
   }
 
-  public Alert sendDirtyAlert(String floor, int dirtyPumps, String type) {
-    System.out.println("Floor: " + floor + " Number dirty: " + dirtyPumps + " Type: " + type);
-    Alert alert = new Alert("", ("Floor " + floor), ("DIRTY_" + type), "N");
+  public EquipmentAlert sendDirtyAlert(String floor, String type) {
+    EquipmentAlert alert = new EquipmentAlert(floor, "DIRTY " + type);
     AlertQueue.addAlert(alert);
     showAlert(alert);
     return alert;
   }
 
-  public Alert sendCleanAlert(String floor, int dirtyPumps, String type) {
-    System.out.println("Floor: " + floor + " Number clean: " + dirtyPumps + " Type: " + type);
-    Alert alert = new Alert("", ("Floor " + floor), ("CLEAN_" + type), "N");
+  public EquipmentAlert sendCleanAlert(String floor, String type) {
+    EquipmentAlert alert = new EquipmentAlert(floor, "CLEAN " + type);
     AlertQueue.addAlert(alert);
     showAlert(alert);
     return alert;
   }
 
   public void makeServiceRequest(
-      LinkedList<MedicalEquipment> equipment, String locationID, Alert alert) {
+      LinkedList<MedicalEquipment> equipment, String locationID, EquipmentAlert alert) {
     for (MedicalEquipment eq : equipment) {
-      String information = "Needs to be sanitized. ";
+      String information = "Needs to be sanitized.";
       SanitationRequest eqReq =
-          new SanitationRequest(eq.getEquipmentID(), information, 3, "Sanitation");
+          new SanitationRequest(eq.getEquipmentID(), information, 5, "Sanitation");
       DatabaseController.getInstance().add(eqReq);
       alert.addSanitationRequest(eqReq);
     }
   }
 
   public void updateAlerts() {
-    LinkedList<Alert> alertList = AlertQueue.getAlerts();
-    for (Alert alert : alertList) {
+    LinkedList<EquipmentAlert> alertList = AlertQueue.getAlerts();
+    for (EquipmentAlert alert : alertList) {
       alert.updateDirty();
       alert.updateClean();
     }
   }
 
-  public void showAlert(Alert changeStateAlert) {
-    UIController currentPlace = UIController.getInstance();
-    Scene place = currentPlace.primaryStage.getScene();
+  public void showAlert(EquipmentAlert changeStateAlert) {
+    Alert alert;
 
-    Stage popUpStage = new Stage();
-    Parent root;
-    root = null;
-    if (changeStateAlert.getType().equals("CLEAN_PUMP")) {
-
-      try {
-        root =
-            FXMLLoader.load(
-                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/popupCLP.fxml"));
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-      popUpStage.setScene(new Scene(root));
-      popUpStage.initOwner(place.getWindow());
-      popUpStage.initModality(Modality.APPLICATION_MODAL); // popup
-      popUpStage.showAndWait();
-    }
-    if (changeStateAlert.getType().equals("DIRTY_PUMP")) {
-      try {
-        root =
-            FXMLLoader.load(
-                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/popupDTP.fxml"));
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-      popUpStage.setScene(new Scene(root));
-      popUpStage.initOwner(place.getWindow());
-      popUpStage.initModality(Modality.APPLICATION_MODAL); // popup
-      popUpStage.showAndWait();
-    }
-    if (changeStateAlert.getType().equals("DIRTY_BED")) {
-      try {
-        root =
-            FXMLLoader.load(
-                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/popupDTB.fxml"));
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-      popUpStage.setScene(new Scene(root));
-      popUpStage.initOwner(place.getWindow());
-      popUpStage.initModality(Modality.APPLICATION_MODAL); // popup
-      popUpStage.showAndWait();
+    switch (changeStateAlert.getType()) {
+      case "DIRTY BED":
+        alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Dirty Bed Alert");
+        alert.setHeaderText(
+            "There are too many dirty beds on floor " + changeStateAlert.getFloor());
+        alert.setContentText("Maybe you should clean them.");
+        alert.showAndWait();
+        break;
+      case "DIRTY PUMP":
+        alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Dirty Pump Alert");
+        alert.setHeaderText(
+            "There are too many dirty pumps on floor " + changeStateAlert.getFloor());
+        alert.setContentText("Maybe you should clean them.");
+        alert.showAndWait();
+        break;
+      case "CLEAN PUMP":
+        alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Clean Pump Alert");
+        alert.setHeaderText(
+            "There are too few clean pumps on floor " + changeStateAlert.getFloor());
+        alert.setContentText("Maybe you should clean some dirty ones.");
+        alert.showAndWait();
+        break;
+      default:
+        break;
     }
   }
 }

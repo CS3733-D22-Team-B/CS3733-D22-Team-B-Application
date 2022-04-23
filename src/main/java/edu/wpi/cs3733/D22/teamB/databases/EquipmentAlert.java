@@ -3,22 +3,19 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
 import java.util.LinkedList;
 
-public class Alert {
+public class EquipmentAlert {
   private String alertID;
-  private String locationID;
-  private Location location;
+  private String floor;
   private String type;
-  private String isRead;
 
   private LinkedList<SanitationRequest> requests = new LinkedList<SanitationRequest>();
 
   DatabaseController DC = DatabaseController.getInstance();
 
-  public Alert(String alertID, String locationID, String type, String isRead) {
-    this.alertID = alertID;
-    this.locationID = locationID;
+  public EquipmentAlert(String floor, String type) {
+    this.floor = floor;
     this.type = type;
-    this.isRead = isRead;
+    this.alertID = "ALT" + getHashCode();
   }
 
   public String getAlertID() {
@@ -29,21 +26,12 @@ public class Alert {
     this.alertID = alertID;
   }
 
-  public String getLocationID() {
-    return locationID;
+  public String getFloor() {
+    return floor;
   }
 
-  public void setLocationID(String locationID) {
-    this.locationID = locationID;
-  }
-
-  public Location getLocation() {
-    location = DC.getLocationByID(getLocationID());
-    return location;
-  }
-
-  public void setLocation(Location location) {
-    this.location = location;
+  public void setFloor(String floor) {
+    this.floor = floor;
   }
 
   public String getType() {
@@ -54,12 +42,26 @@ public class Alert {
     this.type = type;
   }
 
-  public String getIsRead() {
-    return isRead;
-  }
+  // Josh Bloch's Hashing method
+  protected final String getHashCode() {
+    // generate random value between 0 and 1 inclusive
+    double result = (Math.random() + 1) / 2.0;
 
-  public void setIsRead(String isRead) {
-    this.isRead = isRead;
+    // calculate the field component weights
+    long c = floor.hashCode() + type.hashCode();
+
+    // calculate the hash
+    int hash = (int) (37 * result + c);
+
+    // convert hash to string
+    String hashCode = Integer.toString(Math.abs(hash));
+
+    // pad with zeros
+    while (hashCode.length() < 6) {
+      hashCode = "0" + hashCode;
+    }
+
+    return hashCode.substring(0, 6);
   }
 
   public void addSanitationRequest(SanitationRequest req) {
@@ -72,13 +74,13 @@ public class Alert {
   }
 
   public void updateDirty() {
-    if (this.requests.size() == 0) {
+    if (this.requests.size() == 0 && this.type.contains("DIRTY")) {
       AlertQueue.removeAlert(this);
     }
   }
 
   public void updateClean() {
-    if (this.type.equals("CLEAN_PUMP") == false) {
+    if (this.type.contains("CLEAN") == false) {
       return;
     }
 
@@ -118,53 +120,23 @@ public class Alert {
       }
     }
 
-    if (this.type.substring(type.length() - 1).equals("3") && cleanPumpsThree >= 5) {
+    if (this.floor.equals("3") && cleanPumpsThree >= 5) {
       AlertQueue.removeAlert(this);
-    } else if (this.type.substring(type.length() - 1).equals("4") && cleanPumpsFour >= 5) {
+    } else if (this.floor.equals("4") && cleanPumpsFour >= 5) {
       AlertQueue.removeAlert(this);
-    } else if (this.type.substring(type.length() - 1).equals("5") && cleanPumpsFive >= 5) {
+    } else if (this.floor.equals("5") && cleanPumpsFive >= 5) {
       AlertQueue.removeAlert(this);
     }
-  }
-
-  ////////////////////////// Location /////////////////////////////
-  public int getXCoord() {
-    return location.getXCoord();
-  }
-
-  public int getYCoord() {
-    return location.getYCoord();
-  }
-
-  public String getFloor() {
-    return location.getFloor();
-  }
-
-  public String getBuilding() {
-    return location.getBuilding();
-  }
-
-  public String getNodeType() {
-    return location.getNodeType();
-  }
-
-  public String getLongName() {
-    return location.getLongName();
-  }
-
-  public String getShortName() {
-    return location.getShortName();
   }
 
   public boolean equals(Object o) {
     try {
-      ((Alert) o).getLocationID();
+      ((EquipmentAlert) o).getAlertID();
     } catch (Exception e) {
       return false;
     }
 
-    if (this.locationID.equals(((Alert) o).getLocationID())
-        && this.type.equals(((Alert) o).getType())) {
+    if (this.alertID.equals(((EquipmentAlert) o).getAlertID())) {
       return true;
     }
     return false;

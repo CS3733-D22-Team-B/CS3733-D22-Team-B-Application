@@ -1,16 +1,13 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.Alert;
-import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
-import edu.wpi.cs3733.D22.teamB.databases.EquipmentRequest;
-import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
+import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.util.Date;
 
 public class SanitationRequest extends EquipmentRequest {
 
   private DatabaseController DC = DatabaseController.getInstance();
 
-  private Alert myAlert;
+  private EquipmentAlert myAlert;
 
   public SanitationRequest(String equipmentID, String information, int priority, String type) {
     super(null, equipmentID, information, priority);
@@ -65,7 +62,7 @@ public class SanitationRequest extends EquipmentRequest {
     }
   }
 
-  public void setMyAlert(Alert alert) {
+  public void setMyAlert(EquipmentAlert alert) {
     this.myAlert = alert;
   }
 }
