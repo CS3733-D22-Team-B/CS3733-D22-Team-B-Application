@@ -1,5 +1,5 @@
 .main-button {
-    -fx-background-color: linear-gradient(to bottom right, #434B5B, #1080B9);
+    -fx-background-color: linear-gradient(to bottom right, #434B5B, #10B9A2);
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
