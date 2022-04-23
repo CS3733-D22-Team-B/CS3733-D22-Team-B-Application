@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="398.0" prefWidth="672.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
    <children>
-      <GridPane prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
+      <GridPane prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="293.0" prefWidth="293.0" />
@@ -45,7 +45,7 @@
             <RowConstraints maxHeight="39.0" minHeight="39.0" prefHeight="39.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="requestLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="471.5" text="Message" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+            <Label fx:id="requestLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="471.5" styleClass="label-box" text="Message" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
                <padding>
                   <Insets left="20.0" />
                </padding></Label>
@@ -56,6 +56,9 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </TextArea>
             <ComboBox fx:id="patientInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <padding>
@@ -86,9 +89,12 @@
                   <Insets />
                </GridPane.margin>
                <padding>
-                  <Insets left="20.0" />
-               </padding></TextField>
-            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" value="1.0" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="7">
+                  <Insets left="15.0" />
+               </padding>
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font></TextField>
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" value="1.0" GridPane.columnIndex="3" GridPane.columnSpan="5" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>

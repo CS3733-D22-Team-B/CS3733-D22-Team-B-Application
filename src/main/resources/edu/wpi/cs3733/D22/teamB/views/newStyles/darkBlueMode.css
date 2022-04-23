@@ -88,26 +88,19 @@
 .profile-table-message-background {
     -fx-background-color: #2B303A;
 }
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+.scroll-pane > .viewport {
+-fx-background-color: transparent;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.request-button {
+    -fx-background-color: linear-gradient(to bottom right, #434B5B, #58707D);
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
 .table-view .scroll-bar * {
     -fx-min-width: 0;
     -fx-pref-width: 0;
@@ -174,6 +167,16 @@
     -fx-text-fill: rgb(255,255,255, .5);
     -fx-background-radius: 10px;
 }
+.combo-box-popup .list-view
+{
+    -fx-background-color: #1E2129, #1E2129;
+}
+.combo-box .list-cell
+{
+    -fx-background: #1E2129;
+    -fx-background-color: transparent;
+}
+
 .combo-box-base .text{
     -fx-fill: rgba(255, 255, 255, 0.5);
 }
@@ -200,4 +203,29 @@
 }
 .simple-slider {
     -fx-base: #7bcce4;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+.date-picker .arrow {
+    -fx-background-color: white;
+}
+.date-picker .cell {
+    -fx-text-fill: white;
+    -fx-font: 12px "Sans-Serif";
+}
+
+.date-picker .text-field {
+    -fx-control-inner-background: #1E2129;
+    -fx-background-radius: 10px 0px 0px 10px;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-effect: none;
+    -fx-text-fill: white;
+}
+
+.simple-date-picker {
+    -fx-background-color: #1E2129;
+    -fx-background-radius: 10px;
 }
