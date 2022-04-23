@@ -1,5 +1,4 @@
 nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName,availability
-bHALL00101,984,276,1,Tower,HALL,Lower Pike Hallway Exit Lobby,Hallway Exit Lobby,FALSE
 bDEPT00101,486,199,1,Tower,DEPT,Center for International Medicine,CIM,FALSE
 bDEPT00201,507,495,1,Tower,DEPT,Bretholtz Center for Patients and Families,Bretholtz WR,FALSE
 bDEPT00301,594,261,1,Tower,DEPT,Multifaith Chapel,Chapel,FALSE
@@ -12,6 +11,7 @@ bELEV00M01,698,655,1,Tower,ELEV,Elevator M Floor 1,Elevator M1,FALSE
 bEXIT00101,902,165,1,Tower,EXIT,Shattuck Street Lobby Exit,Shattuck St. Exit,FALSE
 bEXIT00201,633,688,1,Tower,EXIT,75 Francis Valet Drop-Off,Valet Drop-Off,FALSE
 bEXIT00301,995,713,1,Tower,EXIT,Emergency Department Entrance,Emergency Entrance,FALSE
+bHALL00101,984,276,1,Tower,HALL,Lower Pike Hallway Exit Lobby,Hallway Exit Lobby,FALSE
 bHALL00201,942,276,1,Tower,HALL,Lobby Shattuck Street,Lobby Shattuck St,FALSE
 bHALL00301,907,276,1,Tower,HALL,Shattuck Street Lobby 1,Shattuck St Lobby 1,FALSE
 bHALL00701,642,295,1,Tower,HALL,Tower Elevator Entrance,Hallway F00701,FALSE

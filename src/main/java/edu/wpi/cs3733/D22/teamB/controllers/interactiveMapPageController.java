@@ -169,7 +169,7 @@ public class interactiveMapPageController extends aStarVisualization {
     populateAvailabilityDropdown();
     populateStateDropdown();
     setAll();
-    // drawEdgesPerFloor(6);
+    // drawEdgesPerFloor(2);
 
     AStar pathplanner = new AStar(dao.getByID("bHALL00704"), dao.getByID("bDEPT00301"));
     ArrayList<Location> path = pathplanner.getPath();
