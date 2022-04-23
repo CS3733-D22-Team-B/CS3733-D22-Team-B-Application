@@ -15,6 +15,9 @@ public class AStarMain {
     // DatabaseTester();
 
     fullAstarTester();
+
+    //    EdgeGetter edgeGetter = new EdgeGetter();
+    //    LinkedList<String> firstNeighbors = edgeGetter.getEdges("bREST002L1");
   }
 
   private static void DatabaseTester() {
@@ -24,8 +27,8 @@ public class AStarMain {
     EdgesDB edges = EdgesDB.getInstance();
 
     // Set the start and target locations
-    Location start = locDB.getByID("bDEPT00101");
-    Location target = locDB.getByID("bINFO00101");
+    Location start = locDB.getByID("bSTOR001L1");
+    Location target = locDB.getByID("bREST002L1");
 
     EdgeGetter edgeGetter = new EdgeGetter();
     LinkedList<String> firstNeighbors = edgeGetter.getEdges("bDEPT00101");

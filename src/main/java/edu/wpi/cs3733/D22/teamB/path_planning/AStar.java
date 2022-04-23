@@ -11,14 +11,10 @@ public class AStar {
   LocationsDB locDB = LocationsDB.getInstance();
   Node startNode;
   Node targetNode;
-  // HashMap<String, LinkedList<String>> edgeMap;
   HashMap<String, Node> nodeMap = new HashMap<String, Node>();
   EdgeGetter edgeGetter = EdgeGetter.getInstance();
 
   public AStar(Location startLoc, Location targetLoc) {
-
-    // this.edgeMap = edgy.getEdges();
-
     this.startNode = new Node(startLoc, edgeGetter.getEdges(startLoc.getNodeID()));
     this.targetNode = new Node(targetLoc, edgeGetter.getEdges(targetLoc.getNodeID()));
   }
@@ -31,12 +27,29 @@ public class AStar {
    * @return the distance between them
    */
   private double getCurrentCost(Node firstNode, Node secondNode) {
-    double xDiff = secondNode.getXCoord() - firstNode.getXCoord();
-    double yDiff = secondNode.getYCoord() - firstNode.getYCoord();
+    double xDiff = Math.abs(secondNode.getXCoord() - firstNode.getXCoord());
+    double yDiff = Math.abs(secondNode.getYCoord() - firstNode.getYCoord());
 
     double cost = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
 
     return cost;
+  }
+
+  /**
+   * Calculates a heuristic value for the algorithm. Heuristic is defined as the horizontal distance
+   * to go plus a penalty per floor
+   *
+   * @param node current node
+   * @param targetNode the goal node
+   * @return a guess for the cost remaining
+   */
+  public double getHeuristicValue(Node node, Node targetNode) {
+    double floorPenalty = 40;
+    double value = getCurrentCost(node, targetNode);
+
+    value += Math.abs(node.getFloor() - targetNode.getFloor()) * floorPenalty;
+
+    return value;
   }
 
   /**
@@ -57,6 +70,7 @@ public class AStar {
         // We need to save the cameFrom attribute from current node to targetNode
         // We can do that by just setting them equal
         targetNode = currentNode;
+        System.out.println("I found a path!");
         break;
       }
 
@@ -84,9 +98,8 @@ public class AStar {
           nextNode.setCostsoFar(newCost);
           nextNode.setCameFrom(currentNode);
 
-          // Here we add a heuristic value. In this case, it is just the distance between
-          // the target node and the next node, so we can reuse the cost function
-          double priority = newCost + getCurrentCost(nextNode, targetNode);
+          // Here we add a heuristic value. We use the heuristic value function defined above
+          double priority = newCost + getHeuristicValue(nextNode, targetNode);
           nextNode.setPriority(priority);
           frontier.add(nextNode);
         }
@@ -101,6 +114,7 @@ public class AStar {
       System.out.println(node.getNodeId());
       node = node.getCameFrom();
     }
+    path.add(0, locDB.getByID(startNode.getNodeId()));
 
     return path;
   }
