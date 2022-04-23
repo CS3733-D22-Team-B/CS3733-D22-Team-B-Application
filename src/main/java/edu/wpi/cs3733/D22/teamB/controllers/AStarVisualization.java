@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.databases.Location;
 import edu.wpi.cs3733.D22.teamB.databases.LocationsDB;
+import edu.wpi.cs3733.D22.teamB.path_planning.AStar;
 import edu.wpi.cs3733.D22.teamB.path_planning.EdgeGetter;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,17 +12,38 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class aStarVisualization extends MenuBarController {
+public class AStarVisualization extends MenuBarController {
   @FXML Pane mapPane;
   @FXML ImageView mapImage;
 
-  public void drawPath(ArrayList<Location> path) {
-    for (int i = 0; i < path.size() - 1; i++) {
-      drawLine(path.get(i), path.get(i + 1));
-      // System.out.println(path.get(i).getNodeID());
+  ArrayList<Line> lineList = new ArrayList<Line>();
+  ArrayList<Location> path = new ArrayList<Location>();
+
+  public void calculatePath(Location start, Location end) {
+    AStar pathplanner = new AStar(start, end);
+    this.path = pathplanner.getPath();
+  }
+
+  public void drawPathFloor(String floor) {
+    if (!path.isEmpty()) {
+      for (int i = 0; i < path.size() - 1; i++) {
+        if (path.get(i).getFloor().equals(floor)) {
+          drawLine(path.get(i), path.get(i + 1));
+          // System.out.println(path.get(i).getNodeID());
+        }
+      }
     }
   }
 
+  public void clearLines() {
+    if (!lineList.isEmpty()) {
+      for (Line l : lineList) {
+        mapPane.getChildren().remove(l);
+      }
+    }
+  }
+
+  // This is used for debugging to make sure the edges are all correct for each floor
   public void drawEdgesPerFloor(int floor) {
     LocationsDB dao = LocationsDB.getInstance();
 
@@ -55,6 +77,7 @@ public class aStarVisualization extends MenuBarController {
     line.setStroke(Color.rgb(250, 214, 27));
 
     mapPane.getChildren().add(line);
+    lineList.add(line);
   }
 
   public int[] mapCoordsToViewCoords(int x, int y) {

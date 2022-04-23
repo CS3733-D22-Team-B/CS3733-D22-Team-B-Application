@@ -51,6 +51,7 @@ public class AStar {
 
     return value;
   }
+
   /**
    * Runs the AStar algorithm between the start node and target node declared in the constructor.
    *

@@ -6,9 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamB.databases.*;
-import edu.wpi.cs3733.D22.teamB.path_planning.AStar;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,7 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 
-public class interactiveMapPageController extends aStarVisualization {
+public class interactiveMapPageController extends AStarVisualization {
   @FXML JFXButton menuButton;
   @FXML JFXButton addButton;
   @FXML JFXButton editButton;
@@ -169,11 +167,9 @@ public class interactiveMapPageController extends aStarVisualization {
     populateAvailabilityDropdown();
     populateStateDropdown();
     setAll();
-    // drawEdgesPerFloor(2);
 
-    AStar pathplanner = new AStar(dao.getByID("bHALL00704"), dao.getByID("bDEPT00301"));
-    ArrayList<Location> path = pathplanner.getPath();
-    drawPath(path);
+    // drawEdgesPerFloor(2);
+    calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
 
     mapPane.setOnMousePressed(
         e -> {
@@ -224,6 +220,7 @@ public class interactiveMapPageController extends aStarVisualization {
   }
 
   public void setAll() {
+    clearLines();
     populateLocationDropdown();
     setRoomIcons();
     setEquipIcons();
@@ -560,6 +557,7 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL2.png"));
     l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloorL1() {
@@ -570,9 +568,11 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL1.png"));
     l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor1() {
+    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 2;
     floorString = "1";
     resetFloorSelectors();
@@ -580,9 +580,11 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
     f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor2() {
+    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 3;
     floorString = "2";
     resetFloorSelectors();
@@ -590,9 +592,11 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
     f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor3() {
+    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 4;
     floorString = "3";
     resetFloorSelectors();
@@ -600,9 +604,11 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor4() {
+    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 5;
     floorString = "4";
     resetFloorSelectors();
@@ -610,9 +616,11 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
     f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor5() {
+    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 6;
     floorString = "5";
     resetFloorSelectors();
@@ -620,6 +628,7 @@ public class interactiveMapPageController extends aStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
     f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void startAdd() {
