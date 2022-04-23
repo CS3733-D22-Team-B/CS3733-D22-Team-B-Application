@@ -39,3 +39,6 @@
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.75), 10, .2, 0, 0);
     -fx-background-radius: 10px;
 }
+.label {
+    -fx-text-fill: white;
+}
