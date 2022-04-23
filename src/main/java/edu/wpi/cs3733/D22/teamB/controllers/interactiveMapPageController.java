@@ -169,7 +169,7 @@ public class interactiveMapPageController extends AStarVisualization {
     setAll();
 
     // drawEdgesPerFloor(2);
-    calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
+    // calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
 
     mapPane.setOnMousePressed(
         e -> {
@@ -572,7 +572,6 @@ public class interactiveMapPageController extends AStarVisualization {
   }
 
   public void goToFloor1() {
-    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 2;
     floorString = "1";
     resetFloorSelectors();
@@ -584,7 +583,6 @@ public class interactiveMapPageController extends AStarVisualization {
   }
 
   public void goToFloor2() {
-    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 3;
     floorString = "2";
     resetFloorSelectors();
@@ -596,7 +594,6 @@ public class interactiveMapPageController extends AStarVisualization {
   }
 
   public void goToFloor3() {
-    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 4;
     floorString = "3";
     resetFloorSelectors();
@@ -608,7 +605,6 @@ public class interactiveMapPageController extends AStarVisualization {
   }
 
   public void goToFloor4() {
-    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 5;
     floorString = "4";
     resetFloorSelectors();
@@ -620,7 +616,6 @@ public class interactiveMapPageController extends AStarVisualization {
   }
 
   public void goToFloor5() {
-    mapPane.getChildren().remove(lineList.get(0));
     floorLevel = 6;
     floorString = "5";
     resetFloorSelectors();
