@@ -61,7 +61,7 @@ public class DatabaseController {
   public LinkedList<Activity> listActivities() {
     return ActivityDB.getInstance().list();
   }
-  
+
   /////////////////////////////// .listByAttribute() //////////////////////////////////////////////
   public LinkedList<Location> listLocationsByAttribute(String attribute, String value) {
     return LocationsDB.getInstance().listByAttribute(attribute, value);

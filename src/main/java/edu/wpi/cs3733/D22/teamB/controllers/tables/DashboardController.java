@@ -3,7 +3,7 @@ package edu.wpi.cs3733.D22.teamB.controllers.tables;
 import edu.wpi.cs3733.D22.teamB.DateHelper;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
-import edu.wpi.cs3733.D22.teamB.databases.Alert;
+import edu.wpi.cs3733.D22.teamB.databases.EquipmentAlert;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.*;
 import javafx.collections.FXCollections;
@@ -35,14 +35,14 @@ public class DashboardController extends MenuBarController {
   @FXML private Accordion activityPane;
 
   @FXML TableView alertTable;
-  @FXML TableColumn<Alert, String> columnLocation;
-  @FXML TableColumn<Alert, String> columnType;
+  @FXML TableColumn<EquipmentAlert, String> columnLocation;
+  @FXML TableColumn<EquipmentAlert, String> columnType;
 
   private ServiceRequestsDB servDAO;
   private MedicalEquipmentDB medDAO;
   private PatientsDB patientDAO;
   private ActivityDB activityDAO;
-  private ObservableList<Alert> alerts = FXCollections.observableArrayList();
+  private ObservableList<EquipmentAlert> alerts = FXCollections.observableArrayList();
 
   private LinkedList<String> requestsF1 = new LinkedList<>(),
       requestsF2 = new LinkedList<String>(),
@@ -190,8 +190,8 @@ public class DashboardController extends MenuBarController {
     displayActivityReport();
 
     columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
-    columnLocation.setCellValueFactory(new PropertyValueFactory<>("locationID"));
-    for (Alert alert : AlertQueue.getAlerts()) {
+    columnLocation.setCellValueFactory(new PropertyValueFactory<>("floor"));
+    for (EquipmentAlert alert : AlertQueue.getAlerts()) {
       alerts.add(alert);
     }
 

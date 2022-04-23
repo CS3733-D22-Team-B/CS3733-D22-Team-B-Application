@@ -268,8 +268,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     if (currentRequest instanceof EquipmentRequest) {
       EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
       eqReq.updateMedicalEquipmentStatus();
-      AlertController alertController = AlertController.getInstance();
-      alertController.checkForAlerts();
+      AlertController.getInstance().checkForAlerts();
     } else if (currentRequest instanceof SanitationRequest) {
       SanitationRequest sanReq = (SanitationRequest) currentRequest;
       sanReq.updateMedicalEquipmentStatus();

@@ -28,7 +28,8 @@
                         <Image url="@../assets/Profile/ResetPassword.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
+               </graphic>
+            </JFXButton>
             <ImageView fitHeight="65.0" fitWidth="454.5" layoutX="206.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Profile/Name.png" />
@@ -74,7 +75,7 @@
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="changePasswordPane" layoutX="14.0" layoutY="250.0" prefHeight="167.0" prefWidth="669.0" visible="false" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+            <AnchorPane fx:id="changePasswordPane" layoutX="10.0" layoutY="48.0" prefHeight="167.0" prefWidth="665.0" visible="false" AnchorPane.bottomAnchor="240.66666666666666" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="11.0">
                <children>
                   <ImageView fitHeight="164.0" fitWidth="661.0" pickOnBounds="true">
                      <image>
@@ -101,7 +102,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <SplitPane fx:id="requestsDisplay" dividerPositions="0.3454601990049751" layoutX="31.0" layoutY="276.0" prefHeight="164.0" prefWidth="634.0" styleClass="container-box" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="276.0">
+            <SplitPane fx:id="requestsDisplay" dividerPositions="0.3454601990049751" layoutX="16.0" layoutY="230.0" prefHeight="216.0" prefWidth="657.0" styleClass="container-box" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="229.0">
                <items>
                   <ScrollPane fx:id="scrollPane" prefHeight="162.0" prefWidth="209.0" style="-fx-background-color: #2e3c4b;" visible="false">
                     <content>

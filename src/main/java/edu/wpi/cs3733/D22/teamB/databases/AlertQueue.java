@@ -3,7 +3,7 @@ package edu.wpi.cs3733.D22.teamB.databases;
 import java.util.LinkedList;
 
 public class AlertQueue {
-  private static LinkedList<Alert> alerts = new LinkedList<>();
+  private static LinkedList<EquipmentAlert> alerts = new LinkedList<>();
   private static AlertQueue queue = new AlertQueue();
 
   private AlertQueue() {}
@@ -12,15 +12,15 @@ public class AlertQueue {
     return queue;
   }
 
-  public static void addAlert(Alert alert) {
+  public static void addAlert(EquipmentAlert alert) {
     alerts.add(alert);
   }
 
-  public static void removeAlert(Alert alert) {
+  public static void removeAlert(EquipmentAlert alert) {
     alerts.remove(alert);
   }
 
-  public static LinkedList<Alert> getAlerts() {
+  public static LinkedList<EquipmentAlert> getAlerts() {
     return alerts;
   }
 
