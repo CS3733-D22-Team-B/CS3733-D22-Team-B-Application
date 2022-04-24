@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.requests.MealRequest;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -59,7 +59,7 @@ public class MealRequestController extends PatientBasedRequestController {
             patientID,
             "Meal: " + mealName + "\nAdditional Information: " + notes,
             (int) prioritySlider.getValue());
-    ServiceRequestsDB.getInstance().add(request);
+    DatabaseController.getInstance().add(request);
     requestLabel.setText("Meal request sent: " + mealName + " for " + patientName);
   }
 

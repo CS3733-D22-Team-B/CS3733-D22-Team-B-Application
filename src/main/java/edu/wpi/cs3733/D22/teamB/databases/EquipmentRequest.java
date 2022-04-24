@@ -63,10 +63,12 @@ public class EquipmentRequest extends Request {
 
   public void updateMedicalEquipmentStatus() {
     MedicalEquipment medEq = getMedicalEquipment();
-    if (this.status.equals("Completed")) {
-      medEq.setIsClean(false);
+    if (this.status.equals("In-Progress")) {
+      System.out.println("In progress called");
       medEq.setAvailability("Unavailable");
-      medEq.moveToDirty();
+    } else if (this.status.equals("Completed")) {
+      medEq.setAvailability("Unavailable");
+      medEq.setNodeID(locationID);
       DatabaseController DC = DatabaseController.getInstance();
       DC.update(medEq);
     }

@@ -62,12 +62,16 @@ public class MedicalEquipment {
   }
 
   public void setIsClean(boolean newIsClean) {
-    isClean = newIsClean;
-
-    if (!newIsClean) {
+    // If we switch state, we move the equipment
+    if (this.isClean && !newIsClean) {
       this.setAvailability("Unavailable");
       this.moveToDirty();
+    } else if (!this.isClean && newIsClean) {
+      this.setAvailability("Available");
+      moveToClean();
     }
+
+    isClean = newIsClean;
   }
 
   public boolean getIsClean() {
