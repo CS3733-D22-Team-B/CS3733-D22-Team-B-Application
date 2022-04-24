@@ -83,12 +83,22 @@
                               <Font name="Microsoft Sans Serif" size="8.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="mealRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleMealPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Meal" textAlignment="CENTER" wrapText="true">
+                        <JFXButton fx:id="sanitationRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSanitationPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Sanitation" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="securityRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSecurityPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Security" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="8.0" />
                            </font>
                         </JFXButton>
                         <JFXButton fx:id="internalPatientTransferButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleTransferPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Internal Transfer" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="mealRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleMealPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Meal" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="8.0" />
                            </font>
@@ -104,16 +114,6 @@
                            </font>
                         </JFXButton>
                         <JFXButton fx:id="laundryRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleLaundryPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Laundry" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font size="8.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="sanitationRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSanitationPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Sanitation" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font size="8.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="securityRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSecurityPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Security" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="8.0" />
                            </font>
