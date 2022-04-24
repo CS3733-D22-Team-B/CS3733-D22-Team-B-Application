@@ -15,6 +15,19 @@ public class Activity {
   private String action;
 
   public Activity(
+      Date date, String employeeID, String typeID, String information, String type, String action) {
+    this.activityID = createActivityID();
+    this.dateAndTime = date;
+    this.employeeID = employeeID;
+    this.typeID = typeID;
+    this.information = information;
+    this.type = type;
+    this.action = action;
+
+    employee = getEmployee();
+  }
+
+  public Activity(
       String activityID,
       Date date,
       String employeeID,
@@ -31,6 +44,11 @@ public class Activity {
     this.action = action;
 
     employee = getEmployee();
+  }
+
+  public String createActivityID() {
+    int activityCount = ActivityDB.getInstance().list().size();
+    return String.format("ACT%03d", activityCount + 1);
   }
 
   public String getActivityID() {

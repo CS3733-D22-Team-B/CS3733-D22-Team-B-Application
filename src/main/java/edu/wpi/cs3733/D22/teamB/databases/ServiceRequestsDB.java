@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.requests.*;
 import java.sql.*;
 import java.util.HashMap;
@@ -294,6 +295,15 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
     if (requestMap.containsKey(reqObj.getRequestID())) {
       return -1;
     }
+    DatabaseController.getInstance()
+            .add(
+                    new Activity(
+                            reqObj.getTimeCreated(),
+                            App.currentUser.getEmployeeID(),
+                            reqObj.getRequestID(),
+                            null,
+                            "Request",
+                            "created"));
     return transform(
         reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)", false);
   }

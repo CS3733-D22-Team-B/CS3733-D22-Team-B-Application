@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.requests.SecurityRequest;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -33,7 +33,7 @@ public class SecurityRequestController extends LocationBasedRequestController {
     String locationID = locationsDAO.getLocationID(locationName);
     SecurityRequest request =
         new SecurityRequest(locationID, notes, (int) prioritySlider.getValue());
-    ServiceRequestsDB.getInstance().add(request);
+    DatabaseController.getInstance().add(request);
     requestLabel.setText("Request sent: Security to " + locationName);
   }
 }

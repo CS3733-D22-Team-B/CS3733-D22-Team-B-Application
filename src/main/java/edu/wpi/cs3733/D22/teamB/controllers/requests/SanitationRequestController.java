@@ -59,7 +59,7 @@ public class SanitationRequestController extends EquipmentBasedRequestController
     String equipmentID = equDAO.getEquipmentID(equipment);
     SanitationRequest request =
         new SanitationRequest(equipmentID, notes, (int) prioritySlider.getValue(), "Sanitation");
-    request.getMedicalEquipment().setAvailability("Requested");
+    DatabaseController.getInstance().add(request);
     requestLabel.setText("Request sent: Sanitize " + equipment);
     ServiceRequestsDB.getInstance().add(request);
   }

@@ -1,6 +1,9 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import edu.wpi.cs3733.D22.teamB.App;
+
 import java.sql.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -117,6 +120,15 @@ public class LocationsDB extends DatabaseSuperclass implements IDatabases<Locati
     if (locationMap.containsKey(locObj.getNodeID())) {
       return -1;
     }
+    DatabaseController.getInstance()
+            .add(
+                    new Activity(
+                            new Date(),
+                            App.currentUser.getEmployeeID(),
+                            locObj.getNodeID(),
+                            null,
+                            "Location",
+                            "added"));
     return transform(locObj, "INSERT INTO Locations VALUES(?,?,?,?,?,?,?,?,?)", false);
   }
 

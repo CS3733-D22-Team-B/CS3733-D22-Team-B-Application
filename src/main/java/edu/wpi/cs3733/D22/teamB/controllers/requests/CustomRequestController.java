@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.requests.CustomRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import javafx.beans.value.ChangeListener;
@@ -75,7 +75,7 @@ public class CustomRequestController extends PatientAndLocationBasedRequestContr
       request = new CustomRequest(null, patientID, type, notes, (int) prioritySlider.getValue());
       requestLabel.setText("Custom request sent: " + notes + " for " + patientName);
     }
-    ServiceRequestsDB.getInstance().add(request);
+    DatabaseController.getInstance().add(request);
   }
 
   @FXML

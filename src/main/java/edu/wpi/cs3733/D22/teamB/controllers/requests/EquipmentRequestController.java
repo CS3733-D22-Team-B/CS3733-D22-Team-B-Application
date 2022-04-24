@@ -54,7 +54,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     String equipmentID = equDAO.getEquipmentID(equipment);
     EquipmentRequest request =
         new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
-    ServiceRequestsDB.getInstance().add(request);
+    DatabaseController.getInstance().add(request);
     request.getMedicalEquipment().setAvailability("Requested");
     requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }

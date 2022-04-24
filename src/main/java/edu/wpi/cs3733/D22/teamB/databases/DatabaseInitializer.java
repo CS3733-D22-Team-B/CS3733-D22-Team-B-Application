@@ -40,8 +40,8 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "EMPLOYEES")) {
         statement.execute(
-            "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), username VARCHAR(25), password VARCHAR(25), CONSTRAINT  EMPLOYEES_PK primary key (employeeID))");
-        populateDatabase(Filepath.getInstance().getEmployeesCSVFilePath(), "Employees", 7);
+            "CREATE TABLE Employees(employeeID VARCHAR(10), lastName VARCHAR(25), firstName VARCHAR(25), department VARCHAR(100), position VARCHAR(50), username VARCHAR(25), password VARCHAR(25), lightOn BOOLEAN, color VARCHAR(100), CONSTRAINT EMPLOYEES_PK primary key (employeeID))");
+        populateDatabase(Filepath.getInstance().getEmployeesCSVFilePath(), "Employees", 9);
       }
       if (!tableExists(connection, "PATIENTS")) {
         statement.execute(
@@ -50,7 +50,7 @@ public class DatabaseInitializer {
       }
       if (!tableExists(connection, "EDGES")) {
         statement.execute(
-            "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID), CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID))");
+            "CREATE TABLE Edges(edgeID VARCHAR(21), nodeID1 VARCHAR(10), nodeID2 VARCHAR(10), CONSTRAINT EDGE_PK primary key (edgeID), CONSTRAINT EDGE_NODE1 foreign key (nodeID1) REFERENCES Locations (nodeID) ON DELETE CASCADE, CONSTRAINT EDGE_NODE2 foreign key (nodeID2) REFERENCES Locations (nodeID) ON DELETE CASCADE)");
         populateDatabase(Filepath.getInstance().getEdgesCSVFilePath(), "Edges", 3);
       }
       if (!tableExists(connection, "SERVICEREQUESTS")) {
@@ -88,7 +88,7 @@ public class DatabaseInitializer {
             "INSERT INTO MedicalEquipment(equipmentID, nodeID, type, isClean, availability, name) VALUES(?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Employees") {
         addToTable =
-            "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO Employees(employeeID, lastName, firstName, department, position, username, password, lightOn, color) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
       } else if (databaseName == "Patients") {
         addToTable =
             "INSERT INTO Patients(patientID, lastName, firstName, nodeID, information) VALUES(?, ?, ?, ?, ?)";
