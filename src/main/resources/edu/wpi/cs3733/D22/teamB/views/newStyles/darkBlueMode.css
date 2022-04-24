@@ -104,15 +104,27 @@
 .scroll-pane > .viewport {
 -fx-background-color: transparent;
 }
-
+.button-pane {
+    -fx-background-color: #1E2129;
+    -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.75), 10, .2, 0, 0);
+    -fx-background-radius: 10px;
+}
+.button-pane > .viewport
+{
+    -fx-background-color: #1E2129;
+    -fx-background-radius: 10px;
+    -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.75), 10, .2, 0, 0);
+}
 .request-button {
     -fx-background-color: linear-gradient(to bottom right, #434B5B, #58707D);
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
     -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-border-color: transparent;
+    -fx-opacity: .40;
 }
 .request-button-selected {
-    -fx-background-color: #88a9bb;
+    -fx-opacity: 1;
 }
 .table-view .scroll-bar * {
     -fx-min-width: 0;
