@@ -1,9 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
 import edu.wpi.cs3733.D22.teamB.App;
-
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -125,15 +123,14 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
       return -1;
     }
     DatabaseController.getInstance()
-            .add(
-                    new Activity(
-                            new java.util.Date(),
-                            App.currentUser.getEmployeeID(),
-                            empObj.getEmployeeID(),
-                            null,
-                            "Employee",
-                            "added to system"
-                            ));
+        .add(
+            new Activity(
+                new java.util.Date(),
+                App.currentUser.getEmployeeID(),
+                empObj.getEmployeeID(),
+                null,
+                "Employee",
+                "added to system"));
     return transform(empObj, "INSERT INTO Employees VALUES(?,?,?,?,?,?,?,?,?)", false);
   }
 
