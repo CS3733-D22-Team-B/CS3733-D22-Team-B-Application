@@ -7,7 +7,6 @@ import javafx.scene.control.Alert;
 
 public class AlertController {
 
-  // TODO make these work:
   private boolean statusDirtyBedThreeAlert = false;
   private boolean statusDirtyBedFourAlert = false;
   private boolean statusDirtyBedFiveAlert = false;

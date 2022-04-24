@@ -995,8 +995,11 @@ public class interactiveMapPageController extends AStarVisualization {
       }
       if (stateDropdown.getValue().equals("Clean")) {
         toEdit.setIsClean(true);
-      } else toEdit.setIsClean(false);
+      } else {
+        toEdit.setIsClean(false);
+      }
       edao.update(toEdit);
+      AlertController.getInstance().checkForAlerts();
     }
     endEquipEdit();
   }
