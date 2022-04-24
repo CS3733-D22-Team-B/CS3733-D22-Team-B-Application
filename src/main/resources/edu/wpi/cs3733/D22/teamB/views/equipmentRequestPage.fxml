@@ -105,6 +105,14 @@
                </GridPane.margin>
             </ComboBox>
             <ComboBox fx:id="equipmentInput" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="3">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="BED" fx:value="Bed" />
+                     <String fx:id="PUMP" fx:value="Infusion Pump" />
+                     <String fx:id="RECL" fx:value="Recliner" />
+                     <String fx:id="XRAY" fx:value="X-Ray" />
+                  </FXCollections>
+               </items>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>

@@ -27,17 +27,11 @@ public class EquipmentRequestController extends LocationBasedRequestController {
                 setNotes();
               }
             });
-
-    for (MedicalEquipment equipment : equDAO.list()) {
-      if (equipment.getIsClean() && equipment.getAvailability().equals("Available")) {
-        equipmentInput.getItems().add(equipment.getName());
-      }
-    }
   }
 
   @FXML
   public void setEquipment() {
-    equipment = equipmentInput.getValue();
+    equipment = getNearestEquipmentByType(equipmentInput.getValue());
     enableSubmission();
   }
 
@@ -51,7 +45,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
     String locationID = locationsDAO.getLocationID(locationName);
-    String equipmentID = equDAO.getEquipmentID(equipment);
+    String equipmentID = equipment;
     EquipmentRequest request =
         new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
     ServiceRequestsDB.getInstance().add(request);
@@ -64,5 +58,40 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     super.reset(actionEvent);
     equipmentInput.getSelectionModel().clearSelection();
     equipment = "";
+  }
+
+  private String getNearestEquipmentByType(String type) {
+    MedicalEquipment closestEquip = null;
+    type = convertType(type);
+
+    for (MedicalEquipment equipment : equDAO.list()) {
+      if (equipment.getType().equals(type) && equipment.getIsClean()) {
+        closestEquip = equipment;
+        break;
+      }
+    }
+
+    return closestEquip.getEquipmentID();
+  }
+
+  private String convertType(String type) {
+    switch (type) {
+      case "Bed":
+        type = "BED";
+        break;
+      case "Infusion Pump":
+        type = "PUMP";
+        break;
+      case "Recliner":
+        type = "RECL";
+        break;
+      case "X-Ray":
+        type = "XRAY";
+        break;
+      default:
+        break;
+    }
+
+    return type;
   }
 }
