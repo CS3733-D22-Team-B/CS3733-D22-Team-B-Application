@@ -195,9 +195,9 @@ public class AlertController {
 
   public void updateAlerts() {
     LinkedList<EquipmentAlert> alertList = AlertQueue.getAlerts();
-    for (EquipmentAlert alert : alertList) {
-      alert.updateDirty();
-      alert.updateClean();
+    for (int i = alertList.size() - 1; i >= 0; i--) {
+      alertList.get(i).updateDirty();
+      alertList.get(i).updateClean();
     }
   }
 
