@@ -75,6 +75,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
 
         if (minDist == -1 || newDist < minDist) {
           closestEquip = equipment;
+          minDist = newDist;
         }
       }
     }
@@ -86,7 +87,11 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     double XDist = equipment.getLocation().getXCoord() - location.getXCoord();
     double YDist = equipment.getLocation().getYCoord() - location.getYCoord();
 
-    return Math.sqrt(Math.pow(XDist, 2) + Math.pow(YDist, 2));
+    int eqFloor = floorStringToInt(equipment.getLocation().getFloor());
+    int locFloor = floorStringToInt(location.getFloor());
+    double floorDiff = Math.abs(eqFloor - locFloor) * 200;
+
+    return Math.sqrt(Math.pow(XDist, 2) + Math.pow(YDist, 2)) + floorDiff;
   }
 
   private String convertType(String type) {
@@ -108,5 +113,38 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     }
 
     return type;
+  }
+
+  private int floorStringToInt(String floor) {
+    int floorNum;
+
+    switch (floor) {
+      case "L2":
+        floorNum = 0;
+        break;
+      case "L1":
+        floorNum = 1;
+        break;
+      case "1":
+        floorNum = 2;
+        break;
+      case "2":
+        floorNum = 3;
+        break;
+      case "3":
+        floorNum = 4;
+        break;
+      case "4":
+        floorNum = 5;
+        break;
+      case "5":
+        floorNum = 6;
+        break;
+      default:
+        floorNum = -1;
+        break;
+    }
+
+    return floorNum;
   }
 }
