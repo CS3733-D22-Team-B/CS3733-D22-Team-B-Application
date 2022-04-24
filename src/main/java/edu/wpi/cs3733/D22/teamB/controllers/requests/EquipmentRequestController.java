@@ -106,7 +106,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
         type = "RECL";
         break;
       case "X-Ray":
-        type = "XRAY";
+        type = "XR";
         break;
       default:
         break;
