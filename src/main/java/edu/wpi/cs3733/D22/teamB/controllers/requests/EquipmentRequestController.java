@@ -5,12 +5,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 
 public class EquipmentRequestController extends LocationBasedRequestController {
   @FXML private ComboBox<String> equipmentInput;
 
   private String equipment = "";
+  boolean equipmentTypeAvailable = false;
 
   private MedicalEquipmentDB equDAO = MedicalEquipmentDB.getInstance();
 
@@ -44,13 +46,17 @@ public class EquipmentRequestController extends LocationBasedRequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    String locationID = locationsDAO.getLocationID(locationName);
-    String equipmentID = equipment;
-    EquipmentRequest request =
-        new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
-    ServiceRequestsDB.getInstance().add(request);
-    request.getMedicalEquipment().setAvailability("Requested");
-    requestLabel.setText("Request sent: " + equipment + " to " + locationName);
+    if (equipmentTypeAvailable) {
+      String locationID = locationsDAO.getLocationID(locationName);
+      String equipmentID = equipment;
+      EquipmentRequest request =
+          new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
+      ServiceRequestsDB.getInstance().add(request);
+      request.getMedicalEquipment().setAvailability("Requested");
+      requestLabel.setText("Request sent: " + equipment + " to " + locationName);
+    } else {
+      requestLabel.setText("There are no " + equipmentInput.getValue() + "s available right now. ");
+    }
   }
 
   @FXML
@@ -69,6 +75,7 @@ public class EquipmentRequestController extends LocationBasedRequestController {
       if (equipment.getType().equals(type)
           && equipment.getIsClean()
           && equipment.getAvailability().equals("Available")) {
+        equipmentTypeAvailable = true;
         Location location = locationsDAO.getLocation(locationsDAO.getLocationID(locationName));
 
         double newDist = calculateDistance(equipment, location);
@@ -80,7 +87,18 @@ public class EquipmentRequestController extends LocationBasedRequestController {
       }
     }
 
-    return closestEquip.getEquipmentID();
+    if (!equipmentTypeAvailable) {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("No Equipment Available");
+      alert.setHeaderText("There are no " + equipmentInput.getValue() + "s currently available. ");
+      alert.setContentText("Please try again later. ");
+      alert.showAndWait();
+      // equipmentInput.getSelectionModel().clearSelection();
+      submitButton.setDisable(true);
+      return "";
+    } else {
+      return closestEquip.getEquipmentID();
+    }
   }
 
   public double calculateDistance(MedicalEquipment equipment, Location location) {
