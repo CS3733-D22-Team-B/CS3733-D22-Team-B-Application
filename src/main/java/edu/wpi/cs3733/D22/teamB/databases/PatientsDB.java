@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import java.sql.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -112,6 +114,15 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
     if (patientMap.containsKey(patObj.getPatientID())) {
       return -1;
     }
+    DatabaseController.getInstance()
+        .add(
+            new Activity(
+                new Date(),
+                App.currentUser.getEmployeeID(),
+                patObj.getNodeID(),
+                null,
+                "Patient",
+                "checked in"));
     return transform(patObj, "INSERT INTO Patients VALUES(?,?,?,?,?)", false);
   }
 

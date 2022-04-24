@@ -1,14 +1,14 @@
-employeeID,lastName,firstName,department,position,username,password
-0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED
-ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin
-STAFF,Member,Staff,STAFF,STAFF,staff,staff
-PTDO01,Williams,Robert,PT,DOCTOR,Rob,Rob123
-ICNU01,Brown,William,ICU,NURSE,Will,Will123
-SAPS01,Davis,Patricia,SANITARIUM,PSYCHOLOGIST,Patty,Patty123
-CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,Mary123
-RATE01,Martin,Jeniffer,RADIOLOGY,TECHNICIAN,Jen,Jen123
-RESC01,White ,Walter,RESEARCH ,SCIENTIST,Walt,walt123
-MACU01,Barton,Stephan,MAINTENANCE,CUSTODIAN,Bob,bob123
-HRSE01,Cleveland,Emelia,HR,SECRETARY,Emelia,em123
-ORAN01,Jackson,Jane,OR,ANESTHESIOLOGIST,Jane,jane123
-NSSU01,Andrews,John,NEUROSURGERY,SURGEON,John,john123
+employeeID,lastName,firstName,department,position,username,password,lightOn,color
+0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,TRUE,BluE
+ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin,TRUE,BluE
+STAFF,Member,Staff,STAFF,STAFF,staff,staff,TRUE,BluE
+PTDO01,Williams,Robert,PT,DOCTOR,Rob,rob123,TRUE,BluE
+ICNU01,Brown,William,ICU,NURSE,Will,will123,TRUE,BluE
+SAPS01,Davis,Patricia,SANITARIUM,PSYCHOLOGIST,Patty,patty123,TRUE,BluE
+CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,mary123,TRUE,BluE
+RATE01,Martin,Jeniffer,RADIOLOGY,TECHNICIAN,Jen,jen123,TRUE,BluE
+RESC01,White ,Walter,RESEARCH ,SCIENTIST,Walt,walt123,TRUE,BluE
+MACU01,Barton,Stephan,MAINTENANCE,CUSTODIAN,Bob,bob123,TRUE,BluE
+HRSE01,Cleveland,Emelia,HR,SECRETARY,Emelia,em123,TRUE,BluE
+ORAN01,Jackson,Jane,OR,ANESTHESIOLOGIST,Jane,jane123,TRUE,BluE
+NSSU01,Andrews,John,NEUROSURGERY,SURGEON,John,john123,TRUE,BluE

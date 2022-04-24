@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 
-public class InteractiveMapPageController extends MenuBarController {
+public class InteractiveMapPageController extends AStarVisualization {
   @FXML JFXButton menuButton;
   @FXML JFXButton addButton;
   @FXML JFXButton editButton;
@@ -30,8 +30,6 @@ public class InteractiveMapPageController extends MenuBarController {
   @FXML ImageView f1Button;
   @FXML ImageView l1Button;
   @FXML ImageView l2Button;
-  @FXML Pane mapPane;
-  @FXML ImageView mapImage;
   @FXML JFXButton backButton;
 
   @FXML Pane floorBackground;
@@ -172,6 +170,9 @@ public class InteractiveMapPageController extends MenuBarController {
     populateStateDropdown();
     setAll();
 
+    // drawEdgesPerFloor(2);
+    // calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
+
     mapPane.setOnMousePressed(
         e -> {
           startDragX = e.getSceneX();
@@ -221,6 +222,7 @@ public class InteractiveMapPageController extends MenuBarController {
   }
 
   public void setAll() {
+    clearLines();
     populateLocationDropdown();
     setRoomIcons();
     setEquipIcons();
@@ -542,27 +544,6 @@ public class InteractiveMapPageController extends MenuBarController {
     }
   }
 
-  public int[] mapCoordsToViewCoords(int x, int y) {
-    double mapWidth = 1060;
-    double mapHeight = 930;
-    int fitWidth = (int) mapImage.getFitWidth();
-    int fitHeight = (int) mapImage.getFitHeight();
-    double xView = ((x / mapWidth) * fitWidth);
-    double yView = ((y / mapHeight) * fitHeight);
-    return new int[] {(int) xView, (int) yView};
-  }
-
-  public int[] imageCoordsToCSVCoords(int x, int y) {
-    int mapWidth = 1060;
-    int mapHeight = 930;
-    double fitWidth = mapImage.getFitWidth();
-    double fitHeight = mapImage.getFitHeight();
-    double xCSV = ((x / fitWidth) * mapWidth);
-    double yCSV = ((y / fitHeight) * mapHeight);
-
-    return new int[] {(int) xCSV, (int) yCSV};
-  }
-
   public void resetFloorSelectors() {
     l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
     l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
@@ -581,6 +562,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL2.png"));
     l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloorL1() {
@@ -591,6 +573,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL1.png"));
     l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor1() {
@@ -601,6 +584,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
     f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor2() {
@@ -611,6 +595,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
     f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor3() {
@@ -621,6 +606,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor4() {
@@ -631,6 +617,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
     f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void goToFloor5() {
@@ -641,6 +628,7 @@ public class InteractiveMapPageController extends MenuBarController {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
     f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawPathFloor(floorString);
   }
 
   public void startAdd() {
@@ -1014,8 +1002,11 @@ public class InteractiveMapPageController extends MenuBarController {
       }
       if (stateDropdown.getValue().equals("Clean")) {
         toEdit.setIsClean(true);
-      } else toEdit.setIsClean(false);
+      } else {
+        toEdit.setIsClean(false);
+      }
       edao.update(toEdit);
+      AlertController.getInstance().checkForAlerts();
     }
     endEquipEdit();
   }

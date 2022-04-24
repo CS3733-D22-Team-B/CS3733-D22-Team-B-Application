@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.requests;
 
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
+import edu.wpi.cs3733.D22.teamB.databases.Patient;
 import java.util.Date;
 
 public class InternalPatientTransferRequest extends Request {
@@ -44,6 +46,15 @@ public class InternalPatientTransferRequest extends Request {
         information,
         timeCreated,
         lastEdited);
+  }
+
+  public void updatePatientStatus() {
+    Patient pat = getPatient();
+    if (this.status.equals("Completed")) {
+      pat.setNodeID(locationID);
+      DatabaseController DC = DatabaseController.getInstance();
+      DC.update(pat);
+    }
   }
 
   public final String createRequestID() {
