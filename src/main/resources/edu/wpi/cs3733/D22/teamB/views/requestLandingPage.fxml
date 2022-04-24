@@ -108,7 +108,7 @@
                               <Font size="8.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="sanitationRequestPage" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSanitationPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Sanitation" textAlignment="CENTER" wrapText="true">
+                        <JFXButton fx:id="sanitationRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSanitationPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Sanitation" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="8.0" />
                            </font>
