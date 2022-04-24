@@ -46,17 +46,13 @@ public class EquipmentRequestController extends LocationBasedRequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-    if (equipmentTypeAvailable) {
-      String locationID = locationsDAO.getLocationID(locationName);
-      String equipmentID = equipment;
-      EquipmentRequest request =
-          new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
-      ServiceRequestsDB.getInstance().add(request);
-      request.getMedicalEquipment().setAvailability("Requested");
-      requestLabel.setText("Request sent: " + equipment + " to " + locationName);
-    } else {
-      requestLabel.setText("There are no " + equipmentInput.getValue() + "s available right now. ");
-    }
+  String locationID = locationsDAO.getLocationID(locationName);
+  String equipmentID = equipment;
+  EquipmentRequest request =
+      new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
+  DatabaseController.getInstance().add(request);
+  request.getMedicalEquipment().setAvailability("Requested");
+  requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }
 
   @FXML
