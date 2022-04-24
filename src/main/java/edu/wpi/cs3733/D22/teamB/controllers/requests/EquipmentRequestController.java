@@ -70,11 +70,12 @@ public class EquipmentRequestController extends LocationBasedRequestController {
           && equipment.getIsClean()
           && equipment.getAvailability().equals("Available")) {
         Location location = locationsDAO.getLocation(locationsDAO.getLocationID(locationName));
+
         double newDist = calculateDistance(equipment, location);
+
         if (minDist == -1 || newDist < minDist) {
           closestEquip = equipment;
         }
-        break;
       }
     }
 
