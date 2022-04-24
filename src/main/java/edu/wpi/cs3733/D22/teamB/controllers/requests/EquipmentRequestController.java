@@ -63,15 +63,29 @@ public class EquipmentRequestController extends LocationBasedRequestController {
   private String getNearestEquipmentByType(String type) {
     MedicalEquipment closestEquip = null;
     type = convertType(type);
+    double minDist = -1;
 
     for (MedicalEquipment equipment : equDAO.list()) {
-      if (equipment.getType().equals(type) && equipment.getIsClean()) {
-        closestEquip = equipment;
+      if (equipment.getType().equals(type)
+          && equipment.getIsClean()
+          && equipment.getAvailability().equals("Available")) {
+        Location location = locationsDAO.getLocation(locationsDAO.getLocationID(locationName));
+        double newDist = calculateDistance(equipment, location);
+        if (minDist == -1 || newDist < minDist) {
+          closestEquip = equipment;
+        }
         break;
       }
     }
 
     return closestEquip.getEquipmentID();
+  }
+
+  public double calculateDistance(MedicalEquipment equipment, Location location) {
+    double XDist = equipment.getLocation().getXCoord() - location.getXCoord();
+    double YDist = equipment.getLocation().getYCoord() - location.getYCoord();
+
+    return Math.sqrt(Math.pow(XDist, 2) + Math.pow(YDist, 2));
   }
 
   private String convertType(String type) {
