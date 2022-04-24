@@ -18,6 +18,7 @@ public class RequestLandingPageController extends MenuBarController {
   public AnchorPane transferRequestPage;
   public AnchorPane sanitationPage;
   public AnchorPane securityRequestPage;
+  public AnchorPane blankPane;
 
   @FXML private JFXButton equipmentRequestButton;
   @FXML private JFXButton labRequestButton;
@@ -27,6 +28,8 @@ public class RequestLandingPageController extends MenuBarController {
   @FXML private JFXButton internalPatientTransferButton;
   @FXML private JFXButton customRequestButton;
   @FXML private GridPane uglyNamePane;
+
+  private JFXButton currentButton;
 
   @FXML
   public void toggleUglyNames(ActionEvent actionEvent) {
@@ -38,17 +41,21 @@ public class RequestLandingPageController extends MenuBarController {
   }
 
   public void initialize() {
-    hideOthers(null);
+    hideOthers(blankPane);
   }
 
   @FXML
   public void toggleCustomRequestPage(ActionEvent actionEvent) {
+    customRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(customRequestPage);
+    currentButton = customRequestButton;
   }
 
   @FXML
   public void toggleEquipmentRequestPage(ActionEvent actionEvent) {
+    equipmentRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(equipmentRequestPage);
+    currentButton = equipmentRequestButton;
   }
 
   @FXML
@@ -98,6 +105,7 @@ public class RequestLandingPageController extends MenuBarController {
 
   @FXML
   private void hideOthers(AnchorPane current) {
+    blankPane.setVisible(false);
     customRequestPage.setVisible(false);
     equipmentRequestPage.setVisible(false);
     giftRequestPage.setVisible(false);
@@ -109,8 +117,7 @@ public class RequestLandingPageController extends MenuBarController {
     mealRequestPage.setVisible(false);
     sanitationPage.setVisible(false);
     securityRequestPage.setVisible(false);
-
-    if (current == null) return;
+    if (currentButton != null) currentButton.getStyleClass().remove("request-button-selected");
     current.setVisible(true);
   }
 }

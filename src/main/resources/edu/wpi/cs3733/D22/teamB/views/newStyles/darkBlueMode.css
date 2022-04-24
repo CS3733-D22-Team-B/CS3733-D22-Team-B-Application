@@ -111,6 +111,9 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
     -fx-text-fill: rgba(255, 255, 255, 0.7);
 }
+.request-button-selected {
+    -fx-background-color: #88a9bb;
+}
 .table-view .scroll-bar * {
     -fx-min-width: 0;
     -fx-pref-width: 0;

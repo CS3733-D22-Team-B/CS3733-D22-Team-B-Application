@@ -166,5 +166,14 @@
       <fx:include fx:id="mealRequestPage" source="mealRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
       <fx:include fx:id="sanitationPage" source="sanitationRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
       <fx:include fx:id="securityRequestPage" source="securityRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <AnchorPane fx:id="blankPane" prefHeight="200.0" prefWidth="200.0" styleClass="container-box" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
+         <children>
+            <Label alignment="CENTER" layoutX="92.0" layoutY="177.0" opacity="0.7" text="Please Select A Request Type" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="177.0">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

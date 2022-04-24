@@ -95,7 +95,7 @@
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <ComboBox fx:id="equipmentInput" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ComboBox fx:id="equipmentInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <padding>
                   <Insets left="10.0" />
                </padding></ComboBox>

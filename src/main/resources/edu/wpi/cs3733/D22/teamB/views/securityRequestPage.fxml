@@ -56,6 +56,9 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </TextArea>
             <ComboBox fx:id="floorInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <items>
