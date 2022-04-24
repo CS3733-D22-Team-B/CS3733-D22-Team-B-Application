@@ -156,19 +156,11 @@ public class DatabaseController {
   }
 
   public int add(MedicalEquipment medEq) {
+
     return MedicalEquipmentDB.getInstance().add(medEq);
   }
 
   public int add(Request req) {
-    DatabaseController.getInstance()
-        .add(
-            new Activity(
-                req.getTimeCreated(),
-                App.currentUser.getEmployeeID(),
-                req.getRequestID(),
-                null,
-                "Request",
-                "created"));
     return ServiceRequestsDB.getInstance().add(req);
   }
 
