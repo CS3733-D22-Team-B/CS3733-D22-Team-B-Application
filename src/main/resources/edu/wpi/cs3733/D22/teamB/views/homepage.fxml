@@ -15,16 +15,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
       <Pane layoutX="855.0" layoutY="-3.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -117,7 +109,7 @@
           <RowConstraints maxHeight="62.5" minHeight="62.5" prefHeight="62.5" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="requestQueueButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToLocationDataPage" prefHeight="157.5" prefWidth="157.5" styleClass="main-button" text="Databases" textFill="#ffffff40" GridPane.columnIndex="7" GridPane.rowIndex="1">
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToDatabaseLandingPage" prefHeight="157.5" prefWidth="157.5" styleClass="main-button" text="Databases" textFill="#ffffff40" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <font>
                   <Font size="10.0" />
                </font>

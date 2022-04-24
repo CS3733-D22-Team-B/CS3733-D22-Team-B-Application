@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -13,13 +12,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EmployeeQueueController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="400.0" prefWidth="906.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EmployeeQueueController">
    <children>
-      <SplitPane dividerPositions="0.22476050110537954" layoutX="32.0" layoutY="70.0" prefHeight="419.0" prefWidth="907.0" style="-fx-background-color: #2e3c4b; -fx-border-color: #7bcce4; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="70.0">
+      <SplitPane dividerPositions="0.24620655898188934" layoutX="32.0" layoutY="70.0" prefHeight="400.0" prefWidth="906.0" style="-fx-background-color: #2e3c4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="203.0" style="-fx-background-color: #2e3c4b; -fx-border-radius: 10px;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="203.0">
                <children>
-                  <ComboBox fx:id="departmentInput" layoutX="12.0" layoutY="159.0" prefHeight="26.0" prefWidth="163.0" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+                  <ComboBox fx:id="departmentInput" layoutX="12.0" layoutY="159.0" prefHeight="26.0" prefWidth="163.0" styleClass="simple-dropdown">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:id="emergency" fx:value="EMERGENCY" />
@@ -51,7 +50,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="positionInput" layoutX="12.0" layoutY="102.0" prefHeight="26.0" prefWidth="163.0" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+                  <ComboBox fx:id="positionInput" layoutX="12.0" layoutY="102.0" prefHeight="26.0" prefWidth="163.0" styleClass="simple-dropdown">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:id="test" fx:value="DOCTOR" />
@@ -67,15 +66,15 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="firstNameInput" layoutX="14.0" layoutY="46.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
+                  <TextField fx:id="firstNameInput" layoutX="14.0" layoutY="46.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" />
                   <Label contentDisplay="CENTER" layoutX="109.0" layoutY="27.0" text="Last Name:" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="lastNameInput" layoutX="105.0" layoutY="46.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-                  <TextField fx:id="usernameInput" layoutX="15.0" layoutY="219.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-                  <TextField fx:id="passwordInput" layoutX="101.0" layoutY="218.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
+                  <TextField fx:id="lastNameInput" layoutX="105.0" layoutY="46.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" />
+                  <TextField fx:id="usernameInput" layoutX="15.0" layoutY="219.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" />
+                  <TextField fx:id="passwordInput" layoutX="101.0" layoutY="218.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" />
                   <Label contentDisplay="CENTER" layoutX="17.0" layoutY="201.0" text="Username:" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -86,14 +85,15 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="deleteButton" layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#deleteData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Delete" />
+                  <Button fx:id="deleteButton" layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#deleteData" styleClass="main-button" text="Delete" />
                   <Button fx:id="addSaveButton" disable="true" layoutX="121.0" layoutY="278.0" mnemonicParsing="false" onAction="#saveAddData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add" visible="false" />
-                  <Button fx:id="saveButton" layoutX="117.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
+                  <Button fx:id="saveButton" layoutX="117.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveData" styleClass="main-button" text="Save" />
+                  <Button layoutX="33.0" layoutY="368.0" mnemonicParsing="false" onAction="#addStart" prefHeight="26.0" prefWidth="128.0" styleClass="main-button" text="Add New Employee" textFill="#ffffffb2" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="647.0">
                <children>
-                  <TableView fx:id="employeeTable" prefHeight="435.0" prefWidth="698.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="employeeTable" prefHeight="435.0" prefWidth="698.0" styleClass="simple-table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="columnEmployeeID" editable="false" prefWidth="165.33328247070312" text="ID" />
                         <TableColumn fx:id="columnPosition" editable="false" prefWidth="196.00003051757812" text="Type" />
@@ -109,9 +109,5 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <Button layoutX="784.0" layoutY="35.0" mnemonicParsing="false" onAction="#toggleClientServer" prefHeight="26.0" prefWidth="163.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Client-Server Toggle" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="35.0" />
-      <JFXButton layoutX="12.0" layoutY="503.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" AnchorPane.bottomAnchor="9.8" AnchorPane.leftAnchor="12.0" />
-      <Button layoutX="822.0" layoutY="501.0" mnemonicParsing="false" onAction="#addStart" prefHeight="26.0" prefWidth="128.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Employee" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="12.0" />
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

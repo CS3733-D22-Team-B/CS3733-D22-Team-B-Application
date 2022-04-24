@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.LocationDataController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="540.0" prefWidth="906.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.LocationDataController">
    <children>
-      <TableView fx:id="locationTable" layoutX="122.0" layoutY="49.0" prefHeight="436.0" prefWidth="716.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="49.0">
+      <TableView fx:id="locationTable" layoutX="122.0" layoutY="49.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="436.0" prefWidth="716.0" styleClass="simple-table" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <columns>
             <TableColumn fx:id="columnName" prefWidth="308.0" text="Location" />
             <TableColumn fx:id="columnX" prefWidth="56.0" text="X" />
@@ -23,17 +23,15 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox layoutX="69.0" layoutY="494.0" prefHeight="39.0" prefWidth="822.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="69.0">
+      <HBox alignment="CENTER_LEFT" layoutX="69.0" layoutY="494.0" prefHeight="39.0" prefWidth="586.0" spacing="20.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0">
          <children>
-            <JFXButton onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" />
-            <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="283.0" textFill="#7bcce4">
+            <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="283.0" textFill="#ffffffb2">
                <HBox.margin>
-                  <Insets left="15.0" right="100.0" />
+                  <Insets />
                </HBox.margin>
             </Label>
-            <TextField fx:id="downloadText" promptText="FIle Name" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" />
-            <JFXButton fx:id="downloadButton" onAction="#download" prefHeight="26.0" prefWidth="97.0" text="Download" textFill="#7bcce4" />
+            <TextField fx:id="downloadText" promptText="FIle Name" />
+            <JFXButton fx:id="downloadButton" onAction="#download" prefHeight="26.0" prefWidth="97.0" styleClass="butt" text="Download" textFill="#ffffffb2" />
          </children>
       </HBox>
    </children>

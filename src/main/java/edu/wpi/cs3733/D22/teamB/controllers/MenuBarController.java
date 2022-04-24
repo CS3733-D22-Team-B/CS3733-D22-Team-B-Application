@@ -163,4 +163,8 @@ public class MenuBarController {
     } catch (IOException e) {
     }
   }
+
+  public void goToDatabaseLandingPage(ActionEvent actionEvent) throws Exception {
+    UIController.getInstance().goToPage("databaseLandingPage");
+  }
 }
