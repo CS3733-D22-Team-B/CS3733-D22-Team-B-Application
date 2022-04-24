@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App extends Application {
   public static Employee currentUser = null;
+  public static String colorTheme;
 
   @Override
   public void init() {
@@ -16,6 +17,8 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
+    App.colorTheme = "darkBlueMode";
+
     UIController.getInstance().setPrimaryStage(primaryStage);
     UIController.getInstance().goToPage("loginPage");
 
