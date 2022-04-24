@@ -8,22 +8,8 @@ public class Employee {
   private String position;
   private String username;
   private String password;
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
+  private boolean lightOn;
+  private String color;
 
   public Employee(
       String lastname,
@@ -39,6 +25,8 @@ public class Employee {
     setUsername(username);
     setPassword(password);
     employeeID = createEmployeeID();
+    this.lightOn = true;
+    this.color = "BluE";
   }
 
   public Employee(
@@ -48,7 +36,9 @@ public class Employee {
       String department,
       String position,
       String username,
-      String password) {
+      String password,
+      boolean lightOn,
+      String color) {
     setEmployeeID(employeeID);
     setLastName(lastname);
     setFirstName(firstName);
@@ -56,6 +46,8 @@ public class Employee {
     setPosition(position);
     setUsername(username);
     setPassword(password);
+    this.lightOn = lightOn;
+    this.color = color;
   }
 
   public String createEmployeeID() {
@@ -102,6 +94,38 @@ public class Employee {
 
   public void setPosition(String position) {
     this.position = position;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public boolean getLightOn() {
+    return lightOn;
+  }
+
+  public void setLightOn(boolean lightOn) {
+    this.lightOn = lightOn;
+  }
+
+  public String getColor() {
+    return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
   }
 
   public String getOverview() {

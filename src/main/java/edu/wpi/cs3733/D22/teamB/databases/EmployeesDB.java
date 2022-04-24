@@ -41,7 +41,9 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
                 rs.getString(4),
                 rs.getString(5),
                 rs.getString(6),
-                rs.getString(7));
+                rs.getString(7),
+                rs.getBoolean(8),
+                rs.getString(9));
         employeeMap.put(rs.getString(1), empOb);
       }
     } catch (SQLException e) {
@@ -114,7 +116,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
     }
     return transform(
         empObj,
-        "UPDATE Employees SET lastName = ?, firstName = ?, department = ?, position = ?, username = ?, password = ? WHERE employeeID = ?",
+        "UPDATE Employees SET lastName = ?, firstName = ?, department = ?, position = ?, username = ?, password = ?, lightOn = ?, color = ? WHERE employeeID = ?",
         true);
   }
 
@@ -132,7 +134,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
                             "Employee",
                             "added to system"
                             ));
-    return transform(empObj, "INSERT INTO Employees VALUES(?,?,?,?,?,?,?)", false);
+    return transform(empObj, "INSERT INTO Employees VALUES(?,?,?,?,?,?,?,?,?)", false);
   }
 
   public int delete(Employee empObj) {
@@ -152,7 +154,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
       int offset = 0;
 
       if (isUpdate) {
-        pStatement.setString(7, empObj.getEmployeeID());
+        pStatement.setString(9, empObj.getEmployeeID());
         offset = -1;
       } else {
         pStatement.setString(1, empObj.getEmployeeID());
@@ -164,6 +166,8 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
       pStatement.setString(5 + offset, empObj.getPosition());
       pStatement.setString(6 + offset, empObj.getUsername());
       pStatement.setString(7 + offset, empObj.getPassword());
+      pStatement.setBoolean(8 + offset, empObj.getLightOn());
+      pStatement.setString(9 + offset, empObj.getColor());
 
       pStatement.addBatch();
       pStatement.executeBatch();
