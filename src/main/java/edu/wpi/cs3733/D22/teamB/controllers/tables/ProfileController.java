@@ -231,4 +231,27 @@ public class ProfileController extends MenuBarController implements Initializabl
   private void toggleChangePasswordDisplay(boolean visible) {
     changePasswordPane.setVisible(visible);
   }
+
+  public void updateColorTheme(ActionEvent event) {
+    switch (App.colorTheme) {
+      case "darkBlueMode":
+        App.colorTheme = "lightBlueMode";
+        break;
+      case "lightBlueMode":
+        App.colorTheme = "darkRedMode";
+        break;
+      case "darkRedMode":
+        App.colorTheme = "lightRedMode";
+        break;
+      case "lightRedMode":
+        App.colorTheme = "darkGreenMode";
+        break;
+      case "darkGreenMode":
+        App.colorTheme = "lightGreenMode";
+        break;
+      case "lightGreenMode":
+        App.colorTheme = "darkBlueMode";
+        break;
+    }
+  }
 }
