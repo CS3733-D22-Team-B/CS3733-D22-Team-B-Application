@@ -296,14 +296,14 @@ public class ServiceRequestsDB extends DatabaseSuperclass implements IDatabases<
       return -1;
     }
     DatabaseController.getInstance()
-            .add(
-                    new Activity(
-                            reqObj.getTimeCreated(),
-                            App.currentUser.getEmployeeID(),
-                            reqObj.getRequestID(),
-                            null,
-                            "Request",
-                            "created"));
+        .add(
+            new Activity(
+                reqObj.getTimeCreated(),
+                App.currentUser.getEmployeeID(),
+                reqObj.getRequestID(),
+                null,
+                "Request",
+                "created"));
     return transform(
         reqObj, "INSERT INTO ServiceRequests VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)", false);
   }
