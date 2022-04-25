@@ -154,7 +154,7 @@
          </items>
       </SplitPane>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ComboBox fx:id="Type" layoutX="470.0" layoutY="25.0" onAction="#setSortType" prefHeight="25.0" prefWidth="109.0" promptText="Type" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
+      <ComboBox fx:id="Type" layoutX="446.0" layoutY="35.0" onAction="#setSortType" prefHeight="25.0" prefWidth="109.0" promptText="Type" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="LabTest" fx:value="Lab Test" />
@@ -170,7 +170,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Button layoutX="580.0" layoutY="25.0" mnemonicParsing="false" onAction="#lastEdit" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Last Edited" />
-      <Button layoutX="657.0" layoutY="25.0" mnemonicParsing="false" onAction="#timeCreated" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Time Created" />
+      <Button layoutX="568.0" layoutY="36.0" mnemonicParsing="false" onAction="#lastEdit" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Last Edited" />
+      <Button layoutX="660.0" layoutY="36.0" mnemonicParsing="false" onAction="#timeCreated" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Time Created" />
    </children>
 </AnchorPane>
