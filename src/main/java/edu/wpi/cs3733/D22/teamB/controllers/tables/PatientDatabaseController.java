@@ -1,8 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -34,11 +36,11 @@ public class PatientDatabaseController extends MenuBarController implements Init
 
   @FXML Label patientIDLabel;
   @FXML TextField nameInput;
-  @FXML TextField roomInput;
+  @FXML ComboBox<String> roomInput;
   @FXML TextArea informationInput;
 
   @FXML TextField addNameInput;
-  @FXML TextField addRoomInput;
+  @FXML ComboBox<String> addRoomInput;
   @FXML TextArea addInformationInput;
 
   @FXML AnchorPane viewingPane;
@@ -67,6 +69,17 @@ public class PatientDatabaseController extends MenuBarController implements Init
     LinkedList<Patient> patientsL = dao.list();
     for (Patient patientItem : patientsL) {
       patients.add(patientItem);
+    }
+
+    roomInput.setValue("No room assigned");
+    addRoomInput.setValue("No room assigned");
+
+    for (Location room : LocationsDB.getInstance().list()) {
+      if (room.getNodeType().equals("PATI") && room.getAvailability()) {
+        String roomName = room.getLongName();
+        roomInput.getItems().add(roomName);
+        addRoomInput.getItems().add(roomName);
+      }
     }
 
     patientTable.setItems(patients);
@@ -148,8 +161,8 @@ public class PatientDatabaseController extends MenuBarController implements Init
                           patientIDLabel.setText(patient.getPatientID());
                           nameInput.setText(patient.getFullName());
 
-                          if (patient.getLocation() != null) {
-                            roomInput.setText(patient.getLongName());
+                          if (patient.getLocation() == null) {
+                            roomInput.setValue(patient.getLongName());
                             roomInput.setVisible(true);
                           } else {
                             roomInput.setVisible(false);
@@ -187,6 +200,17 @@ public class PatientDatabaseController extends MenuBarController implements Init
                             PatientsDB.getInstance().delete(patient);
                             patients.remove(patient);
                             patientTable.refresh();
+
+                            DatabaseController.getInstance()
+                                .add(
+                                    new Activity(
+                                        new Date(),
+                                        App.currentUser.getEmployeeID(),
+                                        currentPatient.getPatientID(),
+                                        null,
+                                        "Patient",
+                                        "checked out"));
+
                             currentPatient = null;
                           }
                         });
@@ -218,7 +242,13 @@ public class PatientDatabaseController extends MenuBarController implements Init
   @FXML
   public void saveData(ActionEvent event) {
     currentPatient.setInformation(informationInput.getText());
-    // currentPatient.setLocation();
+    if (roomInput.isVisible() && !roomInput.getValue().equals("No room assigned")) {
+      currentPatient.setLocation(
+          LocationsDB.getInstance()
+              .getLocation(LocationsDB.getInstance().getLocationID(roomInput.getValue())));
+      roomInput.getItems().remove(roomInput.getValue());
+      addRoomInput.getItems().remove(addRoomInput.getValue());
+    }
 
     String firstName = nameInput.getText().substring(0, nameInput.getText().indexOf(" "));
     String lastName = nameInput.getText().substring(nameInput.getText().indexOf(" ") + 1);
@@ -255,6 +285,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
     creationPane.setVisible(false);
 
     addNameInput.setText("");
+    roomInput.setValue("No room assigned");
     addInformationInput.setText("");
   }
 
@@ -268,14 +299,33 @@ public class PatientDatabaseController extends MenuBarController implements Init
     Patient patient;
     String firstName = addNameInput.getText().substring(0, addNameInput.getText().indexOf(" "));
     String lastName = addNameInput.getText().substring(addNameInput.getText().indexOf(" ") + 1);
+
+    String roomID = null;
+    if (!addRoomInput.getValue().equals("No room assigned")) {
+      roomID = LocationsDB.getInstance().getLocationID(addRoomInput.getValue());
+      roomInput.getItems().remove(roomInput.getValue());
+      addRoomInput.getItems().remove(addRoomInput.getValue());
+
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  currentPatient.getPatientID(),
+                  roomID,
+                  "Patient",
+                  "admitted to room"));
+    }
+
     String information = addInformationInput.getText();
 
-    patient = new Patient(lastName, firstName, null, information);
+    patient = new Patient(lastName, firstName, roomID, information);
 
     patients.add(patient);
     PatientsDB.getInstance().add(patient);
 
     addNameInput.setText("");
+    addRoomInput.setValue("No room assigned");
     addInformationInput.setText("");
 
     patientTable.refresh();

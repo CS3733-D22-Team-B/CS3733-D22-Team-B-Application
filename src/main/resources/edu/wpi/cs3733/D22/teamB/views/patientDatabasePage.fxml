@@ -191,6 +191,7 @@
                                        <HBox.margin>
                                           <Insets left="110.0" right="10.0" />
                                        </HBox.margin>
+
                                     </Button>
                                     <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addPatient" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add">
                                        <HBox.margin>

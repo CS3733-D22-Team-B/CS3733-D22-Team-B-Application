@@ -5,9 +5,11 @@ import static java.lang.Math.round;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -740,6 +742,16 @@ public class InteractiveMapPageController extends AStarVisualization {
       if (hasEquip) {
         // errorLabel.setText("Delete Failed! Check that no equipment is tied to the room!");
       } else {
+        DatabaseController.getInstance()
+            .add(
+                new Activity(
+                    new Date(),
+                    App.currentUser.getEmployeeID(),
+                    target.getNodeID(),
+                    null,
+                    "Location",
+                    "removed"));
+
         dao.delete(target);
         endDelete();
         setRoomIcons();
@@ -797,6 +809,15 @@ public class InteractiveMapPageController extends AStarVisualization {
           toChange.setShortName(locationName.getText());
           toChange.setLongName(locationName.getText());
         }
+        DatabaseController.getInstance()
+            .add(
+                new Activity(
+                    new Date(),
+                    App.currentUser.getEmployeeID(),
+                    toChange.getNodeID(),
+                    "clean",
+                    "Location",
+                    "edited"));
         dao.update(toChange);
         endEdit();
       }
@@ -1021,13 +1042,49 @@ public class InteractiveMapPageController extends AStarVisualization {
     Location loc = equipLoc.pop();
     if (toEdit != null) {
       toEdit.setAvailability(availabilityDropdown.getValue());
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  toEdit.getEquipmentID(),
+                  availabilityDropdown.getValue().toLowerCase(),
+                  "Medical Equipment",
+                  "marked as"));
       if (!equipMoved) {
         toEdit.setLocation(loc);
+        DatabaseController.getInstance()
+            .add(
+                new Activity(
+                    new Date(),
+                    App.currentUser.getEmployeeID(),
+                    toEdit.getEquipmentID(),
+                    loc.getNodeID(),
+                    "Medical Equipment",
+                    "moved to"));
       }
       if (stateDropdown.getValue().equals("Clean")) {
         toEdit.setIsClean(true);
+        DatabaseController.getInstance()
+            .add(
+                new Activity(
+                    new Date(),
+                    App.currentUser.getEmployeeID(),
+                    toEdit.getEquipmentID(),
+                    "clean",
+                    "Medical Equipment",
+                    "marked as"));
       } else {
         toEdit.setIsClean(false);
+        DatabaseController.getInstance()
+            .add(
+                new Activity(
+                    new Date(),
+                    App.currentUser.getEmployeeID(),
+                    toEdit.getEquipmentID(),
+                    "dirty",
+                    "Medical Equipment",
+                    "marked as"));
       }
       edao.update(toEdit);
       AlertController.getInstance().checkForAlerts();

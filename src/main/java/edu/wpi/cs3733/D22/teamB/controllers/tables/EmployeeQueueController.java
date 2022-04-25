@@ -1,10 +1,13 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
+import edu.wpi.cs3733.D22.teamB.databases.Activity;
 import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.databases.Employee;
 import edu.wpi.cs3733.D22.teamB.databases.EmployeesDB;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -187,6 +190,17 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                             EmployeesDB.getInstance().delete(employee);
                             employees.remove(employee);
                             employeeTable.refresh();
+
+                            DatabaseController.getInstance()
+                                .add(
+                                    new Activity(
+                                        new Date(),
+                                        App.currentUser.getEmployeeID(),
+                                        currentEmployee.getEmployeeID(),
+                                        null,
+                                        "Employee",
+                                        "removed from system"));
+
                             currentEmployee = null;
                           }
                         });
@@ -217,6 +231,18 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
   @FXML
   public void saveData(ActionEvent event) {
+    if (!currentEmployee.getUsername().equals(usernameInput.getText())) {
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  currentEmployee.getEmployeeID(),
+                  null,
+                  "Employee",
+                  "username updated"));
+    }
+
     currentEmployee.setDepartment(departmentInput.getText());
     currentEmployee.setPosition(positionInput.getText());
     currentEmployee.setUsername(usernameInput.getText());
