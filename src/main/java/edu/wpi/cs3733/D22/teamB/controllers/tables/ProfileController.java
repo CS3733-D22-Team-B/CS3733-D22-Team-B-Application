@@ -92,7 +92,7 @@ public class ProfileController extends MenuBarController implements Initializabl
     if (App.currentUser.getLightOn()) {
       modeButton.getStyleClass().add("light-dark-button");
     } else {
-      modeButton.getStyleClass().add("light-dark-button");
+      modeButton.getStyleClass().add("dark-light-button");
     }
 
     switch (App.currentUser.getColor()) {
@@ -105,6 +105,8 @@ public class ProfileController extends MenuBarController implements Initializabl
       case "Red":
         colorButton.getStyleClass().add("red-button");
         break;
+      case "Black":
+        colorButton.getStyleClass().add("black-button");
     }
 
     newPasswordField
@@ -230,6 +232,10 @@ public class ProfileController extends MenuBarController implements Initializabl
 
   public void setColorThemeRed(ActionEvent actionEvent) {
     setColorTheme("Red");
+  }
+
+  public void setColorThemeBlack(ActionEvent actionEvent) {
+    setColorTheme("Black");
   }
 
   private void setColorTheme(String newColorTheme) {

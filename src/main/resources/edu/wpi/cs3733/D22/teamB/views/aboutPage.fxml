@@ -11,11 +11,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
-      <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="105.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="106.0" spacing="10.0">
                <children>
-                  <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
+                  <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="main-button">
                            <image>
@@ -47,7 +47,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToMapLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Maps" textFill="#ffffff40">
+                  <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToMapLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Maps" textFill="#ffffff40">
                      <font>
                         <Font name="Microsoft Sans Serif" size="10.0" />
                      </font>
@@ -66,7 +66,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="requestButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Requests" textFill="#ffffff40">
+                  <JFXButton fx:id="requestButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToRequestLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Requests" textFill="#ffffff40">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -85,7 +85,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="equipmentTrackerButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToEquipmentTrackerPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Tracker" textFill="#ffffff40">
+                  <JFXButton fx:id="equipmentTrackerButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="65.0" minWidth="65.0" onAction="#goToEquipmentTrackerPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Tracker" textFill="#ffffff40">
                      <font>
                         <Font size="10.0" />
                      </font>

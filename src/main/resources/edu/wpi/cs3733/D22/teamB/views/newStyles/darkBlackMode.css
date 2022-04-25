@@ -1,5 +1,5 @@
 .main-button {
-    -fx-background-color: linear-gradient(to bottom right, #C9C9C9, #6BDFB0);
+    -fx-background-color: linear-gradient(to bottom right, #434B5B, #31353D);
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
@@ -14,22 +14,22 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
 .blue-button {
-    -fx-background-color: #6BB8DF;
+    -fx-background-color: #1080B9;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
 .red-button {
-    -fx-background-color: #DF6B83;
+    -fx-background-color: #B91044;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
 .green-button {
-    -fx-background-color: #6BDFB0;
+    -fx-background-color: #10B965;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
 .black-button {
-    -fx-background-color: #7B7B7B;
+    -fx-background-color: #31353D;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
 }
