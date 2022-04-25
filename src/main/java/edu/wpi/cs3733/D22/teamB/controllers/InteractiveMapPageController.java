@@ -782,17 +782,19 @@ public class InteractiveMapPageController extends AStarVisualization {
   }
 
   public void editLocation() {
-    if (locationDropdown.getValue() != null) {
+    if (locationDropdown.getValue() != null || !locationDropdown.getValue().equals("")) {
       String oldName = locationDropdown.getValue();
       LinkedList<Location> findLoc = dao.listByAttribute("longName", oldName);
-      Location toChange = findLoc.pop();
-      String name = toChange.getLongName();
-      if (!locationName.getText().equals("") && !locationName.getText().equals(name)) {
-        toChange.setShortName(locationName.getText());
-        toChange.setLongName(locationName.getText());
+      if (!findLoc.isEmpty()) {
+        Location toChange = findLoc.pop();
+        String name = toChange.getLongName();
+        if (!locationName.getText().equals("") && !locationName.getText().equals(name)) {
+          toChange.setShortName(locationName.getText());
+          toChange.setLongName(locationName.getText());
+        }
+        dao.update(toChange);
+        endEdit();
       }
-      dao.update(toChange);
-      endEdit();
     }
   }
 
@@ -1622,12 +1624,15 @@ public class InteractiveMapPageController extends AStarVisualization {
 
   public void undoMove() {
     if (editEnabled && locationDropdown.getValue() != null) {
-      Location currentLoc = dao.listByAttribute("longName", locationDropdown.getValue()).pop();
-      currentLoc.setXCoord(startingCoordinates[0]);
-      currentLoc.setYCoord(startingCoordinates[1]);
-      dao.update(currentLoc);
-      setRoomIcons();
-      firstMove = true;
+      LinkedList<Location> findLoc = dao.listByAttribute("longName", locationDropdown.getValue());
+      if (!findLoc.isEmpty()) {
+        Location currentLoc = findLoc.pop();
+        currentLoc.setXCoord(startingCoordinates[0]);
+        currentLoc.setYCoord(startingCoordinates[1]);
+        dao.update(currentLoc);
+        setRoomIcons();
+        firstMove = true;
+      }
     }
   }
 
