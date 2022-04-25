@@ -83,6 +83,11 @@ public class MedicalEquipment {
   }
 
   public void setAvailability(String newAvailability) {
+    if (this.availability != null
+        && this.availability.equalsIgnoreCase("Unavailable")
+        && newAvailability.equalsIgnoreCase("Available")) {
+      RequestWaitlist.createRequest(this);
+    }
     availability = newAvailability;
   }
 

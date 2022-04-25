@@ -46,13 +46,13 @@ public class EquipmentRequestController extends LocationBasedRequestController {
 
   @FXML
   public void sendRequest(ActionEvent actionEvent) {
-  String locationID = locationsDAO.getLocationID(locationName);
-  String equipmentID = equipment;
-  EquipmentRequest request =
-      new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
-  DatabaseController.getInstance().add(request);
-  request.getMedicalEquipment().setAvailability("Requested");
-  requestLabel.setText("Request sent: " + equipment + " to " + locationName);
+    String locationID = locationsDAO.getLocationID(locationName);
+    String equipmentID = equipment;
+    EquipmentRequest request =
+        new EquipmentRequest(locationID, equipmentID, notes, (int) prioritySlider.getValue());
+    DatabaseController.getInstance().add(request);
+    request.getMedicalEquipment().setAvailability("Requested");
+    requestLabel.setText("Request sent: " + equipment + " to " + locationName);
   }
 
   @FXML
@@ -91,6 +91,10 @@ public class EquipmentRequestController extends LocationBasedRequestController {
       alert.showAndWait();
       // equipmentInput.getSelectionModel().clearSelection();
       submitButton.setDisable(true);
+      WaitlistObject wObj =
+          new WaitlistObject(
+              locationsDAO.getLocationID(locationName), convertType(equipmentInput.getValue()));
+      RequestWaitlist.add(wObj);
       return "";
     } else {
       return closestEquip.getEquipmentID();
