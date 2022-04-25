@@ -127,9 +127,9 @@
                   </JFXButton>
                   <JFXButton contentDisplay="GRAPHIC_ONLY" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Queue">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/newAssets/close.png" />
+                              <Image url="@../assets/newAssets/Back.png" />
                            </image>
                            <effect>
                               <DropShadow>
