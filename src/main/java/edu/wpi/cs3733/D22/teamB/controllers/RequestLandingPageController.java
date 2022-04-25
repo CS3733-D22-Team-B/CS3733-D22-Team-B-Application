@@ -5,7 +5,6 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 
 public class RequestLandingPageController extends MenuBarController {
   public AnchorPane customRequestPage;
@@ -33,18 +32,7 @@ public class RequestLandingPageController extends MenuBarController {
   @FXML private JFXButton sanitationRequestButton;
   @FXML private JFXButton securityRequestButton;
 
-  @FXML private GridPane uglyNamePane;
-
   private JFXButton currentButton;
-
-  @FXML
-  public void toggleUglyNames(ActionEvent actionEvent) {
-    if (uglyNamePane.isVisible()) {
-      uglyNamePane.setVisible(false);
-    } else {
-      uglyNamePane.setVisible(true);
-    }
-  }
 
   public void initialize() {
     hideOthers(blankPane);
