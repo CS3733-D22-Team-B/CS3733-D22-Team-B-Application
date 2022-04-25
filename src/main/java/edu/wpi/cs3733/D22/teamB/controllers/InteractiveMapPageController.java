@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,8 +36,10 @@ public class InteractiveMapPageController extends AStarVisualization {
   @FXML Pane floorBackground;
   @FXML JFXComboBox<String> typeDropdown;
   @FXML JFXComboBox<String> locationDropdown;
+  @FXML JFXComboBox<String> locationDropdown2;
   @FXML JFXTextArea locationName;
   @FXML JFXButton confirmButton;
+  @FXML JFXButton clearPathButton;
   @FXML ImageView confirmImage;
   @FXML JFXButton resetButton;
   @FXML JFXButton markerButton;
@@ -110,6 +113,7 @@ public class InteractiveMapPageController extends AStarVisualization {
   private Boolean editEnabled = false;
   private Boolean deleteEnabled = false;
   private Boolean editEquipEnabled = false;
+  private Boolean aStarEnabled = false;
   private Boolean equipPaneVisible = false;
   private Boolean filterOpen = false;
   private Boolean firstMove = true;
@@ -227,6 +231,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     setRoomIcons();
     setEquipIcons();
     setServiceIcons();
+    drawPathFloor(floorString);
   }
 
   public void removeIcon(SVGPath icon) {
@@ -875,6 +880,17 @@ public class InteractiveMapPageController extends AStarVisualization {
     }
   }
 
+  public void populateAllLocationDropdown() {
+    locationDropdown.getItems().clear();
+    locationDropdown2.getItems().clear();
+    floorLocations = dao.list();
+    for (Location loc : floorLocations) {
+      String name = loc.getLongName();
+      locationDropdown.getItems().add(name);
+      locationDropdown2.getItems().add(name);
+    }
+  }
+
   public void populateStateDropdown() {
     stateDropdown.getItems().add("Clean");
     stateDropdown.getItems().add("Dirty");
@@ -893,6 +909,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     if (editEquipEnabled) {
       editEquip();
     }
+    if (aStarEnabled) {
+      showAStar();
+    }
     setAll();
   }
 
@@ -909,6 +928,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     }
     if (editEquipEnabled) {
       endEquipEdit();
+    }
+    if (aStarEnabled) {
+      endAStar();
     }
     setAll();
   }
@@ -1036,6 +1058,59 @@ public class InteractiveMapPageController extends AStarVisualization {
     setEquipIcons();
     toEdit = null;
     equipMoved = false;
+  }
+
+  public void startAStar() {
+    aStarEnabled = true;
+    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Add.png"));
+    addButton.setVisible(false);
+    editButton.setVisible(false);
+    deleteButton.setVisible(false);
+    resetButton.setVisible(false);
+    backButton.setVisible(true);
+    filterButton.setDisable(true);
+    clearPathButton.setVisible(true);
+    floorBackground.setVisible(true);
+    locationDropdown.setVisible(true);
+    locationDropdown2.setVisible(true);
+    confirmButton.setVisible(true);
+    populateAllLocationDropdown();
+  }
+
+  public void showAStar() {
+    if (locationDropdown.getValue() != null && locationDropdown2.getValue() != null) {
+      String startName = locationDropdown.getValue();
+      String endName = locationDropdown2.getValue();
+
+      LinkedList<Location> startLoc = dao.listByAttribute("longName", startName);
+      LinkedList<Location> endLoc = dao.listByAttribute("longName", endName);
+
+      if (!startLoc.isEmpty() && !endLoc.isEmpty()) {
+        calculatePath(startLoc.pop(), endLoc.pop());
+      }
+      drawPathFloor(floorString);
+      endAStar();
+    }
+  }
+
+  public void endAStar() {
+    aStarEnabled = false;
+    addButton.setVisible(true);
+    editButton.setVisible(true);
+    deleteButton.setVisible(true);
+    resetButton.setVisible(true);
+    backButton.setVisible(true);
+    filterButton.setDisable(false);
+    clearPathButton.setVisible(false);
+    floorBackground.setVisible(false);
+    locationDropdown.setVisible(false);
+    locationDropdown2.setVisible(false);
+    confirmButton.setVisible(false);
+  }
+
+  public void clearPaths() {
+    path = new ArrayList<Location>();
+    cancel();
   }
 
   public LinkedList<Location> filterLocs(LinkedList<Location> locList) {

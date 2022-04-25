@@ -128,6 +128,8 @@
             <JFXComboBox fx:id="locationDropdown" focusColor="#405aa800" layoutX="34.0" layoutY="39.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
             <JFXTextArea fx:id="locationName" focusColor="#ffffff00" layoutX="34.0" layoutY="101.0" prefHeight="38.0" prefWidth="110.0" styleClass="simple-text-area" stylesheets="@styles/textStyles.css" unFocusColor="#ffffff00" visible="false" />
             <JFXButton fx:id="markerButton" focusTraversable="false" layoutX="17.0" layoutY="281.0" onAction="#clearMarker" prefHeight="54.0" prefWidth="144.0" styleClass="border-button" stylesheets="@styles/buttonStyles.css" text="Reset Marker" visible="false" />
+            <JFXComboBox fx:id="locationDropdown2" focusColor="#405aa800" layoutX="34.0" layoutY="88.0" prefHeight="26.0" prefWidth="110.0" promptText=" Location" styleClass="map-dropdown" stylesheets="@styles/dropdownStyles.css" unFocusColor="#ffffff00" visible="false" />
+            <JFXButton fx:id="clearPathButton" layoutX="17.0" layoutY="444.0" onAction="#clearPaths" text="Clear Paths" textFill="WHITE" visible="false" />
          </children>
       </Pane>
       <Pane layoutX="849.0" prefHeight="540.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -231,6 +233,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
+            <JFXButton onAction="#startAStar" text="A-Star" textFill="WHITE" />
          </children>
       </Pane>
       <Pane fx:id="filterPane" layoutX="28.0" layoutY="38.0" prefHeight="440.0" prefWidth="163.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="0.0">

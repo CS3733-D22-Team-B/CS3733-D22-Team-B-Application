@@ -149,10 +149,10 @@ public class PatientDatabaseController extends MenuBarController implements Init
                           nameInput.setText(patient.getFullName());
 
                           if (patient.getLocation() != null) {
-                              roomInput.setText(patient.getLongName());
-                              roomInput.setVisible(true);
+                            roomInput.setText(patient.getLongName());
+                            roomInput.setVisible(true);
                           } else {
-                              roomInput.setVisible(false);
+                            roomInput.setVisible(false);
                           }
 
                           informationInput.setText(patient.getInformation());
