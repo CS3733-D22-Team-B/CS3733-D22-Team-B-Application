@@ -162,12 +162,12 @@ public class PatientDatabaseController extends MenuBarController implements Init
                           nameInput.setText(patient.getFullName());
 
                           if (patient.getLocation() == null) {
-                            roomInput.setValue(patient.getLongName());
-                            roomInput.setVisible(true);
+                            roomInput.setDisable(false);
                           } else {
-                            roomInput.setVisible(false);
+                            roomInput.setDisable(true);
                           }
 
+                          roomInput.setValue(patient.getLongName());
                           informationInput.setText(patient.getInformation());
                         });
 
@@ -211,6 +211,8 @@ public class PatientDatabaseController extends MenuBarController implements Init
                                         "Patient",
                                         "checked out"));
 
+                            currentPatient.getLocation().setAvailability(true);
+
                             currentPatient = null;
                           }
                         });
@@ -248,6 +250,17 @@ public class PatientDatabaseController extends MenuBarController implements Init
               .getLocation(LocationsDB.getInstance().getLocationID(roomInput.getValue())));
       roomInput.getItems().remove(roomInput.getValue());
       addRoomInput.getItems().remove(addRoomInput.getValue());
+      currentPatient.getLocation().setAvailability(false);
+
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  currentPatient.getPatientID(),
+                  LocationsDB.getInstance().getLocationID(roomInput.getValue()),
+                  "Patient",
+                  "admitted to room"));
     }
 
     String firstName = nameInput.getText().substring(0, nameInput.getText().indexOf(" "));
@@ -259,6 +272,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
     dao.update(currentPatient);
 
     nameInput.setText("");
+    roomInput.setValue("No room assigned");
     informationInput.setText("");
 
     patientTable.refresh();
@@ -315,6 +329,8 @@ public class PatientDatabaseController extends MenuBarController implements Init
                   roomID,
                   "Patient",
                   "admitted to room"));
+
+        LocationsDB.getInstance().getLocation(roomID).setAvailability(false);
     }
 
     String information = addInformationInput.getText();
