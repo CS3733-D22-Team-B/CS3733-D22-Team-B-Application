@@ -72,7 +72,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="blankPane" prefHeight="200.0" prefWidth="200.0" styleClass="container-box" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
+      <AnchorPane fx:id="blankPane" prefHeight="200.0" prefWidth="200.0" styleClass="container-box" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="80.0">
          <children>
             <Label alignment="CENTER" layoutX="31.0" layoutY="177.0" opacity="0.7" prefHeight="42.0" prefWidth="611.0" text="Please Select A Database To View" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="177.0">
                <font>
@@ -81,8 +81,8 @@
             </Label>
          </children>
       </AnchorPane>
-      <fx:include fx:id="employeeDatabasePage" source="employeeDatabasePage.fxml" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="76.0" />
+      <fx:include fx:id="employeeDatabasePage" source="employeeDatabasePage.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
       <fx:include fx:id="locationDatabasePage" source="locationDataPage.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
-      <fx:include fx:id="patientDatabasePage" source="patientDatabasePage.fxml" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="76.0" />
+      <fx:include fx:id="patientDatabasePage" source="patientDatabasePage.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>

@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pickOnBounds="false" prefHeight="400.0" prefWidth="906.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.PatientDatabaseController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pickOnBounds="false" prefHeight="540.0" prefWidth="906.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.PatientDatabaseController">
    <children>
-      <SplitPane dividerPositions="0.3158671586715867" layoutX="38.0" layoutY="77.0" prefHeight="400.0" prefWidth="906.0" style="-fx-background-color: #2e3c4b;" styleClass="arrow" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.3158671586715867" layoutX="38.0" layoutY="77.0" prefHeight="400.0" prefWidth="906.0" style="-fx-background-color: #2e3c4b;" styleClass="arrow" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <items>
             <AnchorPane prefHeight="398.0" prefWidth="332.0">
                <children>

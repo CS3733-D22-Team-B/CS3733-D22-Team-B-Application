@@ -37,7 +37,6 @@ public class UIController {
                   + App.currentUser.getColorTheme()
                   + ".css");
     }
-
     this.primaryStage.setScene(scene);
   }
 }
