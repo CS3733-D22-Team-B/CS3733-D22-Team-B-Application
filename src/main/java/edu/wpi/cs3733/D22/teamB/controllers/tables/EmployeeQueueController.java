@@ -1,5 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import static edu.wpi.cs3733.D22.teamB.App.currentUser;
+
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.Activity;
@@ -53,6 +56,8 @@ public class EmployeeQueueController extends MenuBarController implements Initia
   @FXML AnchorPane editingPane;
   @FXML AnchorPane creationPane;
   @FXML AnchorPane otherAnchorPane;
+
+  @FXML JFXButton addEmployeeButton;
 
   Employee currentEmployee = null;
   DatabaseController db = DatabaseController.getInstance();
@@ -207,6 +212,12 @@ public class EmployeeQueueController extends MenuBarController implements Initia
 
                     hBox.getChildren()
                         .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
+
+                    if (!currentUser.getPosition().equals("ADMIN")) {
+                      requestEditButton.setDisable(true);
+                      requestDeleteButton.setDisable(true);
+                      addEmployeeButton.setDisable(true);
+                    }
                   }
 
                   @Override

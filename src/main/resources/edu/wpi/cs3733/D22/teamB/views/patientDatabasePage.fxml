@@ -223,6 +223,6 @@
          </items>
       </SplitPane>
       <JFXButton layoutX="6.0" layoutY="372.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back To Homepage" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" />
-      <JFXButton layoutX="462.0" layoutY="372.0" onAction="#createPatient" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Patient" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="6.0" />
+      <JFXButton fx:id="addPatientButton" layoutX="462.0" layoutY="372.0" onAction="#createPatient" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Patient" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="6.0" />
    </children>
 </AnchorPane>
