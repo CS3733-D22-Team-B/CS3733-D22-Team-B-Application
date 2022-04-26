@@ -1,14 +1,12 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.App;
+import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.EmailHelper;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.io.IOException;
 import java.util.Random;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -63,13 +61,7 @@ public class LoginController {
       if (employee.getPassword().equals(password)) {
         App.currentUser = employee;
 
-        Parent homepageRoot =
-            FXMLLoader.load(
-                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
-        Scene homepageScene = new Scene(homepageRoot);
-        Stage window = (Stage) loginButton.getScene().getWindow();
-        window.setScene(homepageScene);
-        window.show();
+        UIController.getInstance().goToPage("homepage");
       } else {
         loginFail.setText("Invalid Password");
       }

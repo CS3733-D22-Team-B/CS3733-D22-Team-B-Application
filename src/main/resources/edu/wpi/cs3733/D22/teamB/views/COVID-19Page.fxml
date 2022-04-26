@@ -1,66 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
     <children>
-        <Pane layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
-                    <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-                            </image>
+        <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="106.0" spacing="10.0">
+               <children>
+                  <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="main-button">
+                           <image>
+                              <Image url="@../assets/newAssets/Menu.png" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </ImageView>
-                    </graphic>
-                </JFXButton>
-            </children></Pane>
-        <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <Label layoutX="-111.0" layoutY="286.0" opacity="0.4" prefHeight="160.0" prefWidth="309.0" rotate="270.0" text="COVID-19 Information" textFill="#7bcce4" translateY="-100.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="-111.0" AnchorPane.topAnchor="286.0">
-            <font>
-                <Font name="Microsoft Sans Serif" size="30.0" />
-            </font>
-        </Label>
-        <VBox layoutX="112.0" layoutY="55.0" prefHeight="464.0" prefWidth="708.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="55.0">
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/profile" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToDashboard" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Maps" textFill="#ffffff40">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/map" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="requestButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Requests" textFill="#ffffff40">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/requests" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="equipmentTrackerButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToEquipmentTrackerPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Tracker" textFill="#ffffff40">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/tracker" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </children></Pane>
+        <VBox alignment="CENTER" layoutX="112.0" layoutY="55.0" prefHeight="464.0" prefWidth="708.0" styleClass="container-box-3" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="20.0">
             <children>
-                <Label alignment="TOP_LEFT" prefHeight="213.0" prefWidth="698.0" text="COVID-19 vaccination will help you avoid becoming ill with COVID-19. All COVID-19 vaccines currently available in the United States have been shown to be highly effective. More research is being conducted to determine whether the vaccines also prevent the spread of COVID-19. Wearing masks and avoiding contact with others can help reduce your chances of contracting the virus or spreading it to others, but these precautions are not enough. Getting vaccinated and following the CDC's recommendations to protect yourself and others will provide the best protection against COVID-19." textFill="#7bcce4" wrapText="true">
+            <Label opacity="0.7" prefHeight="93.0" prefWidth="310.0" text="COVID-19 Information" textFill="#ffffffb2">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="30.0" />
+               </font>
+            </Label>
+                <Label alignment="TOP_LEFT" prefHeight="192.0" prefWidth="650.0" text="COVID-19 vaccination will help you avoid becoming ill with COVID-19. All COVID-19 vaccines currently available in the United States have been shown to be highly effective. More research is being conducted to determine whether the vaccines also prevent the spread of COVID-19. Wearing masks and avoiding contact with others can help reduce your chances of contracting the virus or spreading it to others, but these precautions are not enough. Getting vaccinated and following the CDC's recommendations to protect yourself and others will provide the best protection against COVID-19." textFill="WHITE" wrapText="true">
                     <font>
-                        <Font name="Microsoft Sans Serif" size="18.0" />
+                        <Font name="Microsoft Sans Serif" size="16.0" />
                     </font>
                 </Label>
-            <Label prefHeight="76.0" prefWidth="316.0" text=" Vaccine Information:" textFill="#7bcce4">
+            <Label prefHeight="27.0" prefWidth="658.0" text=" Vaccine Information:" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="54.0" prefWidth="167.0" text="Booster 1" textFill="#7bcce4">
+            <Label prefHeight="22.0" prefWidth="650.0" text="Booster 1" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" prefHeight="109.0" prefWidth="698.0" text="After completing you primary vaccine series, anyone over the age of 12 can receive a booster: - At least 5 months after the completion of a primary series of an mRNA vaccine (Pfizer or Moderna). - At least two months after finishing a Janssen/J&amp;J primary dose." textFill="#7bcce4" wrapText="true">
+            <Label alignment="TOP_LEFT" prefHeight="126.0" prefWidth="650.0" text="After completing you primary vaccine series, anyone over the age of 12 can receive a booster: - At least 5 months after the completion of a primary series of an mRNA vaccine (Pfizer or Moderna). - At least two months after finishing a Janssen/J&amp;J primary dose." textFill="WHITE" wrapText="true">
                <font>
-                  <Font name="Microsoft Sans Serif" size="17.0" />
+                  <Font name="Microsoft Sans Serif" size="16.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="167.0" text="Booster 2" textFill="#7bcce4">
+            <Label prefHeight="22.0" prefWidth="650.0" text="Booster 2" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" prefHeight="158.0" prefWidth="698.0" text="-Anyone over the age of 50 may receive a second booster at least four months after the first. -Anyone aged 12 and up with certain medical conditions may receive a second booster at least four months after the first. -Anyone between the ages of 18 and 49 who has certain medical conditions and has received the Janssen/J&amp;J COVID-19 Vaccine as both a primary series dose and a booster dose at least 4 months after the first Janssen booster dose." textFill="#7bcce4" wrapText="true">
+            <Label alignment="TOP_LEFT" prefHeight="158.0" prefWidth="650.0" text="Anyone over the age of 50 may receive a second booster at least four months after the first. -Anyone aged 12 and up with certain medical conditions may receive a second booster at least four months after the first. -Anyone between the ages of 18 and 49 who has certain medical conditions and has received the Janssen/J&amp;J COVID-19 Vaccine as both a primary series dose and a booster dose at least 4 months after the first Janssen booster dose." textFill="WHITE" wrapText="true">
                <font>
-                  <Font name="Microsoft Sans Serif" size="17.0" />
+                  <Font name="Microsoft Sans Serif" size="16.0" />
                </font>
             </Label>
             </children>

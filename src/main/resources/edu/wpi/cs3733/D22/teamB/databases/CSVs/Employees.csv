@@ -1,14 +1,14 @@
-employeeID,lastName,firstName,department,position,username,password
-0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED
-ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin
-STAFF,Member,Staff,STAFF,STAFF,staff,staff
-PTDO01,Williams,Robert,PT,DOCTOR,Rob,Rob123
-ICNU01,Brown,William,ICU,NURSE,Will,Will123
-SAPS01,Davis,Patricia,SANITARIUM,PSYCHOLOGIST,Patty,Patty123
-CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,Mary123
-RATE01,Martin,Jeniffer,RADIOLOGY,TECHNICIAN,Jen,Jen123
-RESC01,White ,Walter,RESEARCH ,SCIENTIST,Walt,walt123
-MACU01,Barton,Stephan,MAINTENANCE,CUSTODIAN,Bob,bob123
-HRSE01,Cleveland,Emelia,HR,SECRETARY,Emelia,em123
-ORAN01,Jackson,Jane,OR,ANESTHESIOLOGIST,Jane,jane123
-NSSU01,Andrews,John,NEUROSURGERY,SURGEON,John,john123
+employeeID,lastName,firstName,department,position,username,password,lightOn,color
+0,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,UNASSIGNED,FALSE,Blue
+ADMIN,Administrator,The,ADMIN,ADMIN,admin,admin,FALSE,Blue
+STAFF,Member,Staff,STAFF,STAFF,staff,staff,FALSE,Blue
+PTDO01,Williams,Robert,PT,DOCTOR,Rob,rob123,FALSE,Blue
+ICNU01,Brown,William,ICU,NURSE,Will,will123,FALSE,Blue
+SAPS01,Davis,Patricia,SANITARIUM,PSYCHOLOGIST,Patty,patty123,FALSE,Blue
+CACH01,Johnson,Mary,CAFETERIA,CHEF,Mary,mary123,FALSE,Blue
+RATE01,Martin,Jeniffer,RADIOLOGY,TECHNICIAN,Jen,jen123,FALSE,Blue
+RESC01,White ,Walter,RESEARCH ,SCIENTIST,Walt,walt123,FALSE,Blue
+MACU01,Barton,Stephan,MAINTENANCE,CUSTODIAN,Bob,bob123,FALSE,Blue
+HRSE01,Cleveland,Emelia,HR,SECRETARY,Emelia,em123,FALSE,Blue
+ORAN01,Jackson,Jane,OR,ANESTHESIOLOGIST,Jane,jane123,FALSE,Blue
+NSSU01,Andrews,John,NEUROSURGERY,SURGEON,John,john123,FALSE,Blue

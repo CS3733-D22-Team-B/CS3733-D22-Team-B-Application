@@ -62,12 +62,16 @@ public class MedicalEquipment {
   }
 
   public void setIsClean(boolean newIsClean) {
-    isClean = newIsClean;
-
-    if (!newIsClean) {
+    // If we switch state, we move the equipment
+    if (this.isClean && !newIsClean) {
       this.setAvailability("Unavailable");
       this.moveToDirty();
+    } else if (!this.isClean && newIsClean) {
+      this.setAvailability("Available");
+      moveToClean();
     }
+
+    isClean = newIsClean;
   }
 
   public boolean getIsClean() {
@@ -79,7 +83,14 @@ public class MedicalEquipment {
   }
 
   public void setAvailability(String newAvailability) {
-    availability = newAvailability;
+    if (this.availability != null
+        && this.availability.equalsIgnoreCase("Unavailable")
+        && newAvailability.equalsIgnoreCase("Available")) {
+      RequestWaitlist.createRequest(this);
+      availability = "Requested";
+    } else {
+      availability = newAvailability;
+    }
   }
 
   public String getAvailability() {

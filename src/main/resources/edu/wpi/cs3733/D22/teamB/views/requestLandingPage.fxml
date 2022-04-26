@@ -1,107 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestLandingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestLandingPageController">
    <children>
-      <JFXButton layoutX="700.0" layoutY="498.0" onAction="#toggleUglyNames" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Toggle Creator Names" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="122.0" />
-      <GridPane layoutX="142.0" layoutY="30.0" prefHeight="479.0" prefWidth="674.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="40.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <JFXButton focusTraversable="false" layoutX="700.0" layoutY="498.0" onAction="#goToRequestInfoPage" text="Creator Info" textFill="#ffffffb2" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+      <Pane layoutX="855.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="equipmentRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToEquipmentRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create an Equipment Request" textAlignment="CENTER" wrapText="true" />
-            <JFXButton fx:id="labRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToLabRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Lab Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
-            <JFXButton fx:id="medicineRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToMedicineRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Medicine Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" />
-            <JFXButton fx:id="mealRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToMealRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Meal Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" />
-            <JFXButton fx:id="interpreterRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToInterpreterRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create an Interpreter Request" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <JFXButton fx:id="internalPatientTransferButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToInternalPatientTransferRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create an Internal Patient Transfer Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <JFXButton fx:id="laundryRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToLaundryRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Laundry Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <JFXButton fx:id="giftRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToGiftDeliveryRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Gift Delivery Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <JFXButton fx:id="sanitationRequestPage" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToSanitationRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Sanitation Request" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2" />
-            <JFXButton fx:id="securityRequestButton" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToSecurityRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Security Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <JFXButton fx:id="customRequestButton" alignment="CENTER" contentDisplay="TEXT_ONLY" maxHeight="125.0" maxWidth="125.0" minHeight="125.0" minWidth="125.0" onAction="#goToCustomRequestPage" prefHeight="125.0" prefWidth="125.0" styleClass="request-button" stylesheets="@styles/buttonStyles.css" text="Create a Custom Request" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
-      <Pane layoutX="855.0" layoutY="-5.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="-52.0" layoutY="252.0" opacity="0.4" rotate="270.0" text="Create Request" textFill="#7bcce4">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="855.0" layoutY="-5.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox layoutX="12.0" layoutY="33.0" prefHeight="181.0" prefWidth="73.0">
+            <VBox alignment="TOP_CENTER" layoutX="17.0" prefHeight="181.0" prefWidth="73.0" spacing="10.0">
                <children>
-                  <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToHomepage" prefHeight="65.0" prefWidth="75.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage">
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Back to Homepage">
                      <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="main-button">
                            <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                              <Image url="@../assets/newAssets/Menu.png" />
                            </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="customRequestButton1" contentDisplay="GRAPHIC_ONLY" maxHeight="126.0" maxWidth="125.0" minHeight="74.0" minWidth="70.0" onAction="#goToRequestQueue" prefHeight="74.0" prefWidth="70.0" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Queue">
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestQueue" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Queue">
                      <graphic>
-                        <ImageView fitHeight="71.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/Requests/QueueButton.png" />
+                              <Image url="@../assets/newAssets/Queue.png" />
                            </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </ImageView>
                      </graphic>
                   </JFXButton>
                </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </VBox>
          </children>
       </Pane>
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <GridPane fx:id="uglyNamePane" layoutX="152.0" layoutY="40.0" prefHeight="479.0" prefWidth="674.0" visible="false" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="40.0">
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" pannable="true" prefHeight="300.0" prefWidth="65.0" styleClass="button-pane" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="240.0">
+         <content>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="65.0" minHeight="0.0" minWidth="65.0" prefWidth="65.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" spacing="10.0">
+                     <children>
+                        <JFXButton fx:id="equipmentRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleEquipmentRequestPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Equipment" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="7.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="labRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleLabPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Lab" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="medicineRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleMedicinePage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Medicine" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="sanitationRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSanitationPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Sanitation" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="securityRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleSecurityPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Security" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="internalPatientTransferButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleTransferPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Internal Transfer" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="mealRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleMealPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Meal" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="interpreterRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleInterpreterPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Interpreter" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="giftRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleGiftPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Gift Delivery" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="laundryRequestButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleLaundryPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Laundry" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="customRequestButton" alignment="CENTER" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleCustomRequestPage" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Custom" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <fx:include fx:id="medicineRequestPage" source="medicineRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="customRequestPage" source="customRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="equipmentRequestPage" source="equipmentRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="giftRequestPage" source="giftRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="interpreterRequestPage" source="interpreterRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="labRequestPage" source="labRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="transferRequestPage" source="internalPatientTransferRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="laundryRequestPage" source="laundryRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="mealRequestPage" source="mealRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="sanitationPage" source="sanitationRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <fx:include fx:id="securityRequestPage" source="securityRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
+      <AnchorPane fx:id="blankPane" prefHeight="200.0" prefWidth="200.0" styleClass="container-box" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
          <children>
-            <Label text="Created By Ethan Moynihan" textFill="WHITE" GridPane.columnIndex="1" />
-            <Label text="Created By Ryan Rabbitt B]" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label text="Created By Ryan Rabbitt B]" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Label layoutX="548.0" layoutY="452.0" text="Created By Kalina Bonofiglio" textFill="WHITE" GridPane.rowIndex="2" />
-            <Label layoutX="548.0" layoutY="452.0" text="Created By Nathan Wong" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label layoutX="385.0" layoutY="452.0" text="Created By Abigail Boafo" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label layoutX="109.0" layoutY="300.0" text="Created By Brendan Mannion" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Label text="Created By Aidan MacNevin" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Label text="Created By Chase Miller" textFill="WHITE" />
-            <Label text="Created By Marek Garbaczonek" textFill="WHITE" GridPane.columnIndex="2" />
-            <Label text="Created By Sean Barbour" textFill="WHITE" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" layoutX="92.0" layoutY="177.0" opacity="0.7" text="Please Select A Request Type" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="177.0">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="36.0" />
+               </font>
+            </Label>
          </children>
-      </GridPane>
+      </AnchorPane>
    </children>
 </AnchorPane>

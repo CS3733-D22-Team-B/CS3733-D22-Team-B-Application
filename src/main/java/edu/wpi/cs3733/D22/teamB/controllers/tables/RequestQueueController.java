@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.DateHelper;
 import edu.wpi.cs3733.D22.teamB.controllers.AlertController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import edu.wpi.cs3733.D22.teamB.requests.InternalPatientTransferRequest;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import edu.wpi.cs3733.D22.teamB.requests.SanitationRequest;
 import java.net.URL;
@@ -117,16 +119,13 @@ public class RequestQueueController extends MenuBarController implements Initial
 
                   private final ImageView viewIcon =
                       new ImageView(
-                          new Image(
-                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/InfoSquare.png"));
                   private final ImageView editIcon =
                       new ImageView(
-                          new Image(
-                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/editIcon.png"));
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/EditSquare.png"));
                   private final ImageView deleteIcon =
                       new ImageView(
-                          new Image(
-                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/deleteIcon.jpg"));
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/CloseSquare.png"));
 
                   {
                     hBox.setSpacing(10);
@@ -167,7 +166,11 @@ public class RequestQueueController extends MenuBarController implements Initial
                           requestIDText.setText(request.getRequestID());
                           creationText.setText(DateHelper.stringify(request.getTimeCreated()));
                           editText.setText(DateHelper.stringify(request.getLastEdited()));
-                          employeeText.setText(request.getEmployee().getOverview());
+                          if (!request.getEmployee().getEmployeeID().equals("0")) {
+                            employeeText.setText(request.getEmployee().getOverview());
+                          } else {
+                            employeeText.setText("No employee assigned");
+                          }
                           statusText.setText(request.getStatus());
                           informationText.setText(request.getInformation());
                         });
@@ -181,8 +184,12 @@ public class RequestQueueController extends MenuBarController implements Initial
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
 
-                          requestIDLabel.setText(request.getRequestID());
-                          employeeInput.setValue(request.getEmployee().getOverview());
+                          // requestIDLabel.setText(request.getRequestID());
+                          if (!request.getEmployee().getEmployeeID().equals("0")) {
+                            employeeInput.setValue(request.getEmployee().getOverview());
+                          } else {
+                            employeeInput.setValue("");
+                          }
                           statusInput.setValue(request.getStatus());
                           informationInput.setText(request.getInformation());
                         });
@@ -215,6 +222,17 @@ public class RequestQueueController extends MenuBarController implements Initial
                             ServiceRequestsDB.getInstance().delete(request);
                             requests.remove(request);
                             requestTable.refresh();
+
+                            DatabaseController.getInstance()
+                                .add(
+                                    new Activity(
+                                        new Date(),
+                                        App.currentUser.getEmployeeID(),
+                                        request.getRequestID(),
+                                        null,
+                                        "Request",
+                                        "removed"));
+
                             currentRequest = null;
                           }
                         });
@@ -245,6 +263,30 @@ public class RequestQueueController extends MenuBarController implements Initial
 
   @FXML
   public void saveData(ActionEvent event) {
+    if (!currentRequest.getEmployeeID().equals(employeeInput.getValue())) {
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  currentRequest.getRequestID(),
+                  employeeInput.getValue(),
+                  "Request",
+                  "assigned to"));
+    }
+
+    if (!currentRequest.getStatus().equals(statusInput.getValue())) {
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  currentRequest.getRequestID(),
+                  statusInput.getValue().toLowerCase(),
+                  "Request",
+                  "marked as"));
+    }
+
     currentRequest.setStatus(statusInput.getValue());
     currentRequest.setEmployeeID(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()));
     currentRequest.setInformation(informationInput.getText());
@@ -256,15 +298,31 @@ public class RequestQueueController extends MenuBarController implements Initial
 
     requestTable.refresh();
 
-    ServiceRequestsDB.getInstance().update(currentRequest);
+    if (currentRequest instanceof InternalPatientTransferRequest
+        && currentRequest.getStatus().equals("Completed")) {
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  currentRequest.getPatientID(),
+                  currentRequest.getLocationID().toLowerCase(),
+                  "Patient",
+                  "transferred to room"));
+    }
+
+    if (currentRequest instanceof EquipmentRequest)
+      ServiceRequestsDB.getInstance().update(currentRequest);
     if (currentRequest instanceof EquipmentRequest) {
       EquipmentRequest eqReq = (EquipmentRequest) currentRequest;
       eqReq.updateMedicalEquipmentStatus();
-      AlertController alertController = AlertController.getInstance();
-      alertController.checkForAlerts();
+      AlertController.getInstance().checkForAlerts();
     } else if (currentRequest instanceof SanitationRequest) {
       SanitationRequest sanReq = (SanitationRequest) currentRequest;
       sanReq.updateMedicalEquipmentStatus();
+    } else if (currentRequest instanceof InternalPatientTransferRequest) {
+      InternalPatientTransferRequest patReq = (InternalPatientTransferRequest) currentRequest;
+      patReq.updatePatientStatus();
     }
 
     otherAnchorPane.setVisible(true);
