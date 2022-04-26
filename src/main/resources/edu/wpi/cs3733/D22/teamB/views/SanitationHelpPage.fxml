@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+    <children>
+        <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children></Pane>
+        <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <VBox layoutX="66.0" layoutY="43.0" prefHeight="482.0" prefWidth="764.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="43.0">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <children>
+            <Pane>
+               <children>
+                      <Label alignment="TOP_LEFT" layoutX="-2.0" layoutY="8.0" prefHeight="44.0" prefWidth="347.0" text="Requesting Sanitation Service" textAlignment="CENTER" textFill="#7bcce4" translateX="215.0" wrapText="true">
+                          <font>
+                              <Font name="Microsoft Sans Serif" size="24.0" />
+                          </font>
+                      </Label>
+               </children>
+            </Pane>
+            </children>
+        </VBox>
+        <Pane layoutX="550.0" layoutY="208.0" />
+        <Pane layoutX="540.0" layoutY="379.0">
+            <children>
+                <ImageView fitHeight="115.0" fitWidth="247.0" layoutX="18.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-22%20at%202.58.28%20PM.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="115.0" layoutY="420.0">
+            <children>
+                <Label alignment="TOP_LEFT" layoutX="-13.0" layoutY="1.0" prefHeight="37.0" prefWidth="430.0" text="   3.  (Opitional) Insert an additional message  : " textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="130.0" layoutY="120.0">
+            <children>
+                <ImageView fitHeight="82.0" fitWidth="278.0" layoutX="358.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-22%20at%203.37.40%20PM.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="TOP_LEFT" layoutX="-15.0" layoutY="20.0" prefHeight="60.0" prefWidth="335.0" text="1.  Select the type of equipment :" textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="500.0" layoutY="78.0" />
+        <Pane layoutX="120.0" layoutY="208.0" prefHeight="135.0" prefWidth="342.0">
+            <children>
+            <Pane layoutX="-3.0" layoutY="65.0">
+               <children>
+                      <Label alignment="TOP_LEFT" layoutX="-6.0" prefHeight="35.0" prefWidth="331.0" text="  2.  Select the urgency of the wash:" textFill="#7bcce4" wrapText="true">
+                          <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                          </font>
+                      </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="362.0" layoutY="46.0">
+               <children>
+                      <ImageView fitHeight="93.0" fitWidth="271.0" layoutX="23.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%209.57.50%20PM.png" />
+                          </image>
+                      </ImageView>
+               </children>
+            </Pane>
+            </children>
+        </Pane>
+        <Pane layoutX="450.0" layoutY="319.0">
+            <children>
+            <Pane layoutX="-32.0" layoutY="8.0" />
+            </children>
+        </Pane>
+        <Pane layoutX="344.0" layoutY="65.0">
+            <children>
+                <Pane layoutX="-34.0" />
+            </children>
+        </Pane>
+        <Pane layoutX="505.0" layoutY="235.0" />
+    </children>
+</AnchorPane>
