@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
+import static edu.wpi.cs3733.D22.teamB.App.currentUser;
 import static java.lang.Math.round;
 
 import com.jfoenix.controls.JFXButton;
@@ -225,6 +226,13 @@ public class InteractiveMapPageController extends AStarVisualization {
             }
           }
         });
+    if (!currentUser.getPosition().equals("ADMIN")) {
+      addButton.setDisable(true);
+      editButton.setDisable(true);
+      deleteButton.setDisable(true);
+      equipEditButton.setDisable(true);
+      resetButton.setDisable(true);
+    }
   }
 
   public void setAll() {
@@ -524,6 +532,16 @@ public class InteractiveMapPageController extends AStarVisualization {
                 reqInfoPane.setVisible(false);
               }
             });
+    if (r.getType().equals("Equipment Delivery")) {
+      icon.setOnMouseClicked(
+          event -> {
+            Location reqLoc = r.getLocation();
+            MedicalEquipment reqEq = edao.getByID(r.getEquipmentID());
+            Location medEqLoc = reqEq.getLocation();
+            calculatePath(medEqLoc, reqLoc);
+            drawPathFloor(floorString);
+          });
+    }
     icon.setLayoutX(viewCoords[0]);
     icon.setLayoutY(viewCoords[1]);
     mapPane.getChildren().add(icon);
@@ -1156,7 +1174,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     editButton.setVisible(true);
     deleteButton.setVisible(true);
     resetButton.setVisible(true);
-    backButton.setVisible(true);
+    backButton.setVisible(false);
     filterButton.setDisable(false);
     clearPathButton.setVisible(false);
     floorBackground.setVisible(false);
