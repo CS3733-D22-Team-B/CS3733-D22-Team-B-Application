@@ -39,7 +39,7 @@
                   </Pane>
                       <ImageView fitHeight="113.0" fitWidth="158.0" layoutX="206.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                           <image>
-                              <Image url="@../../../../../../../../../../../Desktop/floor.png" />
+                              <Image url="@../assets/Help/floor.png" />
                           </image>
                       </ImageView>
                       <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="37.0" prefHeight="33.0" prefWidth="657.0" text="1.  Select the floor :" textFill="#7bcce4" wrapText="true">
@@ -54,12 +54,12 @@
                     </Label>
                       <ImageView fitHeight="46.0" fitWidth="209.0" layoutX="425.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                           <image>
-                              <Image url="@../../../../../../../../../../../Desktop/location.png" />
+                              <Image url="@../assets/Help/location.png" />
                           </image>
                       </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="209.0" layoutX="435.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="140.0">
                      <image>
-                        <Image url="@../../../../../../../../../../../Desktop/location.png" />
+                        <Image url="@../assets/Help/type.png" />
                      </image>
                   </ImageView>
                </children>
@@ -81,7 +81,7 @@
                                  <children>
                                         <ImageView fitHeight="122.0" fitWidth="177.0" layoutX="47.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../../../../../../../../Desktop/patient.png" />
+                                                <Image url="@../assets/Help/patient.png" />
                                             </image>
                                         </ImageView>
                                     <Label alignment="TOP_LEFT" layoutX="-24.0" layoutY="89.0" prefHeight="26.0" prefWidth="364.0" text="   5.  Select the priority of request: " textFill="#7bcce4" wrapText="true">
@@ -112,7 +112,7 @@
                       </Label>
                   <ImageView fitHeight="89.0" fitWidth="215.0" layoutX="358.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../../Desktop/additional%20notes.png" />
+                        <Image url="@../assets/Help/additional%20notes.png" />
                      </image>
                   </ImageView>
                </children>
@@ -127,7 +127,7 @@
                   </Pane>
                   <ImageView fitHeight="74.0" fitWidth="233.0" layoutX="-4.0" layoutY="-161.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="140.0">
                      <image>
-                        <Image url="@../../../../../../../../../../../Desktop/priority%20bar.png" />
+                        <Image url="@../assets/Help/priority%20bar.png" />
                      </image>
                   </ImageView>
                </children>

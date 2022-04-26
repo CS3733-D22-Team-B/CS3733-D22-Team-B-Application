@@ -34,7 +34,7 @@
             <children>
                 <ImageView fitHeight="92.0" fitWidth="208.0" layoutX="-55.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/medication.png" />
+                        <Image url="@../assets/Help/medication.png" />
                     </image>
                 </ImageView>
             </children>
@@ -48,7 +48,7 @@
                 </Label>
                 <ImageView fitHeight="70.0" fitWidth="249.0" layoutX="374.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/priority%20bar.png" />
+                        <Image url="@../assets/Help/priority%20bar.png" />
                     </image>
                 </ImageView>
             </children>
@@ -57,7 +57,7 @@
             <children>
                 <ImageView fitHeight="110.0" fitWidth="228.0" layoutX="47.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/med%20additional%20notes.png" />
+                        <Image url="@../assets/Help/med%20additional%20notes.png" />
                     </image>
                 </ImageView>
             </children>
@@ -84,7 +84,7 @@
             <children>
                 <ImageView fitHeight="127.0" fitWidth="184.0" layoutX="-39.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/patient.png" />
+                        <Image url="@../assets/Help/patient.png" />
                     </image>
                 </ImageView>
             </children>
