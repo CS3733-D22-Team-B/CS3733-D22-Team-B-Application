@@ -126,6 +126,9 @@ public class LoginController {
                 Stage window = (Stage) loginButton.getScene().getWindow();
                 window.setScene(homepageScene);
                 window.show();
+              } else {
+                loginFail.setVisible(true);
+                loginFail.setText("Incorrect Code");
               }
             });
       } else {
