@@ -247,7 +247,7 @@
                       <TableColumn fx:id="requestID" prefWidth="75.0" text="Request ID" />
                       <TableColumn fx:id="requestType" prefWidth="75.0" text="Type" />
                         <TableColumn fx:id="requestStatus" prefWidth="75.0" text="Status" />
-                        <TableColumn fx:id="requestPriority" prefWidth="75.0" text="Priority" />
+                        <TableColumn fx:id="requestPriority" prefWidth="153.0" text="Priority" />
                            </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
