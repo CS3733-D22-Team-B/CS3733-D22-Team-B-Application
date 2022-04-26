@@ -44,6 +44,8 @@ public class RequestLandingPageController extends MenuBarController {
     switch (currentPage) {
       case "Custom":
         UIController.getInstance().goToPage("CustomHelpPage");
+      case "Equipment":
+        UIController.getInstance().goToPage("EquipmentHelpPage");
     }
   }
 
@@ -60,6 +62,7 @@ public class RequestLandingPageController extends MenuBarController {
     equipmentRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(equipmentRequestPage);
     currentButton = equipmentRequestButton;
+    currentPage = "Equipment";
   }
 
   @FXML
