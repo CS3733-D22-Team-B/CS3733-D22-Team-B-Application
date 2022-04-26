@@ -34,6 +34,7 @@ public class DashboardController extends MenuBarController {
   @FXML private AnchorPane patientsCardsPane;
   @FXML private Accordion activityPane;
 
+  @FXML private TabPane tabPane;
   @FXML TableView alertTable;
   @FXML TableColumn<EquipmentAlert, String> columnLocation;
   @FXML TableColumn<EquipmentAlert, String> columnType;
@@ -998,8 +999,13 @@ public class DashboardController extends MenuBarController {
       }
 
       activityTable.setItems(activityList);
+      activityTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
       AnchorPane anchorPane = new AnchorPane();
       anchorPane.getChildren().add(activityTable);
+      AnchorPane.setBottomAnchor(activityTable, 0.0);
+      AnchorPane.setTopAnchor(activityTable, 0.0);
+      AnchorPane.setLeftAnchor(activityTable, 0.0);
+      AnchorPane.setRightAnchor(activityTable, 0.0);
       titledPane.setContent(anchorPane);
       activityPane.getPanes().add(titledPane);
     }

@@ -49,6 +49,10 @@
     -fx-background-radius: 10px;
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.1), 10, .2, 0, 0);
 }
+.hidden-button {
+    -fx-base: transparent;
+    -fx-text-fill: black;
+}
 .request-button {
     -fx-background-color: linear-gradient(to bottom right, #434B5B, #58707D);
     -fx-background-radius: 10px;
@@ -142,7 +146,8 @@
     -fx-background-color: #1A1A1F;
     -fx-opacity: 0.75;
     -fx-background-radius: 10px;
-    -fx-text-fill: rgba(0, 0, 0, 0.7);
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
 }
 .label-box-sharp{
     -fx-background-color: #1A1A1F;
@@ -252,6 +257,11 @@
 .combo-box .arrow{
     -fx-background-color: rgba(255, 255, 255, 0.7);
 }
+.combo-box .cell{
+    -fx-background-color: #1E2129;
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-font: 12px "Sans-Serif";
+}
 .jfx-slider > .track {
     -fx-background-color: #1A1A1F;
     -fx-pref-height: 5px;
@@ -292,6 +302,7 @@
 .date-picker .text-field {
     -fx-control-inner-background: #1E2129;
     -fx-background-radius: 10px 0px 0px 10px;
+    -fx-background-color: #1E2129;
     -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
     -fx-effect: none;
     -fx-text-fill: white;
