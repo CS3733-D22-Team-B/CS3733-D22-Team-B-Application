@@ -2,8 +2,8 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.api.*;
+import edu.wpi.cs3733.D22.teamC.*;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -154,13 +154,17 @@ public class MenuBarController {
   }
 
   @FXML
-  public void launchAPI() throws ServiceException {
-    API api = new API();
-    try {
-      api.run(0, 0, 600, 400, null, null, null);
-      DatabaseController databaseController = new DatabaseController();
-      databaseController.addEmployee("Wong", "Wilson");
-    } catch (IOException e) {
-    }
+  public void launchAPI()
+      throws ServiceException,
+          edu.wpi
+              .cs3733
+              .D22
+              .teamC
+              .controller
+              .service_request
+              .facility_maintenance
+              .ServiceException {
+    TeamCAPI api = new TeamCAPI();
+    api.run(0, 0, 600, 400, null, null, null);
   }
 }

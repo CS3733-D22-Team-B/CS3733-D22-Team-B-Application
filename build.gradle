@@ -42,6 +42,8 @@ dependencies {
 
     implementation name: 'teamBAPI'
 
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",
             "junit:junit:4.13.2",
