@@ -107,10 +107,12 @@ public class LoginController {
               if (authCode.equals(authField.getText())) {
                 authButton.setVisible(false);
                 authButton.setDisable(true);
-                authText.setVisible(false);
-                authText.setDisable(true);
+                authText.setText("Authentication Successful");
+                authField.setVisible(false);
+                authField.setDisable(true);
                 loginButton.setVisible(true);
                 loginButton.setDisable(false);
+                loginFail.setVisible(false);
               } else {
                 loginFail.setVisible(true);
                 loginFail.setText("Incorrect Code");
