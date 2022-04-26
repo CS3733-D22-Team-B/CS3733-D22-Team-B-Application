@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
-import edu.wpi.cs3733.D22.teamB.App;
+import static edu.wpi.cs3733.D22.teamB.App.currentUser;
+
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.net.URL;
@@ -48,6 +50,8 @@ public class PatientDatabaseController extends MenuBarController implements Init
   @FXML AnchorPane creationPane;
   @FXML AnchorPane otherAnchorPane;
 
+  @FXML JFXButton addPatientButton;
+
   Patient currentPatient = null;
   DatabaseController db = DatabaseController.getInstance();
   protected PatientsDB dao;
@@ -56,6 +60,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
     columnPatientID.setCellValueFactory(new PropertyValueFactory<>("patientID"));
     columnName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
@@ -208,7 +213,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
                                 .add(
                                     new Activity(
                                         new Date(),
-                                        App.currentUser.getEmployeeID(),
+                                        currentUser.getEmployeeID(),
                                         currentPatient.getPatientID(),
                                         null,
                                         "Patient",
@@ -222,6 +227,12 @@ public class PatientDatabaseController extends MenuBarController implements Init
 
                     hBox.getChildren()
                         .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
+
+                    if (!currentUser.getPosition().equals("ADMIN")) {
+                      requestEditButton.setDisable(true);
+                      requestDeleteButton.setDisable(true);
+                      addPatientButton.setDisable(true);
+                    }
                   }
 
                   @Override
@@ -261,7 +272,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
           .add(
               new Activity(
                   new Date(),
-                  App.currentUser.getEmployeeID(),
+                  currentUser.getEmployeeID(),
                   currentPatient.getPatientID(),
                   LocationsDB.getInstance().getLocationID(roomInput.getValue()),
                   "Patient",
@@ -329,7 +340,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
           .add(
               new Activity(
                   new Date(),
-                  App.currentUser.getEmployeeID(),
+                  currentUser.getEmployeeID(),
                   currentPatient.getPatientID(),
                   roomID,
                   "Patient",
