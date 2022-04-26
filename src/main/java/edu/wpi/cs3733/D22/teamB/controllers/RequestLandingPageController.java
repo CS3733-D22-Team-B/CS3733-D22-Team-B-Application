@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamB.UIController;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,9 +34,17 @@ public class RequestLandingPageController extends MenuBarController {
   @FXML private JFXButton securityRequestButton;
 
   private JFXButton currentButton;
+  private String currentPage = "none";
 
   public void initialize() {
     hideOthers(blankPane);
+  }
+
+  public void goToHelpPage() throws Exception {
+    switch (currentPage) {
+      case "Custom":
+        UIController.getInstance().goToPage("CustomHelpPage");
+    }
   }
 
   @FXML
@@ -43,6 +52,7 @@ public class RequestLandingPageController extends MenuBarController {
     customRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(customRequestPage);
     currentButton = customRequestButton;
+    currentPage = "Custom";
   }
 
   @FXML
