@@ -17,7 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
@@ -247,20 +246,24 @@ public class DashboardController extends MenuBarController {
     Text locationText = new Text(x + 50, y + 80, "Location:");
     locationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     locationText.setTextAlignment(TextAlignment.CENTER);
+    locationText.getStyleClass().add("card-text");
 
     Text equipmentLocation = new Text(x + 10, y + 100, equipment.getLocation().getLongName());
     equipmentLocation.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
     equipmentLocation.setTextAlignment(TextAlignment.CENTER);
     equipmentLocation.setWrappingWidth(140);
+    equipmentLocation.getStyleClass().add("card-text");
 
     Text statusText = new Text(x + 60, y + 150, "Status:");
     statusText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     statusText.setTextAlignment(TextAlignment.CENTER);
+    statusText.getStyleClass().add("card-text");
 
     Text equipmentStatus = new Text(x + 10, y + 170, equipment.getStatus());
     equipmentStatus.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
     equipmentStatus.setTextAlignment(TextAlignment.CENTER);
     equipmentStatus.setWrappingWidth(140);
+    equipmentStatus.getStyleClass().add("card-text");
 
     equipmentCardsPane.getChildren().add(rectangle);
     equipmentCardsPane.getChildren().add(equipmentName);
@@ -303,8 +306,10 @@ public class DashboardController extends MenuBarController {
     Text locationText = new Text(x + 50, y + 80, "Location:");
     locationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     locationText.setTextAlignment(TextAlignment.CENTER);
+    locationText.getStyleClass().add("card-text");
 
     Text equipmentLocation = new Text(x + 10, y + 100, "");
+    equipmentLocation.getStyleClass().add("card-text");
     if (patient.getLocation() != null) {
       equipmentLocation.setText(patient.getLocation().getLongName());
     } else {
@@ -316,11 +321,13 @@ public class DashboardController extends MenuBarController {
     Text statusText = new Text(x + 60, y + 150, "Status:");
     statusText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     statusText.setTextAlignment(TextAlignment.CENTER);
+    statusText.getStyleClass().add("card-text");
 
     Text equipmentStatus = new Text(x + 10, y + 170, patient.getInformation());
     equipmentStatus.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
     equipmentStatus.setTextAlignment(TextAlignment.CENTER);
     equipmentStatus.setWrappingWidth(140);
+    equipmentStatus.getStyleClass().add("card-text");
 
     patientsCardsPane.getChildren().add(rectangle);
     patientsCardsPane.getChildren().add(equipmentName);
@@ -365,6 +372,7 @@ public class DashboardController extends MenuBarController {
     equipmentName.setLayoutY(y + 10);
     equipmentName.setPrefWidth(160);
     equipmentName.setPrefHeight(25);
+    equipmentName.getStyleClass().add("card-text");
 
     Label equipmentID = new Label("(" + request.getType() + ")");
     equipmentID.setFont(Font.font("Arial", FontWeight.BOLD, 14));
@@ -374,10 +382,12 @@ public class DashboardController extends MenuBarController {
     equipmentID.setLayoutY(y + 35);
     equipmentID.setPrefWidth(160);
     equipmentID.setPrefHeight(25);
+    equipmentID.getStyleClass().add("card-text");
 
     Text locationText = new Text(x + 50, y + 80, "Location:");
     locationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     locationText.setTextAlignment(TextAlignment.CENTER);
+    locationText.getStyleClass().add("card-text");
 
     Text equipmentLocation = new Text(x + 10, y + 100, "");
     if (request.getLocation() != null) {
@@ -388,15 +398,18 @@ public class DashboardController extends MenuBarController {
     equipmentLocation.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
     equipmentLocation.setTextAlignment(TextAlignment.CENTER);
     equipmentLocation.setWrappingWidth(140);
+    equipmentLocation.getStyleClass().add("card-text");
 
     Text statusText = new Text(x + 60, y + 150, "Status:");
     statusText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
     statusText.setTextAlignment(TextAlignment.CENTER);
+    statusText.getStyleClass().add("card-text");
 
     Text equipmentStatus = new Text(x + 10, y + 170, request.getStatus());
     equipmentStatus.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
     equipmentStatus.setTextAlignment(TextAlignment.CENTER);
     equipmentStatus.setWrappingWidth(140);
+    equipmentStatus.getStyleClass().add("card-text");
 
     requestCardsPane.getChildren().add(rectangle);
     requestCardsPane.getChildren().add(equipmentName);
@@ -434,8 +447,8 @@ public class DashboardController extends MenuBarController {
           }
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -450,8 +463,8 @@ public class DashboardController extends MenuBarController {
           }
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -465,7 +478,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -484,7 +497,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -499,7 +512,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -513,7 +526,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -532,7 +545,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -547,7 +560,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -561,7 +574,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -580,7 +593,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -595,7 +608,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -609,7 +622,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -628,7 +641,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -643,7 +656,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -657,7 +670,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -676,7 +689,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -691,7 +704,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -705,7 +718,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -724,7 +737,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No equipment on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -739,7 +752,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No requests on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
@@ -753,7 +766,7 @@ public class DashboardController extends MenuBarController {
         } else {
           Text noEquipment = new Text(100, 175, "No patients on this floor");
           noEquipment.setFont(Font.font("Arial", FontWeight.BOLD, 48));
-          noEquipment.setFill(Color.WHITE);
+          noEquipment.getStyleClass().add("card-text");
           noEquipment.setTextAlignment(TextAlignment.CENTER);
           noEquipment.setWrappingWidth(315);
 
