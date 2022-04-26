@@ -72,7 +72,7 @@ public class InternalPatientTransferController extends PatientAndLocationBasedRe
     InternalPatientTransferRequest request =
         new InternalPatientTransferRequest(
             patientID, destinationID, notes, (int) prioritySlider.getValue());
-    ServiceRequestsDB.getInstance().add(request);
+    DatabaseController.getInstance().add(request);
     requestLabel.setText("Request sent: Moving " + patientName + " to " + locationName);
   }
 }

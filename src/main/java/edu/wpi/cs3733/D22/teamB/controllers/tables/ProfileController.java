@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
-import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
@@ -18,58 +17,76 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 
 public class ProfileController extends MenuBarController implements Initializable {
 
-  @FXML private Label nameLabel;
-  @FXML private Label positionLabel;
-  @FXML private Label idLabel;
-  @FXML private Label usernameLabel;
-  @FXML private Label passwordLabel;
-  @FXML private JFXButton changePasswordButton;
-  @FXML private TextField newPasswordField;
-  @FXML private TextField confirmPasswordField;
-  @FXML private Label errorLabel;
-  @FXML private AnchorPane changePasswordPane;
+  @FXML TableView requestTable;
+  @FXML TableColumn<Request, String> requestID;
+  @FXML TableColumn<Request, String> requestType;
+  @FXML TableColumn<Request, String> requestStatus;
+  @FXML TableColumn<Request, String> requestPriority;
+  TableColumn<Request, Void> viewRequest;
 
-  private String password;
-  private String hiddenPassword;
-  @FXML TableView<Request> requestTable;
-  @FXML TableColumn<Request, String> columnRequestID;
-  @FXML TableColumn<Request, String> columnType;
-  @FXML TableColumn<Request, String> columnStatus;
-  @FXML TableColumn<Request, Integer> columnPriority;
-  @FXML TableColumn<Request, Void> columnButtons;
+  @FXML GridPane changePasswordPane;
+  @FXML GridPane colorThemePane;
 
-  @FXML ScrollPane scrollPane;
-  @FXML Label requestIDLabel;
-  @FXML Label createdLabel;
-  @FXML Label lastEditedLabel;
-  @FXML Label informationLabel;
-  @FXML ComboBox<String> statusInput;
+  @FXML Label nameLabel;
+  @FXML Label idLabel;
+  @FXML Label positionLabel;
+  @FXML Label usernameLabel;
+
+  @FXML TextField newPasswordField;
+  @FXML TextField confirmPasswordField;
+  @FXML Label messageBox;
+
+  @FXML Button changePasswordButton;
 
   private ObservableList<Request> requests = FXCollections.observableArrayList();
-  Request currentRequest = null;
+
+  private String password;
+
+  // Temporary variables - should be in Employee class
+  private static boolean lightModeOn = false;
+  private static String colorTheme = "blue";
 
   @FXML
-  public void initialize() {
+  public void initialize(URL url, ResourceBundle resourceBundle) {
     Employee currentUser = App.currentUser;
+    password = currentUser.getPassword();
 
     nameLabel.setText(currentUser.getFirstName() + " " + currentUser.getLastName());
     positionLabel.setText(currentUser.getPosition());
     idLabel.setText(currentUser.getEmployeeID());
     usernameLabel.setText("Username: " + currentUser.getUsername());
 
-    password = currentUser.getPassword();
+    requestID.setCellValueFactory(new PropertyValueFactory<>("requestID"));
+    requestType.setCellValueFactory(new PropertyValueFactory<>("type"));
+    requestStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+    requestPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
 
-    hiddenPassword = "";
-    for (int i = 0; i < password.length(); i++) {
-      hiddenPassword += "\u2022";
+    viewRequest = new TableColumn<>("View");
+    requestTable.getColumns().add(viewRequest);
+
+    requestID.getStyleClass().add("table-column-left");
+    requestType.getStyleClass().add("table-column-middle");
+    requestStatus.getStyleClass().add("table-column-middle");
+    requestPriority.getStyleClass().add("table-column-middle");
+    viewRequest.getStyleClass().add("table-column-right");
+
+    for (Request request : ServiceRequestsDB.getInstance().list()) {
+      if (request.getEmployeeID() != null
+          && request.getEmployeeID().equals(App.currentUser.getEmployeeID())
+          && !request.getStatus().equals("Completed")) requests.add(request);
     }
 
-    // passwordLabel.setText("Password: " + hiddenPassword);
+    sortRequestsByCreationDate(requests);
+
+    requestTable.setItems(requests);
+    addButtonToTable();
 
     newPasswordField
         .textProperty()
@@ -94,31 +111,6 @@ public class ProfileController extends MenuBarController implements Initializabl
             });
   }
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    columnRequestID.setCellValueFactory(new PropertyValueFactory<>("requestID"));
-    columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
-    columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-    columnPriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
-
-    columnRequestID.getStyleClass().add("table-column-left");
-    columnType.getStyleClass().add("table-column-middle");
-    columnStatus.getStyleClass().add("table-column-middle");
-    columnPriority.getStyleClass().add("table-column-middle");
-    columnButtons.getStyleClass().add("table-column-right");
-
-    for (Request request : ServiceRequestsDB.getInstance().list()) {
-      if (request.getEmployeeID() != null
-          && request.getEmployeeID().equals(App.currentUser.getEmployeeID())
-          && !request.getStatus().equals("Completed")) requests.add(request);
-    }
-
-    sortRequestsByCreationDate(requests);
-
-    requestTable.setItems(requests);
-    addButtonToTable();
-  }
-
   private void addButtonToTable() {
     Callback<TableColumn<Request, Void>, TableCell<Request, Void>> cellFactory =
         new Callback<TableColumn<Request, Void>, TableCell<Request, Void>>() {
@@ -128,21 +120,28 @@ public class ProfileController extends MenuBarController implements Initializabl
                 new TableCell<Request, Void>() {
                   private final Button requestViewerButton = new Button("View");
 
+                  private final ImageView viewIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+
                   {
+                    requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestViewerButton.setMinSize(25, 25);
+                    requestViewerButton.setPrefSize(25, 25);
+                    requestViewerButton.setMaxSize(25, 25);
+                    requestViewerButton.setGraphic(viewIcon);
+                    viewIcon.setFitHeight(25);
+                    viewIcon.setFitWidth(25);
+
                     requestViewerButton.setOnAction(
                         (ActionEvent event) -> {
-                          Request request = getTableView().getItems().get(getIndex());
-                          currentRequest = request;
-                          requestIDLabel.setText(request.getRequestID());
-                          createdLabel.setText("Created: " + request.getTimeCreated().toString());
-                          lastEditedLabel.setText(
-                              "Last Edited: " + request.getLastEdited().toString());
-                          informationLabel.setText(request.getInformation());
-
-                          statusInput.setValue(request.getStatus());
-                          statusInput.setDisable(false);
-
-                          scrollPane.setVisible(true);
+                          try {
+                            RequestQueueController.currentRequest =
+                                getTableView().getItems().get(getIndex());
+                            goToRequestQueue(null);
+                          } catch (Exception e) {
+                          }
                         });
                   }
 
@@ -161,19 +160,7 @@ public class ProfileController extends MenuBarController implements Initializabl
           }
         };
 
-    columnButtons.setCellFactory(cellFactory);
-  }
-
-  @FXML
-  public void saveData(ActionEvent event) {
-    currentRequest.setStatus(statusInput.getValue());
-    statusInput.setDisable(true);
-    currentRequest.setLastEdited(new Date());
-    if (currentRequest.getStatus().equals("Completed")) requests.remove(currentRequest);
-    ServiceRequestsDB.getInstance().update(currentRequest);
-    requestTable.refresh();
-
-    scrollPane.setVisible(false);
+    viewRequest.setCellFactory(cellFactory);
   }
 
   private void sortRequestsByCreationDate(ObservableList<Request> requests) {
@@ -187,7 +174,7 @@ public class ProfileController extends MenuBarController implements Initializabl
     }
   }
 
-  public void openChangePasswordDisplay(ActionEvent actionEvent) {
+  public void toggleChangePasswordPane(ActionEvent actionEvent) {
     if (changePasswordPane.isVisible()) {
       toggleChangePasswordDisplay(false);
     } else {
@@ -200,35 +187,33 @@ public class ProfileController extends MenuBarController implements Initializabl
     String confirmPassword = confirmPasswordField.getText();
 
     if (newPassword.equals(password) || confirmPassword.equals(password)) {
-      errorLabel.setText("New password cannot be the same as the old password.");
+      messageBox.setText("New password cannot be the same as the old password.");
     } else if (!newPassword.equals(confirmPassword)) {
-      errorLabel.setText("Passwords do not match");
+      messageBox.setText("Passwords do not match");
     } else {
       App.currentUser.setPassword(newPassword);
       EmployeesDB.getInstance().update(App.currentUser);
       password = newPassword;
-      hiddenPassword = "";
-      for (int i = 0; i < password.length(); i++) {
-        hiddenPassword += "\u2022";
-      }
-      // passwordLabel.setText("Password: " + hiddenPassword);
       toggleChangePasswordDisplay(false);
 
       newPasswordField.setText("");
       confirmPasswordField.setText("");
-      errorLabel.setText("");
-    }
-  }
+      messageBox.setText("");
 
-  private void togglePassword(boolean visible) {
-    if (visible) {
-      passwordLabel.setText("Password: " + password);
-    } else {
-      passwordLabel.setText("Password: " + hiddenPassword);
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  App.currentUser.getEmployeeID(),
+                  null,
+                  "Employee",
+                  "password updated"));
     }
   }
 
   private void toggleChangePasswordDisplay(boolean visible) {
     changePasswordPane.setVisible(visible);
+    requestTable.setVisible(!visible);
   }
 }

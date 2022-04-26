@@ -30,10 +30,12 @@ public class EdgeGetter {
 
     for (int i = 0; i < edgeList1.size(); i++) {
       idList.add(edgeList1.get(i).getNodeID2());
+      // System.out.println(edgeList1.get(i).getNodeID2());
     }
 
     for (int i = 0; i < edgeList2.size(); i++) {
-      idList.add(edgeList2.get(i).getNodeID2());
+      idList.add(edgeList2.get(i).getNodeID1());
+      // System.out.println(edgeList2.get(i).getNodeID1());
     }
 
     return idList;

@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamB.databases.ServiceRequestsDB;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.requests.LaundryRequest;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -47,7 +47,7 @@ public class LaundryRequestController extends PatientBasedRequestController {
             patientID,
             "Laundry Request: " + laundry + "\nAdditional Information: " + notes,
             (int) prioritySlider.getValue());
-    ServiceRequestsDB.getInstance().add(request);
+    DatabaseController.getInstance().add(request);
     requestLabel.setText("Request sent: " + laundry + " to " + patientName);
   }
 
