@@ -15,6 +15,14 @@ public class Patient {
     this.patientID = "PA" + getHashCode();
   }
 
+  public Patient(String lastName, String firstName, String nodeID, String information) {
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.nodeID = nodeID;
+    this.information = information;
+    this.patientID = "PA" + getHashCode();
+  }
+
   public Patient(
       String newPatientID,
       String newLastName,
@@ -82,6 +90,10 @@ public class Patient {
     return firstName + " " + lastName + " (" + patientID + ")";
   }
 
+  public String getFullName() {
+    return firstName + " " + lastName;
+  }
+
   // Josh Bloch's Hashing method
   protected final String getHashCode() {
     // generate random value between 0 and 1 inclusive
@@ -127,7 +139,10 @@ public class Patient {
   }
 
   public String getLongName() {
-    return getLocation().getLongName();
+    if (getLocation() != null) {
+      return getLocation().getLongName();
+    }
+    return "No room assigned";
   }
 
   public String getShortName() {

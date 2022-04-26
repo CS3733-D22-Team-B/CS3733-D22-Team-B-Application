@@ -132,6 +132,10 @@ public class Employee {
     return firstName + " " + lastName + " (" + employeeID + ")";
   }
 
+  public String getFullName() {
+    return firstName + " " + lastName;
+  }
+  
   public String getColorTheme() {
     String colorTheme = "";
     colorTheme += (lightOn) ? "light" : "dark";
