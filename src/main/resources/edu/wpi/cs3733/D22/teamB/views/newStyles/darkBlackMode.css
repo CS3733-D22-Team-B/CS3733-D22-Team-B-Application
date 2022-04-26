@@ -94,6 +94,14 @@
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.75), 10, .2, 0, 0);
     -fx-background-radius: 10px;
 }
+.fancy-label {
+    -fx-background-color: linear-gradient(to bottom right, #434B5B, #58707D);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-border-color: rgba(0, 0, 0, 0.7);
+    -fx-border-width: 1px;
+    -fx-opacity: .70;
+}
 .text-area {
     -fx-control-inner-background: #1E2129;
     -fx-background-color: #1E2129;

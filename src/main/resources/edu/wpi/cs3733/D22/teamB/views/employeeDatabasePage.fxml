@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="805.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EmployeeQueueController">
+<AnchorPane prefHeight="500.0" prefWidth="805.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EmployeeQueueController">
    <children>
-      <GridPane prefHeight="500.0" prefWidth="805.0">
+      <GridPane prefHeight="500.0" prefWidth="805.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
@@ -18,17 +27,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0">
                <children>
-                  <AnchorPane fx:id="viewingPane" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" visible="false">
+                  <AnchorPane fx:id="viewingPane" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="300.0" styleClass="container-box-3" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="431.0" prefWidth="322.0">
                            <children>
-                              <Label contentDisplay="CENTER" text="Currently Viewing Employee" textFill="#7bcce4">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
                               <Label fx:id="employeeIDText" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="144.0" textFill="#7bcce4">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -42,30 +46,39 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="nameText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
+                              <Text fx:id="nameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
                                  <VBox.margin>
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
+                                 </font>
                               </Text>
                               <Label contentDisplay="CENTER" text="Username:" textFill="#7bcce4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="usernameText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
+                              <Text fx:id="usernameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
                                  <VBox.margin>
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
+                                 </font>
                               </Text>
                               <Label contentDisplay="CENTER" text="Department:" textFill="#7bcce4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="departmentText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="188.55554223060608">
+                              <Text fx:id="departmentText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="188.55554223060608">
                                  <VBox.margin>
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
+                                 </font>
                               </Text>
                               <Label contentDisplay="CENTER" text="Position:" textFill="#7bcce4">
                                  <font>
@@ -81,15 +94,10 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="editingPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" visible="false">
+                  <AnchorPane fx:id="editingPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-3" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="429.0" prefWidth="322.0">
                            <children>
-                              <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="184.0" text="Currently Editing Employee" textFill="#7bcce4">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
                               <Label fx:id="employeeIDLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="144.0" textFill="#7bcce4">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -147,21 +155,16 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="otherAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-4" stylesheets="@newStyles/darkBlueMode.css">
+                  <AnchorPane fx:id="otherAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-3" stylesheets="@newStyles/darkBlueMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label contentDisplay="CENTER" layoutX="40.0" layoutY="240.0" text="Please Select an Employee" textFill="#7bcce4">
                            <font>
                               <Font name="Microsoft Sans Serif" size="18.0" />
                            </font>
                         </Label>
-                        <JFXButton alignment="CENTER" layoutX="81.0" layoutY="448.0" onAction="#createEmployee" prefHeight="38.0" prefWidth="138.0" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text="Add New Employee">
-                           <font>
-                              <Font name="Microsoft Sans Serif" size="12.0" />
-                           </font>
-                        </JFXButton>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="creationPane" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-4" visible="false">
+                  <AnchorPane fx:id="creationPane" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-3" visible="false">
                      <children>
                         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="421.0" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" mnemonicParsing="false" onAction="#addEmployee" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Add" />
                         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="421.0" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" mnemonicParsing="false" onAction="#cancel" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Cancel" />
@@ -226,6 +229,11 @@
                         </VBox>
                      </children>
                   </AnchorPane>
+                  <JFXButton alignment="CENTER" onAction="#createEmployee" prefHeight="38.0" prefWidth="138.0" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text="Add New Employee" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="12.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </AnchorPane>
             <TableView fx:id="employeeTable" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table" stylesheets="@newStyles/darkBlueMode.css" GridPane.columnIndex="2">
