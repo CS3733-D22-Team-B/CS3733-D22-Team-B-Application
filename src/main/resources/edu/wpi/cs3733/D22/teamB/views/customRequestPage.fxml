@@ -14,66 +14,57 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="398.0" prefWidth="672.0" style="-fx-background-color: transparent;" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.requests.CustomRequestController">
    <children>
-      <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-l" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane prefHeight="546.0" prefWidth="106.0" styleClass="side-image-r" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox layoutX="9.0" layoutY="34.0" prefHeight="200.0" prefWidth="73.0">
-               <children>
-                  <JFXButton onAction="#goToHomepage" prefHeight="60.0" prefWidth="75.0" text=" ">
-                     <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton onAction="#goToRequestLandingPage" prefHeight="60.0" prefWidth="75.0" text=" ">
-                     <graphic>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Return.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-               </children>
-            </VBox>
-         </children>
-      </Pane>
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <GridPane prefHeight="398.0" prefWidth="672.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0">
+      <GridPane prefHeight="398.0" prefWidth="672.0" styleClass="container-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="374.20001220703125" minWidth="10.0" prefWidth="333.39996337890625" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="293.0" prefWidth="293.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="45.5" minWidth="45.5" prefWidth="45.5" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="342.6000000000001" minWidth="10.0" prefWidth="336.20003662109383" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="65.0" prefWidth="65.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="65.0" prefWidth="65.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="127.79999389648438" minHeight="0.0" prefHeight="37.39998168945313" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="53.40001831054687" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="317.2" minHeight="10.0" prefHeight="112.59998779296876" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="39.0" minHeight="39.0" prefHeight="39.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="39.0" minHeight="39.0" prefHeight="39.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="requestLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="461.5" text="" textFill="#7bcce4" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
-            <TextArea fx:id="additionalInformationInput" prefHeight="170.0" prefWidth="293.0" promptText="Additional Notes:" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <Label fx:id="requestLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="471.5" styleClass="label-box" text="Message" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+               <padding>
+                  <Insets left="20.0" />
+               </padding></Label>
+            <TextArea fx:id="additionalInformationInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="221.0" prefWidth="379.0" promptText="Additional Notes:" GridPane.columnIndex="3" GridPane.columnSpan="5" GridPane.rowIndex="1" GridPane.rowSpan="5">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </TextArea>
-            <ComboBox fx:id="patientInput" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="3" />
-            <ComboBox fx:id="floorInput" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="1">
+            <ComboBox fx:id="patientInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#setPatient" prefHeight="50.0" prefWidth="293.0" promptText="Patient" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <padding>
+                  <Insets left="10.0" />
+               </padding></ComboBox>
+            <ComboBox fx:id="floorInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#setFloor" prefHeight="50.0" prefWidth="293.0" promptText="Floor" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:id="5" fx:value="F5" />
@@ -85,49 +76,62 @@
                      <String fx:id="L2" fx:value="L2" />
                   </FXCollections>
                </items>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </ComboBox>
-            <ComboBox fx:id="locationInput" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="2" />
-            <TextField fx:id="typeInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="295.0" promptText="Type" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" GridPane.rowIndex="4" />
-            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" stylesheets="@styles/sliderStyles.css" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ComboBox fx:id="locationInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#setLocation" prefHeight="50.0" prefWidth="293.0" promptText="Location" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <padding>
+                  <Insets left="10.0" />
+               </padding></ComboBox>
+            <TextField fx:id="typeInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="295.0" promptText="Type" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font></TextField>
+            <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" value="1.0" GridPane.columnIndex="3" GridPane.columnSpan="5" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets />
                </GridPane.margin>
             </JFXSlider>
-            <Label fx:id="charactersRemainingLabel" text="500 characters remaining" textFill="#7bcce4" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+            <Label fx:id="charactersRemainingLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" opacity="0.35" text="500 characters remaining" textFill="#7bcce4" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="Microsoft Sans Serif" size="7.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="25.0" />
+                  <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" right="5.0" />
+               </padding>
             </Label>
-            <JFXButton fx:id="submitButton" disable="true" onAction="#sendRequest" prefHeight="55.0" prefWidth="46.0" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+            <JFXButton fx:id="submitButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#sendRequest" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" " GridPane.columnIndex="7" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                <graphic>
-                  <ImageView disable="true" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Add.png" />
+                        <Image url="@../assets/newAssets/Add.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton onAction="#reset" text=" " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#reset" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" " GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                <graphic>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/components/xButton.png" />
+                        <Image url="@../assets/newAssets/Reset.png" />
                      </image>
                   </ImageView>
                </graphic>
                <GridPane.margin>
-                  <Insets right="80.0" />
+                  <Insets />
                </GridPane.margin>
             </JFXButton>
          </children>
       </GridPane>
-      <Label opacity="0.4" rotate="270.0" text="Custom Request" textFill="#7bcce4" AnchorPane.bottomAnchor="252.0" AnchorPane.leftAnchor="-59.0" AnchorPane.topAnchor="252.0">
-         <font>
-            <Font name="Microsoft Sans Serif" size="30.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

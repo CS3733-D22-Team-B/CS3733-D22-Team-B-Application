@@ -25,8 +25,8 @@ public class Employee {
     setUsername(username);
     setPassword(password);
     employeeID = createEmployeeID();
-    this.lightOn = true;
-    this.color = "BluE";
+    this.lightOn = false;
+    this.color = "Blue";
   }
 
   public Employee(
@@ -134,6 +134,14 @@ public class Employee {
 
   public String getFullName() {
     return firstName + " " + lastName;
+  }
+  
+  public String getColorTheme() {
+    String colorTheme = "";
+    colorTheme += (lightOn) ? "light" : "dark";
+
+    colorTheme += color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase();
+    return colorTheme + "Mode";
   }
 
   // Josh Bloch's Hashing method
