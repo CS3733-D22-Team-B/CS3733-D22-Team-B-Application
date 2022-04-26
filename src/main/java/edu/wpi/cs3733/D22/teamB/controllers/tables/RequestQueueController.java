@@ -119,13 +119,16 @@ public class RequestQueueController extends MenuBarController implements Initial
 
                   private final ImageView viewIcon =
                       new ImageView(
-                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/InfoSquare.png"));
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
                   private final ImageView editIcon =
                       new ImageView(
-                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/EditSquare.png"));
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/editIcon.png"));
                   private final ImageView deleteIcon =
                       new ImageView(
-                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/CloseSquare.png"));
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/deleteIcon.jpg"));
 
                   {
                     hBox.setSpacing(10);
@@ -184,7 +187,7 @@ public class RequestQueueController extends MenuBarController implements Initial
                           Request request = getTableView().getItems().get(getIndex());
                           currentRequest = request;
 
-                          requestIDLabel.setText(request.getRequestID());
+                          // requestIDLabel.setText(request.getRequestID());
                           if (!request.getEmployee().getEmployeeID().equals("0")) {
                             employeeInput.setValue(request.getEmployee().getOverview());
                           } else {

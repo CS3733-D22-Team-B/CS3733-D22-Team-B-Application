@@ -161,7 +161,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
                           Patient patient = getTableView().getItems().get(getIndex());
                           currentPatient = patient;
 
-                          patientIDLabel.setText(patient.getPatientID());
+                          // patientIDLabel.setText(patient.getPatientID());
                           nameInput.setText(patient.getFullName());
 
                           if (patient.getLocation() == null) {
@@ -247,7 +247,9 @@ public class PatientDatabaseController extends MenuBarController implements Init
   @FXML
   public void saveData(ActionEvent event) {
     currentPatient.setInformation(informationInput.getText());
-    if (roomInput.isVisible() && !roomInput.getValue().equals("No room assigned")) {
+    if (currentPatient.getLocation() == null
+        && roomInput.isVisible()
+        && !roomInput.getValue().equals("No room assigned")) {
       currentPatient.setLocation(
           LocationsDB.getInstance()
               .getLocation(LocationsDB.getInstance().getLocationID(roomInput.getValue())));

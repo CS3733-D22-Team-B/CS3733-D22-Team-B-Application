@@ -140,7 +140,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           Employee employee = getTableView().getItems().get(getIndex());
                           currentEmployee = employee;
 
-                          employeeIDText.setText(employee.getEmployeeID());
+                          // employeeIDText.setText(employee.getEmployeeID());
                           nameText.setText(employee.getFullName());
                           usernameText.setText(employee.getUsername());
                           departmentText.setText(employee.getDepartment());
@@ -157,7 +157,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           Employee employee = getTableView().getItems().get(getIndex());
                           currentEmployee = employee;
 
-                          employeeIDLabel.setText(employee.getEmployeeID());
+                          // employeeIDLabel.setText(employee.getEmployeeID());
                           nameInput.setText(employee.getFullName());
                           usernameInput.setText(employee.getUsername());
                           departmentInput.setText(employee.getDepartment());
