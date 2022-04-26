@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
     <children>
         <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -51,7 +54,7 @@
                <children>
                   <ImageView fitHeight="124.0" fitWidth="225.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%208.54.15%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/gift%20additonal%20notes.png" />
                      </image>
                   </ImageView>
                </children>
@@ -80,7 +83,7 @@
          <children>
             <ImageView fitHeight="143.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%208.52.15%20PM.png" />
+                  <Image url="@../../../../../../../../../../../Desktop/patient.png" />
                </image>
             </ImageView>
          </children>
@@ -94,7 +97,7 @@
          <children>
             <ImageView fitHeight="74.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%209.57.50%20PM.png" />
+                  <Image url="@../../../../../../../../../../../Desktop/priority%20bar.png" />
                </image>
             </ImageView>
          </children>
@@ -108,5 +111,10 @@
                 </Label>
          </children>
       </Pane>
+      <ImageView fitHeight="88.0" fitWidth="200.0" layoutX="556.0" layoutY="207.0">
+         <image>
+            <Image url="@../../../../../../../../../../../Desktop/gift.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

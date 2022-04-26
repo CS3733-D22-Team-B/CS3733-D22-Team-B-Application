@@ -39,9 +39,9 @@
         <Pane layoutX="550.0" layoutY="208.0" />
         <Pane layoutX="120.0" layoutY="330.0">
             <children>
-            <ImageView fitHeight="88.0" fitWidth="223.0" layoutX="396.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="88.0" fitWidth="223.0" layoutX="396.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%209.57.50%20PM.png" />
+                  <Image url="@../../../../../../../../../../../Desktop/priority%20bar.png" />
                </image>
             </ImageView>
             <Pane layoutX="-134.0" layoutY="-110.0">
@@ -86,14 +86,14 @@
                <children>
                   <ImageView fitHeight="111.0" fitWidth="183.0" layoutX="7.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-23%20at%204.28.55%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/language.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
                 <ImageView fitHeight="82.0" fitWidth="166.0" layoutX="424.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-22%20at%202.58.28%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/additional%20notes.png" />
                     </image>
                 </ImageView>
             </children>
@@ -109,7 +109,7 @@
                 </Label>
                 <ImageView fitHeight="103.0" fitWidth="146.0" layoutX="290.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-23%20at%203.41.02%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/floor.png" />
                     </image>
                 </ImageView>
             <Pane layoutX="22.0" layoutY="99.0">
@@ -123,7 +123,7 @@
             </Pane>
                 <ImageView fitHeight="59.0" fitWidth="231.0" layoutX="309.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-22%20at%204.06.12%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/location.png" />
                     </image>
                 </ImageView>
             </children>

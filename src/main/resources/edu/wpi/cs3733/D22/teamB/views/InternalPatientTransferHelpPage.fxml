@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
     <children>
         <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -38,7 +41,7 @@
             <children>
                 <ImageView fitHeight="88.0" fitWidth="223.0" layoutX="359.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%209.57.50%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/priority%20bar.png" />
                     </image>
                 </ImageView>
                 <Pane layoutX="-134.0" layoutY="-110.0">
@@ -67,7 +70,7 @@
                                 </Label>
                               <ImageView fitHeight="44.0" fitWidth="204.0" layoutX="512.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                      <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-25%20at%209.50.16%20PM.png" />
+                                      <Image url="@../../../../../../../../../../../Desktop/destination%20location.png" />
                                   </image>
                               </ImageView>
                             </children>
@@ -87,7 +90,7 @@
                 <Pane layoutX="352.0" layoutY="-46.0" />
                 <ImageView fitHeight="84.0" fitWidth="175.0" layoutX="415.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-22%20at%202.58.28%20PM.png" />
+                        <Image url="@../../../../../../../../../../../Desktop/additional%20notes.png" />
                     </image>
                 </ImageView>
             </children>
@@ -105,7 +108,7 @@
                       </Label>
                       <ImageView fitHeight="123.0" fitWidth="189.0" layoutX="319.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
                           <image>
-                              <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-21%20at%208.52.15%20PM.png" />
+                              <Image url="@../../../../../../../../../../../Desktop/patient.png" />
                           </image>
                       </ImageView>
                       <Pane layoutX="22.0" layoutY="99.0">
@@ -117,7 +120,7 @@
                               </Label>
                             <ImageView fitHeight="104.0" fitWidth="155.0" layoutX="352.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../../../../../../../../../Desktop/Screen%20Shot%202022-04-25%20at%209.49.41%20PM.png" />
+                                    <Image url="@../../../../../../../../../../../Desktop/destination%20floor.png" />
                                 </image>
                             </ImageView>
                           </children>
