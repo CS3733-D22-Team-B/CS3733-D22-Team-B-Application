@@ -15,11 +15,79 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.DashboardController">
    <children>
+      <VBox alignment="CENTER" layoutX="885.0" layoutY="240.0" prefHeight="278.0" prefWidth="65.0" styleClass="container-box-3" stylesheets="@styles/pageStyles.css">
+         <children>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadFloor5Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="F5" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="f5Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadFloor4Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="F4" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="f4Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadFloor3Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="F3" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="f3Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadFloor2Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="F2" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="f2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadFloor1Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="F1" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="f1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/SelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadLower1Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="LL1" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="l1Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" onAction="#loadLower2Information" opacity="0.75" prefHeight="0.0" prefWidth="0.0" text="LL2" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="l2Button" fitHeight="30.0" fitWidth="30.0" layoutX="875.0" layoutY="254.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/mapAssets/NotSelectedFloor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="867.5" layoutY="40.0" mnemonicParsing="false" onAction="#goToHomepage" styleClass="hidden-button" stylesheets="@styles/buttonStyles.css" text="Button" />
       <SplitPane dividerPositions="0.2" layoutX="37.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="833.0" style="-fx-background-color: #455A70;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="34.0">
@@ -128,7 +196,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER">
                                  <content>
-                                    <AnchorPane fx:id="equipmentCardsPane" prefHeight="460.0" prefWidth="520.0" style="-fx-background-color: #455A70;" />
+                                    <AnchorPane fx:id="equipmentCardsPane" prefHeight="460.0" prefWidth="420.0" style="-fx-background-color: #455A70;" />
                                  </content>
                               </ScrollPane>
                            </children>
