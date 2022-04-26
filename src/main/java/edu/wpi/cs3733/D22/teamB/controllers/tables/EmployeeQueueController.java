@@ -99,11 +99,14 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                   private final Button requestDeleteButton = new Button("Delete");
 
                   private final ImageView viewIcon =
-                      new ImageView(new Image("/edu/wpi/cs3733/D22/teamB/api/viewIcon.png"));
+                      new ImageView(
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/InfoSquare.png"));
                   private final ImageView editIcon =
-                      new ImageView(new Image("/edu/wpi/cs3733/D22/teamB/api/editIcon.png"));
+                      new ImageView(
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/EditSquare.png"));
                   private final ImageView deleteIcon =
-                      new ImageView(new Image("/edu/wpi/cs3733/D22/teamB/api/deleteIcon.jpg"));
+                      new ImageView(
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/CloseSquare.png"));
 
                   {
                     hBox.setSpacing(10);
@@ -142,7 +145,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           Employee employee = getTableView().getItems().get(getIndex());
                           currentEmployee = employee;
 
-                          employeeIDText.setText(employee.getEmployeeID());
+                          // employeeIDText.setText(employee.getEmployeeID());
                           nameText.setText(employee.getFullName());
                           usernameText.setText(employee.getUsername());
                           departmentText.setText(employee.getDepartment());
@@ -159,7 +162,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                           Employee employee = getTableView().getItems().get(getIndex());
                           currentEmployee = employee;
 
-                          employeeIDLabel.setText(employee.getEmployeeID());
+                          // employeeIDLabel.setText(employee.getEmployeeID());
                           nameInput.setText(employee.getFullName());
                           usernameInput.setText(employee.getUsername());
                           departmentInput.setText(employee.getDepartment());

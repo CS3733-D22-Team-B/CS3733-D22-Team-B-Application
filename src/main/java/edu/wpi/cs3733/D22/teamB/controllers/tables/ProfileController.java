@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
 import edu.wpi.cs3733.D22.teamB.App;
+import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
@@ -32,6 +33,7 @@ public class ProfileController extends MenuBarController implements Initializabl
   TableColumn<Request, Void> viewRequest;
 
   @FXML GridPane changePasswordPane;
+  @FXML GridPane tablePane;
   @FXML GridPane colorThemePane;
 
   @FXML Label nameLabel;
@@ -44,17 +46,19 @@ public class ProfileController extends MenuBarController implements Initializabl
   @FXML Label messageBox;
 
   @FXML Button changePasswordButton;
+  @FXML Button modeButton;
+  @FXML Button colorButton;
 
   private ObservableList<Request> requests = FXCollections.observableArrayList();
 
   private String password;
 
-  // Temporary variables - should be in Employee class
-  private static boolean lightModeOn = false;
-  private static String colorTheme = "blue";
+  private EmployeesDB employeesDAO;
 
   @FXML
   public void initialize(URL url, ResourceBundle resourceBundle) {
+    employeesDAO = EmployeesDB.getInstance();
+
     Employee currentUser = App.currentUser;
     password = currentUser.getPassword();
 
@@ -87,6 +91,26 @@ public class ProfileController extends MenuBarController implements Initializabl
 
     requestTable.setItems(requests);
     addButtonToTable();
+
+    if (App.currentUser.getLightOn()) {
+      modeButton.getStyleClass().add("light-dark-button");
+    } else {
+      modeButton.getStyleClass().add("dark-light-button");
+    }
+
+    switch (App.currentUser.getColor()) {
+      case "Blue":
+        colorButton.getStyleClass().add("blue-button");
+        break;
+      case "Green":
+        colorButton.getStyleClass().add("green-button");
+        break;
+      case "Red":
+        colorButton.getStyleClass().add("red-button");
+        break;
+      case "Black":
+        colorButton.getStyleClass().add("black-button");
+    }
 
     newPasswordField
         .textProperty()
@@ -122,8 +146,7 @@ public class ProfileController extends MenuBarController implements Initializabl
 
                   private final ImageView viewIcon =
                       new ImageView(
-                          new Image(
-                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/InfoSquare.png"));
 
                   {
                     requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
@@ -214,6 +237,54 @@ public class ProfileController extends MenuBarController implements Initializabl
 
   private void toggleChangePasswordDisplay(boolean visible) {
     changePasswordPane.setVisible(visible);
-    requestTable.setVisible(!visible);
+    tablePane.setVisible(!visible);
+  }
+
+  public void toggleColorThemePane(ActionEvent actionEvent) {
+    colorThemePane.setVisible(!colorThemePane.isVisible());
+  }
+
+  public void toggleLightMode(ActionEvent actionEvent) {
+    if (tablePane.isVisible()) {
+      App.currentUser.setLightOn(!App.currentUser.getLightOn());
+      EmployeesDB.getInstance().update(App.currentUser);
+      updateColorTheme();
+    }
+  }
+
+  public void setColorThemeBlue(ActionEvent actionEvent) {
+    setColorTheme("Blue");
+  }
+
+  public void setColorThemeGreen(ActionEvent actionEvent) {
+    setColorTheme("Green");
+  }
+
+  public void setColorThemeRed(ActionEvent actionEvent) {
+    setColorTheme("Red");
+  }
+
+  public void setColorThemeBlack(ActionEvent actionEvent) {
+    setColorTheme("Black");
+  }
+
+  private void setColorTheme(String newColorTheme) {
+    if (requestTable.isVisible()) {
+      App.currentUser.setColor(newColorTheme);
+      EmployeesDB.getInstance().update(App.currentUser);
+      updateColorTheme();
+    }
+  }
+
+  private void updateColorTheme() {
+    modeButton.getStyleClass().clear();
+    colorButton.getStyleClass().clear();
+
+    toggleColorThemePane(null);
+
+    try {
+      UIController.getInstance().goToPage("profilePage");
+    } catch (Exception e) {
+    }
   }
 }
