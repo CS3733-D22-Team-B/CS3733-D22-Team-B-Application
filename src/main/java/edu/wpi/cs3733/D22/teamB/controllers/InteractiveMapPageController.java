@@ -16,7 +16,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -28,14 +27,15 @@ public class InteractiveMapPageController extends AStarVisualization {
   @FXML JFXButton addButton;
   @FXML JFXButton editButton;
   @FXML JFXButton deleteButton;
-  @FXML ImageView f5Button;
-  @FXML ImageView f4Button;
-  @FXML ImageView f3Button;
-  @FXML ImageView f2Button;
-  @FXML ImageView f1Button;
-  @FXML ImageView l1Button;
-  @FXML ImageView l2Button;
+  @FXML JFXButton f5Button;
+  @FXML JFXButton f4Button;
+  @FXML JFXButton f3Button;
+  @FXML JFXButton f2Button;
+  @FXML JFXButton f1Button;
+  @FXML JFXButton l1Button;
+  @FXML JFXButton l2Button;
   @FXML JFXButton backButton;
+  JFXButton currentButton;
 
   @FXML GridPane floorBackground;
   @FXML JFXComboBox<String> typeDropdown;
@@ -44,7 +44,6 @@ public class InteractiveMapPageController extends AStarVisualization {
   @FXML JFXTextArea locationName;
   @FXML JFXButton confirmButton;
   @FXML JFXButton clearPathButton;
-  @FXML ImageView confirmImage;
   @FXML JFXButton resetButton;
   @FXML JFXButton markerButton;
   @FXML JFXButton undoMoveButton;
@@ -166,6 +165,8 @@ public class InteractiveMapPageController extends AStarVisualization {
   private double orgSceneX, orgSceneY;
 
   public void initialize() {
+    currentButton = f1Button;
+    f1Button.getStyleClass().add("request-button-selected");
     roomIcons = new LinkedList<SVGPath>();
     equipIcons = new LinkedList<SVGPath>();
     serviceIcons = new LinkedList<SVGPath>();
@@ -570,13 +571,7 @@ public class InteractiveMapPageController extends AStarVisualization {
   }
 
   public void resetFloorSelectors() {
-    l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
-    l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
-    f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
-    f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
-    f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
-    f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
-    f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/NotSelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
   }
 
   public void goToFloorL2() {
@@ -584,7 +579,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "L2";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL2.png"));
-    l2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    l2Button.getStyleClass().add("request-button-selected");
+    currentButton = l2Button;
     setAll();
     drawPathFloor(floorString);
   }
@@ -594,7 +591,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "L1";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL1.png"));
-    l1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    l1Button.getStyleClass().add("request-button-selected");
+    currentButton = l1Button;
     setAll();
     drawPathFloor(floorString);
   }
@@ -604,7 +603,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "1";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
-    f1Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    f1Button.getStyleClass().add("request-button-selected");
+    currentButton = f1Button;
     setAll();
     drawPathFloor(floorString);
   }
@@ -614,7 +615,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "2";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
-    f2Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    f2Button.getStyleClass().add("request-button-selected");
+    currentButton = f2Button;
     setAll();
     drawPathFloor(floorString);
   }
@@ -624,7 +627,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "3";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
-    f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    f3Button.getStyleClass().add("request-button-selected");
+    currentButton = f3Button;
     setAll();
     drawPathFloor(floorString);
   }
@@ -634,7 +639,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "4";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
-    f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    f4Button.getStyleClass().add("request-button-selected");
+    currentButton = f4Button;
     setAll();
     drawPathFloor(floorString);
   }
@@ -644,13 +651,14 @@ public class InteractiveMapPageController extends AStarVisualization {
     floorString = "5";
     resetFloorSelectors();
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
-    f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
+    currentButton.getStyleClass().remove("request-button-selected");
+    f5Button.getStyleClass().add("request-button-selected");
+    currentButton = f5Button;
     setAll();
     drawPathFloor(floorString);
   }
 
   public void startAdd() {
-    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Add.png"));
     lockHover = true;
     addEnabled = true;
     addButton.setVisible(false);
@@ -721,7 +729,6 @@ public class InteractiveMapPageController extends AStarVisualization {
   }
 
   public void startDelete() {
-    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Delete.png"));
     lockHover = true;
     deleteEnabled = true;
     addButton.setVisible(false);
@@ -791,7 +798,6 @@ public class InteractiveMapPageController extends AStarVisualization {
   }
 
   public void startEdit() {
-    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Edit.png"));
     lockHover = true;
     editEnabled = true;
     firstMove = true;
@@ -1023,7 +1029,6 @@ public class InteractiveMapPageController extends AStarVisualization {
   }
 
   public void startEquipEdit() {
-    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Edit.png"));
     lockHover = true;
     editEquipEnabled = true;
     addButton.setVisible(false);
@@ -1130,7 +1135,6 @@ public class InteractiveMapPageController extends AStarVisualization {
 
   public void startAStar() {
     aStarEnabled = true;
-    confirmImage.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/Add.png"));
     addButton.setVisible(false);
     editButton.setVisible(false);
     deleteButton.setVisible(false);
