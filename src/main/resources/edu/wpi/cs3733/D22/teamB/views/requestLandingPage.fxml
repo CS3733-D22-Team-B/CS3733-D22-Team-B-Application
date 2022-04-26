@@ -36,7 +36,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="customRequestButton1" contentDisplay="GRAPHIC_ONLY" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestQueue" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Queue">
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestQueue" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Queue">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -60,8 +60,8 @@
          </children>
       </Pane>
       <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" pannable="true" prefHeight="300.0" prefWidth="65.0" styleClass="button-pane" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="240.0">
-        <content>
-          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="65.0" minHeight="0.0" minWidth="65.0" prefWidth="65.0">
+         <content>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="65.0" minHeight="0.0" minWidth="65.0" prefWidth="65.0">
                <children>
                   <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" spacing="10.0">
                      <children>
@@ -127,7 +127,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-        </content>
+         </content>
       </ScrollPane>
       <fx:include fx:id="medicineRequestPage" source="medicineRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
       <fx:include fx:id="customRequestPage" source="customRequestPage.fxml" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="72.0" />
