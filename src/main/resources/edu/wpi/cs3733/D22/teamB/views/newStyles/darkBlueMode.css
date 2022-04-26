@@ -287,3 +287,17 @@
     -fx-background-color: #1E2129;
     -fx-background-radius: 10px;
 }
+.titled-pane {
+    -fx-border-color: transparent;
+    -fx-control-inner-background: #1E2129;
+    -fx-prompt-text-fill: rgb(255,255,255, 0.4);
+    -fx-text-fill: rgb(255,255,255, 0.5);
+}
+.titled-pane > .title
+{
+    -fx-background-color: #1E2129;
+}
+.titled-pane > *.content {
+    -fx-border-color: transparent;
+    -fx-background-color: #22252d;
+}

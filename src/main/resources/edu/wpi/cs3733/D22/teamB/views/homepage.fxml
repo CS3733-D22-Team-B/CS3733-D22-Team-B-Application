@@ -122,7 +122,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToMapLandingPage" prefHeight="157.5" prefWidth="158.0" styleClass="main-button" text="Maps" textFill="#ffffff40" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="315.0" maxWidth="315.0" onAction="#goToDashboard" prefHeight="157.5" prefWidth="158.0" styleClass="main-button" text="Maps" textFill="#ffffff40" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Microsoft Sans Serif" size="10.0" />
                </font>

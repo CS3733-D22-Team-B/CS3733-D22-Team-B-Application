@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.DateHelper;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
@@ -13,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -25,6 +28,15 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 public class DashboardController extends MenuBarController {
+  @FXML ImageView mapImage;
+  @FXML JFXButton f5Button;
+  @FXML JFXButton f4Button;
+  @FXML JFXButton f3Button;
+  @FXML JFXButton f2Button;
+  @FXML JFXButton f1Button;
+  @FXML JFXButton l1Button;
+  @FXML JFXButton l2Button;
+  @FXML private JFXButton currentButton;
   @FXML private Label overviewLabel;
   @FXML private Label cleanBed, cleanRecliner, cleanPump, cleanXRay;
   @FXML private Label dirtyBed, dirtyRecliner, dirtyPump, dirtyXRay;
@@ -198,6 +210,8 @@ public class DashboardController extends MenuBarController {
 
     alertTable.setItems(alerts);
 
+    currentButton = f1Button;
+    currentButton.getStyleClass().add("request-button-selected");
     loadFloor1Information(null);
   }
 
@@ -754,36 +768,64 @@ public class DashboardController extends MenuBarController {
 
   @FXML
   public void loadFloor5Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    f5Button.getStyleClass().add("request-button-selected");
+    currentButton = f5Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
     loadInformation(6);
   }
 
   @FXML
   public void loadFloor4Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    f4Button.getStyleClass().add("request-button-selected");
+    currentButton = f4Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
     loadInformation(5);
   }
 
   @FXML
   public void loadFloor3Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    f3Button.getStyleClass().add("request-button-selected");
+    currentButton = f3Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
     loadInformation(4);
   }
 
   @FXML
   public void loadFloor2Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    f2Button.getStyleClass().add("request-button-selected");
+    currentButton = f2Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
     loadInformation(3);
   }
 
   @FXML
   public void loadFloor1Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    f1Button.getStyleClass().add("request-button-selected");
+    currentButton = f1Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
     loadInformation(2);
   }
 
   @FXML
   public void loadLower1Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    l1Button.getStyleClass().add("request-button-selected");
+    currentButton = l1Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL1.png"));
     loadInformation(1);
   }
 
   @FXML
   public void loadLower2Information(ActionEvent event) {
+    currentButton.getStyleClass().remove("request-button-selected");
+    l2Button.getStyleClass().add("request-button-selected");
+    currentButton = l2Button;
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL2.png"));
     loadInformation(0);
   }
 
@@ -1000,7 +1042,9 @@ public class DashboardController extends MenuBarController {
 
       activityTable.setItems(activityList);
       activityTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+      activityTable.getStyleClass().add("simple-table");
       AnchorPane anchorPane = new AnchorPane();
+      anchorPane.setStyle("-fx-background-color: transparent");
       anchorPane.getChildren().add(activityTable);
       AnchorPane.setBottomAnchor(activityTable, 0.0);
       AnchorPane.setTopAnchor(activityTable, 0.0);
