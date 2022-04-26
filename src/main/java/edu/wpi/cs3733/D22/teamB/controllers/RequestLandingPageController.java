@@ -44,26 +44,39 @@ public class RequestLandingPageController extends MenuBarController {
     switch (currentPage) {
       case "Custom":
         UIController.getInstance().goToPage("CustomHelpPage");
+        break;
       case "Equipment":
         UIController.getInstance().goToPage("EquipmentHelpPage");
+        break;
       case "Security":
         UIController.getInstance().goToPage("SecurityHelpPage");
+        break;
       case "Laundry":
         UIController.getInstance().goToPage("LaundryHelpPage");
+        break;
       case "Sanitation":
         UIController.getInstance().goToPage("SanitationHelpPage");
+        break;
       case "Gift":
         UIController.getInstance().goToPage("GiftHelpPage");
+        break;
       case "InternalPatientTransfer":
         UIController.getInstance().goToPage("InternalPatientTransferHelpPage");
+        break;
       case "Interpreter":
         UIController.getInstance().goToPage("InterpreterHelpPage");
+        break;
       case "Meal":
         UIController.getInstance().goToPage("MealHelpPage");
+        break;
       case "Medicine":
         UIController.getInstance().goToPage("MedicineHelpPage");
+        break;
       case "LabRequest":
         UIController.getInstance().goToPage("LabRequestHelpPage");
+        break;
+      default:
+        break;
     }
   }
 
