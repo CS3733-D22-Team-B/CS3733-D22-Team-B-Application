@@ -23,6 +23,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
+            <JFXButton layoutX="30.0" layoutY="493.0" onAction="#goToRequestLanding" text="Back" textFill="#7bcce4" />
             </children></Pane>
         <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <VBox layoutX="66.0" layoutY="58.0" prefHeight="467.0" prefWidth="759.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="58.0">
@@ -77,7 +78,7 @@
                         <Font name="Microsoft Sans Serif" size="20.0" />
                     </font>
                 </Label>
-                <Label alignment="TOP_LEFT" layoutX="19.0" layoutY="130.0" prefHeight="37.0" prefWidth="509.0" text="   5.   (Opitional) Insert additional notes : " textFill="#7bcce4" wrapText="true">
+                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="131.0" prefHeight="37.0" prefWidth="509.0" text="   5.   (Opitional) Insert additional notes : " textFill="#7bcce4" wrapText="true">
                     <font>
                         <Font name="Microsoft Sans Serif" size="20.0" />
                     </font>

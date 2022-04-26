@@ -93,6 +93,7 @@
                         <Image url="@../assets/Help/additional%20notes.png" />
                     </image>
                 </ImageView>
+            <JFXButton layoutX="765.0" layoutY="155.0" onAction="#goToRequestLanding" text="Back" textFill="#7bcce4" />
             </children>
         </Pane>
         <Pane layoutX="540.0" layoutY="379.0" />
