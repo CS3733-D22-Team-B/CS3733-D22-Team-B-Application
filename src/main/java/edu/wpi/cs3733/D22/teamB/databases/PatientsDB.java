@@ -119,7 +119,7 @@ public class PatientsDB extends DatabaseSuperclass implements IDatabases<Patient
             new Activity(
                 new Date(),
                 App.currentUser.getEmployeeID(),
-                patObj.getNodeID(),
+                patObj.getPatientID(),
                 null,
                 "Patient",
                 "checked in"));

@@ -7,6 +7,7 @@ import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.net.URL;
 import java.util.Collections;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 
@@ -141,10 +144,28 @@ public class ProfileController extends MenuBarController implements Initializabl
                 new TableCell<Request, Void>() {
                   private final Button requestViewerButton = new Button("View");
 
+                  private final ImageView viewIcon =
+                      new ImageView(
+                          new Image(
+                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+
                   {
+                    requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    requestViewerButton.setMinSize(25, 25);
+                    requestViewerButton.setPrefSize(25, 25);
+                    requestViewerButton.setMaxSize(25, 25);
+                    requestViewerButton.setGraphic(viewIcon);
+                    viewIcon.setFitHeight(25);
+                    viewIcon.setFitWidth(25);
+
                     requestViewerButton.setOnAction(
                         (ActionEvent event) -> {
-                          // TODO: Implement request viewer
+                          try {
+                            RequestQueueController.currentRequest =
+                                getTableView().getItems().get(getIndex());
+                            goToRequestQueue(null);
+                          } catch (Exception e) {
+                          }
                         });
                   }
 
@@ -202,6 +223,16 @@ public class ProfileController extends MenuBarController implements Initializabl
       newPasswordField.setText("");
       confirmPasswordField.setText("");
       messageBox.setText("");
+
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  App.currentUser.getEmployeeID(),
+                  null,
+                  "Employee",
+                  "password updated"));
     }
   }
 

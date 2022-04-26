@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamB.databases;
 
+import edu.wpi.cs3733.D22.teamB.App;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.Date;
 
@@ -12,6 +13,16 @@ public class EquipmentRequest extends Request {
     this.information =
         "Equipment Request: " + getEquipmentID() + " Additional Information: " + information;
     medicalEquipment = getMedicalEquipment();
+
+    DatabaseController.getInstance()
+        .add(
+            new Activity(
+                new Date(),
+                App.currentUser.getEmployeeID(),
+                this.getEquipmentID(),
+                "pending",
+                "Medical Equipment",
+                "marked as"));
   }
 
   public EquipmentRequest(
@@ -71,6 +82,18 @@ public class EquipmentRequest extends Request {
       medEq.setNodeID(locationID);
       DatabaseController DC = DatabaseController.getInstance();
       DC.update(medEq);
+    }
+
+    if (!this.status.equals("Pending")) {
+      DatabaseController.getInstance()
+          .add(
+              new Activity(
+                  new Date(),
+                  App.currentUser.getEmployeeID(),
+                  this.getEquipmentID(),
+                  this.getMedicalEquipment().getAvailability().toLowerCase(),
+                  "Medical Equipment",
+                  "marked as"));
     }
   }
 

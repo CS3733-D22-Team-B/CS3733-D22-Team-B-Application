@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -10,12 +28,15 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.ProfileController">
+
    <children>
       <Pane prefHeight="540.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" layoutX="3.0" prefHeight="540.0" prefWidth="100.0" spacing="10.0">
                <children>
+
                   <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
+
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -33,6 +54,7 @@
                            </effect>
                         </ImageView>
                      </graphic></JFXButton>
+
                   <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="28.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToMapLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -197,6 +219,7 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
+
                               <Label fx:id="positionLabel" maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" prefHeight="32.5" prefWidth="217.5" styleClass="label-box" text="Position" textFill="WHITE" GridPane.rowIndex="2">
                                  <font>
                                                   <Font name="Microsoft Sans Serif" size="14.0" />
@@ -208,7 +231,9 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
+
                               <Label fx:id="usernameLabel" maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" prefHeight="32.5" prefWidth="217.5" styleClass="label-box" text="Username" GridPane.columnIndex="2">
+
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="14.0" />
                                  </font>
@@ -219,7 +244,9 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
+
                               <JFXButton maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" mnemonicParsing="false" onAction="#toggleChangePasswordPane" prefHeight="32.5" prefWidth="217.5" styleClass="main-button" text="Reset Password" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="14.0" />
                                  </font>
@@ -230,6 +257,7 @@
                   </GridPane>
                </children>
             </GridPane>
+
             <GridPane fx:id="tablePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="202.0" minWidth="632.0" prefHeight="202.0" prefWidth="632.0" styleClass="profile-table-background" GridPane.columnIndex="1" GridPane.rowIndex="5">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
@@ -384,6 +412,7 @@
             <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="30.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#setColorThemeGreen" prefHeight="50.0" prefWidth="50.0" styleClass="green-button" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="100.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#setColorThemeRed" prefHeight="50.0" prefWidth="50.0" styleClass="red-button" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="1" />
             <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="170.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#setColorThemeBlack" prefHeight="50.0" prefWidth="50.0" styleClass="black-button" text="Button" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+
          </children>
       </GridPane>
    </children>
