@@ -18,6 +18,11 @@ public class MenuBarController {
   }
 
   @FXML
+  public void goToRequestLanding(ActionEvent event) throws Exception {
+    UIController.getInstance().goToPage("requestLandingPage");
+  }
+
+  @FXML
   public void goToMap(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("interactiveMapPage");
   }

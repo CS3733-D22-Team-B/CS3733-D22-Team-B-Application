@@ -5,6 +5,7 @@ import edu.wpi.cs3733.D22.teamB.UIController;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 public class RequestLandingPageController extends MenuBarController {
@@ -32,7 +33,7 @@ public class RequestLandingPageController extends MenuBarController {
   @FXML private JFXButton laundryRequestButton;
   @FXML private JFXButton sanitationRequestButton;
   @FXML private JFXButton securityRequestButton;
-
+  @FXML Button goToRequestLanding;
   private JFXButton currentButton;
   private String currentPage = "none";
 
