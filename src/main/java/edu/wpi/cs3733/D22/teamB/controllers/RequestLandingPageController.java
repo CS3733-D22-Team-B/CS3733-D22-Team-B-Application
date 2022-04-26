@@ -46,6 +46,24 @@ public class RequestLandingPageController extends MenuBarController {
         UIController.getInstance().goToPage("CustomHelpPage");
       case "Equipment":
         UIController.getInstance().goToPage("EquipmentHelpPage");
+      case "Security":
+        UIController.getInstance().goToPage("SecurityHelpPage");
+      case "Laundry":
+        UIController.getInstance().goToPage("LaundryHelpPage");
+      case "Sanitation":
+        UIController.getInstance().goToPage("SanitationHelpPage");
+      case "Gift":
+        UIController.getInstance().goToPage("GiftHelpPage");
+      case "InternalPatientTransfer":
+        UIController.getInstance().goToPage("InternalPatientTransferHelpPage");
+      case "Interpreter":
+        UIController.getInstance().goToPage("InterpreterHelpPage");
+      case "Meal":
+        UIController.getInstance().goToPage("MealHelpPage");
+      case "Medicine":
+        UIController.getInstance().goToPage("MedicineHelpPage");
+      case "LabRequest":
+        UIController.getInstance().goToPage("LabRequestHelpPage");
     }
   }
 
@@ -70,6 +88,7 @@ public class RequestLandingPageController extends MenuBarController {
     giftRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(giftRequestPage);
     currentButton = giftRequestButton;
+    currentPage = "Gift";
   }
 
   @FXML
@@ -77,6 +96,7 @@ public class RequestLandingPageController extends MenuBarController {
     interpreterRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(interpreterRequestPage);
     currentButton = interpreterRequestButton;
+    currentPage = "Interpreter";
   }
 
   @FXML
@@ -84,6 +104,7 @@ public class RequestLandingPageController extends MenuBarController {
     labRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(labRequestPage);
     currentButton = labRequestButton;
+    currentPage = "LabRequest";
   }
 
   @FXML
@@ -91,6 +112,7 @@ public class RequestLandingPageController extends MenuBarController {
     medicineRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(medicineRequestPage);
     currentButton = medicineRequestButton;
+    currentPage = "Medicine";
   }
 
   @FXML
@@ -98,6 +120,7 @@ public class RequestLandingPageController extends MenuBarController {
     internalPatientTransferButton.getStyleClass().add("request-button-selected");
     hideOthers(transferRequestPage);
     currentButton = internalPatientTransferButton;
+    currentPage = "InternalPatientTransfer";
   }
 
   @FXML
@@ -105,6 +128,7 @@ public class RequestLandingPageController extends MenuBarController {
     laundryRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(laundryRequestPage);
     currentButton = laundryRequestButton;
+    currentPage = "Laundry";
   }
 
   @FXML
@@ -112,6 +136,7 @@ public class RequestLandingPageController extends MenuBarController {
     mealRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(mealRequestPage);
     currentButton = mealRequestButton;
+    currentPage = "Meal";
   }
 
   @FXML
@@ -119,6 +144,7 @@ public class RequestLandingPageController extends MenuBarController {
     sanitationRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(sanitationPage);
     currentButton = sanitationRequestButton;
+    currentPage = "Sanitation";
   }
 
   @FXML
@@ -126,6 +152,7 @@ public class RequestLandingPageController extends MenuBarController {
     securityRequestButton.getStyleClass().add("request-button-selected");
     hideOthers(securityRequestPage);
     currentButton = securityRequestButton;
+    currentPage = "Security";
   }
 
   @FXML
