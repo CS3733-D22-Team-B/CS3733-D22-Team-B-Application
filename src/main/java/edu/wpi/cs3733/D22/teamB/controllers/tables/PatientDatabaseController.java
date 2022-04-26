@@ -330,7 +330,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
                   "Patient",
                   "admitted to room"));
 
-        LocationsDB.getInstance().getLocation(roomID).setAvailability(false);
+      LocationsDB.getInstance().getLocation(roomID).setAvailability(false);
     }
 
     String information = addInformationInput.getText();
