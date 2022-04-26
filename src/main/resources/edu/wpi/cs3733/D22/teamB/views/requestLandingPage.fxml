@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestLandingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.RequestLandingPageController">
    <children>
       <JFXButton focusTraversable="false" layoutX="700.0" layoutY="498.0" onAction="#goToRequestInfoPage" text="Creator Info" textFill="#ffffffb2" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
       <Pane layoutX="855.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -36,7 +36,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton contentDisplay="GRAPHIC_ONLY" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestQueue" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Queue">
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToRequestQueue" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Queue">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
