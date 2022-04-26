@@ -191,4 +191,12 @@ public class MenuBarController {
       System.out.println("BRUH");
     }
   }
+
+  public void goToDatabaseLandingPage(ActionEvent actionEvent) throws Exception {
+    UIController.getInstance().goToPage("databaseLandingPage");
+  }
+
+  public void goToRequestInfoPage(ActionEvent actionEvent) throws Exception {
+    UIController.getInstance().goToPage("requestsInfo");
+  }
 }

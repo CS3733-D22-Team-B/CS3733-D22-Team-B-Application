@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+    <children>
+        <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children></Pane>
+        <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <VBox layoutX="66.0" layoutY="58.0" prefHeight="467.0" prefWidth="716.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="58.0">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+         <children>
+            <Pane>
+               <children>
+                  <Pane layoutX="363.0" layoutY="51.0">
+                     <children>
+                        <Pane />
+                     </children>
+                  </Pane>
+                      <ImageView fitHeight="113.0" fitWidth="158.0" layoutX="206.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../assets/Help/floor.png" />
+                          </image>
+                      </ImageView>
+                      <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="37.0" prefHeight="33.0" prefWidth="657.0" text="1.  Select the floor :" textFill="#7bcce4" wrapText="true">
+                          <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                          </font>
+                      </Label>
+                    <Label alignment="TOP_LEFT" layoutX="396.0" layoutY="36.0" prefHeight="35.0" prefWidth="637.0" text="  2.  Select the location  :" textFill="#7bcce4" wrapText="true">
+                        <font>
+                            <Font name="Microsoft Sans Serif" size="20.0" />
+                        </font>
+                    </Label>
+                      <ImageView fitHeight="46.0" fitWidth="209.0" layoutX="425.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../assets/Help/location.png" />
+                          </image>
+                      </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="209.0" layoutX="435.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="140.0">
+                     <image>
+                        <Image url="@../assets/Help/type.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane />
+            <Pane />
+         </children>
+        </VBox>
+        <Pane layoutX="550.0" layoutY="208.0" />
+        <Pane layoutX="120.0" layoutY="330.0">
+            <children>
+            <Pane layoutX="-16.0" layoutY="-4.0">
+               <children>
+                  <Pane>
+                     <children>
+                        <Pane>
+                           <children>
+                              <Pane layoutX="7.0" layoutY="-20.0">
+                                 <children>
+                                        <ImageView fitHeight="122.0" fitWidth="177.0" layoutX="47.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/Help/patient.png" />
+                                            </image>
+                                        </ImageView>
+                                    <Label alignment="TOP_LEFT" layoutX="-24.0" layoutY="89.0" prefHeight="26.0" prefWidth="364.0" text="   5.  Select the priority of request: " textFill="#7bcce4" wrapText="true">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="-191.0" layoutY="46.0" />
+            </children>
+        </Pane>
+        <Pane layoutX="540.0" layoutY="379.0" />
+        <Pane layoutX="115.0" layoutY="420.0">
+            <children>
+            <Pane layoutX="-19.0" layoutY="29.0">
+               <children>
+                      <Label alignment="TOP_LEFT" layoutX="-8.0" prefHeight="37.0" prefWidth="558.0" text="   6.  (Opitional) Insert additional notes : " textFill="#7bcce4" wrapText="true">
+                          <font>
+                              <Font name="Microsoft Sans Serif" size="19.0" />
+                          </font>
+                      </Label>
+                  <ImageView fitHeight="89.0" fitWidth="215.0" layoutX="358.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Help/additional%20notes.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="322.0" layoutY="-8.0" />
+            <Pane layoutX="356.0" layoutY="-30.0" prefHeight="46.0" prefWidth="233.0">
+               <children>
+                  <Pane layoutX="1.0" layoutY="-6.0">
+                     <children>
+                        <Pane layoutX="7.0" layoutY="-6.0" />
+                     </children>
+                  </Pane>
+                  <ImageView fitHeight="74.0" fitWidth="233.0" layoutX="-4.0" layoutY="-161.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="140.0">
+                     <image>
+                        <Image url="@../assets/Help/priority%20bar.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            </children>
+        </Pane>
+        <Pane layoutX="130.0" layoutY="120.0" />
+        <Pane layoutX="500.0" layoutY="78.0" />
+        <Pane layoutX="450.0" layoutY="319.0" />
+      <Pane layoutX="113.0" layoutY="220.0">
+         <children>
+            <Pane layoutX="20.0" layoutY="53.0" prefHeight="20.0" prefWidth="412.0">
+               <children>
+                  <Pane layoutX="497.0" layoutY="-28.0">
+                     <children>
+                        <Pane layoutX="61.0" layoutY="35.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+                <Label alignment="TOP_LEFT" layoutX="-28.0" layoutY="17.0" prefHeight="35.0" prefWidth="637.0" text="  3.  Select the patients' full name:" textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                    </font>
+                </Label>
+            <Label alignment="TOP_LEFT" layoutX="313.0" layoutY="19.0" prefHeight="33.0" prefWidth="657.0" text="4.  Insert  the type of custom request  :" textFill="#7bcce4" wrapText="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+        <Pane layoutX="344.0" layoutY="65.0">
+            <children>
+                <Label alignment="TOP_LEFT" layoutX="-37.0" layoutY="-1.0" prefHeight="44.0" prefWidth="273.0" text="Requesting Custom Help" textAlignment="CENTER" textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+      <Pane />
+    </children>
+</AnchorPane>
