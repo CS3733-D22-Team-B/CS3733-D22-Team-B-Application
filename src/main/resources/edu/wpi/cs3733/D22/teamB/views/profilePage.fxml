@@ -163,7 +163,7 @@
                       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="nameLabel" maxHeight="1.7976931348623157E308" maxWidth="909.0" minHeight="65.0" minWidth="454.5" prefHeight="150.0" prefWidth="454.5" styleClass="label-box" text="Employee Name" textFill="WHITE">
+                        <Label fx:id="nameLabel" maxHeight="1.7976931348623157E308" maxWidth="909.0" minHeight="65.0" minWidth="454.5" prefHeight="150.0" prefWidth="454.5" styleClass="label-box" text="Employee Name">
                            <font>
                               <Font name="Microsoft Sans Serif" size="30.0" />
                            </font>
@@ -186,7 +186,7 @@
                             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="32.5" prefHeight="32.5" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="idLabel" maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" prefHeight="32.5" prefWidth="217.5" styleClass="label-box" text="ID Number" textFill="WHITE">
+                              <Label fx:id="idLabel" maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" prefHeight="32.5" prefWidth="217.5" styleClass="label-box" text="ID Number">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="14.0" />
                                  </font>
@@ -208,7 +208,7 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="usernameLabel" maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" prefHeight="32.5" prefWidth="217.5" styleClass="label-box" text="Username" textFill="WHITE" GridPane.columnIndex="2">
+                              <Label fx:id="usernameLabel" maxHeight="1.7976931348623157E308" maxWidth="435.0" minHeight="32.5" minWidth="217.5" prefHeight="32.5" prefWidth="217.5" styleClass="label-box" text="Username" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="14.0" />
                                  </font>
@@ -242,7 +242,7 @@
                 <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                   <TableView fx:id="requestTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="182.0" minWidth="400.0" prefHeight="182.0" prefWidth="632.0" styleClass="simple-table" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                   <TableView fx:id="requestTable" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="182.0" minWidth="400.0" prefHeight="182.0" prefWidth="632.0" styleClass="simple-table" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <columns>
                       <TableColumn fx:id="requestID" prefWidth="75.0" text="Request ID" />
                       <TableColumn fx:id="requestType" prefWidth="75.0" text="Type" />
