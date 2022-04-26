@@ -61,10 +61,10 @@ public class AStarVisualization extends MenuBarController {
   public void drawLine(Location start, Location end) {
     final Line line = new Line();
 
-    int xStartMap = start.getXCoord();
-    int yStartMap = start.getYCoord();
-    int xEndMap = end.getXCoord();
-    int yEndMap = end.getYCoord();
+    int xStartMap = start.getXCoord() + 6;
+    int yStartMap = start.getYCoord() + 6;
+    int xEndMap = end.getXCoord() + 6;
+    int yEndMap = end.getYCoord() + 6;
 
     int[] startViewCoords = this.mapCoordsToViewCoords(xStartMap, yStartMap);
     int[] endViewCoords = this.mapCoordsToViewCoords(xEndMap, yEndMap);
@@ -73,8 +73,8 @@ public class AStarVisualization extends MenuBarController {
     line.setStartY(startViewCoords[1]);
     line.setEndX(endViewCoords[0]);
     line.setEndY(endViewCoords[1]);
-    line.setStrokeWidth(4);
-    line.setStroke(Color.rgb(250, 214, 27));
+    line.setStrokeWidth(2);
+    line.setStroke(Color.rgb(250, 250, 250));
 
     mapPane.getChildren().add(line);
     lineList.add(line);
