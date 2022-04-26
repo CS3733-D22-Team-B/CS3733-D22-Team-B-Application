@@ -87,8 +87,10 @@ public class MedicalEquipment {
         && this.availability.equalsIgnoreCase("Unavailable")
         && newAvailability.equalsIgnoreCase("Available")) {
       RequestWaitlist.createRequest(this);
+      availability = "Requested";
+    } else {
+      availability = newAvailability;
     }
-    availability = newAvailability;
   }
 
   public String getAvailability() {

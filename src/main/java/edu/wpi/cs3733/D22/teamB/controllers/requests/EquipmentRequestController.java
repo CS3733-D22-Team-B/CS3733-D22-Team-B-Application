@@ -1,11 +1,13 @@
 package edu.wpi.cs3733.D22.teamB.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamB.databases.*;
+import java.util.Optional;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 
 public class EquipmentRequestController extends LocationBasedRequestController {
@@ -84,17 +86,25 @@ public class EquipmentRequestController extends LocationBasedRequestController {
     }
 
     if (!equipmentTypeAvailable) {
-      Alert alert = new Alert(Alert.AlertType.WARNING);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
       alert.setTitle("No Equipment Available");
       alert.setHeaderText("There are no " + equipmentInput.getValue() + "s currently available. ");
       alert.setContentText("Please try again later. ");
-      alert.showAndWait();
+      Optional<ButtonType> result = alert.showAndWait();
+      ButtonType button = result.orElse(ButtonType.CANCEL);
+
+      if (button == ButtonType.OK) {
+        WaitlistObject wObj =
+            new WaitlistObject(
+                locationsDAO.getLocationID(locationName), convertType(equipmentInput.getValue()));
+        RequestWaitlist.add(wObj);
+        System.out.println("Pressed OK");
+      } else {
+        System.out.println("Pressed cancel");
+      }
       // equipmentInput.getSelectionModel().clearSelection();
       submitButton.setDisable(true);
-      WaitlistObject wObj =
-          new WaitlistObject(
-              locationsDAO.getLocationID(locationName), convertType(equipmentInput.getValue()));
-      RequestWaitlist.add(wObj);
+
       return "";
     } else {
       return closestEquip.getEquipmentID();
