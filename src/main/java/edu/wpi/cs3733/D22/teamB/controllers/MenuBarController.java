@@ -23,11 +23,6 @@ public class MenuBarController {
   }
 
   @FXML
-  public void goToMapLandingPage(ActionEvent event) throws Exception {
-    UIController.getInstance().goToPage("mapLandingPage");
-  }
-
-  @FXML
   public void goToEquipmentTrackerPage(ActionEvent event) throws Exception {
     UIController.getInstance().goToPage("equipmentTrackerPage");
   }

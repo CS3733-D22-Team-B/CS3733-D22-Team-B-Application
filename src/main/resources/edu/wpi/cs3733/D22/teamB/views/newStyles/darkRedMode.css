@@ -305,3 +305,8 @@
     -fx-border-color: transparent;
     -fx-background-color: #22252d;
 }
+.card {
+    -fx-background-color: transparent;
+    -fx-fill: #540720;
+    -fx-stroke: white;
+}
