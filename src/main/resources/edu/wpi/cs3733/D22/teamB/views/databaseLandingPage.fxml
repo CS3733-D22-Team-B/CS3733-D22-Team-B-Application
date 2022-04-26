@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.DatabaseLandingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.DatabaseLandingPageController">
    <children>
       <Pane layoutX="855.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -42,7 +38,7 @@
             </VBox>
          </children>
       </Pane>
-      <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" pannable="true" prefHeight="300.0" prefWidth="65.0" styleClass="button-pane" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="240.0">
+      <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" pannable="true" prefHeight="281.0" prefWidth="65.0" styleClass="button-pane" vbarPolicy="NEVER" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="240.0">
          <content>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="65.0" minHeight="0.0" minWidth="65.0" prefWidth="65.0">
                <children>
@@ -72,7 +68,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="blankPane" prefHeight="200.0" prefWidth="200.0" styleClass="container-box" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="blankPane" prefHeight="200.0" prefWidth="200.0" styleClass="container-box" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="80.0">
          <children>
             <Label alignment="CENTER" layoutX="31.0" layoutY="177.0" opacity="0.7" prefHeight="42.0" prefWidth="611.0" text="Please Select A Database To View" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="177.0">
                <font>
@@ -81,8 +77,8 @@
             </Label>
          </children>
       </AnchorPane>
-      <fx:include fx:id="employeeDatabasePage" source="employeeDatabasePage.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
-      <fx:include fx:id="locationDatabasePage" source="locationDataPage.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
-      <fx:include fx:id="patientDatabasePage" source="patientDatabasePage.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
+      <fx:include fx:id="employeeDatabasePage" source="employeeDatabasePage.fxml" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="20.0" />
+      <fx:include fx:id="locationDatabasePage" source="locationDataPage.fxml" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="20.0" />
+      <fx:include fx:id="patientDatabasePage" source="patientDatabasePage.fxml" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>
