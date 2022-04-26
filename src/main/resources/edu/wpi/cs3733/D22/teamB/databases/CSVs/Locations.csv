@@ -100,6 +100,21 @@ bHALL01203,509,184,3,Tower,HALL,Hallway Connector 12 Floor 3,F3 Hallway 12,FALSE
 bHALL01303,509,396,3,Tower,HALL,Hallway Connector 13 Floor 3,F3 Hallway 13,FALSE
 bHALL01403,645,396,3,Tower,HALL,Hallway Connector 14 Floor 3,F3 Hallway 14,FALSE
 bHALL01503,645,364,3,Tower,HALL,Hallway Connector 15 Floor 3,F3 Hallway 15,FALSE
+bHALL01603,421,397,3,Tower,HALL,Hallway Connector 16 Floor 3,F3 Hallway 16,TRUE
+bHALL01703,389,416,3,Tower,HALL,Hallway Connector 17 Floor 3,F3 Hallway 17,TRUE
+bHALL01803,385,456,3,Tower,HALL,Hallway Connector 18 Floor 3,F3 Hallway 18,TRUE
+bHALL01903,408,489,3,Tower,HALL,Hallway Connector 19 Floor 3,F3 Hallway 19,TRUE
+bHALL02003,454,501,3,Tower,HALL,Hallway Connector 20 Floor 3,F3 Hallway 20,TRUE
+bHALL02103,481,471,3,Tower,HALL,Hallway Connector 21 Floor 3,F3 Hallway 21,TRUE
+bHALL02203,478,396,3,Tower,HALL,Hallway Connector 22 Floor 3,F3 Hallway 22,TRUE
+bHALL02303,507,293,3,Tower,HALL,Hallway Connector 23 Floor 3,F3 Hallway 23,TRUE
+bHALL02403,485,182,3,Tower,HALL,Hallway Connector 24 Floor 3,F3 Hallway 24,TRUE
+bHALL02503,422,184,3,Tower,HALL,Hallway Connector 25 Floor 3,F3 Hallway 25,TRUE
+bHALL02603,382,158,3,Tower,HALL,Hallway Connector 26 Floor 3,F3 Hallway 26,TRUE
+bHALL02703,389,117,3,Tower,HALL,Hallway Connector 27 Floor 3,F3 Hallway 27,TRUE
+bHALL02803,422,84,3,Tower,HALL,Hallway Connector 28 Floor 3,F3 Hallway 28,TRUE
+bHALL02903,469,88,3,Tower,HALL,Hallway Connector 29 Floor 3,F3 Hallway 29,TRUE
+bHALL03003,485,125,3,Tower,HALL,Hallway Connector 30 Floor 3,F3 Hallway 30,TRUE
 bLABS00103,141,242,3,Tower,LABS,Reproductive Endocrine Labs Floor 3,F3 Endocrine Labs,TRUE
 bPATI00103,534,109,3,Tower,PATI,Patient Room 1 Floor 3 Pod B,Patient 1 3B,TRUE
 bPATI00203,511,67,3,Tower,PATI,Patient Room 2 Floor 3 Pod B,Patient 2 3B,TRUE
@@ -143,6 +158,21 @@ bHALL00704,509,184,4,Tower,HALL,Hallway Connector 7 Floor 4,F4 Hallway 7,FALSE
 bHALL00804,509,396,4,Tower,HALL,Hallway Connector 8 Floor 4,F4 Hallway 8,FALSE
 bHALL00904,645,396,4,Tower,HALL,Hallway Connector 9 Floor 4,F4 Hallway 9,FALSE
 bHALL01004,645,364,4,Tower,HALL,Hallway Connector 10 Floor 4,F4 Hallway 10,FALSE
+bHALL01104,421,397,4,Tower,HALL,Hallway Connector 11 Floor 4,F4 Hallway 11,TRUE
+bHALL01204,389,416,4,Tower,HALL,Hallway Connector 12 Floor 4,F4 Hallway 12,TRUE
+bHALL01304,385,456,4,Tower,HALL,Hallway Connector 13 Floor 4,F4 Hallway 13,TRUE
+bHALL01404,408,489,4,Tower,HALL,Hallway Connector 14 Floor 4,F4 Hallway 14,TRUE
+bHALL01504,454,501,4,Tower,HALL,Hallway Connector 15 Floor 4,F4 Hallway 15,TRUE
+bHALL01604,481,471,4,Tower,HALL,Hallway Connector 16 Floor 4,F4 Hallway 16,TRUE
+bHALL01704,478,396,4,Tower,HALL,Hallway Connector 17 Floor 4,F4 Hallway 17,TRUE
+bHALL01804,507,293,4,Tower,HALL,Hallway Connector 18 Floor 4,F4 Hallway 18,TRUE
+bHALL01904,485,182,4,Tower,HALL,Hallway Connector 19 Floor 4,F4 Hallway 19,TRUE
+bHALL02004,422,184,4,Tower,HALL,Hallway Connector 20 Floor 4,F4 Hallway 20,TRUE
+bHALL02104,382,158,4,Tower,HALL,Hallway Connector 21 Floor 4,F4 Hallway 21,TRUE
+bHALL02204,389,117,4,Tower,HALL,Hallway Connector 22 Floor 4,F4 Hallway 22,TRUE
+bHALL02304,422,84,4,Tower,HALL,Hallway Connector 23 Floor 4,F4 Hallway 23,TRUE
+bHALL02404,469,88,4,Tower,HALL,Hallway Connector 24 Floor 4,F4 Hallway 24,TRUE
+bHALL02504,485,125,4,Tower,HALL,Hallway Connector 25 Floor 4,F4 Hallway 25,TRUE
 bPATI00104,534,109,4,Tower,PATI,Patient Room 1 Floor 4 Pod B,Patient 1 4B,TRUE
 bPATI00204,511,67,4,Tower,PATI,Patient Room 2 Floor 4 Pod B,Patient 2 4B,TRUE
 bPATI00304,468,42,4,Tower,PATI,Patient Room 3 Floor 4 Pod B,Patient 3 4B,TRUE
@@ -184,6 +214,21 @@ bHALL00705,509,184,5,Tower,HALL,Hallway Connector 7 Floor 5,F5 Hallway 7,FALSE
 bHALL00805,509,396,5,Tower,HALL,Hallway Connector 8 Floor 5,F5 Hallway 8,FALSE
 bHALL00905,645,396,5,Tower,HALL,Hallway Connector 9 Floor 5,F5 Hallway 9,FALSE
 bHALL01005,645,364,5,Tower,HALL,Hallway Connector 10 Floor 5,F5 Hallway 10,FALSE
+bHALL01105,421,397,5,Tower,HALL,Hallway Connector 11 Floor 5,F5 Hallway 11,TRUE
+bHALL01205,389,416,5,Tower,HALL,Hallway Connector 12 Floor 5,F5 Hallway 12,TRUE
+bHALL01305,385,456,5,Tower,HALL,Hallway Connector 13 Floor 5,F5 Hallway 13,TRUE
+bHALL01405,408,489,5,Tower,HALL,Hallway Connector 14 Floor 5,F5 Hallway 14,TRUE
+bHALL01505,454,501,5,Tower,HALL,Hallway Connector 15 Floor 5,F5 Hallway 15,TRUE
+bHALL01605,481,471,5,Tower,HALL,Hallway Connector 16 Floor 5,F5 Hallway 16,TRUE
+bHALL01705,478,396,5,Tower,HALL,Hallway Connector 17 Floor 5,F5 Hallway 17,TRUE
+bHALL01805,507,293,5,Tower,HALL,Hallway Connector 18 Floor 5,F5 Hallway 18,TRUE
+bHALL01905,485,182,5,Tower,HALL,Hallway Connector 19 Floor 5,F5 Hallway 19,TRUE
+bHALL02005,422,184,5,Tower,HALL,Hallway Connector 20 Floor 5,F5 Hallway 20,TRUE
+bHALL02105,382,158,5,Tower,HALL,Hallway Connector 21 Floor 5,F5 Hallway 21,TRUE
+bHALL02205,389,117,5,Tower,HALL,Hallway Connector 22 Floor 5,F5 Hallway 22,TRUE
+bHALL02305,422,84,5,Tower,HALL,Hallway Connector 23 Floor 5,F5 Hallway 23,TRUE
+bHALL02405,469,88,5,Tower,HALL,Hallway Connector 24 Floor 5,F5 Hallway 24,TRUE
+bHALL02505,485,125,5,Tower,HALL,Hallway Connector 25 Floor 5,F5 Hallway 25,TRUE
 bPATI00105,534,109,5,Tower,PATI,Patient Room 1 Floor 5 Pod B,Patient 1 5B,TRUE
 bPATI00205,511,67,5,Tower,PATI,Patient Room 2 Floor 5 Pod B,Patient 2 5B,TRUE
 bPATI00305,468,42,5,Tower,PATI,Patient Room 3 Floor 5 Pod B,Patient 3 5B,TRUE
