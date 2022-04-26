@@ -44,7 +44,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="31.0" layoutY="95.0" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToMapLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
+                  <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="31.0" layoutY="95.0" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToDashboard" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
