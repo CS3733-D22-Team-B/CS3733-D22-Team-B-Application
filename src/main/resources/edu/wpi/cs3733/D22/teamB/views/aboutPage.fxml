@@ -362,8 +362,7 @@
          <font>
             <Font size="16.0" />
          </font>
-</JFXButton>
-      </Label>
+      </JFXButton>
       <ScrollPane layoutX="121.0" layoutY="35.0" prefHeight="472.0" prefWidth="722.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="684.0" prefWidth="704.0">
@@ -437,7 +436,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </VBox>
-               </children></AnchorPane>
+               </children>
+          </AnchorPane>
         </content>
       </ScrollPane>
    </children>
