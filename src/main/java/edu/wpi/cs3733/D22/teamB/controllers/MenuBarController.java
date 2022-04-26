@@ -1,7 +1,10 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.UIController;
-import edu.wpi.cs3733.D22.teamB.api.*;
+import edu.wpi.cs3733.D22.teamB.api.API;
+import edu.wpi.cs3733.D22.teamB.api.ServiceException;
+import edu.wpi.cs3733.D22.teamC.TeamCAPI;
+import edu.wpi.cs3733.D22.teamD.API.StartAPI;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -159,13 +162,38 @@ public class MenuBarController {
   }
 
   @FXML
-  public void launchAPI() throws ServiceException {
-    API api = new API();
+  public void launchAPI() throws ServiceException, IOException {
     try {
+      API api = new API();
+      // need to make an instance of the database here and add an employee
       api.run(0, 0, 600, 400, null, null, null);
-      DatabaseController databaseController = new DatabaseController();
-      databaseController.addEmployee("Wong", "Wilson");
-    } catch (IOException e) {
+    } catch (Exception e) {
+    }
+  }
+
+  @FXML
+  public void launchTeamCAPI()
+      throws
+          edu.wpi
+              .cs3733
+              .D22
+              .teamC
+              .controller
+              .service_request
+              .facility_maintenance
+              .ServiceException {
+    TeamCAPI api = new TeamCAPI();
+    api.run(0, 0, 600, 400, null, null, null);
+  }
+
+  @FXML
+  public void launchTeamDAPI() {
+    StartAPI api = new StartAPI();
+
+    try {
+      api.run(0, 0, 600, 400, null, null);
+    } catch (Exception e) {
+      System.out.println("BRUH");
     }
   }
 
