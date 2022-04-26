@@ -68,9 +68,9 @@
                   </JFXButton>
                </children>
             </VBox>
-            <JFXButton layoutX="4.0" layoutY="225.0" onAction="#launchAPI" prefHeight="27.0" prefWidth="98.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Internal" />
+            <JFXButton layoutX="4.0" layoutY="225.0" onAction="#launchAPI" prefHeight="27.0" prefWidth="98.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="IPT" />
             <JFXButton layoutX="4.0" layoutY="257.0" onAction="#launchTeamCAPI" prefHeight="27.0" prefWidth="98.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Maintenance" />
-            <JFXButton layoutX="4.0" layoutY="289.0" onAction="#launchTeamVAPI" prefHeight="27.0" prefWidth="98.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Transport" />
+            <JFXButton layoutX="4.0" layoutY="289.0" onAction="#launchTeamDAPI" prefHeight="27.0" prefWidth="98.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Sanitation" />
          </children>
       </Pane>
       <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

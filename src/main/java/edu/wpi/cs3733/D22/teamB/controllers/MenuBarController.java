@@ -3,9 +3,8 @@ package edu.wpi.cs3733.D22.teamB.controllers;
 import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.api.API;
 import edu.wpi.cs3733.D22.teamB.api.ServiceException;
-import edu.wpi.cs3733.D22.teamC.*;
-import edu.wpi.cs3733.D22.teamE.Run;
-
+import edu.wpi.cs3733.D22.teamC.TeamCAPI;
+import edu.wpi.cs3733.D22.teamD.API.StartAPI;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -183,13 +182,13 @@ public class MenuBarController {
   }
 
   @FXML
-  public void launchTeamVAPI() throws edu.wpi.cs3733.D22.teamZ.api.exception.ServiceException {
+  public void launchTeamDAPI() {
+    StartAPI api = new StartAPI();
+
     try {
-      //still team E's api
-      Run run = new Run();
-      run.run(0, 0, 600, 400, null, null, null);
+      api.run(0, 0, 600, 400, null, null);
     } catch (Exception e) {
-      System.out.println("oh boyyyyyyy");
+      System.out.println("BRUH");
     }
   }
 }

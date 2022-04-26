@@ -42,13 +42,8 @@ dependencies {
 
     implementation name: 'teamBAPI'
 
-    implementation name: 'ExternalTransportAPI'
-
-    implementation name: 'SoftEngRobotAPI'
-
     compile fileTree(dir: 'lib', include: ['*.jar'])
-
-    testCompile(
+            testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",
             "junit:junit:4.13.2",
             "org.testfx:testfx-junit:4.0.16-alpha"
