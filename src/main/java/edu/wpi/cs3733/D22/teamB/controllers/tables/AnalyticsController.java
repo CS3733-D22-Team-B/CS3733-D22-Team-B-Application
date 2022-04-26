@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
+import edu.wpi.cs3733.D22.teamB.databases.Activity;
 import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -15,10 +17,16 @@ import javafx.scene.chart.*;
 public class AnalyticsController extends MenuBarController implements Initializable {
 
   @FXML private StackedBarChart stackedBarChart;
+  @FXML private LineChart lineChart;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    initializeStackedBarChart();
+    initializeLineChart();
 
+  }
+
+  private void initializeStackedBarChart() {
     CategoryAxis xAxis = new CategoryAxis();
     xAxis.setLabel("Types");
     NumberAxis yAxis = new NumberAxis();
@@ -90,4 +98,13 @@ public class AnalyticsController extends MenuBarController implements Initializa
     stackedBarChart.setCategoryGap(50);
     stackedBarChart.getData().addAll(series1, series2);
   }
+
+  private void initializeLineChart() {
+    LinkedList<Activity> activityList = DatabaseController.getInstance().listActivities();
+    Date currentDate = new Date();
+    for (int i = activityList.size() - 1; i >= 0; i--) {
+
+    }
+  }
+
 }
