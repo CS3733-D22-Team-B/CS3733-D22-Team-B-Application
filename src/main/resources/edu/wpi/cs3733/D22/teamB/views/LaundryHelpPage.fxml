@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+    <children>
+        <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            <JFXButton layoutX="29.0" layoutY="493.0" onAction="#goToRequestLanding" text="Back" textFill="#7bcce4" />
+            </children></Pane>
+        <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <VBox layoutX="66.0" layoutY="43.0" prefHeight="482.0" prefWidth="764.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="43.0">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <children>
+            <Pane>
+               <children>
+                      <Label alignment="TOP_LEFT" layoutX="-19.0" layoutY="-1.0" prefHeight="44.0" prefWidth="368.0" text="Requesting Laundry Service Help" textAlignment="CENTER" textFill="#7bcce4" translateX="215.0" wrapText="true">
+                          <font>
+                              <Font name="Microsoft Sans Serif" size="24.0" />
+                          </font>
+                      </Label>
+               </children>
+            </Pane>
+            </children>
+        </VBox>
+        <Pane layoutX="550.0" layoutY="208.0" />
+        <Pane layoutX="120.0" layoutY="330.0">
+            <children>
+                <Label alignment="TOP_LEFT" layoutX="-26.0" prefHeight="35.0" prefWidth="637.0" text="  3.  Select the urgency of the wash:" textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="540.0" layoutY="379.0">
+            <children>
+                <ImageView fitHeight="118.0" fitWidth="217.0" layoutX="-20.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/Help/additional%20notes.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+      <Pane layoutX="87.0" layoutY="420.0">
+         <children>
+              <Pane layoutX="28.0">
+                  <children>
+                      <Label alignment="TOP_LEFT" layoutX="-28.0" prefHeight="37.0" prefWidth="509.0" text="   4.  (Opitional) Insert an additional message  : " textFill="#7bcce4" wrapText="true">
+                          <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+              </Pane>
+         </children>
+      </Pane>
+        <Pane layoutX="130.0" layoutY="120.0">
+            <children>
+                <ImageView fitHeight="128.0" fitWidth="200.0" layoutX="290.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/Help/patient.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="TOP_LEFT" layoutX="-28.0" layoutY="-3.0" prefHeight="33.0" prefWidth="657.0" text="1.  Select the patient's full name :" textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="500.0" layoutY="78.0" />
+        <Pane layoutX="120.0" layoutY="220.0">
+            <children>
+                <Label alignment="TOP_LEFT" layoutX="-28.0" layoutY="14.0" prefHeight="35.0" prefWidth="637.0" text="  2.  Select The Laundry Type:" textFill="#7bcce4" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="86.0" fitWidth="188.0" layoutX="347.0" layoutY="4.0">
+                    <image>
+                        <Image url="@../assets/Help/laundry%20type.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="450.0" layoutY="319.0">
+            <children>
+                <ImageView fitHeight="83.0" fitWidth="227.0" layoutX="-36.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/Help/priority%20bar.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="344.0" layoutY="65.0">
+            <children>
+                <Pane layoutX="-34.0" />
+            </children>
+        </Pane>
+        <Pane layoutX="505.0" layoutY="235.0" />
+    </children>
+</AnchorPane>

@@ -3,94 +3,366 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
-      <Pane layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-l" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.75" prefHeight="540.0" prefWidth="105.0" styleClass="side-image-r" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton focusTraversable="false" layoutX="8.0" layoutY="34.0" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Buttons%20&amp;%20Common%20Assets/Menu.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children></Pane>
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label layoutX="7.0" layoutY="262.0" opacity="0.4" rotate="270.0" text="About" textFill="#7bcce4" AnchorPane.bottomAnchor="242.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="262.0">
-         <font>
-            <Font name="Microsoft Sans Serif" size="30.0" />
-         </font>
-      </Label>
-      <VBox layoutX="112.0" layoutY="55.0" prefHeight="464.0" prefWidth="708.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="55.0">
-         <children>
-            <Label alignment="TOP_LEFT" prefHeight="39.0" prefWidth="616.0" text="Development Team: " textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="170.0" prefWidth="616.0" text="Sean Barbour (Product Owner/Front End), Abigail Boafo (Documentation Analyst/UI Developer), Kalina Bonofiglio (Project Manager/Algorithms Developer), Marek Garbaczonek (Full-Time UI Developer, Former Back-End Lead), Aidan MacNevin (Front-End Lead), Brendan Mannion (Full-Time Back End), Chase Miller (Lead Software Engineer), Ethan Moynihan (Scrum Master/Front End), Ryan Rabbitt (Front-End), Nathan Wong (Back-End Lead)" textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="320.0" text="Team Coach: Nathan Klingensmith " textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="35.0" prefWidth="616.0" text="Special Thanks To:" textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="616.0" text="Andrew Shinn, Representative of Brigham and Women’s Hospital" textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="616.0" text="WPI Computer Science Dept." textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="616.0" text="CS3733-D22 Software Engineering " textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="616.0" text="Prof. Wilson Wong" textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="21.0" layoutY="383.0" prefHeight="55.0" prefWidth="698.0" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes." textFill="#7bcce4" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="14.0" />
-               </font>
+            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="106.0" spacing="10.0">
+               <children>
+                  <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="main-button">
+                           <image>
+                              <Image url="@../assets/newAssets/Menu.png" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="profileButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToProfilePage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="View Map">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/profile" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="mapButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToDashboard" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Maps" textFill="#ffffff40">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/map" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="requestButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToRequestLandingPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Requests" textFill="#ffffff40">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/requests" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="equipmentTrackerButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="65.0" minWidth="65.0" onAction="#goToEquipmentTrackerPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Tracker" textFill="#ffffff40">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/tracker" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
                <padding>
-                  <Insets top="2.0" />
+                  <Insets top="10.0" />
                </padding>
-            </Label>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
+            </VBox>
+         </children></Pane>
+      <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="200.0" prefWidth="710.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="20.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="710.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="-2.0" layoutY="-2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1407.0" prefWidth="710.0" styleClass="container-box-3" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="43.0" prefWidth="94.0" text="About" textAlignment="CENTER" textFill="#ffffffb2">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="40.0" prefWidth="616.0" text="Development Team: " textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="170.0" prefWidth="616.0" text="Sean Barbour (Product Owner/Front End), Abigail Boafo (Documentation Analyst/UI Developer), Kalina Bonofiglio (Project Manager/Algorithms Developer), Marek Garbaczonek (Full-Time UI Developer, Former Back-End Lead), Aidan MacNevin (Front-End Lead), Brendan Mannion (Full-Time Back End), Chase Miller (Lead Software Engineer), Ethan Moynihan (Scrum Master/Front End), Ryan Rabbitt (Front-End), Nathan Wong (Back-End Lead)" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="18.0" prefWidth="614.0" text="Team Coach: Nathan Klingensmith " textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="40.0" prefWidth="616.0" text="Special Thanks To:" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="22.0" prefWidth="616.0" text="Andrew Shinn, Representative of Brigham and Women’s Hospital" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="22.0" prefWidth="616.0" text="WPI Computer Science Dept." textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="22.0" prefWidth="616.0" text="CS3733-D22 Software Engineering " textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="22.0" prefWidth="616.0" text="Prof. Wilson Wong" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="21.0" layoutY="383.0" prefHeight="40.0" prefWidth="618.0" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes." textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets top="2.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="55.0" layoutY="362.0" prefWidth="618.0" text="_" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets top="2.0" />
+                           </padding>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="306.0" prefHeight="40.0" prefWidth="616.0" text="Credits:" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="BOTTOM_LEFT" layoutX="56.0" layoutY="460.0" prefHeight="30.0" prefWidth="616.0" text="Maintenance Request Page:" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="376.0" prefHeight="22.0" prefWidth="616.0" text="Software Engineering Team C. " textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="474.0" prefHeight="22.0" prefWidth="616.0" text="Members:" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="474.0" prefHeight="22.0" prefWidth="616.0" text="Grace O'Reilly" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="477.0" prefHeight="22.0" prefWidth="616.0" text="Nicholas Frangie" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="477.0" prefHeight="22.0" prefWidth="616.0" text="Madeline Mueting" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="477.0" prefHeight="22.0" prefWidth="616.0" text="Vishnu Priya Dendukuri" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="477.0" prefHeight="22.0" prefWidth="616.0" text="Brian Shin" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="479.0" prefHeight="22.0" prefWidth="616.0" text="Nelson Pires" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="469.0" prefHeight="22.0" prefWidth="616.0" text="Matthew McAlarney" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="499.0" prefHeight="22.0" prefWidth="616.0" text="Vagmi Bhagavathula" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="509.0" prefHeight="22.0" prefWidth="616.0" text="Brandon Voung" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="519.0" prefHeight="22.0" prefWidth="616.0" text="John Muirhead" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="BOTTOM_LEFT" layoutX="56.0" layoutY="280.0" prefHeight="30.0" prefWidth="616.0" text="Sanitation Request Page:" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="292.0" prefHeight="22.0" prefWidth="616.0" text="Software Engineering Team D." textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="506.0" prefHeight="22.0" prefWidth="616.0" text="Jacob Adams" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="563.0" prefHeight="22.0" prefWidth="616.0" text="Alpay Ariyak" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="572.0" prefHeight="22.0" prefWidth="616.0" text="Tyler Evans" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="582.0" prefHeight="22.0" prefWidth="616.0" text="Chandler Garcia" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="592.0" prefHeight="22.0" prefWidth="616.0" text="Luke Gardone" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="602.0" prefHeight="22.0" prefWidth="616.0" text="Joanna Hu" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="612.0" prefHeight="22.0" prefWidth="616.0" text="Samuel Karkache" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="622.0" prefHeight="22.0" prefWidth="616.0" text="Cole Ouellette" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="632.0" prefHeight="22.0" prefWidth="616.0" text="Rosemary Shelton" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="642.0" prefHeight="22.0" prefWidth="616.0" text="Shafath Zaman" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="BOTTOM_LEFT" layoutX="56.0" layoutY="426.0" prefHeight="35.0" prefWidth="616.0" text="Game Page" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="640.0" prefHeight="22.0" prefWidth="616.0" text="YouTube.com" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="674.0" prefHeight="22.0" prefWidth="616.0" text="Java Game Programming - Develop a Brick Breaker Game " textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="684.0" prefHeight="22.0" prefWidth="616.0" text="Awais Mirza" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="631.0" prefHeight="35.0" prefWidth="616.0" text="COVID-19 Page" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="682.0" prefHeight="22.0" prefWidth="616.0" text="All information on this page came from the Center of Disease Control (cdc.gov)" textFill="#ffffff80" wrapText="true">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="-100.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <JFXButton focusTraversable="false" layoutY="494.0" onAction="#amongUsButton" prefHeight="40.0" prefWidth="40.0" text="ඞ" textFill="#ff0000bf" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
