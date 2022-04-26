@@ -1,117 +1,264 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EmployeeQueueController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.EmployeeQueueController">
    <children>
-      <SplitPane dividerPositions="0.22476050110537954" layoutX="32.0" layoutY="70.0" prefHeight="419.0" prefWidth="907.0" style="-fx-background-color: #2e3c4b; -fx-border-color: #7bcce4; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="70.0">
+      <Label layoutX="369.0" layoutY="14.0" text="Employee Database" textFill="#7bcce4">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <SplitPane dividerPositions="0.34807916181606524" layoutX="12.0" layoutY="58.0" prefHeight="291.0" prefWidth="575.0" styleClass="rectangle-shadow" stylesheets="@newStyles/darkMode.css" AnchorPane.bottomAnchor="50.8" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="58.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="203.0" style="-fx-background-color: #2e3c4b; -fx-border-radius: 10px;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
                <children>
-                  <ComboBox fx:id="departmentInput" layoutX="12.0" layoutY="159.0" prefHeight="26.0" prefWidth="163.0" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:id="emergency" fx:value="EMERGENCY" />
-                           <String fx:id="icu" fx:value="ICU" />
-                           <String fx:id="radiology" fx:value="RADIOLOGY" />
-                           <String fx:id="Test" fx:value="PHYSICAL THERAPY" />
-                           <String fx:id="TEst" fx:value="CAFETERIA" />
-                           <String fx:id="TESt" fx:value="ADMIN" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-                  <Label contentDisplay="CENTER" layoutX="9.0" layoutY="4.0" prefHeight="20.0" prefWidth="184.0" text="Currently Viewing Employee " textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="requestIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="26.0" prefHeight="17.0" prefWidth="144.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" layoutX="62.0" layoutY="84.0" text="Position:" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" layoutX="18.0" layoutY="27.0" text="First Name:" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="positionInput" layoutX="12.0" layoutY="102.0" prefHeight="26.0" prefWidth="163.0" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:id="test" fx:value="DOCTOR" />
-                           <String fx:id="please" fx:value="NURSE" />
-                           <String fx:id="work" fx:value="TECHNICIAN" />
-                           <String fx:id="cool" fx:value="CHEF" />
-                           <String fx:id="idk" fx:value="ADMIN" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-                  <Label contentDisplay="CENTER" layoutX="51.0" layoutY="142.0" text="Department:" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="firstNameInput" layoutX="14.0" layoutY="46.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-                  <Label contentDisplay="CENTER" layoutX="109.0" layoutY="27.0" text="Last Name:" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="lastNameInput" layoutX="105.0" layoutY="46.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-                  <TextField fx:id="usernameInput" layoutX="15.0" layoutY="219.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-                  <TextField fx:id="passwordInput" layoutX="101.0" layoutY="218.0" prefHeight="26.0" prefWidth="72.0" styleClass="simple-text-field" stylesheets="@styles/textStyles.css" />
-                  <Label contentDisplay="CENTER" layoutX="17.0" layoutY="201.0" text="Username:" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" layoutX="109.0" layoutY="200.0" text="Password:" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="deleteButton" layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#deleteData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Delete" />
-                  <Button fx:id="addSaveButton" disable="true" layoutX="121.0" layoutY="278.0" mnemonicParsing="false" onAction="#saveAddData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add" visible="false" />
-                  <Button fx:id="saveButton" layoutX="117.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save" />
+                  <AnchorPane fx:id="otherAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
+                     <children>
+                        <Label contentDisplay="CENTER" layoutX="50.0" layoutY="191.0" text="Please Select an Employee" textFill="#7bcce4">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="viewingPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" visible="false">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="431.0" prefWidth="322.0">
+                           <children>
+                              <Label contentDisplay="CENTER" text="Currently Viewing Employee" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="employeeIDText" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="144.0" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="Name:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="nameText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label contentDisplay="CENTER" text="Username:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="usernameText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label contentDisplay="CENTER" text="Department:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="departmentText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="188.55554223060608">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label contentDisplay="CENTER" text="Position:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="positionText" fill="#7bcce4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="185.0">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="editingPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" visible="false">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="429.0" prefWidth="322.0">
+                           <children>
+                              <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="184.0" text="Currently Editing Employee" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="employeeIDLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="144.0" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="Name:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nameInput" prefHeight="23.0" prefWidth="106.0" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Username:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="usernameInput" prefHeight="23.0" prefWidth="106.0" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Department:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="departmentInput" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Position:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="positionInput" styleClass="simple-text-field" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#saveData" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Save">
+                                 <VBox.margin>
+                                    <Insets top="7.5" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="creationPane" layoutX="-1.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;" visible="false">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="429.0" prefWidth="322.0">
+                           <children>
+                              <Label contentDisplay="CENTER" prefHeight="20.0" prefWidth="161.0" text="Adding New Employee" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="Name:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="addNameInput" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.55" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Username:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addUsernameInput" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Password:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addPasswordInput" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Department:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addDepartmentInput" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label contentDisplay="CENTER" text="Position:" textFill="#7bcce4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addPositionInput" styleClass="simple-text-area" stylesheets="@styles/textStyles3.css">
+                                 <VBox.margin>
+                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                 </VBox.margin>
+                              </TextField>
+                              <HBox prefHeight="24.0" prefWidth="200.0">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancel" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Cancel">
+                                       <HBox.margin>
+                                          <Insets left="110.0" right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addEmployee" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="647.0">
-               <children>
-                  <TableView fx:id="employeeTable" prefHeight="435.0" prefWidth="698.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <columns>
-                        <TableColumn fx:id="columnEmployeeID" editable="false" prefWidth="165.33328247070312" text="ID" />
-                        <TableColumn fx:id="columnPosition" editable="false" prefWidth="196.00003051757812" text="Type" />
-                        <TableColumn fx:id="columnLastName" editable="false" minWidth="0.0" prefWidth="100.00006103515625" text="Last Name" />
-                        <TableColumn fx:id="columnFirstName" editable="false" minWidth="0.0" prefWidth="132.0" text="First Name" />
-                        <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="105.33331298828125" text="View" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children>
-            </AnchorPane>
+            <TableView fx:id="employeeTable" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table" stylesheets="@styles/tableStyles.css">
+               <columns>
+                  <TableColumn fx:id="columnEmployeeID" editable="false" prefWidth="88.0" text="Employee ID" />
+                  <TableColumn fx:id="columnName" editable="false" minWidth="0.0" prefWidth="102.0" text="Name" />
+                  <TableColumn fx:id="columnButtons" editable="false" minWidth="0.0" prefWidth="151.9998779296875" text="Actions" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
          </items>
       </SplitPane>
-      <Button layoutX="784.0" layoutY="35.0" mnemonicParsing="false" onAction="#toggleClientServer" prefHeight="26.0" prefWidth="163.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Client-Server Toggle" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="35.0" />
-      <JFXButton layoutX="12.0" layoutY="503.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" AnchorPane.bottomAnchor="9.8" AnchorPane.leftAnchor="12.0" />
-      <Button layoutX="822.0" layoutY="501.0" mnemonicParsing="false" onAction="#addStart" prefHeight="26.0" prefWidth="128.0" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Employee" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="12.0" />
-      <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <JFXButton layoutX="6.0" layoutY="372.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back To Homepage" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" />
+      <JFXButton layoutX="462.0" layoutY="372.0" onAction="#createEmployee" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Add New Employee" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="6.0" />
    </children>
 </AnchorPane>

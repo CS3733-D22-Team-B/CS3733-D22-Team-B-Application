@@ -132,6 +132,10 @@ public class Employee {
     return firstName + " " + lastName + " (" + employeeID + ")";
   }
 
+  public String getFullName() {
+    return firstName + " " + lastName;
+  }
+
   // Josh Bloch's Hashing method
   protected final String getHashCode() {
     // generate random value between 0 and 1 inclusive
