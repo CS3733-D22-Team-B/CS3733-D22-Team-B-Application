@@ -1,12 +1,15 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import edu.wpi.cs3733.D22.teamB.App;
-import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.EmailHelper;
+import edu.wpi.cs3733.D22.teamB.UIController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.io.IOException;
 import java.util.Random;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
