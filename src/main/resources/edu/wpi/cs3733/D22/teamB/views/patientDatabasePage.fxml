@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="805.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.PatientDatabaseController">
+<AnchorPane minHeight="500.0" minWidth="815.0" prefHeight="500.0" prefWidth="815.0" styleClass="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.PatientDatabaseController">
    <children>
-      <SplitPane dividerPositions="0.34807916181606524" layoutX="12.0" layoutY="58.0" prefHeight="291.0" prefWidth="575.0" style="-fx-background-color: transparent;" styleClass="rectangle-shadow" stylesheets="@newStyles/darkBlueMode.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-color: #2e3c4b; -fx-background-radius: 10px;">
+      <GridPane layoutX="-222.0" layoutY="28.0" prefHeight="500.0" prefWidth="815.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="505.0" prefWidth="505.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="500.0" prefHeight="500.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" styleClass="container-box-3">
                <children>
-                  <AnchorPane fx:id="otherAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="otherAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-sh" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="190.0" maxWidth="1.7976931348623157E308" text="Please Select a Patient" textFill="#7bcce4" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="190.0" maxWidth="1.7976931348623157E308" text="Please Select a Patient" textFill="#ffffffb2" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
                            <font>
                               <Font name="Microsoft Sans Serif" size="18.0" />
                            </font>
                         </Label>
+                        <JFXButton onAction="#createPatient" prefHeight="40.0" styleClass="main-button" text="Add New Patient" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="12.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="viewingPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-3" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="viewingPane" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="431.0" prefWidth="322.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="TOP_CENTER" layoutX="20.0" layoutY="23.0" prefHeight="500.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label fx:id="patientIDText" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="144.0" textFill="#7bcce4">
                                  <font>
@@ -43,138 +46,132 @@
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Name:" textFill="#7bcce4">
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Name:" textFill="#ffffffb2">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
                                  </font>
                               </Label>
                               <Text fx:id="nameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
                                  <VBox.margin>
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
-                              </Text>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Room:" textFill="#7bcce4">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Room:" textFill="#ffffffb2">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
                                  </font>
                               </Label>
                               <Text fx:id="roomText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
                                  <VBox.margin>
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
-                              </Text>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Information:" textFill="#7bcce4">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Information:" textFill="#ffffffb2">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
                                  </font>
                               </Label>
                               <Text fx:id="informationText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="183.3333663940428">
                                  <VBox.margin>
                                     <Insets bottom="7.5" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="12.0" />
+                                 </font>
                               </Text>
                            </children>
                         </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
                   </AnchorPane>
-                  <AnchorPane fx:id="editingPane" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-3" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="editingPane" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="429.0" prefWidth="322.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="TOP_CENTER" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="184.0" text="Currently Editing Patient" textFill="#7bcce4">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="patientIDLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="144.0" textFill="#7bcce4">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
+                              <TextField fx:id="nameInput" prefHeight="50.0" prefWidth="106.0" promptText="Name" styleClass="simple-text-field">
                                  <VBox.margin>
-                                    <Insets bottom="7.5" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                                  </VBox.margin>
-                              </Label>
-                              <TextField fx:id="nameInput" prefHeight="23.0" prefWidth="106.0" promptText="Name" styleClass="simple-text-field">
-                                 <VBox.margin>
-                                    <Insets bottom="7.5" left="7.5" right="7.5" />
-                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
                               </TextField>
-                              <ComboBox fx:id="roomInput" prefHeight="24.0" prefWidth="325.0" promptText="Room" styleClass="simple-dropdown">
+                              <ComboBox fx:id="roomInput" prefHeight="50.0" prefWidth="325.0" promptText="Room" styleClass="simple-dropdown">
                                  <VBox.margin>
-                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" />
                                  </VBox.margin>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
                               </ComboBox>
-                              <TextArea fx:id="informationInput" prefHeight="165.0" prefWidth="308.0" promptText="Information" styleClass="simple-text-area" wrapText="true">
+                              <TextArea fx:id="informationInput" prefHeight="165.0" prefWidth="308.0" promptText="Information" styleClass="text-field" wrapText="true">
                                  <VBox.margin>
-                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="12.0" />
                                  </font>
+                                 <padding>
+                                    <Insets left="5.0" top="5.0" />
+                                 </padding>
                               </TextArea>
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveData" styleClass="main-button" text="Save">
-                                 <VBox.margin>
-                                    <Insets left="90.0" right="90.0" top="7.5" />
-                                 </VBox.margin>
-                              </Button>
                            </children>
                         </VBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveData" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Save" textFill="WHITE" />
+                           </children>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
                   </AnchorPane>
-                  <AnchorPane fx:id="creationPane" layoutX="-1.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-3" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="creationPane" layoutX="-1.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="322.0" styleClass="container-box-sh" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="429.0" prefWidth="322.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <TextField fx:id="addNameInput" promptText="Name" styleClass="simple-text-area">
+                              <TextField fx:id="addNameInput" prefHeight="50.0" promptText="Name" styleClass="simple-text-area">
                                  <VBox.margin>
-                                    <Insets bottom="7.55" left="7.5" right="7.5" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                                  </VBox.margin>
                               </TextField>
-                              <ComboBox fx:id="addRoomInput" prefHeight="24.0" prefWidth="325.0" promptText="Room" styleClass="simple-dropdown">
+                              <ComboBox fx:id="addRoomInput" prefHeight="50.0" prefWidth="325.0" promptText="Room" styleClass="simple-dropdown">
                                  <VBox.margin>
-                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" />
                                  </VBox.margin>
                               </ComboBox>
-                              <TextArea fx:id="addInformationInput" prefHeight="150.0" prefWidth="308.0" promptText="Information" styleClass="simple-text-area" wrapText="true">
+                              <TextArea fx:id="addInformationInput" prefHeight="165.0" prefWidth="308.0" promptText="Information" styleClass="text-field" wrapText="true">
                                  <VBox.margin>
-                                    <Insets bottom="7.5" left="7.5" right="7.5" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" />
                                  </VBox.margin>
+                                 <padding>
+                                    <Insets left="5.0" top="5.0" />
+                                 </padding>
                               </TextArea>
-                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="200.0" spacing="20.0">
-                                 <children>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancel" styleClass="main-button" text="Cancel">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-
-                                    </Button>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addPatient" styleClass="main-button" text="Add">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
                            </children>
                         </VBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancel" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Cancel" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addPatient" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Add" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children></HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
                   </AnchorPane>
-                  <JFXButton onAction="#createPatient" styleClass="main-button" text="Add New Patient" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" />
                </children>
             </AnchorPane>
-            <TableView fx:id="patientTable" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table">
+            <TableView fx:id="patientTable" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table" GridPane.columnIndex="2">
                <columns>
                   <TableColumn fx:id="columnPatientID" editable="false" prefWidth="88.0" text="Patient ID" />
                   <TableColumn fx:id="columnName" editable="false" minWidth="0.0" prefWidth="102.0" text="Name" />
@@ -185,7 +182,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-         </items>
-      </SplitPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

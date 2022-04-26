@@ -146,8 +146,7 @@ public class ProfileController extends MenuBarController implements Initializabl
 
                   private final ImageView viewIcon =
                       new ImageView(
-                          new Image(
-                              "/edu/wpi/cs3733/D22/teamB/assets/Buttons & Common Assets/viewIcon.png"));
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/InfoSquare.png"));
 
                   {
                     requestViewerButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
