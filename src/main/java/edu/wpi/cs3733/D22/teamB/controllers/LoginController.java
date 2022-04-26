@@ -141,21 +141,17 @@ public class LoginController {
   }
 
   public static String getRandomNumberString() {
-    // It will generate 6 digit random Number.
-    // from 0 to 999999
-    Random rnd = new Random();
-    int number = rnd.nextInt(999999);
+    Random random = new Random();
+    int num = random.nextInt(999999);
 
-    // this will convert any number sequence into 6 character.
-    return String.format("%06d", number);
+    return String.format("%06d", num);
   }
 
   @FXML
   void enterEmail() {
-
     authCode = getRandomNumberString();
     this.setEmail();
-    EmailHelper.send(email, authCode);
+
     authText.setVisible(true);
     authText.setText("Authentication code was sent to " + email);
 
@@ -170,5 +166,7 @@ public class LoginController {
     authField.setDisable(false);
     authButton.setVisible(true);
     authButton.setDisable(false);
+
+    EmailHelper.send(email, authCode);
   }
 }

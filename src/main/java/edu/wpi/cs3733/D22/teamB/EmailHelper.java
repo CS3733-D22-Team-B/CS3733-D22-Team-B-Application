@@ -10,7 +10,7 @@ public class EmailHelper {
   private static final String sub = "Authentication Code";
 
   public static void send(String to, String msg) {
-    // Get properties object
+    // Sets email properties
     Properties props = new Properties();
     props.put("mail.smtp.host", "smtp.gmail.com");
     props.put("mail.smtp.socketFactory.port", "587");
@@ -20,7 +20,7 @@ public class EmailHelper {
     props.put("mail.smtp.starttls.enable", "true");
     props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
     props.put("mail.smtp.ssl.protocols", "TLSv1.2");
-    // get Session
+
     Session session =
         Session.getDefaultInstance(
             props,
@@ -29,23 +29,17 @@ public class EmailHelper {
                 return new PasswordAuthentication(from, password);
               }
             });
-    // compose message
+    // Try sending message
     try {
       MimeMessage message = new MimeMessage(session);
       message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
       message.setSubject(sub);
       message.setText(msg);
-      // send message
       Transport.send(message);
-      System.out.println("message sent successfully");
+
+      // System.out.println("message sent successfully");
     } catch (MessagingException e) {
       throw new RuntimeException(e);
     }
-  }
-
-  public static void main(String[] args) {
-    // from,password,to,subject,message
-    EmailHelper.send("bjmannion@wpi.edu", "123456");
-    // change from, password and to
   }
 }
