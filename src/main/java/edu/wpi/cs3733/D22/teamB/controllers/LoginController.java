@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -22,11 +21,12 @@ public class LoginController {
   @FXML private PasswordField passwordBox;
   @FXML private Label loginFail;
   @FXML private Button loginButton;
+  @FXML private Button loginButton2FA;
   @FXML private AnchorPane loginPane;
-  @FXML private Text emailText;
+  @FXML private Label emailText;
   @FXML private TextField emailField;
   @FXML private Button emailButton;
-  @FXML private Text authText;
+  @FXML private Label authText;
   @FXML private TextField authField;
   @FXML private Button authButton;
 
@@ -58,13 +58,14 @@ public class LoginController {
     }
     if (employee == null) {
       loginFail.setText("Invalid ID");
+
     } else {
       if (employee.getPassword().equals(password)) {
         App.currentUser = employee;
 
         Parent homepageRoot =
-                FXMLLoader.load(
-                        getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
+            FXMLLoader.load(
+                getClass().getResource("/edu/wpi/cs3733/D22/teamB/views/homepage.fxml"));
         Scene homepageScene = new Scene(homepageRoot);
         Stage window = (Stage) loginButton.getScene().getWindow();
         window.setScene(homepageScene);
@@ -77,6 +78,7 @@ public class LoginController {
 
   public void login2FA() throws Exception {
     // Login functionality
+    loginFail.setVisible(false);
     this.setPassword();
     this.setUsername();
     Employee employee = null;
@@ -86,42 +88,25 @@ public class LoginController {
     }
     if (employee == null) {
       loginFail.setText("Invalid ID");
+      loginFail.setVisible(true);
     } else {
       if (employee.getPassword().equals(password)) {
-        emailText = new Text("Enter your email to validate your identity");
-        emailText.relocate(500, 270);
-        loginPane.getChildren().add(emailText);
-        emailField = new TextField();
-        emailField.relocate(500, 290);
-        emailField.setPromptText("Email");
-        loginPane.getChildren().add(emailField);
-        emailButton = new Button();
-        emailButton.relocate(700, 290);
-        loginPane.getChildren().add(emailButton);
 
-        authText = new Text();
-        authText.relocate(500, 450);
+        loginButton2FA.setDisable(true);
+        loginButton2FA.setVisible(false);
+
+        usernameField.setDisable(true);
+        usernameField.setVisible(false);
+        passwordBox.setDisable(true);
+        passwordBox.setVisible(false);
+
+        emailField.setDisable(false);
+        emailField.setVisible(true);
+        emailButton.setVisible(true);
+        emailButton.setDisable(false);
+        emailText.setVisible(true);
+
         authText.setVisible(false);
-        loginPane.getChildren().add(authText);
-        authField = new TextField();
-        authField.relocate(500, 470);
-        authField.setVisible(false);
-        loginPane.getChildren().add(authField);
-        authButton = new Button();
-        authButton.relocate(700, 470);
-        authButton.setVisible(false);
-        loginPane.getChildren().add(authButton);
-
-        emailButton.setOnAction(
-            e -> {
-              authCode = getRandomNumberString();
-              this.setEmail();
-              EmailHelper.send(email, authCode);
-              authText.setText("Authentication code was sent to " + email);
-              authText.setVisible(true);
-              authField.setVisible(true);
-              authButton.setVisible(true);
-            });
 
         Employee finalEmployee = employee;
         authButton.setOnAction(
@@ -145,6 +130,7 @@ public class LoginController {
             });
       } else {
         loginFail.setText("Invalid Password");
+        loginFail.setVisible(true);
       }
     }
   }
@@ -162,5 +148,27 @@ public class LoginController {
 
     // this will convert any number sequence into 6 character.
     return String.format("%06d", number);
+  }
+
+  @FXML
+  void enterEmail() {
+
+    authCode = getRandomNumberString();
+    this.setEmail();
+    EmailHelper.send(email, authCode);
+    authText.setVisible(true);
+    authText.setText("Authentication code was sent to " + email);
+
+    emailButton.setVisible(false);
+    emailButton.setDisable(true);
+    emailField.setDisable(true);
+    emailField.setVisible(false);
+    emailText.setVisible(false);
+
+    authText.setVisible(true);
+    authField.setVisible(true);
+    authField.setDisable(false);
+    authButton.setVisible(true);
+    authButton.setDisable(false);
   }
 }
