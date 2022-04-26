@@ -81,15 +81,6 @@
                   <Insets left="10.0" />
                </padding>
             </ComboBox>
-            <ComboBox fx:id="equipmentInput" onAction="#setEquipment" prefHeight="50.0" prefWidth="293.0" promptText="Equipment" styleClass="simple-dropdown" stylesheets="@styles/dropdownStyles.css" GridPane.rowIndex="3">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:id="BED" fx:value="Bed" />
-                     <String fx:id="PUMP" fx:value="Infusion Pump" />
-                     <String fx:id="RECL" fx:value="Recliner" />
-                     <String fx:id="XRAY" fx:value="X-Ray" />
-                  </FXCollections>
-               </items>
             <JFXSlider fx:id="prioritySlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="16.0" prefWidth="309.0" snapToTicks="true" styleClass="simple-slider" value="1.0" GridPane.columnIndex="3" GridPane.columnSpan="5" GridPane.rowIndex="7">
 
                <GridPane.margin>
@@ -132,6 +123,14 @@
                <padding>
                   <Insets left="10.0" />
                </padding>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:id="BED" fx:value="Bed" />
+                     <String fx:id="PUMP" fx:value="Infusion Pump" />
+                     <String fx:id="RECL" fx:value="Recliner" />
+                     <String fx:id="XRAY" fx:value="X-Ray" />
+                  </FXCollections>
+               </items>
             </ComboBox>
          </children>
       </GridPane>
