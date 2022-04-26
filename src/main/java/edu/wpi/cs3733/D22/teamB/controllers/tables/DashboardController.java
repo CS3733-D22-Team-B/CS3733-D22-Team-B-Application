@@ -217,8 +217,7 @@ public class DashboardController extends MenuBarController {
 
   private void drawEquipmentCard(int x, int y, MedicalEquipment equipment) {
     Rectangle rectangle = new Rectangle(x, y, 160, 210);
-    rectangle.setFill(Color.WHITE);
-    rectangle.setStroke(Color.BLACK);
+    rectangle.getStyleClass().add("card");
     rectangle.setStrokeWidth(1);
     rectangle.setArcHeight(25);
     rectangle.setArcWidth(25);
@@ -274,8 +273,7 @@ public class DashboardController extends MenuBarController {
 
   private void drawPatientCard(int x, int y, Patient patient) {
     Rectangle rectangle = new Rectangle(x, y, 160, 210);
-    rectangle.setFill(Color.WHITE);
-    rectangle.setStroke(Color.BLACK);
+    rectangle.getStyleClass().add("card");
     rectangle.setStrokeWidth(1);
     rectangle.setArcHeight(25);
     rectangle.setArcWidth(25);
@@ -350,8 +348,7 @@ public class DashboardController extends MenuBarController {
         });
 
     Rectangle rectangle = new Rectangle(x, y, 160, 210);
-    rectangle.setFill(Color.WHITE);
-    rectangle.setStroke(Color.BLACK);
+    rectangle.getStyleClass().add("card");
     rectangle.setStrokeWidth(1);
     rectangle.setArcHeight(25);
     rectangle.setArcWidth(25);

@@ -22,7 +22,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.DashboardController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" styleClass="background" stylesheets="@newStyles/darkBlueMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.DashboardController">
    <children>
       <SplitPane dividerPositions="0.2" layoutX="37.0" layoutY="35.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="833.0" styleClass="container-box-sh" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="34.0">
         <items>
@@ -139,7 +139,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="1000.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
                                     <AnchorPane fx:id="equipmentCardsPane" prefHeight="460.0" prefWidth="420.0" styleClass="container-box-sh" />
                                  </content>
@@ -152,7 +152,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="1000.0">
                             <children>
-                                <ScrollPane hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER">
+                                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <content>
                                         <AnchorPane fx:id="requestCardsPane" prefHeight="460.0" prefWidth="520.0" styleClass="container-box-sh" />
                                     </content>
@@ -165,7 +165,7 @@
                       <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="1000.0">
                               <children>
-                                  <ScrollPane hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER">
+                                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
                                           <AnchorPane fx:id="patientsCardsPane" prefHeight="460.0" prefWidth="520.0" styleClass="container-box-sh" />
                                       </content>
