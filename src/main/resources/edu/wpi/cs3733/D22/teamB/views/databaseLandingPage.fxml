@@ -31,6 +31,11 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="14.0" layoutY="20.0" onAction="#toggleClientServer" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Client-Server Toggle" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="8.0" />
+                     </font>
+                  </JFXButton>
                </children>
                <padding>
                   <Insets top="10.0" />

@@ -33,7 +33,7 @@
     -fx-background-color: linear-gradient(to bottom right, #434B5B, #58707D);
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
-    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-text-fill: black;
     -fx-border-color: transparent;
     -fx-opacity: .40;
 }
@@ -145,7 +145,7 @@
     -fx-background-radius: 10px;
 }
 .label-box{
-    -fx-background-color: #1A1A1F;
+    -fx-background-color: #a0a0a8;
     -fx-opacity: 0.75;
     -fx-background-radius: 10px;
     -fx-text-fill: rgba(255, 255, 255, 0.7);
@@ -157,8 +157,19 @@
     -fx-prompt-text-fill: rgba(0, 0, 0, 0.5);
     -fx-text-fill: rgba(0, 0, 0, 0.7);
 }
+
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
 .profile-table-message-background {
-    -fx-background-color: #1A1A1F;
+    -fx-background-color: #C9C9C9;
     -fx-opacity: 0.75;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
     -fx-text-fill: rgba(0, 0, 0, 0.7);
@@ -174,27 +185,28 @@
 }
 
 .table-column-right {
-    -fx-base: #31353D;
+    -fx-base: #C9C9C9;
     -fx-text-fill: rgb(255,255,255, 0.5);
 }
 
 .table-column-middle {
-    -fx-base: #31353D;
+    -fx-base: #C9C9C9;
     -fx-text-fill: rgb(255,255,255, 0.5);
 }
 
 .table-column-left {
-    -fx-base: #31353D;
+    -fx-base: #C9C9C9;
     -fx-text-fill: rgb(255,255,255, 0.5);
 }
 
 .simple-table {
-    -fx-control-inner-background: #1A1A1F;
+    -fx-control-inner-background: #C9C9C9;
     -fx-opacity: 0.85;
     -fx-border-color: #3D4551;
-    -fx-prompt-text-fill: rgb(255,255,255, 0.4);
-    -fx-text-fill: rgb(255,255,255, 0.5);
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: rgba(0, 0, 0, 0.5);
     -fx-table-cell-border-color: transparent;
+
 }
 .table-view .column-header {
     -fx-base: #373E49;
@@ -229,19 +241,19 @@
     -fx-fill: rgba(0, 0, 0, 0.7);
 }
 .combo-box {
-    -fx-background-color: #1E2129;
-    -fx-text-fill: rgb(255,255,255, .5);
+    -fx-background-color: #DBDBDB;
+    -fx-text-fill: rgba(0, 0, 0, 0.5);
     -fx-background-radius: 10px;
 }
 .combo-box-base .text{
-    -fx-fill: rgba(255, 255, 255, 0.5);
+    -fx-fill: rgba(0, 0, 0, 0.5);
 }
 .combo-box .arrow{
-    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-color: rgba(0, 0, 0, 0.7);
 }
 .combo-box .cell{
-    -fx-background-color: #1E2129;
-    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-background-color: #DBDBDB;
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
     -fx-font: 12px "Sans-Serif";
 }
 .jfx-slider > .track {
@@ -265,48 +277,44 @@
 .simple-slider {
     -fx-base: rgb(255,255,255, 0.5);
 }
-
-
-
-
 .date-picker .arrow-button {
     -fx-background-color: transparent;
     -fx-background-radius: 0px 10px 10px 0px;
 }
 .date-picker .arrow {
-    -fx-background-color: white;
+    -fx-background-color: #000000;
 }
 .date-picker .cell {
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font: 12px "Sans-Serif";
 }
 
 .date-picker .text-field {
-    -fx-control-inner-background: #1E2129;
-    -fx-background-color: #1E2129;
+    -fx-control-inner-background: #DBDBDB;
     -fx-background-radius: 10px 0px 0px 10px;
-    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-background-color: #DBDBDB;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.5);
     -fx-effect: none;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .simple-date-picker {
-    -fx-background-color: #1E2129;
+    -fx-background-color: #DBDBDB;
     -fx-background-radius: 10px;
 }
 .titled-pane {
     -fx-border-color: transparent;
-    -fx-control-inner-background: #1E2129;
-    -fx-prompt-text-fill: rgb(255,255,255, 0.4);
-    -fx-text-fill: rgb(255,255,255, 0.5);
+    -fx-control-inner-background: #DBDBDB;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: rgba(0, 0, 0, 0.5);
 }
 .titled-pane > .title
 {
-    -fx-background-color: #1E2129;
+    -fx-background-color: #DBDBDB;
 }
 .titled-pane > *.content {
     -fx-border-color: transparent;
-    -fx-background-color: #22252d;
+    -fx-background-color: #b9b9b9;
 }
 .card {
     -fx-background-color: transparent;

@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamB.UIController;
+import edu.wpi.cs3733.D22.teamB.databases.DatabaseController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -47,5 +49,13 @@ public class DatabaseLandingPageController extends MenuBarController {
     locationDatabasePage.setVisible(false);
     if (currentButton != null) currentButton.getStyleClass().remove("request-button-selected");
     current.setVisible(true);
+  }
+
+  @FXML
+  public void toggleClientServer() throws Exception {
+    DatabaseController db = DatabaseController.getInstance();
+    db.switchConnection();
+    UIController.getInstance().goToPage("databaseLandingPage");
+    // patientTable.refresh();
   }
 }

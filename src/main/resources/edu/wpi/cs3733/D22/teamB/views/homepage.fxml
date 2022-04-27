@@ -181,7 +181,7 @@
             </JFXButton>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Maps" textFill="#ffffff40" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                <font>
-                  <Font name="Microsoft Sans Serif" size="10.0" />
+                  <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
                <GridPane.margin>
                   <Insets />
@@ -192,7 +192,7 @@
             </Label>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Databases" textFill="#ffffff40" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft Sans Serif" size="10.0" />
+                  <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="140.0" />
@@ -200,7 +200,7 @@
             </Label>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Requests" textFill="#ffffff40" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft Sans Serif" size="10.0" />
+                  <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="140.0" />
@@ -208,7 +208,7 @@
             </Label>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Tracker" textFill="#ffffff40" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft Sans Serif" size="10.0" />
+                  <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="140.0" />

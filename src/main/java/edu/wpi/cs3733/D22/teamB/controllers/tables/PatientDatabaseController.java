@@ -53,7 +53,6 @@ public class PatientDatabaseController extends MenuBarController implements Init
   @FXML JFXButton addPatientButton;
 
   Patient currentPatient = null;
-  DatabaseController db = DatabaseController.getInstance();
   protected PatientsDB dao;
 
   private ObservableList<Patient> patients = FXCollections.observableArrayList();
@@ -363,12 +362,5 @@ public class PatientDatabaseController extends MenuBarController implements Init
     patientTable.refresh();
     patientTable.getSelectionModel().select(patient);
     patientTable.scrollTo(patients.size() - 1);
-  }
-
-  @FXML
-  public void toggleClientServer() {
-    db.switchConnection();
-
-    patientTable.refresh();
   }
 }
