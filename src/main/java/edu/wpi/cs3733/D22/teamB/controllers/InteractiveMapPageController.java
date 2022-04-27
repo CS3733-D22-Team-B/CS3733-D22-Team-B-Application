@@ -176,6 +176,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     currentButton = f1Button;
     view();
 
+    showAllLocs();
     populateTypeDropdown();
     populateAvailabilityDropdown();
     populateStateDropdown();
@@ -318,7 +319,7 @@ public class InteractiveMapPageController extends AStarVisualization {
         icon.setFill(Color.rgb(255, 99, 167));
         break;
       case "STOR":
-        icon.setFill(Color.rgb(72, 43, 0));
+        icon.setFill(Color.rgb(169, 100, 0));
         break;
       default:
         icon.setFill(Color.rgb(12, 38, 210));
@@ -1237,7 +1238,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       bathOn = false;
     } else {
       locFilterList.remove("BATH");
-      bath.setTextFill(Color.WHITE);
+      bath.setTextFill(Color.rgb(233, 28, 35));
       bathOn = true;
     }
     setRoomIcons();
@@ -1250,7 +1251,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       deptOn = false;
     } else {
       locFilterList.remove("DEPT");
-      dept.setTextFill(Color.WHITE);
+      dept.setTextFill(Color.rgb(237, 89, 41));
       deptOn = true;
     }
     setRoomIcons();
@@ -1263,7 +1264,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       dirtOn = false;
     } else {
       locFilterList.remove("DIRT");
-      dirt.setTextFill(Color.WHITE);
+      dirt.setTextFill(Color.rgb(247, 148, 29));
       dirtOn = true;
     }
     setRoomIcons();
@@ -1276,7 +1277,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       elevOn = false;
     } else {
       locFilterList.remove("ELEV");
-      elev.setTextFill(Color.WHITE);
+      elev.setTextFill(Color.rgb(247, 176, 62));
       elevOn = true;
     }
     setRoomIcons();
@@ -1289,7 +1290,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       exitOn = false;
     } else {
       locFilterList.remove("EXIT");
-      exit.setTextFill(Color.WHITE);
+      exit.setTextFill(Color.rgb(251, 240, 2));
       exitOn = true;
     }
     setRoomIcons();
@@ -1302,7 +1303,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       hallOn = false;
     } else {
       locFilterList.remove("HALL");
-      hall.setTextFill(Color.WHITE);
+      hall.setTextFill(Color.rgb(140, 199, 59));
       hallOn = true;
     }
     setRoomIcons();
@@ -1315,7 +1316,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       infoOn = false;
     } else {
       locFilterList.remove("INFO");
-      info.setTextFill(Color.WHITE);
+      info.setTextFill(Color.rgb(59, 180, 74));
       infoOn = true;
     }
     setRoomIcons();
@@ -1328,7 +1329,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       labsOn = false;
     } else {
       locFilterList.remove("LABS");
-      labs.setTextFill(Color.WHITE);
+      labs.setTextFill(Color.rgb(40, 167, 158));
       labsOn = true;
     }
     setRoomIcons();
@@ -1341,7 +1342,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       patiOn = false;
     } else {
       locFilterList.remove("PATI");
-      pati.setTextFill(Color.WHITE);
+      pati.setTextFill(Color.rgb(60, 173, 241));
       patiOn = true;
     }
     setRoomIcons();
@@ -1354,7 +1355,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       restOn = false;
     } else {
       locFilterList.remove("REST");
-      rest.setTextFill(Color.WHITE);
+      rest.setTextFill(Color.rgb(43, 115, 191));
       restOn = true;
     }
     setRoomIcons();
@@ -1367,7 +1368,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       retlOn = false;
     } else {
       locFilterList.remove("RETL");
-      retl.setTextFill(Color.WHITE);
+      retl.setTextFill(Color.rgb(101, 43, 145));
       retlOn = true;
     }
     setRoomIcons();
@@ -1380,7 +1381,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       servOn = false;
     } else {
       locFilterList.remove("SERV");
-      serv.setTextFill(Color.WHITE);
+      serv.setTextFill(Color.rgb(146, 37, 144));
       servOn = true;
     }
     setRoomIcons();
@@ -1393,7 +1394,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       staiOn = false;
     } else {
       locFilterList.remove("STAI");
-      stai.setTextFill(Color.WHITE);
+      stai.setTextFill(Color.rgb(255, 99, 167));
       staiOn = true;
     }
     setRoomIcons();
@@ -1406,7 +1407,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       storOn = false;
     } else {
       locFilterList.remove("STOR");
-      stor.setTextFill(Color.WHITE);
+      stor.setTextFill(Color.rgb(169, 100, 0));
       storOn = true;
     }
     setRoomIcons();
