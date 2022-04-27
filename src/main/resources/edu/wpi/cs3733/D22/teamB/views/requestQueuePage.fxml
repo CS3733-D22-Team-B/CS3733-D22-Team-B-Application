@@ -138,7 +138,7 @@
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="398.0" prefHeight="398.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="requestTable" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table" GridPane.columnIndex="2">
+            <TableView fx:id="requestTable" focusTraversable="false" prefHeight="398.0" prefWidth="652.0" styleClass="simple-table" GridPane.columnIndex="2">
                <columns>
                   <TableColumn fx:id="columnRequestID" editable="false" prefWidth="107.99993592500687" text="Request ID" />
                   <TableColumn fx:id="columnType" editable="false" prefWidth="99.20001220703125" text="Type" />

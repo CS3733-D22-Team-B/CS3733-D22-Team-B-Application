@@ -84,7 +84,7 @@
                            <children>
                               <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <AnchorPane fx:id="equipmentCardsPane" prefHeight="460.0" prefWidth="420.0" styleClass="container-box-sh" />
+                                    <AnchorPane fx:id="equipmentCardsPane" prefHeight="460.0" prefWidth="420.0" styleClass="container-box-3" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -97,7 +97,7 @@
                             <children>
                                 <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <content>
-                                        <AnchorPane fx:id="requestCardsPane" prefHeight="460.0" prefWidth="520.0" styleClass="container-box-sh" />
+                                        <AnchorPane fx:id="requestCardsPane" prefHeight="460.0" prefWidth="520.0" styleClass="container-box-3" />
                                     </content>
                                 </ScrollPane>
                             </children>
@@ -110,7 +110,7 @@
                               <children>
                                   <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="520.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
-                                          <AnchorPane fx:id="patientsCardsPane" prefHeight="460.0" prefWidth="520.0" styleClass="container-box-sh" />
+                                          <AnchorPane fx:id="patientsCardsPane" prefHeight="460.0" prefWidth="520.0" styleClass="container-box-3" />
                                       </content>
                                   </ScrollPane>
                               </children>
@@ -121,7 +121,7 @@
                     <content>
                       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Accordion fx:id="activityPane" styleClass="container-box-sh" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Accordion fx:id="activityPane" styleClass="container-box-3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </content>
