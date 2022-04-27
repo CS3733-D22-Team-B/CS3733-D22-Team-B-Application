@@ -177,7 +177,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     populateStateDropdown();
     setAll();
 
-    drawEdgesPerFloor(4);
+    // drawEdgesPerFloor(4);
     // calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
 
     mapPane.setOnMousePressed(
@@ -643,6 +643,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
     f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawEdgesPerFloor(5);
     drawPathFloor(floorString);
   }
 
@@ -654,6 +655,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
     f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
+    drawEdgesPerFloor(6);
     drawPathFloor(floorString);
   }
 
