@@ -274,8 +274,9 @@ public class InteractiveMapPageController extends AStarVisualization {
     int[] viewCoords = mapCoordsToViewCoords(x, y);
 
     SVGPath icon = new SVGPath();
-    icon.setContent("M 1 1 H 9 V 9 H 1 Z");
-
+    // icon.setContent("M 1 1 H 9 V 9 H 1 Z");
+    icon.setContent(
+        "M5 0C3.086 0 1.53 1.557 1.53 3.47c0 1.842 3.149 6.145 3.283 6.328l0.125 0.17c0.015 0.02 0.038 0.032 0.062 0.032c0.025 0 0.048 -0.012 0.063 -0.032l0.125 -0.17c0.134 -0.182 3.283 -4.486 3.283 -6.328C8.47 1.557 6.913 0 5 0zM5 2.227c0.686 0 1.243 0.558 1.243 1.243c0 0.685 -0.558 1.243 -1.243 1.243c-0.685 0 -1.243 -0.558 -1.243 -1.243C3.757 2.785 4.315 2.227 5 2.227z");
     switch (location.getNodeType()) {
       case "BATH":
         icon.setFill(Color.rgb(233, 28, 35));
