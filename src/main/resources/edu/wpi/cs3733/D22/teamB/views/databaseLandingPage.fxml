@@ -31,9 +31,9 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="14.0" layoutY="20.0" onAction="#toggleClientServer" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Client-Server Toggle" textAlignment="CENTER" wrapText="true">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="14.0" layoutY="20.0" onAction="#toggleClientServer" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Client-Server Toggle" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="System Bold" size="8.0" />
+                        <Font name="Microsoft Sans Serif" size="8.0" />
                      </font>
                   </JFXButton>
                </children>
@@ -49,19 +49,19 @@
                <children>
                   <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" spacing="10.0">
                      <children>
-                        <JFXButton fx:id="employeeButton" contentDisplay="TEXT_ONLY" layoutX="17.0" layoutY="20.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleEmployees" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Employees" textAlignment="CENTER" wrapText="true">
+                        <JFXButton fx:id="employeeButton" contentDisplay="TEXT_ONLY" layoutX="17.0" layoutY="20.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleEmployees" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Employees" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
-                              <Font name="Microsoft Sans Serif" size="7.0" />
+                              <Font name="Microsoft Sans Serif" size="8.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="patientButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#togglePatients" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Patients" textAlignment="CENTER" wrapText="true">
+                        <JFXButton fx:id="patientButton" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#togglePatients" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Patients" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
-                              <Font name="Microsoft Sans Serif" size="7.0" />
+                              <Font name="Microsoft Sans Serif" size="8.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="locationButton" contentDisplay="TEXT_ONLY" layoutX="17.0" layoutY="81.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleLocations" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Locations" textAlignment="CENTER" wrapText="true">
+                        <JFXButton fx:id="locationButton" contentDisplay="TEXT_ONLY" layoutX="17.0" layoutY="81.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#toggleLocations" prefHeight="50.0" prefWidth="50.0" styleClass="request-button" text="Locations" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
-                              <Font name="Microsoft Sans Serif" size="7.0" />
+                              <Font name="Microsoft Sans Serif" size="8.0" />
                            </font>
                         </JFXButton>
                      </children>
