@@ -267,7 +267,10 @@ public class RequestQueueController extends MenuBarController implements Initial
   public void saveData(ActionEvent event) {
     if (!currentRequest.getEmployeeID().equals(employeeInput.getValue())) {
 
-      String employeeName = EmployeesDB.getInstance().getEmployee(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue())).getFullName();
+      String employeeName =
+          EmployeesDB.getInstance()
+              .getEmployee(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue()))
+              .getFullName();
       DatabaseController.getInstance()
           .add(
               new Activity(

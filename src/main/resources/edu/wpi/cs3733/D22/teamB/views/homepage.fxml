@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
       <Pane layoutX="855.0" layoutY="-3.0" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -187,7 +181,7 @@
             </JFXButton>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Dashboard" textFill="#ffffff40" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                <font>
-                  <Font name="Microsoft Sans Serif" size="15.0" />
+                  <Font name="Microsoft Sans Serif" size="11.0" />
                </font>
                <GridPane.margin>
                   <Insets />
@@ -198,7 +192,7 @@
             </Label>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Databases" textFill="#ffffff40" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft Sans Serif" size="15.0" />
+                  <Font name="Microsoft Sans Serif" size="11.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="140.0" />
@@ -206,7 +200,7 @@
             </Label>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Requests" textFill="#ffffff40" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft Sans Serif" size="15.0" />
+                  <Font name="Microsoft Sans Serif" size="11.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="140.0" />
@@ -214,7 +208,7 @@
             </Label>
             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" text="Tracker" textFill="#ffffff40" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft Sans Serif" size="15.0" />
+                  <Font name="Microsoft Sans Serif" size="11.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="140.0" />
