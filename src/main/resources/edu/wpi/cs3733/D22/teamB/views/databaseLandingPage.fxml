@@ -31,7 +31,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="14.0" layoutY="20.0" onAction="#toggleClientServer" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Client-Server Toggle" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="14.0" layoutY="20.0" onAction="#toggleClientServer" prefHeight="65.0" prefWidth="65.0" style="-fx-text-fill: white;" styleClass="main-button" text="Client-Server Toggle" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Microsoft Sans Serif" size="8.0" />
                      </font>
