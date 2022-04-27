@@ -155,7 +155,7 @@ public class InteractiveMapPageController extends AStarVisualization {
 
   private MedicalEquipment toEdit;
 
-  private int floorLevel = 2;
+  public static int floorLevel = 2;
   private int[] coordinates;
   private int[] startingCoordinates = new int[2];
   private String floorString = "1";
@@ -165,18 +165,20 @@ public class InteractiveMapPageController extends AStarVisualization {
   private double orgSceneX, orgSceneY;
 
   public void initialize() {
-    currentButton = f1Button;
-    f1Button.getStyleClass().add("request-button-selected");
-    roomIcons = new LinkedList<SVGPath>();
-    equipIcons = new LinkedList<SVGPath>();
-    serviceIcons = new LinkedList<SVGPath>();
     dao = LocationsDB.getInstance();
     edao = MedicalEquipmentDB.getInstance();
     rdao = ServiceRequestsDB.getInstance();
+
+    roomIcons = new LinkedList<SVGPath>();
+    equipIcons = new LinkedList<SVGPath>();
+    serviceIcons = new LinkedList<SVGPath>();
+
+    currentButton = f1Button;
+    view();
+
     populateTypeDropdown();
     populateAvailabilityDropdown();
     populateStateDropdown();
-    setAll();
 
     // drawEdgesPerFloor(4);
     // calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
@@ -1812,5 +1814,31 @@ public class InteractiveMapPageController extends AStarVisualization {
     }
 
     return end;
+  }
+
+  public void view() {
+    switch (floorLevel) {
+      case 0:
+        goToFloorL2();
+        break;
+      case 1:
+        goToFloorL1();
+        break;
+      case 2:
+        goToFloor1();
+        break;
+      case 3:
+        goToFloor2();
+        break;
+      case 4:
+        goToFloor3();
+        break;
+      case 5:
+        goToFloor4();
+        break;
+      case 6:
+        goToFloor5();
+        break;
+    }
   }
 }

@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.DateHelper;
+import edu.wpi.cs3733.D22.teamB.controllers.InteractiveMapPageController;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import edu.wpi.cs3733.D22.teamB.databases.EquipmentAlert;
@@ -28,6 +29,7 @@ import javafx.scene.text.TextAlignment;
 
 public class DashboardController extends MenuBarController {
   @FXML ImageView mapImage;
+  @FXML JFXButton mapButton;
   @FXML JFXButton f5Button;
   @FXML JFXButton f4Button;
   @FXML JFXButton f3Button;
@@ -55,6 +57,7 @@ public class DashboardController extends MenuBarController {
   private PatientsDB patientDAO;
   private ActivityDB activityDAO;
   private ObservableList<EquipmentAlert> alerts = FXCollections.observableArrayList();
+  private int floor = 2;
 
   private LinkedList<String> requestsF1 = new LinkedList<>(),
       requestsF2 = new LinkedList<String>(),
@@ -435,6 +438,8 @@ public class DashboardController extends MenuBarController {
     requestCardsPane.getChildren().clear();
     patientsCardsPane.getChildren().clear();
     ServiceRequestsDB requests = ServiceRequestsDB.getInstance();
+    floor = floorNumber;
+
     switch (floorNumber) {
       case 0:
         overviewLabel.setText("Overview of Lower Level 2");
@@ -1062,6 +1067,15 @@ public class DashboardController extends MenuBarController {
       AnchorPane.setRightAnchor(activityTable, 0.0);
       titledPane.setContent(anchorPane);
       activityPane.getPanes().add(titledPane);
+    }
+  }
+
+  @FXML
+  public void goToMapFloor() {
+    try {
+      InteractiveMapPageController.floorLevel = floor;
+      goToMap(null);
+    } catch (Exception e) {
     }
   }
 }
