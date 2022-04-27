@@ -98,7 +98,7 @@
                   <Image url="@../assets/Help/priority%20bar.png" />
                </image>
             </ImageView>
-            <Label alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="5.  (Opitional) Insert additional notes : " textFill="#7bcce4" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <Label alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="5.  (Optional) Insert additional notes : " textFill="#7bcce4" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft Sans Serif" size="19.0" />
                </font>

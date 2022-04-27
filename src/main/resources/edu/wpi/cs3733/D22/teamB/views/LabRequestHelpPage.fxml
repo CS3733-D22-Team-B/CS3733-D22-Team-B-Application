@@ -50,7 +50,7 @@
                   <Image url="@../assets/Help/priority%20bar.png" />
                </image>
             </ImageView>
-            <Label alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="7.  (Opitional) Insert additional notes: " textFill="#7bcce4" wrapText="true" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="9">
+            <Label alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="7.  (Optional) Insert additional notes: " textFill="#7bcce4" wrapText="true" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="9">
                <font>
                   <Font name="Microsoft Sans Serif" size="19.0" />
                </font>

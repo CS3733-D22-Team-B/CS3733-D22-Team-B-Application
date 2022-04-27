@@ -43,6 +43,8 @@ dependencies {
 
     implementation name: 'teamBAPI'
 
+    implementation 'eu.hansolo.fx:charts:11.7'
+
     compile fileTree(dir: 'lib', include: ['*.jar'])
             testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",

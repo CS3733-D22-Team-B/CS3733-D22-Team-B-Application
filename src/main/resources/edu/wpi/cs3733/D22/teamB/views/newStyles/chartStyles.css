@@ -1,0 +1,24 @@
+.chart-title {
+    -fx-text-fill: white;
+    -fx-font-size: 1.6em;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}

@@ -115,7 +115,7 @@
                   <Image url="@../assets/Help/gift.png" />
                </image>
             </ImageView>
-            <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="509.0" text="4.  (Opitional) Insert a message for the receiver : " textFill="#b9b9b9" wrapText="true" GridPane.columnSpan="5" GridPane.rowIndex="7">
+            <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="509.0" text="4.  (Optional) Insert a message for the receiver : " textFill="#b9b9b9" wrapText="true" GridPane.columnSpan="5" GridPane.rowIndex="7">
                <font>
                   <Font name="Microsoft Sans Serif" size="20.0" />
                </font>
