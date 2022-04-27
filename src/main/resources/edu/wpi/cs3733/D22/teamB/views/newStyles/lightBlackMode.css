@@ -15,6 +15,7 @@
 }
 .hidden-button {
     -fx-base: transparent;
+    -fx-background-color: transparent;
     -fx-text-fill: black;
 }
 .button-pane {
@@ -212,14 +213,14 @@
     -fx-min-height: 0;
 }
 .tab-pane .tab-header-area .tab-header-background {
-    -fx-background-color: #1f2c3d;
+    -fx-background-color: #626673;
 }
 .tab-pane .tab
 {
-    -fx-background-color: #344759;
+    -fx-background-color: #b1b6c2;
 }
 .tab .tab-label {
-    -fx-text-fill: rgb(255,255,255, 0.5);
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
 }
 .label {
     -fx-text-fill: rgba(0, 0, 0, 0.7);
@@ -306,4 +307,15 @@
 .titled-pane > *.content {
     -fx-border-color: transparent;
     -fx-background-color: #22252d;
+}
+.card {
+    -fx-background-color: transparent;
+    -fx-fill: linear-gradient(from 7% 7% to 100% 100%,  #8D8D8D, #EAEAEA);
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, .2, 0.0, 0.0);
+    -fx-stroke: transparent;
+}
+.card-text {
+    -fx-text-fill: black;
+    -fx-fill: black;
 }
