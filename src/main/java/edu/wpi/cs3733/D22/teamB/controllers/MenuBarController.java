@@ -205,6 +205,10 @@ public class MenuBarController {
     UIController.getInstance().goToPage("requestsInfo");
   }
 
+  public void goToAnalyticsPage(ActionEvent actionEvent) throws Exception {
+    UIController.getInstance().goToPage("analyticsPage");
+  }
+
   public void goToHeatMapPage(ActionEvent actionEvent) throws Exception {
     UIController.getInstance().goToPage("heatMapPage");
   }

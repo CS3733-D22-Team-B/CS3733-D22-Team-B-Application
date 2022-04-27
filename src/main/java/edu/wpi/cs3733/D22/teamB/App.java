@@ -17,7 +17,7 @@ public class App extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     UIController.getInstance().setPrimaryStage(primaryStage);
-    UIController.getInstance().goToPage("heatMapPage");
+    UIController.getInstance().goToPage("analyticsPage");
 
     primaryStage.setTitle("CS3733 Project");
     primaryStage.setMinHeight(560);
