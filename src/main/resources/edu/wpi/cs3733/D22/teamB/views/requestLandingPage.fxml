@@ -18,11 +18,11 @@
       <JFXButton focusTraversable="false" layoutX="700.0" layoutY="498.0" onAction="#goToRequestInfoPage" text="Creator Info" textFill="#ffffffb2" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
       <Pane layoutX="855.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" prefHeight="546.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="17.0" prefHeight="181.0" prefWidth="73.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" layoutX="17.0" layoutY="3.0" prefHeight="218.0" prefWidth="73.0" spacing="10.0">
                <children>
                   <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#goToHomepage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Back to Homepage">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="main-button">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="main-button">
                            <image>
                               <Image url="@../assets/newAssets/Menu.png" />
                            </image>
@@ -41,6 +41,22 @@
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/newAssets/Queue.png" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#goToHelpPage" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Help">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/newAssets/InfoSquare.png" />
                            </image>
                            <effect>
                               <DropShadow>
@@ -149,5 +165,8 @@
             </Label>
          </children>
       </AnchorPane>
+      <JFXButton focusTraversable="false" layoutX="14.0" layoutY="14.0" onAction="#launchAPI" prefHeight="23.0" prefWidth="91.0" text="IPT" textFill="#ffffffb2" />
+      <JFXButton focusTraversable="false" layoutX="14.0" layoutY="37.0" onAction="#launchTeamCAPI" prefHeight="23.0" prefWidth="91.0" text="Maintenance" textFill="#ffffffb2" />
+      <JFXButton focusTraversable="false" layoutX="14.0" layoutY="61.0" onAction="#launchTeamDAPI" prefHeight="23.0" prefWidth="91.0" text="Sanitation" textFill="#ffffffb2" />
    </children>
 </AnchorPane>

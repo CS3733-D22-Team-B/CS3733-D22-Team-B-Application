@@ -23,6 +23,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
+            <JFXButton layoutX="22.0" layoutY="486.0" onAction="#goToRequestLanding" text="Back" textFill="#7bcce4" />
             </children></Pane>
         <fx:include source="menu.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <VBox layoutX="66.0" layoutY="58.0" prefHeight="467.0" prefWidth="759.0" styleClass="container-box" stylesheets="@styles/pageStyles.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="58.0">

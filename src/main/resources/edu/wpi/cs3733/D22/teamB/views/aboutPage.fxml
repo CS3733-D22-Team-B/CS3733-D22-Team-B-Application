@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.MenuBarController">
    <children>
       <Pane layoutX="859.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="106.0" styleClass="side-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -256,62 +260,62 @@
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="BOTTOM_LEFT" layoutX="56.0" layoutY="280.0" prefHeight="30.0" prefWidth="616.0" text="Floral Request Page:" textFill="#ffffff80" wrapText="true">
+                        <Label alignment="BOTTOM_LEFT" layoutX="56.0" layoutY="280.0" prefHeight="30.0" prefWidth="616.0" text="Sanitation Request Page:" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="292.0" prefHeight="22.0" prefWidth="616.0" text="Software Engineering Team E." textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="292.0" prefHeight="22.0" prefWidth="616.0" text="Software Engineering Team D." textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="506.0" prefHeight="22.0" prefWidth="616.0" text="Joey Rozman" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="506.0" prefHeight="22.0" prefWidth="616.0" text="Jacob Adams" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="563.0" prefHeight="22.0" prefWidth="616.0" text="Phillip Brush" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="563.0" prefHeight="22.0" prefWidth="616.0" text="Alpay Ariyak" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="572.0" prefHeight="22.0" prefWidth="616.0" text="Colin Mettler" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="572.0" prefHeight="22.0" prefWidth="616.0" text="Tyler Evans" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="582.0" prefHeight="22.0" prefWidth="616.0" text="Eric Zhou" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="582.0" prefHeight="22.0" prefWidth="616.0" text="Chandler Garcia" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="592.0" prefHeight="22.0" prefWidth="616.0" text="Hannah Zink" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="592.0" prefHeight="22.0" prefWidth="616.0" text="Luke Gardone" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="602.0" prefHeight="22.0" prefWidth="616.0" text="Timothy Connors" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="602.0" prefHeight="22.0" prefWidth="616.0" text="Joanna Hu" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="612.0" prefHeight="22.0" prefWidth="616.0" text="Shen Fang" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="612.0" prefHeight="22.0" prefWidth="616.0" text="Samuel Karkache" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="622.0" prefHeight="22.0" prefWidth="616.0" text="Sizhe Li(Frank)" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="622.0" prefHeight="22.0" prefWidth="616.0" text="Cole Ouellette" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="632.0" prefHeight="22.0" prefWidth="616.0" text="Daniel Stoiber" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="632.0" prefHeight="22.0" prefWidth="616.0" text="Rosemary Shelton" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="56.0" layoutY="642.0" prefHeight="22.0" prefWidth="616.0" text="Jeremy Bornstein" textFill="#ffffff80" wrapText="true">
+                        <Label layoutX="56.0" layoutY="642.0" prefHeight="22.0" prefWidth="616.0" text="Shafath Zaman" textFill="#ffffff80" wrapText="true">
                            <font>
                               <Font name="Microsoft Sans Serif" size="16.0" />
                            </font>
