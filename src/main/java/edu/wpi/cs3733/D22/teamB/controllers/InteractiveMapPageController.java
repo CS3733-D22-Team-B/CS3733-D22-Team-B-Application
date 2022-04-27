@@ -631,7 +631,6 @@ public class InteractiveMapPageController extends AStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
     f3Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
-    drawEdgesPerFloor(4);
     drawPathFloor(floorString);
   }
 
@@ -643,7 +642,6 @@ public class InteractiveMapPageController extends AStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
     f4Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
-    drawEdgesPerFloor(5);
     drawPathFloor(floorString);
   }
 
@@ -655,7 +653,6 @@ public class InteractiveMapPageController extends AStarVisualization {
     mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
     f5Button.setImage(new Image("edu/wpi/cs3733/D22/teamB/assets/mapAssets/SelectedFloor.png"));
     setAll();
-    drawEdgesPerFloor(6);
     drawPathFloor(floorString);
   }
 
