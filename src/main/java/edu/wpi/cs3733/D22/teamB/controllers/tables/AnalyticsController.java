@@ -356,11 +356,11 @@ public class AnalyticsController extends MenuBarController {
   private double[] newCoords(double x, double y) {
     double mapWidth = 1060;
     double mapHeight = 930;
-    double ratio = (mapHeight / mapWidth) * 1.05;
     double fitWidth = mapImage.getFitWidth();
     double fitHeight = mapImage.getFitHeight();
-    double xView = ((x / mapWidth) * fitWidth);
-    double yView = ((y / mapHeight) * fitHeight);
+    double ratio = (fitHeight / fitWidth) * 1.05;
+    double xView = ((x / mapWidth) * fitWidth) * ratio;
+    double yView = ((y / mapHeight) * fitHeight) * ratio;
     return new double[] {xView, yView};
   }
 }

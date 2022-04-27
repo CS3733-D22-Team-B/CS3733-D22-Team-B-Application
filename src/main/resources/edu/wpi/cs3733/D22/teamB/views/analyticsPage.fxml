@@ -45,11 +45,6 @@
                         <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="f3Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor3HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F3" textAlignment="CENTER" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
-                     </HBox.margin>
-                  </JFXButton>
                   <JFXButton fx:id="f2Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor2HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F2" textAlignment="CENTER" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
@@ -77,6 +72,7 @@
                   <Image url="@../assets/mapAssets/Floor1.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="f3Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="267.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor3HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F3" textAlignment="CENTER" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Text fill="WHITE" layoutX="434.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics" textAlignment="CENTER">
