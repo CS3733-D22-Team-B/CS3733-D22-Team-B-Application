@@ -22,7 +22,7 @@
                <children>
                   <AnchorPane fx:id="viewingPane" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label contentDisplay="CENTER" text="Name:" textFill="#ffffffb2">
                                  <font>
@@ -82,7 +82,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="editingPane" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <TextField fx:id="nameInput" minHeight="50.0" prefWidth="50.0" promptText="Name" styleClass="text-field">
                                  <VBox.margin>
@@ -130,8 +130,9 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
+                              <Button layoutX="125.0" layoutY="28.0" minHeight="65.0" minWidth="65.0" mnemonicParsing="false" onAction="#cancel" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Cancel" textFill="WHITE" />
                               <Button minHeight="65.0" minWidth="65.0" mnemonicParsing="false" onAction="#saveData" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Save" textFill="WHITE" />
                            </children>
                         </HBox>
@@ -153,7 +154,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="creationPane" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="300.0" styleClass="container-box-sh" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <TextField fx:id="addNameInput" minHeight="50.0" promptText="Name" styleClass="text-field">
                                  <VBox.margin>

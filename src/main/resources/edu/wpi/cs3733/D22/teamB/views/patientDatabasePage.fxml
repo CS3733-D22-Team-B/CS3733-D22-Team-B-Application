@@ -122,8 +122,9 @@
                               </TextArea>
                            </children>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
+                              <Button layoutX="125.0" layoutY="28.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cancel" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Cancel" textFill="WHITE" />
                               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveData" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="Save" textFill="WHITE" />
                            </children>
                         </HBox>

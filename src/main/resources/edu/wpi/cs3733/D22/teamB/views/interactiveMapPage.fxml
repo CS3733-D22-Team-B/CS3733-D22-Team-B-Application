@@ -101,12 +101,12 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="filterButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#toggleFilter" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="FILTER" textFill="WHITE">
+                  <JFXButton fx:id="filterButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="65.0" minWidth="65.0" onAction="#toggleFilter" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text="FILTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </JFXButton>
-                  <VBox alignment="CENTER" prefHeight="265.0" prefWidth="74.0" spacing="5.0" styleClass="button-pane">
+                  <VBox alignment="CENTER" prefHeight="265.0" prefWidth="74.0" spacing="4.0" styleClass="button-pane">
                      <children>
                         <JFXButton fx:id="f5Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToFloor5" opacity="0.75" prefHeight="36.0" prefWidth="36.0" styleClass="request-button" text="F5" textFill="WHITE" />
                         <JFXButton fx:id="f4Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToFloor4" opacity="0.75" prefHeight="36.0" prefWidth="36.0" styleClass="request-button" text="F4" textAlignment="CENTER" textFill="WHITE" />
@@ -136,7 +136,7 @@
                <children>
                   <JFXButton fx:id="addButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#startAdd" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/newAssets/Add.png" />
                            </image>
@@ -145,7 +145,7 @@
                   </JFXButton>
                   <JFXButton fx:id="deleteButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="65.0" maxWidth="65.0" minHeight="65.0" minWidth="65.0" onAction="#startDelete" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" text=" ">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/newAssets/remove" />
                            </image>
