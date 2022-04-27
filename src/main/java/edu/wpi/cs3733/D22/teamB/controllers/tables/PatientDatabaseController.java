@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamB.controllers.tables;
 
-import edu.wpi.cs3733.D22.teamB.App;
+import static edu.wpi.cs3733.D22.teamB.App.currentUser;
+
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.controllers.MenuBarController;
 import edu.wpi.cs3733.D22.teamB.databases.*;
 import java.net.URL;
@@ -48,6 +50,8 @@ public class PatientDatabaseController extends MenuBarController implements Init
   @FXML AnchorPane creationPane;
   @FXML AnchorPane otherAnchorPane;
 
+  @FXML JFXButton addPatientButton;
+
   Patient currentPatient = null;
   DatabaseController db = DatabaseController.getInstance();
   protected PatientsDB dao;
@@ -56,6 +60,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
     columnPatientID.setCellValueFactory(new PropertyValueFactory<>("patientID"));
     columnName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
     columnLocation.setCellValueFactory(new PropertyValueFactory<>("longName"));
@@ -99,11 +104,14 @@ public class PatientDatabaseController extends MenuBarController implements Init
                   private final Button requestDeleteButton = new Button("Delete");
 
                   private final ImageView viewIcon =
-                      new ImageView(new Image("/edu/wpi/cs3733/D22/teamB/api/viewIcon.png"));
+                      new ImageView(
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/InfoSquare.png"));
                   private final ImageView editIcon =
-                      new ImageView(new Image("/edu/wpi/cs3733/D22/teamB/api/editIcon.png"));
+                      new ImageView(
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/EditSquare.png"));
                   private final ImageView deleteIcon =
-                      new ImageView(new Image("/edu/wpi/cs3733/D22/teamB/api/deleteIcon.jpg"));
+                      new ImageView(
+                          new Image("/edu/wpi/cs3733/D22/teamB/assets/newAssets/CloseSquare.png"));
 
                   {
                     hBox.setSpacing(10);
@@ -158,7 +166,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
                           Patient patient = getTableView().getItems().get(getIndex());
                           currentPatient = patient;
 
-                          patientIDLabel.setText(patient.getPatientID());
+                          // patientIDLabel.setText(patient.getPatientID());
                           nameInput.setText(patient.getFullName());
 
                           if (patient.getLocation() == null) {
@@ -205,7 +213,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
                                 .add(
                                     new Activity(
                                         new Date(),
-                                        App.currentUser.getEmployeeID(),
+                                        currentUser.getEmployeeID(),
                                         currentPatient.getPatientID(),
                                         null,
                                         "Patient",
@@ -219,6 +227,12 @@ public class PatientDatabaseController extends MenuBarController implements Init
 
                     hBox.getChildren()
                         .addAll(requestViewerButton, requestEditButton, requestDeleteButton);
+
+                    if (!currentUser.getPosition().equals("ADMIN")) {
+                      requestEditButton.setDisable(true);
+                      requestDeleteButton.setDisable(true);
+                      addPatientButton.setDisable(true);
+                    }
                   }
 
                   @Override
@@ -244,7 +258,9 @@ public class PatientDatabaseController extends MenuBarController implements Init
   @FXML
   public void saveData(ActionEvent event) {
     currentPatient.setInformation(informationInput.getText());
-    if (roomInput.isVisible() && !roomInput.getValue().equals("No room assigned")) {
+    if (currentPatient.getLocation() == null
+        && roomInput.isVisible()
+        && !roomInput.getValue().equals("No room assigned")) {
       currentPatient.setLocation(
           LocationsDB.getInstance()
               .getLocation(LocationsDB.getInstance().getLocationID(roomInput.getValue())));
@@ -256,7 +272,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
           .add(
               new Activity(
                   new Date(),
-                  App.currentUser.getEmployeeID(),
+                  currentUser.getEmployeeID(),
                   currentPatient.getPatientID(),
                   LocationsDB.getInstance().getLocationID(roomInput.getValue()),
                   "Patient",
@@ -324,7 +340,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
           .add(
               new Activity(
                   new Date(),
-                  App.currentUser.getEmployeeID(),
+                  currentUser.getEmployeeID(),
                   currentPatient.getPatientID(),
                   roomID,
                   "Patient",
