@@ -111,8 +111,36 @@
                   <Insets left="20.0" />
                </padding>
             </TextField>
-            <JFXButton fx:id="emailButton" disable="true" layoutX="596.0" layoutY="211.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enterEmail" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text=" " visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <JFXButton fx:id="authButton" disable="true" layoutX="596.0" layoutY="211.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enterEmail" prefHeight="65.0" prefWidth="65.0" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text=" " visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <JFXButton fx:id="emailButton" disable="true" layoutX="596.0" layoutY="211.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enterEmail" prefHeight="65.0" prefWidth="65.0" styleClass="login-button" stylesheets="@newStyles/darkBlueMode.css" text=" " visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/Login.png" />
+                     </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="authButton" disable="true" layoutX="596.0" layoutY="211.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#enterEmail" prefHeight="65.0" prefWidth="65.0" styleClass="login-button" stylesheets="@newStyles/darkBlueMode.css" text=" " visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/newAssets/Login.png" />
+                     </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic></JFXButton>
             <Label fx:id="emailText" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="262.0" text="Enter your email to validate your identity" textAlignment="CENTER" textFill="#ffffffb2" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
