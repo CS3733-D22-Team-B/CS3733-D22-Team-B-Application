@@ -1212,7 +1212,7 @@ public class InteractiveMapPageController extends AStarVisualization {
       addButton.setVisible(false);
       editButton.setVisible(false);
       deleteButton.setVisible(false);
-      floorBackground.setVisible(true);
+      floorBackground.setVisible(false);
       filterPane.setVisible(true);
       filterOpen = true;
     }
