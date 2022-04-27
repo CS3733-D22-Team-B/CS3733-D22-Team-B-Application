@@ -266,13 +266,15 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML
   public void saveData(ActionEvent event) {
     if (!currentRequest.getEmployeeID().equals(employeeInput.getValue())) {
+
+      String employeeName = EmployeesDB.getInstance().getEmployee(EmployeesDB.getInstance().getEmployeeID(employeeInput.getValue())).getFullName();
       DatabaseController.getInstance()
           .add(
               new Activity(
                   new Date(),
                   App.currentUser.getEmployeeID(),
                   currentRequest.getRequestID(),
-                  employeeInput.getValue(),
+                  employeeName,
                   "Request",
                   "assigned to"));
     }
@@ -307,7 +309,7 @@ public class RequestQueueController extends MenuBarController implements Initial
               new Activity(
                   new Date(),
                   App.currentUser.getEmployeeID(),
-                  currentRequest.getPatientID(),
+                  currentRequest.getPatient().getFullName(),
                   currentRequest.getLocationID().toLowerCase(),
                   "Patient",
                   "transferred to room"));

@@ -127,7 +127,7 @@ public class EmployeesDB extends DatabaseSuperclass implements IDatabases<Employ
             new Activity(
                 new java.util.Date(),
                 App.currentUser.getEmployeeID(),
-                empObj.getEmployeeID(),
+                empObj.getFullName(),
                 null,
                 "Employee",
                 "added to system"));

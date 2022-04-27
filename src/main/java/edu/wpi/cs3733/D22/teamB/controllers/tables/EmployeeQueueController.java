@@ -204,7 +204,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
                                     new Activity(
                                         new Date(),
                                         App.currentUser.getEmployeeID(),
-                                        currentEmployee.getEmployeeID(),
+                                        currentEmployee.getFullName(),
                                         null,
                                         "Employee",
                                         "removed from system"));
@@ -251,7 +251,7 @@ public class EmployeeQueueController extends MenuBarController implements Initia
               new Activity(
                   new Date(),
                   App.currentUser.getEmployeeID(),
-                  currentEmployee.getEmployeeID(),
+                  currentEmployee.getFullName(),
                   null,
                   "Employee",
                   "username updated"));

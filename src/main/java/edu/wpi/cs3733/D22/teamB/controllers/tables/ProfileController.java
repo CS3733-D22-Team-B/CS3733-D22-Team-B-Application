@@ -228,7 +228,7 @@ public class ProfileController extends MenuBarController implements Initializabl
               new Activity(
                   new Date(),
                   App.currentUser.getEmployeeID(),
-                  App.currentUser.getEmployeeID(),
+                  App.currentUser.getFullName(),
                   null,
                   "Employee",
                   "password updated"));

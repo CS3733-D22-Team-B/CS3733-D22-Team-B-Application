@@ -272,7 +272,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
               new Activity(
                   new Date(),
                   currentUser.getEmployeeID(),
-                  currentPatient.getPatientID(),
+                  currentPatient.getFullName(),
                   LocationsDB.getInstance().getLocationID(roomInput.getValue()),
                   "Patient",
                   "admitted to room"));
@@ -340,7 +340,7 @@ public class PatientDatabaseController extends MenuBarController implements Init
               new Activity(
                   new Date(),
                   currentUser.getEmployeeID(),
-                  currentPatient.getPatientID(),
+                  currentPatient.getFullName(),
                   roomID,
                   "Patient",
                   "admitted to room"));
