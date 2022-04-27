@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f2f3f4#f2f3f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.Controller">
+<AnchorPane fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f2f3f4#f2f3f4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.Controller">
 <children>
     <Circle fx:id="circle" fill="#ff0707" layoutX="300.0" layoutY="300.0" radius="5.0" stroke="#ff0707" strokeType="INSIDE" />
     <Rectangle fx:id="paddle" arcHeight="5.0" arcWidth="5.0" fill="#043957" height="10.0" layoutX="256.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" width="88.0" AnchorPane.bottomAnchor="46.0" />
@@ -17,6 +16,6 @@
             <Font name="Al Nile" size="47.0" />
         </font>
     </Button>
-      <JFXButton layoutX="14.0" layoutY="358.0" onAction="#goToHomepage" styleClass="simple-button" stylesheets="@styles/buttonStyles.css" text="Back to Homepage" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+      <JFXButton layoutX="14.0" layoutY="358.0" onAction="#goToHomepage" styleClass="main-button" stylesheets="@newStyles/darkBlueMode.css" text="Back to Homepage" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
 </children>
 </AnchorPane>
