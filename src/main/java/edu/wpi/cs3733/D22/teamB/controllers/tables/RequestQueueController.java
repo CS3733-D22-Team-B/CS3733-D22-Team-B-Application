@@ -48,6 +48,7 @@ public class RequestQueueController extends MenuBarController implements Initial
   @FXML ComboBox<String> employeeInput;
   @FXML ComboBox<String> statusInput;
   @FXML ComboBox<String> Type;
+  @FXML ComboBox<String> Employee;
   @FXML TextArea informationInput;
   @FXML Label charactersRemainingLabel;
 
@@ -78,6 +79,7 @@ public class RequestQueueController extends MenuBarController implements Initial
     for (Employee employeeItem : employees) {
       if (!employeeItem.getEmployeeID().equals("0")) {
         employeeInput.getItems().add(employeeItem.getOverview());
+        Employee.getItems().add(employeeItem.getOverview());
       }
     }
 
@@ -362,6 +364,21 @@ public class RequestQueueController extends MenuBarController implements Initial
     return request;
   }
 
+  private ObservableList<Request> sortRequestsByEmployee(
+      ObservableList<Request> request, String emp) {
+
+    for (int x = 0; x < 5; x++) {
+      for (int i = 0; i < request.size(); i++) {
+        System.out.println(request.get(i).getEmployee());
+        if (!request.get(i).getEmployee().getOverview().equals(emp)) {
+          System.out.println(request.get(i).getEmployee());
+          request.remove(i);
+        }
+      }
+    }
+    return request;
+  }
+
   public void setSortType() {
     // use combobox to choose type to sort by type
     ObservableList<Request> tempRequests = requests;
@@ -407,6 +424,30 @@ public class RequestQueueController extends MenuBarController implements Initial
         case "All":
           requestTable.setItems(refreshRequest);
       }
+    }
+  }
+
+  public void setSortEmployee() {
+    // use combobox to choose type to sort by type
+    ObservableList<Request> tempRequests = requests;
+    String emp = Employee.getValue();
+    System.out.println(emp);
+
+    ObservableList<Request> refreshRequest = FXCollections.observableArrayList();
+    for (Request request : ServiceRequestsDB.getInstance().list()) {
+      // if (!request.getStatus().equals("Completed"))
+      refreshRequest.add(request);
+      System.out.println(request);
+    }
+    sortRequestsByCreationDate(refreshRequest);
+    requestTable.setItems(refreshRequest);
+    addButtonToTable();
+    if (Employee.getValue().equals("All")) {
+
+      requestTable.setItems(refreshRequest);
+    } else {
+      sortRequestsByEmployee(refreshRequest, emp);
+      requestTable.setItems(refreshRequest);
     }
   }
 
