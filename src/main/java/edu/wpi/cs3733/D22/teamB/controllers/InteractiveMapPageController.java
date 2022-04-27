@@ -178,7 +178,7 @@ public class InteractiveMapPageController extends AStarVisualization {
     populateStateDropdown();
     setAll();
 
-    // drawEdgesPerFloor(2);
+    // drawEdgesPerFloor(4);
     // calculatePath(dao.getByID("bHALL006L2"), dao.getByID("bHALL00705"));
 
     mapPane.setOnMousePressed(
@@ -485,7 +485,7 @@ public class InteractiveMapPageController extends AStarVisualization {
         if (r.getLocation() != null) {
           floor = r.getLocation().getFloor();
         }
-        if (r.getPatient() != null) {
+        if (r.getPatient() != null && r.getLocation() == null) {
           floor = r.getPatient().getLocation().getFloor();
         }
         if (stringtoFloorLevel(floor) == floorLevel) addServiceIcon(r);
@@ -540,6 +540,15 @@ public class InteractiveMapPageController extends AStarVisualization {
             MedicalEquipment reqEq = edao.getByID(r.getEquipmentID());
             Location medEqLoc = reqEq.getLocation();
             calculatePath(medEqLoc, reqLoc);
+            drawPathFloor(floorString);
+          });
+    }
+    if (r.getType().equals("Patient Transfer")) {
+      icon.setOnMouseClicked(
+          event -> {
+            Location reqLoc = r.getLocation();
+            Location patientLoc = r.getPatient().getLocation();
+            calculatePath(patientLoc, reqLoc);
             drawPathFloor(floorString);
           });
     }
