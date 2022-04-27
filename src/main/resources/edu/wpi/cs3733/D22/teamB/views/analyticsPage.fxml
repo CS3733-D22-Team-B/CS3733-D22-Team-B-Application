@@ -1,23 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="background-pane" stylesheets="@styles/pageStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamB.controllers.tables.AnalyticsController">
     <children>
-      <StackedBarChart fx:id="stackedBarChart" layoutX="14.0" layoutY="14.0" legendSide="RIGHT" prefHeight="171.0" prefWidth="481.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </StackedBarChart>
-      <ImageView fitHeight="188.0" fitWidth="200.0" layoutX="75.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
-      <PieChart fx:id="pieChart" layoutX="361.0" layoutY="182.0" legendSide="RIGHT" prefHeight="341.0" prefWidth="583.0" />
+      <AnchorPane prefHeight="558.0" prefWidth="960.0">
+         <children>
+            <LineChart fx:id="lineChart" createSymbols="false" layoutX="22.0" layoutY="318.0" legendVisible="false" prefHeight="222.0" prefWidth="458.0">
+              <xAxis>
+                <NumberAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <StackedBarChart fx:id="stackedBarChart" layoutX="22.0" layoutY="63.0" legendSide="RIGHT" prefHeight="269.0" prefWidth="246.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
+            <HBox layoutX="498.0" layoutY="457.0" prefHeight="48.0" prefWidth="425.0">
+               <children>
+                  <JFXButton fx:id="f5Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor5HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F5" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="15.0" right="7.5" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="f4Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor4HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F4" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="f3Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor3HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F3" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="f2Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor2HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F2" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="f1Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadFloor1HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="F1" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="l1Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadLower1HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="LL1" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="7.5" right="7.5" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="l2Button" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadLower2HeatMap" opacity="0.75" prefHeight="35.0" prefWidth="45.0" style="-fx-text-fill: white;" styleClass="request-button" text="LL2" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="7.5" left="7.5" right="15.0" top="7.5" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <ImageView fx:id="mapImage" fitHeight="373.0" fitWidth="425.0" layoutX="500.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/mapAssets/Floor1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Text fill="WHITE" layoutX="434.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

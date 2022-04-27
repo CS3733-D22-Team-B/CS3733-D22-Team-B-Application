@@ -7,35 +7,61 @@ import edu.wpi.cs3733.D22.teamB.databases.MedicalEquipment;
 import edu.wpi.cs3733.D22.teamB.requests.*;
 import edu.wpi.cs3733.D22.teamB.requests.Request;
 import eu.hansolo.fx.charts.*;
-import eu.hansolo.fx.charts.Axis;
 import eu.hansolo.fx.charts.data.ChartItem;
-import eu.hansolo.fx.charts.data.TYChartItem;
-import eu.hansolo.fx.charts.data.XYChartItem;
-import eu.hansolo.fx.charts.series.XYSeries;
+import eu.hansolo.fx.charts.heatmap.HeatMap;
+import eu.hansolo.fx.charts.heatmap.HeatMapBuilder;
+import eu.hansolo.fx.charts.heatmap.OpacityDistribution;
+import eu.hansolo.fx.charts.tools.ColorMapping;
 import eu.hansolo.fx.charts.tools.Order;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import eu.hansolo.fx.charts.tools.Point;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
 import javafx.scene.chart.*;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class AnalyticsController extends MenuBarController {
 
   @FXML private AnchorPane pane;
+  @FXML private ImageView mapImage;
+
   @FXML private StackedBarChart stackedBarChart;
-  private eu.hansolo.fx.charts.XYChart<XYChartItem> lineChart;
+
+  @FXML private LineChart lineChart;
+
   private CoxcombChart coxcombChart;
+  private Legend legend;
+
+  private HeatMap heatMap;
+
+  private List<Point> locationPoints;
 
   public void initialize() {
     initializeBarChart();
     intializeLineChart();
     initalizePieChart();
+    initializeHeatMap();
+    loadFloor1HeatMap(null);
+
+    ArrayList<Point> p = new ArrayList<>();
+    for (int i = 0; i < 100; i++) {
+      p.add(new Point(0, 0));
+    }
+    heatMap.addSpots(p);
+
+    p.clear();
+    for (int i = 0; i < 100; i++) {
+      p.add(new Point(heatMap.getFitWidth(), heatMap.getFitHeight()));
+    }
+    heatMap.addSpots(p);
   }
 
   public void initializeBarChart() {
@@ -177,8 +203,22 @@ public class AnalyticsController extends MenuBarController {
             .build();
 
     pane.getChildren().add(coxcombChart);
-    coxcombChart.setLayoutX(300);
-    coxcombChart.setLayoutY(300);
+    coxcombChart.setLayoutX(280);
+    coxcombChart.setLayoutY(80);
+
+    coxcombChart.setPrefSize(200, 230);
+
+    // =======================================================
+    LegendItem item1 = new LegendItem(Symbol.CIRCLE, "Item 1", Color.RED, Color.BLACK);
+    LegendItem item2 = new LegendItem(Symbol.SQUARE, "Item 2", Color.GREEN, Color.BLACK);
+    LegendItem item3 = new LegendItem(Symbol.TRIANGLE, "Item 3", Color.BLUE, Color.BLACK);
+
+    legend = new Legend(item1, item2, item3);
+    legend.setOrientation(Orientation.VERTICAL);
+
+    pane.getChildren().add(legend);
+    legend.setLayoutX(420);
+    legend.setLayoutY(250);
   }
 
   public void intializeLineChart() {
@@ -203,69 +243,124 @@ public class AnalyticsController extends MenuBarController {
       }
     }
 
-    LocalDateTime start =
-        LocalDateTime.ofInstant(activities.getFirst().getDateAndTime().toInstant(), ZoneOffset.UTC);
-    LocalDateTime end =
-        LocalDateTime.ofInstant(activities.getLast().getDateAndTime().toInstant(), ZoneOffset.UTC);
-
-    System.out.println(start);
-    System.out.println(end);
-
-    List<ChartItem> tyData1 = new ArrayList<>();
+    XYChart.Series series = new XYChart.Series();
+    series.setName("Activities");
 
     for (int i = 0; i < times.size(); i++) {
-      System.out.println(
-          start.plusHours(i).toInstant(ZoneOffset.UTC).toEpochMilli() / 3600000 - 458000);
-      tyData1.add(new ChartItem(times.get(i), Color.web("#00AEF5")));
+      series.getData().add(new XYChart.Data(i, times.get(i)));
     }
 
-    XYSeries<TYChartItem> tySeries1 =
-        new XYSeries(tyData1, ChartType.LINE, Color.RED, Color.rgb(255, 0, 0, 0.5));
-    tySeries1.setSymbolsVisible(false);
+    NumberAxis xAxis = new NumberAxis();
+    xAxis.setLabel("Hour");
+    NumberAxis yAxis = new NumberAxis();
+    yAxis.setLabel("Activity");
 
-    // XYChart
-
-    Axis xAxisBottom = createBottomTimeAxis(start, end, "HH", true);
-    Axis yAxisLeft = createLeftYAxis(0, 20, true);
-    eu.hansolo.fx.charts.XYChart<TYChartItem> tyChart =
-        new eu.hansolo.fx.charts.XYChart<>(new XYPane(tySeries1), yAxisLeft, xAxisBottom);
-
-    pane.getChildren().add(tyChart);
-    ;
-    tyChart.setLayoutX(500);
-    tyChart.setLayoutY(200);
+    lineChart.getData().add(series);
+    lineChart = new LineChart<>(xAxis, yAxis);
   }
 
-  private Axis createLeftYAxis(final double MIN, final double MAX, final boolean AUTO_SCALE) {
-    Axis axis = new Axis(Orientation.VERTICAL, Position.LEFT);
-    axis.setMinValue(MIN);
-    axis.setMaxValue(MAX);
-    axis.setAutoScale(AUTO_SCALE);
+  public void initializeHeatMap() {
+    heatMap =
+        HeatMapBuilder.create()
+            .prefSize(425, 425)
+            .colorMapping(ColorMapping.BLUE_CYAN_GREEN_YELLOW_RED)
+            .spotRadius(25)
+            .opacityDistribution(OpacityDistribution.CUSTOM)
+            .fadeColors(true)
+            .build();
 
-    AnchorPane.setTopAnchor(axis, 0d);
-
-    return axis;
+    pane.getChildren().add(heatMap);
+    heatMap.setLayoutX(500);
+    heatMap.setLayoutY(80);
+    heatMap.setFitWidth(425);
+    heatMap.setFitHeight(373);
   }
 
-  private Axis createBottomTimeAxis(
-      final LocalDateTime START,
-      final LocalDateTime END,
-      final String PATTERN,
-      final boolean AUTO_SCALE) {
-    Axis axis =
-        new Axis(
-            START.toInstant(ZoneOffset.UTC).toEpochMilli() / 3600000 - 458000,
-            END.toInstant(ZoneOffset.UTC).toEpochMilli() / 3600000 - 458000,
-            Orientation.HORIZONTAL,
-            Position.BOTTOM);
-    axis.setDateTimeFormatPattern(PATTERN);
-    axis.setAutoScale(AUTO_SCALE);
+  @FXML
+  public void loadLower2HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL2.png"));
+    drawHeatMap(0, "L2");
+  }
 
-    AnchorPane.setBottomAnchor(axis, 0d);
+  @FXML
+  public void loadLower1HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/FloorL1.png"));
+    drawHeatMap(1, "L1");
+  }
 
-    System.out.println(axis.getMinValue());
-    System.out.println(axis.getMaxValue());
+  @FXML
+  public void loadFloor1HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor1.png"));
+    drawHeatMap(2, "1");
+  }
 
-    return axis;
+  @FXML
+  public void loadFloor2HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor2.png"));
+    drawHeatMap(3, "2");
+  }
+
+  @FXML
+  public void loadFloor3HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor3.png"));
+    drawHeatMap(4, "3");
+  }
+
+  @FXML
+  public void loadFloor4HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor4.png"));
+    drawHeatMap(5, "4");
+  }
+
+  @FXML
+  public void loadFloor5HeatMap(ActionEvent event) {
+    mapImage.setImage(new Image("/edu/wpi/cs3733/D22/teamB/assets/mapAssets/Floor5.png"));
+    drawHeatMap(6, "5");
+  }
+
+  private void drawHeatMap(int floorNumber, String floor) {
+    locationPoints = new ArrayList<Point>();
+    clear();
+
+    ActivityDB db = ActivityDB.getInstance();
+
+    for (Activity activity : db.list()) {
+      if (activity.getType().equals("Location")) {
+        Location location = LocationsDB.getInstance().getLocation(activity.getTypeID());
+
+        if (location != null && location.getFloor().equals(floor)) {
+          double[] coords = newCoords(location.getXCoord(), location.getYCoord());
+          locationPoints.add(new Point(coords[0], coords[1]));
+        }
+      } else if (activity.getType().equals("Request")) {
+        Request request = ServiceRequestsDB.getInstance().getByID(activity.getTypeID());
+
+        if (request != null) {
+          Location location = LocationsDB.getInstance().getLocation(request.getLocationID());
+
+          if (location != null && location.getFloor().equals(floor)) {
+            double[] coords = newCoords(location.getXCoord(), location.getYCoord());
+            locationPoints.add(new Point(coords[0], coords[1]));
+          }
+        }
+      }
+    }
+
+    heatMap.addSpots(locationPoints);
+  }
+
+  private void clear() {
+    heatMap.clearHeatMap();
+  }
+
+  private double[] newCoords(double x, double y) {
+    double mapWidth = 1060;
+    double mapHeight = 930;
+    double ratio = (mapHeight / mapWidth) * 1.05;
+    double fitWidth = mapImage.getFitWidth();
+    double fitHeight = mapImage.getFitHeight();
+    double xView = ((x / mapWidth) * fitWidth);
+    double yView = ((y / mapHeight) * fitHeight);
+    return new double[] {xView, yView};
   }
 }
