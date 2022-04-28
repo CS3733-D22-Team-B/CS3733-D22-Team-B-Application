@@ -134,17 +134,17 @@ public class AnalyticsController extends MenuBarController {
 
     requestText.setText(requests.size() + "\nRequests");
 
-    String equipmentColor = "#0b0c0e";
-    String labColor = "#0f1013";
-    String medicineColor = "#131417";
-    String mealColor = "#17181c";
-    String langaugeColor = "#1a1d21";
-    String iptColor = "#30343b";
-    String giftColor = "#414751";
-    String sanitationColor = "#515865";
-    String laundryColor = "#626a79";
-    String securityColor = "#727b8e";
-    String customColor = "#868e9e";
+    String equipmentColor = "#E91C23FF";
+    String labColor = "#ED5929FF";
+    String medicineColor = "#F7941DFF";
+    String mealColor = "#FBF002FF";
+    String langaugeColor = "#3BB44AFF";
+    String iptColor = "#28A79EFF";
+    String giftColor = "#3CADF1FF";
+    String sanitationColor = "#2B73BFFF";
+    String laundryColor = "#652B91FF";
+    String securityColor = "#922590FF";
+    String customColor = "#FF63A7FF";
 
     int equipment = 0;
     int lab = 0;
