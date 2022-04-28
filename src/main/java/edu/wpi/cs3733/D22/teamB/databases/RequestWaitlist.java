@@ -28,7 +28,7 @@ public class RequestWaitlist {
             new EquipmentRequest(
                 waitlist.get(i).getLocationID(),
                 equipment.getEquipmentID(),
-                "This is an auto-generated request",
+                "This is an auto-generated request created from the request waiting list. ",
                 4);
         DatabaseController.getInstance().add(newEqReq);
         waitlist.remove(waitlist.get(i));

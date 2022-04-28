@@ -74,7 +74,7 @@ public class AStarVisualization extends MenuBarController {
     line.setEndX(endViewCoords[0]);
     line.setEndY(endViewCoords[1]);
     line.setStrokeWidth(2);
-    line.setStroke(Color.rgb(250, 250, 250));
+    line.setStroke(Color.rgb(255, 219, 10));
 
     mapPane.getChildren().add(line);
     lineList.add(line);

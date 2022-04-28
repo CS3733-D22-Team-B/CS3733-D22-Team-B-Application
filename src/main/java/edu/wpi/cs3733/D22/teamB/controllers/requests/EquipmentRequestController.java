@@ -89,7 +89,8 @@ public class EquipmentRequestController extends LocationBasedRequestController {
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
       alert.setTitle("No Equipment Available");
       alert.setHeaderText("There are no " + equipmentInput.getValue() + "s currently available. ");
-      alert.setContentText("Please try again later. ");
+      alert.setContentText(
+          "If you would like to add this request to the waiting list, please click OK. ");
       Optional<ButtonType> result = alert.showAndWait();
       ButtonType button = result.orElse(ButtonType.CANCEL);
 
