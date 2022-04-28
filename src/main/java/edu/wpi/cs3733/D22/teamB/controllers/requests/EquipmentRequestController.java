@@ -99,11 +99,8 @@ public class EquipmentRequestController extends LocationBasedRequestController {
             new WaitlistObject(
                 locationsDAO.getLocationID(locationName), convertType(equipmentInput.getValue()));
         RequestWaitlist.add(wObj);
-        System.out.println("Pressed OK");
-      } else {
-        System.out.println("Pressed cancel");
       }
-      // equipmentInput.getSelectionModel().clearSelection();
+
       submitButton.setDisable(true);
 
       return "";

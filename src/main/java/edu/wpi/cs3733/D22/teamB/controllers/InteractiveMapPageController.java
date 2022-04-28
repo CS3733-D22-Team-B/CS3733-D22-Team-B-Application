@@ -12,8 +12,11 @@ import edu.wpi.cs3733.D22.teamB.requests.Request;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Optional;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.*;
@@ -1010,8 +1013,20 @@ public class InteractiveMapPageController extends AStarVisualization {
 
   @FXML
   public void resetLocations() {
-    DatabaseController.getInstance().resetAllDBs();
-    setAll();
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("No Equipment Available");
+    alert.setHeaderText(
+        "Are you sure you want to reset all map Locations to their defaults? This cannot be undone. ");
+    alert.setContentText("If you would like to reset all Locations, press OK. ");
+    Optional<ButtonType> result = alert.showAndWait();
+    ButtonType button = result.orElse(ButtonType.CANCEL);
+
+    if (button == ButtonType.OK) {
+      DatabaseController.getInstance().resetAllDBs();
+      setAll();
+    } else {
+      System.out.println("Cancelled");
+    }
   }
 
   public void resetPane() {
